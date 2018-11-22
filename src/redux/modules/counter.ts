@@ -1,4 +1,6 @@
 import { Action, ActionCreator, Reducer } from 'redux'
+import { SagaIterator, delay } from 'redux-saga'
+import { takeEvery, call, put } from 'redux-saga/effects'
 
 export interface CounterState {
   count: number
@@ -8,10 +10,16 @@ export const initialCounterState: CounterState = {
   count: 0,
 }
 
+const NONE = '@@reactAppPrototype/counter/NONE'
 const INCREMENT = '@@reactAppPrototype/counter/INCREMENT'
 const DECREMENT = '@@reactAppPrototype/counter/DECREMENT'
+const INCREMENT_ASYNC = '@@reactAppPrototype/counter/INCREMENT_ASYNC'
 
-const counterActionTypes = [INCREMENT, DECREMENT]
+const counterActionTypes = [NONE, INCREMENT, DECREMENT, INCREMENT_ASYNC]
+
+interface NoneAction extends Action {
+  type: typeof NONE
+}
 
 interface IncrementAction extends Action {
   type: typeof INCREMENT
@@ -21,7 +29,16 @@ interface DecrementAction extends Action {
   type: typeof DECREMENT
 }
 
-export type CounterAction = IncrementAction | DecrementAction
+interface IncrementAsyncAction extends Action {
+  type: typeof INCREMENT_ASYNC
+  delay: number
+}
+
+export type CounterAction = NoneAction | IncrementAction | DecrementAction | IncrementAsyncAction
+
+export const none: ActionCreator<NoneAction> = () => ({
+  type: NONE,
+})
 
 export const increment: ActionCreator<IncrementAction> = () => ({
   type: INCREMENT,
@@ -30,6 +47,27 @@ export const increment: ActionCreator<IncrementAction> = () => ({
 export const decrement: ActionCreator<DecrementAction> = () => ({
   type: DECREMENT,
 })
+
+export const incrementIfOdd: ActionCreator<NoneAction | IncrementAction> = (value: number) => (
+  (value % 2 !== 0) ? increment() : none()
+)
+
+/**
+ * incrementAsync
+ *
+ * @param delay - delay in milliseconds
+ */
+export const incrementAsync: ActionCreator<IncrementAsyncAction> = (delay: number) => ({
+  type: INCREMENT_ASYNC,
+  delay,
+})
+
+export function* incrementAsyncSaga(): SagaIterator {
+  yield takeEvery(INCREMENT_ASYNC, function*(action: IncrementAsyncAction): SagaIterator {
+    yield call(delay, action.delay)
+    yield put(increment())
+  })
+}
 
 function isCounterAction(action: Action): action is CounterAction {
   return counterActionTypes.some((counterActionType) => counterActionType === action.type)
@@ -47,6 +85,8 @@ export const counterReducer: Reducer<CounterState, Action> = (state, action) => 
   const { count } = state
 
   switch (action.type) {
+    case NONE:
+      return state
     case INCREMENT:
       return {
         count: count + 1,
@@ -55,5 +95,7 @@ export const counterReducer: Reducer<CounterState, Action> = (state, action) => 
       return {
         count: count - 1,
       }
+    case INCREMENT_ASYNC:
+      return state
   }
 }

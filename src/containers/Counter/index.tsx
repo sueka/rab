@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 
 import { State } from '../../redux'
-import { CounterAction, increment, decrement } from '../../redux/modules/counter'
+import { CounterAction, increment, decrement, incrementIfOdd, incrementAsync } from '../../redux/modules/counter'
 
 interface StateProps {
   value: number
@@ -12,6 +12,8 @@ interface StateProps {
 interface DispatchProps {
   _increment(): CounterAction
   _decrement(): CounterAction
+  _incrementIfOdd(value: number): CounterAction
+  _incrementAsync(delay: number): CounterAction
 }
 
 type Props = StateProps & DispatchProps
@@ -23,14 +25,37 @@ const mapStateToProps = ({ counter: { count } }: State): StateProps => ({
 const mapDispatchToProps = (dispatch: Dispatch<CounterAction>): DispatchProps => ({
   _increment: () => dispatch(increment()),
   _decrement: () => dispatch(decrement()),
+  _incrementIfOdd: (value: number) => dispatch(incrementIfOdd(value)),
+  _incrementAsync: (delay: number) => dispatch(incrementAsync(delay)),
 })
 
-const _Counter: React.FunctionComponent<Props> = ({ value, _increment: handleIncrement, _decrement: handleDecrement }) => (
-  <div>
-    {value}
-    <button onClick={handleIncrement}>+</button>
-    <button onClick={handleDecrement}>-</button>
-  </div>
-)
+class _Counter extends React.Component<Props> {
+  private handleIncrementIfOdd = () => {
+    const { value, _incrementIfOdd } = this.props
+
+    return _incrementIfOdd(value)
+  }
+
+  private handleIncrementAsync = () => {
+    const { _incrementAsync } = this.props
+
+    return _incrementAsync(1000)
+  }
+
+  public render() {
+    const { value, _increment: handleIncrement, _decrement: handleDecrement } = this.props
+    const { handleIncrementIfOdd, handleIncrementAsync } = this
+
+    return (
+      <div>
+        {value}
+        <button onClick={handleIncrement}>+</button>
+        <button onClick={handleDecrement}>-</button>
+        <button onClick={handleIncrementIfOdd}>+ if odd</button>
+        <button onClick={handleIncrementAsync}>+ async</button>
+      </div>
+    )
+  }
+}
 
 export const Counter = connect(mapStateToProps, mapDispatchToProps)(_Counter)

@@ -1,4 +1,5 @@
-import { Store, createStore, combineReducers } from 'redux'
+import { Store, applyMiddleware, createStore, combineReducers } from 'redux'
+import createSagaMiddleware, { Task } from 'redux-saga'
 
 import { CounterState, CounterAction, initialCounterState, counterReducer } from './modules/counter'
 
@@ -16,7 +17,21 @@ export const reducer = combineReducers<State, Action>({
   counter: counterReducer,
 })
 
-export const store = createStore<State, Action>(
-  reducer,
-  initialState,
-)
+const sagaMiddleware = createSagaMiddleware()
+
+type Saga = () => Iterator<any>
+
+export const configureStore = (): Store<State, Action> & {
+  runSaga(saga: Saga): Task,
+} => {
+  const store = createStore(
+    reducer,
+    initialState,
+    applyMiddleware(sagaMiddleware)
+  )
+
+  return {
+    ...store,
+    runSaga: sagaMiddleware.run,
+  }
+}
