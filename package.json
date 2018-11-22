@@ -5,5 +5,18 @@
     "type": "git",
     "url": "https://github.com/sueka/react-app-prototype.git"
   },
-  "license": "CC0-1.0"
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/react": "^16.7.7",
+    "@types/react-dom": "^16.0.10",
+    "parcel-bundler": "^1.10.3",
+    "typescript": "^3.1.6"
+  },
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  }
 }
