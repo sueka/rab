@@ -1,0 +1,9 @@
+{
+  "name": "react-app-prototype",
+  "description": "A baby template for my making a react app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sueka/react-app-prototype.git"
+  },
+  "license": "CC0-1.0"
+}
