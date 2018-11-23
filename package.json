@@ -6,6 +6,9 @@
     "url": "https://github.com/sueka/react-app-prototype.git"
   },
   "license": "CC0-1.0",
+  "scripts": {
+    "static-check": "tsc --noEmit -p ."
+  },
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
