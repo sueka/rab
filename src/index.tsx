@@ -3,6 +3,8 @@ import '@babel/polyfill'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import { createBrowserHistory } from 'history'
+import { ConnectedRouter } from 'connected-react-router'
 
 import { incrementAsyncSaga } from './redux/modules/counter'
 
@@ -10,13 +12,16 @@ import { App } from './components/App'
 
 import { configureStore } from './redux'
 
-const store = configureStore()
+const history = createBrowserHistory()
+const store = configureStore(history)
 
 store.runSaga(incrementAsyncSaga)
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 )
