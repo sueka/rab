@@ -31,7 +31,9 @@ interface DecrementAction extends Action {
 
 interface IncrementAsyncAction extends Action {
   type: typeof INCREMENT_ASYNC
-  delay: number
+  payload: {
+    ms: number
+  }
 }
 
 export type CounterAction = NoneAction | IncrementAction | DecrementAction | IncrementAsyncAction
@@ -55,16 +57,20 @@ export const incrementIfOdd: ActionCreator<NoneAction | IncrementAction> = (valu
 /**
  * incrementAsync
  *
- * @param delay - delay in milliseconds
+ * @param ms - delay in milliseconds
  */
-export const incrementAsync: ActionCreator<IncrementAsyncAction> = (delay: number) => ({
+export const incrementAsync: ActionCreator<IncrementAsyncAction> = (ms: number) => ({
   type: INCREMENT_ASYNC,
-  delay,
+  payload: {
+    ms,
+  },
 })
 
 export function* incrementAsyncSaga(): SagaIterator {
   yield takeEvery(INCREMENT_ASYNC, function*(action: IncrementAsyncAction): SagaIterator {
-    yield call(delay, action.delay)
+    const { ms } = action.payload
+
+    yield call(delay, ms)
     yield put(increment())
   })
 }
