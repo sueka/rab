@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 
 import { Counter } from '../../containers/Counter'
 
+import * as classes from './styles.css'
+
 export const App: React.FunctionComponent = () => (
-  <>
+  <div className={classes.App}>
     <Link to="/counter">counter</Link>
     <p>
       Hello, world!
@@ -13,5 +15,5 @@ export const App: React.FunctionComponent = () => (
     <Switch>
       <Route path="/counter" component={Counter} />
     </Switch>
-  </>
+  </div>
 )

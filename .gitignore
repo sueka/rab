@@ -4,3 +4,6 @@
 # parcel
 /.cache/
 /dist/
+
+# typed-css-modules
+*.css.d.ts

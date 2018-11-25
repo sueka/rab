@@ -12,6 +12,8 @@ import { App } from './components/App'
 
 import { configureStore } from './redux'
 
+import './styles.css'
+
 const history = createBrowserHistory()
 const store = configureStore(history)
 
