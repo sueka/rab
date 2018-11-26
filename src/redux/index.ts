@@ -1,9 +1,10 @@
 import { Store, applyMiddleware, createStore, combineReducers, compose } from 'redux'
-import createSagaMiddleware, { Task } from 'redux-saga'
+import createSagaMiddleware, { Task, SagaIterator } from 'redux-saga'
+import { spawn } from 'redux-saga/effects'
 import { History } from 'history'
 import { RouterState, LocationChangeAction, connectRouter, routerMiddleware } from 'connected-react-router'
 
-import { CounterState, CounterAction, initialCounterState, counterReducer } from './modules/counter'
+import { CounterState, CounterAction, initialCounterState, counterReducer, counterSaga } from './modules/counter'
 
 export interface State {
   counter: CounterState
@@ -20,6 +21,10 @@ export const reducer = (history: History) => combineReducers<State, Action>({
   counter: counterReducer,
   router: connectRouter(history),
 })
+
+export function* rootSaga(): SagaIterator {
+  yield spawn(counterSaga)
+}
 
 const sagaMiddleware = createSagaMiddleware()
 
