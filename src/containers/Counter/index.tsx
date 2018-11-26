@@ -30,33 +30,33 @@ const mapDispatchToProps = (dispatch: Dispatch<CounterAction>): DispatchProps =>
   _incrementAsync: (delay: number) => dispatch(incrementAsync(delay)),
 })
 
-class _Counter extends React.Component<Props & RouteComponentProps> {
-  private handleIncrementIfOdd = () => {
-    const { value, _incrementIfOdd } = this.props
+export const Counter = connect(mapStateToProps, mapDispatchToProps)(
+  class extends React.Component<Props & RouteComponentProps> {
+    private handleIncrementIfOdd = () => {
+      const { value, _incrementIfOdd } = this.props
 
-    return _incrementIfOdd(value)
+      return _incrementIfOdd(value)
+    }
+
+    private handleIncrementAsync = () => {
+      const { _incrementAsync } = this.props
+
+      return _incrementAsync(1000)
+    }
+
+    public render() {
+      const { value, _increment: handleIncrement, _decrement: handleDecrement } = this.props
+      const { handleIncrementIfOdd, handleIncrementAsync } = this
+
+      return (
+        <div>
+          {value}
+          <button onClick={handleIncrement}>+</button>
+          <button onClick={handleDecrement}>-</button>
+          <button onClick={handleIncrementIfOdd}>+ if odd</button>
+          <button onClick={handleIncrementAsync}>+ async</button>
+        </div>
+      )
+    }
   }
-
-  private handleIncrementAsync = () => {
-    const { _incrementAsync } = this.props
-
-    return _incrementAsync(1000)
-  }
-
-  public render() {
-    const { value, _increment: handleIncrement, _decrement: handleDecrement } = this.props
-    const { handleIncrementIfOdd, handleIncrementAsync } = this
-
-    return (
-      <div>
-        {value}
-        <button onClick={handleIncrement}>+</button>
-        <button onClick={handleDecrement}>-</button>
-        <button onClick={handleIncrementIfOdd}>+ if odd</button>
-        <button onClick={handleIncrementAsync}>+ async</button>
-      </div>
-    )
-  }
-}
-
-export const Counter = connect(mapStateToProps, mapDispatchToProps)(_Counter)
+)

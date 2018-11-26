@@ -31,7 +31,7 @@ const sagaMiddleware = createSagaMiddleware()
 type Saga = () => Iterator<any>
 
 export const configureStore = (history: History): Store<State, Action> & {
-  runSaga(saga: Saga): Task,
+  runSaga(saga: Saga): Task
 } => {
   const store = createStore(
     reducer(history),

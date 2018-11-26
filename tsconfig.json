@@ -16,5 +16,8 @@
 
     /* Module Resolution Options */
     "moduleResolution": "Node"
-  }
+  },
+  "include": [
+    "src"
+  ]
 }
