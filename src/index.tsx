@@ -6,11 +6,10 @@ import { Provider } from 'react-redux'
 import { createBrowserHistory } from 'history'
 import { ConnectedRouter } from 'connected-react-router'
 
+import { configureStore } from './redux'
 import { counterSaga } from './redux/modules/counter'
 
 import { App } from './components/App'
-
-import { configureStore } from './redux'
 
 import './styles.css'
 
