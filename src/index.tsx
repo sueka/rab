@@ -13,9 +13,9 @@ import { App } from './components/App'
 import './styles.css'
 
 const history = createBrowserHistory()
-const store = configureStore(history)
+const { store, sagaMiddleware } = configureStore(history)
 
-store.runSaga(rootSaga)
+sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(
   <Provider store={store}>

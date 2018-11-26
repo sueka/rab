@@ -1,5 +1,5 @@
 import { Store, applyMiddleware, createStore, combineReducers, compose } from 'redux'
-import createSagaMiddleware, { Task, SagaIterator } from 'redux-saga'
+import createSagaMiddleware, { SagaMiddleware, SagaIterator } from 'redux-saga'
 import { spawn } from 'redux-saga/effects'
 import { History } from 'history'
 import { RouterState, LocationChangeAction, connectRouter, routerMiddleware } from 'connected-react-router'
@@ -28,10 +28,9 @@ export function* rootSaga(): SagaIterator {
 
 const sagaMiddleware = createSagaMiddleware()
 
-type Saga = () => Iterator<any>
-
-export const configureStore = (history: History): Store<State, Action> & {
-  runSaga(saga: Saga): Task
+export const configureStore = (history: History): {
+  store: Store<State, Action>
+  sagaMiddleware: SagaMiddleware<{}>
 } => {
   const store = createStore(
     reducer(history),
@@ -43,7 +42,7 @@ export const configureStore = (history: History): Store<State, Action> & {
   )
 
   return {
-    ...store,
-    runSaga: sagaMiddleware.run,
+    store,
+    sagaMiddleware, // Applied
   }
 }
