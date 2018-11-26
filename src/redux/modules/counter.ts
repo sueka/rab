@@ -10,15 +10,15 @@ export const initialCounterState: CounterState = {
   count: 0,
 }
 
-const NONE = '@@reactAppPrototype/counter/NONE'
+const NOP = '@@reactAppPrototype/counter/NOP'
 const INCREMENT = '@@reactAppPrototype/counter/INCREMENT'
 const DECREMENT = '@@reactAppPrototype/counter/DECREMENT'
 const INCREMENT_ASYNC = '@@reactAppPrototype/counter/INCREMENT_ASYNC'
 
-const counterActionTypes = [NONE, INCREMENT, DECREMENT, INCREMENT_ASYNC]
+const counterActionTypes = [NOP, INCREMENT, DECREMENT, INCREMENT_ASYNC]
 
-interface NoneAction extends Action {
-  type: typeof NONE
+interface NopAction extends Action {
+  type: typeof NOP
 }
 
 interface IncrementAction extends Action {
@@ -36,10 +36,10 @@ interface IncrementAsyncAction extends Action {
   }
 }
 
-export type CounterAction = NoneAction | IncrementAction | DecrementAction | IncrementAsyncAction
+export type CounterAction = NopAction | IncrementAction | DecrementAction | IncrementAsyncAction
 
-export const none: ActionCreator<NoneAction> = () => ({
-  type: NONE,
+export const nop: ActionCreator<NopAction> = () => ({
+  type: NOP,
 })
 
 export const increment: ActionCreator<IncrementAction> = () => ({
@@ -50,8 +50,8 @@ export const decrement: ActionCreator<DecrementAction> = () => ({
   type: DECREMENT,
 })
 
-export const incrementIfOdd: ActionCreator<NoneAction | IncrementAction> = (value: number) => (
-  (value % 2 !== 0) ? increment() : none()
+export const incrementIfOdd: ActionCreator<NopAction | IncrementAction> = (value: number) => (
+  (value % 2 !== 0) ? increment() : nop()
 )
 
 /**
@@ -93,7 +93,7 @@ export const counterReducer: Reducer<CounterState, Action> = (state, action) => 
   const { count } = state
 
   switch (action.type) {
-    case NONE:
+    case NOP:
       return state
     case INCREMENT:
       return {
