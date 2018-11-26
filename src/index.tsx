@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { createBrowserHistory } from 'history'
 import { ConnectedRouter } from 'connected-react-router'
 
-import { incrementAsyncSaga } from './redux/modules/counter'
+import { counterSaga } from './redux/modules/counter'
 
 import { App } from './components/App'
 
@@ -17,7 +17,7 @@ import './styles.css'
 const history = createBrowserHistory()
 const store = configureStore(history)
 
-store.runSaga(incrementAsyncSaga)
+store.runSaga(counterSaga)
 
 ReactDOM.render(
   <Provider store={store}>

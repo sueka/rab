@@ -66,13 +66,15 @@ export const incrementAsync: ActionCreator<IncrementAsyncAction> = (ms: number) 
   },
 })
 
-export function* incrementAsyncSaga(): SagaIterator {
-  yield takeEvery(INCREMENT_ASYNC, function*(action: IncrementAsyncAction): SagaIterator {
-    const { ms } = action.payload
+function* incrementAsyncSaga(action: IncrementAsyncAction): SagaIterator {
+  const { ms } = action.payload
 
-    yield call(delay, ms)
-    yield put(increment())
-  })
+  yield call(delay, ms)
+  yield put(increment())
+}
+
+export function* counterSaga(): SagaIterator {
+  yield takeEvery(INCREMENT_ASYNC, incrementAsyncSaga)
 }
 
 function isCounterAction(action: Action): action is CounterAction {
