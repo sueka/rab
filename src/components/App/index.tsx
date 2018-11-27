@@ -2,11 +2,11 @@ import * as React from 'react'
 import { Route, Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 
-import { Counter } from '../../containers/Counter'
+import Counter from '../../containers/Counter'
 
 import * as classes from './styles.css'
 
-export const App: React.FunctionComponent = () => (
+const App: React.FunctionComponent = () => (
   <div className={classes.App}>
     <Link to="/counter">counter</Link>
     <p>
@@ -17,3 +17,5 @@ export const App: React.FunctionComponent = () => (
     </Switch>
   </div>
 )
+
+export default App

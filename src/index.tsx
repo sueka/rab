@@ -8,7 +8,7 @@ import { ConnectedRouter } from 'connected-react-router'
 
 import { configureStore, rootSaga } from './redux'
 
-import { App } from './components/App'
+import App from './components/App'
 
 import './styles.css'
 
