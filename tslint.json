@@ -13,8 +13,8 @@
           "objects": "always",
           "imports": "always",
           "exports": "always",
-          "functions": "never",    // Keep it compatible with TypeScript 2.6-
-          "typeLiterals": "never"  // Keep it compatible with TypeScript 2.6-
+          "functions": "never",    // Keep it compatible with TypeScript 2.6 or earlier
+          "typeLiterals": "never"  // Keep it compatible with TypeScript 2.6 or earlier
         },
         "esSpecCompliant": true
       }
