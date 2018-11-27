@@ -4,7 +4,7 @@ import { spawn } from 'redux-saga/effects'
 import { History } from 'history'
 import { RouterState, LocationChangeAction, connectRouter, routerMiddleware } from 'connected-react-router'
 
-import { CounterState, CounterAction, initialCounterState, counterReducer, counterSaga } from './modules/counter'
+import { CounterState, CounterAction, counterReducer, counterSaga } from './modules/counter'
 
 export interface State {
   counter: CounterState
@@ -12,7 +12,9 @@ export interface State {
 }
 
 const initialState: Pick<State, 'counter'> = {
-  counter: initialCounterState,
+  counter: {
+    count: 0,
+  },
 }
 
 export type Action = CounterAction & LocationChangeAction

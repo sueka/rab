@@ -6,10 +6,6 @@ export interface CounterState {
   count: number
 }
 
-export const initialCounterState: CounterState = {
-  count: 0,
-}
-
 const NOP = '@@reactAppPrototype/counter/NOP'
 const INCREMENT = '@@reactAppPrototype/counter/INCREMENT'
 const DECREMENT = '@@reactAppPrototype/counter/DECREMENT'
