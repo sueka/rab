@@ -1,3 +1,4 @@
+import { hot } from 'react-hot-loader'
 import * as React from 'react'
 import { Route, Switch } from 'react-router'
 import { Link } from 'react-router-dom'
@@ -18,4 +19,4 @@ const App: React.FunctionComponent = () => (
   </div>
 )
 
-export default App
+export default hot(module)(App)
