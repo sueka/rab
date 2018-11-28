@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
 import { RouteComponentProps } from 'react-router'
 
 import { State } from '../../redux'
@@ -23,12 +22,12 @@ const mapStateToProps = ({ counter: { count } }: State): StateProps => ({
   value: count,
 })
 
-const mapDispatchToProps = (dispatch: Dispatch<CounterAction>): DispatchProps => ({
-  _increment: () => dispatch(increment()),
-  _decrement: () => dispatch(decrement()),
-  _incrementIfOdd: (value: number) => dispatch(incrementIfOdd(value)),
-  _incrementAsync: (delay: number) => dispatch(incrementAsync(delay)),
-})
+const mapDispatchToProps = {
+  _increment: increment,
+  _decrement: decrement,
+  _incrementIfOdd: incrementIfOdd,
+  _incrementAsync: incrementAsync,
+}
 
 class Counter extends React.Component<Props & RouteComponentProps> {
   private handleIncrementIfOdd = () => {
