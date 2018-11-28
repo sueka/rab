@@ -8,7 +8,9 @@
   "license": "CC0-1.0",
   "scripts": {
     "static-check": "run-p -c 'static-check:*'",
-    "static-check:tsc": "tcm src && tsc --noEmit -p .",
+    "static-check:type-check": "run-s 'static-check:type-check:*'",
+    "static-check:type-check:prepare": "tcm src -s",
+    "static-check:type-check:do": "tsc --noEmit -p .",
     "static-check:tslint": "tslint -p .",
     "static-check:stylelint": "stylelint src"
   },
