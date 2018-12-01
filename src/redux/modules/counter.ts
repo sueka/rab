@@ -46,9 +46,7 @@ export const decrement: ActionCreator<DecrementAction> = () => ({
   type: DECREMENT,
 })
 
-export const incrementIfOdd: ActionCreator<NopAction | IncrementAction> = (value: number) => (
-  (value % 2 !== 0) ? increment() : nop()
-)
+export const incrementIfOdd: ActionCreator<NopAction | IncrementAction> = (value: number) => (value % 2 !== 0) ? increment() : nop()
 
 /**
  * incrementAsync

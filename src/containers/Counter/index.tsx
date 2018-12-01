@@ -44,15 +44,14 @@ class Counter extends React.Component<Props & RouteComponentProps> {
 
   public render() {
     const { value, _increment: handleIncrement, _decrement: handleDecrement } = this.props
-    const { handleIncrementIfOdd, handleIncrementAsync } = this
 
     return (
       <div>
         {value}
         <button onClick={handleIncrement}>+</button>
         <button onClick={handleDecrement}>-</button>
-        <button onClick={handleIncrementIfOdd}>+ if odd</button>
-        <button onClick={handleIncrementAsync}>+ async</button>
+        <button onClick={this.handleIncrementIfOdd}>+ if odd</button>
+        <button onClick={this.handleIncrementAsync}>+ async</button>
       </div>
     )
   }
