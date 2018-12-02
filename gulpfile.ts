@@ -1,33 +1,22 @@
-import { parallel } from 'gulp'
-import { exec, execSync } from 'child_process'
+import { TaskFunction, parallel, series } from 'gulp'
+import { exec } from 'child_process'
 
+export const typeCheck = series(sh('tcm src -s'), sh('tsc --noEmit -p .'))
+const tslint = sh('tslint -p .')
+const stylelint = sh('stylelint src')
 export const staticCheck = parallel(typeCheck, tslint, stylelint)
 
-export function typeCheck() {
-  execSync('tcm src')
+function sh(cmd: string) {
+  const task: TaskFunction = () => {
+    const cp = exec(cmd)
 
-  const cp = exec('tsc --noEmit -p .')
+    cp.stdout.pipe(process.stdout)
+    cp.stderr.pipe(process.stderr)
 
-  cp.stdout.pipe(process.stdout)
-  cp.stderr.pipe(process.stderr)
+    return cp
+  }
 
-  return cp
-}
+  task.displayName = cmd
 
-function tslint() {
-  const cp = exec('tslint -p .')
-
-  cp.stdout.pipe(process.stdout)
-  cp.stderr.pipe(process.stderr)
-
-  return cp
-}
-
-function stylelint() {
-  const cp = exec('stylelint src')
-
-  cp.stdout.pipe(process.stdout)
-  cp.stderr.pipe(process.stderr)
-
-  return cp
+  return task
 }
