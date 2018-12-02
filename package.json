@@ -7,7 +7,9 @@
   },
   "license": "CC0-1.0",
   "devDependencies": {
+    "@types/del": "^3.0.1",
     "@types/gulp": "^4.0.5",
+    "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-cli": "^2.0.1",
     "stylelint": "^9.8.0",
