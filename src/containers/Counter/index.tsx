@@ -16,20 +16,20 @@ interface DispatchProps {
   _incrementAsync(delay: number): CounterAction
 }
 
-type Props = StateProps & DispatchProps
+type Props = StateProps & DispatchProps & RouteComponentProps
 
 const mapStateToProps = ({ counter: { count } }: State): StateProps => ({
   value: count,
 })
 
-const mapDispatchToProps = {
+const mapDispatchToProps: DispatchProps = {
   _increment: increment,
   _decrement: decrement,
   _incrementIfOdd: incrementIfOdd,
   _incrementAsync: incrementAsync,
 }
 
-class Counter extends React.Component<Props & RouteComponentProps> {
+class Counter extends React.Component<Props> {
   private handleIncrementIfOdd = () => {
     const { value, _incrementIfOdd } = this.props
 

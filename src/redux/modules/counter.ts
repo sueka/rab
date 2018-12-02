@@ -1,4 +1,4 @@
-import { Action, ActionCreator, Reducer } from 'redux'
+import { Action, Reducer } from 'redux'
 import { SagaIterator, delay } from 'redux-saga'
 import { takeEvery, call, put } from 'redux-saga/effects'
 
@@ -34,26 +34,26 @@ interface IncrementAsyncAction extends Action {
 
 export type CounterAction = NopAction | IncrementAction | DecrementAction | IncrementAsyncAction
 
-export const nop: ActionCreator<NopAction> = () => ({
+export const nop = (): NopAction => ({
   type: NOP,
 })
 
-export const increment: ActionCreator<IncrementAction> = () => ({
+export const increment = (): IncrementAction => ({
   type: INCREMENT,
 })
 
-export const decrement: ActionCreator<DecrementAction> = () => ({
+export const decrement = (): DecrementAction => ({
   type: DECREMENT,
 })
 
-export const incrementIfOdd: ActionCreator<NopAction | IncrementAction> = (value: number) => (value % 2 !== 0) ? increment() : nop()
+export const incrementIfOdd = (value: number): NopAction | IncrementAction => (value % 2 !== 0) ? increment() : nop()
 
 /**
  * incrementAsync
  *
  * @param ms - delay in milliseconds
  */
-export const incrementAsync: ActionCreator<IncrementAsyncAction> = (ms: number) => ({
+export const incrementAsync = (ms: number): IncrementAsyncAction => ({
   type: INCREMENT_ASYNC,
   payload: {
     ms,
