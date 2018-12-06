@@ -46,7 +46,7 @@ export const decrement = (): DecrementAction => ({
   type: DECREMENT,
 })
 
-export const incrementIfOdd = (value: number): NopAction | IncrementAction => (value % 2 !== 0) ? increment() : nop()
+export const incrementIfOdd = (value: number) => (value % 2 !== 0) ? increment() : nop()
 
 /**
  * incrementAsync
