@@ -34,6 +34,10 @@ interface IncrementAsyncAction extends Action {
 
 export type CounterAction = NopAction | IncrementAction | DecrementAction | IncrementAsyncAction
 
+function isCounterAction(action: Action): action is CounterAction {
+  return counterActionTypes.some((counterActionType) => counterActionType === action.type)
+}
+
 export const nop = (): NopAction => ({
   type: NOP,
 })
@@ -69,10 +73,6 @@ function* incrementAsyncSaga(action: IncrementAsyncAction): SagaIterator {
 
 export function* counterSaga(): SagaIterator {
   yield takeEvery(INCREMENT_ASYNC, incrementAsyncSaga)
-}
-
-function isCounterAction(action: Action): action is CounterAction {
-  return counterActionTypes.some((counterActionType) => counterActionType === action.type)
 }
 
 export const counterReducer: Reducer<CounterState, Action> = (state, action) => {
