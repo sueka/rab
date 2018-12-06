@@ -2,9 +2,35 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator, delay } from 'redux-saga'
 import { takeEvery, call, put } from 'redux-saga/effects'
 
+//
+//             _|                  _|
+//   _|_|_|  _|_|_|_|    _|_|_|  _|_|_|_|    _|_|
+// _|_|        _|      _|    _|    _|      _|_|_|_|
+//     _|_|    _|      _|    _|    _|      _|
+// _|_|_|        _|_|    _|_|_|      _|_|    _|_|_|
+//
+//
+
 export interface CounterState {
   count: number
 }
+
+//
+//                       _|      _|
+//   _|_|_|    _|_|_|  _|_|_|_|        _|_|    _|_|_|
+// _|    _|  _|          _|      _|  _|    _|  _|    _|
+// _|    _|  _|          _|      _|  _|    _|  _|    _|
+//   _|_|_|    _|_|_|      _|_|  _|    _|_|    _|    _|
+//
+//
+//
+//   _|
+// _|_|_|_|  _|    _|  _|_|_|      _|_|      _|_|_|
+//   _|      _|    _|  _|    _|  _|_|_|_|  _|_|
+//   _|      _|    _|  _|    _|  _|            _|_|
+//     _|_|    _|_|_|  _|_|_|      _|_|_|  _|_|_|
+//                 _|  _|
+//             _|_|    _|
 
 const NOP = '@@react-app-prototype/counter/NOP'
 const INCREMENT = '@@react-app-prototype/counter/INCREMENT'
@@ -38,6 +64,23 @@ function isCounterAction(action: Action): action is CounterAction {
   return counterActionTypes.some((counterActionType) => counterActionType === action.type)
 }
 
+//
+//                       _|      _|
+//   _|_|_|    _|_|_|  _|_|_|_|        _|_|    _|_|_|
+// _|    _|  _|          _|      _|  _|    _|  _|    _|
+// _|    _|  _|          _|      _|  _|    _|  _|    _|
+//   _|_|_|    _|_|_|      _|_|  _|    _|_|    _|    _|
+//
+//
+//
+//                                           _|
+//   _|_|_|  _|  _|_|    _|_|      _|_|_|  _|_|_|_|    _|_|    _|  _|_|    _|_|_|
+// _|        _|_|      _|_|_|_|  _|    _|    _|      _|    _|  _|_|      _|_|
+// _|        _|        _|        _|    _|    _|      _|    _|  _|            _|_|
+//   _|_|_|  _|          _|_|_|    _|_|_|      _|_|    _|_|    _|        _|_|_|
+//
+//
+
 export const nop = (): NopAction => ({
   type: NOP,
 })
@@ -64,6 +107,15 @@ export const incrementAsync = (ms: number): IncrementAsyncAction => ({
   },
 })
 
+//
+//
+//   _|_|_|    _|_|_|    _|_|_|    _|_|_|    _|_|_|
+// _|_|      _|    _|  _|    _|  _|    _|  _|_|
+//     _|_|  _|    _|  _|    _|  _|    _|      _|_|
+// _|_|_|      _|_|_|    _|_|_|    _|_|_|  _|_|_|
+//                           _|
+//                       _|_|
+
 function* incrementAsyncSaga(action: IncrementAsyncAction): SagaIterator {
   const { ms } = action.payload
 
@@ -75,7 +127,18 @@ export function* counterSaga(): SagaIterator {
   yield takeEvery(INCREMENT_ASYNC, incrementAsyncSaga)
 }
 
+//
+//                           _|
+// _|  _|_|    _|_|      _|_|_|  _|    _|    _|_|_|    _|_|    _|  _|_|
+// _|_|      _|_|_|_|  _|    _|  _|    _|  _|        _|_|_|_|  _|_|
+// _|        _|        _|    _|  _|    _|  _|        _|        _|
+// _|          _|_|_|    _|_|_|    _|_|_|    _|_|_|    _|_|_|  _|
+//
+//
+
 export const counterReducer: Reducer<CounterState, Action> = (state, action) => {
+
+  // combineReducers をごまかす。
   if (state === undefined) {
     return { count: NaN }
   }
