@@ -39,20 +39,13 @@ const INCREMENT_ASYNC = '@@react-app-prototype/counter/INCREMENT_ASYNC'
 
 const counterActionTypes = [NOP, INCREMENT, DECREMENT, INCREMENT_ASYNC]
 
-interface NopAction extends Action {
-  type: typeof NOP
-}
+interface NopAction extends Action<typeof NOP> {}
 
-interface IncrementAction extends Action {
-  type: typeof INCREMENT
-}
+interface IncrementAction extends Action<typeof INCREMENT> {}
 
-interface DecrementAction extends Action {
-  type: typeof DECREMENT
-}
+interface DecrementAction extends Action<typeof DECREMENT> {}
 
-interface IncrementAsyncAction extends Action {
-  type: typeof INCREMENT_ASYNC
+interface IncrementAsyncAction extends Action<typeof INCREMENT_ASYNC> {
   payload: {
     ms: number
   }
