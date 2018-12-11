@@ -20,7 +20,7 @@ export interface HttpClientState {
   fetching: boolean
   response: Maybe<{
     statusCode: number
-    body: string
+    body: JSON
   }>
 }
 
@@ -60,7 +60,7 @@ interface FetchSuccessfullyAction extends Action<typeof FETCH_SUCCESSFULLY> {
   payload: {
     response: {
       statusCode: number
-      body: string
+      body: JSON
     }
   }
 }
@@ -100,7 +100,7 @@ export const tryToFetch = (method: Method, parameterizedEndpoint: string, params
   },
 })
 
-export const fetchSuccessfully = (statusCode: number, body: string): FetchSuccessfullyAction => ({
+export const fetchSuccessfully = (statusCode: number, body: JSON): FetchSuccessfullyAction => ({
   type: FETCH_SUCCESSFULLY,
   payload: {
     response: {
@@ -129,9 +129,10 @@ function* tryToFetchSaga(action: TryToFetchAction): SagaIterator {
   try {
     const client = new HttpClient()
 
+    // NOTE: yield 式は型情報を保存できないので client.fetch の戻り値の型を復元している。
     const { response, body }: {
       response: Response
-      body: string
+      body: JSON
     } = yield call(client.fetch, { method, parameterizedEndpoint, params, query })
 
     yield put(fetchSuccessfully(response.status, body))

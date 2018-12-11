@@ -1,11 +1,13 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
+import { Maybe } from 'tsmonad'
 
 import { State } from '../../redux'
 import { HttpClientAction, tryToFetch } from '../../redux/modules/httpClient'
+import { Repository } from '../../githubResourceTypes'
 
 interface StateProps {
-  data: string
+  data: Maybe<Repository>
 }
 
 interface DispatchProps {
@@ -15,10 +17,7 @@ interface DispatchProps {
 type Props = StateProps & DispatchProps
 
 const mapStateToProps = ({ info: { response } }: State): StateProps => ({
-  data: response.caseOf({
-    just: ({ body }) => body,
-    nothing: () => 'No data.',
-  }),
+  data: response.fmap(({ body }) => body as unknown as Repository),
 })
 
 const mapDispatchToProps: DispatchProps = {
@@ -36,9 +35,12 @@ class Info extends React.Component<Props, State> {
     const { data } = this.props
 
     return (
-      <>
-        {data}
-      </>
+      <p>
+        {data.caseOf({
+          just: (repository) => repository.name,
+          nothing: () => 'No data fetched.',
+        })}
+      </p>
     )
   }
 }

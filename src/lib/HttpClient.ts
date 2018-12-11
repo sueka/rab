@@ -64,7 +64,7 @@ export class HttpClient {
     const url = HttpClient.buildURL(request)
     const requestInit = HttpClient.buildRequestInit(request)
     const response = await fetch(url, requestInit)
-    const body = await response.text()
+    const body = await response.json() as JSON
 
     return { response, body }
   }
