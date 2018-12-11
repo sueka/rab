@@ -2,7 +2,9 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { takeEvery, call, put } from 'redux-saga/effects'
 import { Maybe } from 'tsmonad'
-import * as pathToRegexp from 'path-to-regexp'
+
+import { KeyValueMapObject } from '../../commonTypes'
+import { Method, HttpClient } from '../../lib/HttpClient'
 
 //
 //             _|                  _|
@@ -45,18 +47,12 @@ const FAIL_TO_FETCH = '@@react-app-prototype/httpClient/FAIL_TO_FETCH'
 
 const httpClientActionTypes = [TRY_TO_FETCH, FETCH_SUCCESSFULLY, FAIL_TO_FETCH]
 
-type Method = 'GET' | 'POST'
-
-type KeyValueMapObject = {
-  [key: string]: string
-}
-
 interface TryToFetchAction extends Action<typeof TRY_TO_FETCH> {
   payload: {
     method: Method
-    endpoint: string
-    params: KeyValueMapObject
-    query: KeyValueMapObject
+    parameterizedEndpoint: string
+    params: KeyValueMapObject<string>
+    query: KeyValueMapObject<string>
   }
 }
 
@@ -94,11 +90,11 @@ function isHttpClientAction(action: Action): action is HttpClientAction {
 //
 //
 
-export const tryToFetch = (method: Method, endpoint: string, params: KeyValueMapObject = {}, query: KeyValueMapObject = {}): TryToFetchAction => ({
+export const tryToFetch = (method: Method, parameterizedEndpoint: string, params: KeyValueMapObject<string> = {}, query: KeyValueMapObject<string> = {}): TryToFetchAction => ({
   type: TRY_TO_FETCH,
   payload: {
     method,
-    endpoint,
+    parameterizedEndpoint,
     params,
     query,
   },
@@ -127,56 +123,16 @@ export const failToFetch = (): FailToFetchAction => ({
 //                           _|
 //                       _|_|
 
-const helper = {
-  async fetch(method: Method, parameterizedEndpoint: string, params: KeyValueMapObject, query: KeyValueMapObject) {
-    const endpoint = pathToRegexp.compile(parameterizedEndpoint)(params)
-
-    let response: Response
-    let body: string
-
-    switch (method) {
-      case 'GET':
-        const urlBuilder = new URL(endpoint)
-        const urlSearchParams = new URLSearchParams()
-
-        Object.entries(query).forEach(([key, value]) => {
-          urlSearchParams.append(key, value)
-        })
-
-        urlBuilder.search = urlSearchParams.toString()
-
-        response = await fetch(urlBuilder.href, {
-          method,
-        })
-        body = await response.text()
-
-        return { response, body }
-      case 'POST':
-        const formData = new FormData()
-
-        Object.entries(query).forEach(([key, value]) => {
-          formData.append(key, value)
-        })
-
-        response = await fetch(endpoint, {
-          method,
-          body: formData,
-        })
-        body = await response.text()
-
-        return { response, body }
-    }
-  },
-}
-
 function* tryToFetchSaga(action: TryToFetchAction): SagaIterator {
-  const { method, endpoint, params, query } = action.payload
+  const { method, parameterizedEndpoint, params, query } = action.payload
 
   try {
+    const client = new HttpClient()
+
     const { response, body }: {
       response: Response
       body: string
-    } = yield call(helper.fetch, method, endpoint, params, query)
+    } = yield call(client.fetch, { method, parameterizedEndpoint, params, query })
 
     yield put(fetchSuccessfully(response.status, body))
   } catch {
