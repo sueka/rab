@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import { Maybe } from 'tsmonad'
 
 import { State } from '../../redux'
-import { HttpClientAction, tryToFetch } from '../../redux/modules/httpClient'
+import { HttpClient, HttpClientAction, tryToFetch } from '../../redux/modules/httpClient'
 import { Repository } from '../../githubResourceTypes'
 
 interface StateProps {
-  data: Maybe<Repository>
+  calls: HttpClient.CallMapObject
 }
 
 interface DispatchProps {
@@ -16,8 +16,8 @@ interface DispatchProps {
 
 type Props = StateProps & DispatchProps
 
-const mapStateToProps = ({ info: { response } }: State): StateProps => ({
-  data: response.fmap(({ body }) => body as unknown as Repository),
+const mapStateToProps = ({ info: { calls } }: State): StateProps => ({
+  calls,
 })
 
 const mapDispatchToProps: DispatchProps = {
@@ -25,14 +25,31 @@ const mapDispatchToProps: DispatchProps = {
 }
 
 class Info extends React.Component<Props, State> {
+  private callId = Maybe.nothing<string>()
+
   public componentDidMount() {
     const { _tryToFetch } = this.props
 
-    _tryToFetch('GET', 'https://api.github.com/repos/sueka/react-app-prototype')
+    const action = _tryToFetch('GET', 'https://api.github.com/repos/sueka/react-app-prototype')
+
+    switch (action.type) {
+      case '@@react-app-prototype/httpClient/TRY_TO_FETCH':
+        const { id } = action.payload
+
+        this.callId = Maybe.just(id)
+        break
+      default:
+        throw new TypeError(`${action.type} should not be created in this context.`)
+    }
   }
 
   public render() {
-    const { data } = this.props
+    const { calls } = this.props
+
+    const data = this.callId.caseOf({
+      just: (callId) => calls[callId],
+      nothing: () => Maybe.nothing<HttpClient.Response>(),
+    }).fmap(({ body }) => body as unknown as Repository)
 
     return (
       <p>

@@ -30,6 +30,7 @@
     "@types/react-redux": "^6.0.10",
     "@types/react-router": "^4.4.1",
     "@types/react-router-dom": "^4.3.1",
+    "@types/uuid": "^3.4.4",
     "autoprefixer": "^9.3.1",
     "connected-react-router": "^5.0.1",
     "history": "^4.7.2",
@@ -46,6 +47,7 @@
     "redux-saga": "^0.16.2",
     "tsmonad": "^0.8.0",
     "typed-css-modules": "^0.3.7",
-    "typescript": "^3.1.6"
+    "typescript": "^3.1.6",
+    "uuid": "^3.3.2"
   }
 }

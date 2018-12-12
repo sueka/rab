@@ -19,7 +19,7 @@
         "esSpecCompliant": true
       }
     ],
-    "no-submodule-imports": [true, "redux-saga/effects"],
+    "no-submodule-imports": [true, "redux-saga/effects", "uuid/interfaces"],
     "no-namespace": [true, "allow-declarations"],
 
     /* Ordering Rules */

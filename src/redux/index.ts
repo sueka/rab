@@ -3,7 +3,6 @@ import createSagaMiddleware, { SagaMiddleware, SagaIterator } from 'redux-saga'
 import { spawn } from 'redux-saga/effects'
 import { History } from 'history'
 import { RouterState, LocationChangeAction, connectRouter, routerMiddleware } from 'connected-react-router'
-import { Maybe } from 'tsmonad'
 
 import { CounterState, CounterAction, counterReducer, counterSaga } from './modules/counter'
 import { HttpClientState, HttpClientAction, httpClientReducer, httpClientSaga } from './modules/httpClient'
@@ -21,7 +20,7 @@ const initialState: Pick<State, 'counter' | 'info'> = {
   info: {
     successful: true,
     fetching: false,
-    response: Maybe.nothing(),
+    calls: {},
   },
 }
 

@@ -2,6 +2,7 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { takeEvery, call, put } from 'redux-saga/effects'
 import { Maybe } from 'tsmonad'
+import { v4 } from 'uuid'
 
 import { KeyValueMapObject } from '../../commonTypes'
 import { Method, HttpClient } from '../../lib/HttpClient'
@@ -15,7 +16,11 @@ import { Method, HttpClient } from '../../lib/HttpClient'
 //
 //
 
-declare namespace HttpClient {
+export declare namespace HttpClient {
+  interface CallMapObject {
+    [callId: string]: Maybe<Response>
+  }
+
   interface Response {
     statusCode: number
     body: JSON
@@ -25,7 +30,7 @@ declare namespace HttpClient {
 export interface HttpClientState {
   successful: boolean
   fetching: boolean
-  response: Maybe<HttpClient.Response>
+  calls: HttpClient.CallMapObject
 }
 
 //
@@ -57,11 +62,13 @@ interface TryToFetchAction extends Action<typeof TRY_TO_FETCH> {
     parameterizedEndpoint: string
     params: KeyValueMapObject<string>
     query: KeyValueMapObject<string>
+    id: string
   }
 }
 
 interface FetchSuccessfullyAction extends Action<typeof FETCH_SUCCESSFULLY> {
   payload: {
+    callId: string
     response: HttpClient.Response
   }
 }
@@ -98,12 +105,14 @@ export const tryToFetch = (method: Method, parameterizedEndpoint: string, params
     parameterizedEndpoint,
     params,
     query,
+    id: v4(),
   },
 })
 
-export const fetchSuccessfully = (statusCode: number, body: JSON): FetchSuccessfullyAction => ({
+export const fetchSuccessfully = (statusCode: number, body: JSON, callId: string): FetchSuccessfullyAction => ({
   type: FETCH_SUCCESSFULLY,
   payload: {
+    callId,
     response: {
       statusCode,
       body,
@@ -125,7 +134,7 @@ export const failToFetch = (): FailToFetchAction => ({
 //                       _|_|
 
 function* tryToFetchSaga(action: TryToFetchAction): SagaIterator {
-  const { method, parameterizedEndpoint, params, query } = action.payload
+  const { method, parameterizedEndpoint, params, query, id } = action.payload
 
   try {
     const client = new HttpClient()
@@ -136,7 +145,7 @@ function* tryToFetchSaga(action: TryToFetchAction): SagaIterator {
       body: JSON
     } = yield call(client.fetch, { method, parameterizedEndpoint, params, query })
 
-    yield put(fetchSuccessfully(response.status, body))
+    yield put(fetchSuccessfully(response.status, body, id))
   } catch {
     yield put(failToFetch())
   }
@@ -159,7 +168,7 @@ export const httpClientReducer: Reducer<HttpClientState, Action> = (state, actio
 
   // combineReducers をごまかす。
   if (state === undefined) {
-    return { successful: true, fetching: false, response: Maybe.nothing() }
+    return { successful: true, fetching: false, calls: {} }
   }
 
   if (!isHttpClientAction(action)) {
@@ -168,23 +177,32 @@ export const httpClientReducer: Reducer<HttpClientState, Action> = (state, actio
 
   switch (action.type) {
     case TRY_TO_FETCH:
+      const { id } = action.payload
+
       return {
         ...state,
         fetching: true,
+        calls: {
+          ...state.calls,
+          [id]: Maybe.nothing(),
+        },
       }
     case FETCH_SUCCESSFULLY:
-      const { response } = action.payload
+      const { callId, response } = action.payload
 
       return {
         successful: true,
         fetching: false,
-        response: Maybe.just(response),
+        calls: {
+          ...state.calls,
+          [callId]: Maybe.just(response),
+        },
       }
     case FAIL_TO_FETCH:
       return {
+        ...state,
         successful: false,
         fetching: false,
-        response: Maybe.nothing(),
       }
   }
 }
