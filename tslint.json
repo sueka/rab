@@ -20,6 +20,7 @@
       }
     ],
     "no-submodule-imports": [true, "redux-saga/effects"],
+    "no-namespace": [true, "allow-declarations"],
 
     /* Ordering Rules */
     "member-ordering": false,

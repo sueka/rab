@@ -15,13 +15,17 @@ import { Method, HttpClient } from '../../lib/HttpClient'
 //
 //
 
+declare namespace HttpClient {
+  interface Response {
+    statusCode: number
+    body: JSON
+  }
+}
+
 export interface HttpClientState {
   successful: boolean
   fetching: boolean
-  response: Maybe<{
-    statusCode: number
-    body: JSON
-  }>
+  response: Maybe<HttpClient.Response>
 }
 
 //
@@ -58,10 +62,7 @@ interface TryToFetchAction extends Action<typeof TRY_TO_FETCH> {
 
 interface FetchSuccessfullyAction extends Action<typeof FETCH_SUCCESSFULLY> {
   payload: {
-    response: {
-      statusCode: number
-      body: JSON
-    }
+    response: HttpClient.Response
   }
 }
 
