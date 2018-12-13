@@ -16,21 +16,19 @@ import { Method, HttpClient } from '../../lib/HttpClient'
 //
 //
 
-export declare namespace HttpClient {
-  interface CallMapObject {
-    [callId: string]: Maybe<Response>
-  }
+interface CallMapObject {
+  [callId: string]: Maybe<SimpleResponse>
+}
 
-  interface Response {
-    statusCode: number
-    body: JSON
-  }
+interface SimpleResponse {
+  statusCode: number
+  body: JSON
 }
 
 export interface HttpClientState {
   successful: boolean
   fetching: boolean
-  calls: HttpClient.CallMapObject
+  calls: CallMapObject
 }
 
 //
@@ -69,7 +67,7 @@ interface TryToFetchAction extends Action<typeof TRY_TO_FETCH> {
 interface FetchSuccessfullyAction extends Action<typeof FETCH_SUCCESSFULLY> {
   payload: {
     callId: string
-    response: HttpClient.Response
+    response: SimpleResponse
   }
 }
 

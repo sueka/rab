@@ -20,7 +20,6 @@
       }
     ],
     "no-submodule-imports": [true, "redux-saga/effects", "uuid/interfaces"],
-    "no-namespace": [true, "allow-declarations"],
 
     /* Ordering Rules */
     "member-ordering": false,

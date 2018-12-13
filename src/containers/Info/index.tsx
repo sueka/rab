@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import { Maybe } from 'tsmonad'
 
 import { State } from '../../redux'
-import { HttpClient, HttpClientAction, tryToFetch } from '../../redux/modules/httpClient'
+import { HttpClientState, HttpClientAction, tryToFetch } from '../../redux/modules/httpClient'
 import { Repository } from '../../githubResourceTypes'
 
 interface StateProps {
-  calls: HttpClient.CallMapObject
+  calls: HttpClientState['calls']
 }
 
 interface DispatchProps {
@@ -46,10 +46,10 @@ class Info extends React.Component<Props, State> {
   public render() {
     const { calls } = this.props
 
-    const data = this.callId.caseOf({
-      just: (callId) => calls[callId],
-      nothing: () => Maybe.nothing<HttpClient.Response>(),
-    }).fmap(({ body }) => body as unknown as Repository)
+    const data = this.callId.fmap((callId) => calls[callId]).caseOf({
+      just: (call) => call.fmap(({ body }) => body as unknown as Repository),
+      nothing: () => Maybe.nothing<Repository>(),
+    })
 
     return (
       <p>
