@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Maybe } from 'tsmonad'
 
 import { State } from '../../redux'
-import { HttpClientState, HttpClientAction, tryToFetch } from '../../redux/modules/httpClient'
+import { HttpClientState, tryToFetch } from '../../redux/modules/httpClient'
 import { Repository } from '../../githubResourceTypes'
 
 interface StateProps {
@@ -11,7 +11,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  _tryToFetch(method: unknown, endpoint: string): HttpClientAction
+  _tryToFetch: typeof tryToFetch
 }
 
 type Props = StateProps & DispatchProps
@@ -32,15 +32,9 @@ class Info extends React.Component<Props, State> {
 
     const action = _tryToFetch('GET', 'https://api.github.com/repos/sueka/react-app-prototype')
 
-    switch (action.type) {
-      case '@@react-app-prototype/httpClient/TRY_TO_FETCH':
-        const { id } = action.payload
+    const { id } = action.payload
 
-        this.callId = Maybe.just(id)
-        break
-      default:
-        throw new TypeError(`${action.type} should not be created in this context.`)
-    }
+    this.callId = Maybe.just(id)
   }
 
   public render() {

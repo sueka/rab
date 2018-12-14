@@ -16,10 +16,6 @@ import { Method, HttpClient } from '../../lib/HttpClient'
 //
 //
 
-interface CallMapObject {
-  [callId: string]: Maybe<SimpleResponse>
-}
-
 interface SimpleResponse {
   statusCode: number
   body: JSON
@@ -28,7 +24,7 @@ interface SimpleResponse {
 export interface HttpClientState {
   successful: boolean
   fetching: boolean
-  calls: CallMapObject
+  calls: KeyValueMapObject<Maybe<SimpleResponse>>
 }
 
 //
