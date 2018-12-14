@@ -32,18 +32,28 @@ class Info extends React.Component<Props, State> {
 
     const action = _tryToFetch('GET', 'https://api.github.com/repos/sueka/react-app-prototype')
 
-    const { id } = action.payload
+    const { callId } = action.payload
 
-    this.callId = Maybe.just(id)
+    this.callId = Maybe.just(callId)
   }
 
   public render() {
     const { calls } = this.props
 
-    const data = this.callId.fmap((callId) => calls[callId]).caseOf({
-      just: (call) => call.fmap(({ body }) => body as unknown as Repository),
-      nothing: () => Maybe.nothing<Repository>(),
-    })
+    const call = calls.find(({ id }) => (this.callId.caseOf({
+      just: (callId) => callId === id,
+      nothing: () => false,
+    })))
+
+    if (call === undefined) {
+      return (
+        <p>
+          Fetching not started.
+        </p>
+      )
+    }
+
+    const data = call.response.fmap(({ body }) => body as unknown as Repository)
 
     return (
       <p>

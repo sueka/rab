@@ -20,7 +20,7 @@ const initialState: Pick<State, 'counter' | 'info'> = {
   info: {
     successful: true,
     fetching: false,
-    calls: {},
+    calls: [],
   },
 }
 

@@ -21,10 +21,15 @@ interface SimpleResponse {
   body: JSON
 }
 
+interface Call {
+  id: string
+  response: Maybe<SimpleResponse>
+}
+
 export interface HttpClientState {
   successful: boolean
   fetching: boolean
-  calls: KeyValueMapObject<Maybe<SimpleResponse>>
+  calls: Call[]
 }
 
 //
@@ -56,7 +61,7 @@ interface TryToFetchAction extends Action<typeof TRY_TO_FETCH> {
     parameterizedEndpoint: string
     params: KeyValueMapObject<string>
     query: KeyValueMapObject<string>
-    id: string
+    callId: string
   }
 }
 
@@ -67,7 +72,11 @@ interface FetchSuccessfullyAction extends Action<typeof FETCH_SUCCESSFULLY> {
   }
 }
 
-interface FailToFetchAction extends Action<typeof FAIL_TO_FETCH> {}
+interface FailToFetchAction extends Action<typeof FAIL_TO_FETCH> {
+  payload: {
+    callId: string
+  }
+}
 
 export type HttpClientAction = TryToFetchAction | FetchSuccessfullyAction | FailToFetchAction
 
@@ -95,11 +104,11 @@ function isHttpClientAction(action: Action): action is HttpClientAction {
 export const tryToFetch = (method: Method, parameterizedEndpoint: string, params: KeyValueMapObject<string> = {}, query: KeyValueMapObject<string> = {}): TryToFetchAction => ({
   type: TRY_TO_FETCH,
   payload: {
+    callId: v4(),
     method,
     parameterizedEndpoint,
     params,
     query,
-    id: v4(),
   },
 })
 
@@ -114,8 +123,11 @@ export const fetchSuccessfully = (statusCode: number, body: JSON, callId: string
   },
 })
 
-export const failToFetch = (): FailToFetchAction => ({
+export const failToFetch = (callId: string): FailToFetchAction => ({
   type: FAIL_TO_FETCH,
+  payload: {
+    callId,
+  },
 })
 
 //
@@ -128,7 +140,7 @@ export const failToFetch = (): FailToFetchAction => ({
 //                       _|_|
 
 function* tryToFetchSaga(action: TryToFetchAction): SagaIterator {
-  const { method, parameterizedEndpoint, params, query, id } = action.payload
+  const { method, parameterizedEndpoint, params, query, callId } = action.payload
 
   try {
     const client = new HttpClient()
@@ -139,9 +151,9 @@ function* tryToFetchSaga(action: TryToFetchAction): SagaIterator {
       body: JSON
     } = yield call(client.fetch, { method, parameterizedEndpoint, params, query })
 
-    yield put(fetchSuccessfully(response.status, body, id))
+    yield put(fetchSuccessfully(response.status, body, callId))
   } catch {
-    yield put(failToFetch())
+    yield put(failToFetch(callId))
   }
 }
 
@@ -162,35 +174,44 @@ export const httpClientReducer: Reducer<HttpClientState, Action> = (state, actio
 
   // combineReducers をごまかす。
   if (state === undefined) {
-    return { successful: true, fetching: false, calls: {} }
+    return { successful: true, fetching: false, calls: [] }
   }
 
   if (!isHttpClientAction(action)) {
     return state
   }
 
+  const { callId } = action.payload
+
   switch (action.type) {
     case TRY_TO_FETCH:
-      const { id } = action.payload
-
       return {
         ...state,
         fetching: true,
-        calls: {
+        calls: [
           ...state.calls,
-          [id]: Maybe.nothing(),
-        },
+          {
+            id: callId,
+            response: Maybe.nothing(),
+          },
+        ],
       }
     case FETCH_SUCCESSFULLY:
-      const { callId, response } = action.payload
+      const { response } = action.payload
+
+      const calls = state.calls.slice()
+
+      const i = calls.findIndex(({ id }) => id === callId)
+
+      calls[i] = {
+        id: callId,
+        response: Maybe.just(response),
+      }
 
       return {
         successful: true,
         fetching: false,
-        calls: {
-          ...state.calls,
-          [callId]: Maybe.just(response),
-        },
+        calls,
       }
     case FAIL_TO_FETCH:
       return {
