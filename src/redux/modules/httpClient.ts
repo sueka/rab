@@ -199,19 +199,16 @@ export const httpClientReducer: Reducer<HttpClientState, Action> = (state, actio
     case FETCH_SUCCESSFULLY:
       const { response } = action.payload
 
-      const calls = state.calls.slice()
-
-      const i = calls.findIndex(({ id }) => id === callId)
-
-      calls[i] = {
-        id: callId,
-        response: Maybe.just(response),
-      }
-
       return {
         successful: true,
         fetching: false,
-        calls,
+        calls: [
+          ...state.calls.filter(({ id }) => id !== callId),
+          {
+            id: callId,
+            response: Maybe.just(response),
+          },
+        ],
       }
     case FAIL_TO_FETCH:
       return {
