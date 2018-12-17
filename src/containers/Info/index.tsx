@@ -40,10 +40,10 @@ class Info extends React.Component<Props, State> {
   public render() {
     const { calls } = this.props
 
-    const call = calls.find(({ id }) => (this.callId.caseOf({
+    const call = calls.find(({ id }) => this.callId.caseOf({
       just: (callId) => callId === id,
       nothing: () => false,
-    })))
+    }))
 
     if (call === undefined) {
       return (
