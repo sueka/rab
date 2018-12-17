@@ -20,6 +20,7 @@
       }
     ],
     "no-submodule-imports": [true, "redux-saga/effects", "uuid/interfaces"],
+    "jsx-curly-spacing": [true, "always"],
 
     /* Type Constraints */
     "strict-boolean-expressions": true,

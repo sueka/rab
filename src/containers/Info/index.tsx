@@ -53,7 +53,7 @@ class Info extends React.Component<Props, State> {
 
     return (
       <p>
-        {(data !== null) ? data.name : 'No data fetched.'}
+        { (data !== null) ? data.name : 'No data fetched.' }
       </p>
     )
   }
