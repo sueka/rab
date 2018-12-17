@@ -21,6 +21,9 @@
     ],
     "no-submodule-imports": [true, "redux-saga/effects", "uuid/interfaces"],
 
+    /* Type Constraints */
+    "strict-boolean-expressions": true,
+
     /* Ordering Rules */
     "member-ordering": false,
     "object-literal-sort-keys": false,

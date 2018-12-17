@@ -45,7 +45,6 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-saga": "^0.16.2",
-    "tsmonad": "^0.8.0",
     "typed-css-modules": "^0.3.7",
     "typescript": "^3.1.6",
     "uuid": "^3.3.2"

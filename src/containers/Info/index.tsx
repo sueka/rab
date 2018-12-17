@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { Maybe } from 'tsmonad'
 
 import { State } from '../../redux'
 import { HttpClientState, tryToFetch } from '../../redux/modules/httpClient'
@@ -25,7 +24,7 @@ const mapDispatchToProps: DispatchProps = {
 }
 
 class Info extends React.Component<Props, State> {
-  private callId = Maybe.nothing<string>()
+  private callId: string | null = null
 
   public componentDidMount() {
     const { _tryToFetch } = this.props
@@ -34,16 +33,13 @@ class Info extends React.Component<Props, State> {
 
     const { callId } = action.payload
 
-    this.callId = Maybe.just(callId)
+    this.callId = callId
   }
 
   public render() {
     const { calls } = this.props
 
-    const call = calls.find(({ id }) => this.callId.caseOf({
-      just: (callId) => callId === id,
-      nothing: () => false,
-    }))
+    const call = calls.find(({ id }) => (this.callId !== null) ? this.callId === id : false)
 
     if (call === undefined) {
       return (
@@ -53,14 +49,11 @@ class Info extends React.Component<Props, State> {
       )
     }
 
-    const data = call.response.fmap(({ body }) => body as unknown as Repository)
+    const data = (call.response !== null) ? call.response.body as unknown as Repository : null
 
     return (
       <p>
-        {data.caseOf({
-          just: (repository) => repository.name,
-          nothing: () => 'No data fetched.',
-        })}
+        {(data !== null) ? data.name : 'No data fetched.'}
       </p>
     )
   }

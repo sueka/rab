@@ -1,7 +1,6 @@
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { takeEvery, call, put } from 'redux-saga/effects'
-import { Maybe } from 'tsmonad'
 import { v4 } from 'uuid'
 
 import { KeyValueMapObject } from '../../commonTypes'
@@ -23,7 +22,7 @@ interface SimpleResponse {
 
 interface Call {
   id: string
-  response: Maybe<SimpleResponse>
+  response: SimpleResponse | null
 }
 
 export interface HttpClientState {
@@ -192,7 +191,7 @@ export const httpClientReducer: Reducer<HttpClientState, Action> = (state, actio
           ...state.calls,
           {
             id: callId,
-            response: Maybe.nothing(),
+            response: null,
           },
         ],
       }
@@ -206,7 +205,7 @@ export const httpClientReducer: Reducer<HttpClientState, Action> = (state, actio
           ...state.calls.filter(({ id }) => id !== callId),
           {
             id: callId,
-            response: Maybe.just(response),
+            response,
           },
         ],
       }
