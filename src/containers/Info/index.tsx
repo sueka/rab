@@ -57,7 +57,8 @@ class Info extends React.Component<Props, State> {
       )
     }
 
-    const repo = call.response.body as unknown as Repository
+    // NOTE: call.response.body を {} から Repository へダウンキャストする。 Body#json() が any 値を返すため、この非型安全性は回避できないが、 Repository インターフェイスが正確に書かれていれば、実質型安全である。
+    const repo = call.response.body as Repository
 
     return (
       <p>

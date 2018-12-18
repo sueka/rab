@@ -17,7 +17,7 @@ import { Method, HttpClient } from '../../lib/HttpClient'
 
 interface SimpleResponse {
   statusCode: number
-  body: JSON
+  body: {}
 }
 
 interface Call {
@@ -111,7 +111,7 @@ export const tryToFetch = (method: Method, parameterizedEndpoint: string, params
   },
 })
 
-export const fetchSuccessfully = (statusCode: number, body: JSON, callId: string): FetchSuccessfullyAction => ({
+export const fetchSuccessfully = (statusCode: number, body: {}, callId: string): FetchSuccessfullyAction => ({
   type: FETCH_SUCCESSFULLY,
   payload: {
     callId,
@@ -147,7 +147,7 @@ function* tryToFetchSaga(action: TryToFetchAction): SagaIterator {
     // NOTE: yield 式は型情報を保存できないので client.fetch の戻り値の型を復元している。
     const { response, body }: {
       response: Response
-      body: JSON
+      body: {}
     } = yield call(client.fetch, { method, parameterizedEndpoint, params, query })
 
     yield put(fetchSuccessfully(response.status, body, callId))
