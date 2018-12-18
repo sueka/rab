@@ -49,11 +49,19 @@ class Info extends React.Component<Props, State> {
       )
     }
 
-    const data = (call.response !== null) ? call.response.body as unknown as Repository : null
+    if (call.response === null) {
+      return (
+        <p>
+          No data fetched.
+        </p>
+      )
+    }
+
+    const repo = call.response.body as unknown as Repository
 
     return (
       <p>
-        { (data !== null) ? data.name : 'No data fetched.' }
+        { repo.name }
       </p>
     )
   }
