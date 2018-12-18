@@ -56,11 +56,11 @@ const httpClientActionTypes = [TRY_TO_FETCH, FETCH_SUCCESSFULLY, FAIL_TO_FETCH]
 
 interface TryToFetchAction extends Action<typeof TRY_TO_FETCH> {
   payload: {
+    callId: string
     method: Method
     parameterizedEndpoint: string
     params: KeyValueMapObject<string>
     query: KeyValueMapObject<string>
-    callId: string
   }
 }
 
@@ -111,7 +111,7 @@ export const tryToFetch = (method: Method, parameterizedEndpoint: string, params
   },
 })
 
-export const fetchSuccessfully = (statusCode: number, body: {}, callId: string): FetchSuccessfullyAction => ({
+export const fetchSuccessfully = (callId: string, statusCode: number, body: {}): FetchSuccessfullyAction => ({
   type: FETCH_SUCCESSFULLY,
   payload: {
     callId,
@@ -150,7 +150,7 @@ function* tryToFetchSaga(action: TryToFetchAction): SagaIterator {
       body: {}
     } = yield call(client.fetch, { method, parameterizedEndpoint, params, query })
 
-    yield put(fetchSuccessfully(response.status, body, callId))
+    yield put(fetchSuccessfully(callId, response.status, body))
   } catch {
     yield put(failToFetch(callId))
   }
