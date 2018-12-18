@@ -2,11 +2,11 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { State } from '../../redux'
-import { HttpClientState, tryToFetch } from '../../redux/modules/httpClient'
+import { tryToFetch } from '../../redux/modules/httpClient'
 import { Repository } from '../../githubResourceTypes'
 
 interface StateProps {
-  calls: HttpClientState['calls']
+  calls: State['info']['calls']
 }
 
 interface DispatchProps {
