@@ -15,6 +15,8 @@ interface DispatchProps {
 
 type Props = StateProps & DispatchProps
 
+let callId: string | null = null
+
 const mapStateToProps = ({ info: { calls } }: State): StateProps => ({
   calls,
 })
@@ -24,22 +26,18 @@ const mapDispatchToProps: DispatchProps = {
 }
 
 class Info extends React.Component<Props, State> {
-  private callId: string | null = null
-
   public componentDidMount() {
     const { _tryToFetch } = this.props
 
     const action = _tryToFetch('GET', 'https://api.github.com/repos/sueka/react-app-prototype')
 
-    const { callId } = action.payload
-
-    this.callId = callId
+    ;({ callId } = action.payload)
   }
 
   public render() {
     const { calls } = this.props
 
-    const call = calls.find(({ id }) => (this.callId !== null) ? this.callId === id : false)
+    const call = calls.find(({ id }) => (callId !== null) ? callId === id : false)
 
     if (call === undefined) {
       return (
