@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { RouteComponentProps } from 'react-router'
 
 import { State } from '../../redux'
 import { CounterAction, increment, decrement, incrementIfOdd, incrementAsync } from '../../redux/modules/counter'
@@ -16,7 +15,7 @@ interface DispatchProps {
   _incrementAsync(delay: number): CounterAction
 }
 
-type Props = StateProps & DispatchProps & RouteComponentProps
+type Props = StateProps & DispatchProps
 
 const mapStateToProps = ({ counter: { count } }: State): StateProps => ({
   value: count,
