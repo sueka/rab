@@ -1,13 +1,17 @@
-import { TaskFunction, parallel, series } from 'gulp'
+import { TaskFunction, Globs, parallel, series, watch } from 'gulp'
 import * as del from 'del'
 import { exec } from 'child_process'
 
-export const clean: TaskFunction = () => del(['dist', '**/*.css.d.ts', '**/*.js{,x}', '!node_modules/**'])
+const ignored = ['dist', '**/*.css.d.ts', '**/*.js{,x}']
+
+export const clean: TaskFunction = () => del([...ignored, '!node_modules/**'])
 export const typeCheck = series(npxTask('tcm src -s'), npxTask('tsc --noEmit -p .'))
 const tslint = npxTask('tslint -p .')
 const stylelint = npxTask('stylelint src')
-export const staticCheck = parallel(typeCheck, tslint, stylelint)
+export const staticCheck = namedTask('staticCheck', parallel(typeCheck, tslint, stylelint))
 export const build = series(staticCheck, npxTask('parcel build src/index.html'))
+
+export const develop = parallel(continuousTask('src', staticCheck), npxTask('parcel src/index.html'))
 
 function npx(cmd: string) {
   const cp = exec(cmd)
@@ -22,6 +26,20 @@ function npxTask(cmd: string) {
   const task: TaskFunction = () => npx(cmd)
 
   task.displayName = cmd
+
+  return task
+}
+
+function namedTask(name: string, task: TaskFunction) {
+  task.displayName = name
+
+  return task
+}
+
+function continuousTask(globs: Globs, watchedTask: TaskFunction) {
+  const task = () => watch(globs, { ignoreInitial: false, ignored }, watchedTask)
+
+  task.displayName = `${watchedTask.displayName} --watch`
 
   return task
 }
