@@ -10,8 +10,9 @@ const tslint = npxTask('tslint -p .')
 const stylelint = npxTask('stylelint src')
 export const staticCheck = namedTask('staticCheck', parallel(typeCheck, tslint, stylelint))
 export const build = series(staticCheck, npxTask('parcel build src/index.html'))
+export const buildStorybook = series(staticCheck, npxTask('build-storybook'))
 
-export const develop = parallel(continuousTask('src', staticCheck), npxTask('parcel src/index.html'))
+export const develop = parallel(continuousTask('src', staticCheck), npxTask('parcel src/index.html'), npxTask('start-storybook'))
 
 function npx(cmd: string) {
   const cp = exec(cmd)

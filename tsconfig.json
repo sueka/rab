@@ -3,7 +3,7 @@
     /* Basic Options */
     "target": "ES2017",
     "module": "CommonJS",
-    "jsx": "Preserve",
+    "jsx": "React",
 
     /* Strict Type-Checking Options */
     "strict": true,
