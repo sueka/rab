@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import { State } from '../../redux'
-import { CounterAction, increment, decrement, incrementIfOdd, incrementAsync } from '../../redux/modules/counter'
+import { increment, decrement, incrementIfOdd, incrementAsync } from '../../redux/modules/counter'
 import Counter from '../../components/Counter'
 
 interface StateProps {
@@ -9,10 +9,10 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  _increment(): CounterAction
-  _decrement(): CounterAction
-  _incrementIfOdd(value: number): CounterAction
-  _incrementAsync(delay: number): CounterAction
+  _increment: typeof increment
+  _decrement: typeof decrement
+  _incrementIfOdd: typeof incrementIfOdd
+  _incrementAsync: typeof incrementAsync
 }
 
 const mapStateToProps = ({ counter: { count } }: State): StateProps => ({

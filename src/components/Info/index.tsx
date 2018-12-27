@@ -1,22 +1,20 @@
 import * as React from 'react'
 
-import { HttpClientState, tryToFetch } from '../../redux/modules/httpClient'
+import { Call, tryToFetch } from '../../redux/modules/httpClient'
 import { Repository } from '../../githubResourceTypes'
 
 interface Props {
-  calls: HttpClientState['calls']
-  _tryToFetch(method: 'GET', endpoint: string): ReturnType<typeof tryToFetch>
+  calls: Call[]
+  _tryToFetch: typeof tryToFetch
 }
 
 let callId: string | null = null
 
 export default class Info extends React.Component<Props> {
   public componentDidMount() {
-    const { _tryToFetch } = this.props
+    const { _tryToFetch } = this.props;
 
-    const action = _tryToFetch('GET', 'https://api.github.com/repos/sueka/react-app-prototype');
-
-    ({ callId } = action.payload)
+    ({ payload: { callId } } = _tryToFetch('GET', 'https://api.github.com/repos/sueka/react-app-prototype'))
   }
 
   public render() {

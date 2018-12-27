@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 
 import { State } from '../../redux'
-import { tryToFetch } from '../../redux/modules/httpClient'
+import { Call, tryToFetch } from '../../redux/modules/httpClient'
 import Info from '../../components/Info'
 
 interface StateProps {
-  calls: State['info']['calls']
+  calls: Call[]
 }
 
 interface DispatchProps {

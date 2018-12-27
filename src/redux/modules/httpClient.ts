@@ -20,7 +20,7 @@ interface SimpleResponse {
   body: {}
 }
 
-interface Call {
+export interface Call {
   id: string
   response: SimpleResponse | null
 }
