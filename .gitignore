@@ -11,3 +11,6 @@
 # tsc
 *.js
 *.jsx
+
+# storybook
+/storybook-static/

@@ -2,7 +2,7 @@ import { TaskFunction, Globs, parallel, series, watch } from 'gulp'
 import * as del from 'del'
 import { exec } from 'child_process'
 
-const ignored = ['.cache', 'dist', '**/*.css.d.ts', '**/*.js{,x}']
+const ignored = ['.cache', 'dist', 'storybook-static', '**/*.css.d.ts', '**/*.js{,x}']
 
 export const clean: TaskFunction = () => del([...ignored, '!node_modules/**'])
 export const typeCheck = series(npxTask('tcm src -s'), npxTask('tsc --noEmit -p .'))
