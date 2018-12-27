@@ -7,9 +7,11 @@
   },
   "license": "CC0-1.0",
   "devDependencies": {
+    "@storybook/addon-knobs": "^4.1.4",
     "@storybook/react": "^4.1.4",
     "@types/del": "^3.0.1",
     "@types/gulp": "^4.0.5",
+    "@types/storybook__addon-knobs": "^4.0.0",
     "@types/storybook__react": "^4.0.0",
     "@types/webpack": "^4.4.22",
     "awesome-typescript-loader": "^5.2.1",
