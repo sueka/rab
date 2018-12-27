@@ -8,19 +8,21 @@ interface Props {
   _tryToFetch: typeof tryToFetch
 }
 
-let callId: string | null = null
-
 export default class Info extends React.Component<Props> {
-  public componentDidMount() {
-    const { _tryToFetch } = this.props;
+  private callId: string | null = null
 
-    ({ payload: { callId } } = _tryToFetch('GET', 'https://api.github.com/repos/sueka/react-app-prototype'))
+  public componentDidMount() {
+    const { _tryToFetch } = this.props
+
+    const { payload } = _tryToFetch('GET', 'https://api.github.com/repos/sueka/react-app-prototype')
+
+    this.callId = payload.callId
   }
 
   public render() {
     const { calls } = this.props
 
-    const call = calls.find(({ id }) => (callId !== null) ? callId === id : false)
+    const call = calls.find(({ id }) => (this.callId !== null) ? this.callId === id : false)
 
     if (call === undefined) {
       return (
