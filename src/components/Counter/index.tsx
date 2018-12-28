@@ -1,6 +1,17 @@
 import * as React from 'react'
 
-import { StateProps, DispatchProps } from '../../containers/Counter'
+import { increment, decrement, incrementIfOdd, incrementAsync } from '../../redux/modules/counter'
+
+export interface StateProps {
+  value: number
+}
+
+export interface DispatchProps {
+  _increment: typeof increment
+  _decrement: typeof decrement
+  _incrementIfOdd: typeof incrementIfOdd
+  _incrementAsync: typeof incrementAsync
+}
 
 type Props = StateProps & DispatchProps
 

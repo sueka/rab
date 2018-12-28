@@ -1,16 +1,8 @@
 import { connect } from 'react-redux'
 
 import { State } from '../../redux'
-import { Call, tryToFetch } from '../../redux/modules/httpClient'
-import Info from '../../components/Info'
-
-export interface StateProps {
-  calls: Call[]
-}
-
-export interface DispatchProps {
-  _tryToFetch: typeof tryToFetch
-}
+import { tryToFetch } from '../../redux/modules/httpClient'
+import Info, { StateProps, DispatchProps } from '../../components/Info'
 
 const mapStateToProps = ({ info: { calls } }: State): StateProps => ({
   calls,

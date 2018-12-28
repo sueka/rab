@@ -1,7 +1,15 @@
 import * as React from 'react'
 
 import { Repository } from '../../githubResourceTypes'
-import { StateProps, DispatchProps } from '../../containers/Info'
+import { Call, tryToFetch } from '../../redux/modules/httpClient'
+
+export interface StateProps {
+  calls: Call[]
+}
+
+export interface DispatchProps {
+  _tryToFetch: typeof tryToFetch
+}
 
 type Props = StateProps & DispatchProps
 
