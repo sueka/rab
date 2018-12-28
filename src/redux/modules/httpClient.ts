@@ -3,7 +3,7 @@ import { SagaIterator } from 'redux-saga'
 import { takeEvery, call, put } from 'redux-saga/effects'
 import { v4 } from 'uuid'
 
-import { KeyValueMapObject } from '../../commonTypes'
+import { KeyValueMapObject, Json } from '../../commonTypes'
 import { Method, HttpClient } from '../../lib/HttpClient'
 
 //
@@ -17,7 +17,7 @@ import { Method, HttpClient } from '../../lib/HttpClient'
 
 interface SimpleResponse {
   statusCode: number
-  body: {}
+  body: Json
 }
 
 export interface Call {
@@ -111,7 +111,7 @@ export const tryToFetch = (method: Method, parameterizedEndpoint: string, params
   },
 })
 
-export const fetchSuccessfully = (callId: string, statusCode: number, body: {}): FetchSuccessfullyAction => ({
+export const fetchSuccessfully = (callId: string, statusCode: number, body: Json): FetchSuccessfullyAction => ({
   type: FETCH_SUCCESSFULLY,
   payload: {
     callId,
@@ -147,7 +147,7 @@ function* tryToFetchSaga(action: TryToFetchAction): SagaIterator {
     // NOTE: yield 式は型情報を保存できないので client.fetch の戻り値の型を復元している。
     const { response, body }: {
       response: Response
-      body: {}
+      body: Json
     } = yield call(client.fetch, { method, parameterizedEndpoint, params, query })
 
     yield put(fetchSuccessfully(callId, response.status, body))

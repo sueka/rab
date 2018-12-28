@@ -1,4 +1,6 @@
-interface Owner {
+import { JsonObject } from './commonTypes'
+
+interface Owner extends JsonObject {
   login: string
   id: number
   node_id: string
@@ -19,7 +21,7 @@ interface Owner {
   site_admin: boolean
 }
 
-interface License {
+interface License extends JsonObject {
   key: string
   name: string
   spdx_id: string
@@ -27,7 +29,7 @@ interface License {
   node_id: string
 }
 
-export interface Repository {
+export interface Repository extends JsonObject {
   id: number
   node_id: string
   name: string

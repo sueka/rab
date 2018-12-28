@@ -4,7 +4,7 @@
 
 import * as pathToRegexp from 'path-to-regexp'
 
-import { KeyValueMapObject } from '../commonTypes'
+import { KeyValueMapObject, Json } from '../commonTypes'
 
 export type Method = 'GET' | 'POST'
 
@@ -64,7 +64,7 @@ export class HttpClient {
     const url = HttpClient.buildURL(request)
     const requestInit = HttpClient.buildRequestInit(request)
     const response = await fetch(url, requestInit)
-    const body = await response.json() as {}
+    const body = await response.json() as Json
 
     return { response, body }
   }

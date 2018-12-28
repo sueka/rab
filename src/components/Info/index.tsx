@@ -40,7 +40,7 @@ export default class Info extends React.Component<Props> {
       )
     }
 
-    // NOTE: call.response.body を {} から Repository へダウンキャストする。
+    // NOTE: call.response.body を Json (defined in src/commonTypes.ts) から Repository へダウンキャストする。
     const repo = call.response.body as Repository
 
     return (
