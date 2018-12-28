@@ -4,11 +4,11 @@ import { State } from '../../redux'
 import { Call, tryToFetch } from '../../redux/modules/httpClient'
 import Info from '../../components/Info'
 
-interface StateProps {
+export interface StateProps {
   calls: Call[]
 }
 
-interface DispatchProps {
+export interface DispatchProps {
   _tryToFetch: typeof tryToFetch
 }
 

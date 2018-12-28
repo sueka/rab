@@ -1,14 +1,8 @@
 import * as React from 'react'
 
-import { increment, decrement, incrementIfOdd, incrementAsync } from '../../redux/modules/counter'
+import { StateProps, DispatchProps } from '../../containers/Counter'
 
-interface Props {
-  value: number
-  _increment: typeof increment
-  _decrement: typeof decrement
-  _incrementIfOdd: typeof incrementIfOdd
-  _incrementAsync: typeof incrementAsync
-}
+type Props = StateProps & DispatchProps
 
 export default class Counter extends React.Component<Props> {
   private handleIncrementIfOdd = () => {

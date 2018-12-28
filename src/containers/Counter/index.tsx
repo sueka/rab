@@ -4,11 +4,11 @@ import { State } from '../../redux'
 import { increment, decrement, incrementIfOdd, incrementAsync } from '../../redux/modules/counter'
 import Counter from '../../components/Counter'
 
-interface StateProps {
+export interface StateProps {
   value: number
 }
 
-interface DispatchProps {
+export interface DispatchProps {
   _increment: typeof increment
   _decrement: typeof decrement
   _incrementIfOdd: typeof incrementIfOdd

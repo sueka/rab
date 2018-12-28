@@ -1,12 +1,9 @@
 import * as React from 'react'
 
-import { Call, tryToFetch } from '../../redux/modules/httpClient'
 import { Repository } from '../../githubResourceTypes'
+import { StateProps, DispatchProps } from '../../containers/Info'
 
-interface Props {
-  calls: Call[]
-  _tryToFetch: typeof tryToFetch
-}
+type Props = StateProps & DispatchProps
 
 export default class Info extends React.Component<Props> {
   private callId: string | null = null
