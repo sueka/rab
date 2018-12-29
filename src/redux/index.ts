@@ -4,23 +4,23 @@ import { spawn } from 'redux-saga/effects'
 import { History } from 'history'
 import { RouterState, LocationChangeAction, connectRouter, routerMiddleware } from 'connected-react-router'
 
-import { CounterState, CounterAction, counterReducer, counterSaga } from './modules/counter'
 import { HttpClientState, HttpClientAction, httpClientReducer, httpClientSaga } from './modules/httpClient'
+import { CounterState, CounterAction, counterReducer, counterSaga } from './modules/counter'
 
 export interface State {
   router: RouterState
+  httpClient: HttpClientState
   counter: CounterState
-  info: HttpClientState
 }
 
-const initialState: Pick<State, 'counter' | 'info'> = {
-  counter: {
-    count: 0,
-  },
-  info: {
+const initialState: Pick<State, 'httpClient' | 'counter'> = {
+  httpClient: {
     successful: true,
     fetching: false,
     calls: [],
+  },
+  counter: {
+    count: 0,
   },
 }
 
@@ -28,8 +28,8 @@ export type Action = LocationChangeAction & CounterAction & HttpClientAction
 
 export const reducer = (history: History) => combineReducers<State, Action>({
   router: connectRouter(history),
+  httpClient: httpClientReducer,
   counter: counterReducer,
-  info: httpClientReducer,
 })
 
 export function* rootSaga(): SagaIterator {
