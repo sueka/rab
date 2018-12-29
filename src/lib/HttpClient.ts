@@ -8,7 +8,7 @@ import { KeyValueMapObject, Json } from '../commonTypes'
 
 export type Method = 'GET' | 'POST'
 
-interface ReqestParams {
+interface RequestParams {
   method: Method
   parameterizedEndpoint: string
   params: KeyValueMapObject<string>
@@ -20,7 +20,7 @@ function isEmpty(object: {}) {
 }
 
 export class HttpClient {
-  private static buildURL({ method, parameterizedEndpoint, params, query }: ReqestParams) {
+  private static buildURL({ method, parameterizedEndpoint, params, query }: RequestParams) {
     const endpoint = isEmpty(params) ? parameterizedEndpoint : pathToRegexp.compile(parameterizedEndpoint)(params)
 
     switch (method) {
@@ -40,7 +40,7 @@ export class HttpClient {
     }
   }
 
-  private static buildRequestInit({ method, query }: ReqestParams): RequestInit {
+  private static buildRequestInit({ method, query }: RequestParams): RequestInit {
     switch (method) {
       case 'GET':
         return {
@@ -60,7 +60,7 @@ export class HttpClient {
     }
   }
 
-  public async fetch(request: ReqestParams) {
+  public async fetch(request: RequestParams) {
     const url = HttpClient.buildURL(request)
     const requestInit = HttpClient.buildRequestInit(request)
     const response = await fetch(url, requestInit)
