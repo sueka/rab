@@ -4,8 +4,8 @@ import { spawn } from 'redux-saga/effects'
 import { History } from 'history'
 import { RouterState, LocationChangeAction, connectRouter, routerMiddleware } from 'connected-react-router'
 
-import { HttpClientState, HttpClientAction, httpClientSaga, httpClientReducer } from './modules/httpClient'
-import { CounterState, CounterAction, counterSaga, counterReducer } from './modules/counter'
+import { HttpClientState, HttpClientAction, httpClientSaga, createHttpClientReducer } from './modules/httpClient'
+import { CounterState, CounterAction, counterSaga, createCounterReducer } from './modules/counter'
 
 export interface State {
   router: RouterState
@@ -35,8 +35,8 @@ const sagaMiddleware = createSagaMiddleware()
 
 const createReducer = (history: History) => combineReducers<State, Action>({
   router: connectRouter(history),
-  httpClient: httpClientReducer,
-  counter: counterReducer,
+  httpClient: createHttpClientReducer(initialState.httpClient),
+  counter: createCounterReducer(initialState.counter),
 })
 
 export const configureStore = (history: History): {
@@ -45,7 +45,6 @@ export const configureStore = (history: History): {
 } => {
   const store = createStore(
     createReducer(history),
-    initialState,
     compose(
       applyMiddleware(sagaMiddleware),
       applyMiddleware(routerMiddleware(history))

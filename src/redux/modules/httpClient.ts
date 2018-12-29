@@ -169,13 +169,7 @@ export function* httpClientSaga(): SagaIterator {
 //
 //
 
-export const httpClientReducer: Reducer<HttpClientState, Action> = (state, action) => {
-
-  // combineReducers をごまかす。
-  if (state === undefined) {
-    return { successful: true, fetching: false, calls: [] }
-  }
-
+export const createHttpClientReducer: (initialState: HttpClientState) => Reducer<HttpClientState, Action> = (initialState) => (state = initialState, action) => {
   if (!isHttpClientAction(action)) {
     return state
   }

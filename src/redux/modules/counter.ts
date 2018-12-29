@@ -129,13 +129,7 @@ export function* counterSaga(): SagaIterator {
 //
 //
 
-export const counterReducer: Reducer<CounterState, Action> = (state, action) => {
-
-  // combineReducers をごまかす。
-  if (state === undefined) {
-    return { count: NaN }
-  }
-
+export const createCounterReducer: (initialState: CounterState) => Reducer<CounterState, Action> = (initialState) => (state = initialState, action) => {
   if (!isCounterAction(action)) {
     return state
   }
