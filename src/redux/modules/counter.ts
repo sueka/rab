@@ -32,10 +32,10 @@ export interface CounterState {
 //                 _|  _|
 //             _|_|    _|
 
-const NOP = '@@react-app-prototype/counter/NOP'
-const INCREMENT = '@@react-app-prototype/counter/INCREMENT'
-const DECREMENT = '@@react-app-prototype/counter/DECREMENT'
-const INCREMENT_ASYNC = '@@react-app-prototype/counter/INCREMENT_ASYNC'
+export const NOP = '@@react-app-prototype/counter/NOP'
+export const INCREMENT = '@@react-app-prototype/counter/INCREMENT'
+export const DECREMENT = '@@react-app-prototype/counter/DECREMENT'
+export const INCREMENT_ASYNC = '@@react-app-prototype/counter/INCREMENT_ASYNC'
 
 const counterActionTypes = [NOP, INCREMENT, DECREMENT, INCREMENT_ASYNC]
 
@@ -109,7 +109,7 @@ export const incrementAsync = (ms: number): IncrementAsyncAction => ({
 //                           _|
 //                       _|_|
 
-function* incrementAsyncSaga(action: IncrementAsyncAction): SagaIterator {
+export function* incrementAsyncSaga(action: IncrementAsyncAction): SagaIterator {
   const { ms } = action.payload
 
   yield call(delay, ms)

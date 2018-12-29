@@ -14,3 +14,7 @@
 
 # storybook
 /storybook-static/
+
+# jest
+/coverage/
+!/jest.config.js
