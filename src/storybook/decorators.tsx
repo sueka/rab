@@ -6,7 +6,7 @@ import { StoryDecorator } from '@storybook/react'
 
 import { configureStore, rootSaga } from '../redux'
 
-export const providerDecorator: StoryDecorator = (story) => {
+export const withProvider: StoryDecorator = (story) => {
   const history = createBrowserHistory()
   const { store, sagaMiddleware } = configureStore(history)
 
@@ -19,7 +19,7 @@ export const providerDecorator: StoryDecorator = (story) => {
   )
 }
 
-export const memoryRouterDecorator: StoryDecorator = (story) => (
+export const withMemoryRouter: StoryDecorator = (story) => (
   <MemoryRouter>
     { story() }
   </MemoryRouter>
