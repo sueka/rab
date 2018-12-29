@@ -144,7 +144,7 @@ function* tryToFetchSaga(action: TryToFetchAction): SagaIterator {
   try {
     const client = new HttpClient()
 
-    // NOTE: yield 式は型情報を保存できないので client.fetch の戻り値の型を復元している。
+    // NOTE: yield 式は型情報を保存できないので client.fetch の戻り値の型を復元する。
     const { response, body }: {
       response: Response
       body: Json
