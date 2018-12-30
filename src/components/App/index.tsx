@@ -21,8 +21,8 @@ const App: React.FunctionComponent = () => (
       Hello, world!
     </p>
     <Switch>
-      <Route path="/counter" component={ Counter } />
-      <Route path="/info" component={ Info } />
+      <Route exact strict sensitive path="/counter" component={ Counter } />
+      <Route exact strict sensitive path="/info" component={ Info } />
     </Switch>
   </div>
 )

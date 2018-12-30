@@ -21,6 +21,7 @@
     ],
     "no-submodule-imports": [true, "redux-saga/effects", "uuid/interfaces"],
     "jsx-curly-spacing": [true, "always"],
+    "jsx-boolean-value": [true, "never"],
 
     /* Type Constraints */
     "strict-boolean-expressions": true,
