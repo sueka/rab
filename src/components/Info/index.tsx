@@ -32,7 +32,13 @@ export default class Info extends React.Component<Props, LocalState> {
   public componentDidMount() {
     const { _tryToFetch } = this.props
 
-    const { payload } = _tryToFetch('GET', 'https://api.github.com/repos/sueka/react-app-prototype')
+    // TODO: 環境変数を検査するメカニズムを導入する。
+    if (process.env.GITHUB_API_V3_ORIGIN === undefined) {
+      throw new TypeError('The GITHUB_API_V3_ORIGIN environment variable does not exist.')
+    }
+
+    // TODO: no-process-env を有効にする。
+    const { payload } = _tryToFetch('GET', `${ process.env.GITHUB_API_V3_ORIGIN }/repos/sueka/react-app-prototype`)
 
     this.setState({
       callId: payload.callId,
