@@ -5,6 +5,9 @@
 /.cache/
 /dist/
 
+# dotenv
+.env
+
 # typed-css-modules
 *.css.d.ts
 
