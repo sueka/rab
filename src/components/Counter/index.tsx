@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Helmet from 'react-helmet'
 
 import { increment, decrement, incrementIfOdd, incrementAsync } from '../../redux/modules/counter'
 
@@ -33,6 +34,9 @@ export default class Counter extends React.Component<Props> {
 
     return (
       <div>
+        <Helmet>
+          <title>counter</title>
+        </Helmet>
         { value }
         <button onClick={ _increment }>+</button>
         <button onClick={ _decrement }>-</button>

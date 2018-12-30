@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Helmet from 'react-helmet'
 
 import { Repository } from '../../githubResourceTypes'
 import { Call, tryToFetch } from '../../redux/modules/httpClient'
@@ -47,6 +48,9 @@ export default class Info extends React.Component<Props, LocalState> {
     if (call === undefined) {
       return (
         <p>
+          <Helmet>
+            <title>info</title>
+          </Helmet>
           Fetching not started.
         </p>
       )
@@ -55,6 +59,9 @@ export default class Info extends React.Component<Props, LocalState> {
     if (call.response === null) {
       return (
         <p>
+          <Helmet>
+            <title>info</title>
+          </Helmet>
           No data fetched.
         </p>
       )
@@ -65,6 +72,9 @@ export default class Info extends React.Component<Props, LocalState> {
 
     return (
       <p>
+        <Helmet>
+          <title>info</title>
+        </Helmet>
         { repo.name }
       </p>
     )
