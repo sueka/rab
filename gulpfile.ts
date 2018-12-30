@@ -2,16 +2,17 @@ import { TaskFunction, Globs, parallel, series, watch } from 'gulp'
 import del from 'del'
 import { exec } from 'child_process'
 
-const ignored = ['.cache', 'dist', 'storybook-static', '**/*.css.d.ts', '**/*.js{,x}']
+const ignored = ['.cache', 'coverage', 'dist', 'storybook-static', '**/*.css.d.ts', '**/*.js{,x}']
 
 export const clean: TaskFunction = () => del([...ignored, '!node_modules/**'])
 export const typeCheck = series(npxTask('tcm src -s'), npxTask('tsc --noEmit -p .'))
 const tslint = npxTask('tslint -p .')
 const stylelint = npxTask('stylelint src')
 export const staticCheck = namedTask('staticCheck', parallel(typeCheck, tslint, stylelint))
-export const test = series(staticCheck, npxTask('jest'))
-export const build = series(test, npxTask('parcel build src/index.html'))
-export const buildStorybook = series(staticCheck, npxTask('build-storybook'))
+const testWOCoverage = series(staticCheck, npxTask('jest'))
+export const test = series(staticCheck, npxTask('jest --coverage'))
+export const build = series(testWOCoverage, npxTask('parcel build src/index.html'))
+export const buildStorybook = series(testWOCoverage, npxTask('build-storybook'))
 
 export const develop = parallel(continuousTask('src', staticCheck), npxTask('jest --watch --watchPathIgnorePatterns \'\\.css\\.d\\.ts$\''), npxTask('parcel --log-level 2 src/index.html'), npxTask('start-storybook --ci --quiet -p 5678'))
 
