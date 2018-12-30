@@ -18,10 +18,12 @@ const { store, sagaMiddleware } = configureStore(history)
 sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(
-  <Provider { ...{ store } }>
-    <ConnectedRouter { ...{ history } }>
-      <App />
-    </ConnectedRouter>
-  </Provider>,
+  <React.StrictMode>
+    <Provider { ...{ store } }>
+      <ConnectedRouter { ...{ history } }>
+        <App />
+      </ConnectedRouter>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root')
 )
