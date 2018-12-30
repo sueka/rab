@@ -13,7 +13,7 @@ export const test = series(staticCheck, npxTask('jest'))
 export const build = series(test, npxTask('parcel build src/index.html'))
 export const buildStorybook = series(staticCheck, npxTask('build-storybook'))
 
-export const develop = parallel(continuousTask('src', staticCheck), npxTask('jest --watch'), npxTask('parcel --log-level 2 src/index.html'), npxTask('start-storybook --ci --quiet -p 5678'))
+export const develop = parallel(continuousTask('src', staticCheck), npxTask('jest --watch --watchPathIgnorePatterns \'\\.css\\.d\\.ts$\''), npxTask('parcel --log-level 2 src/index.html'), npxTask('start-storybook --ci --quiet -p 5678'))
 
 function npx(cmd: string) {
   const cp = exec(cmd)
