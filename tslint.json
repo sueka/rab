@@ -25,6 +25,9 @@
 
     /* Type Constraints */
     "strict-boolean-expressions": true,
+    "no-any": true,
+    "no-non-null-assertion": true,
+    "strict-type-predicates": true,
 
     /* Ordering Rules */
     "member-ordering": false,

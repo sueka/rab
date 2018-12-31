@@ -16,7 +16,7 @@ interface RequestParams {
 }
 
 function isEmpty(object: {}) {
-  return Object.keys(object)[0] === undefined
+  return Object.keys(object).length === 0
 }
 
 export class HttpClient {
