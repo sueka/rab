@@ -38,10 +38,10 @@ export default class Info extends React.Component<Props, LocalState> {
     }
 
     // TODO: no-process-env を有効にする。
-    const { payload } = _tryToFetch('GET', `${ process.env.GITHUB_API_V3_ORIGIN }/repos/sueka/react-app-prototype`)
+    const { payload: { callId } } = _tryToFetch('GET', `${ process.env.GITHUB_API_V3_ORIGIN }/repos/sueka/react-app-prototype`)
 
     this.setState({
-      callId: payload.callId,
+      callId,
     })
   }
 
