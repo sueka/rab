@@ -13,17 +13,6 @@ export interface State {
   counter: CounterState
 }
 
-const initialState: Pick<State, 'httpClient' | 'counter'> = {
-  httpClient: {
-    successful: true,
-    fetching: false,
-    calls: [],
-  },
-  counter: {
-    count: 0,
-  },
-}
-
 export type Action = LocationChangeAction & CounterAction & HttpClientAction
 
 export function* rootSaga(): SagaIterator {
@@ -35,8 +24,14 @@ const sagaMiddleware = createSagaMiddleware()
 
 const createReducer = (history: History) => combineReducers<State, Action>({
   router: connectRouter(history),
-  httpClient: createHttpClientReducer(initialState.httpClient),
-  counter: createCounterReducer(initialState.counter),
+  httpClient: createHttpClientReducer({
+    successful: true,
+    fetching: false,
+    calls: [],
+  }),
+  counter: createCounterReducer({
+    count: 0,
+  }),
 })
 
 export const configureStore = (history: History): {
