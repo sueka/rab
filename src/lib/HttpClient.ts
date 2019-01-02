@@ -32,6 +32,7 @@ export class HttpClient {
           urlSearchParams.append(key, value)
         })
 
+        // tslint:disable-next-line:no-object-mutation
         urlBuilder.search = urlSearchParams.toString()
 
         return urlBuilder.href

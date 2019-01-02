@@ -1,5 +1,8 @@
 {
   "extends": ["tslint:recommended", "tslint-react"],
+  "rulesDirectory": [
+    "node_modules/tslint-immutable/rules"
+  ],
   "rules": {
     /* Coding Style Rules */
     "semicolon": [true, "never"],
@@ -22,6 +25,14 @@
     "no-submodule-imports": [true, "redux-saga/effects", "uuid/interfaces"],
     "jsx-curly-spacing": [true, "always"],
     "jsx-boolean-value": [true, "never"],
+    "no-var-keyword": true,
+    "no-parameter-reassignment": true,
+    "no-let": true,
+    "no-array-mutation": true,
+    "no-object-mutation": true,
+    "no-method-signature": true,
+    "no-delete": true,
+    "no-loop-statement": true,
 
     /* Type Constraints */
     "strict-boolean-expressions": true,
