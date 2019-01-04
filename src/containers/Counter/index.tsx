@@ -9,10 +9,10 @@ const mapStateToProps = ({ counter: { count } }: State): StateProps => ({
 })
 
 const mapDispatchToProps: DispatchProps = {
-  _increment: increment,
-  _decrement: decrement,
-  _incrementIfOdd: incrementIfOdd,
-  _incrementAsync: incrementAsync,
+  increment,
+  decrement,
+  incrementIfOdd,
+  incrementAsync,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter)

@@ -10,9 +10,6 @@ storiesOf('Counter', module)
   .add('unconnected, with Knobs', () => (
     <Counter
       value={ number('Value', 0) }
-      _increment={ increment }
-      _decrement={ decrement }
-      _incrementIfOdd={ incrementIfOdd }
-      _incrementAsync={ incrementAsync }
+      { ...{ increment, decrement, incrementIfOdd, incrementAsync } }
     />
   ))

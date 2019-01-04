@@ -9,7 +9,7 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  _tryToFetch: typeof tryToFetch
+  tryToFetch: typeof tryToFetch
 }
 
 type Props = StateProps & DispatchProps
@@ -30,7 +30,7 @@ export default class Info extends React.Component<Props, LocalState> {
   }
 
   public componentDidMount() {
-    const { _tryToFetch } = this.props
+    const { tryToFetch } = this.props
 
     // TODO: 環境変数を検査するメカニズムを導入する。
     if (process.env.GITHUB_API_V3_ORIGIN === undefined) {
@@ -38,7 +38,7 @@ export default class Info extends React.Component<Props, LocalState> {
     }
 
     // TODO: no-process-env を有効にする。
-    const { payload: { callId } } = _tryToFetch('GET', `${ process.env.GITHUB_API_V3_ORIGIN }/repos/sueka/react-app-prototype`)
+    const { payload: { callId } } = tryToFetch('GET', `${ process.env.GITHUB_API_V3_ORIGIN }/repos/sueka/react-app-prototype`)
 
     this.setState({
       callId,

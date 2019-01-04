@@ -9,7 +9,7 @@ const mapStateToProps = ({ httpClient: { calls } }: State): StateProps => ({
 })
 
 const mapDispatchToProps: DispatchProps = {
-  _tryToFetch: tryToFetch,
+  tryToFetch,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Info)
