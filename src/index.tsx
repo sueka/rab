@@ -8,6 +8,7 @@ import { ConnectedRouter } from 'connected-react-router'
 
 import { configureStore, rootSaga } from './redux'
 
+import ErrorBoundary from './components/ErrorBoundary'
 import App from './components/App'
 
 import './styles.css'
@@ -19,11 +20,13 @@ sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider { ...{ store } }>
-      <ConnectedRouter { ...{ history } }>
-        <App />
-      </ConnectedRouter>
-    </Provider>
+    <ErrorBoundary>
+      <Provider { ...{ store } }>
+        <ConnectedRouter { ...{ history } }>
+          <App />
+        </ConnectedRouter>
+      </Provider>
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root')
 )
