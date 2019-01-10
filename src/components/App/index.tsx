@@ -1,9 +1,10 @@
 import { hot } from 'react-hot-loader'
 import * as React from 'react'
-import { Route, Switch } from 'react-router'
+import { Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 import Helmet from 'react-helmet'
 
+import Route from '../Route'
 import Counter from '../../containers/Counter'
 import Info from '../../containers/Info'
 
