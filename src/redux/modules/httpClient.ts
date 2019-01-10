@@ -3,7 +3,7 @@ import { SagaIterator } from 'redux-saga'
 import { takeEvery, call, put } from 'redux-saga/effects'
 import { v4 } from 'uuid'
 
-import { KeyValueMapObject, Json } from '../../commonTypes'
+import { Json } from '../../commonTypes'
 import { Method, HttpClient } from '../../lib/HttpClient'
 
 //
@@ -59,8 +59,8 @@ interface TryToFetchAction extends Action<typeof TRY_TO_FETCH> {
     callId: string
     method: Method
     parameterizedEndpoint: string
-    params: KeyValueMapObject<string>
-    query: KeyValueMapObject<string>
+    params: Record<string, string>
+    query: Record<string, string>
   }
 }
 
@@ -100,7 +100,7 @@ function isHttpClientAction(action: Action): action is HttpClientAction {
 //
 //
 
-export const tryToFetch = (method: Method, parameterizedEndpoint: string, params: KeyValueMapObject<string> = {}, query: KeyValueMapObject<string> = {}): TryToFetchAction => ({
+export const tryToFetch = (method: Method, parameterizedEndpoint: string, params: Record<string, string> = {}, query: Record<string, string> = {}): TryToFetchAction => ({
   type: TRY_TO_FETCH,
   payload: {
     callId: v4(),

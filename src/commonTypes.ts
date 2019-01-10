@@ -1,7 +1,3 @@
-export interface KeyValueMapObject<T> {
-  [key: string]: T
-}
-
 type JsonPrimitive = null | boolean | number | string
 
 interface JsonArray {

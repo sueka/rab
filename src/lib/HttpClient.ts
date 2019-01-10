@@ -4,15 +4,15 @@
 
 import * as pathToRegexp from 'path-to-regexp'
 
-import { KeyValueMapObject, Json } from '../commonTypes'
+import { Json } from '../commonTypes'
 
 export type Method = 'GET' | 'POST'
 
 interface RequestParams {
   method: Method
   parameterizedEndpoint: string
-  params: KeyValueMapObject<string>
-  query: KeyValueMapObject<string>
+  params: Record<string, string>
+  query: Record<string, string>
 }
 
 function isEmpty(object: {}) {
