@@ -4,9 +4,9 @@ import { Route as OriginalRoute, RouteProps, RouteComponentProps } from 'react-r
 import ErrorBoundary from '../ErrorBoundary'
 
 class Route extends React.Component<RouteProps> {
-  private static withErrorBoundary: (Component: React.ComponentType<RouteComponentProps> | React.ComponentType<unknown>) => React.FunctionComponent = (Component) => () => (
+  private static withErrorBoundary: (Component: React.ComponentType<RouteComponentProps> | React.ComponentType<unknown>) => React.FunctionComponent<RouteComponentProps> = (Component) => (props) => (
     <ErrorBoundary>
-      <Component />
+      <Component { ...props } />
     </ErrorBoundary>
   )
 
