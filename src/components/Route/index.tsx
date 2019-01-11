@@ -11,13 +11,13 @@ class Route extends React.Component<RouteProps> {
   )
 
   public render() {
-    const { component, ...rest } = this.props
+    const { component, ...restProps } = this.props
 
     if (component === undefined) {
-      return <OriginalRoute { ...rest } />
+      return <OriginalRoute { ...restProps } />
     }
 
-    return <OriginalRoute component={ Route.withErrorBoundary(component) } { ...rest } />
+    return <OriginalRoute component={ Route.withErrorBoundary(component) } { ...restProps } />
   }
 }
 
