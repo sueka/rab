@@ -15,6 +15,11 @@ interface RequestParams {
   query: Record<string, string>
 }
 
+export interface ResponseParams {
+  response: Response
+  body: Json
+}
+
 function isEmpty(object: {}) {
   return Object.keys(object).length === 0
 }
@@ -61,12 +66,13 @@ export class HttpClient {
     }
   }
 
-  public async fetch(request: RequestParams) {
+  public async fetch(request: RequestParams): Promise<ResponseParams> {
     const url = HttpClient.buildURL(request)
     const requestInit = HttpClient.buildRequestInit(request)
     const response = await fetch(url, requestInit)
-    const body = await response.json() as Json
+    const body = await response.json()
 
+    // NOTE: ここで body の型が Json に変換されるが、 Body#json() の返り値の型は Promise<any> なので、アップキャストではない。
     return { response, body }
   }
 }

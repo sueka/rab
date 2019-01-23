@@ -4,7 +4,7 @@ import { takeEvery, call, put } from 'redux-saga/effects'
 import { v4 } from 'uuid'
 
 import { Json } from '../../commonTypes'
-import { Method, HttpClient } from '../../lib/HttpClient'
+import { Method, HttpClient, ResponseParams } from '../../lib/HttpClient'
 
 //
 //             _|                  _|
@@ -144,11 +144,8 @@ function* tryToFetchSaga(action: TryToFetchAction): SagaIterator {
   try {
     const client = new HttpClient()
 
-    // NOTE: yield 式は型情報を保存できないので client.fetch の戻り値の型を復元する。
-    const { response, body }: {
-      response: Response
-      body: Json
-    } = yield call(client.fetch, { method, parameterizedEndpoint, params, query })
+    // NOTE: yield 式は any を返すので、 client.fetch の戻り値の型を復元する。これはアップキャストではない。
+    const { response, body }: ResponseParams = yield call(client.fetch, { method, parameterizedEndpoint, params, query })
 
     yield put(fetchSuccessfully(callId, response.status, body))
   } catch {
