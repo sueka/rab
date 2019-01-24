@@ -70,9 +70,10 @@ export class HttpClient {
     const url = HttpClient.buildURL(request)
     const requestInit = HttpClient.buildRequestInit(request)
     const response = await fetch(url, requestInit)
-    const body = await response.json()
 
-    // NOTE: ここで body の型が Json に変換されるが、 Body#json() の返り値の型は Promise<any> なので、アップキャストではない。
+    // NOTE: Body#json() の返り値の型は Promise<any> なので、アップキャストではない。
+    const body: Json = await response.json()
+
     return { response, body }
   }
 }
