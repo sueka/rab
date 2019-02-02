@@ -1,11 +1,10 @@
-import { delay } from 'redux-saga'
-import { takeEvery, call, put } from 'redux-saga/effects'
+import { identity } from '../../commonFunctions'
 
 import {
-  NOP, INCREMENT, DECREMENT, INCREMENT_ASYNC,
+  NOP, INCREMENT, DECREMENT,
   CounterState,
-  nop, increment, decrement, incrementIfOdd, incrementAsync,
-  incrementAsyncSaga, counterSaga,
+  nop, increment, decrement,
+  CounterActionDispatcher,
   createCounterReducer,
 } from './counter'
 
@@ -33,40 +32,48 @@ describe('action creators', () => {
       })
     })
   })
+})
+
+describe('action dispatcher', () => {
+  const mockFn = jest.fn<unknown>(identity)
+
+  // NOTE: Don't decompose to avoid to shadow variables.
+  const dispatched = new CounterActionDispatcher(mockFn)
+
+  beforeEach(() => {
+    mockFn.mockClear()
+  })
+
+  describe('increment', () => {
+    it('should return an increment action', () => {
+      expect(dispatched.increment()).toEqual(increment())
+    })
+  })
+
+  describe('decrement', () => {
+    it('should return a decrement action', () => {
+      expect(dispatched.decrement()).toEqual(decrement())
+    })
+  })
 
   describe('incrementIfOdd', () => {
     it('should return a nop action', () => {
-      expect(incrementIfOdd(0)).toEqual(nop())
+      expect(dispatched.incrementIfOdd(0)).toEqual(nop())
     })
 
     it('should return an increment action', () => {
-      expect(incrementIfOdd(1)).toEqual(increment())
+      expect(dispatched.incrementIfOdd(1)).toEqual(increment())
     })
   })
 
   describe('incrementAsync', () => {
     it('should return an action containing', () => {
-      expect(incrementAsync(1000)).toEqual({
-        type: INCREMENT_ASYNC,
-        payload: {
-          ms: 1000,
-        },
-      })
+      expect(dispatched.incrementAsync(1000)).resolves.toEqual(increment())
+
+      // TODO: 秒数に関するテスト
+      // TODO: 失敗時のテスト
     })
   })
-})
-
-describe('incrementAsyncSaga', () => {
-  const it = incrementAsyncSaga(incrementAsync(1000))
-
-  expect(it.next().value).toEqual(call(delay, 1000))
-  expect(it.next().value).toEqual(put(increment()))
-})
-
-describe('counterSaga', () => {
-  const it = counterSaga()
-
-  expect(it.next().value).toEqual(takeEvery(INCREMENT_ASYNC, incrementAsyncSaga))
 })
 
 describe('reducer', () => {
@@ -92,9 +99,5 @@ describe('reducer', () => {
 
   it('should handle DECREMENT', () => {
     expect(counterReducer({ count: 1 }, decrement())).toEqual({ count: 0 })
-  })
-
-  it('should handle INCREMENT_ASYNC', () => {
-    expect(counterReducer({ count: 1 }, incrementAsync(1000))).toEqual({ count: 1 })
   })
 })
