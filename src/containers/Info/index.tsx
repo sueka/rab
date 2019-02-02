@@ -1,15 +1,16 @@
 import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 
 import { State } from '../../redux'
-import { tryToFetch } from '../../redux/modules/httpClient'
+import { HttpClientActionDispatcher } from '../../redux/modules/httpClient'
 import Info, { StateProps, DispatchProps } from '../../components/Info'
 
-const mapStateToProps = ({ httpClient: { calls } }: State): StateProps => ({
-  calls,
+const mapStateToProps = ({ httpClient: { results } }: State): StateProps => ({
+  results,
 })
 
-const mapDispatchToProps: DispatchProps = {
-  tryToFetch,
-}
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
+  dispatchedActions: new HttpClientActionDispatcher(dispatch),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Info)

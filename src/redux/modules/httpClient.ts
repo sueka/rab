@@ -1,10 +1,7 @@
-import { Action, Reducer } from 'redux'
-import { SagaIterator } from 'redux-saga'
-import { takeEvery, call, put } from 'redux-saga/effects'
-import { v4 } from 'uuid'
+import { Dispatch, Action, Reducer } from 'redux'
 
 import { Json } from '../../commonTypes'
-import { Method, HttpClient, ResponseParams } from '../../lib/HttpClient'
+import { Method, HttpClient } from '../../lib/HttpClient'
 
 //
 //             _|                  _|
@@ -20,7 +17,7 @@ interface SimpleResponse {
   body: Json
 }
 
-export interface Call {
+export interface Result {
   id: string
   response: SimpleResponse | null
 }
@@ -28,7 +25,7 @@ export interface Call {
 export interface HttpClientState {
   successful: boolean
   fetching: boolean
-  calls: Call[]
+  results: Result[]
 }
 
 //
@@ -56,7 +53,7 @@ const httpClientActionTypes = [TRY_TO_FETCH, FETCH_SUCCESSFULLY, FAIL_TO_FETCH]
 
 interface TryToFetchAction extends Action<typeof TRY_TO_FETCH> {
   payload: {
-    callId: string
+    resultId: string
     method: Method
     parameterizedEndpoint: string
     params: Record<string, string>
@@ -66,14 +63,14 @@ interface TryToFetchAction extends Action<typeof TRY_TO_FETCH> {
 
 interface FetchSuccessfullyAction extends Action<typeof FETCH_SUCCESSFULLY> {
   payload: {
-    callId: string
+    resultId: string
     response: SimpleResponse
   }
 }
 
 interface FailToFetchAction extends Action<typeof FAIL_TO_FETCH> {
   payload: {
-    callId: string
+    resultId: string
   }
 }
 
@@ -100,21 +97,10 @@ function isHttpClientAction(action: Action): action is HttpClientAction {
 //
 //
 
-export const tryToFetch = (method: Method, parameterizedEndpoint: string, params: Record<string, string> = {}, query: Record<string, string> = {}): TryToFetchAction => ({
-  type: TRY_TO_FETCH,
-  payload: {
-    callId: v4(),
-    method,
-    parameterizedEndpoint,
-    params,
-    query,
-  },
-})
-
-export const fetchSuccessfully = (callId: string, statusCode: number, body: Json): FetchSuccessfullyAction => ({
+export const fetchSuccessfully = (resultId: string, statusCode: number, body: Json): FetchSuccessfullyAction => ({
   type: FETCH_SUCCESSFULLY,
   payload: {
-    callId,
+    resultId,
     response: {
       statusCode,
       body,
@@ -122,39 +108,51 @@ export const fetchSuccessfully = (callId: string, statusCode: number, body: Json
   },
 })
 
-export const failToFetch = (callId: string): FailToFetchAction => ({
+export const failToFetch = (resultId: string): FailToFetchAction => ({
   type: FAIL_TO_FETCH,
   payload: {
-    callId,
+    resultId,
   },
 })
 
 //
+//                       _|      _|
+//   _|_|_|    _|_|_|  _|_|_|_|        _|_|    _|_|_|
+// _|    _|  _|          _|      _|  _|    _|  _|    _|
+// _|    _|  _|          _|      _|  _|    _|  _|    _|
+//   _|_|_|    _|_|_|      _|_|  _|    _|_|    _|    _|
 //
-//   _|_|_|    _|_|_|    _|_|_|    _|_|_|    _|_|_|
-// _|_|      _|    _|  _|    _|  _|    _|  _|_|
-//     _|_|  _|    _|  _|    _|  _|    _|      _|_|
-// _|_|_|      _|_|_|    _|_|_|    _|_|_|  _|_|_|
-//                           _|
-//                       _|_|
+//
+//
+//       _|  _|                                  _|                _|
+//   _|_|_|        _|_|_|  _|_|_|      _|_|_|  _|_|_|_|    _|_|_|  _|_|_|      _|_|    _|  _|_|
+// _|    _|  _|  _|_|      _|    _|  _|    _|    _|      _|        _|    _|  _|_|_|_|  _|_|
+// _|    _|  _|      _|_|  _|    _|  _|    _|    _|      _|        _|    _|  _|        _|
+//   _|_|_|  _|  _|_|_|    _|_|_|      _|_|_|      _|_|    _|_|_|  _|    _|    _|_|_|  _|
+//                         _|
+//                         _|
 
-function* tryToFetchSaga(action: TryToFetchAction): SagaIterator {
-  const { method, parameterizedEndpoint, params, query, callId } = action.payload
+export class HttpClientActionDispatcher {
+  private dispatch: Dispatch
 
-  try {
-    const client = new HttpClient()
-
-    // NOTE: yield 式は any を返すので、 client.fetch の戻り値の型を復元する。これはアップキャストではない。
-    const { response, body }: ResponseParams = yield call(client.fetch, { method, parameterizedEndpoint, params, query })
-
-    yield put(fetchSuccessfully(callId, response.status, body))
-  } catch {
-    yield put(failToFetch(callId))
+  constructor(dispatch: Dispatch) {
+    this.dispatch = dispatch
   }
-}
 
-export function* httpClientSaga(): SagaIterator {
-  yield takeEvery(TRY_TO_FETCH, tryToFetchSaga)
+  public fetch = async (resultId: string, method: Method, parameterizedEndpoint: string, params: Record<string, string> = {}, query: Record<string, string> = {}) => {
+    try {
+      const client = new HttpClient()
+      const { response, body } = await client.fetch({ method, parameterizedEndpoint, params, query })
+
+      return this.fetchSuccessfully(resultId, response.status, body)
+    } catch {
+      return this.failToFetch(resultId)
+    }
+  }
+
+  private fetchSuccessfully = (resultId: string, statusCode: number, body: Json): FetchSuccessfullyAction => this.dispatch(fetchSuccessfully(resultId, statusCode, body))
+
+  private failToFetch = (resultId: string): FailToFetchAction => this.dispatch(failToFetch(resultId))
 }
 
 //
@@ -171,17 +169,19 @@ export const createHttpClientReducer: (initialState: HttpClientState) => Reducer
     return state
   }
 
-  const { callId } = action.payload
+  // console.log(action, state)
+
+  const { resultId } = action.payload
 
   switch (action.type) {
     case TRY_TO_FETCH:
       return {
         ...state,
         fetching: true,
-        calls: [
-          ...state.calls,
+        results: [
+          ...state.results,
           {
-            id: callId,
+            id: resultId,
             response: null,
           },
         ],
@@ -192,10 +192,10 @@ export const createHttpClientReducer: (initialState: HttpClientState) => Reducer
       return {
         successful: true,
         fetching: false,
-        calls: [
-          ...state.calls.filter(({ id }) => id !== callId),
+        results: [
+          ...state.results.filter(({ id }) => id !== resultId),
           {
-            id: callId,
+            id: resultId,
             response,
           },
         ],

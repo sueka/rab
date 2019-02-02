@@ -2,7 +2,8 @@ import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import { withKnobs, number } from '@storybook/addon-knobs'
 
-import { increment, decrement, incrementIfOdd, incrementAsync } from '../../redux/modules/counter'
+import { identity } from '../../commonFunctions'
+import { CounterActionDispatcher } from '../../redux/modules/counter'
 import Counter from '.'
 
 storiesOf('Counter', module)
@@ -10,6 +11,6 @@ storiesOf('Counter', module)
   .add('unconnected, with Knobs', () => (
     <Counter
       value={ number('Value', 0) }
-      { ...{ increment, decrement, incrementIfOdd, incrementAsync } }
+      dispatchedActions={ new CounterActionDispatcher(identity) }
     />
   ))

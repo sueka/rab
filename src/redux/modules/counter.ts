@@ -1,6 +1,6 @@
-import { Action, Reducer } from 'redux'
-import { SagaIterator, delay } from 'redux-saga'
-import { takeEvery, call, put } from 'redux-saga/effects'
+import { Dispatch, Action, Reducer } from 'redux'
+
+import { delay } from '../../commonFunctions'
 
 //
 //             _|                  _|
@@ -35,9 +35,8 @@ export interface CounterState {
 export const NOP = '@@react-app-prototype/counter/NOP'
 export const INCREMENT = '@@react-app-prototype/counter/INCREMENT'
 export const DECREMENT = '@@react-app-prototype/counter/DECREMENT'
-export const INCREMENT_ASYNC = '@@react-app-prototype/counter/INCREMENT_ASYNC'
 
-const counterActionTypes = [NOP, INCREMENT, DECREMENT, INCREMENT_ASYNC]
+const counterActionTypes = [NOP, INCREMENT, DECREMENT]
 
 interface NopAction extends Action<typeof NOP> {}
 
@@ -45,13 +44,7 @@ interface IncrementAction extends Action<typeof INCREMENT> {}
 
 interface DecrementAction extends Action<typeof DECREMENT> {}
 
-interface IncrementAsyncAction extends Action<typeof INCREMENT_ASYNC> {
-  payload: {
-    ms: number
-  }
-}
-
-export type CounterAction = NopAction | IncrementAction | DecrementAction | IncrementAsyncAction
+export type CounterAction = NopAction | IncrementAction | DecrementAction
 
 function isCounterAction(action: Action): action is CounterAction {
   return counterActionTypes.some((counterActionType) => counterActionType === action.type)
@@ -86,38 +79,48 @@ export const decrement = (): DecrementAction => ({
   type: DECREMENT,
 })
 
-export const incrementIfOdd = (value: number) => (value % 2 !== 0) ? increment() : nop()
-
-/**
- * incrementAsync
- *
- * @param ms - delay in milliseconds
- */
-export const incrementAsync = (ms: number): IncrementAsyncAction => ({
-  type: INCREMENT_ASYNC,
-  payload: {
-    ms,
-  },
-})
-
+//
+//                       _|      _|
+//   _|_|_|    _|_|_|  _|_|_|_|        _|_|    _|_|_|
+// _|    _|  _|          _|      _|  _|    _|  _|    _|
+// _|    _|  _|          _|      _|  _|    _|  _|    _|
+//   _|_|_|    _|_|_|      _|_|  _|    _|_|    _|    _|
 //
 //
-//   _|_|_|    _|_|_|    _|_|_|    _|_|_|    _|_|_|
-// _|_|      _|    _|  _|    _|  _|    _|  _|_|
-//     _|_|  _|    _|  _|    _|  _|    _|      _|_|
-// _|_|_|      _|_|_|    _|_|_|    _|_|_|  _|_|_|
-//                           _|
-//                       _|_|
+//
+//       _|  _|                                  _|                _|
+//   _|_|_|        _|_|_|  _|_|_|      _|_|_|  _|_|_|_|    _|_|_|  _|_|_|      _|_|    _|  _|_|
+// _|    _|  _|  _|_|      _|    _|  _|    _|    _|      _|        _|    _|  _|_|_|_|  _|_|
+// _|    _|  _|      _|_|  _|    _|  _|    _|    _|      _|        _|    _|  _|        _|
+//   _|_|_|  _|  _|_|_|    _|_|_|      _|_|_|      _|_|    _|_|_|  _|    _|    _|_|_|  _|
+//                         _|
+//                         _|
 
-export function* incrementAsyncSaga(action: IncrementAsyncAction): SagaIterator {
-  const { ms } = action.payload
+export class CounterActionDispatcher {
+  private dispatch: Dispatch
 
-  yield call(delay, ms)
-  yield put(increment())
-}
+  constructor(dispatch: Dispatch) {
+    this.dispatch = dispatch
+  }
 
-export function* counterSaga(): SagaIterator {
-  yield takeEvery(INCREMENT_ASYNC, incrementAsyncSaga)
+  private nop = (): NopAction => this.dispatch(nop())
+
+  public increment = (): IncrementAction => this.dispatch(increment())
+
+  public decrement = (): DecrementAction => this.dispatch(decrement())
+
+  public incrementIfOdd = (value: number) => (value % 2 !== 0) ? this.increment() : this.nop()
+
+  /**
+   * incrementAsync
+   *
+   * @param ms - delay in milliseconds
+   */
+  public incrementAsync = async (ms: number) => {
+    await delay(ms)
+
+    return this.increment()
+  }
 }
 
 //
@@ -147,7 +150,5 @@ export const createCounterReducer: (initialState: CounterState) => Reducer<Count
       return {
         count: count - 1,
       }
-    case INCREMENT_ASYNC:
-      return state
   }
 }

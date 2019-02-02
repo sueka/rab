@@ -4,13 +4,11 @@ import { Provider } from 'react-redux'
 import { createBrowserHistory } from 'history'
 import { StoryDecorator } from '@storybook/react'
 
-import { configureStore, rootSaga } from '../redux'
+import { configureStore } from '../redux'
 
 export const withProvider: StoryDecorator = (story) => {
   const history = createBrowserHistory()
-  const { store, sagaMiddleware } = configureStore(history)
-
-  sagaMiddleware.run(rootSaga)
+  const store = configureStore(history)
 
   return (
     <Provider { ...{ store } }>
