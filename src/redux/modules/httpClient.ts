@@ -97,6 +97,17 @@ function isHttpClientAction(action: Action): action is HttpClientAction {
 //
 //
 
+export const tryToFetch = (resultId: string, method: Method, parameterizedEndpoint: string, params: Record<string, string> = {}, query: Record<string, string> = {}): TryToFetchAction => ({
+  type: TRY_TO_FETCH,
+  payload: {
+    resultId,
+    method,
+    parameterizedEndpoint,
+    params,
+    query,
+  },
+})
+
 export const fetchSuccessfully = (resultId: string, statusCode: number, body: Json): FetchSuccessfullyAction => ({
   type: FETCH_SUCCESSFULLY,
   payload: {
@@ -140,6 +151,8 @@ export class HttpClientActionDispatcher {
   }
 
   public fetch = async (resultId: string, method: Method, parameterizedEndpoint: string, params: Record<string, string> = {}, query: Record<string, string> = {}) => {
+    this.tryToFetch(resultId, method, parameterizedEndpoint, params, query)
+
     try {
       const client = new HttpClient()
       const { response, body } = await client.fetch({ method, parameterizedEndpoint, params, query })
@@ -150,9 +163,11 @@ export class HttpClientActionDispatcher {
     }
   }
 
-  private fetchSuccessfully = (resultId: string, statusCode: number, body: Json): FetchSuccessfullyAction => this.dispatch(fetchSuccessfully(resultId, statusCode, body))
+  private tryToFetch: typeof tryToFetch = (...args) => this.dispatch(tryToFetch(...args))
 
-  private failToFetch = (resultId: string): FailToFetchAction => this.dispatch(failToFetch(resultId))
+  private fetchSuccessfully: typeof fetchSuccessfully = (...args) => this.dispatch(fetchSuccessfully(...args))
+
+  private failToFetch: typeof failToFetch = (...args) => this.dispatch(failToFetch(...args))
 }
 
 //
