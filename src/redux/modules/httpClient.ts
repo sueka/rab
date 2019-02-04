@@ -169,8 +169,6 @@ export const createHttpClientReducer: (initialState: HttpClientState) => Reducer
     return state
   }
 
-  // console.log(action, state)
-
   const { resultId } = action.payload
 
   switch (action.type) {
