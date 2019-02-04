@@ -130,11 +130,11 @@ export class CounterActionDispatcher {
     this.dispatch = dispatch
   }
 
-  private nop = (): NopAction => this.dispatch(nop())
+  private nop: typeof nop = (...args) => this.dispatch(nop(...args))
 
-  public increment = (): IncrementAction => this.dispatch(increment())
+  public increment: typeof increment = (...args) => this.dispatch(increment(...args))
 
-  public decrement = (): DecrementAction => this.dispatch(decrement())
+  public decrement: typeof decrement = (...args) => this.dispatch(decrement(...args))
 
   public incrementIfOdd = (value: number) => (value % 2 !== 0) ? this.increment() : this.nop()
 
@@ -143,11 +143,7 @@ export class CounterActionDispatcher {
    *
    * @param ms - delay in milliseconds
    */
-  public incrementAsync = async (ms: number) => {
-    await delay(ms)
-
-    return this.increment()
-  }
+  public incrementAsync = async (ms: number) => await delay(ms).then(() => this.increment())
 }
 
 //

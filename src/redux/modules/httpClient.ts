@@ -200,14 +200,11 @@ export class HttpClientActionDispatcher {
   public fetch = async (resultId: string, method: Method, parameterizedEndpoint: string, params: Record<string, string> = {}, query: Record<string, string> = {}) => {
     this.tryToFetch(resultId, method, parameterizedEndpoint, params, query)
 
-    try {
-      const client = new HttpClient()
-      const { response, body } = await client.fetch({ method, parameterizedEndpoint, params, query })
+    const client = new HttpClient()
 
-      return this.fetchSuccessfully(resultId, response.status, body)
-    } catch {
-      return this.failToFetch(resultId)
-    }
+    return await client.fetch({ method, parameterizedEndpoint, params, query })
+      .then(({ response, body }) => this.fetchSuccessfully(resultId, response.status, body))
+      .catch(() => this.failToFetch(resultId))
   }
 
   private tryToFetch: typeof tryToFetch = (...args) => this.dispatch(tryToFetch(...args))
