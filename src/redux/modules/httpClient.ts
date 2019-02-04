@@ -135,6 +135,53 @@ export const failToFetch = (resultId: string): FailToFetchAction => ({
 //
 //
 //
+// _|                                  _|  _|
+// _|_|_|      _|_|_|  _|_|_|      _|_|_|  _|    _|_|    _|  _|_|    _|_|_|
+// _|    _|  _|    _|  _|    _|  _|    _|  _|  _|_|_|_|  _|_|      _|_|
+// _|    _|  _|    _|  _|    _|  _|    _|  _|  _|        _|            _|_|
+// _|    _|    _|_|_|  _|    _|    _|_|_|  _|    _|_|_|  _|        _|_|_|
+//
+//
+
+const handleTryToFetch = (state: HttpClientState, { payload: { resultId } }: TryToFetchAction) => ({
+  ...state,
+  fetching: true,
+  results: [
+    ...state.results,
+    {
+      id: resultId,
+      response: null,
+    },
+  ],
+})
+
+const handleFetchSuccessfully = (state: HttpClientState, { payload: { resultId, response } }: FetchSuccessfullyAction) => ({
+  successful: true,
+  fetching: false,
+  results: [
+    ...state.results.filter(({ id }) => id !== resultId),
+    {
+      id: resultId,
+      response,
+    },
+  ],
+})
+
+const handleFailToFetch = (state: HttpClientState, _action: FailToFetchAction) => ({
+  ...state,
+  successful: false,
+  fetching: false,
+})
+
+//
+//                       _|      _|
+//   _|_|_|    _|_|_|  _|_|_|_|        _|_|    _|_|_|
+// _|    _|  _|          _|      _|  _|    _|  _|    _|
+// _|    _|  _|          _|      _|  _|    _|  _|    _|
+//   _|_|_|    _|_|_|      _|_|  _|    _|_|    _|    _|
+//
+//
+//
 //       _|  _|                                  _|                _|
 //   _|_|_|        _|_|_|  _|_|_|      _|_|_|  _|_|_|_|    _|_|_|  _|_|_|      _|_|    _|  _|_|
 // _|    _|  _|  _|_|      _|    _|  _|    _|    _|      _|        _|    _|  _|_|_|_|  _|_|
@@ -184,40 +231,9 @@ export const createHttpClientReducer: (initialState: HttpClientState) => Reducer
     return state
   }
 
-  const { resultId } = action.payload
-
   switch (action.type) {
-    case TRY_TO_FETCH:
-      return {
-        ...state,
-        fetching: true,
-        results: [
-          ...state.results,
-          {
-            id: resultId,
-            response: null,
-          },
-        ],
-      }
-    case FETCH_SUCCESSFULLY:
-      const { response } = action.payload
-
-      return {
-        successful: true,
-        fetching: false,
-        results: [
-          ...state.results.filter(({ id }) => id !== resultId),
-          {
-            id: resultId,
-            response,
-          },
-        ],
-      }
-    case FAIL_TO_FETCH:
-      return {
-        ...state,
-        successful: false,
-        fetching: false,
-      }
+    case TRY_TO_FETCH: return handleTryToFetch(state, action)
+    case FETCH_SUCCESSFULLY: return handleFetchSuccessfully(state, action)
+    case FAIL_TO_FETCH: return handleFailToFetch(state, action)
   }
 }

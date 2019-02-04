@@ -88,6 +88,33 @@ export const decrement = (): DecrementAction => ({
 //
 //
 //
+// _|                                  _|  _|
+// _|_|_|      _|_|_|  _|_|_|      _|_|_|  _|    _|_|    _|  _|_|    _|_|_|
+// _|    _|  _|    _|  _|    _|  _|    _|  _|  _|_|_|_|  _|_|      _|_|
+// _|    _|  _|    _|  _|    _|  _|    _|  _|  _|        _|            _|_|
+// _|    _|    _|_|_|  _|    _|    _|_|_|  _|    _|_|_|  _|        _|_|_|
+//
+//
+
+const handleNop = (state: CounterState, _action: NopAction) => state
+
+const handleIncrement = ({ count }: CounterState, _action: IncrementAction) => ({
+  count: count + 1,
+})
+
+const handleDecrement = ({ count }: CounterState, _action: DecrementAction) => ({
+  count: count - 1,
+})
+
+//
+//                       _|      _|
+//   _|_|_|    _|_|_|  _|_|_|_|        _|_|    _|_|_|
+// _|    _|  _|          _|      _|  _|    _|  _|    _|
+// _|    _|  _|          _|      _|  _|    _|  _|    _|
+//   _|_|_|    _|_|_|      _|_|  _|    _|_|    _|    _|
+//
+//
+//
 //       _|  _|                                  _|                _|
 //   _|_|_|        _|_|_|  _|_|_|      _|_|_|  _|_|_|_|    _|_|_|  _|_|_|      _|_|    _|  _|_|
 // _|    _|  _|  _|_|      _|    _|  _|    _|    _|      _|        _|    _|  _|_|_|_|  _|_|
@@ -137,18 +164,9 @@ export const createCounterReducer: (initialState: CounterState) => Reducer<Count
     return state
   }
 
-  const { count } = state
-
   switch (action.type) {
-    case NOP:
-      return state
-    case INCREMENT:
-      return {
-        count: count + 1,
-      }
-    case DECREMENT:
-      return {
-        count: count - 1,
-      }
+    case NOP: return handleNop(state, action)
+    case INCREMENT: return handleIncrement(state, action)
+    case DECREMENT: return handleDecrement(state, action)
   }
 }

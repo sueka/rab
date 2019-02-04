@@ -33,7 +33,8 @@
     "no-method-signature": true,
     "no-delete": true,
     "no-loop-statement": true,
-    "no-shadowed-variable": [true, { "import": false }], 
+    "no-shadowed-variable": [true, { "import": false }],
+    "variable-name": [true, "allow-pascal-case", "allow-leading-underscore"],
 
     /* Type Constraints */
     "strict-boolean-expressions": true,
