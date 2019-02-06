@@ -12,13 +12,13 @@ export const staticCheck = namedTask('staticCheck', parallel(typeCheck, tslint, 
 const testWithoutCoverage = series(staticCheck, npxTask('jest'))
 const testWithCoverage = series(staticCheck, npxTask('jest --coverage'))
 export const test = testWithCoverage
-export const build = series(typeCheck, npxTask('parcel build --no-autoinstall src/index.html'))
+export const build = series(typeCheck, npxTask('webpack --env.prod'))
 export const buildStorybook = series(typeCheck, npxTask('build-storybook'))
 
 export const develop = parallel(
   continuousTask('src', staticCheck),
   npxTask('jest --watch --watchPathIgnorePatterns \'\\.css\\.d\\.ts$\''),
-  npxTask('parcel --log-level 2 src/index.html'),
+  npxTask('webpack-dev-server'),
   npxTask('start-storybook --ci --quiet -p 5678'),
 )
 
