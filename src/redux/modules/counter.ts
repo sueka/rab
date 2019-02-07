@@ -1,6 +1,7 @@
 import { Dispatch, Action, Reducer } from 'redux'
 
 import { delay } from '../../commonFunctions'
+import { ActionHandler } from './base'
 
 //
 //             _|                  _|
@@ -96,13 +97,15 @@ export const decrement = (): DecrementAction => ({
 //
 //
 
-const handleNop = (state: CounterState, _action: NopAction) => state
+type CounterActionHandler<A extends CounterAction> = ActionHandler<CounterState, A>
 
-const handleIncrement = ({ count }: CounterState, _action: IncrementAction) => ({
+const handleNop: CounterActionHandler<NopAction> = (state, _action) => state
+
+const handleIncrement: CounterActionHandler<IncrementAction> = ({ count }, _action) => ({
   count: count + 1,
 })
 
-const handleDecrement = ({ count }: CounterState, _action: DecrementAction) => ({
+const handleDecrement: CounterActionHandler<DecrementAction> = ({ count }, _action) => ({
   count: count - 1,
 })
 

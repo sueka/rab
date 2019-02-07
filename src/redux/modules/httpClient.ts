@@ -2,6 +2,7 @@ import { Dispatch, Action, Reducer } from 'redux'
 
 import { Json } from '../../commonTypes'
 import { Method, HttpClient } from '../../lib/HttpClient'
+import { ActionHandler } from './base'
 
 //
 //             _|                  _|
@@ -143,7 +144,9 @@ export const failToFetch = (resultId: string): FailToFetchAction => ({
 //
 //
 
-const handleTryToFetch = (state: HttpClientState, { payload: { resultId } }: TryToFetchAction) => ({
+type HttpClientActionHandler<A extends HttpClientAction> = ActionHandler<HttpClientState, A>
+
+const handleTryToFetch: HttpClientActionHandler<TryToFetchAction> = (state, { payload: { resultId } }) => ({
   ...state,
   fetching: true,
   results: [
@@ -155,7 +158,7 @@ const handleTryToFetch = (state: HttpClientState, { payload: { resultId } }: Try
   ],
 })
 
-const handleFetchSuccessfully = (state: HttpClientState, { payload: { resultId, response } }: FetchSuccessfullyAction) => ({
+const handleFetchSuccessfully: HttpClientActionHandler<FetchSuccessfullyAction> = (state, { payload: { resultId, response } }) => ({
   successful: true,
   fetching: false,
   results: [
@@ -167,7 +170,7 @@ const handleFetchSuccessfully = (state: HttpClientState, { payload: { resultId, 
   ],
 })
 
-const handleFailToFetch = (state: HttpClientState, _action: FailToFetchAction) => ({
+const handleFailToFetch: HttpClientActionHandler<FailToFetchAction> = (state, _action) => ({
   ...state,
   successful: false,
   fetching: false,
