@@ -49,7 +49,7 @@ export default class Info extends React.Component<Props, LocalState> {
           <Helmet>
             <title>info</title>
           </Helmet>
-          Fetching..
+          Fetching not started.
         </p>
       )
     }
@@ -60,7 +60,7 @@ export default class Info extends React.Component<Props, LocalState> {
           <Helmet>
             <title>info</title>
           </Helmet>
-          Fetching failed.
+          Fetching..
         </p>
       )
     }
