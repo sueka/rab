@@ -71,8 +71,8 @@ export class HttpClient {
     const requestInit = HttpClient.buildRequestInit(request)
     const response = await fetch(url, requestInit)
 
-    // NOTE: Body#json() の返り値の型は Promise<any> なので、アップキャストではない。
-    const body: Json = await response.json()
+    // NOTE: Body#json() の返り値型は Promise<any> なので、この型指定は型キャストではない。
+    const body = await response.json() as Json
 
     return { response, body }
   }
