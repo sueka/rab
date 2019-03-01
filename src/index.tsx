@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import '@babel/polyfill'
 
 import * as React from 'react'

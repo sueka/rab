@@ -1,5 +1,7 @@
 import { Dispatch, Action, Reducer } from 'redux'
 
+import { GitHubApi } from '../../useCase'
+import { lazyInject } from '../../ioc'
 import { Json } from '../../commonTypes'
 import { Method, HttpClient } from '../../lib/HttpClient'
 import { ActionHandler } from './base'
@@ -195,6 +197,7 @@ const handleFailToFetch: HttpClientActionHandler<FailToFetchAction> = (state, _a
 
 export class HttpClientActionDispatcher {
   private dispatch: Dispatch
+  @lazyInject('GHA') private readonly gitHubApi!: GitHubApi
 
   constructor(dispatch: Dispatch) {
     this.dispatch = dispatch
@@ -209,6 +212,10 @@ export class HttpClientActionDispatcher {
       .then(({ response, body }) => this.fetchSuccessfully(resultId, response.status, body))
       .catch(() => this.failToFetch(resultId))
   }
+
+  public getRepo = (resultId: string, owner: string, repo: string) => this.gitHubApi.getRepo({ owner, repo })
+    .then(({ response, body }) => this.fetchSuccessfully(resultId, response.status, body))
+    .catch(() => this.failToFetch(resultId))
 
   private tryToFetch: typeof tryToFetch = (...args) => this.dispatch(tryToFetch(...args))
 

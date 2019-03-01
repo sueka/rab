@@ -30,7 +30,7 @@
     "no-let": true,
     "no-array-mutation": true,
     "no-object-mutation": true,
-    "no-method-signature": true,
+    "prefer-method-signature": true,
     "no-delete": true,
     "no-loop-statement": true,
     "no-shadowed-variable": [true, { "import": false }],

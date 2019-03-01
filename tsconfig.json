@@ -16,7 +16,11 @@
 
     /* Module Resolution Options */
     "moduleResolution": "Node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+
+    /* Experimental Options */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": [
     "src"
