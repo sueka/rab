@@ -24,7 +24,7 @@ function isEmpty(object: {}) {
   return Object.keys(object).length === 0
 }
 
-export class HttpClient {
+export default class HttpClient {
   private static buildURL({ method, parameterizedEndpoint, params, query }: RequestParams) {
     const endpoint = isEmpty(params) ? parameterizedEndpoint : pathToRegexp.compile(parameterizedEndpoint)(params)
 
