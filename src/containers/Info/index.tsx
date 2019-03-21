@@ -1,16 +1,10 @@
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
 
 import { State } from '../../redux'
-import { HttpClientActionDispatcher } from '../../redux/modules/httpClient'
-import Info, { StateProps, DispatchProps } from '../../components/Info'
+import Info, { StateProps } from '../../components/Info'
 
-const mapStateToProps = ({ httpClient: { results } }: State): StateProps => ({
-  results,
+const mapStateToProps = ({ diContainer: { gitHubApi } }: State): StateProps => ({
+  gitHubApi,
 })
 
-const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
-  dispatchedActions: new HttpClientActionDispatcher(dispatch),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Info)
+export default connect(mapStateToProps)(Info)
