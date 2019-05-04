@@ -8,7 +8,7 @@ import { strictEqual } from 'assert'
 import * as path from 'path'
 
 const config = (env = { prod: false }): Configuration => {
-  strictEqual(typeof env.prod, 'boolean')
+  strictEqual(typeof env.prod, 'boolean', '--env.prod must be a flag.')
 
   return {
     mode: env.prod ? 'production' : 'development',
