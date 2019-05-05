@@ -1,3 +1,4 @@
+import assert from 'assert'
 import { Repository } from '../githubResourceTypes'
 import { HttpClient } from '../lib'
 import GitHubApi, { GetRepoInput, GetRepoOutput } from '../useCase/GitHubApi'
@@ -5,13 +6,19 @@ import GitHubApi, { GetRepoInput, GetRepoOutput } from '../useCase/GitHubApi'
 export default class GitHubApiImpl implements GitHubApi {
   private httpClient: HttpClient
 
+  /**
+   * @throws AssertionError
+   */
+  private checkInvariant() {
+
+    // TODO: 環境変数を検査するメカニズムを導入する。
+    assert('GITHUB_API_V3_ORIGIN' in process.env, 'The GITHUB_API_V3_ORIGIN environment variable does not exist.')
+  }
+
   constructor() {
     this.httpClient = new HttpClient()
 
-    // TODO: 環境変数を検査するメカニズムを導入する。
-    if (process.env.GITHUB_API_V3_ORIGIN === undefined) {
-      throw new TypeError('The GITHUB_API_V3_ORIGIN environment variable does not exist.')
-    }
+    this.checkInvariant()
   }
 
   public async getRepo({ owner, repo }: GetRepoInput): Promise<GetRepoOutput> {
