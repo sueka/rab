@@ -4,6 +4,15 @@ import { exec } from 'child_process'
 
 const ignored = ['.cache', 'coverage', 'dist', 'storybook-static', '**/*.css.d.ts', '**/*.js{,x}', '!jest.config.js']
 
+//
+//   _|                          _|
+// _|_|_|_|    _|_|_|    _|_|_|  _|  _|      _|_|_|
+//   _|      _|    _|  _|_|      _|_|      _|_|
+//   _|      _|    _|      _|_|  _|  _|        _|_|
+//     _|_|    _|_|_|  _|_|_|    _|    _|  _|_|_|
+//
+//
+
 export const clean: TaskFunction = () => del([...ignored, '!node_modules/**'])
 export const typeCheck = series(npxTask('tcm src -s'), npxTask('tsc --noEmit -p .'))
 const tslint = npxTask('tslint -p .')
@@ -23,6 +32,15 @@ export const develop = parallel(
 )
 
 export default series(testWithoutCoverage, build)
+
+//
+// _|                  _|
+// _|_|_|      _|_|    _|  _|_|_|      _|_|    _|  _|_|    _|_|_|
+// _|    _|  _|_|_|_|  _|  _|    _|  _|_|_|_|  _|_|      _|_|
+// _|    _|  _|        _|  _|    _|  _|        _|            _|_|
+// _|    _|    _|_|_|  _|  _|_|_|      _|_|_|  _|        _|_|_|
+//                         _|
+//                         _|
 
 function npx(cmd: string) {
   const cp = exec(cmd)
