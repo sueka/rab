@@ -1,15 +1,7 @@
 import { Action, Reducer } from 'redux'
 
+import { LogicError } from '../../lib/errors'
 import { GitHubApi } from '../../useCase'
-
-// TODO: remove
-class LogicError implements Error {
-  public name: string
-
-  constructor(public message = '') {
-    this.name = new.target.name
-  }
-}
 
 //
 //             _|                  _|
