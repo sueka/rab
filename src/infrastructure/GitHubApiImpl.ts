@@ -12,7 +12,7 @@ export default class GitHubApiImpl implements GitHubApi {
   private checkInvariant() {
 
     // TODO: 環境変数を検査するメカニズムを導入する。
-    assert('GITHUB_API_V3_ORIGIN' in process.env, 'The GITHUB_API_V3_ORIGIN environment variable does not exist.')
+    assert(process.env.GITHUB_API_V3_ORIGIN !== undefined, 'The GITHUB_API_V3_ORIGIN environment variable does not exist.')
   }
 
   constructor() {
