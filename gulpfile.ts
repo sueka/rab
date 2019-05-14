@@ -13,7 +13,7 @@ const ignored = ['.cache', 'coverage', 'dist', 'storybook-static', '**/*.css.d.t
 //
 //
 
-export const clean: TaskFunction = () => del([...ignored, '!node_modules/**'])
+export const clean: TaskFunction = () => del([...ignored, '!node_modules/**', '!.env'])
 const preTypeCheck = npxTask('tcm src -s')
 export const typeCheck = series(preTypeCheck, npxTask('tsc --noEmit -p .'))
 const tslint = npxTask('tslint -p .')
