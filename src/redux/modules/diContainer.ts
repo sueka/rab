@@ -33,7 +33,7 @@ export interface DiContainerState {
 //                 _|  _|
 //             _|_|    _|
 
-const diContainerActionTypes: Array<unknown> = []
+const diContainerActionTypes: unknown[] = []
 
 export type DiContainerAction = never
 

@@ -35,7 +35,7 @@ describe('action creators', () => {
 })
 
 describe('action dispatcher', () => {
-  const mockFn = jest.fn<unknown>(identity)
+  const mockFn = jest.fn(identity)
 
   // NOTE: Don't decompose to avoid to shadow variables.
   const dispatched = new CounterActionDispatcher(mockFn)
