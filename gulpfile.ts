@@ -22,13 +22,13 @@ export const staticCheck = namedTask('staticCheck', parallel(series(typeCheck, t
 const testWithoutCoverage = series(preTypeCheck, npxTask('jest'))
 const testWithCoverage = series(preTypeCheck, npxTask('jest --coverage'))
 export const test = testWithCoverage
-export const build = series(typeCheck, npxTask('webpack --env.prod'))
+export const build = series(typeCheck, npxTask('webpack'))
 export const buildStorybook = series(typeCheck, npxTask('build-storybook'))
 
 export const develop = parallel(
   continuousTask('src', staticCheck),
   series(preTypeCheck, npxTask('jest --watch --watchPathIgnorePatterns \'\\.css\\.d\\.ts$\'')),
-  npxTask('webpack-dev-server'),
+  npxTask('webpack-dev-server --config webpack.config.dev.ts'),
   npxTask('start-storybook --ci --quiet -p 5678'),
 )
 

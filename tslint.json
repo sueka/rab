@@ -22,7 +22,7 @@
         "esSpecCompliant": true
       }
     ],
-    "no-submodule-imports": [true, "redux-saga/effects", "uuid/interfaces"],
+    "no-submodule-imports": [true, "redux-saga/effects"],
     "jsx-curly-spacing": [true, "always"],
     "jsx-boolean-value": [true, "never"],
     "no-var-keyword": true,
