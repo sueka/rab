@@ -1,8 +1,10 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
+import { FormattedMessage } from 'react-intl'
 
 import { Repository } from '../../githubResourceTypes'
 import { GitHubApi } from '../../useCase'
+import messages from './messages'
 
 export interface StateProps {
   gitHubApi: GitHubApi
@@ -38,10 +40,14 @@ export default class Info extends React.Component<Props, LocalState> {
     if (response === null) {
       return (
         <p>
-          <Helmet>
-            <title>info</title>
-          </Helmet>
-          Fetching not done.
+          <FormattedMessage { ...messages.title }>
+            { (title) => (
+              <Helmet>
+                <title>{ title }</title>
+              </Helmet>
+            ) }
+          </FormattedMessage>
+          <FormattedMessage { ...messages.fetchingNotDone } />
         </p>
       )
     }
@@ -49,19 +55,27 @@ export default class Info extends React.Component<Props, LocalState> {
     if (response.status !== 200) {
       return (
         <p>
-          <Helmet>
-            <title>info</title>
-          </Helmet>
-          Fetching done with non-200.
+          <FormattedMessage { ...messages.title }>
+            { (title) => (
+              <Helmet>
+                <title>{ title }</title>
+              </Helmet>
+            ) }
+          </FormattedMessage>
+          <FormattedMessage { ...messages.fetchingDoneWithNon200 } />
         </p>
       )
     }
 
     return (
       <p>
-        <Helmet>
-          <title>info</title>
-        </Helmet>
+        <FormattedMessage { ...messages.title }>
+          { (title) => (
+            <Helmet>
+              <title>{ title }</title>
+            </Helmet>
+          ) }
+        </FormattedMessage>
         { response.body.name }
       </p>
     )

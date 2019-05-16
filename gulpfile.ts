@@ -14,7 +14,8 @@ const ignored = ['.cache', 'coverage', 'dist', 'storybook-static', '**/*.css.d.t
 //
 
 export const clean: TaskFunction = () => del([...ignored, '!node_modules/**', '!.env'])
-const preTypeCheck = npxTask('tcm src -s')
+const extractMessages = npxTask('extract-messages --flat --default-locale=en --locales=en --output=locales \'src/**/messages.ts\'')
+const preTypeCheck = parallel(npxTask('tcm src -s'), extractMessages)
 export const typeCheck = series(preTypeCheck, npxTask('tsc --noEmit -p .'))
 const tslint = npxTask('tslint -p .')
 const stylelint = npxTask('stylelint src')
@@ -26,6 +27,7 @@ export const build = series(typeCheck, npxTask('webpack'))
 export const buildStorybook = series(typeCheck, npxTask('build-storybook'))
 
 export const develop = parallel(
+  continuousTask('src/**/messages.ts', extractMessages),
   continuousTask('src', staticCheck),
   series(preTypeCheck, npxTask('jest --watch --watchPathIgnorePatterns \'\\.css\\.d\\.ts$\'')),
   npxTask('webpack-dev-server --config webpack.config.dev.ts'),

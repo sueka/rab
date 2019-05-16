@@ -1,0 +1,13 @@
+{
+  "src.components.App.counter": "counter",
+  "src.components.App.helloWorld": "Hello, world!",
+  "src.components.App.info": "info",
+  "src.components.Counter.decrement": "-",
+  "src.components.Counter.increment": "+",
+  "src.components.Counter.incrementAsync": "+ async",
+  "src.components.Counter.incrementIfOdd": "+ if odd",
+  "src.components.Counter.title": "counter",
+  "src.components.Info.fetchingDoneWithNon200": "Fetching done with non-200.",
+  "src.components.Info.fetchingNotDone": "Fetching not done.",
+  "src.components.Info.title": "info"
+}

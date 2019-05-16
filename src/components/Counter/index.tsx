@@ -1,7 +1,9 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
+import { FormattedMessage } from 'react-intl'
 
 import { CounterActionDispatcher } from '../../redux/modules/counter'
+import messages from './messages'
 
 export interface StateProps {
   value: number
@@ -31,14 +33,18 @@ export default class Counter extends React.Component<Props> {
 
     return (
       <div>
-        <Helmet>
-          <title>counter</title>
-        </Helmet>
+        <FormattedMessage { ...messages.title }>
+          { (title) => (
+            <Helmet>
+              <title>{ title }</title>
+            </Helmet>
+          ) }
+        </FormattedMessage>
         { value }
-        <button onClick={ increment }>+</button>
-        <button onClick={ decrement }>-</button>
-        <button onClick={ this.handleIncrementIfOdd }>+ if odd</button>
-        <button onClick={ this.handleIncrementAsync }>+ async</button>
+        <button onClick={ increment }><FormattedMessage { ...messages.increment } /></button>
+        <button onClick={ decrement }><FormattedMessage { ...messages.decrement } /></button>
+        <button onClick={ this.handleIncrementIfOdd }><FormattedMessage { ...messages.incrementIfOdd } /></button>
+        <button onClick={ this.handleIncrementAsync }><FormattedMessage { ...messages.incrementAsync } /></button>
       </div>
     )
   }
