@@ -3,6 +3,8 @@ import * as ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createBrowserHistory } from 'history'
 import { ConnectedRouter } from 'connected-react-router'
+import { DragDropContextProvider } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 
 import { configureStore } from './redux'
 
@@ -19,7 +21,9 @@ ReactDOM.render(
     <ErrorBoundary>
       <Provider { ...{ store } }>
         <ConnectedRouter { ...{ history } }>
-          <App />
+          <DragDropContextProvider backend={ HTML5Backend }>
+            <App />
+          </DragDropContextProvider>
         </ConnectedRouter>
       </Provider>
     </ErrorBoundary>
