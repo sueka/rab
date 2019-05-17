@@ -48,7 +48,7 @@ interface DecrementAction extends Action<typeof DECREMENT> {}
 export type CounterAction = NopAction | IncrementAction | DecrementAction
 
 function isCounterAction(action: Action): action is CounterAction {
-  return counterActionTypes.some((counterActionType) => counterActionType === action.type)
+  return counterActionTypes.includes(action.type)
 }
 
 //
