@@ -1,9 +1,10 @@
 import * as path from 'path'
+import { Configuration } from 'webpack'
 import 'webpack-dev-server'
 
 import prodConfig from './webpack.config'
 
-export default {
+const config: Configuration = {
   ...prodConfig,
   mode: 'development',
   devServer: {
@@ -12,3 +13,5 @@ export default {
     historyApiFallback: true,
   },
 }
+
+export default config

@@ -65,6 +65,7 @@
     "webpack-cli": "^3.3.2"
   },
   "devDependencies": {
+    "@types/webpack-dev-server": "^3.1.5",
     "awesome-typescript-loader": "^5.2.1",
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.3.0",
