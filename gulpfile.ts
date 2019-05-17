@@ -14,19 +14,20 @@ const ignored = ['.cache', 'coverage', 'dist', 'storybook-static', '**/*.css.d.t
 //
 
 export const clean: TaskFunction = () => del([...ignored, '!node_modules/**'])
-export const typeCheck = series(npxTask('tcm src -s'), npxTask('tsc --noEmit -p .'))
+const preTypeCheck = npxTask('tcm src -s')
+export const typeCheck = series(preTypeCheck, npxTask('tsc --noEmit -p .'))
 const tslint = npxTask('tslint -p .')
 const stylelint = npxTask('stylelint src')
-export const staticCheck = namedTask('staticCheck', parallel(typeCheck, tslint, stylelint))
-const testWithoutCoverage = series(staticCheck, npxTask('jest'))
-const testWithCoverage = series(staticCheck, npxTask('jest --coverage'))
+export const staticCheck = namedTask('staticCheck', parallel(series(typeCheck, tslint), stylelint))
+const testWithoutCoverage = series(preTypeCheck, npxTask('jest'))
+const testWithCoverage = series(preTypeCheck, npxTask('jest --coverage'))
 export const test = testWithCoverage
 export const build = series(typeCheck, npxTask('webpack --env.prod'))
 export const buildStorybook = series(typeCheck, npxTask('build-storybook'))
 
 export const develop = parallel(
   continuousTask('src', staticCheck),
-  npxTask('jest --watch --watchPathIgnorePatterns \'\\.css\\.d\\.ts$\''),
+  series(preTypeCheck, npxTask('jest --watch --watchPathIgnorePatterns \'\\.css\\.d\\.ts$\'')),
   npxTask('webpack-dev-server'),
   npxTask('start-storybook --ci --quiet -p 5678'),
 )
