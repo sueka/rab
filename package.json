@@ -6,6 +6,12 @@
     "url": "https://github.com/sueka/react-app-prototype.git"
   },
   "license": "CC0-1.0",
+  "scripts": {
+    "start": "gulp --silent develop",
+    "test": "gulp --silent test",
+    "build": "gulp --silent build",
+    "clean": "gulp --silent clean"
+  },
   "dependencies": {
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
