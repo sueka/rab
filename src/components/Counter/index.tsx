@@ -13,7 +13,9 @@ export interface DispatchProps {
   dispatchedActions: CounterActionDispatcher
 }
 
-type Props = StateProps & DispatchProps
+type Props =
+  & StateProps
+  & DispatchProps
 
 export default class Counter extends React.Component<Props> {
   private handleIncrementIfOdd = () => {

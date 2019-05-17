@@ -17,7 +17,8 @@ interface LocalState {
   } | null
 }
 
-type Props = StateProps
+type Props =
+  & StateProps
 
 export default class Info extends React.Component<Props, LocalState> {
   public state: Readonly<LocalState> = {
