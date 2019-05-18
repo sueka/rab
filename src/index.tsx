@@ -11,7 +11,7 @@ import { configureStore } from './redux'
 import en from '../public/locales/en.json'
 
 import ErrorBoundary from './components/ErrorBoundary'
-import App from './components/App'
+import { App } from './components'
 
 import './styles.css'
 

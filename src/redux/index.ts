@@ -12,7 +12,10 @@ export interface State {
   counter: CounterState
 }
 
-export type Action = LocationChangeAction & DiContainerAction & CounterAction
+export type Action =
+  & LocationChangeAction
+  & DiContainerAction
+  & CounterAction
 
 const createReducer = (history: History) => combineReducers<State, Action>({
   router: connectRouter(history),
