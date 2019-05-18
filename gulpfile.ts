@@ -48,8 +48,8 @@ export default series(testWithoutCoverage, build)
 function npx(cmd: string) {
   const cp = exec(cmd)
 
-  cp.stdout.pipe(process.stdout)
-  cp.stderr.pipe(process.stderr)
+  cp.stdout!.pipe(process.stdout)
+  cp.stderr!.pipe(process.stderr)
 
   return cp
 }
