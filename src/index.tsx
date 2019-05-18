@@ -8,7 +8,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { IntlProvider } from 'react-intl'
 
 import { configureStore } from './redux'
-import en from '../locales/en.json'
+import en from '../public/locales/en.json'
 
 import ErrorBoundary from './components/ErrorBoundary'
 import App from './components/App'
