@@ -1,6 +1,7 @@
 import { Configuration } from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import DotEnvPlugin from 'dotenv-webpack'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 import * as path from 'path'
 
 const config: Configuration = {
@@ -44,6 +45,16 @@ const config: Configuration = {
     new DotEnvPlugin({
       path: path.resolve(__dirname, '.env'),
     }),
+    new CopyWebpackPlugin(
+      [{
+          from: '.',
+          to: '',
+        },
+      ],
+      {
+        context: 'public',
+      },
+    ),
   ],
   devtool: 'source-map',
 }
