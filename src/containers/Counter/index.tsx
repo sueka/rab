@@ -10,7 +10,7 @@ const mapStateToProps = ({ counter: { count } }: State): StateProps => ({
 })
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
-  dispatchedActions: new CounterActionDispatcher(dispatch),
+  ...new CounterActionDispatcher(dispatch),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter)

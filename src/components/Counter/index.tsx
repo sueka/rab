@@ -2,7 +2,6 @@ import * as React from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage } from 'react-intl'
 
-import { CounterActionDispatcher } from '../../redux/modules/counter'
 import messages from './messages'
 
 export interface StateProps {
@@ -10,7 +9,10 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  dispatchedActions: CounterActionDispatcher
+  increment(): void
+  decrement(): void
+  incrementIfOdd(value: number): void
+  incrementAsync(ms: number): void
 }
 
 type Props =
@@ -19,19 +21,19 @@ type Props =
 
 export default class Counter extends React.Component<Props> {
   private handleIncrementIfOdd = () => {
-    const { value, dispatchedActions: { incrementIfOdd } } = this.props
+    const { value, incrementIfOdd } = this.props
 
     incrementIfOdd(value)
   }
 
   private handleIncrementAsync = () => {
-    const { dispatchedActions: { incrementAsync } } = this.props
+    const { incrementAsync } = this.props
 
     incrementAsync(1000)
   }
 
   public render() {
-    const { value, dispatchedActions: { increment, decrement } } = this.props
+    const { value, increment, decrement } = this.props
 
     return (
       <div>
