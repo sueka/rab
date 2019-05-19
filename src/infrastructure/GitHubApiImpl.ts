@@ -1,8 +1,11 @@
 import assert from 'assert'
+import { injectable } from 'inversify'
+
 import { Repository } from '../githubResourceTypes'
 import { HttpClient } from '../lib'
 import GitHubApi, { GetRepoInput, GetRepoOutput } from '../useCase/GitHubApi'
 
+@injectable()
 export default class GitHubApiImpl implements GitHubApi {
   private httpClient: HttpClient
 

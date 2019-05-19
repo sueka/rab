@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 import Helmet from 'react-helmet'
 import { FormattedMessage } from 'react-intl'
 
-import { Route } from '..'
-import { Counter, Info } from '../../containers'
+import { Info, Route } from '..'
+import { Counter } from '../../containers'
 import messages from './messages'
 
 import * as classes from './styles.css'
