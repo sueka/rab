@@ -9,7 +9,7 @@ import { DragDropContextProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { IntlProvider } from 'react-intl'
 
-import { configureStore } from './redux'
+import { rootSaga, configureStore } from './redux'
 import en from '../public/locales/en.json'
 
 import ErrorBoundary from './components/ErrorBoundary'
@@ -18,7 +18,9 @@ import { App } from './components'
 import './styles.css'
 
 const history = createBrowserHistory()
-const store = configureStore(history)
+const { store, sagaMiddleware } = configureStore(history)
+
+sagaMiddleware.run(rootSaga)
 
 const messages = {
   en,

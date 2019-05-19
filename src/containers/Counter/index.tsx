@@ -1,16 +1,18 @@
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
 
 import { State } from '../../redux'
-import { CounterActionDispatcher } from '../../redux/modules/counter'
+import { increment, decrement, incrementIfOdd, incrementAsync } from '../../redux/modules/counter'
 import Counter, { StateProps, DispatchProps } from '../../components/Counter'
 
 const mapStateToProps = ({ counter: { count } }: State): StateProps => ({
   value: count,
 })
 
-const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
-  ...new CounterActionDispatcher(dispatch),
-})
+const mapDispatchToProps: DispatchProps = {
+  increment,
+  decrement,
+  incrementIfOdd,
+  incrementAsync,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter)
