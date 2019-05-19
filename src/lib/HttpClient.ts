@@ -25,22 +25,20 @@ function isEmpty(object: {}) {
 }
 
 export default class HttpClient {
-  private static buildURL({ method, parameterizedEndpoint, params, query }: RequestParams) {
+  private static buildRequestInfo({ method, parameterizedEndpoint, params, query }: RequestParams): RequestInfo {
     const endpoint = isEmpty(params) ? parameterizedEndpoint : pathToRegexp.compile(parameterizedEndpoint)(params)
 
     switch (method) {
       case 'GET':
-        const urlBuilder = new URL(endpoint)
         const urlSearchParams = new URLSearchParams()
 
         Object.entries(query).forEach(([key, value]) => {
           urlSearchParams.append(key, value)
         })
 
-        // tslint:disable-next-line:no-object-mutation
-        urlBuilder.search = urlSearchParams.toString()
+        // TODO: endpoint に search が含まれる場合の処理
 
-        return urlBuilder.href
+        return `${ endpoint }?${ urlSearchParams.toString() }`
       case 'POST':
         return endpoint
     }
@@ -67,9 +65,9 @@ export default class HttpClient {
   }
 
   public async fetch(request: RequestParams): Promise<ResponseParams> {
-    const url = HttpClient.buildURL(request)
+    const requestInfo = HttpClient.buildRequestInfo(request)
     const requestInit = HttpClient.buildRequestInit(request)
-    const response = await fetch(url, requestInit)
+    const response = await fetch(requestInfo, requestInit)
 
     // NOTE: Body#json() の返り値型は Promise<any> なので、この型指定は型キャストではない。
     const body = await response.json() as Json

@@ -6,7 +6,7 @@ import Helmet from 'react-helmet'
 import { FormattedMessage } from 'react-intl'
 
 import { Info, Route } from '..'
-import { Counter } from '../../containers'
+import { Counter, LocaleSelect } from '../../containers'
 import messages from './messages'
 
 import * as classes from './styles.css'
@@ -17,6 +17,7 @@ const App: React.FunctionComponent = () => (
       titleTemplate="%s - react-app-prototype"
       defaultTitle="react-app-prototype"
     />
+    <LocaleSelect />
     <Link to="/counter"><FormattedMessage { ...messages.counter } /></Link>
     <Link to="/info"><FormattedMessage { ...messages.info } /></Link>
     <p>

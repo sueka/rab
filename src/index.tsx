@@ -7,13 +7,12 @@ import { createBrowserHistory } from 'history'
 import { ConnectedRouter } from 'connected-react-router'
 import { DragDropContextProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
-import { IntlProvider } from 'react-intl'
 
 import { rootSaga, configureStore } from './redux'
-import en from '../public/locales/en.json'
 
 import ErrorBoundary from './components/ErrorBoundary'
 import { App } from './components'
+import { IntlProvider } from './containers'
 
 import './styles.css'
 
@@ -22,15 +21,11 @@ const { store, sagaMiddleware } = configureStore(history)
 
 sagaMiddleware.run(rootSaga)
 
-const messages = {
-  en,
-}
-
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
       <Provider { ...{ store } }>
-        <IntlProvider locale="en" messages={ messages.en }>
+        <IntlProvider>
           <ConnectedRouter { ...{ history } }>
             <DragDropContextProvider backend={ HTML5Backend }>
               <App />

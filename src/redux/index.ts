@@ -5,18 +5,27 @@ import { History } from 'history'
 import { RouterState, LocationChangeAction, connectRouter, routerMiddleware } from 'connected-react-router'
 
 import { CounterState, CounterAction, counterSaga, createCounterReducer } from './modules/counter'
+import { LocaleSelectorState, LocaleSelectorAction, localeSelectorSaga, createLocaleSelectorReducer } from './modules/localeSelector'
 
 export interface State {
   router: RouterState
   counter: CounterState
+  localeSelector: LocaleSelectorState
 }
 
 export type Action =
   & LocationChangeAction
   & CounterAction
+  & LocaleSelectorAction
+
+import { addLocaleData } from 'react-intl'
+import en from 'react-intl/locale-data/en'
+
+addLocaleData(en)
 
 export function* rootSaga(): SagaIterator {
   yield spawn(counterSaga)
+  yield spawn(localeSelectorSaga)
 }
 
 // FIXME: configureStore に含めるべきかも
@@ -26,6 +35,13 @@ const createReducer = (history: History) => combineReducers<State, Action>({
   router: connectRouter(history),
   counter: createCounterReducer({
     count: 0,
+  }),
+  localeSelector: createLocaleSelectorReducer({
+    availableLocales: [
+      'en',
+    ],
+    locale: 'en',
+    messages: {},
   }),
 })
 
