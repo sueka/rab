@@ -37,7 +37,11 @@ export const NOP = '@@react-app-prototype/counter/NOP'
 export const INCREMENT = '@@react-app-prototype/counter/INCREMENT'
 export const DECREMENT = '@@react-app-prototype/counter/DECREMENT'
 
-const counterActionTypes = [NOP, INCREMENT, DECREMENT]
+const counterActionTypes = [
+  NOP,
+  INCREMENT,
+  DECREMENT,
+]
 
 interface NopAction extends Action<typeof NOP> {}
 
@@ -45,7 +49,10 @@ interface IncrementAction extends Action<typeof INCREMENT> {}
 
 interface DecrementAction extends Action<typeof DECREMENT> {}
 
-export type CounterAction = NopAction | IncrementAction | DecrementAction
+export type CounterAction =
+  | NopAction
+  | IncrementAction
+  | DecrementAction
 
 function isCounterAction(action: Action): action is CounterAction {
   return counterActionTypes.includes(action.type)
