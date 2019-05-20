@@ -10,3 +10,4 @@ export abstract class AbstractError extends Error {
 
 // tslint:disable:max-classes-per-file
 export class LogicError extends AbstractError {}
+export class UnreachableError extends AbstractError {}

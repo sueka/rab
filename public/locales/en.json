@@ -7,7 +7,10 @@
   "src.components.Counter.incrementAsync": "+ async",
   "src.components.Counter.incrementIfOdd": "+ if odd",
   "src.components.Counter.title": "counter",
+  "src.components.Info.fetchData": "Fetch data",
+  "src.components.Info.fetching": "Fetching..",
+  "src.components.Info.fetchingDoneWith200": "Fetching done with 200.",
   "src.components.Info.fetchingDoneWithNon200": "Fetching done with non-200.",
-  "src.components.Info.fetchingNotDone": "Fetching not done.",
+  "src.components.Info.fetchingNotStarted": "Fetching not started.",
   "src.components.Info.title": "info"
 }

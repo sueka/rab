@@ -36,10 +36,11 @@ export default class GitHubApiImpl implements GitHubApi {
 
     // TODO: validate body
     return {
+      successful: status === 200,
       response: {
         status,
+        body: body as Repository,
       },
-      body: body as Repository,
     }
   }
 }

@@ -6,10 +6,11 @@ export interface GetRepoInput {
 }
 
 export interface GetRepoOutput {
+  successful: boolean
   response: {
     status: number
+    body: Repository
   }
-  body: Repository
 }
 
 export default interface GitHubApi {
