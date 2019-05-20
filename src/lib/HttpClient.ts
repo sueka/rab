@@ -38,7 +38,13 @@ export default class HttpClient {
 
         // TODO: endpoint に search が含まれる場合の処理
 
-        return `${ endpoint }?${ urlSearchParams.toString() }`
+        const search = urlSearchParams.toString()
+
+        if (search !== "") {
+          return `${ endpoint }?${ urlSearchParams.toString() }`
+        }
+
+        return endpoint
       case 'POST':
         return endpoint
     }
