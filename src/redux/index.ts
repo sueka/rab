@@ -45,13 +45,20 @@ const createReducer = (history: History) => combineReducers<State, Action>({
   }),
 })
 
+// TODO: use globalThis
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
+  }
+}
+
 export const configureStore = (history: History): {
   store: Store<State, Action>
   sagaMiddleware: SagaMiddleware
 } => {
   const store = createStore(
     createReducer(history),
-    compose(
+    (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose)(
       applyMiddleware(sagaMiddleware),
       applyMiddleware(routerMiddleware(history))
     )
