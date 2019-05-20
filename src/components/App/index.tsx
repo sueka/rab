@@ -24,8 +24,8 @@ const App: React.FunctionComponent = () => (
       <FormattedMessage { ...messages.helloWorld } />
     </p>
     <Switch>
-      <Route exact strict sensitive path="/counter" component={ Counter } />
-      <Route exact strict sensitive path="/info" component={ Info } />
+      <Route exact strict sensitive path="/counter" render={ () => <Counter /> } />
+      <Route exact strict sensitive path="/info" render={ () => <Info /> } />
     </Switch>
   </div>
 )
