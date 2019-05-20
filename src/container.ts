@@ -1,3 +1,5 @@
+import 'reflect-metadata'
+
 import { Container } from 'inversify'
 
 import { GitHubApi } from './useCase'

@@ -1,4 +1,4 @@
-import 'reflect-metadata'
+import 'reflect-metadata' // TODO: remove if possible
 
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
