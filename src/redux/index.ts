@@ -20,8 +20,10 @@ export type Action =
 
 import { addLocaleData } from 'react-intl'
 import en from 'react-intl/locale-data/en'
+import ja from 'react-intl/locale-data/ja'
 
 addLocaleData(en)
+addLocaleData(ja)
 
 export function* rootSaga(): SagaIterator {
   yield spawn(counterSaga)
@@ -39,6 +41,7 @@ const createReducer = (history: History) => combineReducers<State, Action>({
   localeSelector: createLocaleSelectorReducer({
     availableLocales: [
       'en',
+      'ja',
     ],
     locale: 'en',
     messages: {},

@@ -1,0 +1,13 @@
+{
+  "src.components.App.counter": "カウンター",
+  "src.components.App.helloWorld": "Hello, world!",
+  "src.components.App.info": "情報",
+  "src.components.Counter.decrement": "-",
+  "src.components.Counter.increment": "+",
+  "src.components.Counter.incrementAsync": "非同期に +",
+  "src.components.Counter.incrementIfOdd": "奇数なら +",
+  "src.components.Counter.title": "カウンター",
+  "src.components.Info.fetchingDoneWithNon200": "読み込みは非200で終了しました。",
+  "src.components.Info.fetchingNotDone": "読み込みは終了していません。",
+  "src.components.Info.title": "情報"
+}

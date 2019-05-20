@@ -14,7 +14,7 @@ const ignored = ['.cache', 'coverage', 'dist', 'storybook-static', '**/*.css.d.t
 //
 
 export const clean: TaskFunction = () => del([...ignored, '!node_modules/**', '!.env'])
-const extractMessages = npxTask('extract-messages --flat --default-locale=en --locales=en --output=\'public/locales\' \'src/**/messages.ts\'')
+const extractMessages = npxTask('extract-messages --flat --default-locale=en --locales=en,ja --output=\'public/locales\' \'src/**/messages.ts\'')
 const preTypeCheck = parallel(npxTask('tcm src -s'), extractMessages)
 export const typeCheck = series(preTypeCheck, npxTask('tsc --noEmit -p .'))
 const tslint = npxTask('tslint -p .')
