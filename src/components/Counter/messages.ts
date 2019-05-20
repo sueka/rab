@@ -5,6 +5,10 @@ export default defineMessages({
     id: 'src.components.Counter.title',
     defaultMessage: 'counter',
   },
+  reset: {
+    id: 'src.components.Counter.reset',
+    defaultMessage: 'reset',
+  },
   increment: {
     id: 'src.components.Counter.increment',
     defaultMessage: '+',

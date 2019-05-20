@@ -9,6 +9,7 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
+  reset(): void
   increment(): void
   decrement(): void
   incrementIfOdd(value: number): void
@@ -33,7 +34,7 @@ export default class Counter extends React.Component<Props> {
   }
 
   public render() {
-    const { value, increment, decrement } = this.props
+    const { value, reset, increment, decrement } = this.props
 
     return (
       <div>
@@ -45,6 +46,7 @@ export default class Counter extends React.Component<Props> {
           ) }
         </FormattedMessage>
         { value }
+        <button onClick={ reset }><FormattedMessage { ...messages.reset } /></button>
         <button onClick={ increment }><FormattedMessage { ...messages.increment } /></button>
         <button onClick={ decrement }><FormattedMessage { ...messages.decrement } /></button>
         <button onClick={ this.handleIncrementIfOdd }><FormattedMessage { ...messages.incrementIfOdd } /></button>

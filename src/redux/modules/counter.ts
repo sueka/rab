@@ -35,17 +35,21 @@ export interface CounterState {
 //                 _|  _|
 //             _|_|    _|
 
+export const RESET = '@@react-app-prototype/counter/RESET'
 export const NOP = '@@react-app-prototype/counter/NOP'
 export const INCREMENT = '@@react-app-prototype/counter/INCREMENT'
 export const DECREMENT = '@@react-app-prototype/counter/DECREMENT'
 export const INCREMENT_ASYNC = '@@react-app-prototype/counter/INCREMENT_ASYNC'
 
 const counterActionTypes = [
+  RESET,
   NOP,
   INCREMENT,
   DECREMENT,
   INCREMENT_ASYNC,
 ]
+
+interface ResetAction extends Action<typeof RESET> {}
 
 interface NopAction extends Action<typeof NOP> {}
 
@@ -60,6 +64,7 @@ interface IncrementAsyncAction extends Action<typeof INCREMENT_ASYNC> {
 }
 
 export type CounterAction =
+  | ResetAction
   | NopAction
   | IncrementAction
   | DecrementAction
@@ -85,6 +90,10 @@ function isCounterAction(action: Action): action is CounterAction {
 //   _|_|_|  _|          _|_|_|    _|_|_|      _|_|    _|_|    _|        _|_|_|
 //
 //
+
+export const reset = (): ResetAction => ({
+  type: RESET,
+})
 
 export const nop = (): NopAction => ({
   type: NOP,
@@ -171,6 +180,7 @@ export const createCounterReducer: (initialState: CounterState) => Reducer<Count
   }
 
   switch (action.type) {
+    case RESET: return initialState
     case NOP: return handleNop(state, action)
     case INCREMENT: return handleIncrement(state, action)
     case DECREMENT: return handleDecrement(state, action)
