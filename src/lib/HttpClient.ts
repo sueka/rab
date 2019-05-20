@@ -40,7 +40,7 @@ export default class HttpClient {
 
         const search = urlSearchParams.toString()
 
-        if (search !== "") {
+        if (search !== '') {
           return `${ endpoint }?${ urlSearchParams.toString() }`
         }
 

@@ -58,7 +58,7 @@ export const configureStore = (history: History): {
 } => {
   const store = createStore(
     createReducer(history),
-    (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose)(
+    (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ !== undefined ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose)(
       applyMiddleware(sagaMiddleware),
       applyMiddleware(routerMiddleware(history))
     )
