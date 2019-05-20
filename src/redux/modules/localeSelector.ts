@@ -38,14 +38,22 @@ export interface LocaleSelectorState {
 //             _|_|    _|
 
 export const SELECT = '@@react-app-prototype/localeSelector/SELECT'
+export const SET_LOCALE = '@@react-app-prototype/localeSelector/SET_LOCALE'
 export const SET_MESSAGES = '@@react-app-prototype/localeSelector/SET_MESSAGES'
 
 const localeSelectorActionTypes = [
   SELECT,
+  SET_LOCALE,
   SET_MESSAGES,
 ]
 
 interface SelectAction extends Action<typeof SELECT> {
+  payload: {
+    locale: string
+  }
+}
+
+interface SetLocaleAction extends Action<typeof SET_LOCALE> {
   payload: {
     locale: string
   }
@@ -59,6 +67,7 @@ interface SetMessagesAction extends Action<typeof SET_MESSAGES> {
 
 export type LocaleSelectorAction =
   | SelectAction
+  | SetLocaleAction
   | SetMessagesAction
 
 function isLocaleSelectorAction(action: Action): action is LocaleSelectorAction {
@@ -84,6 +93,13 @@ function isLocaleSelectorAction(action: Action): action is LocaleSelectorAction 
 
 export const select = (locale: string): SelectAction => ({
   type: SELECT,
+  payload: {
+    locale,
+  },
+})
+
+export const setLocale = (locale: string): SetLocaleAction => ({
+  type: SET_LOCALE,
   payload: {
     locale,
   },
@@ -119,6 +135,7 @@ function* selectSaga({ payload: { locale } }: SelectAction) {
     // TODO: cache
 
     yield put(setMessages(body as Record<string, string>))
+    yield put(setLocale(locale))
   } catch (error) {
     yield null
   }
@@ -149,6 +166,11 @@ type LocaleSelectorActionHandler<A extends LocaleSelectorAction> = ActionHandler
 
 const handleSelect: LocaleSelectorActionHandler<SelectAction> = (state) => state
 
+const handleSetLocale: LocaleSelectorActionHandler<SetLocaleAction> = (state, { payload: { locale } }) => ({
+  ...state,
+  locale,
+})
+
 const handleSetMessages: LocaleSelectorActionHandler<SetMessagesAction> = (state, { payload: { messages } }) => ({
   ...state,
   messages,
@@ -170,6 +192,7 @@ export const createLocaleSelectorReducer: (initialState: LocaleSelectorState) =>
 
   switch (action.type) {
     case SELECT: return handleSelect(state, action)
+    case SET_LOCALE: return handleSetLocale(state, action)
     case SET_MESSAGES: return handleSetMessages(state, action)
   }
 }
