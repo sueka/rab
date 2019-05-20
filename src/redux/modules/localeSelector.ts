@@ -116,6 +116,8 @@ function* selectSaga({ payload: { locale } }: SelectAction) {
       query: {},
     })
 
+    // TODO: cache
+
     yield put(setMessages(body as Record<string, string>))
   } catch (error) {
     yield null
