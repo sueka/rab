@@ -26,11 +26,11 @@ ReactDOM.render(
     <ErrorBoundary>
       <Provider { ...{ store } }>
         <IntlProvider>
-          <ConnectedRouter { ...{ history } }>
-            <DragDropContextProvider backend={ HTML5Backend }>
+          <DragDropContextProvider backend={ HTML5Backend }>
+            <ConnectedRouter { ...{ history } }>
               <App />
-            </DragDropContextProvider>
-          </ConnectedRouter>
+            </ConnectedRouter>
+          </DragDropContextProvider>
         </IntlProvider>
       </Provider>
     </ErrorBoundary>
