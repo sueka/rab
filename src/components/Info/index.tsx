@@ -1,11 +1,14 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
 
 import container from '../../container'
 import { Repository } from '../../githubResourceTypes'
 import { GitHubApi } from '../../useCase'
 import messages from './messages'
+
+type Props =
+  & InjectedIntlProps
 
 interface LocalState {
   response: {
@@ -14,7 +17,7 @@ interface LocalState {
   } | null
 }
 
-export default class Info extends React.Component<{}, LocalState> {
+class Info extends React.Component<Props, LocalState> {
   private gitHubApi: GitHubApi = container.get('GitHubApi')
 
   public state: Readonly<LocalState> = {
@@ -29,41 +32,24 @@ export default class Info extends React.Component<{}, LocalState> {
     })
   }
 
-  public render() {
+  private get statusText() {
+    const { intl: { formatMessage } } = this.props
     const { response } = this.state
 
     if (response === null) {
-      return (
-        <p>
-          <FormattedMessage { ...messages.title }>
-            { (title) => (
-              <Helmet>
-                <title>{ title }</title>
-              </Helmet>
-            ) }
-          </FormattedMessage>
-          <FormattedMessage { ...messages.fetchingNotDone } />
-        </p>
-      )
+      return formatMessage(messages.fetchingNotDone)
     }
 
     if (response.status !== 200) {
-      return (
-        <p>
-          <FormattedMessage { ...messages.title }>
-            { (title) => (
-              <Helmet>
-                <title>{ title }</title>
-              </Helmet>
-            ) }
-          </FormattedMessage>
-          <FormattedMessage { ...messages.fetchingDoneWithNon200 } />
-        </p>
-      )
+      return formatMessage(messages.fetchingDoneWithNon200)
     }
 
+    return response.body.name
+  }
+
+  public render() {
     return (
-      <p>
+      <>
         <FormattedMessage { ...messages.title }>
           { (title) => (
             <Helmet>
@@ -71,8 +57,12 @@ export default class Info extends React.Component<{}, LocalState> {
             </Helmet>
           ) }
         </FormattedMessage>
-        { response.body.name }
-      </p>
+        <p>
+          { this.statusText }
+        </p>
+      </>
     )
   }
 }
+
+export default injectIntl(Info)
