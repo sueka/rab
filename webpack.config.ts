@@ -38,6 +38,12 @@ const config: Configuration = {
       }
     ]
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      maxSize: 1048576,
+    },
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html'),
