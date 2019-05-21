@@ -11,8 +11,8 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { rootSaga, configureStore } from './redux'
 
 import ErrorBoundary from './components/ErrorBoundary'
-import { App } from './components'
-import { IntlProvider } from './containers'
+import App from './components/App'
+import IntlProvider from './containers/IntlProvider'
 
 import './styles.css'
 

@@ -1,11 +1,14 @@
 import * as React from 'react'
 import { Route as OriginalRoute, RouteProps as Props, RouteComponentProps } from 'react-router'
 
-import { ErrorBoundary } from '..'
+import ErrorBoundary from '../ErrorBoundary'
 
+// TODO: ban mandatory props
 const withErrorBoundary: (Component: React.ComponentType<RouteComponentProps> | React.ComponentType<unknown>) => React.FunctionComponent<RouteComponentProps> = (Component) => (props) => (
   <ErrorBoundary>
-    <Component { ...props } />
+    <React.Suspense fallback={ <div>loading..</div> }>
+      <Component { ...props } />
+    </React.Suspense>
   </ErrorBoundary>
 )
 
