@@ -44,6 +44,7 @@ const config: Configuration = {
     }),
     new DotEnvPlugin({
       path: path.resolve(__dirname, '.env'),
+      safe: true,
     }),
     new CopyWebpackPlugin(
       [{
