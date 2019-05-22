@@ -1,4 +1,4 @@
-import { Repository } from '../gitHubResourceTypes'
+import { Repository } from '../types/gitHubResourceTypes'
 
 export interface GetRepoInput {
   owner: string

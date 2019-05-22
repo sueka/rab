@@ -1,7 +1,7 @@
 import assert from 'assert'
 import { injectable } from 'inversify'
 
-import { Repository } from '../githubResourceTypes'
+import { validateAsRepository } from '../lib/validators/gitHubResourceValidators'
 import { HttpClient } from '../lib'
 import GitHubApi, { GetRepoInput, GetRepoOutput } from '../useCase/GitHubApi'
 
@@ -34,12 +34,11 @@ export default class GitHubApiImpl implements GitHubApi {
       params: {},
     })
 
-    // TODO: validate body
     return {
       successful: status === 200,
       response: {
         status,
-        body: body as Repository,
+        body: validateAsRepository(body),
       },
     }
   }
