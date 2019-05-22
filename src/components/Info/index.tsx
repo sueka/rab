@@ -83,7 +83,7 @@ class Info extends React.Component<Props, LocalState> {
             </Helmet>
           ) }
         </FormattedMessage>
-        <button onClick={ this.handleClick }>
+        <button onClick={ this.handleClick } disabled={ this.state.fetching }>
           <FormattedMessage { ...messages.fetchData } />
         </button>
         <p>
