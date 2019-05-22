@@ -3,10 +3,10 @@ import { injectable } from 'inversify'
 
 import { validateAsRepository } from '../lib/validators/gitHubResourceValidators'
 import fetch from '../lib/fetch'
-import GitHubApi, { GetRepoInput, GetRepoOutput } from '../useCase/GitHubApi'
+import GetRepo, { GetRepoInput, GetRepoOutput } from '../useCase/GetRepo'
 
 @injectable()
-export default class GitHubApiImpl implements GitHubApi {
+export default class GetRepoImpl implements GetRepo {
 
   /**
    * @throws AssertionError
@@ -21,7 +21,7 @@ export default class GitHubApiImpl implements GitHubApi {
     this.checkInvariant()
   }
 
-  public async getRepo({ owner, repo }: GetRepoInput): Promise<GetRepoOutput> {
+  public async apply({ owner, repo }: GetRepoInput): Promise<GetRepoOutput> {
 
     // TODO: no-process-env を有効にする。
     const { response: { status }, body } = await fetch({

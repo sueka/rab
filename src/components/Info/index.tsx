@@ -4,7 +4,7 @@ import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
 
 import { UnreachableError } from '../../lib/errors'
 import container from '../../container'
-import GitHubApi from '../../useCase/GitHubApi'
+import GetRepo from '../../useCase/GetRepo'
 import messages from './messages'
 
 type Props =
@@ -17,7 +17,7 @@ interface LocalState {
 }
 
 class Info extends React.Component<Props, LocalState> {
-  private gitHubApi: GitHubApi = container.get('GitHubApi')
+  private getRepo: GetRepo = container.get('GetRepo')
 
   public state: Readonly<LocalState> = {
     status: null,
@@ -30,7 +30,7 @@ class Info extends React.Component<Props, LocalState> {
       fetching: true,
     })
 
-    this.gitHubApi.getRepo({ owner: 'sueka', repo: 'react-app-prototype' }).then(({ response: { status, body } }) => {
+    this.getRepo.apply({ owner: 'sueka', repo: 'react-app-prototype' }).then(({ response: { status, body } }) => {
       this.setState({
         status,
         fetching: false,

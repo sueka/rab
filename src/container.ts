@@ -2,11 +2,11 @@ import 'reflect-metadata'
 
 import { Container } from 'inversify'
 
-import GitHubApi from './useCase/GitHubApi'
-import GitHubApiImpl from './infrastructure/GitHubApiImpl'
+import GetRepo from './useCase/GetRepo'
+import GetRepoImpl from './infrastructure/GetRepoImpl'
 
 const container = new Container()
 
-container.bind<GitHubApi>('GitHubApi').to(GitHubApiImpl)
+container.bind<GetRepo>('GetRepo').to(GetRepoImpl)
 
 export default container

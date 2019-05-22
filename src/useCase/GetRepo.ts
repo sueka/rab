@@ -11,6 +11,6 @@ export interface GetRepoOutput {
   }
 }
 
-export default interface GitHubApi {
-  getRepo(input: GetRepoInput): Promise<GetRepoOutput>
+export default interface GetRepo {
+  apply(input: GetRepoInput): Promise<GetRepoOutput>
 }
