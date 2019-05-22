@@ -29,7 +29,9 @@ export const buildStorybook = series(typeCheck, npxTask('build-storybook'))
 export const develop = parallel(
   continuousTask('src/**/messages.ts', extractMessages),
   continuousTask('src', staticCheck),
-  series(preTypeCheck, npxTask('jest', ['--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''])),
+  series(preTypeCheck, npxTask('jest', ['--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''], {
+    CI: 'true', // to prevent screen being cleared
+  })),
   npxTask('webpack-dev-server', ['--config', 'webpack.config.dev.ts']),
   npxTask('start-storybook', ['--ci', '--quiet', '-p', '5678']),
 )
@@ -45,12 +47,12 @@ export default series(testWithoutCoverage, build)
 //                         _|
 //                         _|
 
-function npx(util: string, args: string[]) {
-  return spawn(util, args, { stdio: 'inherit' })
+function npx(util: string, args: string[], env: NodeJS.ProcessEnv) {
+  return spawn(util, args, { stdio: 'inherit', env: { ...process.env, ...env } })
 }
 
-function npxTask(util: string, args: string[] = []) {
-  const task: TaskFunction = () => npx(util, args)
+function npxTask(util: string, args: string[] = [], env: NodeJS.ProcessEnv = {}) {
+  const task: TaskFunction = () => npx(util, args, env)
 
   task.displayName = `${ util } ${ args.join(' ') }`
 
