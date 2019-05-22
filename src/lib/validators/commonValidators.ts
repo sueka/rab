@@ -6,7 +6,15 @@ const createRecordValidator = <T>(validate: (input: any) => T) => (input: any): 
     throw new ValidationError(`${ input } is not an object.`)
   }
 
-  return Object.entries(input).map<[Index, T]>(([key, value]) => [key, validate(value)]).reduce<Record<Index, T>>((output, [key, value]) => ({ ...output, [key]: value }), {})
+  try {
+    return Object.entries(input).map<[Index, T]>(([key, value]) => [key, validate(value)]).reduce<Record<Index, T>>((output, [key, value]) => ({ ...output, [key]: value }), {})
+  } catch (error) {
+    if (error instanceof ValidationError) {
+      throw new ValidationError(`${ input } is not a Record.`)
+    }
+
+    throw error
+  }
 }
 
 export const validateAsStringRecord = createRecordValidator(validateAsString)
