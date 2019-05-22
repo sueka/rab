@@ -4,7 +4,7 @@ import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
 
 import { UnreachableError } from '../../lib/errors'
 import container from '../../container'
-import { GitHubApi } from '../../useCase'
+import GitHubApi from '../../useCase/GitHubApi'
 import messages from './messages'
 
 type Props =

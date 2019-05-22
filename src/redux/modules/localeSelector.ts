@@ -3,7 +3,7 @@ import { SagaIterator } from 'redux-saga'
 import { call, put, takeEvery } from 'redux-saga/effects'
 
 import { ActionHandler } from './base'
-import HttpClient, { ResponseParams } from '../../lib/HttpClient'
+import fetch, { ResponseParams } from '../../lib/fetch'
 
 //
 //             _|                  _|
@@ -123,9 +123,7 @@ export const setMessages = (messages: Record<string, string>): SetMessagesAction
 
 function* selectSaga({ payload: { locale } }: SelectAction) {
   try {
-    const client = new HttpClient()
-
-    const { body }: ResponseParams = yield call(client.fetch, {
+    const { body }: ResponseParams = yield call(fetch, {
       method: 'GET',
       parameterizedEndpoint: `/locales/${ locale }.json`,
       params: {},

@@ -2,12 +2,11 @@ import assert from 'assert'
 import { injectable } from 'inversify'
 
 import { validateAsRepository } from '../lib/validators/gitHubResourceValidators'
-import { HttpClient } from '../lib'
+import fetch from '../lib/fetch'
 import GitHubApi, { GetRepoInput, GetRepoOutput } from '../useCase/GitHubApi'
 
 @injectable()
 export default class GitHubApiImpl implements GitHubApi {
-  private httpClient: HttpClient
 
   /**
    * @throws AssertionError
@@ -19,15 +18,13 @@ export default class GitHubApiImpl implements GitHubApi {
   }
 
   constructor() {
-    this.httpClient = new HttpClient()
-
     this.checkInvariant()
   }
 
   public async getRepo({ owner, repo }: GetRepoInput): Promise<GetRepoOutput> {
 
     // TODO: no-process-env を有効にする。
-    const { response: { status }, body } = await this.httpClient.fetch({
+    const { response: { status }, body } = await fetch({
       method: 'GET',
       parameterizedEndpoint: `${ process.env.GITHUB_API_V3_ORIGIN }/repos/${ owner }/${ repo }`,
       query: {},
