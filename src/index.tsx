@@ -22,7 +22,7 @@ const { store, sagaMiddleware } = configureStore(history)
 sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(
-  <React.StrictMode>
+  (
     <ErrorBoundary>
       <Provider { ...{ store } }>
         <IntlProvider>
@@ -34,6 +34,6 @@ ReactDOM.render(
         </IntlProvider>
       </Provider>
     </ErrorBoundary>
-  </React.StrictMode>,
+  ),
   document.getElementById('root')
 )
