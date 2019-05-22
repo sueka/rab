@@ -23,10 +23,10 @@ class ErrorBoundary extends React.Component<{}, LocalState> {
 
     if (hasError) {
       if (error instanceof Error) {
-        return `${error}`
+        return `${ error }`
       }
 
-      throw new TypeError(`${error} is not an error.`)
+      throw new TypeError(`${ error } is not an error.`)
     }
 
     return children

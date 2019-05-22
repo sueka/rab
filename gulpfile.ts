@@ -66,7 +66,7 @@ function namedTask(name: string, task: TaskFunction) {
 function continuousTask(globs: Globs, watchedTask: TaskFunction) {
   const task = () => watch(globs, { ignoreInitial: false, ignored }, watchedTask)
 
-  task.displayName = `${watchedTask.displayName} --watch`
+  task.displayName = `${ watchedTask.displayName } --watch`
 
   return task
 }
