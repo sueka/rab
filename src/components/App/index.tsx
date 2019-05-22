@@ -13,8 +13,6 @@ import messages from './messages'
 
 import * as classes from './styles.css'
 
-// tslint:disable:jsx-no-lambda
-
 const App: React.FunctionComponent = () => (
   <div className={ classes.App }>
     <Helmet
