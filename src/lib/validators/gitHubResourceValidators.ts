@@ -4,7 +4,7 @@ import { validateAsString } from './commonValidators'
 // tslint:disable-next-line:no-any
 export function validateAsRepository(input: any): Repository {
   if (input == null) {
-    throw new ValidationError(`${ input } is not an object`)
+    throw new ValidationError(`${ input } is not an object.`)
   }
 
   try {

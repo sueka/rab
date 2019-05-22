@@ -9,3 +9,5 @@ interface JsonObject {
 }
 
 type Json = JsonPrimitive | JsonArray | JsonObject
+
+type Index = keyof any // tslint:disable-line:no-any
