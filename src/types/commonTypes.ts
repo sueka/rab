@@ -4,8 +4,8 @@ interface JsonArray {
   [index: number]: Json
 }
 
-export interface JsonObject {
+interface JsonObject {
   [member: string]: Json
 }
 
-export type Json = JsonPrimitive | JsonArray | JsonObject
+type Json = JsonPrimitive | JsonArray | JsonObject

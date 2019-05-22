@@ -1,5 +1,4 @@
 import { ValidationError } from '../errors'
-import { Repository } from '../../types/gitHubResourceTypes'
 
 // tslint:disable-next-line:no-any
 export function validateAsRepository(input: any): Repository {

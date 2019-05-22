@@ -4,7 +4,6 @@ import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
 
 import { UnreachableError } from '../../lib/errors'
 import container from '../../container'
-import { Repository } from '../../types/gitHubResourceTypes'
 import { GitHubApi } from '../../useCase'
 import messages from './messages'
 

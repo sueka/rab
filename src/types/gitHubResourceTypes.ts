@@ -1,3 +1,3 @@
-export interface Repository {
+interface Repository {
   name: string
 }

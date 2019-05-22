@@ -4,8 +4,6 @@
 
 import * as pathToRegexp from 'path-to-regexp'
 
-import { Json } from '../commonTypes'
-
 export type Method = 'GET' | 'POST'
 
 interface RequestParams {
