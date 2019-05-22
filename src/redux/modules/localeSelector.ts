@@ -2,7 +2,7 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call, put, takeEvery } from 'redux-saga/effects'
 
-import { ActionHandler } from './base'
+import { ActionHandler } from '../../types/reduxTypes'
 import fetch, { ResponseParams } from '../../lib/fetch'
 
 //

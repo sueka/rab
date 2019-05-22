@@ -3,7 +3,7 @@ import { SagaIterator } from 'redux-saga'
 import { call, put, takeEvery } from 'redux-saga/effects'
 
 import { delay } from '../../lib/commonFunctions'
-import { ActionHandler } from './base'
+import { ActionHandler } from '../../types/reduxTypes'
 
 //
 //             _|                  _|
