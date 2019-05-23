@@ -19,8 +19,8 @@ type Action =
   & LocaleSelectorAction
 
 import { addLocaleData } from 'react-intl'
-import en from 'react-intl/locale-data/en'
-import ja from 'react-intl/locale-data/ja'
+import * as en from 'react-intl/locale-data/en'
+import * as ja from 'react-intl/locale-data/ja'
 
 addLocaleData(en)
 addLocaleData(ja)

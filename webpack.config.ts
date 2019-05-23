@@ -1,7 +1,7 @@
 import { Configuration } from 'webpack'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import DotEnvPlugin from 'dotenv-webpack'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
+import * as HtmlWebpackPlugin from 'html-webpack-plugin'
+import * as DotEnvPlugin from 'dotenv-webpack'
+import * as CopyWebpackPlugin from 'copy-webpack-plugin'
 import * as path from 'path'
 
 const config: Configuration = {

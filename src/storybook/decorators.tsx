@@ -8,7 +8,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { IntlProvider } from 'react-intl'
 
 import { rootSaga, configureStore } from '../redux'
-import en from '../../public/locales/en.json'
+import * as en from '../../public/locales/en.json'
 
 export const withProvider: StoryDecorator = (story) => {
   const history = createBrowserHistory()

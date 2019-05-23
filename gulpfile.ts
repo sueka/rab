@@ -1,5 +1,5 @@
 import { TaskFunction, Globs, parallel, series, watch } from 'gulp'
-import del from 'del'
+import * as del from 'del'
 import { spawn } from 'child_process'
 
 const ignored = ['.cache', 'coverage', 'dist', 'storybook-static', '**/*.css.d.ts', '**/*.js{,x}', '!jest.config.js', '!typedoc.js']
