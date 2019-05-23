@@ -20,3 +20,7 @@
 # jest
 /coverage/
 !/jest.config.js
+
+# typedoc
+/doc/
+!/typedoc.js
