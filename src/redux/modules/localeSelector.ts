@@ -128,7 +128,6 @@ function* selectSaga({ payload: { locale } }: SelectAction) {
       method: 'GET',
       parameterizedEndpoint: `/locales/:locale.json`,
       params: { locale },
-      query: {},
     })
 
     // TODO: cache

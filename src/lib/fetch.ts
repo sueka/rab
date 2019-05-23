@@ -9,8 +9,8 @@ type Method = 'GET' | 'POST'
 interface RequestParams {
   method: Method
   parameterizedEndpoint: string
-  params: Record<string, string>
-  query: Record<string, string>
+  params?: Record<string, string>
+  query?: Record<string, string>
 }
 
 export interface ResponseParams {
@@ -22,7 +22,7 @@ function isEmpty(object: {}) {
   return Object.keys(object).length === 0
 }
 
-function buildRequestInfo({ method, parameterizedEndpoint, params, query }: RequestParams): RequestInfo {
+function buildRequestInfo({ method, parameterizedEndpoint, params = {}, query = {} }: RequestParams): RequestInfo {
   const endpoint = isEmpty(params) ? parameterizedEndpoint : pathToRegexp.compile(parameterizedEndpoint)(params)
 
   switch (method) {
@@ -47,7 +47,7 @@ function buildRequestInfo({ method, parameterizedEndpoint, params, query }: Requ
   }
 }
 
-function buildRequestInit({ method, query }: RequestParams): RequestInit {
+function buildRequestInit({ method, query = {} }: RequestParams): RequestInit {
   switch (method) {
     case 'GET':
       return {

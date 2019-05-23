@@ -28,7 +28,6 @@ export default class GetRepoImpl implements GetRepo {
       method: 'GET',
       parameterizedEndpoint: `${ process.env.GITHUB_API_V3_ORIGIN }/repos/:owner/:repo`,
       params: { owner, repo },
-      query: {},
     })
 
     return {
