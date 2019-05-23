@@ -54,7 +54,7 @@ function npx(util: string, args: string[], env: NodeJS.ProcessEnv) {
 function npxTask(util: string, args: string[] = [], env: NodeJS.ProcessEnv = {}) {
   const task: TaskFunction = () => npx(util, args, env)
 
-  task.displayName = `${ util } ${ args.join(' ') }`
+  task.displayName = `${Object.entries(env).map(([name, value]) => `${ name }=${ value } `).join('')}${ util }${ args.map((arg) => ` ${ arg }`).join('') }`
 
   return task
 }
