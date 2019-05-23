@@ -7,11 +7,12 @@ import { FormattedMessage } from 'react-intl'
 
 import Route from '../Route'
 import LocaleSelect from '../../containers/LocaleSelect'
-const Info = React.lazy(() => import(/* webpackChunkName: "info" */ '../Info'))
-const Counter = React.lazy(() => import(/* webpackChunkName: "counter" */ '../../containers/Counter'))
 import messages from './messages'
 
 import * as classes from './styles.css'
+
+const Counter = React.lazy(() => import(/* webpackChunkName: "counter" */ '../../containers/Counter'))
+const Info = React.lazy(() => import(/* webpackChunkName: "info" */ '../Info'))
 
 const App: React.FunctionComponent = () => (
   <div className={ classes.App }>
