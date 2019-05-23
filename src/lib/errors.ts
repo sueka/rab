@@ -1,4 +1,5 @@
-export abstract class AbstractError extends Error {
+export // for testing
+abstract class AbstractError extends Error {
   constructor(public message = '') {
     super(message)
 

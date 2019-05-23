@@ -13,7 +13,7 @@ export interface State {
   localeSelector: LocaleSelectorState
 }
 
-export type Action =
+type Action =
   & LocationChangeAction
   & CounterAction
   & LocaleSelectorAction

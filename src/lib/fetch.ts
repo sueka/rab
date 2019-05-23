@@ -4,7 +4,7 @@
 
 import * as pathToRegexp from 'path-to-regexp'
 
-export type Method = 'GET' | 'POST'
+type Method = 'GET' | 'POST'
 
 interface RequestParams {
   method: Method

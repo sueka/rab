@@ -99,14 +99,14 @@ export const select = (locale: string): SelectAction => ({
   },
 })
 
-export const setLocale = (locale: string): SetLocaleAction => ({
+const setLocale = (locale: string): SetLocaleAction => ({
   type: SET_LOCALE,
   payload: {
     locale,
   },
 })
 
-export const setMessages = (messages: Record<string, string>): SetMessagesAction => ({
+const setMessages = (messages: Record<string, string>): SetMessagesAction => ({
   type: SET_MESSAGES,
   payload: {
     messages,
