@@ -26,9 +26,9 @@ export default class GetRepoImpl implements GetRepo {
     // TODO: no-process-env を有効にする。
     const { response: { status }, body } = await fetch({
       method: 'GET',
-      parameterizedEndpoint: `${ process.env.GITHUB_API_V3_ORIGIN }/repos/${ owner }/${ repo }`,
+      parameterizedEndpoint: `${ process.env.GITHUB_API_V3_ORIGIN }/repos/:owner/:repo`,
+      params: { owner, repo },
       query: {},
-      params: {},
     })
 
     return {
