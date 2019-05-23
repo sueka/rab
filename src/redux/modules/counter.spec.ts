@@ -3,14 +3,22 @@ import { call, put, takeEvery } from 'redux-saga/effects'
 import { delay } from '../../lib/commonFunctions'
 
 import {
-  NOP, INCREMENT, DECREMENT, INCREMENT_ASYNC,
+  RESET, NOP, INCREMENT, DECREMENT, INCREMENT_ASYNC,
   CounterState,
-  nop, increment, decrement, incrementAsync, incrementIfOdd,
+  reset, nop, increment, decrement, incrementAsync, incrementIfOdd,
   incrementAsyncSaga, counterSaga,
   createCounterReducer,
 } from './counter'
 
 describe('action creators', () => {
+  describe('reset', () => {
+    it('should return a reset action', () => {
+      expect(reset()).toEqual({
+        type: RESET,
+      })
+    })
+  })
+
   describe('nop', () => {
     it('should return a nop action', () => {
       expect(nop()).toEqual({
@@ -81,6 +89,10 @@ describe('reducer', () => {
     expect(counterReducer(undefined, {
       type: '',
     })).toEqual(initialState)
+  })
+
+  it('should handle RESET', () => {
+    expect(counterReducer({ count: 1 }, reset())).toEqual({ count: 0 })
   })
 
   it('should handle NOP', () => {
