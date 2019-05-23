@@ -52,10 +52,18 @@ function npx(util: string, args: string[], env: NodeJS.ProcessEnv) {
   return spawn(util, args, { stdio: 'inherit', env: { ...process.env, ...env } })
 }
 
+declare global {
+  interface ObjectConstructor {
+    entries(o: boolean | number | symbol): [string, never][]
+    entries(o: string): [string, string][]
+    entries<T>(o: ArrayLike<T> | Record<string, T>): [string, T][]
+  }
+}
+
 function npxTask(util: string, args: string[] = [], env: NodeJS.ProcessEnv = {}) {
   const task: TaskFunction = () => npx(util, args, env)
 
-  task.displayName = `${Object.entries(env).map(([name, value]) => `${ name }=${ value } `).join('')}${ util }${ args.map((arg) => ` ${ arg }`).join('') }`
+  task.displayName = `${ Object.entries(env).map(([name, value]) => `${ name }=${ value } `).join('') }${ util }${ args.map((arg) => ` ${ arg }`).join('') }`
 
   return task
 }
