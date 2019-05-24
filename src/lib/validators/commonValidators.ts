@@ -1,13 +1,13 @@
 import { ValidationError } from '../errors'
 
 // tslint:disable-next-line:no-any
-const createRecordValidator = <T>(validate: (input: any) => T) => (input: any): Record<Index, T> => {
+const createRecordValidator = <T>(validate: (input: any) => T) => (input: any): Record<string, T> => {
   if (input == null) {
     throw new ValidationError(`${ input } is not an object.`)
   }
 
   try {
-    return Object.entries(input).map<[Index, T]>(([key, value]) => [key, validate(value)]).reduce<Record<Index, T>>((output, [key, value]) => ({ ...output, [key]: value }), {})
+    return Object.entries(input).map<[string, T]>(([key, value]) => [key, validate(value)]).reduce<Record<string, T>>((output, [key, value]) => ({ ...output, [key]: value }), {})
   } catch (error) {
     if (error instanceof ValidationError) {
       throw new ValidationError(`${ input } is not a Record.`)
