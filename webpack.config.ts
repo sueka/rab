@@ -59,7 +59,7 @@ const config: Configuration = {
         },
       ],
       {
-        context: 'public',
+        context: path.resolve(__dirname, 'public'),
       },
     ),
   ],
