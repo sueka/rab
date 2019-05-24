@@ -24,4 +24,5 @@ class Config {
   }
 }
 
+// TODO: no-process-env を有効にする。
 export default new Config(process.env)
