@@ -4,7 +4,7 @@ import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
 
 import { UnreachableError } from '../../lib/errors'
 import container from '../../container'
-import GetRepo from '../../useCase/GetRepo'
+import GetGitRepo from '../../useCase/GetGitRepo'
 import messages from './messages'
 
 type Props =
@@ -17,7 +17,7 @@ interface LocalState {
 }
 
 class Info extends React.Component<Props, LocalState> {
-  private getRepo: GetRepo = container.get('GetRepo')
+  private getRepo: GetGitRepo = container.get('GetGitRepo')
 
   public state: Readonly<LocalState> = {
     status: null,

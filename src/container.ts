@@ -5,12 +5,12 @@ import { Container } from 'inversify'
 import ConfigRegistry from './config/ConfigRegistry'
 import EnvVarConfigRegistry from './infrastructure/EnvVarConfigRegistry'
 
-import GetRepo from './useCase/GetRepo'
-import GetRepoImpl from './infrastructure/GetRepoImpl'
+import GetGitRepo from './useCase/GetGitRepo'
+import GetGitHubRepo from './infrastructure/GetGitHubRepo'
 
 const container = new Container()
 
 container.bind<ConfigRegistry>('EnvVarConfig').to(EnvVarConfigRegistry)
-container.bind<GetRepo>('GetRepo').to(GetRepoImpl)
+container.bind<GetGitRepo>('GetGitRepo').to(GetGitHubRepo)
 
 export default container
