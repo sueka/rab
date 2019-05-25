@@ -1,26 +1,26 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
+import * as assert from 'assert'
 
-import { UnreachableError } from '../../lib/errors'
 import container from '../../container'
-import GetGitRepo from '../../useCase/GetGitRepo'
+import GitRepoRepository from '../../repositories/GitRepoRepository'
 import messages from './messages'
 
 type Props =
   & InjectedIntlProps
 
 interface LocalState {
-  status: number | null
+  successful: boolean
   fetching: boolean
-  repo: Repository | null
+  repo: Repository | Error | null
 }
 
 class Info extends React.Component<Props, LocalState> {
-  private getRepo: GetGitRepo = container.get('GetGitRepo')
+  private gitRepoRepository: GitRepoRepository = container.get('GitRepoRepository')
 
   public state: Readonly<LocalState> = {
-    status: null,
+    successful: true,
     fetching: false,
     repo: null,
   }
@@ -30,36 +30,44 @@ class Info extends React.Component<Props, LocalState> {
       fetching: true,
     })
 
-    this.getRepo.apply({ owner: 'sueka', repo: 'react-app-prototype' }).then(({ response: { status, body } }) => {
-      this.setState({
-        status,
-        fetching: false,
-        repo: body,
+    this.gitRepoRepository.findSelf() // TODO: use Suspense
+      .then((response) => {
+        this.setState({
+          successful: true,
+          fetching: false,
+          repo: response,
+        })
       })
-    })
+      .catch((reason) => {
+        this.setState({
+          successful: false,
+          fetching: false,
+          repo: reason,
+        })
+      })
   }
 
   private get statusText() {
     const { intl: { formatMessage } } = this.props
-    const { status, fetching } = this.state
+    const { successful, fetching, repo } = this.state
 
     if (fetching) {
       return formatMessage(messages.fetching)
-    }
+    } else {
+      if (repo === null) {
+        return formatMessage(messages.fetchingNotStarted)
+      } else {
+        if (!(repo instanceof Error)) {
+          assert(successful)
 
-    if (status === null) {
-      return formatMessage(messages.fetchingNotStarted)
-    }
+          return formatMessage(messages.fetchingDoneSuccessfully)
+        } else {
+          assert(!successful)
 
-    if (status === 200) {
-      return formatMessage(messages.fetchingDoneWith200)
+          return formatMessage(messages.fetchingFailed)
+        }
+      }
     }
-
-    if (status !== 200) {
-      return formatMessage(messages.fetchingDoneWithNon200)
-    }
-
-    throw new UnreachableError()
   }
 
   private get info() {
@@ -67,6 +75,10 @@ class Info extends React.Component<Props, LocalState> {
 
     if (repo === null) {
       return null
+    }
+
+    if (repo instanceof Error) {
+      return repo.toString()
     }
 
     return repo.name

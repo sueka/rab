@@ -10,8 +10,8 @@
   "src.components.Counter.title": "カウンター",
   "src.components.Info.fetchData": "データを読み込む",
   "src.components.Info.fetching": "読み込み中…",
-  "src.components.Info.fetchingDoneWith200": "読み込みは200で終了しました。",
-  "src.components.Info.fetchingDoneWithNon200": "読み込みは非200で終了しました。",
+  "src.components.Info.fetchingDoneSuccessfully": "読み込みに成功しました。",
+  "src.components.Info.fetchingFailed": "読み込みに失敗しました。",
   "src.components.Info.fetchingNotStarted": "読み込みは開始していません。",
   "src.components.Info.title": "情報"
 }

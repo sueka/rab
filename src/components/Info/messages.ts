@@ -17,12 +17,12 @@ export default defineMessages({
     id: 'src.components.Info.fetchingNotStarted',
     defaultMessage: 'Fetching not started.',
   },
-  fetchingDoneWith200: {
-    id: 'src.components.Info.fetchingDoneWith200',
-    defaultMessage: 'Fetching done with 200.',
+  fetchingDoneSuccessfully: {
+    id: 'src.components.Info.fetchingDoneSuccessfully',
+    defaultMessage: 'Fetching done successfully.',
   },
-  fetchingDoneWithNon200: {
-    id: 'src.components.Info.fetchingDoneWithNon200',
-    defaultMessage: 'Fetching done with non-200.',
+  fetchingFailed: {
+    id: 'src.components.Info.fetchingFailed',
+    defaultMessage: 'Fetching failed.',
   },
 })
