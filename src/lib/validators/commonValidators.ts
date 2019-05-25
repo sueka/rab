@@ -1,6 +1,15 @@
 import { ValidationError } from '../errors'
 
 // tslint:disable-next-line:no-any
+const createOptionalValidator = <T>(validate: (input: any) => T) => (input: any): T | undefined => {
+  if (input !== undefined) {
+    return validate(input)
+  }
+
+  return
+}
+
+// tslint:disable-next-line:no-any
 const createRecordValidator = <T>(validate: (input: any) => T) => (input: any): Record<string, T> => {
   if (input == null) {
     throw new ValidationError(`${ input } is not an object.`)
@@ -17,6 +26,7 @@ const createRecordValidator = <T>(validate: (input: any) => T) => (input: any): 
   }
 }
 
+export const validateAsOptionalString = createOptionalValidator(validateAsString)
 export const validateAsStringRecord = createRecordValidator(validateAsString)
 
 // tslint:disable-next-line:no-any

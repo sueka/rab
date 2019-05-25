@@ -1,3 +1,0 @@
-interface Repository {
-  name: string
-}

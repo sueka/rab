@@ -1,7 +1,7 @@
 import { injectable } from 'inversify'
 
 import container from '../container'
-import { validateAsRepository } from '../lib/validators/gitHubResourceValidators'
+import { validateAsGetRepoResponse, validateAsUnsuccessfulResponse } from '../lib/validators/gitHubApiResponseValidators'
 import fetch from '../lib/fetch'
 import ConfigRegistry from '../config/ConfigRegistry'
 import GetGitRepo, { GetGitRepoInput, GetGitRepoOutput } from '../useCase/GetGitRepo'
@@ -17,12 +17,22 @@ export default class GetGitHubRepo implements GetGitRepo {
       params: { owner, repo },
     })
 
-    return {
-      successful: status === 200,
-      response: {
-        status,
-        body: validateAsRepository(body),
-      },
+    if (status === 200) {
+      return {
+        successful: true,
+        response: {
+          status,
+          body: validateAsGetRepoResponse(body),
+        },
+      }
+    } else {
+      return {
+        successful: false,
+        response: {
+          status,
+          body: validateAsUnsuccessfulResponse(body),
+        },
+      }
     }
   }
 }

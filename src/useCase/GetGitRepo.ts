@@ -3,13 +3,23 @@ export interface GetGitRepoInput {
   repo: string
 }
 
-export interface GetGitRepoOutput {
-  successful: boolean
+interface SuccessfulGetGitRepoOutput {
+  successful: true
   response: {
     status: number
-    body: Repository
+    body: GetRepoResponse
   }
 }
+
+interface UnsuccessfulGetGitRepoOutput {
+  successful: false
+  response: {
+    status: number
+    body: UnsuccessfulResponse
+  }
+}
+
+export type GetGitRepoOutput = SuccessfulGetGitRepoOutput | UnsuccessfulGetGitRepoOutput
 
 export default interface GetGitRepo {
   apply(input: GetGitRepoInput): Promise<GetGitRepoOutput>

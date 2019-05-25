@@ -13,12 +13,12 @@ export default class GitHubRepoRepository implements GitRepoRepository {
   }
 
   public async find(owner: string, repo: string) {
-    const { successful, response: { body } } = await this.getRepo.apply({ owner, repo })
+    const output = await this.getRepo.apply({ owner, repo })
 
-    if (successful) {
-      return body
+    if (output.successful) {
+      return output.response.body
+    } else {
+      throw new Error()
     }
-
-    throw new Error()
   }
 }
