@@ -8,7 +8,7 @@ import GetGitRepo from '../useCase/GetGitRepo'
 export default class GitHubRepoRepository implements GitRepoRepository {
   private getRepo: GetGitRepo = container.get('GetGitRepo')
 
-  public async findSelf(): Promise<Repository> {
+  public findSelf(): Promise<Repository> {
     return this.find('sueka', 'react-app-prototype') // TODO: parameterize
   }
 
