@@ -4,7 +4,7 @@ import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
 import * as assert from 'assert'
 
 import container from '../../container'
-import GitRepoRepository from '../../repositories/GitRepoRepository'
+import GetRepo from '../../useCase/GetRepo'
 import messages from './messages'
 
 type Props =
@@ -17,7 +17,7 @@ interface LocalState {
 }
 
 class Info extends React.Component<Props, LocalState> {
-  private gitRepoRepository: GitRepoRepository = container.get('GitRepoRepository')
+  private getRepo: GetRepo = container.get('GetRepo')
 
   public state: Readonly<LocalState> = {
     successful: true,
@@ -30,13 +30,21 @@ class Info extends React.Component<Props, LocalState> {
       fetching: true,
     })
 
-    this.gitRepoRepository.findSelf() // TODO: use Suspense
-      .then((response) => {
-        this.setState({
-          successful: true,
-          fetching: false,
-          repo: response,
-        })
+    this.getRepo.apply({ owner: 'sueka', repo: 'react-app-prototype' }) // TODO: use Suspense
+      .then((output) => {
+        if (output.successful) {
+          this.setState({
+            successful: true,
+            fetching: false,
+            repo: output.response.body
+          })
+        } else {
+          this.setState({
+            successful: false,
+            fetching: false,
+            repo: new Error(output.response.body.message),
+          })
+        }
       })
       .catch((reason) => {
         this.setState({
