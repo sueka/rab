@@ -35,11 +35,11 @@ export interface CounterState {
 //                 _|  _|
 //             _|_|    _|
 
-export const RESET = '@@react-app-prototype/counter/RESET'
-export const NOP = '@@react-app-prototype/counter/NOP'
-export const INCREMENT = '@@react-app-prototype/counter/INCREMENT'
-export const DECREMENT = '@@react-app-prototype/counter/DECREMENT'
-export const INCREMENT_ASYNC = '@@react-app-prototype/counter/INCREMENT_ASYNC'
+export /* for testing */ const RESET = '@@react-app-prototype/counter/RESET'
+export /* for testing */ const NOP = '@@react-app-prototype/counter/NOP'
+export /* for testing */ const INCREMENT = '@@react-app-prototype/counter/INCREMENT'
+export /* for testing */ const DECREMENT = '@@react-app-prototype/counter/DECREMENT'
+export /* for testing */ const INCREMENT_ASYNC = '@@react-app-prototype/counter/INCREMENT_ASYNC'
 
 const counterActionTypes = [
   RESET,
@@ -95,7 +95,7 @@ export const reset = (): ResetAction => ({
   type: RESET,
 })
 
-export const nop = (): NopAction => ({
+export /* for testing */ const nop = (): NopAction => ({
   type: NOP,
 })
 
@@ -125,7 +125,7 @@ export const incrementIfOdd = (value: number) => (value % 2 !== 0) ? increment()
 //                           _|
 //                       _|_|
 
-export function* incrementAsyncSaga({ payload: { ms } }: IncrementAsyncAction): SagaIterator {
+export /* for testing */ function* incrementAsyncSaga({ payload: { ms } }: IncrementAsyncAction): SagaIterator {
   yield call(delay, ms)
   yield put(increment())
 }
