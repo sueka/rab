@@ -11,7 +11,7 @@ export default class EnvVarConfigRegistry implements ConfigRegistry {
   }
 
   /**
-   * @throws {AssertionError|UnreachableError}
+   * @throws {AssertionError|[[UnreachableError]]}
    */
   public get(name: ConfigKey) {
     const value = this.env[name]
