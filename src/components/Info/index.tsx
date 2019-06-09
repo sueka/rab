@@ -36,7 +36,7 @@ class Info extends React.Component<Props, LocalState> {
           this.setState({
             successful: true,
             fetching: false,
-            repo: output.response.body
+            repo: output.response.body,
           })
         } else {
           this.setState({
