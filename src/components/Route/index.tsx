@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Omit } from 'react-redux'
 import { Route as OriginalRoute, RouteProps, RouteComponentProps } from 'react-router'
 
 import ErrorBoundary from '../ErrorBoundary'
