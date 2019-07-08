@@ -53,6 +53,7 @@
     "hoist-non-react-statics": "^3.3.0",
     "html-webpack-plugin": "^3.2.0",
     "inversify": "^5.0.1",
+    "inversify-react": "^0.4.1",
     "jest": "^24.8.0",
     "path-to-regexp": "^2.4.0",
     "postcss-loader": "^3.0.0",

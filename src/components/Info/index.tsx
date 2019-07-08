@@ -2,8 +2,8 @@ import * as React from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
 import * as assert from 'assert'
+import { resolve } from 'inversify-react'
 
-import container from '../../container'
 import GetRepo from '../../useCase/GetRepo'
 import messages from './messages'
 
@@ -17,7 +17,7 @@ interface LocalState {
 }
 
 class Info extends React.Component<Props, LocalState> {
-  private getRepo: GetRepo = container.get('GetRepo')
+  @resolve('GetRepo') private getRepo!: GetRepo
 
   public state: Readonly<LocalState> = {
     successful: true,

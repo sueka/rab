@@ -1,6 +1,5 @@
-import { injectable } from 'inversify'
+import { injectable, inject } from 'inversify'
 
-import container from '../container'
 import {
   validateAsGetRepoResponse,
   validateAsUnsuccessfulResponse,
@@ -11,7 +10,7 @@ import GetRepo, { GetRepoInput, GetRepoOutput } from '../useCase/GetRepo'
 
 @injectable()
 export default class GetRepoImpl implements GetRepo {
-  private config: ConfigRegistry = container.get('EnvVarConfig')
+  @inject('EnvVarConfig') private config!: ConfigRegistry
 
   public async apply({ owner, repo }: GetRepoInput): Promise<GetRepoOutput> {
     const { response: { status }, body } = await fetch({

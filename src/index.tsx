@@ -7,6 +7,8 @@ import { createBrowserHistory } from 'history'
 import { ConnectedRouter } from 'connected-react-router'
 import { DragDropContextProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
+import { Provider as ServiceProdiver } from 'inversify-react'
+import container from './container'
 
 import { rootSaga, configureStore } from './redux'
 
@@ -28,7 +30,9 @@ ReactDOM.render(
         <IntlProvider>
           <DragDropContextProvider backend={ HTML5Backend }>
             <ConnectedRouter { ...{ history } }>
-              <App />
+              <ServiceProdiver { ...{ container } }>
+                <App />
+              </ServiceProdiver>
             </ConnectedRouter>
           </DragDropContextProvider>
         </IntlProvider>
