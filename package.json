@@ -10,7 +10,8 @@
     "start": "gulp --silent develop",
     "test": "gulp --silent test",
     "build": "gulp --silent build",
-    "clean": "gulp --silent clean"
+    "clean": "gulp --silent clean",
+    "gulp": "gulp"
   },
   "dependencies": {
     "@babel/core": "^7.4.4",
