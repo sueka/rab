@@ -127,7 +127,7 @@ function* selectSaga({ payload: { locale } }: SelectAction) {
   try {
     const { body }: ResponseParams = yield call(fetch, {
       method: 'GET',
-      parameterizedEndpoint: typed<string>`/locales/:locale.json`,
+      parameterizedEndpoint: typed<[]>`/locales/:locale.json`, // TODO:
       params: { locale },
     })
 

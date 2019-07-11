@@ -40,7 +40,7 @@ function buildRequestInfo({ method, parameterizedEndpoint, params = {}, query = 
       const search = urlSearchParams.toString()
 
       if (search !== '') {
-        return typed<string>`${ endpoint }?${ urlSearchParams.toString() }`
+        return typed<[string, string]>`${ endpoint }?${ urlSearchParams.toString() }`
       }
 
       return endpoint
