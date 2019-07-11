@@ -8,7 +8,7 @@ export const doNothing = () => {
 
 export const delay = (ms: number) => new Promise((res) => { setTimeout(res, ms) })
 
-export function typed<T extends unknown>(template: TemplateStringsArray, ...substitutions: T[]): string {
+export function typed<T extends unknown[]>(template: TemplateStringsArray, ...substitutions: T): string {
   let result = template[0]
 
   for (const [segment, substitution] of zipIterables(template.slice(1), substitutions)) {

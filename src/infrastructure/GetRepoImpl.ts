@@ -24,7 +24,7 @@ export default class GetRepoImpl implements GetRepo {
 
     const { response: { status }, body } = await fetch({
       method: 'GET',
-      parameterizedEndpoint: typed<string>`${ origin }/repos/:owner/:repo`,
+      parameterizedEndpoint: typed<[string]>`${ origin }/repos/:owner/:repo`,
       params: { owner, repo },
     })
 

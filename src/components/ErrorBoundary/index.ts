@@ -25,10 +25,10 @@ class ErrorBoundary extends React.Component<unknown, LocalState> {
 
     if (hasError) {
       if (error instanceof Error) {
-        return typed<string>`${ String(error) }`
+        return typed<[string]>`${ String(error) }`
       }
 
-      throw new TypeError(typed<string>`${ String(error) } is not an error.`)
+      throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
     }
 
     return children
