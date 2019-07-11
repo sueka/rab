@@ -1,11 +1,7 @@
 type JsonPrimitive = null | boolean | number | string
 
-interface JsonArray {
-  [index: number]: Json
-}
+interface JsonArray extends Array<Json> {}
 
-interface JsonObject {
-  [member: string]: Json
-}
+interface JsonObject extends Record<string, Json> {}
 
 type Json = JsonPrimitive | JsonArray | JsonObject
