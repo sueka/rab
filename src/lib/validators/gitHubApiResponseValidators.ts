@@ -1,13 +1,11 @@
 import { ValidationError } from '../errors'
 import { validateAsString, validateAsOptionalString } from './commonValidators'
 
-// tslint:disable-next-line:no-any
-export function validateAsGetRepoResponse(input: any): GetRepoResponse {
+export function validateAsGetRepoResponse(input: Json): GetRepoResponse {
   return validateAsRepository(input)
 }
 
-// tslint:disable-next-line:no-any
-function validateAsRepository(input: any): Repository {
+function validateAsRepository(input: Json): Repository {
   if (input == null) {
     throw new ValidationError(`${ input } is not an object.`)
   }
@@ -25,8 +23,7 @@ function validateAsRepository(input: any): Repository {
   }
 }
 
-// tslint:disable-next-line:no-any
-export function validateAsUnsuccessfulResponse(input: any): UnsuccessfulResponse {
+export function validateAsUnsuccessfulResponse(input: Json): UnsuccessfulResponse {
   if (input == null) {
     throw new ValidationError(`${ input } is not an object.`)
   }
