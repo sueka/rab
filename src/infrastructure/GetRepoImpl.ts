@@ -1,5 +1,6 @@
 import { injectable, inject } from 'inversify'
 
+import { typed } from '../lib/commonFunctions'
 import {
   validateAsGetRepoResponse,
   validateAsUnsuccessfulResponse,
@@ -15,7 +16,7 @@ export default class GetRepoImpl implements GetRepo {
   public async apply({ owner, repo }: GetRepoInput): Promise<GetRepoOutput> {
     const { response: { status }, body } = await fetch({
       method: 'GET',
-      parameterizedEndpoint: `${ this.config.get('GITHUB_API_V3_ORIGIN') }/repos/:owner/:repo`,
+      parameterizedEndpoint: typed<string>`${ this.config.get('GITHUB_API_V3_ORIGIN') }/repos/:owner/:repo`,
       params: { owner, repo },
     })
 

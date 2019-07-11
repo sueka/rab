@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+import { typed } from '../../lib/commonFunctions'
+
 interface LocalState {
   hasError: boolean
   error?: unknown
@@ -23,10 +25,10 @@ class ErrorBoundary extends React.Component<unknown, LocalState> {
 
     if (hasError) {
       if (error instanceof Error) {
-        return `${ error }`
+        return typed<string>`${ error }`
       }
 
-      throw new TypeError(`${ error } is not an error.`)
+      throw new TypeError(typed<string>`${ error } is not an error.`)
     }
 
     return children

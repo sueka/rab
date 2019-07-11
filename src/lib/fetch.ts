@@ -4,6 +4,8 @@
 
 import * as pathToRegexp from 'path-to-regexp'
 
+import { typed } from './commonFunctions'
+
 type Method = 'GET' | 'POST'
 
 interface RequestParams {
@@ -38,7 +40,7 @@ function buildRequestInfo({ method, parameterizedEndpoint, params = {}, query = 
       const search = urlSearchParams.toString()
 
       if (search !== '') {
-        return `${ endpoint }?${ urlSearchParams.toString() }`
+        return typed<string>`${ endpoint }?${ urlSearchParams.toString() }`
       }
 
       return endpoint
