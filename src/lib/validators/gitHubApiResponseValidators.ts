@@ -6,7 +6,7 @@ export function validateAsGetRepoResponse(input: Json): GetRepoResponse {
 }
 
 function validateAsRepository(input: Json): Repository {
-  if (input == null) {
+  if (input === null || typeof input === 'boolean' || typeof input === 'number' || typeof input === 'string' || Array.isArray(input)) {
     throw new ValidationError(`${ input } is not an object.`)
   }
 
@@ -24,7 +24,7 @@ function validateAsRepository(input: Json): Repository {
 }
 
 export function validateAsUnsuccessfulResponse(input: Json): UnsuccessfulResponse {
-  if (input == null) {
+  if (input == null || typeof input === 'boolean' || typeof input === 'number' || typeof input === 'string' || Array.isArray(input)) {
     throw new ValidationError(`${ input } is not an object.`)
   }
 
