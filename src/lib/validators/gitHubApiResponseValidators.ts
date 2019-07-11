@@ -25,7 +25,7 @@ function validateAsRepository(input: Json): Repository {
 }
 
 export function validateAsUnsuccessfulResponse(input: Json): UnsuccessfulResponse {
-  if (input == null || typeof input === 'boolean' || typeof input === 'number' || typeof input === 'string' || Array.isArray(input)) {
+  if (input === null || typeof input === 'boolean' || typeof input === 'number' || typeof input === 'string' || Array.isArray(input)) {
     throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
   }
 

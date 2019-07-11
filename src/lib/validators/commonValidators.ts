@@ -1,7 +1,7 @@
 import { ValidationError } from '../errors'
 import { typed } from '../commonFunctions'
 
-const createOptionalValidator = <T>(validate: (input: Json) => T) => (input: Json): T | undefined => {
+const createOptionalValidator = <T>(validate: (input: Json) => T) => (input: Json | undefined): T | undefined => {
   if (input !== undefined) {
     return validate(input)
   }
@@ -10,7 +10,7 @@ const createOptionalValidator = <T>(validate: (input: Json) => T) => (input: Jso
 }
 
 const createRecordValidator = <T>(validate: (input: Json) => T) => (input: Json): Record<string, T> => {
-  if (input == null) {
+  if (input === null) {
     throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
   }
 

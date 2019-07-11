@@ -9,8 +9,10 @@ export const doNothing = () => {
 export const delay = (ms: number) => new Promise((res) => { setTimeout(res, ms) })
 
 export function typed<T extends unknown[]>(template: TemplateStringsArray, ...substitutions: T): string {
+  // tslint:disable-next-line:no-let
   let result = template[0]
 
+  // tslint:disable-next-line:no-loop-statement
   for (const [segment, substitution] of zipIterables(template.slice(1), substitutions)) {
     result += String(substitution)
     result += segment

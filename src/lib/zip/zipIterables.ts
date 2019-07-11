@@ -4,6 +4,6 @@ export default function zipIterables<A, B>(xs: Iterable<A>, ys: Iterable<B>): It
   return {
     [Symbol.iterator]() {
       return zipIterators(xs[Symbol.iterator](), ys[Symbol.iterator]())
-    }
+    },
   }
 }
