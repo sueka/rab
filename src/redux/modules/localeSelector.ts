@@ -136,7 +136,7 @@ function* selectSaga({ payload: { locale } }: SelectAction) {
     yield put(setMessages(validateAsStringRecord(body)))
     yield put(setLocale(locale))
   } catch (error) {
-    yield null
+    yield null // TODO:
   }
 }
 
