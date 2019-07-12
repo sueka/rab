@@ -1,7 +1,6 @@
-import * as assert from 'assert'
 import { injectable } from 'inversify'
 
-import { UnreachableError } from '../lib/errors'
+import { typed } from '../lib/commonFunctions'
 import ConfigRegistry, { ConfigKey } from '../config/ConfigRegistry'
 
 @injectable()
@@ -11,15 +10,13 @@ export default class EnvVarConfigRegistry implements ConfigRegistry {
   }
 
   /**
-   * @throws {AssertionError|[[UnreachableError]]}
+   * @throws {Error} if not found.
    */
   public get(name: ConfigKey) {
     const value = this.env[name]
 
-    assert(value !== undefined, `The ${ name } environment variable does not exist.`)
-
     if (value === undefined) {
-      throw new UnreachableError() // for type guarding
+      throw new Error(typed<[string]>`The ${ name } environment variable does not exist.`) // TODO:
     }
 
     return value
