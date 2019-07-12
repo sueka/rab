@@ -41,7 +41,7 @@ class Info extends React.Component<Props, LocalState> {
           this.setState({
             successful: false,
             fetching: false,
-            repo: new Error(output.response != null ? output.response.body.message : undefined),
+            repo: new Error(output.response.body.message),
           })
         }
       })
