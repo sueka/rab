@@ -5,6 +5,7 @@
 import * as pathToRegexp from 'path-to-regexp'
 
 import { typed } from './commonFunctions'
+import mapValues from './mapValues'
 
 type Method = 'GET' | 'POST'
 
@@ -22,6 +23,30 @@ export interface ResponseParams {
 
 function isEmpty(object: {}) {
   return Object.keys(object).length === 0
+}
+
+function toRecord(input: {}): Record<string, unknown> {
+  return Object.entries(input).reduce((result, [i, x]) => ({ ...result, [i]: x }), {})
+}
+
+function toJson(input: unknown): Json {
+  if (typeof input === 'boolean' || typeof input === 'number' || typeof input === 'string') {
+    return input
+  }
+
+  if (Array.isArray(input)) {
+    return input.map((json) => toJson(json))
+  }
+
+  if (typeof input === 'object') {
+    if (input === null) {
+      return input
+    }
+
+    return mapValues((json) => toJson(json), toRecord(input))
+  }
+
+  throw new Error(typed<[string]>`${ String(input) } is not a Json.`)
 }
 
 function buildRequestInfo({ method, parameterizedEndpoint, params = {}, query = {} }: RequestParams): RequestInfo {
@@ -74,8 +99,7 @@ export default async function fetch(request: RequestParams): Promise<ResponsePar
   const requestInit = buildRequestInit(request)
   const response = await globalThis.fetch(requestInfo, requestInit)
 
-  // NOTE: Body#json() の返り値型は Promise<any> なので、この型指定は型キャストではない。
-  const body = await response.json() as Json
+  const body = toJson(await response.json())
 
   return { response, body }
 }
