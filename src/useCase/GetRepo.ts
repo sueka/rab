@@ -13,7 +13,7 @@ interface SuccessfulGetRepoOutput {
 
 interface UnsuccessfulGetRepoOutput {
   successful: false
-  response?: {
+  response: {
     status: number
     body: UnsuccessfulResponse
   }

@@ -16,12 +16,6 @@ export default class GetRepoImpl implements GetRepo {
   public async apply({ owner, repo }: GetRepoInput): Promise<GetRepoOutput> {
     const origin = this.config.get('GITHUB_API_V3_ORIGIN')
 
-    if (origin == null) {
-      return {
-        successful: false,
-      }
-    }
-
     const { response: { status }, body } = await fetch({
       method: 'GET',
       parameterizedEndpoint: typed<[string]>`${ origin }/repos/:owner/:repo`,
