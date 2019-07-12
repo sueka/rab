@@ -13,7 +13,7 @@ type Props =
 interface LocalState {
   successful: boolean
   fetching: boolean
-  repo: Repository | Error | null
+  repo?: Repository | Error | null
 }
 
 class Info extends React.Component<Props, LocalState> {
@@ -22,7 +22,6 @@ class Info extends React.Component<Props, LocalState> {
   public state: Readonly<LocalState> = {
     successful: true,
     fetching: false,
-    repo: null,
   }
 
   private handleClick: React.MouseEventHandler = () => {
@@ -42,7 +41,7 @@ class Info extends React.Component<Props, LocalState> {
           this.setState({
             successful: false,
             fetching: false,
-            repo: new Error(output.response !== undefined ? output.response.body.message : undefined),
+            repo: new Error(output.response != null ? output.response.body.message : undefined),
           })
         }
       })
@@ -62,7 +61,7 @@ class Info extends React.Component<Props, LocalState> {
     if (fetching) {
       return formatMessage(messages.fetching)
     } else {
-      if (repo === null) {
+      if (repo == null) {
         return formatMessage(messages.fetchingNotStarted)
       } else {
         if (!(repo instanceof Error)) {
@@ -81,7 +80,7 @@ class Info extends React.Component<Props, LocalState> {
   private get info() {
     const { repo } = this.state
 
-    if (repo === null) {
+    if (repo == null) {
       return null
     }
 
