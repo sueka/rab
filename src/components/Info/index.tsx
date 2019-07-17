@@ -81,7 +81,7 @@ class Info extends React.Component<Props, LocalState> {
     const { repo } = this.state
 
     if (repo == null) {
-      return null
+      return repo
     }
 
     if (repo instanceof Error) {
