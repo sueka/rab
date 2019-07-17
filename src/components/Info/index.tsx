@@ -29,7 +29,7 @@ class Info extends React.Component<Props, LocalState> {
       fetching: true,
     })
 
-    this.getRepo.apply({ owner: 'sueka', repo: 'react-app-prototype' }) // TODO: use Suspense
+    this.getRepo.apply({ owner: 'sueka', repo: 'react-app-prototype' })
       .then((output) => {
         if (output.successful) {
           this.setState({
