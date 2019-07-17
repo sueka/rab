@@ -20,20 +20,15 @@ interface Props extends Omit<RouteProps, 'render' | 'component' | 'children'> {
   component?: Required<RouteProps>['component'] | React.LazyExoticComponent<Required<RouteProps>['component']>
 }
 
-class Route extends React.Component<Props> {
-  public render() {
-    const { component, ...restProps } = this.props
+const Route: React.FunctionComponent<Props> = ({ component, ...restProps }) => {
+  if (component === undefined) {
+    return <OriginalRoute { ...restProps } />
+  }
 
-    if (component === undefined) {
-      return <OriginalRoute { ...restProps } />
-    }
-
-    if ('_result' in component) { // FIXME: if LazyExoticComponent
-      return <OriginalRoute component={ withErrorBoundary(withSuspense(component)) } { ...restProps } />
-    } else {
-      return <OriginalRoute component={ withErrorBoundary(component) } { ...restProps } />
-    }
-
+  if ('_result' in component) { // FIXME: if LazyExoticComponent
+    return <OriginalRoute component={ withErrorBoundary(withSuspense(component)) } { ...restProps } />
+  } else {
+    return <OriginalRoute component={ withErrorBoundary(component) } { ...restProps } />
   }
 }
 
