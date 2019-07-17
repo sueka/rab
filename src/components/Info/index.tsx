@@ -45,11 +45,13 @@ class Info extends React.Component<Props, LocalState> {
           })
         }
       })
-      .catch((reason) => {
+      .catch((reason: unknown) => {
+        console.error(reason) // tslint:disable-line:no-console
+
         this.setState({
           successful: false,
           fetching: false,
-          repo: reason,
+          repo: null,
         })
       })
   }
