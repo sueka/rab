@@ -3,7 +3,6 @@ import { SagaIterator } from 'redux-saga'
 import { call, put, takeEvery } from 'redux-saga/effects'
 
 import { ActionHandler } from '../../types/reduxTypes'
-import { typed } from '../../lib/commonFunctions'
 import { Code } from '../../lib/languageNameSolver'
 import fetch, { ResponseParams } from '../../lib/fetch'
 import { validateAsStringRecord } from '../../lib/validators/commonValidators'
@@ -128,7 +127,7 @@ function* selectSaga({ payload: { locale } }: SelectAction) {
   try {
     const { body }: ResponseParams = yield call(fetch, {
       method: 'GET',
-      parameterizedEndpoint: typed<[]>`/locales/:locale.json`, // TODO:
+      parameterizedEndpoint: '/locales/:locale.json',
       params: { locale },
     })
 
