@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { Route as OriginalRoute, RouteProps, RouteComponentProps } from 'react-router'
 
+import CircularProgress from '@material-ui/core/CircularProgress'
+
 import ErrorBoundary from '../ErrorBoundary'
 
 const withErrorBoundary: (Component: React.ComponentType<RouteComponentProps> | React.ComponentType<unknown>) => React.FunctionComponent<RouteComponentProps> = (Component) => (props) => (
@@ -10,7 +12,7 @@ const withErrorBoundary: (Component: React.ComponentType<RouteComponentProps> | 
 )
 
 const withSuspense: (Component: React.LazyExoticComponent<React.ComponentType<RouteComponentProps> | React.ComponentType<unknown>>) => React.FunctionComponent<RouteComponentProps> = (Component) => (props) => (
-  <React.Suspense fallback={ <div>loading..</div> }>
+  <React.Suspense fallback={ <CircularProgress /> }>
     <Component { ...props } />
   </React.Suspense>
 )
