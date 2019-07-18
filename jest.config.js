@@ -12,4 +12,9 @@ module.exports = {
   transform: {
     '\\.tsx?$': 'ts-jest',
   },
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.ts{x,}',
+    '!<rootDir>/src/components/**/messages.ts',
+    '!<rootDir>/src/{components,containers}/**/{*.,}stories.ts{x,}',
+  ],
 }
