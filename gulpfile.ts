@@ -23,7 +23,7 @@ export const staticCheck = namedTask('staticCheck', parallel(series(typeCheck, t
 const testWithoutCoverage = series(preTypeCheck, npxTask('jest'))
 const testWithCoverage = series(preTypeCheck, npxTask('jest', ['--coverage']))
 export const test = testWithCoverage
-export const build = series(typeCheck, npxTask('webpack'))
+export const build = series(() => del(['dist/**/*']), typeCheck, npxTask('webpack'))
 export const buildStorybook = series(typeCheck, npxTask('build-storybook'))
 export const document = parallel(npxTask('typedoc'))
 
