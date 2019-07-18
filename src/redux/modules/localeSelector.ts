@@ -4,6 +4,7 @@ import { call, put, takeEvery } from 'redux-saga/effects'
 
 import { ActionHandler } from '../../types/reduxTypes'
 import { typed } from '../../lib/commonFunctions'
+import { Code } from '../../lib/languageNameSolver'
 import fetch, { ResponseParams } from '../../lib/fetch'
 import { validateAsStringRecord } from '../../lib/validators/commonValidators'
 
@@ -17,8 +18,8 @@ import { validateAsStringRecord } from '../../lib/validators/commonValidators'
 //
 
 export interface LocaleSelectorState {
-  availableLocales: string[]
-  locale: string
+  availableLocales: Code[]
+  locale: Code
   messages: Record<string, string>
 }
 
@@ -51,13 +52,13 @@ const localeSelectorActionTypes = [
 
 interface SelectAction extends Action<typeof SELECT> {
   payload: {
-    locale: string
+    locale: Code
   }
 }
 
 interface SetLocaleAction extends Action<typeof SET_LOCALE> {
   payload: {
-    locale: string
+    locale: Code
   }
 }
 
@@ -93,14 +94,14 @@ function isLocaleSelectorAction(action: Action): action is LocaleSelectorAction 
 //
 //
 
-export const select = (locale: string): SelectAction => ({
+export const select = (locale: Code): SelectAction => ({
   type: SELECT,
   payload: {
     locale,
   },
 })
 
-const setLocale = (locale: string): SetLocaleAction => ({
+const setLocale = (locale: Code): SetLocaleAction => ({
   type: SET_LOCALE,
   payload: {
     locale,
