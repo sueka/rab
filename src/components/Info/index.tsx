@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
-import * as assert from 'assert'
+import assert from 'assert'
 import { resolve } from 'inversify-react'
 
 import Button from '@material-ui/core/Button'
