@@ -20,6 +20,9 @@ const config: Configuration = {
       {
         test: /\.tsx?$/,
         loader: 'babel-loader',
+        options: {
+          envName: 'production',
+        },
       },
       {
         test: /\.css$/,

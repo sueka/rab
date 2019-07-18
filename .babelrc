@@ -18,5 +18,12 @@
         "loose": true
       }
     ]
-  ]
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "babel-plugin-unassert"
+      ]
+    }
+  }
 }

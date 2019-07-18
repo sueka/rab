@@ -8,6 +8,19 @@ import prodConfig from './webpack.config'
 const config: Configuration = {
   ...prodConfig,
   mode: 'development',
+  module: {
+    rules: prodConfig.module!.rules.map((rule) => {
+      if (rule.loader === 'babel-loader' && rule.options !== undefined) {
+        if (typeof rule.options === 'string') {
+          throw new Error() // TODO:
+        }
+
+        rule.options.envName = 'development'
+      }
+
+      return rule
+    }),
+  },
   plugins: [
     ...prodConfig.plugins!,
     new BundleAnalyzerPlugin({
