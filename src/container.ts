@@ -1,5 +1,3 @@
-import 'reflect-metadata'
-
 import { Container } from 'inversify'
 
 import ConfigRegistry from './config/ConfigRegistry'
