@@ -2,6 +2,8 @@ import * as React from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage } from 'react-intl'
 
+import Button from '@material-ui/core/Button'
+
 import messages from './messages'
 
 export interface StateProps {
@@ -46,11 +48,11 @@ export default class Counter extends React.Component<Props> {
           ) }
         </FormattedMessage>
         { value }
-        <button onClick={ reset }><FormattedMessage { ...messages.reset } /></button>
-        <button onClick={ increment }><FormattedMessage { ...messages.increment } /></button>
-        <button onClick={ decrement }><FormattedMessage { ...messages.decrement } /></button>
-        <button onClick={ this.handleIncrementIfOdd }><FormattedMessage { ...messages.incrementIfOdd } /></button>
-        <button onClick={ this.handleIncrementAsync }><FormattedMessage { ...messages.incrementAsync } /></button>
+        <Button onClick={ reset }><FormattedMessage { ...messages.reset } /></Button>
+        <Button onClick={ increment }><FormattedMessage { ...messages.increment } /></Button>
+        <Button onClick={ decrement }><FormattedMessage { ...messages.decrement } /></Button>
+        <Button onClick={ this.handleIncrementIfOdd }><FormattedMessage { ...messages.incrementIfOdd } /></Button>
+        <Button onClick={ this.handleIncrementAsync }><FormattedMessage { ...messages.incrementAsync } /></Button>
       </div>
     )
   }

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import Helmet from 'react-helmet'
 import { FormattedMessage } from 'react-intl'
 
+import Typography from '@material-ui/core/Typography'
+
 import Route from '../Route'
 import LocaleSelect from '../../containers/LocaleSelect'
 import messages from './messages'
@@ -23,9 +25,9 @@ const App: React.FunctionComponent = () => (
     <LocaleSelect />
     <Link to="/counter"><FormattedMessage { ...messages.counter } /></Link>
     <Link to="/info"><FormattedMessage { ...messages.info } /></Link>
-    <p>
+    <Typography>
       <FormattedMessage { ...messages.helloWorld } />
-    </p>
+    </Typography>
     <Switch>
       <Route exact strict sensitive path="/counter" component={ Counter } />
       <Route exact strict sensitive path="/info" component={ Info } />

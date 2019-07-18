@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+import NativeSelect from '@material-ui/core/NativeSelect'
+
 export interface StateProps {
   availableLocales: string[]
   locale: string
@@ -24,11 +26,11 @@ export default class LocaleSelect extends React.Component<Props> {
     const { availableLocales, locale } = this.props
 
     return (
-      <select defaultValue={ locale } onChange={ this.handleChange }>
+      <NativeSelect value={ locale } onChange={ this.handleChange }>
         { availableLocales.map((availableLocale, i) => (
           <option key={ i }>{ availableLocale }</option>
         )) }
-      </select>
+      </NativeSelect>
     )
   }
 }

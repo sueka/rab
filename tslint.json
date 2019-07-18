@@ -26,7 +26,8 @@
       true,
       "redux-saga/effects",
       "react-intl/locale-data/en",
-      "react-intl/locale-data/ja"
+      "react-intl/locale-data/ja",
+      "@material-ui/core"
     ],
     "jsx-curly-spacing": [true, "always"],
     "jsx-boolean-value": [true, "never"],

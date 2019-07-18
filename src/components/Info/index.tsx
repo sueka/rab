@@ -4,6 +4,9 @@ import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
 import * as assert from 'assert'
 import { resolve } from 'inversify-react'
 
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+
 import GetRepo from '../../useCase/GetRepo'
 import messages from './messages'
 
@@ -103,12 +106,12 @@ class Info extends React.Component<Props, LocalState> {
             </Helmet>
           ) }
         </FormattedMessage>
-        <button onClick={ this.handleClick } disabled={ this.state.fetching }>
+        <Button onClick={ this.handleClick } disabled={ this.state.fetching }>
           <FormattedMessage { ...messages.fetchData } />
-        </button>
-        <p>
+        </Button>
+        <Typography>
           { this.statusText }
-        </p>
+        </Typography>
         { this.info }
       </>
     )
