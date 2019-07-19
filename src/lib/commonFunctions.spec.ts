@@ -1,6 +1,5 @@
 import { delay, typed } from './commonFunctions'
 
-
 describe('delay', () => {
   jest.useFakeTimers() // TODO: reset timer spies
 
