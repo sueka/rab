@@ -9,8 +9,8 @@ import Typography from '@material-ui/core/Typography'
 
 import Route from '../Route'
 import LocaleSelect from '../../containers/LocaleSelect'
-import messages from './messages'
 
+import messages from './messages'
 import * as classes from './styles.css'
 
 const Counter = React.lazy(() => import(/* webpackChunkName: "counter" */ '../../containers/Counter'))
