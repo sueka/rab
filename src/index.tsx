@@ -9,8 +9,11 @@ import { DragDropContextProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { Provider as ServiceProdiver } from 'inversify-react'
 import container from './container'
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 
 import { rootSaga, configureStore } from './redux'
+import muiThemeOptions from './muiThemeOptions'
 
 import ErrorBoundary from './components/ErrorBoundary'
 import App from './components/App'
@@ -20,6 +23,8 @@ import './styles.css'
 
 const history = createBrowserHistory()
 const { store, sagaMiddleware } = configureStore(history)
+
+const muiTheme = createMuiTheme(muiThemeOptions)
 
 sagaMiddleware.run(rootSaga)
 
@@ -31,7 +36,9 @@ ReactDOM.render(
           <DragDropContextProvider backend={ HTML5Backend }>
             <ConnectedRouter { ...{ history } }>
               <ServiceProdiver { ...{ container } }>
-                <App />
+                <MuiThemeProvider theme={ muiTheme }>
+                  <App />
+                </MuiThemeProvider>
               </ServiceProdiver>
             </ConnectedRouter>
           </DragDropContextProvider>
