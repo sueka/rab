@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { FormattedMessage } from 'react-intl'
+import { v4 } from 'uuid'
 
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
@@ -23,6 +24,8 @@ type Props =
   & DispatchProps
 
 export default class LocaleSelect extends React.Component<Props> {
+  private inputId = v4()
+
   private handleChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
     const { select } = this.props
 
@@ -36,10 +39,10 @@ export default class LocaleSelect extends React.Component<Props> {
 
     return (
       <FormControl>
-        <InputLabel>
+        <InputLabel htmlFor={ this.inputId }>
           <FormattedMessage { ...messages.languages } />
         </InputLabel>
-        <NativeSelect value={ locale } onChange={ this.handleChange }>
+        <NativeSelect value={ locale } onChange={ this.handleChange } id={ this.inputId }>
           { availableLocales.map((availableLocale, i) => (
             <option key={ i } value={ availableLocale }>{ getNativeNameByCode(availableLocale) }</option>
           )) }
