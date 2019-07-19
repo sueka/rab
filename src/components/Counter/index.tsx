@@ -40,7 +40,7 @@ export default class Counter extends React.Component<Props> {
 
     return (
       <div>
-        <FormattedMessage { ...messages.title }>
+        <FormattedMessage { ...messages.counter }>
           { (title) => (
             <Helmet>
               <title>{ title }</title>

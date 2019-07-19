@@ -100,7 +100,7 @@ class Info extends React.Component<Props, LocalState> {
   public render() {
     return (
       <>
-        <FormattedMessage { ...messages.title }>
+        <FormattedMessage { ...messages.info }>
           { (title) => (
             <Helmet>
               <title>{ title }</title>
