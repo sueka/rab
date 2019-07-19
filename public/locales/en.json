@@ -13,5 +13,6 @@
   "src.components.Info.fetchingDoneSuccessfully": "Fetching done successfully.",
   "src.components.Info.fetchingFailed": "Fetching failed.",
   "src.components.Info.fetchingNotStarted": "Fetching not started.",
-  "src.components.Info.title": "info"
+  "src.components.Info.title": "info",
+  "src.components.LocaleSelect.languages": "Languages"
 }

@@ -13,5 +13,6 @@
   "src.components.Info.fetchingDoneSuccessfully": "読み込みに成功しました。",
   "src.components.Info.fetchingFailed": "読み込みに失敗しました。",
   "src.components.Info.fetchingNotStarted": "読み込みは開始していません。",
-  "src.components.Info.title": "情報"
+  "src.components.Info.title": "情報",
+  "src.components.LocaleSelect.languages": "言語"
 }
