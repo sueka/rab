@@ -16,10 +16,10 @@ const ignored = ['.cache', 'coverage', 'dist', 'doc', 'storybook-static', '**/*.
 export const clean: TaskFunction = () => del([...ignored, '!node_modules/**', '!.env'])
 const extractMessages = npxTask('extract-messages', ['--flat', '--default-locale=en', '--locales=en,ja', '--output=public/locales', 'src/**/messages.ts'])
 const preTypeCheck = parallel(npxTask('tcm', ['src', '-s']), extractMessages)
-export const typeCheck = series(preTypeCheck, npxTask('tsc', ['--noEmit', '-p', '.']))
+const typeCheck = series(preTypeCheck, npxTask('tsc', ['--noEmit', '-p', '.']))
 const tslint = npxTask('tslint', ['-p', '.'])
 const stylelint = npxTask('stylelint', ['src/**/*.css'])
-export const staticCheck = namedTask('staticCheck', parallel(series(typeCheck, tslint), stylelint))
+export const lint = namedTask('lint', parallel(series(typeCheck, tslint), stylelint))
 const testWithoutCoverage = series(preTypeCheck, npxTask('jest'))
 const testWithCoverage = series(preTypeCheck, npxTask('jest', ['--coverage']))
 export const test = testWithCoverage
@@ -29,7 +29,7 @@ export const document = parallel(npxTask('typedoc'))
 
 export const develop = parallel(
   continuousTask('src/**/messages.ts', extractMessages),
-  continuousTask('src', staticCheck),
+  continuousTask('src', lint),
   series(preTypeCheck, npxTask('jest', ['--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''], {
     CI: 'true', // to prevent screen being cleared
   })),
