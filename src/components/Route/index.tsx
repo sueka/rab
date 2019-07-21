@@ -3,7 +3,7 @@ import { Route as OriginalRoute, RouteProps, RouteComponentProps } from 'react-r
 
 import CircularProgress from '@material-ui/core/CircularProgress'
 
-import ErrorBoundary from '../ErrorBoundary'
+import ErrorBoundary from 'src/components/ErrorBoundary'
 
 const withErrorBoundary: (Component: React.ComponentType<RouteComponentProps> | React.ComponentType<unknown>) => React.FunctionComponent<RouteComponentProps> = (Component) => (props) => (
   <ErrorBoundary>

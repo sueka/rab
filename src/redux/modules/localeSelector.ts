@@ -2,10 +2,10 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call, put, takeEvery } from 'redux-saga/effects'
 
-import { ActionHandler } from '../../types/reduxTypes'
-import { Code } from '../../lib/languageNameSolver'
-import fetch, { ResponseParams } from '../../lib/fetch'
-import { validateAsStringRecord } from '../../lib/validators/commonValidators'
+import { ActionHandler } from 'src/types/reduxTypes'
+import { Code } from 'src/lib/languageNameSolver'
+import fetch, { ResponseParams } from 'src/lib/fetch'
+import { validateAsStringRecord } from 'src/lib/validators/commonValidators'
 
 //
 //             _|                  _|

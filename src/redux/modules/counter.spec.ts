@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 
-import { delay } from '../../lib/commonFunctions'
+import { delay } from 'src/lib/commonFunctions'
 
 import {
   RESET, NOP, INCREMENT, DECREMENT, INCREMENT_ASYNC,

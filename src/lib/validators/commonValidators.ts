@@ -1,5 +1,5 @@
-import { ValidationError } from '../errors'
-import { typed } from '../commonFunctions'
+import { ValidationError } from 'src/lib/errors'
+import { typed } from 'src/lib/commonFunctions'
 
 const createOptionalValidator = <T>(validate: (input: Json) => T) => (input: Json | undefined): T | undefined => {
   if (input !== undefined) {

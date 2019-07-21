@@ -2,8 +2,8 @@ import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import { withKnobs, number } from '@storybook/addon-knobs'
 
-import { doNothing } from '../../lib/commonFunctions'
-import { withIntlProvider } from '../../storybook/decorators'
+import { doNothing } from 'src/lib/commonFunctions'
+import { withIntlProvider } from 'src/storybook/decorators'
 import Counter from '.'
 
 storiesOf('Counter', module)

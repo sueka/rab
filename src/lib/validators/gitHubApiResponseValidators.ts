@@ -1,5 +1,5 @@
-import { ValidationError } from '../errors'
-import { typed } from '../commonFunctions'
+import { ValidationError } from 'src/lib/errors'
+import { typed } from 'src/lib/commonFunctions'
 import { validateAsString, validateAsOptionalString } from './commonValidators'
 
 export function validateAsGetRepoResponse(input: Json): GetRepoResponse {
