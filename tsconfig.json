@@ -16,6 +16,15 @@
 
     /* Module Resolution Options */
     "moduleResolution": "Node",
+    "baseUrl": "src",
+    "paths": {
+      "*": [
+        "../node_modules/@types/*"
+      ],
+      "src/*": [
+        "*"
+      ]
+    },
     "resolveJsonModule": true,
     "esModuleInterop": true,
 

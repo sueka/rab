@@ -5,6 +5,9 @@ module.exports = {
     },
   },
   moduleFileExtensions: ['ts', 'tsx', 'js'],
+  moduleNameMapper: {
+    'src/(.*)': '<rootDir>/src/$1',
+  },
   setupFiles: [
     '<rootDir>/src/setupTests.ts',
   ],

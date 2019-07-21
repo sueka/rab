@@ -9,6 +9,13 @@ const config: Configuration = {
   bail: true,
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
+    modules: [
+      path.resolve(__dirname, 'node_modules'),
+      path.resolve(__dirname, 'src'),
+    ],
+    alias: {
+      'src': path.resolve(__dirname, 'src'),
+    },
   },
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
