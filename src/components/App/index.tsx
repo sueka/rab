@@ -32,8 +32,8 @@ const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
       <FormattedMessage { ...messages.helloWorld } />
     </Typography>
     <Switch>
-      <Route exact strict sensitive path="/counter" component={ Counter } helmetProps={ { title: formatMessage(messages.counter) } } />
-      <Route exact strict sensitive path="/info" component={ Info } helmetProps={ { title: formatMessage(messages.info) } } />
+      <Route path="/counter" component={ Counter } helmetProps={ { title: formatMessage(messages.counter) } } />
+      <Route path="/info" component={ Info } helmetProps={ { title: formatMessage(messages.info) } } />
     </Switch>
   </div>
 )
