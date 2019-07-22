@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Helmet from 'react-helmet'
 import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
 import assert from 'assert'
 import { resolve } from 'inversify-react'
@@ -100,13 +99,6 @@ class Info extends React.Component<Props, LocalState> {
   public render() {
     return (
       <>
-        <FormattedMessage { ...messages.info }>
-          { (title) => (
-            <Helmet>
-              <title>{ title }</title>
-            </Helmet>
-          ) }
-        </FormattedMessage>
         <Button onClick={ this.handleClick } disabled={ this.state.fetching }>
           <FormattedMessage { ...messages.fetchData } />
         </Button>

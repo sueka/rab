@@ -1,10 +1,6 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  counter: {
-    id: 'src.components.Counter.counter',
-    defaultMessage: 'counter',
-  },
   reset: {
     id: 'src.components.Counter.reset',
     defaultMessage: 'reset',

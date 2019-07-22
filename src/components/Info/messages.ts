@@ -1,10 +1,6 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  info: {
-    id: 'src.components.Info.info',
-    defaultMessage: 'info',
-  },
   fetchData: {
     id: 'src.components.Info.fetchData',
     defaultMessage: 'Fetch data',

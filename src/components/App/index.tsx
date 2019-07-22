@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 import Helmet from 'react-helmet'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
 
 import Typography from '@material-ui/core/Typography'
 
@@ -16,7 +16,10 @@ import * as classes from './styles.css'
 const Counter = React.lazy(() => import(/* webpackChunkName: "counter" */ 'src/containers/Counter'))
 const Info = React.lazy(() => import(/* webpackChunkName: "info" */ 'src/components/Info'))
 
-const App: React.FunctionComponent = () => (
+type Props =
+  & InjectedIntlProps
+
+const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
   <div className={ classes.App }>
     <Helmet
       titleTemplate="%s - react-app-prototype"
@@ -29,10 +32,10 @@ const App: React.FunctionComponent = () => (
       <FormattedMessage { ...messages.helloWorld } />
     </Typography>
     <Switch>
-      <Route exact strict sensitive path="/counter" component={ Counter } />
-      <Route exact strict sensitive path="/info" component={ Info } />
+      <Route exact strict sensitive path="/counter" component={ Counter } helmetProps={ { title: formatMessage(messages.counter) } } />
+      <Route exact strict sensitive path="/info" component={ Info } helmetProps={ { title: formatMessage(messages.info) } } />
     </Switch>
   </div>
 )
 
-export default hot(module)(App)
+export default hot(module)(injectIntl(App))

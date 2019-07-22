@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Helmet from 'react-helmet'
 import { FormattedMessage } from 'react-intl'
 
 import Button from '@material-ui/core/Button'
@@ -40,13 +39,6 @@ export default class Counter extends React.Component<Props> {
 
     return (
       <div>
-        <FormattedMessage { ...messages.counter }>
-          { (title) => (
-            <Helmet>
-              <title>{ title }</title>
-            </Helmet>
-          ) }
-        </FormattedMessage>
         { value }
         <Button onClick={ reset }><FormattedMessage { ...messages.reset } /></Button>
         <Button onClick={ increment }><FormattedMessage { ...messages.increment } /></Button>
