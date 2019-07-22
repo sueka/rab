@@ -52,7 +52,7 @@ export default class Counter extends React.Component<Props> {
         <Button onClick={ increment }><FormattedMessage { ...messages.increment } /></Button>
         <Button onClick={ decrement }><FormattedMessage { ...messages.decrement } /></Button>
         <Button onClick={ this.handleIncrementIfOdd }><FormattedMessage { ...messages.incrementIfOdd } /></Button>
-        <Button onClick={ this.handleIncrementAsync }><FormattedMessage { ...messages.incrementAsync } /></Button>
+        <Button onClick={ this.handleIncrementAsync }><FormattedMessage { ...messages.willIncrementInOneSecond } /></Button>
       </div>
     )
   }

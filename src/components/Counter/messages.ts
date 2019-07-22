@@ -21,8 +21,8 @@ export default defineMessages({
     id: 'src.components.Counter.incrementIfOdd',
     defaultMessage: '+ if odd',
   },
-  incrementAsync: {
-    id: 'src.components.Counter.incrementAsync',
-    defaultMessage: '+ async',
+  willIncrementInOneSecond: {
+    id: 'src.components.Counter.willIncrementInOneSecond',
+    defaultMessage: '+ in 1 second',
   },
 })
