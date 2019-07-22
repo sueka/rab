@@ -16,7 +16,7 @@ export function typed<T extends unknown[]>(template: TemplateStringsArray, ...su
   let result = template[0]
 
   // tslint:disable-next-line:no-loop-statement
-  for (const [segment, substitution] of zipIterables(template.slice(1), substitutions)) {
+  for (const [substitution, segment] of zipIterables(substitutions, template.slice(1))) {
     result += String(substitution)
     result += segment
   }
