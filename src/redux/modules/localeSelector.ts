@@ -40,10 +40,10 @@ export interface LocaleSelectorState {
 //                 _|  _|
 //             _|_|    _|
 
-export const SELECT = '@@react-app-prototype/localeSelector/SELECT'
-export const SET_LOCALE = '@@react-app-prototype/localeSelector/SET_LOCALE'
-export const SET_MESSAGES = '@@react-app-prototype/localeSelector/SET_MESSAGES'
-export const PUSH_ERROR = '@@react-app-prototype/localeSelector/PUSH_ERROR'
+export /* for testing */ const SELECT = '@@react-app-prototype/localeSelector/SELECT'
+export /* for testing */ const SET_LOCALE = '@@react-app-prototype/localeSelector/SET_LOCALE'
+export /* for testing */ const SET_MESSAGES = '@@react-app-prototype/localeSelector/SET_MESSAGES'
+export /* for testing */ const PUSH_ERROR = '@@react-app-prototype/localeSelector/PUSH_ERROR'
 
 const localeSelectorActionTypes = [
   SELECT,
@@ -109,21 +109,21 @@ export const select = (locale: Code): SelectAction => ({
   },
 })
 
-const setLocale = (locale: Code): SetLocaleAction => ({
+export /* for testing */ const setLocale = (locale: Code): SetLocaleAction => ({
   type: SET_LOCALE,
   payload: {
     locale,
   },
 })
 
-const setMessages = (messages: Record<string, string>): SetMessagesAction => ({
+export /* for testing */ const setMessages = (messages: Record<string, string>): SetMessagesAction => ({
   type: SET_MESSAGES,
   payload: {
     messages,
   },
 })
 
-const pushError = (error: Error): PushErrorAction => ({
+export /* for testing */ const pushError = (error: Error): PushErrorAction => ({
   type: PUSH_ERROR,
   payload: error,
   error: true,
@@ -138,7 +138,7 @@ const pushError = (error: Error): PushErrorAction => ({
 //                           _|
 //                       _|_|
 
-function* selectSaga({ payload: { locale } }: SelectAction) {
+export /* for testing */ function* selectSaga({ payload: { locale } }: SelectAction): SagaIterator {
   try {
     const { body }: ResponseParams = yield call(fetch, {
       method: 'GET',
