@@ -63,14 +63,12 @@ const config: Configuration = {
       safe: true,
     }),
     new CopyWebpackPlugin(
-      [{
-          from: '.',
-          to: '',
-        },
+      [
+        { from: '.', to: '' },
       ],
       {
         context: path.resolve(__dirname, 'public'),
-      },
+      }
     ),
   ],
   devtool: 'source-map',
