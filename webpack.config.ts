@@ -60,7 +60,7 @@ const config: Configuration = {
     }),
     new DotEnvPlugin({
       path: path.resolve(__dirname, '.env'),
-      safe: true,
+      safe: true, // TODO: 環境変数を使えるようにする
     }),
     new CopyWebpackPlugin(
       [
