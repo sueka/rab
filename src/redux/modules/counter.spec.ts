@@ -121,7 +121,7 @@ describe('reducer', () => {
   })
 
   it('should handle RESET', () => {
-    expect(counterReducer({ count: 1 }, reset())).toEqual({ count: 0 })
+    expect(counterReducer({ count: 1 }, reset())).toEqual(initialState)
   })
 
   it('should handle NOP', () => {
