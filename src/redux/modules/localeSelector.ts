@@ -2,6 +2,7 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call, put, takeEvery } from 'redux-saga/effects'
 
+import { typed } from 'src/lib/commonFunctions'
 import { Code } from 'src/lib/languageNameSolver'
 import fetch, { ResponseParams } from 'src/lib/fetch'
 import { validateAsStringRecord } from 'src/lib/validators/commonValidators'
@@ -19,6 +20,7 @@ export interface LocaleSelectorState {
   availableLocales: Code[]
   locale: Code
   messages: Record<string, string>
+  errors: Error[]
 }
 
 //
@@ -41,11 +43,13 @@ export interface LocaleSelectorState {
 export const SELECT = '@@react-app-prototype/localeSelector/SELECT'
 export const SET_LOCALE = '@@react-app-prototype/localeSelector/SET_LOCALE'
 export const SET_MESSAGES = '@@react-app-prototype/localeSelector/SET_MESSAGES'
+export const PUSH_ERROR = '@@react-app-prototype/localeSelector/PUSH_ERROR'
 
 const localeSelectorActionTypes = [
   SELECT,
   SET_LOCALE,
   SET_MESSAGES,
+  PUSH_ERROR,
 ]
 
 interface SelectAction extends Action<typeof SELECT> {
@@ -66,10 +70,16 @@ interface SetMessagesAction extends Action<typeof SET_MESSAGES> {
   }
 }
 
+interface PushErrorAction extends Action<typeof PUSH_ERROR> {
+  payload: Error
+  error: true
+}
+
 export type LocaleSelectorAction =
   | SelectAction
   | SetLocaleAction
   | SetMessagesAction
+  | PushErrorAction
 
 function isLocaleSelectorAction(action: Action): action is LocaleSelectorAction {
   return localeSelectorActionTypes.includes(action.type)
@@ -113,6 +123,12 @@ const setMessages = (messages: Record<string, string>): SetMessagesAction => ({
   },
 })
 
+const pushError = (error: Error): PushErrorAction => ({
+  type: PUSH_ERROR,
+  payload: error,
+  error: true,
+})
+
 //
 //
 //   _|_|_|    _|_|_|    _|_|_|    _|_|_|    _|_|_|
@@ -135,7 +151,11 @@ function* selectSaga({ payload: { locale } }: SelectAction) {
     yield put(setMessages(validateAsStringRecord(body)))
     yield put(setLocale(locale))
   } catch (error) {
-    yield null // TODO:
+    if (error instanceof Error) {
+      yield put(pushError(error))
+    }
+
+    throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
   }
 }
 
@@ -166,6 +186,13 @@ export const createLocaleSelectorReducer: (initialState: LocaleSelectorState) =>
     case SET_MESSAGES: return {
       ...state,
       messages: action.payload.messages,
+    }
+    case PUSH_ERROR: return {
+      ...state,
+      errors: [
+        ...state.errors,
+        action.payload,
+      ],
     }
   }
 }

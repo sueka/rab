@@ -45,6 +45,7 @@ const createReducer = (history: History) => combineReducers<State, Action>({
     ],
     locale: 'en',
     messages: {},
+    errors: [],
   }),
 })
 
