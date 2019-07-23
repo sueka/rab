@@ -2,7 +2,6 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call, put, takeEvery } from 'redux-saga/effects'
 
-import { ActionHandler } from 'src/types/reduxTypes'
 import { Code } from 'src/lib/languageNameSolver'
 import fetch, { ResponseParams } from 'src/lib/fetch'
 import { validateAsStringRecord } from 'src/lib/validators/commonValidators'
@@ -145,37 +144,6 @@ export function* localeSelectorSaga(): SagaIterator {
 }
 
 //
-//                       _|      _|
-//   _|_|_|    _|_|_|  _|_|_|_|        _|_|    _|_|_|
-// _|    _|  _|          _|      _|  _|    _|  _|    _|
-// _|    _|  _|          _|      _|  _|    _|  _|    _|
-//   _|_|_|    _|_|_|      _|_|  _|    _|_|    _|    _|
-//
-//
-//
-// _|                                  _|  _|
-// _|_|_|      _|_|_|  _|_|_|      _|_|_|  _|    _|_|    _|  _|_|    _|_|_|
-// _|    _|  _|    _|  _|    _|  _|    _|  _|  _|_|_|_|  _|_|      _|_|
-// _|    _|  _|    _|  _|    _|  _|    _|  _|  _|        _|            _|_|
-// _|    _|    _|_|_|  _|    _|    _|_|_|  _|    _|_|_|  _|        _|_|_|
-//
-//
-
-type LocaleSelectorActionHandler<A extends LocaleSelectorAction> = ActionHandler<LocaleSelectorState, A>
-
-const handleSelect: LocaleSelectorActionHandler<SelectAction> = (state) => state
-
-const handleSetLocale: LocaleSelectorActionHandler<SetLocaleAction> = (state, { payload: { locale } }) => ({
-  ...state,
-  locale,
-})
-
-const handleSetMessages: LocaleSelectorActionHandler<SetMessagesAction> = (state, { payload: { messages } }) => ({
-  ...state,
-  messages,
-})
-
-//
 //                           _|
 // _|  _|_|    _|_|      _|_|_|  _|    _|    _|_|_|    _|_|    _|  _|_|
 // _|_|      _|_|_|_|  _|    _|  _|    _|  _|        _|_|_|_|  _|_|
@@ -190,8 +158,14 @@ export const createLocaleSelectorReducer: (initialState: LocaleSelectorState) =>
   }
 
   switch (action.type) {
-    case SELECT: return handleSelect(state, action)
-    case SET_LOCALE: return handleSetLocale(state, action)
-    case SET_MESSAGES: return handleSetMessages(state, action)
+    case SELECT: return state
+    case SET_LOCALE: return {
+      ...state,
+      locale: action.payload.locale,
+    }
+    case SET_MESSAGES: return {
+      ...state,
+      messages: action.payload.messages,
+    }
   }
 }
