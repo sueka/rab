@@ -60,7 +60,7 @@ describe('selectSaga', () => {
 
   expect(it.next().value).toEqual(call(fetch, {
     method: 'GET',
-    parameterizedEndpoint: '/locales/:locale.json',
+    parameterizedEndpoint: '/messages/:locale.json',
     params: { locale: 'ja' },
   }))
 

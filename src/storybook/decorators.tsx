@@ -8,7 +8,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { IntlProvider } from 'react-intl'
 
 import { rootSaga, configureStore } from 'src/redux'
-import en from '../../public/locales/en.json' // tslint:disable-line:no-relative-imports
+import en from '../../public/messages/en.json' // tslint:disable-line:no-relative-imports
 
 export const withProvider: StoryDecorator = (story) => {
   const history = createBrowserHistory()
