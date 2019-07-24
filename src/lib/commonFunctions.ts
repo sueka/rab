@@ -1,3 +1,4 @@
+import { UnreachableError } from './errors'
 import zipIterables from './zip/zipIterables'
 
 export const doNothing = () => {
@@ -22,4 +23,24 @@ export function typed<T extends unknown[]>(template: TemplateStringsArray, ...su
   }
 
   return result
+}
+
+/**
+ * @throw {TypeError} if the size of {xs} is less than two.
+ *
+ * @example
+ * conj(', ', ' or ', ['A', 'B', 'C']) // 'A, B or C'
+ */
+export function conj(separator: string, lastSeparator: string, xs: string[]): string {
+  if (xs.length < 2) {
+    throw new TypeError(typed<[string]>`The size of ${ xs.toString() } is less than two.`)
+  }
+
+  const lastX = xs.pop()
+
+  if (lastX === undefined) {
+    throw new UnreachableError()
+  }
+
+  return typed<[string, string, string]>`${ xs.join(separator) }${ lastSeparator }${ lastX }`
 }
