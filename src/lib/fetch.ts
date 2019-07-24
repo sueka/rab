@@ -16,7 +16,7 @@ interface RequestParams {
   query?: Record<string, string>
 }
 
-export interface ResponseParams {
+interface ResponseParams {
   response: Response
   body: Json
 }
