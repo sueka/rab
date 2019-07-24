@@ -1,5 +1,5 @@
 import { ValidationError } from 'src/lib/errors'
-import { typed } from 'src/lib/commonFunctions'
+import { typed, conj } from 'src/lib/commonFunctions'
 
 const createOptionalValidator = <T>(validate: (input: Json) => T) => (input: Json | undefined): T | undefined => {
   if (input !== undefined) {
@@ -27,6 +27,14 @@ const createRecordValidator = <T>(validate: (input: Json) => T) => (input: Json)
 
 export const validateAsOptionalString = createOptionalValidator(validateAsString)
 export const validateAsStringRecord = createRecordValidator(validateAsString)
+
+export function validateAsUnion<T extends readonly unknown[]>(options: T, input: Json): T[number] {
+  if (!options.includes(input)) {
+    throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is neigher ${ conj(', ', ' nor ', options.map(String)) }`)
+  }
+
+  return input
+}
 
 export function validateAsString(input: Json): string {
   if (typeof input !== 'string') {
