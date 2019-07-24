@@ -140,7 +140,7 @@ export /* for testing */ const pushError = (error: Error): PushErrorAction => ({
 
 export /* for testing */ function* selectSaga({ payload: { locale } }: SelectAction): SagaIterator {
   try {
-    const { body }: ResponseParams = yield call(fetch, {
+    const { body }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
       method: 'GET',
       parameterizedEndpoint: '/messages/:locale.json',
       params: { locale },

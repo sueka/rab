@@ -153,13 +153,13 @@ export /* for testing */ const selectCount = ({ counter: { count } }: State) => 
 //                       _|_|
 
 export /* for testing */ function* incrementSaga(): SagaIterator {
-  const count: number = yield select(selectCount)
+  const count: ReturnType<typeof selectCount> = yield select(selectCount)
 
   yield put(setCount(count + 1))
 }
 
 export /* for testing */ function* decrementSaga(): SagaIterator {
-  const count: number = yield select(selectCount)
+  const count: ReturnType<typeof selectCount> = yield select(selectCount)
 
   yield put(setCount(count - 1))
 }
