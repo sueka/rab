@@ -3,7 +3,7 @@ import createSagaMiddleware, { SagaMiddleware, SagaIterator } from 'redux-saga'
 import { spawn } from 'redux-saga/effects'
 import { History } from 'history'
 import { RouterState, LocationChangeAction, connectRouter, routerMiddleware } from 'connected-react-router'
-import logger from 'redux-logger'
+import { createLogger } from 'redux-logger'
 
 import { CounterState, CounterAction, counterSaga, createCounterReducer } from './modules/counter'
 import { LocaleSelectorState, LocaleSelectorAction, localeSelectorSaga, createLocaleSelectorReducer } from './modules/localeSelector'
@@ -57,10 +57,14 @@ declare global {
   }
 }
 
+const logger = createLogger({
+  diff: true,
+})
+
 const composeEnhancers =
   process.env.NODE_ENV === 'development'
     ?
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ !== undefined 
+      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ !== undefined
         ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
         : compose
     : compose
