@@ -3,6 +3,7 @@ import createSagaMiddleware, { SagaMiddleware, SagaIterator } from 'redux-saga'
 import { spawn } from 'redux-saga/effects'
 import { History } from 'history'
 import { RouterState, LocationChangeAction, connectRouter, routerMiddleware } from 'connected-react-router'
+import logger from 'redux-logger'
 
 import { CounterState, CounterAction, counterSaga, createCounterReducer } from './modules/counter'
 import { LocaleSelectorState, LocaleSelectorAction, localeSelectorSaga, createLocaleSelectorReducer } from './modules/localeSelector'
@@ -56,20 +57,30 @@ declare global {
   }
 }
 
+const composeEnhancers =
+  process.env.NODE_ENV === 'development'
+    ?
+      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ !== undefined 
+        ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+        : compose
+    : compose
+
 export const configureStore = (history: History): {
   store: Store<State, Action>
   sagaMiddleware: SagaMiddleware
 } => {
+  const storeEnhancers = [
+    applyMiddleware(sagaMiddleware),
+    applyMiddleware(routerMiddleware(history)),
+  ]
+
+  if (process.env.NODE_ENV === 'development') {
+    storeEnhancers.push(applyMiddleware(logger)) // tslint:disable-line:no-array-mutation
+  }
+
   const store = createStore(
     createReducer(history),
-    (
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ !== undefined
-        ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-        : compose
-    )(
-      applyMiddleware(sagaMiddleware),
-      applyMiddleware(routerMiddleware(history))
-    )
+    composeEnhancers(...storeEnhancers)
   )
 
   return {
