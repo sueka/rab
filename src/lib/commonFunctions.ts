@@ -36,7 +36,7 @@ export function conj(separator: string, lastSeparator: string, xs: string[]): st
     throw new TypeError(typed<[string]>`The size of ${ xs.toString() } is less than two.`)
   }
 
-  const lastX = xs.pop()
+  const lastX = xs.pop() // tslint:disable-line:no-array-mutation
 
   if (lastX === undefined) {
     throw new UnreachableError()
