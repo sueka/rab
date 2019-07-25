@@ -1,5 +1,19 @@
+import { either } from 'fp-ts'
+
 import { ValidationError } from 'src/lib/errors'
 import { typed, conj } from 'src/lib/commonFunctions'
+
+export const failSafe = <T>(validate: (input: Json) => T) => (input: Json): either.Either<ValidationError, T> => {
+  try {
+    return either.right(validate(input))
+  } catch (error) {
+    if (error instanceof ValidationError) {
+      return either.left(error)
+    }
+
+    throw error
+  }
+}
 
 export const optional = <T>(validate: (input: Json) => T) => (input: Json | undefined): T | undefined => {
   if (input !== undefined) {

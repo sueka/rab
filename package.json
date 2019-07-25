@@ -52,6 +52,7 @@
     "del": "^3.0.0",
     "dotenv-webpack": "^1.7.0",
     "extract-react-intl-messages": "^1.0.1",
+    "fp-ts": "^2.0.3",
     "gulp": "^4.0.2",
     "history": "^4.9.0",
     "hoist-non-react-statics": "^3.3.0",
