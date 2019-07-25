@@ -1,7 +1,7 @@
 import { ValidationError } from 'src/lib/errors'
 import { typed, conj } from 'src/lib/commonFunctions'
 
-const createOptionalValidator = <T>(validate: (input: Json) => T) => (input: Json | undefined): T | undefined => {
+export const optional = <T>(validate: (input: Json) => T) => (input: Json | undefined): T | undefined => {
   if (input !== undefined) {
     return validate(input)
   }
@@ -9,7 +9,7 @@ const createOptionalValidator = <T>(validate: (input: Json) => T) => (input: Jso
   return
 }
 
-const createRecordValidator = <T>(validate: (input: Json) => T) => (input: Json): Record<string, T> => {
+export const recordOf = <T>(validate: (input: Json) => T) => (input: Json): Record<string, T> => {
   if (input === null || typeof input === 'boolean' || typeof input === 'number' || typeof input === 'string' || Array.isArray(input)) {
     throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
   }
@@ -24,9 +24,6 @@ const createRecordValidator = <T>(validate: (input: Json) => T) => (input: Json)
     throw error
   }
 }
-
-export const optionalString = createOptionalValidator(string)
-export const stringRecord = createRecordValidator(string)
 
 export function union<T extends readonly unknown[]>(options: T, input: Json): T[number] {
   if (!options.includes(input)) {

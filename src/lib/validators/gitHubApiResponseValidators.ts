@@ -1,6 +1,6 @@
 import { ValidationError } from 'src/lib/errors'
 import { typed } from 'src/lib/commonFunctions'
-import { string, optionalString } from './commonValidators'
+import { optional, string } from './commonValidators'
 
 export function GetRepoResponse(input: Json): GetRepoResponse {
   return Repository(input)
@@ -32,7 +32,7 @@ export function UnsuccessfulResponse(input: Json): UnsuccessfulResponse {
   try {
     return {
       message: string(input.message),
-      documentation_url: optionalString(input.documentation_url),
+      documentation_url: optional(string)(input.documentation_url),
     }
   } catch (error) {
     if (error instanceof ValidationError) {
