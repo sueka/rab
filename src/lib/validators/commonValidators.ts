@@ -23,6 +23,14 @@ export const optional = <T>(validate: (input: Json) => T) => (input: Json | unde
   return
 }
 
+export const oneOf = <T extends readonly unknown[]>(options: T) => (input: Json): T[number] => {
+  if (!options.includes(input)) {
+    throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is neigher ${ conj(', ', ' nor ', options.map(String)) }`)
+  }
+
+  return input
+}
+
 export const unionOf = <T, U>(validateAsT: (input: Json) => T, validateAsU: (input: Json) => U) => (input: Json): T | U => {
   const t = failSafe(validateAsT)(input)
   const u = failSafe(validateAsU)(input)
@@ -56,14 +64,6 @@ export const recordOf = <T>(validate: (input: Json) => T) => (input: Json): Reco
 
     throw error
   }
-}
-
-export function union<T extends readonly unknown[]>(options: T, input: Json): T[number] {
-  if (!options.includes(input)) {
-    throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is neigher ${ conj(', ', ' nor ', options.map(String)) }`)
-  }
-
-  return input
 }
 
 export function string(input: Json): string {
