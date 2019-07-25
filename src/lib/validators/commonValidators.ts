@@ -2,6 +2,7 @@ import { either } from 'fp-ts'
 
 import { UnreachableError, ValidationError } from 'src/lib/errors'
 import { typed, conj } from 'src/lib/commonFunctions'
+import equalsJsons from 'src/lib/equalsJsons'
 
 export const failSafe = <T>(validate: (input: Json) => T) => (input: Json): either.Either<ValidationError, T> => {
   try {
@@ -63,6 +64,22 @@ export const recordOf = <T>(validate: (input: Json) => T) => (input: Json): Reco
     }
 
     throw error
+  }
+}
+
+export function constant<T extends null>(a: T): (input: Json) => T
+export function constant<T extends boolean>(a: T): (input: Json) => T
+export function constant<T extends number>(a: T): (input: Json) => T
+export function constant<T extends string>(a: T): (input: Json) => T
+export function constant<T extends JsonArray>(a: T): (input: Json) => T
+export function constant<T extends JsonObject>(a: T): (input: Json) => T
+export function constant<T extends Json>(a: T): (input: Json) => T {
+  return (input) => {
+    if (!equalsJsons(input, a)) {
+      throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is not ${ JSON.stringify(a) }.`)
+    }
+
+    return a
   }
 }
 
