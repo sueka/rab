@@ -2,8 +2,8 @@ import { injectable, inject } from 'inversify'
 
 import { typed } from 'src/lib/commonFunctions'
 import {
-  validateAsGetRepoResponse,
-  validateAsUnsuccessfulResponse,
+  GetRepoResponse,
+  UnsuccessfulResponse,
 } from 'src/lib/validators/gitHubApiResponseValidators'
 import fetch from 'src/lib/fetch'
 import ConfigRegistry from 'src/config/ConfigRegistry'
@@ -27,7 +27,7 @@ export default class GetRepoImpl implements GetRepo {
         successful: true,
         response: {
           status,
-          body: validateAsGetRepoResponse(body),
+          body: GetRepoResponse(body),
         },
       }
     } else {
@@ -35,7 +35,7 @@ export default class GetRepoImpl implements GetRepo {
         successful: false,
         response: {
           status,
-          body: validateAsUnsuccessfulResponse(body),
+          body: UnsuccessfulResponse(body),
         },
       }
     }

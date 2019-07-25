@@ -1,19 +1,19 @@
 import { ValidationError } from 'src/lib/errors'
 import { typed } from 'src/lib/commonFunctions'
-import { validateAsString, validateAsOptionalString } from './commonValidators'
+import { string, optionalString } from './commonValidators'
 
-export function validateAsGetRepoResponse(input: Json): GetRepoResponse {
-  return validateAsRepository(input)
+export function GetRepoResponse(input: Json): GetRepoResponse {
+  return Repository(input)
 }
 
-function validateAsRepository(input: Json): Repository {
+function Repository(input: Json): Repository {
   if (input === null || typeof input === 'boolean' || typeof input === 'number' || typeof input === 'string' || Array.isArray(input)) {
     throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
   }
 
   try {
     return {
-      name: validateAsString(input.name),
+      name: string(input.name),
     }
   } catch (error) {
     if (error instanceof ValidationError) {
@@ -24,15 +24,15 @@ function validateAsRepository(input: Json): Repository {
   }
 }
 
-export function validateAsUnsuccessfulResponse(input: Json): UnsuccessfulResponse {
+export function UnsuccessfulResponse(input: Json): UnsuccessfulResponse {
   if (input === null || typeof input === 'boolean' || typeof input === 'number' || typeof input === 'string' || Array.isArray(input)) {
     throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
   }
 
   try {
     return {
-      message: validateAsString(input.message),
-      documentation_url: validateAsOptionalString(input.documentation_url),
+      message: string(input.message),
+      documentation_url: optionalString(input.documentation_url),
     }
   } catch (error) {
     if (error instanceof ValidationError) {

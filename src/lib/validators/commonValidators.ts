@@ -25,10 +25,10 @@ const createRecordValidator = <T>(validate: (input: Json) => T) => (input: Json)
   }
 }
 
-export const validateAsOptionalString = createOptionalValidator(validateAsString)
-export const validateAsStringRecord = createRecordValidator(validateAsString)
+export const optionalString = createOptionalValidator(string)
+export const stringRecord = createRecordValidator(string)
 
-export function validateAsUnion<T extends readonly unknown[]>(options: T, input: Json): T[number] {
+export function union<T extends readonly unknown[]>(options: T, input: Json): T[number] {
   if (!options.includes(input)) {
     throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is neigher ${ conj(', ', ' nor ', options.map(String)) }`)
   }
@@ -36,7 +36,7 @@ export function validateAsUnion<T extends readonly unknown[]>(options: T, input:
   return input
 }
 
-export function validateAsString(input: Json): string {
+export function string(input: Json): string {
   if (typeof input !== 'string') {
     throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not a string.`)
   }
