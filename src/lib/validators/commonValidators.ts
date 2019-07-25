@@ -1,6 +1,6 @@
 import { either } from 'fp-ts'
 
-import { ValidationError } from 'src/lib/errors'
+import { UnreachableError, ValidationError } from 'src/lib/errors'
 import { typed, conj } from 'src/lib/commonFunctions'
 
 export const failSafe = <T>(validate: (input: Json) => T) => (input: Json): either.Either<ValidationError, T> => {
@@ -21,6 +21,25 @@ export const optional = <T>(validate: (input: Json) => T) => (input: Json | unde
   }
 
   return
+}
+
+export const unionOf = <T, U>(validateAsT: (input: Json) => T, validateAsU: (input: Json) => U) => (input: Json): T | U => {
+  const t = failSafe(validateAsT)(input)
+  const u = failSafe(validateAsU)(input)
+
+  if (either.isLeft(t) && either.isLeft(u)) {
+    throw new ValidationError(typed<[string, string]>`${ t.left.message } AND ${ u.left.message }`)
+  }
+
+  if (either.isRight(t)) {
+    return t.right
+  }
+
+  if (either.isRight(u)) {
+    return u.right
+  }
+
+  throw new UnreachableError()
 }
 
 export const recordOf = <T>(validate: (input: Json) => T) => (input: Json): Record<string, T> => {
