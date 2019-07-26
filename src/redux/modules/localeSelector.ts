@@ -5,7 +5,7 @@ import { call, put, takeEvery } from 'redux-saga/effects'
 import { typed } from 'src/lib/commonFunctions'
 import { Code } from 'src/lib/languageNameSolver'
 import fetch from 'src/lib/fetch'
-import { recordOf, string } from 'src/lib/validators/commonValidators'
+import { recordOf, asString } from 'src/lib/validators/commonValidators'
 
 //
 //             _|                  _|
@@ -148,7 +148,7 @@ export /* for testing */ function* selectSaga({ payload: { locale } }: SelectAct
 
     // TODO: cache
 
-    yield put(setMessages(recordOf(string)(body)))
+    yield put(setMessages(recordOf(asString)(body)))
     yield put(setLocale(locale))
   } catch (error) {
     if (error instanceof Error) {
