@@ -83,6 +83,22 @@ export function asConstant<T extends Json>(a: T): (input: Json) => T {
   }
 }
 
+export function asBoolean(input: Json): boolean {
+  if (typeof input !== 'boolean') {
+    throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not a boolean.`)
+  }
+
+  return input
+}
+
+export function asNumber(input: Json): number {
+  if (typeof input !== 'number') {
+    throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not a number.`)
+  }
+
+  return input
+}
+
 export function asString(input: Json): string {
   if (typeof input !== 'string') {
     throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not a string.`)

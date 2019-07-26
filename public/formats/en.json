@@ -1,0 +1,15 @@
+{
+  "number": {
+    "usd": {
+      "style": "currency",
+      "currency": "USD"
+    }
+  },
+  "date": {
+    "medium": {
+      "year": "numeric",
+      "month": "short",
+      "day": "numeric"
+    }
+  }
+}

@@ -8,6 +8,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { IntlProvider } from 'react-intl'
 
 import { rootSaga, configureStore } from 'src/redux'
+import formats from '../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../../public/messages/en.json' // tslint:disable-line:no-relative-imports
 
 export const withProvider: StoryDecorator = (story) => {
@@ -36,7 +37,7 @@ export const withDragDropContextProvider: StoryDecorator = (story) => (
 )
 
 export const withIntlProvider: StoryDecorator = (story) => (
-  <IntlProvider locale="en" messages={ messages }>
+  <IntlProvider locale="en" formats={ formats } messages={ messages }>
     { story() }
   </IntlProvider>
 )

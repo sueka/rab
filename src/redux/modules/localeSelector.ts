@@ -2,10 +2,12 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call, put, takeEvery } from 'redux-saga/effects'
 
+import { Formats } from 'src/types/intlTypes'
 import { typed } from 'src/lib/commonFunctions'
 import { Code } from 'src/lib/languageNameSolver'
 import fetch from 'src/lib/fetch'
 import { recordOf, asString } from 'src/lib/validators/commonValidators'
+import { asFormats } from 'src/lib/validators/intlValidators'
 
 //
 //             _|                  _|
@@ -19,6 +21,7 @@ import { recordOf, asString } from 'src/lib/validators/commonValidators'
 export interface LocaleSelectorState {
   availableLocales: Code[]
   locale: Code
+  formats: Formats
   messages: Record<string, string>
   errors: Error[]
 }
@@ -42,12 +45,14 @@ export interface LocaleSelectorState {
 
 export /* for testing */ const SELECT = '@@react-app-prototype/localeSelector/SELECT'
 export /* for testing */ const SET_LOCALE = '@@react-app-prototype/localeSelector/SET_LOCALE'
+export /* for testing */ const SET_FORMATS = '@@react-app-prototype/localeSelector/SET_FORMATS'
 export /* for testing */ const SET_MESSAGES = '@@react-app-prototype/localeSelector/SET_MESSAGES'
 export /* for testing */ const PUSH_ERROR = '@@react-app-prototype/localeSelector/PUSH_ERROR'
 
 const localeSelectorActionTypes = [
   SELECT,
   SET_LOCALE,
+  SET_FORMATS,
   SET_MESSAGES,
   PUSH_ERROR,
 ]
@@ -61,6 +66,12 @@ interface SelectAction extends Action<typeof SELECT> {
 interface SetLocaleAction extends Action<typeof SET_LOCALE> {
   payload: {
     locale: Code
+  }
+}
+
+interface SetFormatsAction extends Action<typeof SET_FORMATS> {
+  payload: {
+    formats: Formats
   }
 }
 
@@ -78,6 +89,7 @@ interface PushErrorAction extends Action<typeof PUSH_ERROR> {
 export type LocaleSelectorAction =
   | SelectAction
   | SetLocaleAction
+  | SetFormatsAction
   | SetMessagesAction
   | PushErrorAction
 
@@ -116,6 +128,13 @@ export /* for testing */ const setLocale = (locale: Code): SetLocaleAction => ({
   },
 })
 
+export /* for testing */ const setFormats = (formats: Formats): SetFormatsAction => ({
+  type: SET_FORMATS,
+  payload: {
+    formats,
+  },
+})
+
 export /* for testing */ const setMessages = (messages: Record<string, string>): SetMessagesAction => ({
   type: SET_MESSAGES,
   payload: {
@@ -140,7 +159,13 @@ export /* for testing */ const pushError = (error: Error): PushErrorAction => ({
 
 export /* for testing */ function* selectSaga({ payload: { locale } }: SelectAction): SagaIterator {
   try {
-    const { body }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
+    const { body: formats }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
+      method: 'GET',
+      parameterizedEndpoint: '/formats/:locale.json',
+      params: { locale },
+    })
+
+    const { body: messages }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
       method: 'GET',
       parameterizedEndpoint: '/messages/:locale.json',
       params: { locale },
@@ -148,7 +173,8 @@ export /* for testing */ function* selectSaga({ payload: { locale } }: SelectAct
 
     // TODO: cache
 
-    yield put(setMessages(recordOf(asString)(body)))
+    yield put(setFormats(asFormats(formats)))
+    yield put(setMessages(recordOf(asString)(messages)))
     yield put(setLocale(locale))
   } catch (error) {
     if (error instanceof Error) {
@@ -184,6 +210,10 @@ export const createLocaleSelectorReducer: (initialState: LocaleSelectorState) =>
     case SET_LOCALE: return {
       ...state,
       locale: action.payload.locale,
+    }
+    case SET_FORMATS: return {
+      ...state,
+      formats: action.payload.formats,
     }
     case SET_MESSAGES: return {
       ...state,

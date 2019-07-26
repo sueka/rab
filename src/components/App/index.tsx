@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 import Helmet from 'react-helmet'
-import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
+import { FormattedMessage, FormattedNumber, FormattedDate, InjectedIntlProps, injectIntl } from 'react-intl'
 
 import Typography from '@material-ui/core/Typography'
 
@@ -30,6 +30,12 @@ const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
     <Link to="/info"><FormattedMessage { ...messages.info } /></Link>
     <Typography>
       <FormattedMessage { ...messages.helloWorld } />
+    </Typography>
+    <Typography>
+      <FormattedNumber format="usd" value={ 100 } />
+    </Typography>
+    <Typography>
+      <FormattedDate format="medium" value={ new Date() } />
     </Typography>
     <Switch>
       <Route path="/counter" component={ Counter } helmetProps={ { title: formatMessage(messages.counter) } } />

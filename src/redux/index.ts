@@ -7,6 +7,7 @@ import { createLogger } from 'redux-logger'
 
 import { CounterState, CounterAction, counterSaga, createCounterReducer } from './modules/counter'
 import { LocaleSelectorState, LocaleSelectorAction, localeSelectorSaga, createLocaleSelectorReducer } from './modules/localeSelector'
+import formats from '../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 
 export interface State {
   router: RouterState
@@ -45,6 +46,7 @@ const createReducer = (history: History) => combineReducers<State, Action>({
       'ja',
     ],
     locale: 'en',
+    formats,
     messages: {},
     errors: [],
   }),

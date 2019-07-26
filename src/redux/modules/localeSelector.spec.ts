@@ -3,9 +3,9 @@ import { call, put, takeEvery } from 'redux-saga/effects'
 import fetch from 'src/lib/fetch'
 
 import {
-  SELECT, SET_LOCALE, SET_MESSAGES, PUSH_ERROR,
+  SELECT, SET_LOCALE, SET_FORMATS, SET_MESSAGES, PUSH_ERROR,
   LocaleSelectorState,
-  select, setLocale, setMessages, pushError,
+  select, setLocale, setFormats, setMessages, pushError,
   selectSaga, localeSelectorSaga,
   createLocaleSelectorReducer,
 } from './localeSelector'
@@ -28,6 +28,17 @@ describe('action creators', () => {
         type: SET_LOCALE,
         payload: {
           locale: 'ja',
+        },
+      })
+    })
+  })
+
+  describe('setFormats', () => {
+    it('should return a set formats action', () => {
+      expect(setFormats({ date: { short: { month: 'short', day: 'numeric' } } })).toEqual({
+        type: SET_FORMATS,
+        payload: {
+          formats: { date: { short: { month: 'short', day: 'numeric' } } },
         },
       })
     })
@@ -60,11 +71,19 @@ describe('selectSaga', () => {
 
   expect(it.next().value).toEqual(call(fetch, {
     method: 'GET',
+    parameterizedEndpoint: '/formats/:locale.json',
+    params: { locale: 'ja' },
+  }))
+
+  // TODO: yield の結果のテスト手法を再考する
+  expect(it.next({ body: { date: { short: { month: 'short', day: 'numeric' } } } }).value).toEqual(call(fetch, {
+    method: 'GET',
     parameterizedEndpoint: '/messages/:locale.json',
     params: { locale: 'ja' },
   }))
 
-  expect(it.next({ body: { blue: '青' } }).value).toEqual(put(setMessages({ blue: '青' })))
+  expect(it.next({ body: { blue: '青' } }).value).toEqual(put(setFormats({ date: { short: { month: 'short', day: 'numeric' } } })))
+  expect(it.next().value).toEqual(put(setMessages({ blue: '青' })))
   expect(it.next().value).toEqual(put(setLocale('ja')))
 })
 
@@ -79,6 +98,7 @@ describe('reducer', () => {
   const initialState: LocaleSelectorState = {
     availableLocales: ['en', 'ja'],
     locale: 'en',
+    formats: {},
     messages: {},
     errors: [],
   }
@@ -99,6 +119,13 @@ describe('reducer', () => {
     expect(localeSelectorReducer(initialState, setLocale('ja'))).toEqual({
       ...initialState,
       locale: 'ja',
+    })
+  })
+
+  it('should handle SET_FORMATS', () => {
+    expect(localeSelectorReducer(initialState, setFormats({ date: { short: { month: 'short', day: 'numeric' } } }))).toEqual({
+      ...initialState,
+      formats: { date: { short: { month: 'short', day: 'numeric' } } },
     })
   })
 
