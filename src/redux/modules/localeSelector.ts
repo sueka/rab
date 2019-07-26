@@ -153,6 +153,8 @@ export /* for testing */ function* selectSaga({ payload: { locale } }: SelectAct
   } catch (error) {
     if (error instanceof Error) {
       yield put(pushError(error))
+
+      return
     }
 
     throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
