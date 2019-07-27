@@ -14,6 +14,9 @@ const store = createMockStore<Omit<State, 'router'>>()({
   counter: {
     count: 0,
   },
+  io: {
+    now: new Date('2019-07-27'),
+  },
   localeSelector: {
     availableLocales: [
       'en',

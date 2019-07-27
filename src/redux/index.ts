@@ -6,18 +6,21 @@ import { RouterState, LocationChangeAction, connectRouter, routerMiddleware } fr
 import { createLogger } from 'redux-logger'
 
 import { CounterState, CounterAction, counterSaga, createCounterReducer } from './modules/counter'
+import { IoState, IoAction, createIoReducer } from './modules/io'
 import { LocaleSelectorState, LocaleSelectorAction, localeSelectorSaga, createLocaleSelectorReducer } from './modules/localeSelector'
 import formats from '../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 
 export interface State {
   router: RouterState
   counter: CounterState
+  io: IoState
   localeSelector: LocaleSelectorState
 }
 
 type Action =
   & LocationChangeAction
   & CounterAction
+  & IoAction
   & LocaleSelectorAction
 
 import { addLocaleData } from 'react-intl'
@@ -39,6 +42,9 @@ const createReducer = (history: History) => combineReducers<State, Action>({
   router: connectRouter(history),
   counter: createCounterReducer({
     count: 0,
+  }),
+  io: createIoReducer({
+    now: new Date(),
   }),
   localeSelector: createLocaleSelectorReducer({
     availableLocales: [
