@@ -12,7 +12,7 @@ describe('validators', () => {
     const asEmptyObject = asConstant({})
     const asObject = asConstant({ answer: 42 })
 
-    it('should do nothing with OK constant', () => {
+    it('should do nothing with an OK argument', () => {
       expect(asNull(null)).toEqual(null)
       expect(asFalse(false)).toEqual(false)
       expect(asZero(0)).toEqual(0)
@@ -26,7 +26,7 @@ describe('validators', () => {
       expect(asObject({ answer: 42 })).toEqual({ answer: 42 })
     })
 
-    it('should throw a ValidationError against wrong constant', () => {
+    it('should throw a ValidationError against a wrong argument', () => {
       expect(() => asNull(false)).toThrowError(ValidationError)
       expect(() => asFalse(null)).toThrowError(ValidationError)
       expect(() => asZero(null)).toThrowError(ValidationError)
