@@ -79,7 +79,7 @@ export function asConstant<T extends Json>(a: T): (input: Json) => T {
       throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is not ${ JSON.stringify(a) }.`)
     }
 
-    return a
+    return input as T
   }
 }
 
