@@ -1,5 +1,23 @@
 import { ValidationError } from 'src/lib/errors'
-import { asConstant, asBoolean, asNumber, asString } from './commonValidators'
+import { asUnionOf, asConstant, asBoolean, asNumber, asString } from './commonValidators'
+
+describe('validators', () => {
+  describe('asUnionOf', () => {
+    it('should work with an OK argument', () => {
+      expect(asUnionOf([0, ''] as const)(0)).toEqual(0)
+      expect(asUnionOf([0, ''] as const)(-0)).toEqual(-0)
+      expect(1 / asUnionOf([0, 1] as const)(0)).toEqual(Infinity)
+      expect(1 / asUnionOf([0, 1] as const)(-0)).toEqual(-Infinity)
+      expect(asUnionOf([0, ''] as const)('')).toEqual('')
+    })
+
+    it('should throw a ValidationError against a wrong argument', () => {
+      expect(() => asUnionOf([0, ''] as const)(null)).toThrowError(ValidationError)
+      expect(() => asUnionOf([0, ''] as const)(42)).toThrowError(ValidationError)
+      expect(() => asUnionOf([0, ''] as const)('foo')).toThrowError(ValidationError)
+    })
+  })
+})
 
 describe('validators', () => {
   describe('asConstant', () => {
