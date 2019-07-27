@@ -7,6 +7,7 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   moduleNameMapper: {
+    '\\.css$': 'identity-obj-proxy',
     'src/(.*)': '<rootDir>/src/$1',
   },
   setupFiles: [

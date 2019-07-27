@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App 1`] = `
+<div>
+  <div
+    class="MuiFormControl-root"
+  >
+    <label
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+      data-shrink="true"
+      for="stub uuid"
+    >
+      <span>
+        Languages
+      </span>
+    </label>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+    >
+      <select
+        aria-invalid="false"
+        class="MuiNativeSelect-root MuiNativeSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+        data-testid="localeSelect"
+        id="stub uuid"
+      >
+        <option
+          value="en"
+        >
+          English
+        </option>
+        <option
+          value="ja"
+        >
+          日本語
+        </option>
+      </select>
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiNativeSelect-icon"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
+  </div>
+  <a
+    href="/counter"
+  >
+    <span>
+      counter
+    </span>
+  </a>
+  <a
+    href="/info"
+  >
+    <span>
+      info
+    </span>
+  </a>
+  <p
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    <span>
+      Hello, world!
+    </span>
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    <span>
+      $100.00
+    </span>
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    <span>
+      Jul 27, 2019
+    </span>
+  </p>
+</div>
+`;

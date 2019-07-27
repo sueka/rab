@@ -4,12 +4,6 @@ import { render, fireEvent } from '@testing-library/react'
 
 import LocaleSelect from '.'
 
-jest.mock('uuid', () => ({
-  v4() {
-    return 'stub uuid'
-  }
-}))
-
 test('LocaleSelect', () => {
   const select = jest.fn()
 
