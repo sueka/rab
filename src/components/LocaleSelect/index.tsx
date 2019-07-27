@@ -42,7 +42,7 @@ export default class LocaleSelect extends React.Component<Props> {
         <InputLabel htmlFor={ this.inputId }>
           <FormattedMessage { ...messages.languages } />
         </InputLabel>
-        <NativeSelect value={ locale } onChange={ this.handleChange } id={ this.inputId }>
+        <NativeSelect value={ locale } onChange={ this.handleChange } id={ this.inputId } inputProps={ { 'data-testid': 'localeSelect' } }>
           { availableLocales.map((availableLocale, i) => (
             <option key={ i } value={ availableLocale }>{ getNativeNameByCode(availableLocale) }</option>
           )) }
