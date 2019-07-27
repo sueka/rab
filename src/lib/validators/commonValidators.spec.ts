@@ -1,11 +1,53 @@
 import { ValidationError } from 'src/lib/errors'
-import { asBoolean, asNumber, asString } from './commonValidators'
+import { asConstant, asBoolean, asNumber, asString } from './commonValidators'
+
+describe('validators', () => {
+  describe('asConstant', () => {
+    const asNull = asConstant(null)
+    const asFalse = asConstant(false)
+    const asZero = asConstant(0)
+    const asEmptyString = asConstant('')
+    const asEmptyArray = asConstant([])
+    const asCoins = asConstant([1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000] as [1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000])
+    const asEmptyObject = asConstant({})
+    const asObject = asConstant({ answer: 42 })
+
+    it('should do nothing with OK constant', () => {
+      expect(asNull(null)).toEqual(null)
+      expect(asFalse(false)).toEqual(false)
+      expect(asZero(0)).toEqual(0)
+      expect(asZero(-0)).toEqual(-0)
+      expect(1 / asZero(0)).toEqual(Infinity)
+      expect(1 / asZero(-0)).toEqual(-Infinity)
+      expect(asEmptyString('')).toEqual('')
+      expect(asEmptyArray([])).toEqual([])
+      expect(asCoins([1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000])).toEqual([1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000])
+      expect(asEmptyObject({})).toEqual({})
+      expect(asObject({ answer: 42 })).toEqual({ answer: 42 })
+    })
+
+    it('should throw a ValidationError against wrong constant', () => {
+      expect(() => asNull(false)).toThrowError(ValidationError)
+      expect(() => asFalse(null)).toThrowError(ValidationError)
+      expect(() => asZero(null)).toThrowError(ValidationError)
+      expect(() => asZero('0')).toThrowError(ValidationError)
+      expect(() => asEmptyString(null)).toThrowError(ValidationError)
+      expect(() => asEmptyString([])).toThrowError(ValidationError)
+      expect(() => asEmptyArray(null)).toThrowError(ValidationError)
+      expect(() => asEmptyArray('')).toThrowError(ValidationError)
+      expect(() => asCoins([6, 1, 2, 3])).toThrowError(ValidationError)
+      expect(() => asEmptyObject({ answer: 42 })).toThrowError(ValidationError)
+      expect(() => asObject({})).toThrowError(ValidationError)
+      expect(() => asObject({ answer: 42, question: 'What do you get if you multiply six by nine?' })).toThrowError(ValidationError)
+    })
+  })
+})
 
 describe('validators', () => {
   describe('asBoolean', () => {
     it('should do nothing with a boolean', () => {
-      expect(asBoolean(false)).toBe(false)
-      expect(asBoolean(true)).toBe(true)
+      expect(asBoolean(false)).toEqual(false)
+      expect(asBoolean(true)).toEqual(true)
     })
 
     it('should throw a ValidationError against a non-boolean', () => {
@@ -23,10 +65,10 @@ describe('validators', () => {
 describe('validators', () => {
   describe('asNumber', () => {
     it('should do nothing with a number', () => {
-      expect(asNumber(0)).toBe(0)
-      expect(asNumber(NaN)).toBe(NaN)
-      expect(asNumber(42)).toBe(42)
-      expect(asNumber(Infinity)).toBe(Infinity)
+      expect(asNumber(0)).toEqual(0)
+      expect(asNumber(NaN)).toEqual(NaN)
+      expect(asNumber(42)).toEqual(42)
+      expect(asNumber(Infinity)).toEqual(Infinity)
     })
 
     it('should throw a ValidationError against a non-number', () => {
@@ -43,9 +85,9 @@ describe('validators', () => {
 describe('validators', () => {
   describe('asString', () => {
     it('should do nothing with a string', () => {
-      expect(asString('')).toBe('')
-      expect(asString('A')).toBe('A')
-      expect(asString('foobar')).toBe('foobar')
+      expect(asString('')).toEqual('')
+      expect(asString('A')).toEqual('A')
+      expect(asString('foobar')).toEqual('foobar')
     })
 
     it('should throw a ValidationError against a non-string', () => {
