@@ -12,7 +12,7 @@ test('Counter', () => {
   const incrementAsync = jest.fn()
 
   const { container, getByTestId } = render(
-    <IntlProvider locale='en'>
+    <IntlProvider locale="en">
       <Counter
         value={ 0 }
         reset={ reset }
