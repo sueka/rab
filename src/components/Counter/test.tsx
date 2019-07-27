@@ -2,10 +2,12 @@ import * as React from 'react'
 import { IntlProvider } from 'react-intl'
 import { render, fireEvent } from '@testing-library/react'
 
-import { doNothing } from 'src/lib/commonFunctions'
 import Counter from '.'
 
 test('Counter', () => {
+  const reset = jest.fn()
+  const increment = jest.fn()
+  const decrement = jest.fn()
   const incrementIfOdd = jest.fn()
   const incrementAsync = jest.fn()
 
@@ -13,9 +15,9 @@ test('Counter', () => {
     <IntlProvider locale='en'>
       <Counter
         value={ 0 }
-        reset={ doNothing }
-        increment={ doNothing }
-        decrement={ doNothing }
+        reset={ reset }
+        increment={ increment }
+        decrement={ decrement }
         incrementIfOdd={ incrementIfOdd }
         incrementAsync={ incrementAsync }
       />
