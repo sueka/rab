@@ -84,6 +84,8 @@ describe('validators', () => {
   describe('asNumber', () => {
     it('should do nothing with a number', () => {
       expect(asNumber(0)).toEqual(0)
+      expect(1 / asNumber(0)).toEqual(Infinity)
+      expect(1 / asNumber(-0)).toEqual(-Infinity)
       expect(asNumber(NaN)).toEqual(NaN)
       expect(asNumber(42)).toEqual(42)
       expect(asNumber(Infinity)).toEqual(Infinity)
