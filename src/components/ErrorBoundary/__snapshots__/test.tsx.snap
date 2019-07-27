@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorBoundary with an error throwing 1`] = `Error: error throwing`;
+
+exports[`ErrorBoundary without anything throwing 1`] = `no throwing`;
