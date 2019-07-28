@@ -4,7 +4,7 @@ import { UnreachableError, ValidationError } from 'src/lib/errors'
 import { typed, conj } from 'src/lib/commonFunctions'
 import equalsJsons from 'src/lib/equalsJsons'
 
-export const failSafe = <T>(asT: (input: Json) => T) => (input: Json): either.Either<ValidationError, T> => {
+export const failSafe = <A extends Json, T>(asT: (input: A) => T) => (input: A): either.Either<ValidationError, T> => {
   try {
     return either.right(asT(input))
   } catch (error) {
