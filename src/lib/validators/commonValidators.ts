@@ -43,21 +43,7 @@ export const unionOf = <T, U>(asT: (input: Json) => T, asU: (input: Json) => U) 
   throw new UnreachableError()
 }
 
-export const recordOf = <T>(asT: (input: Json) => T) => (input: Json): Record<string, T> => {
-  if (input === null || typeof input === 'boolean' || typeof input === 'number' || typeof input === 'string' || Array.isArray(input)) {
-    throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
-  }
-
-  try {
-    return Object.entries(input).map<[string, T]>(([key, value]) => [key, asT(value)]).reduce<Record<string, T>>((output, [key, value]) => ({ ...output, [key]: value }), {})
-  } catch (error) {
-    if (error instanceof ValidationError) {
-      throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not a Record.`)
-    }
-
-    throw error
-  }
-}
+export const recordOf = <T>(asT: (input: Json) => T) => asObject<Record<string, T>>('a Record', (input) => Object.entries(input).map<[string, T]>(([key, value]) => [key, asT(value)]).reduce<Record<string, T>>((output, [key, value]) => ({ ...output, [key]: value }), {}))
 
 export const asUnionOf = <T extends readonly unknown[]>(options: T) => (input: Json): T[number] => {
   if (!options.includes(input)) {
@@ -65,6 +51,25 @@ export const asUnionOf = <T extends readonly unknown[]>(options: T) => (input: J
   }
 
   return input
+}
+
+/**
+ * @param className name of {T} with indefinite article
+ */
+export const asObject = <T>(className: string, asT: (input: JsonObject) => T) => (input: Json): T => {
+  if (input === null || typeof input === 'boolean' || typeof input === 'number' || typeof input === 'string' || Array.isArray(input)) {
+    throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
+  }
+
+  try {
+    return asT(input)
+  } catch (error) {
+    if (error instanceof ValidationError) {
+      throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is not ${ className }.`)
+    }
+
+    throw error
+  }
 }
 
 export function asConstant<T extends null>(a: T): (input: Json) => T
