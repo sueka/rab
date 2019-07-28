@@ -3,6 +3,11 @@
     /* Basic Options */
     "target": "ES2017",
     "module": "CommonJS",
+    "lib": [
+      "DOM",
+      "ES2017",
+      "ES2018.RegExp"
+    ],
     "jsx": "React",
 
     /* Strict Type-Checking Options */
