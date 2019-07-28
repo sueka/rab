@@ -17,11 +17,11 @@ export const failSafe = <T>(asT: (input: Json) => T) => (input: Json): either.Ei
 }
 
 export const optional = <T>(asT: (input: Json) => T) => (input: Json | undefined): T | undefined => {
-  if (input !== undefined) {
-    return asT(input)
+  if (input === undefined) {
+    return
   }
 
-  return
+  return asT(input)
 }
 
 export const unionOf = <T, U>(asT: (input: Json) => T, asU: (input: Json) => U) => (input: Json): T | U => {
