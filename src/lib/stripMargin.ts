@@ -13,8 +13,9 @@ function stripMargin1(that: string) {
 }
 
 function stripMargin2(marginChar: string, that: string) {
-  let result = ''
+  let result = '' // tslint:disable-line:no-let
 
+  // tslint:disable-next-line:no-loop-statement
   for (const line of generateLineWithEolIterator(that)) {
     const matches = /^(?:[\t ]*(?<marginChar>.))?(?<stripped>(?:.|\r)*\n?)$/u.exec(line)
 
@@ -35,8 +36,9 @@ function stripMargin2(marginChar: string, that: string) {
 }
 
 function* generateLineWithEolIterator(cs: string) {
-  let line = ''
+  let line = '' // tslint:disable-line:no-let
 
+  // tslint:disable-next-line:no-loop-statement
   for (const c of cs) {
     switch (c) {
       case '\n':
