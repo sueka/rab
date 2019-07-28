@@ -1,7 +1,8 @@
 import { either } from 'fp-ts'
 
 import { UnreachableError, ValidationError } from 'src/lib/errors'
-import { typed, conj } from 'src/lib/commonFunctions'
+import { typed, conj, trimEols } from 'src/lib/commonFunctions'
+import stripMargin from 'src/lib/stripMargin'
 import equalsJsons from 'src/lib/equalsJsons'
 
 export const failSafe = <A extends Json, T>(asT: (input: A) => T) => (input: A): either.Either<ValidationError, T> => {
@@ -64,11 +65,14 @@ export const asObject = <T>(className: string, asT: (input: JsonObject) => T) =>
   try {
     return asT(input)
   } catch (error) {
-    if (error instanceof ValidationError) {
-      throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is not ${ className }.`)
+    if (error instanceof Error) {
+      throw new ValidationError(trimEols(stripMargin(typed<[string, string, string]>`
+        |${ JSON.stringify(input) } is not ${ className }.
+        |${ error.message }
+        |`)))
     }
 
-    throw error
+    throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
   }
 }
 
