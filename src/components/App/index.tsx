@@ -14,8 +14,8 @@ import Today from 'src/containers/Today'
 import messages from './messages'
 import * as classes from './styles.css'
 
-const Counter = React.lazy(() => import(/* webpackChunkName: "counter" */ 'src/containers/Counter'))
-const Info = React.lazy(() => import(/* webpackChunkName: "info" */ 'src/components/Info'))
+export /* for testing */ const Counter = React.lazy(() => import(/* webpackChunkName: "counter" */ 'src/containers/Counter'))
+export /* for testing */ const Info = React.lazy(() => import(/* webpackChunkName: "info" */ 'src/components/Info'))
 
 type Props =
   & InjectedIntlProps

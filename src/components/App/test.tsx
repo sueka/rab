@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router'
+import { StaticRouter } from 'react-router'
 import { render } from '@testing-library/react'
 import createMockStore from 'redux-mock-store'
 
 import { State } from 'src/redux'
 import IntlProvider from 'src/containers/IntlProvider'
-import App from '.'
+import App, { Counter, Info } from '.'
 import formats from '../../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 
 // NOTE: connected-react-router ではないので router state は不要。
@@ -29,16 +29,28 @@ const store = createMockStore<Omit<State, 'router'>>()({
   },
 })
 
-test('App', () => {
-  const { container } = render(
-    <Provider store={ store }>
-      <IntlProvider>
-        <MemoryRouter>
-          <App />
-        </MemoryRouter>
-      </IntlProvider>
-    </Provider>
-  )
+describe.each`
+location
+${ '/' }
+${ '/counter' }
+${ '/info' }
+`('App', ({ location }) => {
+  test(`at ${ location }`, async () => {
+    const context = {}
 
-  expect(container.firstChild).toMatchSnapshot()
+    const { container } = render(
+      <Provider store={ store }>
+        <IntlProvider>
+          <StaticRouter context={ context } location={ location }>
+            <App />
+          </StaticRouter>
+        </IntlProvider>
+      </Provider>
+    )
+
+    await Counter
+    await Info
+
+    expect(container.firstChild).toMatchSnapshot()
+  })
 })
