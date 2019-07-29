@@ -1,8 +1,9 @@
 import { either } from 'fp-ts'
 
 import { UnreachableError, ValidationError } from 'src/lib/errors'
-import { typed, conj, trimEols } from 'src/lib/commonFunctions'
+import { typed, conj } from 'src/lib/commonFunctions'
 import stripMargin from 'src/lib/stripMargin'
+import trimEols from 'src/lib/trimEols'
 import equalsJsons from 'src/lib/equalsJsons'
 
 export const failSafe = <A extends Json, T>(asT: (input: A) => T) => (input: A): either.Either<ValidationError, T> => {

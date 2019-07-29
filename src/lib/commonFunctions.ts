@@ -44,17 +44,3 @@ export function conj(separator: string, lastSeparator: string, xs: string[]): st
 
   return typed<[string, string, string]>`${ xs.join(separator) }${ lastSeparator }${ lastX }`
 }
-
-export function trimEols(s: string) {
-  return trimTrailingEols(trimLeadingEols(s))
-}
-
-const eolPattern = /(?:\r?\n)/
-
-function trimLeadingEols(s: string) {
-  return s.replace(new RegExp(typed<[string, string]>`(?<=^${ eolPattern.source }*)${ eolPattern.source }`, 'g'), '')
-}
-
-function trimTrailingEols(s: string) {
-  return s.replace(new RegExp(typed<[string, string]>`${ eolPattern.source }(?=${ eolPattern.source }*$)`, 'g'), '')
-}
