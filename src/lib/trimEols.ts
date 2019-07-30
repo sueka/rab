@@ -7,9 +7,9 @@ export default function trimEols(s: string) {
 const eolPattern = /(?:\r?\n)/
 
 function trimLeadingEols(s: string) {
-  return s.replace(new RegExp(typed<[string, string]>`(?<=^${ eolPattern.source }*)${ eolPattern.source }`, 'g'), '')
+  return s.replace(new RegExp(typed<[string]>`^${ eolPattern.source }*`), '')
 }
 
 function trimTrailingEols(s: string) {
-  return s.replace(new RegExp(typed<[string, string]>`${ eolPattern.source }(?=${ eolPattern.source }*$)`, 'g'), '')
+  return s.replace(new RegExp(typed<[string]>`${ eolPattern.source }*$`), '')
 }
