@@ -2,9 +2,12 @@ import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import { withKnobs, number } from '@storybook/addon-knobs'
 
-import { doNothing } from 'src/lib/commonFunctions'
 import { withIntlProvider } from 'src/storybook/decorators'
 import Counter from '.'
+
+const doNothing = () => {
+  // Silence is golden.
+}
 
 storiesOf('Counter', module)
   .addDecorator(withKnobs)
