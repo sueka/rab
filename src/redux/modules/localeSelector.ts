@@ -3,7 +3,7 @@ import { SagaIterator } from 'redux-saga'
 import { call, put, takeEvery } from 'redux-saga/effects'
 
 import { Formats } from 'src/types/intlTypes'
-import { typed } from 'src/lib/commonFunctions'
+import typed from 'src/lib/typed'
 import { Code } from 'src/lib/languageNameSolver'
 import fetch from 'src/lib/fetch'
 import { recordOf, asString } from 'src/lib/validators/commonValidators'

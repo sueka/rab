@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { typed } from 'src/lib/commonFunctions'
+import typed from 'src/lib/typed'
 
 interface LocalState {
   hasError: boolean

@@ -1,6 +1,6 @@
 import { injectable, inject } from 'inversify'
 
-import { typed } from 'src/lib/commonFunctions'
+import typed from 'src/lib/typed'
 import {
   asGetRepoResponse,
   asUnsuccessfulResponse,

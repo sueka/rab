@@ -1,4 +1,4 @@
-import zipIterables from './zip/zipIterables'
+import zipIterables from 'src/lib/extensions/Iterable/zipIterables'
 
 export default function equalsJsons(x: Json, y: Json): boolean {
   if (x === null && y === null) {

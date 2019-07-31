@@ -1,6 +1,6 @@
 import { injectable } from 'inversify'
 
-import { typed } from 'src/lib/commonFunctions'
+import typed from 'src/lib/typed'
 import ConfigRegistry, { ConfigKey } from 'src/config/ConfigRegistry'
 
 @injectable()

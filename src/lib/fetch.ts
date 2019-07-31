@@ -4,8 +4,8 @@
 
 import * as pathToRegexp from 'path-to-regexp'
 
-import { typed } from './commonFunctions'
-import mapValues from './mapValues'
+import typed from './typed'
+import mapValues from './extensions/Record/mapValues'
 
 type Method = 'GET' | 'POST'
 

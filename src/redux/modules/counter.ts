@@ -2,7 +2,7 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call, select, put, takeEvery } from 'redux-saga/effects'
 
-import { delay } from 'src/lib/commonFunctions'
+import delay from 'src/lib/delay'
 import { State } from 'src/redux'
 
 //
