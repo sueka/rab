@@ -1,6 +1,8 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects'
 
 import delay from 'src/lib/delay'
+import prsg from 'src/lib/prsg'
+import typed from 'src/lib/typed'
 
 import {
   RESET, NOP, INCREMENT, DECREMENT, INCREMENT_ASYNC, SET_COUNT,
@@ -114,9 +116,9 @@ describe('reducer', () => {
 
   const counterReducer = createCounterReducer(initialState)
 
-  it('should return the initial state', () => {
+  it('should pass assertReducerShape', () => {
     expect(counterReducer(undefined, {
-      type: '',
+      type: typed<[string]>`@@react-app-prototype/counter.spec/${ prsg() }`,
     })).toEqual(initialState)
   })
 

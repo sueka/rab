@@ -1,6 +1,8 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 
 import fetch from 'src/lib/fetch'
+import prsg from 'src/lib/prsg'
+import typed from 'src/lib/typed'
 
 import {
   SELECT, SET_LOCALE, SET_FORMATS, SET_MESSAGES, PUSH_ERROR,
@@ -105,9 +107,9 @@ describe('reducer', () => {
 
   const localeSelectorReducer = createLocaleSelectorReducer(initialState)
 
-  it('should return the initial state', () => {
+  it('should pass assertReducerShape', () => {
     expect(localeSelectorReducer(undefined, {
-      type: '',
+      type: typed<[string]>`@@react-app-prototype/localeSelector.spec/${ prsg() }`,
     })).toEqual(initialState)
   })
 
