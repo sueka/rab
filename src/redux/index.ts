@@ -4,10 +4,11 @@ import { spawn } from 'redux-saga/effects'
 import { History } from 'history'
 import { RouterState, LocationChangeAction, connectRouter, routerMiddleware } from 'connected-react-router'
 import { createLogger } from 'redux-logger'
+import { injectable, inject } from 'inversify'
 
-import { CounterState, CounterAction, counterSaga, createCounterReducer } from './modules/counter'
+import { CounterState, CounterAction, CounterService, createCounterReducer } from './modules/counter'
 import { IoState, IoAction, createIoReducer } from './modules/io'
-import { LocaleSelectorState, LocaleSelectorAction, localeSelectorSaga, createLocaleSelectorReducer } from './modules/localeSelector'
+import { LocaleSelectorState, LocaleSelectorAction, LocaleSelectorService, createLocaleSelectorReducer } from './modules/localeSelector'
 import formats from '../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 
 export interface State {
@@ -30,9 +31,15 @@ import * as ja from 'react-intl/locale-data/ja'
 addLocaleData(en)
 addLocaleData(ja)
 
-export function* rootSaga(): SagaIterator {
-  yield spawn(counterSaga)
-  yield spawn(localeSelectorSaga)
+@injectable()
+export class Service {
+  @inject(CounterService) private counterService!: CounterService
+  @inject(LocaleSelectorService) private localeSelectorService!: LocaleSelectorService
+
+  public *rootSaga(): SagaIterator {
+    yield spawn([this.counterService, this.counterService.rootSaga])
+    yield spawn([this.localeSelectorService, this.localeSelectorService.rootSaga])
+  }
 }
 
 // FIXME: configureStore に含めるべきかも

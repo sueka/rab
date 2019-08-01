@@ -1,14 +1,15 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects'
 
 import fetch from 'src/lib/fetch'
 import prsg from 'src/lib/prsg'
 import typed from 'src/lib/typed'
+import container from 'src/container.dev'
 
 import {
   SELECT, SET_LOCALE, SET_FORMATS, SET_MESSAGES, PUSH_ERROR,
   LocaleSelectorState,
   select, setLocale, setFormats, setMessages, pushError,
-  selectSaga, localeSelectorSaga,
+  LocaleSelectorService,
   createLocaleSelectorReducer,
 } from './localeSelector'
 
@@ -68,32 +69,29 @@ describe('action creators', () => {
   })
 })
 
-describe('selectSaga', () => {
-  const it = selectSaga(select('ja'))
+describe('LocaleSelectorService', () => {
+  const localeSelectorService = container.resolve(LocaleSelectorService)
 
-  expect(it.next().value).toEqual(call(fetch, {
-    method: 'GET',
-    parameterizedEndpoint: '/formats/:locale.json',
-    params: { locale: 'ja' },
-  }))
+  describe('selectSaga', () => {
+    const it = localeSelectorService.selectSaga(select('ja'))
 
-  // TODO: yield の結果のテスト手法を再考する
-  expect(it.next({ body: { date: { short: { month: 'short', day: 'numeric' } } } }).value).toEqual(call(fetch, {
-    method: 'GET',
-    parameterizedEndpoint: '/messages/:locale.json',
-    params: { locale: 'ja' },
-  }))
+    expect(it.next().value).toEqual(call(fetch, {
+      method: 'GET',
+      parameterizedEndpoint: '/formats/:locale.json',
+      params: { locale: 'ja' },
+    }))
 
-  expect(it.next({ body: { blue: '青' } }).value).toEqual(put(setFormats({ date: { short: { month: 'short', day: 'numeric' } } })))
-  expect(it.next().value).toEqual(put(setMessages({ blue: '青' })))
-  expect(it.next().value).toEqual(put(setLocale('ja')))
-})
+    // TODO: yield の結果のテスト手法を再考する
+    expect(it.next({ body: { date: { short: { month: 'short', day: 'numeric' } } } }).value).toEqual(call(fetch, {
+      method: 'GET',
+      parameterizedEndpoint: '/messages/:locale.json',
+      params: { locale: 'ja' },
+    }))
 
-describe('localeSelectorSaga', () => {
-  const it = localeSelectorSaga()
-
-  // TODO: 順不同にする
-  expect(it.next().value).toEqual(takeEvery(SELECT, selectSaga))
+    expect(it.next({ body: { blue: '青' } }).value).toEqual(put(setFormats({ date: { short: { month: 'short', day: 'numeric' } } })))
+    expect(it.next().value).toEqual(put(setMessages({ blue: '青' })))
+    expect(it.next().value).toEqual(put(setLocale('ja')))
+  })
 })
 
 describe('reducer', () => {

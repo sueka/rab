@@ -11,7 +11,7 @@ import { Provider as ServiceProdiver } from 'inversify-react'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 
-import { rootSaga, configureStore } from './redux'
+import { Service, configureStore } from './redux'
 import muiThemeOptions from './muiThemeOptions'
 
 import ErrorBoundary from './components/ErrorBoundary'
@@ -27,6 +27,12 @@ containerImport.then(({ default: container }) => {
   const { store, sagaMiddleware } = configureStore(history)
 
   const muiTheme = createMuiTheme(muiThemeOptions)
+
+  const service = container.resolve(Service)
+
+  function rootSaga() {
+    return service.rootSaga.call(service)
+  }
 
   sagaMiddleware.run(rootSaga)
 

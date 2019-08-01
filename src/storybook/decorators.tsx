@@ -7,13 +7,20 @@ import { DragDropContextProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { IntlProvider } from 'react-intl'
 
-import { rootSaga, configureStore } from 'src/redux'
+import { Service, configureStore } from 'src/redux'
+import container from 'src/container.dev'
 import formats from '../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../../public/messages/en.json' // tslint:disable-line:no-relative-imports
 
 export const withProvider: StoryDecorator = (story) => {
   const history = createBrowserHistory()
   const { store, sagaMiddleware } = configureStore(history)
+
+  const service = container.resolve(Service)
+
+  function rootSaga() {
+    return service.rootSaga.call(service)
+  }
 
   sagaMiddleware.run(rootSaga)
 

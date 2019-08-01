@@ -1,15 +1,16 @@
-import { call, put, select, takeEvery } from 'redux-saga/effects'
+import { call, put, select } from 'redux-saga/effects'
 
 import delay from 'src/lib/delay'
 import prsg from 'src/lib/prsg'
 import typed from 'src/lib/typed'
+import container from 'src/container.dev'
 
 import {
   RESET, NOP, INCREMENT, DECREMENT, INCREMENT_ASYNC, SET_COUNT,
   CounterState,
   reset, nop, increment, decrement, incrementAsync, incrementIfOdd, setCount,
   selectCount,
-  incrementSaga, decrementSaga, incrementAsyncSaga, counterSaga,
+  CounterService,
   createCounterReducer,
 } from './counter'
 
@@ -79,34 +80,29 @@ describe('action creators', () => {
   })
 })
 
-describe('incrementSaga', () => {
-  const it = incrementSaga()
+describe('CounterService', () => {
+  const counterService = container.resolve(CounterService)
 
-  expect(it.next().value).toEqual(select(selectCount))
-  expect(it.next(0).value).toEqual(put(setCount(1)))
-})
+  describe('incrementSaga', () => {
+    const it = counterService.incrementSaga()
 
-describe('decrementSaga', () => {
-  const it = decrementSaga()
+    expect(it.next().value).toEqual(select(selectCount))
+    expect(it.next(0).value).toEqual(put(setCount(1)))
+  })
 
-  expect(it.next().value).toEqual(select(selectCount))
-  expect(it.next(0).value).toEqual(put(setCount(-1)))
-})
+  describe('decrementSaga', () => {
+    const it = counterService.decrementSaga()
 
-describe('incrementAsyncSaga', () => {
-  const it = incrementAsyncSaga(incrementAsync(1000))
+    expect(it.next().value).toEqual(select(selectCount))
+    expect(it.next(0).value).toEqual(put(setCount(-1)))
+  })
 
-  expect(it.next().value).toEqual(call(delay, 1000))
-  expect(it.next().value).toEqual(put(increment()))
-})
+  describe('incrementAsyncSaga', () => {
+    const it = counterService.incrementAsyncSaga(incrementAsync(1000))
 
-describe('counterSaga', () => {
-  const it = counterSaga()
-
-  // TODO: 順不同にする
-  expect(it.next().value).toEqual(takeEvery(INCREMENT, incrementSaga))
-  expect(it.next().value).toEqual(takeEvery(DECREMENT, decrementSaga))
-  expect(it.next().value).toEqual(takeEvery(INCREMENT_ASYNC, incrementAsyncSaga))
+    expect(it.next().value).toEqual(call(delay, 1000))
+    expect(it.next().value).toEqual(put(increment()))
+  })
 })
 
 describe('reducer', () => {

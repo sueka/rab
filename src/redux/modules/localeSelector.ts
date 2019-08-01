@@ -1,7 +1,9 @@
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects'
+import { injectable } from 'inversify'
 
+import { takeEvery } from 'src/lib/boni/redux-saga/effects'
 import { Formats } from 'src/types/intlTypes'
 import typed from 'src/lib/typed'
 import { Code } from 'src/lib/languageNameSolver'
@@ -157,38 +159,41 @@ export /* for testing */ const pushError = (error: Error): PushErrorAction => ({
 //                           _|
 //                       _|_|
 
-export /* for testing */ function* selectSaga({ payload: { locale } }: SelectAction): SagaIterator {
-  try {
-    const { body: formats }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
-      method: 'GET',
-      parameterizedEndpoint: '/formats/:locale.json',
-      params: { locale },
-    })
+@injectable()
+export class LocaleSelectorService {
+  public /* for testing */ *selectSaga({ payload: { locale } }: SelectAction): SagaIterator {
+    try {
+      const { body: formats }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
+        method: 'GET',
+        parameterizedEndpoint: '/formats/:locale.json',
+        params: { locale },
+      })
 
-    const { body: messages }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
-      method: 'GET',
-      parameterizedEndpoint: '/messages/:locale.json',
-      params: { locale },
-    })
+      const { body: messages }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
+        method: 'GET',
+        parameterizedEndpoint: '/messages/:locale.json',
+        params: { locale },
+      })
 
-    // TODO: cache
+      // TODO: cache
 
-    yield put(setFormats(asFormats(formats)))
-    yield put(setMessages(recordOf(asString)(messages)))
-    yield put(setLocale(locale))
-  } catch (error) {
-    if (error instanceof Error) {
-      yield put(pushError(error))
+      yield put(setFormats(asFormats(formats)))
+      yield put(setMessages(recordOf(asString)(messages)))
+      yield put(setLocale(locale))
+    } catch (error) {
+      if (error instanceof Error) {
+        yield put(pushError(error))
 
-      return
+        return
+      }
+
+      throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
     }
-
-    throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
   }
-}
 
-export function* localeSelectorSaga(): SagaIterator {
-  yield takeEvery(SELECT, selectSaga)
+  public *rootSaga(): SagaIterator {
+    yield takeEvery(SELECT, [this, this.selectSaga])
+  }
 }
 
 //

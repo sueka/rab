@@ -1,7 +1,9 @@
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
-import { call, select, put, takeEvery } from 'redux-saga/effects'
+import { call, select, put } from 'redux-saga/effects'
+import { injectable } from 'inversify'
 
+import { takeEvery } from 'src/lib/boni/redux-saga/effects'
 import delay from 'src/lib/delay'
 import { State } from 'src/redux'
 
@@ -152,27 +154,30 @@ export /* for testing */ const selectCount = ({ counter: { count } }: State) => 
 //                           _|
 //                       _|_|
 
-export /* for testing */ function* incrementSaga(): SagaIterator {
-  const count: ReturnType<typeof selectCount> = yield select(selectCount)
+@injectable()
+export class CounterService {
+  public /* for testing */ *incrementSaga(): SagaIterator {
+    const count: ReturnType<typeof selectCount> = yield select(selectCount)
 
-  yield put(setCount(count + 1))
-}
+    yield put(setCount(count + 1))
+  }
 
-export /* for testing */ function* decrementSaga(): SagaIterator {
-  const count: ReturnType<typeof selectCount> = yield select(selectCount)
+  public /* for testing */ *decrementSaga(): SagaIterator {
+    const count: ReturnType<typeof selectCount> = yield select(selectCount)
 
-  yield put(setCount(count - 1))
-}
+    yield put(setCount(count - 1))
+  }
 
-export /* for testing */ function* incrementAsyncSaga({ payload: { ms } }: IncrementAsyncAction): SagaIterator {
-  yield call(delay, ms)
-  yield put(increment())
-}
+  public /* for testing */ *incrementAsyncSaga({ payload: { ms } }: IncrementAsyncAction): SagaIterator {
+    yield call(delay, ms)
+    yield put(increment())
+  }
 
-export function* counterSaga(): SagaIterator {
-  yield takeEvery(INCREMENT, incrementSaga)
-  yield takeEvery(DECREMENT, decrementSaga)
-  yield takeEvery(INCREMENT_ASYNC, incrementAsyncSaga)
+  public *rootSaga(): SagaIterator {
+    yield takeEvery(INCREMENT, [this, this.incrementSaga])
+    yield takeEvery(DECREMENT, [this, this.decrementSaga])
+    yield takeEvery(INCREMENT_ASYNC, [this, this.incrementAsyncSaga])
+  }
 }
 
 //
