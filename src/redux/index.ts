@@ -42,9 +42,6 @@ export class Service {
   }
 }
 
-// FIXME: configureStore に含めるべきかも
-const sagaMiddleware = createSagaMiddleware()
-
 const createReducer = (history: History) => combineReducers<State, Action>({
   router: connectRouter(history),
   counter: createCounterReducer({
@@ -88,6 +85,8 @@ export const configureStore = (history: History): {
   store: Store<State, Action>
   sagaMiddleware: SagaMiddleware
 } => {
+  const sagaMiddleware = createSagaMiddleware()
+
   const storeEnhancers = [
     applyMiddleware(sagaMiddleware),
     applyMiddleware(routerMiddleware(history)),
