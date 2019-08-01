@@ -135,6 +135,33 @@ export /* for testing */ const setCount = (count: number): SetCountAction => ({
 })
 
 //
+//                           _|
+// _|  _|_|    _|_|      _|_|_|  _|    _|    _|_|_|    _|_|    _|  _|_|
+// _|_|      _|_|_|_|  _|    _|  _|    _|  _|        _|_|_|_|  _|_|
+// _|        _|        _|    _|  _|    _|  _|        _|        _|
+// _|          _|_|_|    _|_|_|    _|_|_|    _|_|_|    _|_|_|  _|
+//
+//
+
+export const createCounterReducer: (initialState: CounterState) => Reducer<CounterState, Action> = (initialState) => (state = initialState, action) => {
+  if (!isCounterAction(action)) {
+    return state
+  }
+
+  switch (action.type) {
+    case RESET: return initialState
+    case NOP:
+    case INCREMENT:
+    case DECREMENT:
+    case INCREMENT_ASYNC: return state
+    case SET_COUNT: return {
+      ...state,
+      count: action.payload.count,
+    }
+  }
+}
+
+//
 //                     _|                        _|
 //   _|_|_|    _|_|    _|    _|_|      _|_|_|  _|_|_|_|    _|_|    _|  _|_|    _|_|_|
 // _|_|      _|_|_|_|  _|  _|_|_|_|  _|          _|      _|    _|  _|_|      _|_|
@@ -146,13 +173,13 @@ export /* for testing */ const setCount = (count: number): SetCountAction => ({
 export /* for testing */ const selectCount = ({ counter: { count } }: State) => count
 
 //
+//                                           _|
+//   _|_|_|    _|_|    _|  _|_|  _|      _|        _|_|_|    _|_|
+// _|_|      _|_|_|_|  _|_|      _|      _|  _|  _|        _|_|_|_|
+//     _|_|  _|        _|          _|  _|    _|  _|        _|
+// _|_|_|      _|_|_|  _|            _|      _|    _|_|_|    _|_|_|
 //
-//   _|_|_|    _|_|_|    _|_|_|    _|_|_|    _|_|_|
-// _|_|      _|    _|  _|    _|  _|    _|  _|_|
-//     _|_|  _|    _|  _|    _|  _|    _|      _|_|
-// _|_|_|      _|_|_|    _|_|_|    _|_|_|  _|_|_|
-//                           _|
-//                       _|_|
+//
 
 @injectable()
 export class CounterService {
@@ -177,32 +204,5 @@ export class CounterService {
     yield takeEvery(INCREMENT, [this, this.incrementSaga])
     yield takeEvery(DECREMENT, [this, this.decrementSaga])
     yield takeEvery(INCREMENT_ASYNC, [this, this.incrementAsyncSaga])
-  }
-}
-
-//
-//                           _|
-// _|  _|_|    _|_|      _|_|_|  _|    _|    _|_|_|    _|_|    _|  _|_|
-// _|_|      _|_|_|_|  _|    _|  _|    _|  _|        _|_|_|_|  _|_|
-// _|        _|        _|    _|  _|    _|  _|        _|        _|
-// _|          _|_|_|    _|_|_|    _|_|_|    _|_|_|    _|_|_|  _|
-//
-//
-
-export const createCounterReducer: (initialState: CounterState) => Reducer<CounterState, Action> = (initialState) => (state = initialState, action) => {
-  if (!isCounterAction(action)) {
-    return state
-  }
-
-  switch (action.type) {
-    case RESET: return initialState
-    case NOP:
-    case INCREMENT:
-    case DECREMENT:
-    case INCREMENT_ASYNC: return state
-    case SET_COUNT: return {
-      ...state,
-      count: action.payload.count,
-    }
   }
 }

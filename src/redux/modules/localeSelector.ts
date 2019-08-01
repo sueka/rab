@@ -151,13 +151,51 @@ export /* for testing */ const pushError = (error: Error): PushErrorAction => ({
 })
 
 //
-//
-//   _|_|_|    _|_|_|    _|_|_|    _|_|_|    _|_|_|
-// _|_|      _|    _|  _|    _|  _|    _|  _|_|
-//     _|_|  _|    _|  _|    _|  _|    _|      _|_|
-// _|_|_|      _|_|_|    _|_|_|    _|_|_|  _|_|_|
 //                           _|
-//                       _|_|
+// _|  _|_|    _|_|      _|_|_|  _|    _|    _|_|_|    _|_|    _|  _|_|
+// _|_|      _|_|_|_|  _|    _|  _|    _|  _|        _|_|_|_|  _|_|
+// _|        _|        _|    _|  _|    _|  _|        _|        _|
+// _|          _|_|_|    _|_|_|    _|_|_|    _|_|_|    _|_|_|  _|
+//
+//
+
+export const createLocaleSelectorReducer: (initialState: LocaleSelectorState) => Reducer<LocaleSelectorState, Action> = (initialState) => (state = initialState, action) => {
+  if (!isLocaleSelectorAction(action)) {
+    return state
+  }
+
+  switch (action.type) {
+    case SELECT: return state
+    case SET_LOCALE: return {
+      ...state,
+      locale: action.payload.locale,
+    }
+    case SET_FORMATS: return {
+      ...state,
+      formats: action.payload.formats,
+    }
+    case SET_MESSAGES: return {
+      ...state,
+      messages: action.payload.messages,
+    }
+    case PUSH_ERROR: return {
+      ...state,
+      errors: [
+        ...state.errors,
+        action.payload,
+      ],
+    }
+  }
+}
+
+//
+//                                           _|
+//   _|_|_|    _|_|    _|  _|_|  _|      _|        _|_|_|    _|_|
+// _|_|      _|_|_|_|  _|_|      _|      _|  _|  _|        _|_|_|_|
+//     _|_|  _|        _|          _|  _|    _|  _|        _|
+// _|_|_|      _|_|_|  _|            _|      _|    _|_|_|    _|_|_|
+//
+//
 
 @injectable()
 export class LocaleSelectorService {
@@ -193,43 +231,5 @@ export class LocaleSelectorService {
 
   public *rootSaga(): SagaIterator {
     yield takeEvery(SELECT, [this, this.selectSaga])
-  }
-}
-
-//
-//                           _|
-// _|  _|_|    _|_|      _|_|_|  _|    _|    _|_|_|    _|_|    _|  _|_|
-// _|_|      _|_|_|_|  _|    _|  _|    _|  _|        _|_|_|_|  _|_|
-// _|        _|        _|    _|  _|    _|  _|        _|        _|
-// _|          _|_|_|    _|_|_|    _|_|_|    _|_|_|    _|_|_|  _|
-//
-//
-
-export const createLocaleSelectorReducer: (initialState: LocaleSelectorState) => Reducer<LocaleSelectorState, Action> = (initialState) => (state = initialState, action) => {
-  if (!isLocaleSelectorAction(action)) {
-    return state
-  }
-
-  switch (action.type) {
-    case SELECT: return state
-    case SET_LOCALE: return {
-      ...state,
-      locale: action.payload.locale,
-    }
-    case SET_FORMATS: return {
-      ...state,
-      formats: action.payload.formats,
-    }
-    case SET_MESSAGES: return {
-      ...state,
-      messages: action.payload.messages,
-    }
-    case PUSH_ERROR: return {
-      ...state,
-      errors: [
-        ...state.errors,
-        action.payload,
-      ],
-    }
   }
 }
