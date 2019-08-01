@@ -62,8 +62,9 @@ describe('action creators', () => {
     it('should return a push error action', () => {
       expect(pushError(new Error('unavailable locale'))).toEqual({
         type: PUSH_ERROR,
-        payload: new Error('unavailable locale'),
-        error: true,
+        payload: {
+          error: new Error('unavailable locale'),
+        },
       })
     })
   })
