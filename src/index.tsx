@@ -8,7 +8,6 @@ import { ConnectedRouter } from 'connected-react-router'
 import { DragDropContextProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { Provider as ServiceProdiver } from 'inversify-react'
-import container from './container'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 
@@ -21,30 +20,34 @@ import IntlProvider from './containers/IntlProvider'
 
 import './styles.css'
 
-const history = createBrowserHistory()
-const { store, sagaMiddleware } = configureStore(history)
+const containerImport = process.env.NODE_ENV === 'production' ? import('./container') : import('./container.dev')
 
-const muiTheme = createMuiTheme(muiThemeOptions)
+containerImport.then(({ default: container }) => {
+  const history = createBrowserHistory()
+  const { store, sagaMiddleware } = configureStore(history)
 
-sagaMiddleware.run(rootSaga)
+  const muiTheme = createMuiTheme(muiThemeOptions)
 
-ReactDOM.render(
-  (
-    <ErrorBoundary>
-      <Provider { ...{ store } }>
-        <IntlProvider>
-          <DragDropContextProvider backend={ HTML5Backend }>
-            <ConnectedRouter { ...{ history } }>
-              <ServiceProdiver { ...{ container } }>
-                <MuiThemeProvider theme={ muiTheme }>
-                  <App />
-                </MuiThemeProvider>
-              </ServiceProdiver>
-            </ConnectedRouter>
-          </DragDropContextProvider>
-        </IntlProvider>
-      </Provider>
-    </ErrorBoundary>
-  ),
-  document.getElementById('root')
-)
+  sagaMiddleware.run(rootSaga)
+
+  ReactDOM.render(
+    (
+      <ErrorBoundary>
+        <Provider { ...{ store } }>
+          <IntlProvider>
+            <DragDropContextProvider backend={ HTML5Backend }>
+              <ConnectedRouter { ...{ history } }>
+                <ServiceProdiver { ...{ container } }>
+                  <MuiThemeProvider theme={ muiTheme }>
+                    <App />
+                  </MuiThemeProvider>
+                </ServiceProdiver>
+              </ConnectedRouter>
+            </DragDropContextProvider>
+          </IntlProvider>
+        </Provider>
+      </ErrorBoundary>
+    ),
+    document.getElementById('root')
+  )
+})
