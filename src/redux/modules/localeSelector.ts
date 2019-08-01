@@ -84,8 +84,9 @@ interface SetMessagesAction extends Action<typeof SET_MESSAGES> {
 }
 
 interface PushErrorAction extends Action<typeof PUSH_ERROR> {
-  payload: Error
-  error: true
+  payload: {
+    error: Error
+  }
 }
 
 export type LocaleSelectorAction =
@@ -146,8 +147,9 @@ export /* for testing */ const setMessages = (messages: Record<string, string>):
 
 export /* for testing */ const pushError = (error: Error): PushErrorAction => ({
   type: PUSH_ERROR,
-  payload: error,
-  error: true,
+  payload: {
+    error,
+  },
 })
 
 //
@@ -182,7 +184,7 @@ export const createLocaleSelectorReducer: (initialState: LocaleSelectorState) =>
       ...state,
       errors: [
         ...state.errors,
-        action.payload,
+        action.payload.error,
       ],
     }
   }
