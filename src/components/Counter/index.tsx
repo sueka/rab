@@ -13,7 +13,7 @@ export interface DispatchProps {
   reset(): void
   increment(): void
   decrement(): void
-  incrementIfOdd(value: number): void
+  incrementIfOdd(): void
   incrementAsync(ms: number): void
 }
 
@@ -22,12 +22,6 @@ type Props =
   & DispatchProps
 
 export default class Counter extends React.Component<Props> {
-  private handleIncrementIfOdd = () => {
-    const { value, incrementIfOdd } = this.props
-
-    incrementIfOdd(value)
-  }
-
   private handleIncrementAsync = () => {
     const { incrementAsync } = this.props
 
@@ -35,7 +29,7 @@ export default class Counter extends React.Component<Props> {
   }
 
   public render() {
-    const { value, reset, increment, decrement } = this.props
+    const { value, reset, increment, decrement, incrementIfOdd } = this.props
 
     return (
       <div>
@@ -43,7 +37,7 @@ export default class Counter extends React.Component<Props> {
         <Button onClick={ reset }><FormattedMessage { ...messages.reset } /></Button>
         <Button onClick={ increment }><FormattedMessage { ...messages.increment } /></Button>
         <Button onClick={ decrement }><FormattedMessage { ...messages.decrement } /></Button>
-        <Button onClick={ this.handleIncrementIfOdd } data-testid="incrementIfOddButton"><FormattedMessage { ...messages.incrementIfOdd } /></Button>
+        <Button onClick={ incrementIfOdd } data-testid="incrementIfOddButton"><FormattedMessage { ...messages.incrementIfOdd } /></Button>
         <Button onClick={ this.handleIncrementAsync } data-testid="incrementAsyncButton"><FormattedMessage { ...messages.willIncrementInOneSecond } /></Button>
       </div>
     )

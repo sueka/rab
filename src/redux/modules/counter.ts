@@ -38,28 +38,22 @@ export interface CounterState {
 //             _|_|    _|
 
 export /* for testing */ const RESET = '@@react-app-prototype/counter/RESET'
-export /* for testing */ const NOP = '@@react-app-prototype/counter/NOP'
+export /* for testing */ const INCREMENT_IF_ODD = '@@react-app-prototype/counter/INCREMENT_IF_ODD'
+export /* for testing */ const INCREMENT_ASYNC = '@@react-app-prototype/counter/INCREMENT_ASYNC'
 export /* for testing */ const INCREMENT = '@@react-app-prototype/counter/INCREMENT'
 export /* for testing */ const DECREMENT = '@@react-app-prototype/counter/DECREMENT'
-export /* for testing */ const INCREMENT_ASYNC = '@@react-app-prototype/counter/INCREMENT_ASYNC'
-export /* for testing */ const SET_COUNT = '@@react-app-prototype/counter/SET_COUNT'
 
 const counterActionTypes = [
   RESET,
-  NOP,
+  INCREMENT_IF_ODD,
+  INCREMENT_ASYNC,
   INCREMENT,
   DECREMENT,
-  INCREMENT_ASYNC,
-  SET_COUNT,
 ]
 
 interface ResetAction extends Action<typeof RESET> {}
 
-interface NopAction extends Action<typeof NOP> {}
-
-interface IncrementAction extends Action<typeof INCREMENT> {}
-
-interface DecrementAction extends Action<typeof DECREMENT> {}
+interface IncrementIfOddAction extends Action<typeof INCREMENT_IF_ODD> {}
 
 interface IncrementAsyncAction extends Action<typeof INCREMENT_ASYNC> {
   payload: {
@@ -67,19 +61,16 @@ interface IncrementAsyncAction extends Action<typeof INCREMENT_ASYNC> {
   }
 }
 
-interface SetCountAction extends Action<typeof SET_COUNT> {
-  payload: {
-    count: number
-  }
-}
+interface IncrementAction extends Action<typeof INCREMENT> {}
+
+interface DecrementAction extends Action<typeof DECREMENT> {}
 
 export type CounterAction =
   | ResetAction
-  | NopAction
+  | IncrementIfOddAction
+  | IncrementAsyncAction
   | IncrementAction
   | DecrementAction
-  | IncrementAsyncAction
-  | SetCountAction
 
 function isCounterAction(action: Action): action is CounterAction {
   return counterActionTypes.includes(action.type)
@@ -106,16 +97,8 @@ export const reset = (): ResetAction => ({
   type: RESET,
 })
 
-export /* for testing */ const nop = (): NopAction => ({
-  type: NOP,
-})
-
-export const increment = (): IncrementAction => ({
-  type: INCREMENT,
-})
-
-export const decrement = (): DecrementAction => ({
-  type: DECREMENT,
+export const incrementIfOdd = (): IncrementIfOddAction => ({
+  type: INCREMENT_IF_ODD,
 })
 
 export const incrementAsync = (ms: number): IncrementAsyncAction => ({
@@ -125,13 +108,12 @@ export const incrementAsync = (ms: number): IncrementAsyncAction => ({
   },
 })
 
-export const incrementIfOdd = (value: number) => (value % 2 !== 0) ? increment() : nop()
+export const increment = (): IncrementAction => ({
+  type: INCREMENT,
+})
 
-export /* for testing */ const setCount = (count: number): SetCountAction => ({
-  type: SET_COUNT,
-  payload: {
-    count,
-  },
+export const decrement = (): DecrementAction => ({
+  type: DECREMENT,
 })
 
 //
@@ -150,13 +132,15 @@ export const createCounterReducer: (initialState: CounterState) => Reducer<Count
 
   switch (action.type) {
     case RESET: return initialState
-    case NOP:
-    case INCREMENT:
-    case DECREMENT:
+    case INCREMENT_IF_ODD:
     case INCREMENT_ASYNC: return state
-    case SET_COUNT: return {
+    case INCREMENT: return {
       ...state,
-      count: action.payload.count,
+      count: state.count + 1,
+    }
+    case DECREMENT: return {
+      ...state,
+      count: state.count - 1,
     }
   }
 }
@@ -183,16 +167,12 @@ export /* for testing */ const selectCount = ({ counter: { count } }: State) => 
 
 @injectable()
 export class CounterService {
-  public /* for testing */ *incrementSaga(): SagaIterator {
+  public /* for testing */ *incrementIfOddSaga(): SagaIterator {
     const count: ReturnType<typeof selectCount> = yield select(selectCount)
 
-    yield put(setCount(count + 1))
-  }
-
-  public /* for testing */ *decrementSaga(): SagaIterator {
-    const count: ReturnType<typeof selectCount> = yield select(selectCount)
-
-    yield put(setCount(count - 1))
+    if (count % 2 === 1) {
+      yield put(increment())
+    }
   }
 
   public /* for testing */ *incrementAsyncSaga({ payload: { ms } }: IncrementAsyncAction): SagaIterator {
@@ -201,8 +181,7 @@ export class CounterService {
   }
 
   public *rootSaga(): SagaIterator {
-    yield takeEvery(INCREMENT, [this, this.incrementSaga])
-    yield takeEvery(DECREMENT, [this, this.decrementSaga])
+    yield takeEvery(INCREMENT_IF_ODD, [this, this.incrementIfOddSaga])
     yield takeEvery(INCREMENT_ASYNC, [this, this.incrementAsyncSaga])
   }
 }

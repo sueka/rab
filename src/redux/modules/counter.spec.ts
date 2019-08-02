@@ -6,9 +6,9 @@ import typed from 'src/lib/typed'
 import container from 'src/container.dev'
 
 import {
-  RESET, NOP, INCREMENT, DECREMENT, INCREMENT_ASYNC, SET_COUNT,
+  RESET, INCREMENT_IF_ODD, INCREMENT_ASYNC, INCREMENT, DECREMENT,
   CounterState,
-  reset, nop, increment, decrement, incrementAsync, incrementIfOdd, setCount,
+  reset, incrementIfOdd, incrementAsync, increment, decrement,
   selectCount,
   CounterService,
   createCounterReducer,
@@ -23,10 +23,21 @@ describe('action creators', () => {
     })
   })
 
-  describe('nop', () => {
-    it('should return a nop action', () => {
-      expect(nop()).toEqual({
-        type: NOP,
+  describe('incrementIfOdd', () => {
+    it('should return an increment if odd action', () => {
+      expect(incrementIfOdd()).toEqual({
+        type: INCREMENT_IF_ODD,
+      })
+    })
+  })
+
+  describe('incrementAsync', () => {
+    it('should return an increment async action', () => {
+      expect(incrementAsync(1000)).toEqual({
+        type: INCREMENT_ASYNC,
+        payload: {
+          ms: 1000,
+        },
       })
     })
   })
@@ -46,55 +57,26 @@ describe('action creators', () => {
       })
     })
   })
-
-  describe('incrementAsync', () => {
-    it('should return an increment async action', () => {
-      expect(incrementAsync(1000)).toEqual({
-        type: INCREMENT_ASYNC,
-        payload: {
-          ms: 1000,
-        },
-      })
-    })
-  })
-
-  describe('incrementIfOdd', () => {
-    it('should return a nop action', () => {
-      expect(incrementIfOdd(0)).toEqual(nop())
-    })
-
-    it('should return an increment action', () => {
-      expect(incrementIfOdd(1)).toEqual(increment())
-    })
-  })
-
-  describe('setCount', () => {
-    it('should return a set count action', () => {
-      expect(setCount(10)).toEqual({
-        type: SET_COUNT,
-        payload: {
-          count: 10,
-        },
-      })
-    })
-  })
 })
 
 describe('CounterService', () => {
   const counterService = container.resolve(CounterService)
 
-  describe('incrementSaga', () => {
-    const it = counterService.incrementSaga()
+  test('incrementIfOddSaga', () => {
+    describe('with odd value', () => {
+      const it = counterService.incrementIfOddSaga()
 
-    expect(it.next().value).toEqual(select(selectCount))
-    expect(it.next(0).value).toEqual(put(setCount(1)))
-  })
+      expect(it.next().value).toEqual(select(selectCount))
+      expect(it.next(1).value).toEqual(put(increment()))
+      expect(it.next().done).toBeTruthy()
+    })
 
-  describe('decrementSaga', () => {
-    const it = counterService.decrementSaga()
+    describe('with even value', () => {
+      const it = counterService.incrementIfOddSaga()
 
-    expect(it.next().value).toEqual(select(selectCount))
-    expect(it.next(0).value).toEqual(put(setCount(-1)))
+      expect(it.next().value).toEqual(select(selectCount))
+      expect(it.next(2).done).toBeTruthy()
+    })
   })
 
   describe('incrementAsyncSaga', () => {
@@ -122,23 +104,19 @@ describe('reducer', () => {
     expect(counterReducer({ count: 1 }, reset())).toEqual(initialState)
   })
 
-  it('should handle NOP', () => {
-    expect(counterReducer({ count: 1 }, nop())).toEqual({ count: 1 })
-  })
-
-  it('should handle INCREMENT', () => {
-    expect(counterReducer({ count: 1 }, increment())).toEqual({ count: 1 })
-  })
-
-  it('should handle DECREMENT', () => {
-    expect(counterReducer({ count: 1 }, decrement())).toEqual({ count: 1 })
+  it('should handle INCREMENT_IF_ODD', () => {
+    expect(counterReducer({ count: 1 }, incrementIfOdd())).toEqual({ count: 1 })
   })
 
   it('should handle INCREMENT_ASYNC', () => {
     expect(counterReducer({ count: 1 }, incrementAsync(Math.random()))).toEqual({ count: 1 })
   })
 
-  it('should handle SET_COUNT', () => {
-    expect(counterReducer({ count: 1 }, setCount(2))).toEqual({ count: 2 })
+  it('should handle INCREMENT', () => {
+    expect(counterReducer({ count: 1 }, increment())).toEqual({ count: 2 })
+  })
+
+  it('should handle DECREMENT', () => {
+    expect(counterReducer({ count: 1 }, decrement())).toEqual({ count: 0 })
   })
 })
