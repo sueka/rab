@@ -5,8 +5,8 @@ import { createBrowserHistory } from 'history'
 import { StoryDecorator } from '@storybook/react'
 import { DragDropContextProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
-import { IntlProvider } from 'react-intl'
 
+import IntlProvider from 'src/components/IntlProvider'
 import { Service, configureStore } from 'src/redux'
 import container from 'src/container.dev'
 import formats from '../../public/formats/en.json' // tslint:disable-line:no-relative-imports
