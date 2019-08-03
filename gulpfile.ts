@@ -22,6 +22,7 @@ const stylelint = npxTask('stylelint', ['src/**/*.css'])
 export const lint = namedTask('lint', parallel(series(typeCheck, tslint), stylelint))
 const testWithoutCoverage = series(typeCheck, npxTask('jest'))
 const testWithCoverage = series(typeCheck, npxTask('jest', ['--coverage']))
+export const updateSnapshot = series(typeCheck, npxTask('jest', ['--updateSnapshot']))
 export const test = testWithCoverage
 export const build = series(() => del(['dist/**/*']), typeCheck, npxTask('webpack'))
 export const buildStorybook = series(typeCheck, npxTask('build-storybook'))
