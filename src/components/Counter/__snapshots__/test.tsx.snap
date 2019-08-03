@@ -11,9 +11,7 @@ exports[`Counter 1`] = `
     <span
       class="MuiButton-label"
     >
-      <span>
-        reset
-      </span>
+      reset
     </span>
     <span
       class="MuiTouchRipple-root"
@@ -27,9 +25,7 @@ exports[`Counter 1`] = `
     <span
       class="MuiButton-label"
     >
-      <span>
-        +
-      </span>
+      +
     </span>
     <span
       class="MuiTouchRipple-root"
@@ -43,9 +39,7 @@ exports[`Counter 1`] = `
     <span
       class="MuiButton-label"
     >
-      <span>
-        -
-      </span>
+      -
     </span>
     <span
       class="MuiTouchRipple-root"
@@ -60,9 +54,7 @@ exports[`Counter 1`] = `
     <span
       class="MuiButton-label"
     >
-      <span>
-        + if odd
-      </span>
+      + if odd
     </span>
     <span
       class="MuiTouchRipple-root"
@@ -77,9 +69,7 @@ exports[`Counter 1`] = `
     <span
       class="MuiButton-label"
     >
-      <span>
-        + in 1 second
-      </span>
+      + in 1 second
     </span>
     <span
       class="MuiTouchRipple-root"

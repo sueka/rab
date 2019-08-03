@@ -10,9 +10,7 @@ exports[`App at / 1`] = `
       data-shrink="true"
       for="stub uuid"
     >
-      <span>
-        Languages
-      </span>
+      Languages
     </label>
     <div
       class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -50,37 +48,27 @@ exports[`App at / 1`] = `
   <a
     href="/counter"
   >
-    <span>
-      counter
-    </span>
+    counter
   </a>
   <a
     href="/info"
   >
-    <span>
-      info
-    </span>
+    info
   </a>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    <span>
-      Hello, world!
-    </span>
+    Hello, world!
   </p>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    <span>
-      $100.00
-    </span>
+    $100.00
   </p>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    <span>
-      Jul 27, 2019
-    </span>
+    Jul 27, 2019
   </p>
 </div>
 `;
@@ -95,9 +83,7 @@ exports[`App at /counter 1`] = `
       data-shrink="true"
       for="stub uuid"
     >
-      <span>
-        Languages
-      </span>
+      Languages
     </label>
     <div
       class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -135,37 +121,27 @@ exports[`App at /counter 1`] = `
   <a
     href="/counter"
   >
-    <span>
-      counter
-    </span>
+    counter
   </a>
   <a
     href="/info"
   >
-    <span>
-      info
-    </span>
+    info
   </a>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    <span>
-      Hello, world!
-    </span>
+    Hello, world!
   </p>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    <span>
-      $100.00
-    </span>
+    $100.00
   </p>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    <span>
-      Jul 27, 2019
-    </span>
+    Jul 27, 2019
   </p>
   <div>
     0
@@ -177,9 +153,7 @@ exports[`App at /counter 1`] = `
       <span
         class="MuiButton-label"
       >
-        <span>
-          reset
-        </span>
+        reset
       </span>
     </button>
     <button
@@ -190,9 +164,7 @@ exports[`App at /counter 1`] = `
       <span
         class="MuiButton-label"
       >
-        <span>
-          +
-        </span>
+        +
       </span>
     </button>
     <button
@@ -203,9 +175,7 @@ exports[`App at /counter 1`] = `
       <span
         class="MuiButton-label"
       >
-        <span>
-          -
-        </span>
+        -
       </span>
     </button>
     <button
@@ -217,9 +187,7 @@ exports[`App at /counter 1`] = `
       <span
         class="MuiButton-label"
       >
-        <span>
-          + if odd
-        </span>
+        + if odd
       </span>
     </button>
     <button
@@ -231,9 +199,7 @@ exports[`App at /counter 1`] = `
       <span
         class="MuiButton-label"
       >
-        <span>
-          + in 1 second
-        </span>
+        + in 1 second
       </span>
     </button>
   </div>
@@ -250,9 +216,7 @@ exports[`App at /info 1`] = `
       data-shrink="true"
       for="stub uuid"
     >
-      <span>
-        Languages
-      </span>
+      Languages
     </label>
     <div
       class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -290,37 +254,27 @@ exports[`App at /info 1`] = `
   <a
     href="/counter"
   >
-    <span>
-      counter
-    </span>
+    counter
   </a>
   <a
     href="/info"
   >
-    <span>
-      info
-    </span>
+    info
   </a>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    <span>
-      Hello, world!
-    </span>
+    Hello, world!
   </p>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    <span>
-      $100.00
-    </span>
+    $100.00
   </p>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    <span>
-      Jul 27, 2019
-    </span>
+    Jul 27, 2019
   </p>
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-text"
@@ -330,9 +284,7 @@ exports[`App at /info 1`] = `
     <span
       class="MuiButton-label"
     >
-      <span>
-        Fetch data
-      </span>
+      Fetch data
     </span>
   </button>
   <p
