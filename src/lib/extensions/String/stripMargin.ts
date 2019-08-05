@@ -1,5 +1,16 @@
-export default function stripMargin(...args: Parameters<typeof stripMargin2>): ReturnType<typeof stripMargin2>
+import typed from 'src/lib/typed'
+
+const eols = [
+  '\n',
+  '\r\n',
+]
+
+const eolPattern = new RegExp(typed<[string]>`(?:${ eols.join('|') })`)
+const eolCharPattern = new RegExp(typed<[string]>`(?:${ eols.map((eol) => typed<[string]>`[${ eol }]`).join('|') })`)
+
 export default function stripMargin(...args: Parameters<typeof stripMargin1>): ReturnType<typeof stripMargin1>
+export default function stripMargin(...args: Parameters<typeof stripMargin2>): ReturnType<typeof stripMargin2>
+
 export default function stripMargin(marginCharOrThat: string, that?: string): string {
   if (that === undefined) {
     return stripMargin1(marginCharOrThat)
@@ -17,7 +28,7 @@ function stripMargin2(marginChar: string, that: string) {
 
   // tslint:disable-next-line:no-loop-statement
   for (const line of generateLineWithEolIterator(that)) {
-    const matches = /^(?:[\t ]*(?<marginChar>.))?(?<stripped>(?:.|\r)*\n?)$/u.exec(line)
+    const matches = new RegExp(typed<[string, string]>`^(?:[\\t ]*(?<marginChar>.))?(?<stripped>(?:.|${ eolCharPattern.source })*${ eolPattern.source }?)$`, 'u').exec(line)
 
     if (matches === null || matches.groups === undefined) {
       throw new Error() // TODO
@@ -36,24 +47,25 @@ function stripMargin2(marginChar: string, that: string) {
 }
 
 function* generateLineWithEolIterator(cs: string) {
-  let line = '' // tslint:disable-line:no-let
+  let lineBuffer = '' // tslint:disable-line:no-let
+  let eolBuffer = '' // tslint:disable-line:no-let
 
   // tslint:disable-next-line:no-loop-statement
   for (const c of cs) {
-    switch (c) {
-      case '\n':
-        line += c
-        yield line
-        line = ''
-        break
+    lineBuffer += c
 
-      default:
-        line += c
+    if (eols.some((eol) => eol.startsWith(eolBuffer + c))) {
+      eolBuffer += c
+    }
 
+    if (eols.includes(eolBuffer)) {
+      yield lineBuffer
+      lineBuffer = ''
+      eolBuffer = ''
     }
   }
 
-  if (line !== '') {
-    yield line
+  if (lineBuffer !== '') {
+    yield lineBuffer
   }
 }
