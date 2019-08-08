@@ -25,16 +25,16 @@ export default class Task extends Entity {
   }
 
   static deserialize(serialized: string): Task {
-    const { id, content, done } = JSON.parse(serialized)
+    const { id: serializedId, content, done } = JSON.parse(serialized)
 
     // TODO: shape & type check
 
-    return new Task({ id, content, done })
+    return new Task({ id: TaskId.deserialize(serializedId), content, done })
   }
 
   serialize(): string {
     return JSON.stringify({
-      id: this.id,
+      id: this.id.serialize(),
       content: this.content,
       done: this.done,
     })
