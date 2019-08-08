@@ -191,7 +191,6 @@ export const removeTask = (taskId: TaskId): RemoveTaskAction => ({
   },
 })
 
-
 //
 //                           _|
 // _|  _|_|    _|_|      _|_|_|  _|    _|    _|_|_|    _|_|    _|  _|_|
@@ -266,7 +265,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
 @injectable()
 export class ReminderService {
-  @inject('TaskRepository') taskRepository!: TaskRepository
+  @inject('TaskRepository') public taskRepository!: TaskRepository
 
   private *addTaskAsyncSaga(): SagaIterator {
     const task = new Task({})
@@ -278,7 +277,7 @@ export class ReminderService {
   private *changeTaskContentAsyncSaga({ payload: { taskId, content } }: ChangeTaskContentAsyncAction): SagaIterator {
     const task: Task = yield call(this.taskRepository.findById, taskId)
 
-    task.content = content
+    task.content = content // tslint:disable-line:no-object-mutation
 
     yield call(this.taskRepository.store, task)
     yield put(updateTask(taskId, task))
@@ -287,7 +286,7 @@ export class ReminderService {
   private *markTaskAsDoneAsyncSaga({ payload: { taskId } }: MarkTaskAsDoneAsyncAction): SagaIterator {
     const task: Task = yield call(this.taskRepository.findById, taskId)
 
-    task.done = true
+    task.done = true // tslint:disable-line:no-object-mutation
 
     yield call(this.taskRepository.store, task)
     yield put(updateTask(taskId, task))
@@ -296,7 +295,7 @@ export class ReminderService {
   private *markTaskAsUndoneAsyncSaga({ payload: { taskId } }: MarkTaskAsUndoneAsyncAction): SagaIterator {
     const task: Task = yield call(this.taskRepository.findById, taskId)
 
-    task.done = false
+    task.done = false // tslint:disable-line:no-object-mutation
 
     yield call(this.taskRepository.store, task)
     yield put(updateTask(taskId, task))

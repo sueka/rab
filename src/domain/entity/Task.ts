@@ -24,7 +24,7 @@ export default class Task extends Entity {
     this._done = done
   }
 
-  static deserialize(serialized: string): Task {
+  public static deserialize(serialized: string): Task {
     const { id: serializedId, content, done } = JSON.parse(serialized)
 
     // TODO: shape & type check
@@ -32,7 +32,7 @@ export default class Task extends Entity {
     return new Task({ id: TaskId.deserialize(serializedId), content, done })
   }
 
-  serialize(): string {
+  public serialize(): string {
     return JSON.stringify({
       id: this.id.serialize(),
       content: this.content,
@@ -44,17 +44,19 @@ export default class Task extends Entity {
     return this._content
   }
 
+  // TODO: immutable
   set content(value) {
     assert(value.length <= 140)
 
-    this._content = value
+    this._content = value // tslint:disable-line:no-object-mutation
   }
 
   get done() {
     return this._done
   }
 
+  // TODO: immutable
   set done(value) {
-    this._done = value
+    this._done = value // tslint:disable-line:no-object-mutation
   }
 }

@@ -1,11 +1,11 @@
 import ValueObject from './ValueObject'
 
 export default class Id extends ValueObject<string> {
-  static deserialize(serialized: string): Id {
+  public static deserialize(serialized: string): Id {
     return new Id(serialized)
   }
 
-  serialize(): string {
+  public serialize(): string {
     return this.value
   }
 

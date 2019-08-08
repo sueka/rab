@@ -4,9 +4,9 @@
  * TODO: PartialEq, Congruence 等検討
  */
 export default abstract class Eq {
-  abstract equals(that: this): boolean
+  public abstract equals(that: this): boolean
 
-  isNotEqualTo(that: this): boolean {
+  public isNotEqualTo(that: this): boolean {
     return !this.equals(that)
   }
 }
