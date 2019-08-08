@@ -31,7 +31,7 @@ export const document = parallel(npxTask('typedoc'))
 export const develop = parallel(
   continuousTask('src/**/messages.ts', extractMessages),
   continuousTask('src', lint),
-  npxTask('jest', ['--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''], {
+  npxTask('jest', ['--onlyChanged', '--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''], {
     CI: 'true', // to prevent screen being cleared
   }),
   npxTask('webpack-dev-server', ['--config', 'webpack.config.dev.ts']),
