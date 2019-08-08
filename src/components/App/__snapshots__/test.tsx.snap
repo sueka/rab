@@ -55,6 +55,11 @@ exports[`App at / 1`] = `
   >
     info
   </a>
+  <a
+    href="/reminder"
+  >
+    reminder
+  </a>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
@@ -127,6 +132,11 @@ exports[`App at /counter 1`] = `
     href="/info"
   >
     info
+  </a>
+  <a
+    href="/reminder"
+  >
+    reminder
   </a>
   <p
     class="MuiTypography-root MuiTypography-body1"
@@ -261,6 +271,11 @@ exports[`App at /info 1`] = `
   >
     info
   </a>
+  <a
+    href="/reminder"
+  >
+    reminder
+  </a>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
@@ -292,5 +307,86 @@ exports[`App at /info 1`] = `
   >
     Fetching not started.
   </p>
+</div>
+`;
+
+exports[`App at /reminder 1`] = `
+<div>
+  <div
+    class="MuiFormControl-root"
+  >
+    <label
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+      data-shrink="true"
+      for="stub uuid"
+    >
+      Languages
+    </label>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+    >
+      <select
+        aria-invalid="false"
+        class="MuiNativeSelect-root MuiNativeSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+        data-testid="localeSelect"
+        id="stub uuid"
+      >
+        <option
+          value="en"
+        >
+          English
+        </option>
+        <option
+          value="ja"
+        >
+          日本語
+        </option>
+      </select>
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiNativeSelect-icon"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
+  </div>
+  <a
+    href="/counter"
+  >
+    counter
+  </a>
+  <a
+    href="/info"
+  >
+    info
+  </a>
+  <a
+    href="/reminder"
+  >
+    reminder
+  </a>
+  <p
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    Hello, world!
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    $100.00
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    Jul 27, 2019
+  </p>
+  <ul
+    class="MuiList-root MuiList-padding"
+  />
 </div>
 `;

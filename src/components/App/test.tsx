@@ -27,6 +27,9 @@ const store = createMockStore<Omit<State, 'router'>>()({
     messages: {},
     errors: [],
   },
+  reminder: {
+    tasks: [],
+  },
 })
 
 describe.each`
@@ -34,6 +37,7 @@ location
 ${ '/' }
 ${ '/counter' }
 ${ '/info' }
+${ '/reminder' }
 `('App', ({ location }) => {
   test(`at ${ location }`, async () => {
     const context = {}

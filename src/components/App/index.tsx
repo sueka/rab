@@ -16,6 +16,7 @@ import * as classes from './classes.css'
 
 export /* for testing */ const Counter = React.lazy(() => import(/* webpackChunkName: "counter" */ 'src/containers/Counter'))
 export /* for testing */ const Info = React.lazy(() => import(/* webpackChunkName: "info" */ 'src/components/Info'))
+export /* for testing */ const Reminder = React.lazy(() => import(/* webpackChunkName: "reminder" */ 'src/containers/Reminder'))
 
 type Props =
   & InjectedIntlProps
@@ -29,6 +30,7 @@ const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
     <LocaleSelect />
     <Link to="/counter"><FormattedMessage { ...messages.counter } /></Link>
     <Link to="/info"><FormattedMessage { ...messages.info } /></Link>
+    <Link to="/reminder"><FormattedMessage { ...messages.reminder } /></Link>
     <Typography>
       <FormattedMessage { ...messages.helloWorld } />
     </Typography>
@@ -39,6 +41,7 @@ const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
     <Switch>
       <Route path="/counter" component={ Counter } helmetProps={ { title: formatMessage(messages.counter) } } />
       <Route path="/info" component={ Info } helmetProps={ { title: formatMessage(messages.info) } } />
+      <Route path="/reminder" component={ Reminder } helmetProps={ { title: formatMessage(messages.reminder) } } />
     </Switch>
   </div>
 )

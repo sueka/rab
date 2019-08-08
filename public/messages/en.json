@@ -2,6 +2,7 @@
   "src.components.App.counter": "counter",
   "src.components.App.helloWorld": "Hello, world!",
   "src.components.App.info": "info",
+  "src.components.App.reminder": "reminder",
   "src.components.Counter.decrement": "-",
   "src.components.Counter.increment": "+",
   "src.components.Counter.incrementIfOdd": "+ if odd",
@@ -12,5 +13,7 @@
   "src.components.Info.fetchingDoneSuccessfully": "Fetching done successfully.",
   "src.components.Info.fetchingFailed": "Fetching failed.",
   "src.components.Info.fetchingNotStarted": "Fetching not started.",
-  "src.components.LocaleSelect.languages": "Languages"
+  "src.components.LocaleSelect.languages": "Languages",
+  "src.components.Reminder.AddTaskButton.add": "add",
+  "src.components.Reminder.TaskList.TaskListItem.DeleteTaskButton.delete": "delete"
 }

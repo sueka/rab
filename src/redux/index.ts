@@ -9,6 +9,7 @@ import { injectable, inject } from 'inversify'
 import { CounterState, CounterAction, CounterService, createCounterReducer } from './modules/counter'
 import { IoState, IoAction, createIoReducer } from './modules/io'
 import { LocaleSelectorState, LocaleSelectorAction, LocaleSelectorService, createLocaleSelectorReducer } from './modules/localeSelector'
+import { ReminderState, ReminderAction, ReminderService, createReminderReducer } from './modules/reminder'
 import formats from '../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 
 export interface State {
@@ -16,6 +17,7 @@ export interface State {
   counter: CounterState
   io: IoState
   localeSelector: LocaleSelectorState
+  reminder: ReminderState
 }
 
 type Action =
@@ -23,6 +25,7 @@ type Action =
   & CounterAction
   & IoAction
   & LocaleSelectorAction
+  & ReminderAction
 
 import { addLocaleData } from 'react-intl'
 import * as en from 'react-intl/locale-data/en'
@@ -35,10 +38,12 @@ addLocaleData(ja)
 export class Service {
   @inject(CounterService) private counterService!: CounterService
   @inject(LocaleSelectorService) private localeSelectorService!: LocaleSelectorService
+  @inject(ReminderService) private reminderService!: ReminderService
 
   public *rootSaga(): SagaIterator {
     yield spawn([this.counterService, this.counterService.rootSaga])
     yield spawn([this.localeSelectorService, this.localeSelectorService.rootSaga])
+    yield spawn([this.reminderService, this.reminderService.rootSaga])
   }
 }
 
@@ -59,6 +64,9 @@ const createReducer = (history: History) => combineReducers<State, Action>({
     formats,
     messages: {},
     errors: [],
+  }),
+  reminder: createReminderReducer({
+    tasks: [],
   }),
 })
 
