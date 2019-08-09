@@ -275,7 +275,7 @@ export class ReminderService {
   }
 
   private *changeTaskContentAsyncSaga({ payload: { taskId, content } }: ChangeTaskContentAsyncAction): SagaIterator {
-    const task: Task = yield call(this.taskRepository.findById, taskId)
+    const task: ResultType<ReturnType<this['taskRepository']['findById']>> = yield call(this.taskRepository.findById, taskId)
 
     task.content = content // tslint:disable-line:no-object-mutation
 
@@ -284,7 +284,7 @@ export class ReminderService {
   }
 
   private *markTaskAsDoneAsyncSaga({ payload: { taskId } }: MarkTaskAsDoneAsyncAction): SagaIterator {
-    const task: Task = yield call(this.taskRepository.findById, taskId)
+    const task: ResultType<ReturnType<this['taskRepository']['findById']>> = yield call(this.taskRepository.findById, taskId)
 
     task.done = true // tslint:disable-line:no-object-mutation
 
@@ -293,7 +293,7 @@ export class ReminderService {
   }
 
   private *markTaskAsUndoneAsyncSaga({ payload: { taskId } }: MarkTaskAsUndoneAsyncAction): SagaIterator {
-    const task: Task = yield call(this.taskRepository.findById, taskId)
+    const task: ResultType<ReturnType<this['taskRepository']['findById']>> = yield call(this.taskRepository.findById, taskId)
 
     task.done = false // tslint:disable-line:no-object-mutation
 
