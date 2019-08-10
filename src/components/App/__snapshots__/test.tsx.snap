@@ -388,5 +388,16 @@ exports[`App at /reminder 1`] = `
   <ul
     class="MuiList-root MuiList-padding"
   />
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      add
+    </span>
+  </button>
 </div>
 `;
