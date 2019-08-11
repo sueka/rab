@@ -1,37 +1,37 @@
 import * as React from 'react'
-import { DragSource, ConnectDragSource } from 'react-dnd'
+import { DragObjectWithType, useDrag } from 'react-dnd'
 
 import TaskId from 'src/domain/vo/TaskId'
-import TaskListItem, { Props as TaskListItemProps } from './TaskListItem'
+import TaskListItem, { Props } from './TaskListItem'
 
 import * as classes from './classes.css'
 
 interface CollectedProps {
-  connectDragSource: ConnectDragSource
   isDragging: boolean
 }
 
-export type Props =
-  & TaskListItemProps
-  & CollectedProps
-
-export interface DragObject {
+export interface DragObject extends DragObjectWithType {
   id: TaskId
   index: number
 }
 
-const DraggableTaskListItem: React.FunctionComponent<Props> = ({ connectDragSource, isDragging, ...props }) => connectDragSource(
-  <div className={ isDragging ? classes.DraggingDraggableTaskListItem : '' }>
-    <TaskListItem { ...props } />
-  </div>
-)
+const DraggableTaskListItem: React.FunctionComponent<Props> = (props) => {
+  const [{ isDragging }, connectDragSource] = useDrag<DragObject, {}, CollectedProps>({
+    item: {
+      type: 'TaskListItem',
+      id: props.task.id,
+      index: props.index,
+    },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  })
 
-export default DragSource<TaskListItemProps, CollectedProps>('TaskListItem', {
-  beginDrag: ({ task: { id }, index }): DragObject => ({
-    id,
-    index,
-  }),
-}, (connect, monitor): CollectedProps => ({
-  connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging(),
-}))(DraggableTaskListItem)
+  return connectDragSource(
+    <div className={ isDragging ? classes.DraggingDraggableTaskListItem : '' }>
+      <TaskListItem { ...props } />
+    </div>
+  )
+}
+
+export default DraggableTaskListItem
