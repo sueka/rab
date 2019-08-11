@@ -18,15 +18,16 @@ export interface DispatchProps {
   markTaskAsDone(taskId: TaskId): void
   markTaskAsUndone(taskId: TaskId): void
   deleteTask(taskId: TaskId): void
+  moveTask(source: number, dest: number): void
 }
 
 type Props =
   & StateProps
   & DispatchProps
 
-const Reminder: React.FunctionComponent<Props> = ({ tasks, addTask, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask }) => (
+const Reminder: React.FunctionComponent<Props> = ({ tasks, addTask, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => (
   <>
-    <TaskList { ...{ tasks, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask } } />
+    <TaskList { ...{ tasks, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask } } />
     <AddTaskButton { ...{ addTask } } />
   </>
 )

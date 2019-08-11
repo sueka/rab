@@ -12,11 +12,13 @@ import DeleteTaskButton from './DeleteTaskButton'
 
 export interface Props {
   task: Task
+  index: number
 
   changeTaskContent(taskId: TaskId, content: string): void
   markTaskAsDone(taskId: TaskId): void
   markTaskAsUndone(taskId: TaskId): void
   deleteTask(taskId: TaskId): void
+  moveTask(sourceIndex: number, destinationIndex: number): void
 }
 
 const TaskListItem: React.FunctionComponent<Props> = ({ task, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask }) => {

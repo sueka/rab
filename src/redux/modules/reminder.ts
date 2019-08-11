@@ -44,6 +44,7 @@ export /* for testing */ const CHANGE_TASK_CONTENT_ASYNC = '@@react-app-prototyp
 export /* for testing */ const MARK_TASK_AS_DONE_ASYNC = '@@react-app-prototype/reminder/MARK_TASK_AS_DONE_ASYNC'
 export /* for testing */ const MARK_TASK_AS_UNDONE_ASYNC = '@@react-app-prototype/reminder/MARK_TASK_AS_UNDONE_ASYNC'
 export /* for testing */ const DELETE_TASK_ASYNC = '@@react-app-prototype/reminder/DELETE_TASK_ASYNC'
+export /* for testing */ const MOVE_TASK = '@@react-app-prototype/reminder/MOVE_TASK' // TODO: rename
 export /* for testing */ const PUSH_TASK = '@@react-app-prototype/reminder/PUSH_TASK'
 export /* for testing */ const UPDATE_TASK = '@@react-app-prototype/reminder/UPDATE_TASK'
 export /* for testing */ const REMOVE_TASK = '@@react-app-prototype/reminder/REMOVE_TASK'
@@ -54,6 +55,7 @@ const reminderActionTypes = [
   MARK_TASK_AS_DONE_ASYNC,
   MARK_TASK_AS_UNDONE_ASYNC,
   DELETE_TASK_ASYNC,
+  MOVE_TASK,
   PUSH_TASK,
   UPDATE_TASK,
   REMOVE_TASK,
@@ -86,6 +88,13 @@ interface DeleteTaskAsyncAction extends Action<typeof DELETE_TASK_ASYNC> {
   }
 }
 
+interface MoveTaskAction extends Action<typeof MOVE_TASK> {
+  payload: {
+    sourceIndex: number
+    destinationIndex: number
+  }
+}
+
 interface PushTaskAction extends Action<typeof PUSH_TASK> {
   payload: {
     task: Task
@@ -111,6 +120,7 @@ export type ReminderAction =
   | MarkTaskAsDoneAsyncAction
   | MarkTaskAsUndoneAsyncAction
   | DeleteTaskAsyncAction
+  | MoveTaskAction
   | PushTaskAction
   | UpdateTaskAction
   | RemoveTaskAction
@@ -169,6 +179,14 @@ export const deleteTaskAsync = (taskId: TaskId): DeleteTaskAsyncAction => ({
   },
 })
 
+export const moveTask = (sourceIndex: number, destinationIndex: number): MoveTaskAction => ({
+  type: MOVE_TASK,
+  payload: {
+    sourceIndex,
+    destinationIndex,
+  },
+})
+
 export const pushTask = (task: Task): PushTaskAction => ({
   type: PUSH_TASK,
   payload: {
@@ -211,6 +229,20 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
     case MARK_TASK_AS_DONE_ASYNC:
     case MARK_TASK_AS_UNDONE_ASYNC:
     case DELETE_TASK_ASYNC: return state
+    case MOVE_TASK: {
+      const restTasks = [
+        ...state.tasks.slice(0, action.payload.sourceIndex),
+        ...state.tasks.slice(action.payload.sourceIndex + 1),
+      ]
+
+      return {
+        tasks: [
+          ...restTasks.slice(0, action.payload.destinationIndex),
+          state.tasks[action.payload.sourceIndex],
+          ...restTasks.slice(action.payload.destinationIndex),
+        ],
+      }
+    }
     case PUSH_TASK: return {
       ...state,
       tasks: [
