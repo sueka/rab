@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router'
 import { Provider } from 'react-redux'
 import { createBrowserHistory } from 'history'
 import { StoryDecorator } from '@storybook/react'
-import { DragDropContextProvider } from 'react-dnd'
+import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 
 import IntlProvider from 'src/components/IntlProvider'
@@ -38,9 +38,9 @@ export const withMemoryRouter: StoryDecorator = (story) => (
 )
 
 export const withDragDropContextProvider: StoryDecorator = (story) => (
-  <DragDropContextProvider backend={ HTML5Backend }>
+  <DndProvider backend={ HTML5Backend }>
     { story() }
-  </DragDropContextProvider>
+  </DndProvider>
 )
 
 export const withIntlProvider: StoryDecorator = (story) => (

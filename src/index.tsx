@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createBrowserHistory } from 'history'
 import { ConnectedRouter } from 'connected-react-router'
-import { DragDropContextProvider } from 'react-dnd'
+import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { Provider as ServiceProdiver } from 'inversify-react'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
@@ -41,7 +41,7 @@ containerImport.then(({ default: container }) => {
       <ErrorBoundary>
         <Provider { ...{ store } }>
           <IntlProvider>
-            <DragDropContextProvider backend={ HTML5Backend }>
+            <DndProvider backend={ HTML5Backend }>
               <ConnectedRouter { ...{ history } }>
                 <ServiceProdiver { ...{ container } }>
                   <MuiThemeProvider theme={ muiTheme }>
@@ -49,7 +49,7 @@ containerImport.then(({ default: container }) => {
                   </MuiThemeProvider>
                 </ServiceProdiver>
               </ConnectedRouter>
-            </DragDropContextProvider>
+            </DndProvider>
           </IntlProvider>
         </Provider>
       </ErrorBoundary>
