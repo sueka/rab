@@ -2,7 +2,7 @@ import * as React from 'react'
 import { DragSource, ConnectDragSource } from 'react-dnd'
 
 import TaskId from 'src/domain/vo/TaskId'
-import TaskListItem, { Props as TaskListItemProps } from 'src/components/Reminder/TaskList/TaskListItem'
+import TaskListItem, { Props as TaskListItemProps } from './TaskListItem'
 
 import * as classes from './classes.css'
 

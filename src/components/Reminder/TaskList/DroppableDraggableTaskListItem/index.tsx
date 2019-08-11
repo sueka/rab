@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { DropTarget, ConnectDropTarget } from 'react-dnd'
 
-import DraggableTaskListItem from 'src/components/Reminder/TaskList/DraggableTaskListItem'
-import { Props as TaskListItemProps } from 'src/components/Reminder/TaskList/TaskListItem'
-import { DragObject } from 'src/components/Reminder/TaskList/DraggableTaskListItem'
+import DraggableTaskListItem from './DraggableTaskListItem'
+import { Props as TaskListItemProps } from './DraggableTaskListItem/TaskListItem'
+import { DragObject } from './DraggableTaskListItem'
 
 interface CollectedProps {
   connectDropTarget: ConnectDropTarget
