@@ -21,25 +21,21 @@ type Props =
   & StateProps
   & DispatchProps
 
-export default class Counter extends React.Component<Props> {
-  private handleIncrementAsync = () => {
-    const { incrementAsync } = this.props
-
+const Counter: React.FunctionComponent<Props> = ({ value, reset, increment, decrement, incrementIfOdd, incrementAsync }) => {
+  const handleIncrementAsync = React.useCallback(() => {
     incrementAsync(1000)
-  }
+  }, [])
 
-  public render() {
-    const { value, reset, increment, decrement, incrementIfOdd } = this.props
-
-    return (
-      <div>
-        { value }
-        <Button onClick={ reset }><FormattedMessage { ...messages.reset } /></Button>
-        <Button onClick={ increment }><FormattedMessage { ...messages.increment } /></Button>
-        <Button onClick={ decrement }><FormattedMessage { ...messages.decrement } /></Button>
-        <Button onClick={ incrementIfOdd } data-testid="incrementIfOddButton"><FormattedMessage { ...messages.incrementIfOdd } /></Button>
-        <Button onClick={ this.handleIncrementAsync } data-testid="incrementAsyncButton"><FormattedMessage { ...messages.willIncrementInOneSecond } /></Button>
-      </div>
-    )
-  }
+  return (
+    <div>
+      { value }
+      <Button onClick={ reset }><FormattedMessage { ...messages.reset } /></Button>
+      <Button onClick={ increment }><FormattedMessage { ...messages.increment } /></Button>
+      <Button onClick={ decrement }><FormattedMessage { ...messages.decrement } /></Button>
+      <Button onClick={ incrementIfOdd } data-testid="incrementIfOddButton"><FormattedMessage { ...messages.incrementIfOdd } /></Button>
+      <Button onClick={ handleIncrementAsync } data-testid="incrementAsyncButton"><FormattedMessage { ...messages.willIncrementInOneSecond } /></Button>
+    </div>
+  )
 }
+
+export default Counter

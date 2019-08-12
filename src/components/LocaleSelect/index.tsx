@@ -23,31 +23,27 @@ type Props =
   & StateProps
   & DispatchProps
 
-export default class LocaleSelect extends React.Component<Props> {
-  private inputId = v4()
+const LocaleSelect: React.FunctionComponent<Props> = ({ availableLocales, locale, select }) => {
+  const inputId = React.useMemo(v4, [])
 
-  private handleChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-    const { select } = this.props
-
+  const handleChange = React.useCallback<React.ChangeEventHandler<HTMLSelectElement>>((event) => {
     if (isCode(event.currentTarget.value)) {
       select(event.currentTarget.value)
     }
-  }
+  }, [])
 
-  public render() {
-    const { availableLocales, locale } = this.props
-
-    return (
-      <FormControl>
-        <InputLabel htmlFor={ this.inputId }>
-          <FormattedMessage { ...messages.languages } />
-        </InputLabel>
-        <NativeSelect value={ locale } onChange={ this.handleChange } id={ this.inputId } inputProps={ { 'data-testid': 'localeSelect' } }>
-          { availableLocales.map((availableLocale, i) => (
-            <option key={ i } value={ availableLocale }>{ getNativeNameByCode(availableLocale) }</option>
-          )) }
-        </NativeSelect>
-      </FormControl>
-    )
-  }
+  return (
+    <FormControl>
+      <InputLabel htmlFor={ inputId }>
+        <FormattedMessage { ...messages.languages } />
+      </InputLabel>
+      <NativeSelect value={ locale } onChange={ handleChange } id={ inputId } inputProps={ { 'data-testid': 'localeSelect' } }>
+        { availableLocales.map((availableLocale, i) => (
+          <option key={ i } value={ availableLocale }>{ getNativeNameByCode(availableLocale) }</option>
+        )) }
+      </NativeSelect>
+    </FormControl>
+  )
 }
+
+export default LocaleSelect

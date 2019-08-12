@@ -32,24 +32,25 @@ interface Props extends Omit<RouteProps, 'render' | 'component' | 'children'> {
   helmetProps?: HelmetProps
 }
 
-export default class Route extends React.Component<Props> {
-  public static defaultProps: Pick<Props, 'exact' | 'strict' | 'sensitive'> = {
-    exact: true,
-    strict: true,
-    sensitive: true,
+const defaultProps: Pick<Props, 'exact' | 'strict' | 'sensitive'> = {
+  exact: true,
+  strict: true,
+  sensitive: true,
+}
+
+const Route: React.FunctionComponent<Props> = ({ component, helmetProps, ...restProps }) => {
+  if (component === undefined) {
+    return <OriginalRoute { ...restProps } />
   }
 
-  public render() {
-    const { component, helmetProps, ...restProps } = this.props
-
-    if (component === undefined) {
-      return <OriginalRoute { ...restProps } />
-    }
-
-    if ('_result' in component) { // FIXME: if LazyExoticComponent
-      return <OriginalRoute component={ withErrorBoundary(withHelmet(withSuspense(component), helmetProps)) } { ...restProps } />
-    } else {
-      return <OriginalRoute component={ withErrorBoundary(withHelmet(component, helmetProps)) } { ...restProps } />
-    }
+  if ('_result' in component) { // FIXME: if LazyExoticComponent
+    return <OriginalRoute component={ withErrorBoundary(withHelmet(withSuspense(component), helmetProps)) } { ...restProps } />
+  } else {
+    return <OriginalRoute component={ withErrorBoundary(withHelmet(component, helmetProps)) } { ...restProps } />
   }
 }
+
+// tslint:disable-next-line:no-object-mutation
+Route.defaultProps = defaultProps
+
+export default Route
