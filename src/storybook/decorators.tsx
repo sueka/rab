@@ -1,3 +1,5 @@
+import 'reflect-metadata'
+
 import * as React from 'react'
 import { MemoryRouter } from 'react-router'
 import { Provider } from 'react-redux'
