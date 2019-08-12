@@ -32,7 +32,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ task, changeTaskContent,
     } else {
       markTaskAsDone(task.id)
     }
-  }, [task])
+  }, [task.done])
 
   const handleDeleteTaskButtonClick = React.useCallback(() => {
     deleteTask(task.id)
