@@ -1,7 +1,7 @@
-import * as path from 'path'
 import { Configuration } from 'webpack'
 import 'webpack-dev-server'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import * as path from 'path'
 
 import prodConfig from './webpack.config'
 
