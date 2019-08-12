@@ -43,7 +43,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ task, changeTaskContent,
       <ListItemIcon>
         <Checkbox checked={ task.done } onChange={ handleDoneChange } />
       </ListItemIcon>
-      <TextField value={ task.content } onChange={ handleContentChange } />
+      <TextField value={ task.content } onChange={ handleContentChange } disabled={ task.done } />
       <ListItemSecondaryAction>
         <DeleteTaskButton onClick={ handleDeleteTaskButtonClick } />
       </ListItemSecondaryAction>
