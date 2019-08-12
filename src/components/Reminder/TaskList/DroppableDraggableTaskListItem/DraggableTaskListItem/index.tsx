@@ -7,7 +7,7 @@ import TaskListItem, { Props } from './TaskListItem'
 import * as classes from './classes.css'
 
 interface CollectedProps {
-  isDragging: boolean
+  dragging: boolean
 }
 
 export interface DragObject extends DragObjectWithType {
@@ -16,19 +16,19 @@ export interface DragObject extends DragObjectWithType {
 }
 
 const DraggableTaskListItem: React.FunctionComponent<Props> = (props) => {
-  const [{ isDragging }, drag] = useDrag<DragObject, {}, CollectedProps>({
+  const [{ dragging }, drag] = useDrag<DragObject, {}, CollectedProps>({
     item: {
       type: 'TaskListItem',
       id: props.task.id,
       index: props.index,
     },
     collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
+      dragging: monitor.isDragging(),
     }),
   })
 
   return (
-    <div ref={ drag } className={ isDragging ? classes.DraggingDraggableTaskListItem : '' }>
+    <div ref={ drag } className={ dragging ? classes.DraggingDraggableTaskListItem : '' }>
       <TaskListItem { ...props } />
     </div>
   )
