@@ -1,12 +1,14 @@
 import * as React from 'react'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
+import { DndProvider } from 'react-dnd'
+import TestBackend from 'react-dnd-test-backend'
 import { render } from '@testing-library/react'
 import createMockStore from 'redux-mock-store'
 
 import { State } from 'src/redux'
 import IntlProvider from 'src/containers/IntlProvider'
-import App, { Counter, Info } from '.'
+import App, { Counter, Info, Reminder } from '.'
 import formats from '../../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 
 // NOTE: connected-react-router ではないので router state は不要。
@@ -45,15 +47,18 @@ ${ '/reminder' }
     const { container } = render(
       <Provider store={ store }>
         <IntlProvider>
-          <StaticRouter context={ context } location={ location }>
-            <App />
-          </StaticRouter>
+          <DndProvider backend={ TestBackend }>
+            <StaticRouter context={ context } location={ location }>
+              <App />
+            </StaticRouter>
+          </DndProvider>
         </IntlProvider>
       </Provider>
     )
 
     await Counter
     await Info
+    await Reminder
 
     expect(container.firstChild).toMatchSnapshot()
   })
