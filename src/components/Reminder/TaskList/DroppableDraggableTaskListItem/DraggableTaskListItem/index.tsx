@@ -16,7 +16,7 @@ export interface DragObject extends DragObjectWithType {
 }
 
 const DraggableTaskListItem: React.FunctionComponent<Props> = (props) => {
-  const [{ isDragging }, connectDragSource] = useDrag<DragObject, {}, CollectedProps>({
+  const [{ isDragging }, drag] = useDrag<DragObject, {}, CollectedProps>({
     item: {
       type: 'TaskListItem',
       id: props.task.id,
@@ -27,8 +27,8 @@ const DraggableTaskListItem: React.FunctionComponent<Props> = (props) => {
     }),
   })
 
-  return connectDragSource(
-    <div className={ isDragging ? classes.DraggingDraggableTaskListItem : '' }>
+  return (
+    <div ref={ drag } className={ isDragging ? classes.DraggingDraggableTaskListItem : '' }>
       <TaskListItem { ...props } />
     </div>
   )

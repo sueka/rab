@@ -6,7 +6,7 @@ import { Props } from './DraggableTaskListItem/TaskListItem'
 import { DragObject } from './DraggableTaskListItem'
 
 const DroppableDraggableTaskListItem: React.FunctionComponent<Props> = (props) => {
-  const [, connectDropTarget] = useDrop<DragObject, {}, {}>({
+  const [, drag] = useDrop<DragObject, {}, {}>({
     accept: 'TaskListItem',
     hover(item) {
       const destinationIndex = props.index
@@ -22,8 +22,8 @@ const DroppableDraggableTaskListItem: React.FunctionComponent<Props> = (props) =
     },
   })
 
-  return connectDropTarget(
-    <div>
+  return (
+    <div ref={ drag }>
       <DraggableTaskListItem { ...props } />
     </div>
   )
