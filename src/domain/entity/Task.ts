@@ -1,5 +1,7 @@
 import assert from 'assert'
 
+import hashCodeForBoolean from 'src/lib/extensions/Boolean/hashCode'
+import hashCodeForString from 'src/lib/extensions/String/hashCode'
 import TaskId from 'src/domain/vo/TaskId'
 import Entity from './Entity'
 
@@ -38,6 +40,25 @@ export default class Task extends Entity {
       content: this.content,
       done: this.done,
     })
+  }
+
+  public get hashCode() {
+    // tslint:disable-next-line:no-let
+    let result = 17
+
+    result = 31 * result + this.id.hashCode
+    result = 31 * result + hashCodeForString(this.content)
+    result = 31 * result + hashCodeForBoolean(this.done)
+
+    return result
+  }
+
+  public with({
+    id = this.id,
+    content = this.content,
+    done = this.done,
+  }: TaskRequest): Task {
+    return new Task({ id, content, done })
   }
 
   get content() {

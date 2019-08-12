@@ -1,3 +1,4 @@
+import hashCode from 'src/lib/extensions/String/hashCode'
 import ValueObject from './ValueObject'
 
 export default class Id extends ValueObject<string> {
@@ -14,6 +15,11 @@ export default class Id extends ValueObject<string> {
   }
 
   get hashCode() {
-    return this.value
+    // tslint:disable-next-line:no-let
+    let result = 17
+
+    result = 31 * result + hashCode(this.value)
+
+    return result
   }
 }

@@ -4,6 +4,7 @@ import { call, put } from 'redux-saga/effects'
 import { injectable, inject } from 'inversify'
 import assert from 'assert'
 
+import { LogicError } from 'src/lib/errors'
 import { takeEvery } from 'src/lib/boni/redux-saga/effects'
 import TaskId from 'src/domain/vo/TaskId'
 import Task from 'src/domain/entity/Task'
@@ -48,6 +49,7 @@ export /* for testing */ const MOVE_TASK = '@@react-app-prototype/reminder/MOVE_
 export /* for testing */ const PUSH_TASK = '@@react-app-prototype/reminder/PUSH_TASK'
 export /* for testing */ const UPDATE_TASK = '@@react-app-prototype/reminder/UPDATE_TASK'
 export /* for testing */ const REMOVE_TASK = '@@react-app-prototype/reminder/REMOVE_TASK'
+export /* for testing */ const CHECK_TASK = '@@react-app-prototype/reminder/CHECK_TASK'
 
 const reminderActionTypes = [
   ADD_TASK_ASYNC,
@@ -59,6 +61,7 @@ const reminderActionTypes = [
   PUSH_TASK,
   UPDATE_TASK,
   REMOVE_TASK,
+  CHECK_TASK,
 ]
 
 interface AddTaskAsyncAction extends Action<typeof ADD_TASK_ASYNC> {}
@@ -114,6 +117,13 @@ interface RemoveTaskAction extends Action<typeof REMOVE_TASK> {
   }
 }
 
+interface CheckTaskAction extends Action<typeof CHECK_TASK> {
+  payload: {
+    taskId: TaskId
+    task: Task
+  }
+}
+
 export type ReminderAction =
   | AddTaskAsyncAction
   | ChangeTaskContentAsyncAction
@@ -124,6 +134,7 @@ export type ReminderAction =
   | PushTaskAction
   | UpdateTaskAction
   | RemoveTaskAction
+  | CheckTaskAction
 
 function isReminderAction(action: Action): action is ReminderAction {
   return reminderActionTypes.includes(action.type)
@@ -209,6 +220,14 @@ export const removeTask = (taskId: TaskId): RemoveTaskAction => ({
   },
 })
 
+export const checkTask = (taskId: TaskId, task: Task): CheckTaskAction => ({
+  type: CHECK_TASK,
+  payload: {
+    taskId,
+    task,
+  },
+})
+
 //
 //                           _|
 // _|  _|_|    _|_|      _|_|_|  _|    _|    _|_|_|    _|_|    _|  _|_|
@@ -224,8 +243,23 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
   }
 
   switch (action.type) {
-    case ADD_TASK_ASYNC:
-    case CHANGE_TASK_CONTENT_ASYNC:
+    case ADD_TASK_ASYNC: return state
+    case CHANGE_TASK_CONTENT_ASYNC: {
+      const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
+
+      if (i === -1) {
+        throw new Error() // TODO:
+      }
+
+      return {
+        ...state,
+        tasks: [
+          ...state.tasks.slice(0, i),
+          state.tasks[i].with({ content: action.payload.content }),
+          ...state.tasks.slice(i + 1),
+        ],
+      }
+    }
     case MARK_TASK_AS_DONE_ASYNC:
     case MARK_TASK_AS_UNDONE_ASYNC:
     case DELETE_TASK_ASYNC: return state
@@ -283,6 +317,19 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
         ],
       }
     }
+    case CHECK_TASK: {
+      const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
+
+      if (i === -1) {
+        throw new Error() // TODO:
+      }
+
+      if (!state.tasks[i].equals(action.payload.task)) {
+        throw new LogicError() // TODO:
+      }
+
+      return state
+    }
   }
 }
 
@@ -312,7 +359,7 @@ export class ReminderService {
     task.content = content // tslint:disable-line:no-object-mutation
 
     yield call(this.taskRepository.store, task)
-    yield put(updateTask(taskId, task))
+    yield put(checkTask(taskId, task))
   }
 
   private *markTaskAsDoneAsyncSaga({ payload: { taskId } }: MarkTaskAsDoneAsyncAction): SagaIterator {
