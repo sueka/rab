@@ -1,6 +1,7 @@
 {
   "modules": true,
   "plugins": {
-    "autoprefixer": true
+    "autoprefixer": true,
+    "postcss-nesting": true
   }
 }
