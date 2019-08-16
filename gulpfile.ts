@@ -19,7 +19,7 @@ const preTypeCheck = parallel(npxTask('tcm', ['src', '-s']), extractMessages)
 const typeCheck = series(preTypeCheck, npxTask('tsc', ['--noEmit', '-p', '.']))
 const tslint = npxTask('tslint', ['-p', '.'])
 const stylelint = npxTask('stylelint', ['src/**/*.css'])
-export const lint = namedTask('lint', parallel(series(typeCheck, tslint), stylelint))
+export const lint = parallel(series(typeCheck, tslint), stylelint)
 const testWithoutCoverage = series(typeCheck, npxTask('jest'))
 const testWithCoverage = series(typeCheck, npxTask('jest', ['--coverage']))
 export const updateSnapshot = series(typeCheck, npxTask('jest', ['--updateSnapshot']))
@@ -62,12 +62,6 @@ function npxTask(util: string, args: string[] = [], env: NodeJS.ProcessEnv = {})
   const task: TaskFunction = () => npx(util, args, env)
 
   task.displayName = `${ Object.entries(env).map(([name, value]) => `${ name }=${ value } `).join('') }${ util }${ args.map((arg) => ` ${ arg }`).join('') }`
-
-  return task
-}
-
-function namedTask(name: string, task: TaskFunction) {
-  task.displayName = name
 
   return task
 }
