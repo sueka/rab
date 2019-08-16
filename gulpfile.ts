@@ -28,7 +28,6 @@ export const build = series(() => del(['dist/**/*']), typeCheck, npxTask('webpac
 export const document = parallel(npxTask('typedoc'))
 
 export const develop = parallel(
-  continuousTask('src/**/messages.ts', extractMessages),
   continuousTask('src', lint),
   npxTask('jest', ['--onlyChanged', '--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''], {
     CI: 'true', // to prevent screen being cleared
