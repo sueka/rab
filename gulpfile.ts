@@ -22,6 +22,7 @@ const stylelint = npxTask('stylelint', ['src/**/*.css'])
 export const lint = parallel(series(typeCheck, tslint), stylelint)
 const testWithoutCoverage = series(typeCheck, npxTask('jest'))
 const testWithCoverage = series(typeCheck, npxTask('jest', ['--coverage']))
+export const testInWatchMode = series(preTypeCheck, npxTask('jest', ['--onlyChanged', '--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''])) // TODO: interrupt に preTypeCheck を差し込む
 export const updateSnapshot = series(typeCheck, npxTask('jest', ['--updateSnapshot']))
 export const test = testWithCoverage
 export const build = series(() => del(['dist/**/*']), typeCheck, npxTask('webpack'))
@@ -29,9 +30,6 @@ export const document = parallel(npxTask('typedoc'))
 
 export const develop = parallel(
   continuousTask('src', lint),
-  npxTask('jest', ['--onlyChanged', '--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''], {
-    CI: 'true', // to prevent screen being cleared
-  }),
   npxTask('webpack-dev-server', ['--config', 'webpack.config.dev.ts']),
 )
 
@@ -63,7 +61,7 @@ function npxTask(util: string, args: string[] = [], env: NodeJS.ProcessEnv = {})
 
   task.displayName = `${ Object.entries(env).map(([name, value]) => `${ name }=${ value } `).join('') }${ util }${ args.map((arg) => ` ${ arg }`).join('') }`
 
-  return task
+  return series(task) // name automatically
 }
 
 function continuousTask(globs: Globs, watchedTask: TaskFunction) {
