@@ -10,7 +10,7 @@ const config: Configuration = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     modules: [
-      path.resolve(__dirname, 'node_modules'),
+      'node_modules',
       path.resolve(__dirname, 'src'),
     ],
     alias: {
