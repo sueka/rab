@@ -28,6 +28,5 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/src/**/*.ts{x,}',
     '!<rootDir>/src/components/**/messages.ts',
-    '!<rootDir>/src/{components,containers}/**/{*.,}stories.ts{x,}',
   ],
 }

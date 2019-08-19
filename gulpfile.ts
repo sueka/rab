@@ -2,7 +2,7 @@ import { TaskFunction, Globs, parallel, series, watch } from 'gulp'
 import del from 'del'
 import { spawn } from 'child_process'
 
-const ignored = ['.cache', 'coverage', 'dist', 'doc', 'storybook-static', '**/*.css.d.ts', '**/*.js{,x}', '!jest.config.js', '!typedoc.js']
+const ignored = ['.cache', 'coverage', 'dist', 'doc', '**/*.css.d.ts', '**/*.js{,x}', '!jest.config.js', '!typedoc.js']
 
 //
 //   _|                          _|
@@ -25,7 +25,6 @@ const testWithCoverage = series(typeCheck, npxTask('jest', ['--coverage']))
 export const updateSnapshot = series(typeCheck, npxTask('jest', ['--updateSnapshot']))
 export const test = testWithCoverage
 export const build = series(() => del(['dist/**/*']), typeCheck, npxTask('webpack'))
-export const buildStorybook = series(typeCheck, npxTask('build-storybook'))
 export const document = parallel(npxTask('typedoc'))
 
 export const develop = parallel(
@@ -35,7 +34,6 @@ export const develop = parallel(
     CI: 'true', // to prevent screen being cleared
   }),
   npxTask('webpack-dev-server', ['--config', 'webpack.config.dev.ts']),
-  npxTask('start-storybook', ['--ci', '--quiet', '-p', '5678']),
 )
 
 export default series(testWithoutCoverage, build)
