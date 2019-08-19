@@ -18,7 +18,7 @@ const withSuspense: (Component: React.LazyExoticComponent<React.ComponentType<Ro
   </React.Suspense>
 )
 
-const withHelmet: (Component: React.ComponentType<RouteComponentProps>, helmetProps?: HelmetProps) => React.ComponentType<RouteComponentProps> = (Component, helmetProps) => (props) => (
+const withHelmet: (Component: React.ComponentType<RouteComponentProps>, helmetProps: HelmetProps) => React.ComponentType<RouteComponentProps> = (Component, helmetProps) => (props) => (
   <>
     <Helmet { ...helmetProps } />
     <Component { ...props } />
@@ -44,9 +44,17 @@ const Route: React.FunctionComponent<Props> = ({ component, helmetProps, ...rest
   }
 
   if ('_result' in component) { // FIXME: if LazyExoticComponent
-    return <OriginalRoute component={ withErrorBoundary(withHelmet(withSuspense(component), helmetProps)) } { ...restProps } />
+    if (helmetProps !== undefined) {
+      return <OriginalRoute component={ withErrorBoundary(withHelmet(withSuspense(component), helmetProps)) } { ...restProps } />
+    } else {
+      return <OriginalRoute component={ withErrorBoundary(withSuspense(component)) } { ...restProps } />
+    }
   } else {
-    return <OriginalRoute component={ withErrorBoundary(withHelmet(component, helmetProps)) } { ...restProps } />
+    if (helmetProps !== undefined) {
+      return <OriginalRoute component={ withErrorBoundary(withHelmet(component, helmetProps)) } { ...restProps } />
+    } else {
+      return <OriginalRoute component={ withErrorBoundary(component) } { ...restProps } />
+    }
   }
 }
 
