@@ -318,13 +318,13 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
       }
     }
     case CHECK_TASK: {
-      const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
+      const task = state.tasks.find((task) => task.id.equals(action.payload.taskId))
 
-      if (i === -1) {
+      if (task === undefined) {
         throw new Error() // TODO:
       }
 
-      if (!state.tasks[i].equals(action.payload.task)) {
+      if (!task.equals(action.payload.task)) {
         throw new LogicError() // TODO:
       }
 
