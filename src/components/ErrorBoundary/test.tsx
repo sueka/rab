@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 
 import ErrorBoundary from '.'
 
-const NoThrowing: React.FunctionComponent = () => <>no throwing</>
+const NoErrorThrowing: React.FunctionComponent = () => <>no error throwing</>
 const ErrorThrowing: React.FunctionComponent = () => { throw new Error('error throwing') }
 const NonErrorThrowing: React.FunctionComponent = () => {
   throw 'non-error throwing' // tslint:disable-line:no-string-throw
@@ -13,7 +13,7 @@ describe('ErrorBoundary', () => {
   test('without anything throwing', () => {
     const { container } = render(
       <ErrorBoundary>
-        <NoThrowing />
+        <NoErrorThrowing />
       </ErrorBoundary>
     )
 
