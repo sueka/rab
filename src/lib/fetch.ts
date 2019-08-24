@@ -4,6 +4,7 @@
 
 import * as pathToRegexp from 'path-to-regexp'
 
+import UrlOrPathAbempty from './UrlOrPathAbempty'
 import typed from './typed'
 import mapValues from './extensions/Record/mapValues'
 
@@ -54,21 +55,17 @@ function buildRequestInfo({ method, parameterizedEndpoint, params = {}, query = 
 
   switch (method) {
     case 'GET':
-      const urlSearchParams = new URLSearchParams()
+      const url = new UrlOrPathAbempty(endpoint)
+      const urlSearchParams = new URLSearchParams(url.search)
 
       Object.entries(query).forEach(([key, value]) => {
         urlSearchParams.append(key, value)
       })
 
-      // TODO: endpoint に search が含まれる場合の処理
+      // tslint:disable-next-line:no-object-mutation
+      url.search = urlSearchParams.toString()
 
-      const search = urlSearchParams.toString()
-
-      if (search !== '') {
-        return typed<[string, string]>`${ endpoint }?${ urlSearchParams.toString() }`
-      }
-
-      return endpoint
+      return url.href
     case 'POST':
       return endpoint
   }
