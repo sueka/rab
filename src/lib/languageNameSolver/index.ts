@@ -1,11 +1,11 @@
-import codeNativeNameMap from './__data__/codeNativeNameMap.json'
+import tagNativeNameMap from './__data__/tagNativeNameMap.json'
 
-export type Code = keyof typeof codeNativeNameMap
+export type Tag = keyof typeof tagNativeNameMap
 
-export function isCode(code: string): code is Code {
-  return code in codeNativeNameMap
+export function isTag(tag: string): tag is Tag {
+  return tag in tagNativeNameMap
 }
 
-export function getNativeNameByCode(code: Code) {
-  return codeNativeNameMap[code]
+export function getNativeNameByTag(tag: Tag) {
+  return tagNativeNameMap[tag]
 }

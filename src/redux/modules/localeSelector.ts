@@ -6,7 +6,7 @@ import { injectable } from 'inversify'
 import { takeEvery } from 'src/lib/boni/redux-saga/effects'
 import { Formats } from 'src/types/intlTypes'
 import typed from 'src/lib/typed'
-import { Code } from 'src/lib/languageNameSolver'
+import { Tag } from 'src/lib/languageNameSolver'
 import fetch from 'src/lib/fetch'
 import { recordOf, asString } from 'src/lib/validators/commonValidators'
 import { asFormats } from 'src/lib/validators/intlValidators'
@@ -21,8 +21,8 @@ import { asFormats } from 'src/lib/validators/intlValidators'
 //
 
 export interface LocaleSelectorState {
-  availableLocales: Code[]
-  locale: Code
+  availableLocales: Tag[]
+  locale: Tag
   formats: Formats
   messages: Record<string, string>
   errors: Error[]
@@ -61,13 +61,13 @@ const localeSelectorActionTypes = [
 
 interface SelectAction extends Action<typeof SELECT> {
   payload: {
-    locale: Code
+    locale: Tag
   }
 }
 
 interface SetLocaleAction extends Action<typeof SET_LOCALE> {
   payload: {
-    locale: Code
+    locale: Tag
   }
 }
 
@@ -117,14 +117,14 @@ function isLocaleSelectorAction(action: Action): action is LocaleSelectorAction 
 //
 //
 
-export const select = (locale: Code): SelectAction => ({
+export const select = (locale: Tag): SelectAction => ({
   type: SELECT,
   payload: {
     locale,
   },
 })
 
-export /* for testing */ const setLocale = (locale: Code): SetLocaleAction => ({
+export /* for testing */ const setLocale = (locale: Tag): SetLocaleAction => ({
   type: SET_LOCALE,
   payload: {
     locale,

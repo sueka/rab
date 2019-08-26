@@ -6,17 +6,17 @@ import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import NativeSelect from '@material-ui/core/NativeSelect'
 
-import { Code, isCode, getNativeNameByCode } from 'src/lib/languageNameSolver'
+import { Tag, isTag, getNativeNameByTag } from 'src/lib/languageNameSolver'
 
 import messages from './messages'
 
 export interface StateProps {
-  availableLocales: Code[]
-  locale: Code
+  availableLocales: Tag[]
+  locale: Tag
 }
 
 export interface DispatchProps {
-  select(locale: Code): void
+  select(locale: Tag): void
 }
 
 type Props =
@@ -27,7 +27,7 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ availableLocales, locale
   const inputId = React.useMemo(v4, [])
 
   const handleChange = React.useCallback<React.ChangeEventHandler<HTMLSelectElement>>((event) => {
-    if (isCode(event.currentTarget.value)) {
+    if (isTag(event.currentTarget.value)) {
       select(event.currentTarget.value)
     }
   }, [])
@@ -39,7 +39,7 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ availableLocales, locale
       </InputLabel>
       <NativeSelect value={ locale } onChange={ handleChange } id={ inputId } inputProps={ { 'data-testid': 'localeSelect' } }>
         { availableLocales.map((availableLocale, i) => (
-          <option key={ i } value={ availableLocale }>{ getNativeNameByCode(availableLocale) }</option>
+          <option key={ i } value={ availableLocale }>{ getNativeNameByTag(availableLocale) }</option>
         )) }
       </NativeSelect>
     </FormControl>
