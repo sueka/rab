@@ -7,6 +7,15 @@ import stripMargin from 'src/lib/extensions/String/stripMargin'
 import trimEols from 'src/lib/extensions/String/trimEols'
 import equalsJsons from 'src/lib/extensions/Eq/equalsJsons'
 
+/**
+ * @callback Validator
+ * @throws {ValidationError} if the validation fails.
+ */
+
+/**
+ * @param asT {Validator}
+ * @throws {never}
+ */
 export const failSafe = <A extends Json, T>(asT: (input: A) => T) => (input: A): either.Either<ValidationError, T> => {
   try {
     return either.right(asT(input))
@@ -15,7 +24,7 @@ export const failSafe = <A extends Json, T>(asT: (input: A) => T) => (input: A):
       return either.left(error)
     }
 
-    throw error
+    throw new UnreachableError()
   }
 }
 
@@ -57,7 +66,15 @@ export const asUnionOf = <T extends readonly unknown[]>(options: T) => (input: J
 }
 
 /**
+ * Ascribe the given JSON object to a specific type.
+ *
+ * @callback ObjectTyper
+ * @throws {Error} if {input} is invalid as {T}
+ */
+
+/**
  * @param className name of {T} with indefinite article
+ * @param asT {ObjectTyper}
  */
 export const asObject = <T>(className: string, asT: (input: JsonObject) => T) => (input: Json): T => {
   if (input === null || typeof input === 'boolean' || typeof input === 'number' || typeof input === 'string' || Array.isArray(input)) {
