@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
 import assert from 'assert'
+import { either } from 'fp-ts'
 import { resolve } from 'inversify-react'
 
 import Button from '@material-ui/core/Button'
@@ -16,7 +17,7 @@ type Props =
 interface LocalState {
   successful: boolean
   fetching: boolean
-  repo?: Repository | Error | null
+  repo?: either.Either<Error, Repository> | null
 }
 
 class Info extends React.Component<Props, LocalState> {
@@ -38,13 +39,13 @@ class Info extends React.Component<Props, LocalState> {
           this.setState({
             successful: true,
             fetching: false,
-            repo: output.response.body,
+            repo: either.right(output.response.body),
           })
         } else {
           this.setState({
             successful: false,
             fetching: false,
-            repo: new Error(output.response.body.message),
+            repo: either.left(new Error(output.response.body.message)),
           })
         }
       })
@@ -69,7 +70,7 @@ class Info extends React.Component<Props, LocalState> {
       if (repo == null) {
         return formatMessage(messages.fetchingNotStarted)
       } else {
-        if (!(repo instanceof Error)) {
+        if (either.isRight(repo)) {
           assert(successful)
 
           return formatMessage(messages.fetchingDoneSuccessfully)
@@ -89,11 +90,11 @@ class Info extends React.Component<Props, LocalState> {
       return repo
     }
 
-    if (repo instanceof Error) {
+    if (either.isLeft(repo)) {
       return repo.toString()
     }
 
-    return repo.name
+    return repo.right.name
   }
 
   public render() {
