@@ -14,6 +14,7 @@ interface RequestParams {
   method: Method
   parameterizedEndpoint: string
   params?: Record<string, string>
+  headers?: Record<string, string>
   query?: Record<string, string>
 }
 
@@ -71,11 +72,12 @@ function buildRequestInfo({ method, parameterizedEndpoint, params = {}, query = 
   }
 }
 
-function buildRequestInit({ method, query = {} }: RequestParams): RequestInit {
+function buildRequestInit({ method, headers = {}, query = {} }: RequestParams): RequestInit {
   switch (method) {
     case 'GET':
       return {
         method,
+        headers,
       }
     case 'POST':
       const formData = new FormData()
@@ -87,6 +89,7 @@ function buildRequestInit({ method, query = {} }: RequestParams): RequestInit {
       return {
         method,
         body: formData,
+        headers,
       }
   }
 }

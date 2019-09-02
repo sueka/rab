@@ -14,12 +14,15 @@ export default class GetRepoImpl implements GetRepo {
   @inject('EnvVarConfig') private config!: ConfigRegistry
 
   public async apply({ owner, repo }: GetRepoInput): Promise<GetRepoOutput> {
-    const origin = this.config.get('GITHUB_API_V3_ORIGIN')
+    const gitHubApiUrl = this.config.get('GITHUB_API_URL')
 
     const { response: { status }, body } = await fetch({
       method: 'GET',
-      parameterizedEndpoint: typed<[string]>`${ origin }/repos/:owner/:repo`,
+      parameterizedEndpoint: typed<[string]>`${ gitHubApiUrl }/repos/:owner/:repo`,
       params: { owner, repo },
+      headers: {
+        Accept: 'application/vnd.github.v3+json',
+      },
     })
 
     if (status === 200) {

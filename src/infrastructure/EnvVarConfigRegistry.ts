@@ -6,7 +6,7 @@ import ConfigRegistry, { ConfigKey } from 'src/config/ConfigRegistry'
 @injectable()
 export default class EnvVarConfigRegistry implements ConfigRegistry {
   private env: Record<ConfigKey, string | undefined> = {
-    GITHUB_API_V3_ORIGIN: process.env.GITHUB_API_V3_ORIGIN,
+    GITHUB_API_URL: process.env.GITHUB_API_URL,
   }
 
   /**
