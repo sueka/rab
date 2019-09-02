@@ -67,11 +67,17 @@ export const asObject = <T>(className: string, asT: (input: JsonObject) => T) =>
   try {
     return asT(input)
   } catch (error) {
-    if (error instanceof Error) {
+    if (error instanceof ValidationError) {
       throw new ValidationError(trimEols(stripMargin(typed<[string, string, string]>`
         |${ JSON.stringify(input) } is not ${ className }.
         |${ error.message }
         |`)))
+    }
+
+    if (error instanceof Error) {
+      console.error(error) // tslint:disable-line:no-console
+
+      throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is not ${ className }.`)
     }
 
     throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
