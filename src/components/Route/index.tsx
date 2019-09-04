@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Route as OriginalRoute, RouteProps, RouteComponentProps } from 'react-router'
 import Helmet, { HelmetProps } from 'react-helmet'
 

@@ -2,7 +2,7 @@
  * src/lib/fetch.ts
  */
 
-import * as pathToRegexp from 'path-to-regexp'
+import pathToRegexp from 'path-to-regexp'
 
 import UrlOrPathAbempty from './UrlOrPathAbempty'
 import typed from './typed'

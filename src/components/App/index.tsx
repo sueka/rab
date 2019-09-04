@@ -1,5 +1,5 @@
 import { hot } from 'react-hot-loader'
-import * as React from 'react'
+import React from 'react'
 import { Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 import Helmet from 'react-helmet'
@@ -12,7 +12,7 @@ import LocaleSelect from 'src/containers/LocaleSelect'
 import Today from 'src/containers/Today'
 
 import messages from './messages'
-import * as classes from './classes.css'
+import classes from './classes.css'
 
 export /* for testing */ const Counter = React.lazy(() => import(/* webpackChunkName: "counter" */ 'src/containers/Counter'))
 export /* for testing */ const Info = React.lazy(() => import(/* webpackChunkName: "info" */ 'src/components/Info'))

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
 import { DndProvider } from 'react-dnd'

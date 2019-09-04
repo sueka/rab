@@ -28,8 +28,8 @@ type Action =
   & ReminderAction
 
 import { addLocaleData } from 'react-intl'
-import * as en from 'react-intl/locale-data/en'
-import * as ja from 'react-intl/locale-data/ja'
+import en from 'react-intl/locale-data/en'
+import ja from 'react-intl/locale-data/ja'
 
 addLocaleData(en)
 addLocaleData(ja)

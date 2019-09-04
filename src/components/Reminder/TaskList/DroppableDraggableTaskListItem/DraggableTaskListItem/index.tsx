@@ -1,10 +1,10 @@
-import * as React from 'react'
+import React from 'react'
 import { DragObjectWithType, useDrag } from 'react-dnd'
 
 import TaskId from 'src/domain/vo/TaskId'
 import TaskListItem, { Props } from './TaskListItem'
 
-import * as classes from './classes.css'
+import classes from './classes.css'
 
 interface CollectedProps {
   dragging: boolean

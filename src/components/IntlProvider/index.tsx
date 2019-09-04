@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { IntlProvider as OriginalIntlProvider } from 'react-intl'
 
 export type StateProps = Pick<OriginalIntlProvider.Props, 'locale' | 'formats' | 'messages'>

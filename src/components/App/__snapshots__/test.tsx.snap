@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App at / 1`] = `
-<div>
+<div
+  class="App"
+>
   <div
     class="MuiFormControl-root"
   >
@@ -79,7 +81,9 @@ exports[`App at / 1`] = `
 `;
 
 exports[`App at /counter 1`] = `
-<div>
+<div
+  class="App"
+>
   <div
     class="MuiFormControl-root"
   >
@@ -217,7 +221,9 @@ exports[`App at /counter 1`] = `
 `;
 
 exports[`App at /info 1`] = `
-<div>
+<div
+  class="App"
+>
   <div
     class="MuiFormControl-root"
   >
@@ -311,7 +317,9 @@ exports[`App at /info 1`] = `
 `;
 
 exports[`App at /reminder 1`] = `
-<div>
+<div
+  class="App"
+>
   <div
     class="MuiFormControl-root"
   >

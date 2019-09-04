@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 
 import TaskId from 'src/domain/vo/TaskId'
 import Task from 'src/domain/entity/Task'
