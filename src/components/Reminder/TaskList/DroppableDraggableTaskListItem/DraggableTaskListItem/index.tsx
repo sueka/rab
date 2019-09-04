@@ -1,5 +1,6 @@
 import React from 'react'
 import { DragObjectWithType, useDrag } from 'react-dnd'
+import classnames from 'classnames'
 
 import TaskId from 'src/domain/vo/TaskId'
 import TaskListItem, { Props } from './TaskListItem'
@@ -27,8 +28,12 @@ const DraggableTaskListItem: React.FunctionComponent<Props> = (props) => {
     }),
   })
 
+  const className = React.useMemo(() => classnames({
+    [classes.DraggingDraggableTaskListItem]: dragging,
+  }), [dragging])
+
   return (
-    <div ref={ drag } className={ dragging ? classes.DraggingDraggableTaskListItem : '' }>
+    <div ref={ drag } className={ className }>
       <TaskListItem { ...props } />
     </div>
   )
