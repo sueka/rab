@@ -6,8 +6,6 @@ import TaskRepository from '~/domain/repository/TaskRepository'
 
 @injectable()
 export default class TaskRepositoryFakeImpl implements TaskRepository {
-  // TODO: constructor(prefix)
-
   public async findById(taskId: TaskId) {
     const task = localStorage.getItem(taskId.value)
 
