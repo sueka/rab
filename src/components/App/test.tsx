@@ -1,5 +1,5 @@
 import React from 'react'
-import { Provider } from 'react-redux'
+import { Provider, Omit } from 'react-redux'
 import { StaticRouter } from 'react-router'
 import { DndProvider } from 'react-dnd'
 import TestBackend from 'react-dnd-test-backend'
