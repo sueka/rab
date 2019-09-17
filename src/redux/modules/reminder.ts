@@ -229,7 +229,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
       const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
 
       if (i === -1) {
-        throw new Error() // TODO:
+        throw new Error // TODO:
       }
 
       return {
@@ -245,7 +245,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
       const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
 
       if (i === -1) {
-        throw new Error() // TODO:
+        throw new Error // TODO:
       }
 
       return {
@@ -261,7 +261,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
       const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
 
       if (i === -1) {
-        throw new Error() // TODO:
+        throw new Error // TODO:
       }
 
       return {
@@ -299,7 +299,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
       const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
 
       if (i === -1) {
-        throw new Error() // TODO:
+        throw new Error // TODO:
       }
 
       return {
@@ -314,11 +314,11 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
       const stateTask = state.tasks.find((task) => task.id.equals(action.payload.taskId))
 
       if (stateTask === undefined) {
-        throw new Error() // TODO:
+        throw new Error // TODO:
       }
 
       if (!stateTask.equals(action.payload.task)) {
-        throw new LogicError() // TODO:
+        throw new LogicError // TODO:
       }
 
       return state

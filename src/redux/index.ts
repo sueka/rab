@@ -53,7 +53,7 @@ const createReducer = (history: History) => combineReducers<State, Action>({
     count: 0,
   }),
   io: createIoReducer({
-    now: new Date(),
+    now: new Date,
   }),
   localeSelector: createLocaleSelectorReducer({
     availableLocales: [

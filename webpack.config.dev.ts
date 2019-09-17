@@ -12,7 +12,7 @@ const config: Configuration = {
     rules: prodConfig.module!.rules.map((rule) => {
       if (rule.loader === 'babel-loader' && rule.options !== undefined) {
         if (typeof rule.options === 'string') {
-          throw new Error() // TODO:
+          throw new Error // TODO:
         }
 
         rule.options.envName = 'development'

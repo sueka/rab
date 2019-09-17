@@ -31,7 +31,7 @@ function stripMargin2(marginChar: string, that: string) {
     const matches = new RegExp(typed<[string, string]>`^(?:[\\t ]*(?<marginChar>.))?(?<stripped>(?:.|${ eolCharPattern.source })*${ eolPattern.source }?)$`, 'u').exec(line)
 
     if (matches === null || matches.groups === undefined) {
-      throw new Error() // TODO
+      throw new Error // TODO
     }
 
     const { marginChar: marginCharCandidate, stripped } = matches.groups

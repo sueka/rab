@@ -19,5 +19,5 @@ export const createIoReducer: (initialState: IoState) => Reducer<IoState, Action
     return state
   }
 
-  throw new UnreachableError()
+  throw new UnreachableError
 }

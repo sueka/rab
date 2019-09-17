@@ -80,7 +80,7 @@ function buildRequestInit({ method, headers = {}, query = {} }: RequestParams): 
         headers,
       }
     case 'POST':
-      const formData = new FormData()
+      const formData = new FormData
 
       Object.entries(query).forEach(([key, value]) => {
         formData.append(key, value)

@@ -15,7 +15,7 @@ export default function conj(separator: string, lastSeparator: string, xs: strin
   const lastX = xs.pop() // tslint:disable-line:no-array-mutation
 
   if (lastX === undefined) {
-    throw new UnreachableError()
+    throw new UnreachableError
   }
 
   return typed<[string, string, string]>`${ xs.join(separator) }${ lastSeparator }${ lastX }`

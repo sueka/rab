@@ -13,7 +13,7 @@ import GetRepoImpl from './infrastructure/GetRepoImpl'
 import TaskRepository from './domain/repository/TaskRepository'
 import TaskRepositoryFakeImpl from './infrastructure/persistence/double/TaskRepositoryFakeImpl' // TODO:
 
-const container = new Container()
+const container = new Container
 
 container.bind<ConfigRegistry>('EnvVarConfig').to(EnvVarConfigRegistry)
 container.bind<GetRepo>('GetRepo').to(GetRepoImpl)

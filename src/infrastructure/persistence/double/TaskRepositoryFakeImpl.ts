@@ -10,7 +10,7 @@ export default class TaskRepositoryFakeImpl implements TaskRepository {
     const task = localStorage.getItem(taskId.value)
 
     if (task === null) {
-      throw new Error() // TODO:
+      throw new Error // TODO:
     }
 
     return Task.deserialize(task)

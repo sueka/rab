@@ -138,7 +138,7 @@ describe('reducer', () => {
   })
 
   it('should handle PUSH_ERROR', () => {
-    const error = new Error()
+    const error = new Error
     const state = localeSelectorReducer(initialState, pushError(error))
 
     expect(state).toMatchObject({

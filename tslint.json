@@ -44,6 +44,7 @@
     "no-loop-statement": true,
     "no-shadowed-variable": [true, { "import": false }],
     "variable-name": [true, "allow-pascal-case", "allow-leading-underscore"],
+    "new-parens": false, // TODO: [true, "never"]
 
     /* Type Constraints */
     "strict-boolean-expressions": true,

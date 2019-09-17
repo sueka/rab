@@ -24,7 +24,7 @@ export const failSafe = <A extends Json, T>(asT: (input: A) => T) => (input: A):
       return either.left(error)
     }
 
-    throw new UnreachableError()
+    throw new UnreachableError
   }
 }
 
@@ -52,7 +52,7 @@ export const unionOf = <T, U>(asT: (input: Json) => T, asU: (input: Json) => U) 
     return u.right
   }
 
-  throw new UnreachableError()
+  throw new UnreachableError
 }
 
 export const recordOf = <T>(asT: (input: Json) => T) => asObject<Record<string, T>>('a Record', (input) => Object.entries(input).map<[string, T]>(([key, value]) => [key, asT(value)]).reduce<Record<string, T>>((output, [key, value]) => ({ ...output, [key]: value }), {}))

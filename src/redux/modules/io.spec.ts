@@ -8,7 +8,7 @@ import {
 
 describe('reducer', () => {
   const initialState: IoState = {
-    now: new Date(),
+    now: new Date,
   }
 
   const ioReducer = createIoReducer(initialState)

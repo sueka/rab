@@ -6,7 +6,7 @@ function dropDummyOrigin(x: string): string {
   const result = new RegExp(typed<[string]>`(?<=^${ DUMMY_ORIGIN }).*$`).exec(x)
 
   if (result === null) {
-    throw new Error()
+    throw new Error
   }
 
   return result[0]
@@ -34,27 +34,27 @@ class PathAbempty implements URL {
   }
 
   get host(): string {
-    throw new Error() // TODO:
+    throw new Error // TODO:
   }
 
   get hostname(): string {
-    throw new Error() // TODO:
+    throw new Error // TODO:
   }
 
   get password(): string {
-    throw new Error() // TODO:
+    throw new Error // TODO:
   }
 
   get port(): string {
-    throw new Error() // TODO:
+    throw new Error // TODO:
   }
 
   get protocol(): string {
-    throw new Error() // TODO:
+    throw new Error // TODO:
   }
 
   get username(): string {
-    throw new Error() // TODO:
+    throw new Error // TODO:
   }
 
   get hash(): string {
