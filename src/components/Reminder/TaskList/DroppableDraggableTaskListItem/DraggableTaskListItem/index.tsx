@@ -2,7 +2,7 @@ import React from 'react'
 import { DragObjectWithType, useDrag } from 'react-dnd'
 import classnames from 'classnames'
 
-import TaskId from 'src/domain/vo/TaskId'
+import TaskId from '~/domain/vo/TaskId'
 import TaskListItem, { Props } from './TaskListItem'
 
 import classes from './classes.css'

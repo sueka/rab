@@ -14,7 +14,7 @@ const config: Configuration = {
       path.resolve(__dirname, 'src'),
     ],
     alias: {
-      'src': path.resolve(__dirname, 'src'),
+      '~': path.resolve(__dirname, 'src'),
     },
   },
   entry: path.resolve(__dirname, 'src/index.tsx'),

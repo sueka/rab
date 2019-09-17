@@ -6,8 +6,8 @@ import TestBackend from 'react-dnd-test-backend'
 import { render } from '@testing-library/react'
 import createMockStore from 'redux-mock-store'
 
-import { State } from 'src/redux'
-import IntlProvider from 'src/containers/IntlProvider'
+import { State } from '~/redux'
+import IntlProvider from '~/containers/IntlProvider'
 import App, { Counter, Info, Reminder } from '.'
 import formats from '../../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 

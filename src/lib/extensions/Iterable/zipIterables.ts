@@ -1,4 +1,4 @@
-import zipIterators from 'src/lib/extensions/Iterator/zipIterators'
+import zipIterators from '~/lib/extensions/Iterator/zipIterators'
 
 export default function zipIterables<A, B>(xs: Iterable<A>, ys: Iterable<B>): Iterable<[A, B]> {
   return {

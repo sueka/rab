@@ -6,7 +6,7 @@ import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import NativeSelect from '@material-ui/core/NativeSelect'
 
-import { Tag, isTag, getNativeNameByTag } from 'src/lib/languageNameSolver'
+import { Tag, isTag, getNativeNameByTag } from '~/lib/languageNameSolver'
 
 import messages from './messages'
 

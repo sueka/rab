@@ -3,11 +3,11 @@ import { SagaIterator } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
 import { injectable, inject } from 'inversify'
 
-import { LogicError } from 'src/lib/errors'
-import { takeEvery } from 'src/lib/boni/redux-saga/effects'
-import TaskId from 'src/domain/vo/TaskId'
-import Task from 'src/domain/entity/Task'
-import TaskRepository from 'src/domain/repository/TaskRepository'
+import { LogicError } from '~/lib/errors'
+import { takeEvery } from '~/lib/boni/redux-saga/effects'
+import TaskId from '~/domain/vo/TaskId'
+import Task from '~/domain/entity/Task'
+import TaskRepository from '~/domain/repository/TaskRepository'
 
 //
 //             _|                  _|

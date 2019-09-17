@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 
-import { State } from 'src/redux'
-import { reset, increment, decrement, incrementIfOdd, incrementAsync } from 'src/redux/modules/counter'
-import Counter, { StateProps, DispatchProps } from 'src/components/Counter'
+import { State } from '~/redux'
+import { reset, increment, decrement, incrementIfOdd, incrementAsync } from '~/redux/modules/counter'
+import Counter, { StateProps, DispatchProps } from '~/components/Counter'
 
 const mapStateToProps = ({ counter: { count } }: State): StateProps => ({
   value: count,

@@ -7,16 +7,16 @@ import { FormattedMessage, FormattedNumber, InjectedIntlProps, injectIntl } from
 
 import Typography from '@material-ui/core/Typography'
 
-import Route from 'src/components/Route'
-import LocaleSelect from 'src/containers/LocaleSelect'
-import Today from 'src/containers/Today'
+import Route from '~/components/Route'
+import LocaleSelect from '~/containers/LocaleSelect'
+import Today from '~/containers/Today'
 
 import messages from './messages'
 import classes from './classes.css'
 
-export /* for testing */ const Counter = React.lazy(() => import(/* webpackChunkName: "counter" */ 'src/containers/Counter'))
-export /* for testing */ const Info = React.lazy(() => import(/* webpackChunkName: "info" */ 'src/components/Info'))
-export /* for testing */ const Reminder = React.lazy(() => import(/* webpackChunkName: "reminder" */ 'src/containers/Reminder'))
+export /* for testing */ const Counter = React.lazy(() => import(/* webpackChunkName: "counter" */ '~/containers/Counter'))
+export /* for testing */ const Info = React.lazy(() => import(/* webpackChunkName: "info" */ '~/components/Info'))
+export /* for testing */ const Reminder = React.lazy(() => import(/* webpackChunkName: "reminder" */ '~/containers/Reminder'))
 
 type Props =
   & InjectedIntlProps

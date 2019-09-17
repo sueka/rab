@@ -1,5 +1,5 @@
-import { UnreachableError } from 'src/lib/errors'
-import typed from 'src/lib/typed'
+import { UnreachableError } from '~/lib/errors'
+import typed from '~/lib/typed'
 
 /**
  * @throw {TypeError} if the size of {xs} is less than two.

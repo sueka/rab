@@ -1,9 +1,9 @@
 import { call, put } from 'redux-saga/effects'
 
-import fetch from 'src/lib/fetch'
-import prsg from 'src/lib/prsg'
-import typed from 'src/lib/typed'
-import container from 'src/container.dev'
+import fetch from '~/lib/fetch'
+import prsg from '~/lib/prsg'
+import typed from '~/lib/typed'
+import container from '~/container.dev'
 
 import {
   SELECT, SET_LOCALE, SET_FORMATS, SET_MESSAGES, PUSH_ERROR,

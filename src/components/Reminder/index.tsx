@@ -1,7 +1,7 @@
 import React from 'react'
 
-import TaskId from 'src/domain/vo/TaskId'
-import Task from 'src/domain/entity/Task'
+import TaskId from '~/domain/vo/TaskId'
+import Task from '~/domain/entity/Task'
 
 import TaskList from './TaskList'
 import AddTaskButton from './AddTaskButton'

@@ -1,6 +1,6 @@
 import { Action, Reducer } from 'redux'
 
-import { UnreachableError } from 'src/lib/errors'
+import { UnreachableError } from '~/lib/errors'
 
 export interface IoState {
   now: Date

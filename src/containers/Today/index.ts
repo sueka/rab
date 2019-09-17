@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
-import { State } from 'src/redux'
-import Today, { StateProps } from 'src/components/Today'
+import { State } from '~/redux'
+import Today, { StateProps } from '~/components/Today'
 
 const mapStateToProps = ({ io: { now } }: State): StateProps => ({
   now,

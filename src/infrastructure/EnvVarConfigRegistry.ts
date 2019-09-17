@@ -1,7 +1,7 @@
 import { injectable } from 'inversify'
 
-import typed from 'src/lib/typed'
-import ConfigRegistry, { ConfigKey } from 'src/config/ConfigRegistry'
+import typed from '~/lib/typed'
+import ConfigRegistry, { ConfigKey } from '~/config/ConfigRegistry'
 
 @injectable()
 export default class EnvVarConfigRegistry implements ConfigRegistry {

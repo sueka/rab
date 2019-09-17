@@ -1,4 +1,4 @@
-import typed from 'src/lib/typed'
+import typed from '~/lib/typed'
 
 const eols = [
   '\n',

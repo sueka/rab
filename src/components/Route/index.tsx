@@ -4,7 +4,7 @@ import Helmet, { HelmetProps } from 'react-helmet'
 
 import CircularProgress from '@material-ui/core/CircularProgress'
 
-import ErrorBoundary from 'src/components/ErrorBoundary'
+import ErrorBoundary from '~/components/ErrorBoundary'
 
 const withErrorBoundary: (Component: React.ComponentType<RouteComponentProps> | React.ComponentType<unknown>) => React.ComponentType<RouteComponentProps> = (Component) => (props) => (
   <ErrorBoundary>

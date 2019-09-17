@@ -1,6 +1,6 @@
 import { injectable } from 'inversify'
 
-import GetRepo, { GetRepoOutput } from 'src/useCase/GetRepo'
+import GetRepo, { GetRepoOutput } from '~/useCase/GetRepo'
 
 @injectable()
 export default class GetRepoStubImpl implements GetRepo {

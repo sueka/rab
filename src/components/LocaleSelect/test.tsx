@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-import IntlProvider from 'src/components/IntlProvider'
+import IntlProvider from '~/components/IntlProvider'
 import LocaleSelect from '.'
 
 test('LocaleSelect', () => {

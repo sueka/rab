@@ -4,8 +4,8 @@ import List from '@material-ui/core/List'
 
 import DroppableDraggableTaskListItem from './DroppableDraggableTaskListItem'
 
-import TaskId from 'src/domain/vo/TaskId'
-import Task from 'src/domain/entity/Task'
+import TaskId from '~/domain/vo/TaskId'
+import Task from '~/domain/entity/Task'
 
 export interface Props {
   tasks: Task[]

@@ -1,8 +1,8 @@
 import assert from 'assert'
 
-import hashCodeForBoolean from 'src/lib/extensions/Boolean/hashCode'
-import hashCodeForString from 'src/lib/extensions/String/hashCode'
-import TaskId from 'src/domain/vo/TaskId'
+import hashCodeForBoolean from '~/lib/extensions/Boolean/hashCode'
+import hashCodeForString from '~/lib/extensions/String/hashCode'
+import TaskId from '~/domain/vo/TaskId'
 import Entity from './Entity'
 
 export interface TaskRequest {

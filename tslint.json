@@ -25,7 +25,7 @@
     ],
     "no-submodule-imports": [
       true,
-      "src",
+      "~",
       "redux-saga/effects",
       "react-intl/locale-data/en",
       "react-intl/locale-data/ja",

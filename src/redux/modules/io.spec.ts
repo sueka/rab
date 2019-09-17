@@ -1,5 +1,5 @@
-import prsg from 'src/lib/prsg'
-import typed from 'src/lib/typed'
+import prsg from '~/lib/prsg'
+import typed from '~/lib/typed'
 
 import {
   IoState,

@@ -1,13 +1,13 @@
 import { injectable, inject } from 'inversify'
 
-import typed from 'src/lib/typed'
+import typed from '~/lib/typed'
 import {
   asGetRepoResponse,
   asUnsuccessfulResponse,
-} from 'src/lib/validators/gitHubApiResponseValidators'
-import fetch from 'src/lib/fetch'
-import ConfigRegistry from 'src/config/ConfigRegistry'
-import GetRepo, { GetRepoInput, GetRepoOutput } from 'src/useCase/GetRepo'
+} from '~/lib/validators/gitHubApiResponseValidators'
+import fetch from '~/lib/fetch'
+import ConfigRegistry from '~/config/ConfigRegistry'
+import GetRepo, { GetRepoInput, GetRepoOutput } from '~/useCase/GetRepo'
 
 @injectable()
 export default class GetRepoImpl implements GetRepo {

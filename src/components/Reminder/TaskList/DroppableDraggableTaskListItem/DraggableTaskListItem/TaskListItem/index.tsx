@@ -6,8 +6,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import TextField from '@material-ui/core/TextField'
 
-import TaskId from 'src/domain/vo/TaskId'
-import Task from 'src/domain/entity/Task'
+import TaskId from '~/domain/vo/TaskId'
+import Task from '~/domain/entity/Task'
 import DeleteTaskButton from './DeleteTaskButton'
 
 export interface Props {

@@ -1,4 +1,4 @@
-import { Formats } from 'src/types/intlTypes'
+import { Formats } from '~/types/intlTypes'
 import { optional, unionOf, recordOf, asObject, asUnionOf, asBoolean, asString } from './commonValidators'
 
 export const asFormats = asObject<Formats>('a Formats', (input) => ({

@@ -1,4 +1,4 @@
-import hashCode from 'src/lib/extensions/String/hashCode'
+import hashCode from '~/lib/extensions/String/hashCode'
 import ValueObject from './ValueObject'
 
 export default class Id extends ValueObject<string> {

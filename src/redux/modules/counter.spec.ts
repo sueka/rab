@@ -1,9 +1,9 @@
 import { call, put, select } from 'redux-saga/effects'
 
-import delay from 'src/lib/delay'
-import prsg from 'src/lib/prsg'
-import typed from 'src/lib/typed'
-import container from 'src/container.dev'
+import delay from '~/lib/delay'
+import prsg from '~/lib/prsg'
+import typed from '~/lib/typed'
+import container from '~/container.dev'
 
 import {
   RESET, INCREMENT_IF_ODD, INCREMENT_ASYNC, INCREMENT, DECREMENT,

@@ -1,11 +1,11 @@
 import { either } from 'fp-ts'
 
-import { UnreachableError, ValidationError } from 'src/lib/errors'
-import conj from 'src/lib/extensions/String/conj'
-import typed from 'src/lib/typed'
-import stripMargin from 'src/lib/extensions/String/stripMargin'
-import trimEols from 'src/lib/extensions/String/trimEols'
-import equalsJsons from 'src/lib/extensions/Eq/equalsJsons'
+import { UnreachableError, ValidationError } from '~/lib/errors'
+import conj from '~/lib/extensions/String/conj'
+import typed from '~/lib/typed'
+import stripMargin from '~/lib/extensions/String/stripMargin'
+import trimEols from '~/lib/extensions/String/trimEols'
+import equalsJsons from '~/lib/extensions/Eq/equalsJsons'
 
 /**
  * @callback Validator

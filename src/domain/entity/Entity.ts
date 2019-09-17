@@ -1,8 +1,8 @@
 import { v4 } from 'uuid'
 
-import Eq from 'src/lib/trait/Eq'
-import Hashable from 'src/lib/trait/Hashable'
-import Id from 'src/domain/vo/Id'
+import Eq from '~/lib/trait/Eq'
+import Hashable from '~/lib/trait/Hashable'
+import Id from '~/domain/vo/Id'
 
 // TODO: move?
 interface Identifiable {
