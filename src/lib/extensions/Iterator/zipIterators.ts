@@ -5,7 +5,7 @@ export default function zipIterators<A, B>(xs: Iterator<A>, ys: Iterator<B>): It
       const x = xs.next()
       const y = ys.next()
 
-      if (x.done || y.done) {
+      if (x.done || y.done) { // tslint:disable-line:strict-boolean-expressions
         break
       }
 
