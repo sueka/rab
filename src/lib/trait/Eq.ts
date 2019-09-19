@@ -1,5 +1,5 @@
 /**
- * 同値関係 equals を持つ。
+ * 同値関係を持つ。
  *
  * TODO: PartialEq, Congruence 等検討
  */
