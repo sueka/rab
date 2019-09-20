@@ -1,7 +1,9 @@
 import zipIterables from './extensions/Iterable/zipIterables'
 
 /**
- * Returns a string of alternate elements of template and substitutions.  It is often used as a tag function.
+ * Types substitutions of a template literal.  It is often used as a tag function.
+ *
+ * @returns a string of alternate elements of template and substitutions.
  */
 export default function typed<T extends unknown[]>(template: TemplateStringsArray, ...substitutions: T): string {
   // tslint:disable-next-line:no-let
