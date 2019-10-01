@@ -2,7 +2,7 @@ import React from 'react'
 
 import List from '@material-ui/core/List'
 
-import DroppableDraggableTaskListItem from './DroppableDraggableTaskListItem'
+import TaskListItem from './TaskListItem'
 
 import TaskId from '~/domain/vo/TaskId'
 import Task from '~/domain/entity/Task'
@@ -21,7 +21,7 @@ const TaskList: React.FunctionComponent<Props> = ({ tasks, changeTaskContent, ma
   <List>
     {
       tasks.map((task, index) => (
-        <DroppableDraggableTaskListItem
+        <TaskListItem
           key={ task.id.value }
           { ...{ task, index, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask } }
         />
