@@ -38,7 +38,7 @@ interface DragObject extends DragObjectWithType {
 const TaskListItem: React.FunctionComponent<Props> = ({ task, index, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => {
   const ref = React.useRef(null)
 
-  const [{ dragging }, drag] = useDrag<DragObject, {}, CollectedProps>({
+  const [{ dragging }, drag] = useDrag<DragObject, unknown, CollectedProps>({
     item: {
       type: 'TaskListItem',
       id: task.id,
@@ -49,7 +49,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ task, index, changeTaskC
     }),
   })
 
-  const [, drop] = useDrop<DragObject, {}, {}>({
+  const [, drop] = useDrop<DragObject, unknown, unknown>({
     accept: 'TaskListItem',
     hover(item) {
       const destinationIndex = index
