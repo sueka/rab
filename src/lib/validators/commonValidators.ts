@@ -69,7 +69,7 @@ export const asUnionOf = <T extends readonly unknown[]>(options: T) => (input: J
  * Ascribe the given JSON object to a specific type.
  *
  * @callback ObjectTyper
- * @throws {Error} if {input} is invalid as {T}
+ * @throws {Error} if {input} is invalid as {T}.
  */
 
 /**
