@@ -26,7 +26,7 @@ describe('validators', () => {
     const asZero = asConstant(0)
     const asEmptyString = asConstant('')
     const asEmptyArray = asConstant([])
-    const asCoins = asConstant([1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000] as [1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000])
+    const asCoins = asConstant([1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000] as const)
     const asEmptyObject = asConstant({})
     const asObject = asConstant({ answer: 42 })
 

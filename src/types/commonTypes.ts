@@ -2,7 +2,7 @@ type ResultType<T extends Promise<unknown>> = T extends Promise<infer U> ? U : n
 
 type JsonPrimitive = null | boolean | number | string
 
-interface JsonArray extends Array<Json> {}
+interface JsonArray extends ReadonlyArray<Json> {}
 
 interface JsonObject extends Record<string, Json> {}
 
