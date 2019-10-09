@@ -56,6 +56,7 @@ describe('validators', () => {
       expect(() => asCoins([6, 1, 2, 3])).toThrowError(ValidationError)
       expect(() => asEmptyObject({ answer: 42 })).toThrowError(ValidationError)
       expect(() => asObject({})).toThrowError(ValidationError)
+      expect(() => asObject({ answer: 0 })).toThrowError(ValidationError)
       expect(() => asObject({ answer: 42, question: 'What do you get if you multiply six by nine?' })).toThrowError(ValidationError)
     })
   })
