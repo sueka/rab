@@ -70,13 +70,6 @@ const createReducer = (history: History) => combineReducers<State, Action>({
   }),
 })
 
-// TODO: use globalThis
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
-  }
-}
-
 const logger = createLogger({
   diff: true,
 })

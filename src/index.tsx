@@ -11,6 +11,8 @@ import { Provider as ServiceProdiver } from 'inversify-react'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 
+import './types/globalTypes'
+
 import { Service, configureStore } from './redux'
 import muiThemeOptions from './muiThemeOptions'
 

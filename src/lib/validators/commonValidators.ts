@@ -72,13 +72,6 @@ export const asUnionOf = <T extends readonly Json[]>(...options: T) => (input: J
  * @throws {Error} if {input} is invalid as {T}.
  */
 
-// TODO: remove
-declare global {
-  interface ArrayConstructor {
-    isArray(arg: unknown | readonly unknown[]): arg is readonly unknown[]
-  }
-}
-
 /**
  * @param className name of {T} with indefinite article
  * @param asT {ObjectTyper}
