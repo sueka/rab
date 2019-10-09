@@ -67,7 +67,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ task, index, changeTaskC
 
   drop(drag(ref))
 
-  const className = React.useMemo(() => classnames(classes.TaskListItem, {
+  const className = React.useMemo(() => classnames(classes.TaskListItemContainer, {
     [classes.Dragging]: dragging,
   }), [dragging])
 
@@ -89,7 +89,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ task, index, changeTaskC
 
   return (
     <div ref={ ref }>
-      <ListItem className={ className }>
+      <ListItem classes={ { container: className } }>
         <ListItemIcon>
           <Checkbox checked={ task.done } onChange={ handleDoneChange } />
         </ListItemIcon>
