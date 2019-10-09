@@ -28,7 +28,7 @@ describe('validators', () => {
     const asEmptyArray = asConstant([])
     const asCoins = asConstant([1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000] as const)
     const asEmptyObject = asConstant({})
-    const asObject = asConstant({ answer: 42 })
+    const asObject = asConstant({ answer: 42 } as const)
 
     it('should do nothing with an OK argument', () => {
       expect(asNull(null)).toEqual(null)
