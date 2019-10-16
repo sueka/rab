@@ -48,16 +48,19 @@ exports[`App at / 1`] = `
     </div>
   </div>
   <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/counter"
   >
     counter
   </a>
   <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/info"
   >
     info
   </a>
   <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/reminder"
   >
     reminder
@@ -128,16 +131,19 @@ exports[`App at /counter 1`] = `
     </div>
   </div>
   <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/counter"
   >
     counter
   </a>
   <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/info"
   >
     info
   </a>
   <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/reminder"
   >
     reminder
@@ -268,16 +274,19 @@ exports[`App at /info 1`] = `
     </div>
   </div>
   <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/counter"
   >
     counter
   </a>
   <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/info"
   >
     info
   </a>
   <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/reminder"
   >
     reminder
@@ -364,16 +373,19 @@ exports[`App at /reminder 1`] = `
     </div>
   </div>
   <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/counter"
   >
     counter
   </a>
   <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/info"
   >
     info
   </a>
   <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/reminder"
   >
     reminder

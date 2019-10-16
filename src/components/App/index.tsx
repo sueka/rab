@@ -1,12 +1,12 @@
 import { hot } from 'react-hot-loader'
 import React from 'react'
 import { Switch } from 'react-router'
-import { Link } from 'react-router-dom'
 import Helmet from 'react-helmet'
 import { FormattedMessage, FormattedNumber, InjectedIntlProps, injectIntl } from 'react-intl'
 
 import Typography from '@material-ui/core/Typography'
 
+import Link from '~/components/Link'
 import Route from '~/components/Route'
 import LocaleSelect from '~/containers/LocaleSelect'
 import Today from '~/containers/Today'
