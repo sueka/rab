@@ -12,7 +12,6 @@ import LocaleSelect from '~/containers/LocaleSelect'
 import Today from '~/containers/Today'
 
 import messages from './messages'
-import classes from './classes.css'
 
 export /* for testing */ const Counter = React.lazy(() => import(/* webpackChunkName: "counter" */ '~/containers/Counter'))
 export /* for testing */ const Info = React.lazy(() => import(/* webpackChunkName: "info" */ '~/components/Info'))
@@ -22,7 +21,7 @@ type Props =
   & InjectedIntlProps
 
 const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
-  <div className={ classes.App }>
+  <div>
     <Helmet
       titleTemplate="%s - react-app-prototype"
       defaultTitle="react-app-prototype"
