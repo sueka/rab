@@ -160,7 +160,11 @@ exports[`App at /counter 1`] = `
     Jul 27, 2019
   </p>
   <div>
-    0
+    <span
+      class="MuiTypography-root MuiTypography-body1"
+    >
+      0
+    </span>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text"
       tabindex="0"

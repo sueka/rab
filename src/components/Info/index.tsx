@@ -106,7 +106,7 @@ class Info extends React.Component<Props, LocalState> {
         <Typography>
           { this.statusText }
         </Typography>
-        { this.info }
+        { this.info != null && <Typography component="span">{ this.info }</Typography> }
       </>
     )
   }

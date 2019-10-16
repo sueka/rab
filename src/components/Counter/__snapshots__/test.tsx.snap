@@ -2,7 +2,11 @@
 
 exports[`Counter 1`] = `
 <div>
-  0
+  <span
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    0
+  </span>
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-text"
     tabindex="0"

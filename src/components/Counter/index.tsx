@@ -2,6 +2,7 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
 import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 
 import messages from './messages'
 
@@ -28,7 +29,7 @@ const Counter: React.FunctionComponent<Props> = ({ value, reset, increment, decr
 
   return (
     <div>
-      { value }
+      <Typography component="span">{ value }</Typography>
       <Button onClick={ reset }><FormattedMessage { ...messages.reset } /></Button>
       <Button onClick={ increment }><FormattedMessage { ...messages.increment } /></Button>
       <Button onClick={ decrement }><FormattedMessage { ...messages.decrement } /></Button>
