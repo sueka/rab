@@ -8,7 +8,7 @@ import createMockStore from 'redux-mock-store'
 
 import { State } from '~/redux'
 import IntlProvider from '~/containers/IntlProvider'
-import App, { Counter, Info, Reminder } from '.'
+import App, { HomePage, CounterPage, InfoPage, ReminderPage } from '.'
 import formats from '../../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 
 // NOTE: connected-react-router ではないので router state は不要。
@@ -57,10 +57,11 @@ ${ '/nonexistent-path' }
       </Provider>
     )
 
-    await Counter
-    await Info
-    await Reminder
+    await HomePage
+    await CounterPage
+    await InfoPage
+    await ReminderPage
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })
