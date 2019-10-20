@@ -1,6 +1,7 @@
 {
   "src.components.App.counter": "counter",
   "src.components.App.helloWorld": "Hello, world!",
+  "src.components.App.home": "home",
   "src.components.App.info": "info",
   "src.components.App.reminder": "reminder",
   "src.components.Counter.decrement": "-",
@@ -15,6 +16,7 @@
   "src.components.Info.fetchingNotStarted": "Fetching not started.",
   "src.components.LocaleSelect.languages": "Languages",
   "src.components.Nav.counter": "counter",
+  "src.components.Nav.home": "home",
   "src.components.Nav.info": "info",
   "src.components.Nav.reminder": "reminder",
   "src.components.Reminder.AddTaskButton.add": "add",

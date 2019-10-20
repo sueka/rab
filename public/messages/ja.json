@@ -1,6 +1,7 @@
 {
   "src.components.App.counter": "カウンター",
   "src.components.App.helloWorld": "Hello, world!",
+  "src.components.App.home": "ホーム",
   "src.components.App.info": "情報",
   "src.components.App.reminder": "リマインダー",
   "src.components.Counter.decrement": "-",
@@ -15,6 +16,7 @@
   "src.components.Info.fetchingNotStarted": "読み込みは開始していません。",
   "src.components.LocaleSelect.languages": "言語",
   "src.components.Nav.counter": "カウンター",
+  "src.components.Nav.home": "ホーム",
   "src.components.Nav.info": "情報",
   "src.components.Nav.reminder": "リマインダー",
   "src.components.Reminder.AddTaskButton.add": "追加",

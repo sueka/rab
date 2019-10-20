@@ -40,6 +40,7 @@ ${ '/' }
 ${ '/counter' }
 ${ '/info' }
 ${ '/reminder' }
+${ '/nonexistent-path' }
 `('App', ({ location }) => {
   test(`at ${ location }`, async () => {
     const context = {}

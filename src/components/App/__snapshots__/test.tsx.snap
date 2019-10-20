@@ -47,6 +47,12 @@ exports[`App at / 1`] = `
   </div>
   <a
     class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+    href="/"
+  >
+    home
+  </a>
+  <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/counter"
   >
     counter
@@ -78,7 +84,6 @@ exports[`App at / 1`] = `
   >
     Jul 27, 2019
   </p>
-  Error: No route matches /.
 </div>
 `;
 
@@ -127,6 +132,12 @@ exports[`App at /counter 1`] = `
       </svg>
     </div>
   </div>
+  <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+    href="/"
+  >
+    home
+  </a>
   <a
     class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/counter"
@@ -274,6 +285,12 @@ exports[`App at /info 1`] = `
   </div>
   <a
     class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+    href="/"
+  >
+    home
+  </a>
+  <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/counter"
   >
     counter
@@ -324,6 +341,94 @@ exports[`App at /info 1`] = `
 </div>
 `;
 
+exports[`App at /nonexistent-path 1`] = `
+<div>
+  <div
+    class="MuiFormControl-root"
+  >
+    <label
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+      data-shrink="true"
+      for="stub uuid"
+    >
+      Languages
+    </label>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+    >
+      <select
+        aria-invalid="false"
+        class="MuiNativeSelect-root MuiNativeSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+        data-testid="localeSelect"
+        id="stub uuid"
+      >
+        <option
+          value="en"
+        >
+          English
+        </option>
+        <option
+          value="ja"
+        >
+          日本語
+        </option>
+      </select>
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiNativeSelect-icon"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
+  </div>
+  <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+    href="/"
+  >
+    home
+  </a>
+  <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+    href="/counter"
+  >
+    counter
+  </a>
+  <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+    href="/info"
+  >
+    info
+  </a>
+  <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+    href="/reminder"
+  >
+    reminder
+  </a>
+  <p
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    Hello, world!
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    $100.00
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    Jul 27, 2019
+  </p>
+  Error: No route matches /nonexistent-path.
+</div>
+`;
+
 exports[`App at /reminder 1`] = `
 <div>
   <div
@@ -369,6 +474,12 @@ exports[`App at /reminder 1`] = `
       </svg>
     </div>
   </div>
+  <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+    href="/"
+  >
+    home
+  </a>
   <a
     class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
     href="/counter"

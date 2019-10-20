@@ -12,6 +12,7 @@ import Today from '~/containers/Today'
 
 import messages from './messages'
 
+export /* for testing */ const HomePage = React.lazy(() => import(/* webpackChunkName: "homePage" */ '~/components/HomePage'))
 export /* for testing */ const Counter = React.lazy(() => import(/* webpackChunkName: "counter" */ '~/containers/Counter'))
 export /* for testing */ const Info = React.lazy(() => import(/* webpackChunkName: "info" */ '~/components/Info'))
 export /* for testing */ const Reminder = React.lazy(() => import(/* webpackChunkName: "reminder" */ '~/containers/Reminder'))
@@ -35,6 +36,7 @@ const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
     </Typography>
     <Today />
     <Switch>
+      <Route path="/" component={ HomePage } helmetProps={ { title: formatMessage(messages.home) } } />
       <Route path="/counter" component={ Counter } helmetProps={ { title: formatMessage(messages.counter) } } />
       <Route path="/info" component={ Info } helmetProps={ { title: formatMessage(messages.info) } } />
       <Route path="/reminder" component={ Reminder } helmetProps={ { title: formatMessage(messages.reminder) } } />
