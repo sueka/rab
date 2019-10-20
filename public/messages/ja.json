@@ -14,6 +14,9 @@
   "src.components.Info.fetchingFailed": "読み込みに失敗しました。",
   "src.components.Info.fetchingNotStarted": "読み込みは開始していません。",
   "src.components.LocaleSelect.languages": "言語",
+  "src.components.Nav.counter": "カウンター",
+  "src.components.Nav.info": "情報",
+  "src.components.Nav.reminder": "リマインダー",
   "src.components.Reminder.AddTaskButton.add": "追加",
   "src.components.Reminder.TaskList.TaskListItem.DeleteTaskButton.delete": "削除"
 }

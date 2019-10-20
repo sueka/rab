@@ -14,6 +14,9 @@
   "src.components.Info.fetchingFailed": "Fetching failed.",
   "src.components.Info.fetchingNotStarted": "Fetching not started.",
   "src.components.LocaleSelect.languages": "Languages",
+  "src.components.Nav.counter": "counter",
+  "src.components.Nav.info": "info",
+  "src.components.Nav.reminder": "reminder",
   "src.components.Reminder.AddTaskButton.add": "add",
   "src.components.Reminder.TaskList.TaskListItem.DeleteTaskButton.delete": "delete"
 }

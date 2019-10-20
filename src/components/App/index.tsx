@@ -6,9 +6,8 @@ import { FormattedMessage, FormattedNumber, InjectedIntlProps, injectIntl } from
 
 import Typography from '@material-ui/core/Typography'
 
-import Link from '~/components/Link'
+import Nav from '~/components/Nav'
 import Route from '~/components/Route'
-import LocaleSelect from '~/containers/LocaleSelect'
 import Today from '~/containers/Today'
 
 import messages from './messages'
@@ -26,10 +25,7 @@ const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
       titleTemplate="%s - react-app-prototype"
       defaultTitle="react-app-prototype"
     />
-    <LocaleSelect />
-    <Link to="/counter"><FormattedMessage { ...messages.counter } /></Link>
-    <Link to="/info"><FormattedMessage { ...messages.info } /></Link>
-    <Link to="/reminder"><FormattedMessage { ...messages.reminder } /></Link>
+    <Nav />
     <Typography>
       <FormattedMessage { ...messages.helloWorld } />
     </Typography>
