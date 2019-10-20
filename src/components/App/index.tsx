@@ -15,6 +15,7 @@ import messages from './messages'
 export /* for testing */ const Counter = React.lazy(() => import(/* webpackChunkName: "counter" */ '~/containers/Counter'))
 export /* for testing */ const Info = React.lazy(() => import(/* webpackChunkName: "info" */ '~/components/Info'))
 export /* for testing */ const Reminder = React.lazy(() => import(/* webpackChunkName: "reminder" */ '~/containers/Reminder'))
+export /* for testing */ const NoMatch = React.lazy(() => import(/* webpackChunkName: "noMatch" */ '~/components/NoMatch'))
 
 type Props =
   & InjectedIntlProps
@@ -37,6 +38,7 @@ const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
       <Route path="/counter" component={ Counter } helmetProps={ { title: formatMessage(messages.counter) } } />
       <Route path="/info" component={ Info } helmetProps={ { title: formatMessage(messages.info) } } />
       <Route path="/reminder" component={ Reminder } helmetProps={ { title: formatMessage(messages.reminder) } } />
+      <Route path="*" component={ NoMatch } />
     </Switch>
   </div>
 )

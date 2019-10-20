@@ -78,6 +78,7 @@ exports[`App at / 1`] = `
   >
     Jul 27, 2019
   </p>
+  Error: No route matches /.
 </div>
 `;
 
