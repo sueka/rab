@@ -106,7 +106,9 @@ class Info extends React.Component<Props, LocalState> {
         <Typography>
           { this.statusText }
         </Typography>
-        { this.info != null && <Typography component="span">{ this.info }</Typography> }
+        { this.info != null && ( // tslint:disable-line:strict-boolean-expressions
+          <Typography component="span">{ this.info }</Typography>
+        ) }
       </>
     )
   }
