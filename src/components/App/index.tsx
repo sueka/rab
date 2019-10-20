@@ -2,13 +2,10 @@ import { hot } from 'react-hot-loader'
 import React from 'react'
 import { Switch } from 'react-router'
 import Helmet from 'react-helmet'
-import { FormattedMessage, FormattedNumber, InjectedIntlProps, injectIntl } from 'react-intl'
-
-import Typography from '@material-ui/core/Typography'
+import { InjectedIntlProps, injectIntl } from 'react-intl'
 
 import Nav from '~/components/Nav'
 import Route from '~/components/Route'
-import Today from '~/containers/Today'
 
 import messages from './messages'
 
@@ -28,13 +25,6 @@ const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
       defaultTitle="react-app-prototype"
     />
     <Nav />
-    <Typography>
-      <FormattedMessage { ...messages.helloWorld } />
-    </Typography>
-    <Typography>
-      <FormattedNumber format="usd" value={ 100 } />
-    </Typography>
-    <Today />
     <Switch>
       <Route path="/" component={ HomePage } helmetProps={ { title: formatMessage(messages.home) } } />
       <Route path="/counter" component={ Counter } helmetProps={ { title: formatMessage(messages.counter) } } />

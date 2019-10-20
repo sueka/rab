@@ -17,8 +17,4 @@ export default defineMessages({
     id: 'src.components.App.reminder',
     defaultMessage: 'reminder',
   },
-  helloWorld: {
-    id: 'src.components.App.helloWorld',
-    defaultMessage: 'Hello, world!',
-  },
 })

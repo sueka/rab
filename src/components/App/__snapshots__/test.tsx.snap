@@ -156,21 +156,6 @@ exports[`App at /counter 1`] = `
   >
     reminder
   </a>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    Hello, world!
-  </p>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    $100.00
-  </p>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    Jul 27, 2019
-  </p>
   <div>
     <span
       class="MuiTypography-root MuiTypography-body1"
@@ -307,21 +292,6 @@ exports[`App at /info 1`] = `
   >
     reminder
   </a>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    Hello, world!
-  </p>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    $100.00
-  </p>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    Jul 27, 2019
-  </p>
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-text"
     tabindex="0"
@@ -410,21 +380,6 @@ exports[`App at /nonexistent-path 1`] = `
   >
     reminder
   </a>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    Hello, world!
-  </p>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    $100.00
-  </p>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    Jul 27, 2019
-  </p>
   Error: No route matches /nonexistent-path.
 </div>
 `;
@@ -498,21 +453,6 @@ exports[`App at /reminder 1`] = `
   >
     reminder
   </a>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    Hello, world!
-  </p>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    $100.00
-  </p>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    Jul 27, 2019
-  </p>
   <ul
     class="MuiList-root MuiList-padding"
   />

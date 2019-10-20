@@ -1,6 +1,5 @@
 {
   "src.components.App.counter": "counter",
-  "src.components.App.helloWorld": "Hello, world!",
   "src.components.App.home": "home",
   "src.components.App.info": "info",
   "src.components.App.reminder": "reminder",
@@ -9,6 +8,7 @@
   "src.components.Counter.incrementIfOdd": "+ if odd",
   "src.components.Counter.reset": "reset",
   "src.components.Counter.willIncrementInOneSecond": "+ in 1 second",
+  "src.components.HomePage.helloWorld": "Hello, world!",
   "src.components.Info.fetchData": "Fetch data",
   "src.components.Info.fetching": "Fetching..",
   "src.components.Info.fetchingDoneSuccessfully": "Fetching done successfully.",
