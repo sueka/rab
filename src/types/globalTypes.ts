@@ -5,7 +5,7 @@ export {}
 
 declare global {
   interface ArrayConstructor {
-    isArray(arg: unknown | readonly unknown[]): arg is readonly unknown[]
+    isArray(arg: unknown): arg is readonly unknown[]
   }
 
   // TODO: use globalThis
