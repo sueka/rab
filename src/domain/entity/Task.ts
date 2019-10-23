@@ -1,7 +1,9 @@
 import assert from 'assert'
 
+import yieldThis from '~/lib/extensions/Unknown/yieldThis'
 import hashCodeForBoolean from '~/lib/extensions/Boolean/hashCode'
 import hashCodeForString from '~/lib/extensions/String/hashCode'
+import { asTaskRequest } from '~/lib/validators/serializableValidators'
 import TaskId from '~/domain/vo/TaskId'
 import Entity from './Entity'
 
@@ -27,11 +29,13 @@ export default class Task extends Entity {
   }
 
   public static deserialize(serialized: string): Task {
-    const { id: serializedId, content, done } = JSON.parse(serialized)
+    const deserialized = asTaskRequest(yieldThis(({ id, content, done }) => ({
+      id: TaskId.deserialize(id),
+      content,
+      done,
+    }), JSON.parse(serialized)))
 
-    // TODO: shape & type check
-
-    return new Task({ id: TaskId.deserialize(serializedId), content, done })
+    return new Task(deserialized)
   }
 
   public serialize(): string {
