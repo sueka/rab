@@ -148,3 +148,32 @@ export function asString(input: Json): string {
 
   return input
 }
+
+export function asJson(input: unknown): Json {
+  if (input === null || typeof input === 'boolean' || typeof input === 'number' || typeof input === 'string') {
+    return input
+  }
+
+  if (Array.isArray(input)) {
+    return listOf(asJson)(input)
+  }
+
+  try {
+    return recordOf(asJson)(input)
+  } catch (error) {
+    if (error instanceof ValidationError) {
+      throw new ValidationError(trimEols(stripMargin(typed<[string, string]>`
+        |${ JSON.stringify(input) } is not a Json.
+        |${ error.message }
+        |`)))
+    }
+
+    if (error instanceof Error) {
+      console.error(error) // tslint:disable-line:no-console
+
+      throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not a Json.`)
+    }
+
+    throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
+  }
+}
