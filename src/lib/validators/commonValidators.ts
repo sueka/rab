@@ -57,6 +57,14 @@ export const unionOf = <T, U>(asT: (input: Json) => T, asU: (input: Json) => U) 
 
 export const recordOf = <T>(asT: (input: Json) => T) => asObject<Record<string, T>>('a Record', (input) => Object.entries(input).map<[string, T]>(([key, value]) => [key, asT(value)]).reduce<Record<string, T>>((output, [key, value]) => ({ ...output, [key]: value }), {}))
 
+const listOf = <T>(asT: (input: unknown) => T) => (input: unknown): T[] => {
+  if (!Array.isArray(input)) {
+    throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an array.`)
+  }
+
+  return input.map(asT)
+}
+
 export const asUnionOf = <T extends readonly Json[]>(...options: T) => (input: Json): T[number] => {
   if (!options.some((option) => option === input)) {
     throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is neigher ${ conj(', ', ' nor ', options.map(String)) }`)
