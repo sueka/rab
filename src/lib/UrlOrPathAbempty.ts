@@ -30,7 +30,7 @@ class PathAbempty implements URL {
   private readonly _url: URL
 
   constructor(...[pathAbempty, ...restArgs]: ConstructorParameters<typeof URL>) {
-    this._url = new URL(typed<[string, string]>`${DUMMY_ORIGIN}${pathAbempty}`, ...restArgs)
+    this._url = new URL(typed<[string, string]>`${ DUMMY_ORIGIN }${ pathAbempty }`, ...restArgs)
   }
 
   get host(): string {
