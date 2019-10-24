@@ -8,5 +8,5 @@ export default function fromEntries<K extends string, V>(entries: Iterable<[K, V
     result[key] = value
   }
 
-  return result as Record<K, V>
+  return result as Record<K, V> // TODO: test
 }
