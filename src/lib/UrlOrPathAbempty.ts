@@ -3,13 +3,13 @@ import typed from '~/lib/typed'
 const DUMMY_ORIGIN = 'http://example.com'
 
 function dropDummyOrigin(x: string): string {
-  const result = new RegExp(typed<[string]>`(?<=^${ DUMMY_ORIGIN }).*$`).exec(x)
+  const result = new RegExp(typed<[string]>`^${ DUMMY_ORIGIN }(.*)$`).exec(x)
 
   if (result === null) {
     throw new Error
   }
 
-  return result[0]
+  return result[1]
 }
 
 function isUrl(input: string): boolean {
