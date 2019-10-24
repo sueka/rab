@@ -6,6 +6,7 @@ import TestBackend from 'react-dnd-test-backend'
 import { render } from '@testing-library/react'
 import createMockStore from 'redux-mock-store'
 
+import typed from '~/lib/typed'
 import { State } from '~/redux'
 import IntlProvider from '~/containers/IntlProvider'
 import App, { HomePage, CounterPage, InfoPage, ReminderPage } from '.'
@@ -41,8 +42,8 @@ ${ '/counter' }
 ${ '/info' }
 ${ '/reminder' }
 ${ '/nonexistent-path' }
-`('App', ({ location }) => {
-  test(`at ${ location }`, async () => {
+`('App', ({ location }: { location: string }) => {
+  test(typed<[string]>`at ${ location }`, async () => {
     const context = {}
 
     const { container } = render(
