@@ -4,6 +4,8 @@ import { Switch } from 'react-router'
 import Helmet from 'react-helmet'
 import { InjectedIntlProps, injectIntl } from 'react-intl'
 
+import CssBaseline from '@material-ui/core/CssBaseline'
+
 import Route from '~/components/Route'
 
 import messages from './messages'
@@ -19,6 +21,7 @@ type Props =
 
 const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
   <>
+    <CssBaseline />
     <Helmet
       titleTemplate="%s - react-app-prototype"
       defaultTitle="react-app-prototype"

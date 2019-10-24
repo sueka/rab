@@ -20,8 +20,6 @@ import ErrorBoundary from './components/ErrorBoundary'
 import App from './components/App'
 import IntlProvider from './containers/IntlProvider'
 
-import './styles.css'
-
 const containerImport = process.env.NODE_ENV === 'production' ? import('./container') : import('./container.dev')
 
 containerImport.then(({ default: container }) => {
