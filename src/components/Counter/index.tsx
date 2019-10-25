@@ -2,6 +2,7 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
 import Button from '@material-ui/core/Button'
+import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Typography from '@material-ui/core/Typography'
 
 import messages from './messages'
@@ -30,11 +31,13 @@ const Counter: React.FunctionComponent<Props> = ({ value, reset, increment, decr
   return (
     <div>
       <Typography component="span">{ value }</Typography>
-      <Button onClick={ reset }><FormattedMessage { ...messages.reset } /></Button>
-      <Button onClick={ increment }><FormattedMessage { ...messages.increment } /></Button>
-      <Button onClick={ decrement }><FormattedMessage { ...messages.decrement } /></Button>
-      <Button onClick={ incrementIfOdd } data-testid="incrementIfOddButton"><FormattedMessage { ...messages.incrementIfOdd } /></Button>
-      <Button onClick={ handleIncrementAsync } data-testid="incrementAsyncButton"><FormattedMessage { ...messages.willIncrementInOneSecond } /></Button>
+      <ButtonGroup>
+        <Button onClick={ reset }><FormattedMessage { ...messages.reset } /></Button>
+        <Button onClick={ increment }><FormattedMessage { ...messages.increment } /></Button>
+        <Button onClick={ decrement }><FormattedMessage { ...messages.decrement } /></Button>
+        <Button onClick={ incrementIfOdd } data-testid="incrementIfOddButton"><FormattedMessage { ...messages.incrementIfOdd } /></Button>
+        <Button onClick={ handleIncrementAsync } data-testid="incrementAsyncButton"><FormattedMessage { ...messages.willIncrementInOneSecond } /></Button>
+      </ButtonGroup>
     </div>
   )
 }
