@@ -1,7 +1,9 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import Link from '~/components/Link'
+import List from '@material-ui/core/List'
+
+import ListItemLink from '~/components/ListItemLink'
 import LocaleSelect from '~/containers/LocaleSelect'
 
 import messages from './messages'
@@ -9,10 +11,12 @@ import messages from './messages'
 const Nav: React.FunctionComponent = () => (
   <>
     <LocaleSelect />
-    <Link to="/"><FormattedMessage { ...messages.home } /></Link>
-    <Link to="/counter"><FormattedMessage { ...messages.counter } /></Link>
-    <Link to="/info"><FormattedMessage { ...messages.info } /></Link>
-    <Link to="/reminder"><FormattedMessage { ...messages.reminder } /></Link>
+    <List component="nav">
+      <ListItemLink to="/"><FormattedMessage { ...messages.home } /></ListItemLink>
+      <ListItemLink to="/counter"><FormattedMessage { ...messages.counter } /></ListItemLink>
+      <ListItemLink to="/info"><FormattedMessage { ...messages.info } /></ListItemLink>
+      <ListItemLink to="/reminder"><FormattedMessage { ...messages.reminder } /></ListItemLink>
+    </List>
   </>
 )
 
