@@ -8,6 +8,9 @@ const muiThemeOptions: ThemeOptions = {
     MuiLink: {
       variant: 'body1',
     },
+    MuiButton: {
+      variant: 'outlined',
+    },
   },
 }
 
