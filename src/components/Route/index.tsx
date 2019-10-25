@@ -1,4 +1,5 @@
 import React from 'react'
+import { Omit } from 'react-redux'
 import { Route as OriginalRoute, RouteProps, RouteComponentProps } from 'react-router'
 import Helmet, { HelmetProps } from 'react-helmet'
 
