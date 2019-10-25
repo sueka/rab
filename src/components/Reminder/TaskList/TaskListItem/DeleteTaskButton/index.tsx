@@ -10,7 +10,7 @@ export interface Props {
 }
 
 const TaskListItem: React.FunctionComponent<Props> = ({ onClick }) => (
-  <Button onClick={ onClick }>
+  <Button onClick={ onClick } color="secondary">
     <FormattedMessage { ...messages.delete } />
   </Button>
 )

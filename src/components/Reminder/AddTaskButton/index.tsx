@@ -10,7 +10,7 @@ export interface Props {
 }
 
 const AddTaskButton: React.FunctionComponent<Props> = ({ addTask }) => (
-  <Button onClick={ addTask }>
+  <Button onClick={ addTask } variant="contained" color="secondary">
     <FormattedMessage { ...messages.add } />
   </Button>
 )

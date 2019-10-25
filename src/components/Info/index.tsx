@@ -100,7 +100,7 @@ class Info extends React.Component<Props, LocalState> {
   public render() {
     return (
       <>
-        <Button onClick={ this.handleClick } disabled={ this.state.fetching }>
+        <Button onClick={ this.handleClick } disabled={ this.state.fetching } variant="contained" color="secondary">
           <FormattedMessage { ...messages.fetchData } />
         </Button>
         <Typography>
