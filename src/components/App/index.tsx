@@ -6,6 +6,7 @@ import { InjectedIntlProps, injectIntl } from 'react-intl'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
 
+import Nav from '~/components/Nav'
 import Route from '~/components/Route'
 
 import messages from './messages'
@@ -26,6 +27,7 @@ const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
       titleTemplate="%s - react-app-prototype"
       defaultTitle="react-app-prototype"
     />
+    <Nav />
     <Switch>
       <Route path="/" component={ HomePage } helmetProps={ { title: formatMessage(messages.home) } } />
       <Route path="/counter" component={ CounterPage } helmetProps={ { title: formatMessage(messages.counter) } } />
