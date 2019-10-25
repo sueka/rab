@@ -1,4 +1,6 @@
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
+import teal from '@material-ui/core/colors/teal'
+import indigo from '@material-ui/core/colors/indigo'
 
 const muiThemeOptions: ThemeOptions = {
   typography: {
@@ -11,6 +13,10 @@ const muiThemeOptions: ThemeOptions = {
     MuiButton: {
       variant: 'outlined',
     },
+  },
+  palette: {
+    primary: teal,
+    secondary: indigo,
   },
 }
 
