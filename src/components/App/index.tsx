@@ -10,7 +10,7 @@ import Route from '~/components/Route'
 
 import messages from './messages'
 
-export /* for testing */ const HomePage = React.lazy(() => import(/* webpackChunkName: "homePage" */ '~/components/HomePage'))
+export /* for testing */ const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ '~/components/HomePage'))
 export /* for testing */ const CounterPage = React.lazy(() => import(/* webpackChunkName: "counter" */ '~/components/CounterPage'))
 export /* for testing */ const InfoPage = React.lazy(() => import(/* webpackChunkName: "info" */ '~/components/InfoPage'))
 export /* for testing */ const ReminderPage = React.lazy(() => import(/* webpackChunkName: "reminder" */ '~/components/ReminderPage'))
