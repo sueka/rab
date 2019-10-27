@@ -1,4 +1,4 @@
-import { Store, applyMiddleware, createStore, combineReducers, compose } from 'redux'
+import { Action as AnyAction, Reducer, Store, applyMiddleware, createStore, combineReducers, compose } from 'redux'
 import createSagaMiddleware, { SagaMiddleware, SagaIterator } from 'redux-saga'
 import { spawn } from 'redux-saga/effects'
 import { History } from 'history'
@@ -21,11 +21,11 @@ export interface State {
 }
 
 type Action =
-  & LocationChangeAction
-  & CounterAction
-  & IoAction
-  & LocaleSelectorAction
-  & ReminderAction
+  | LocationChangeAction
+  | CounterAction
+  | IoAction
+  | LocaleSelectorAction
+  | ReminderAction
 
 import { addLocaleData } from 'react-intl'
 import en from 'react-intl/locale-data/en'
@@ -48,7 +48,7 @@ export class Service {
 }
 
 const createReducer = (history: History) => combineReducers<State, Action>({
-  router: connectRouter(history),
+  router: connectRouter(history) as Reducer<RouterState, AnyAction>, // TODO
   counter: createCounterReducer({
     count: 0,
   }),
