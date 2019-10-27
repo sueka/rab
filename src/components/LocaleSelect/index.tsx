@@ -4,7 +4,7 @@ import { v4 } from 'uuid'
 
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
-import NativeSelect from '@material-ui/core/NativeSelect'
+import Select, { SelectProps } from '@material-ui/core/Select'
 
 import { Tag, isTag, getNativeNameByTag } from '~/lib/languageNameSolver'
 
@@ -24,24 +24,32 @@ type Props =
   & DispatchProps
 
 const LocaleSelect: React.FunctionComponent<Props> = ({ availableLocales, locale, select }) => {
+  const [labelWidth, setLabelWidth] = React.useState<number>(0)
   const inputId = React.useMemo(v4, [])
+  const inputLabel = React.useRef<HTMLLabelElement>(null)
 
-  const handleChange = React.useCallback<React.ChangeEventHandler<HTMLSelectElement>>((event) => {
-    if (isTag(event.currentTarget.value)) {
-      select(event.currentTarget.value)
+  const handleChange = React.useCallback<NonNullable<SelectProps["onChange"]>>((event) => {
+    if (isTag(event.target.value)) {
+      select(event.target.value)
     }
   }, [])
 
+  React.useEffect(() => {
+    if (inputLabel.current !== null) {
+      setLabelWidth(inputLabel.current.offsetWidth)
+    }
+  }, [inputLabel.current])
+
   return (
     <FormControl>
-      <InputLabel htmlFor={ inputId }>
+      <InputLabel ref={ inputLabel } htmlFor={ inputId }>
         <FormattedMessage { ...messages.languages } />
       </InputLabel>
-      <NativeSelect value={ locale } onChange={ handleChange } id={ inputId } inputProps={ { 'data-testid': 'localeSelect' } }>
+      <Select native labelWidth={ labelWidth } value={ locale } onChange={ handleChange } id={ inputId } inputProps={ { 'data-testid': 'localeSelect' } }>
         { availableLocales.map((availableLocale, i) => (
           <option key={ i } value={ availableLocale }>{ getNativeNameByTag(availableLocale) }</option>
         )) }
-      </NativeSelect>
+      </Select>
     </FormControl>
   )
 }

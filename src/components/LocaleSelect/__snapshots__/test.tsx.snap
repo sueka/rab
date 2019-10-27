@@ -16,7 +16,7 @@ exports[`LocaleSelect 1`] = `
   >
     <select
       aria-invalid="false"
-      class="MuiNativeSelect-root MuiNativeSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+      class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
       data-testid="localeSelect"
       id="stub uuid"
     >
@@ -33,7 +33,7 @@ exports[`LocaleSelect 1`] = `
     </select>
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiNativeSelect-icon"
+      class="MuiSvgIcon-root MuiSelect-icon"
       focusable="false"
       role="presentation"
       viewBox="0 0 24 24"

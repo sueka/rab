@@ -17,7 +17,7 @@ exports[`App at / 1`] = `
     >
       <select
         aria-invalid="false"
-        class="MuiNativeSelect-root MuiNativeSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+        class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
         data-testid="localeSelect"
         id="stub uuid"
       >
@@ -34,7 +34,7 @@ exports[`App at / 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiNativeSelect-icon"
+        class="MuiSvgIcon-root MuiSelect-icon"
         focusable="false"
         role="presentation"
         viewBox="0 0 24 24"
@@ -45,30 +45,58 @@ exports[`App at / 1`] = `
       </svg>
     </div>
   </div>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/"
+  <nav
+    class="MuiList-root MuiList-padding"
   >
-    home
-  </a>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/counter"
-  >
-    counter
-  </a>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/info"
-  >
-    info
-  </a>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/reminder"
-  >
-    reminder
-  </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/"
+      role="button"
+      tabindex="0"
+    >
+      home
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/counter"
+      role="button"
+      tabindex="0"
+    >
+      counter
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/info"
+      role="button"
+      tabindex="0"
+    >
+      info
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/reminder"
+      role="button"
+      tabindex="0"
+    >
+      reminder
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+  </nav>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
@@ -104,7 +132,7 @@ exports[`App at /counter 1`] = `
     >
       <select
         aria-invalid="false"
-        class="MuiNativeSelect-root MuiNativeSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+        class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
         data-testid="localeSelect"
         id="stub uuid"
       >
@@ -121,7 +149,7 @@ exports[`App at /counter 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiNativeSelect-icon"
+        class="MuiSvgIcon-root MuiSelect-icon"
         focusable="false"
         role="presentation"
         viewBox="0 0 24 24"
@@ -132,93 +160,126 @@ exports[`App at /counter 1`] = `
       </svg>
     </div>
   </div>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/"
+  <nav
+    class="MuiList-root MuiList-padding"
   >
-    home
-  </a>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/counter"
-  >
-    counter
-  </a>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/info"
-  >
-    info
-  </a>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/reminder"
-  >
-    reminder
-  </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/"
+      role="button"
+      tabindex="0"
+    >
+      home
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/counter"
+      role="button"
+      tabindex="0"
+    >
+      counter
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/info"
+      role="button"
+      tabindex="0"
+    >
+      info
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/reminder"
+      role="button"
+      tabindex="0"
+    >
+      reminder
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+  </nav>
   <div>
     <span
       class="MuiTypography-root MuiTypography-body1"
     >
       0
     </span>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text"
-      tabindex="0"
-      type="button"
+    <div
+      class="MuiButtonGroup-root"
+      role="group"
     >
-      <span
-        class="MuiButton-label"
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
+        tabindex="0"
+        type="button"
       >
-        reset
-      </span>
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text"
-      tabindex="0"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
+        <span
+          class="MuiButton-label"
+        >
+          reset
+        </span>
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
+        tabindex="0"
+        type="button"
       >
-        +
-      </span>
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text"
-      tabindex="0"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
+        <span
+          class="MuiButton-label"
+        >
+          +
+        </span>
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
+        tabindex="0"
+        type="button"
       >
-        -
-      </span>
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text"
-      data-testid="incrementIfOddButton"
-      tabindex="0"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
+        <span
+          class="MuiButton-label"
+        >
+          -
+        </span>
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
+        data-testid="incrementIfOddButton"
+        tabindex="0"
+        type="button"
       >
-        + if odd
-      </span>
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text"
-      data-testid="incrementAsyncButton"
-      tabindex="0"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
+        <span
+          class="MuiButton-label"
+        >
+          + if odd
+        </span>
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
+        data-testid="incrementAsyncButton"
+        tabindex="0"
+        type="button"
       >
-        + in 1 second
-      </span>
-    </button>
+        <span
+          class="MuiButton-label"
+        >
+          + in 1 second
+        </span>
+      </button>
+    </div>
   </div>
 </div>
 `;
@@ -240,7 +301,7 @@ exports[`App at /info 1`] = `
     >
       <select
         aria-invalid="false"
-        class="MuiNativeSelect-root MuiNativeSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+        class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
         data-testid="localeSelect"
         id="stub uuid"
       >
@@ -257,7 +318,7 @@ exports[`App at /info 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiNativeSelect-icon"
+        class="MuiSvgIcon-root MuiSelect-icon"
         focusable="false"
         role="presentation"
         viewBox="0 0 24 24"
@@ -268,32 +329,60 @@ exports[`App at /info 1`] = `
       </svg>
     </div>
   </div>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/"
+  <nav
+    class="MuiList-root MuiList-padding"
   >
-    home
-  </a>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/counter"
-  >
-    counter
-  </a>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/info"
-  >
-    info
-  </a>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/reminder"
-  >
-    reminder
-  </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/"
+      role="button"
+      tabindex="0"
+    >
+      home
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/counter"
+      role="button"
+      tabindex="0"
+    >
+      counter
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/info"
+      role="button"
+      tabindex="0"
+    >
+      info
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/reminder"
+      role="button"
+      tabindex="0"
+    >
+      reminder
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+  </nav>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-text"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
     tabindex="0"
     type="button"
   >
@@ -313,6 +402,101 @@ exports[`App at /info 1`] = `
 
 exports[`App at /nonexistent-path 1`] = `
 <div>
+  <div
+    class="MuiFormControl-root"
+  >
+    <label
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+      data-shrink="true"
+      for="stub uuid"
+    >
+      Languages
+    </label>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+    >
+      <select
+        aria-invalid="false"
+        class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+        data-testid="localeSelect"
+        id="stub uuid"
+      >
+        <option
+          value="en"
+        >
+          English
+        </option>
+        <option
+          value="ja"
+        >
+          日本語
+        </option>
+      </select>
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSelect-icon"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
+  </div>
+  <nav
+    class="MuiList-root MuiList-padding"
+  >
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/"
+      role="button"
+      tabindex="0"
+    >
+      home
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/counter"
+      role="button"
+      tabindex="0"
+    >
+      counter
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/info"
+      role="button"
+      tabindex="0"
+    >
+      info
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/reminder"
+      role="button"
+      tabindex="0"
+    >
+      reminder
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+  </nav>
   Error: No route matches /nonexistent-path.
 </div>
 `;
@@ -334,7 +518,7 @@ exports[`App at /reminder 1`] = `
     >
       <select
         aria-invalid="false"
-        class="MuiNativeSelect-root MuiNativeSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+        class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
         data-testid="localeSelect"
         id="stub uuid"
       >
@@ -351,7 +535,7 @@ exports[`App at /reminder 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiNativeSelect-icon"
+        class="MuiSvgIcon-root MuiSelect-icon"
         focusable="false"
         role="presentation"
         viewBox="0 0 24 24"
@@ -362,35 +546,63 @@ exports[`App at /reminder 1`] = `
       </svg>
     </div>
   </div>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/"
+  <nav
+    class="MuiList-root MuiList-padding"
   >
-    home
-  </a>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/counter"
-  >
-    counter
-  </a>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/info"
-  >
-    info
-  </a>
-  <a
-    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-    href="/reminder"
-  >
-    reminder
-  </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/"
+      role="button"
+      tabindex="0"
+    >
+      home
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/counter"
+      role="button"
+      tabindex="0"
+    >
+      counter
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/info"
+      role="button"
+      tabindex="0"
+    >
+      info
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+      href="/reminder"
+      role="button"
+      tabindex="0"
+    >
+      reminder
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+  </nav>
   <ul
     class="MuiList-root MuiList-padding"
   />
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-text"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
     tabindex="0"
     type="button"
   >

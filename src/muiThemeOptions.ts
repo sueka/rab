@@ -13,6 +13,9 @@ const muiThemeOptions: ThemeOptions = {
     MuiButton: {
       variant: 'outlined',
     },
+    MuiFormControl: {
+      variant: 'outlined',
+    },
   },
   palette: {
     primary: teal,
