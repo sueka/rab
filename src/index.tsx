@@ -8,7 +8,7 @@ import { ConnectedRouter } from 'connected-react-router'
 import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { Provider as ServiceProdiver } from 'inversify-react'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import { MuiThemeProvider } from '@material-ui/core/styles'
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 
 import './types/globalTypes'
