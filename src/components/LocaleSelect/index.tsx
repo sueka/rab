@@ -28,7 +28,7 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ availableLocales, locale
   const inputId = React.useMemo(v4, [])
   const inputLabel = React.useRef<HTMLLabelElement>(null)
 
-  const handleChange = React.useCallback<NonNullable<SelectProps["onChange"]>>((event) => {
+  const handleChange = React.useCallback<NonNullable<SelectProps['onChange']>>((event) => {
     if (isTag(event.target.value)) {
       select(event.target.value)
     }
