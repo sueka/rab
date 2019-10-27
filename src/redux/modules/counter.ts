@@ -170,7 +170,7 @@ export class CounterService {
   public /* for testing */ *incrementIfOddSaga(): SagaIterator {
     const count: ReturnType<typeof selectCount> = yield select(selectCount)
 
-    if (count % 2 === 1) {
+    if ((count & 1) === 1) {
       yield put(increment())
     }
   }
