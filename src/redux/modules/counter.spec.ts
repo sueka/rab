@@ -71,6 +71,14 @@ describe('CounterService', () => {
       expect(it.next().done).toBeTruthy()
     })
 
+    describe('with negative odd value', () => {
+      const it = counterService.incrementIfOddSaga()
+
+      expect(it.next().value).toEqual(select(selectCount))
+      expect(it.next(-1).value).toEqual(put(increment()))
+      expect(it.next().done).toBeTruthy()
+    })
+
     describe('with even value', () => {
       const it = counterService.incrementIfOddSaga()
 
