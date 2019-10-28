@@ -27,7 +27,7 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ availableLocales, locale
   const [labelWidth, setLabelWidth] = React.useState<number>(0)
   const inputId = React.useMemo(v4, [])
 
-  const inputLabel = React.useCallback((node: HTMLLabelElement | null) => {
+  const inputLabel = React.useCallback((node: HTMLLabelElement | null) => { // TODO: type
     if (node !== null) {
       setLabelWidth(node.offsetWidth)
     }
