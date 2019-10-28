@@ -26,19 +26,18 @@ type Props =
 const LocaleSelect: React.FunctionComponent<Props> = ({ availableLocales, locale, select }) => {
   const [labelWidth, setLabelWidth] = React.useState<number>(0)
   const inputId = React.useMemo(v4, [])
-  const inputLabel = React.useRef<HTMLLabelElement>(null)
+
+  const inputLabel = React.useCallback((node: HTMLLabelElement | null) => {
+    if (node !== null) {
+      setLabelWidth(node.offsetWidth)
+    }
+  }, [setLabelWidth])
 
   const handleChange = React.useCallback<NonNullable<SelectProps['onChange']>>((event) => {
     if (isTag(event.target.value)) {
       select(event.target.value)
     }
   }, [])
-
-  React.useEffect(() => {
-    if (inputLabel.current !== null) {
-      setLabelWidth(inputLabel.current.offsetWidth)
-    }
-  }, [inputLabel.current])
 
   return (
     <FormControl>
