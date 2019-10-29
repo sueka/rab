@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl'
 import classnames from 'classnames'
 import { v4 } from 'uuid'
 
-import FormControl from '@material-ui/core/FormControl'
+import FormControl, { FormControlProps } from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import Select, { SelectProps } from '@material-ui/core/Select'
 
@@ -15,6 +15,7 @@ interface OwnProps {
   classes?: {
     root: string
   } | null
+  FormControlProps?: FormControlProps | null
 }
 
 export interface StateProps {
@@ -31,11 +32,11 @@ type Props =
   & StateProps
   & DispatchProps
 
-const LocaleSelect: React.FunctionComponent<Props> = ({ classes, availableLocales, locale, select }) => {
+const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProps, availableLocales, locale, select }) => {
   const [labelWidth, setLabelWidth] = React.useState<number>(0)
   const inputId = React.useMemo(v4, [])
 
-  const rootClassName = React.useMemo(() => classnames(classes != null ? classes.root : classes), [classes]) // TODO: classes?.root
+  const rootClassName = React.useMemo(() => classnames(classes != null ? classes.root : classes, FormControlProps != null ? FormControlProps.className : FormControlProps), [classes, FormControlProps]) // TODO: classes?.root, FormControlProps?.className
 
   const inputLabel = React.useCallback((node: HTMLLabelElement | null) => { // TODO: type
     if (node !== null) {
@@ -50,7 +51,10 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, availableLocale
   }, [])
 
   return (
-    <FormControl className={ rootClassName }>
+    <FormControl
+      { ...FormControlProps }
+      className={ rootClassName } // NOTE: override FormControlProps.className
+    >
       <InputLabel ref={ inputLabel } htmlFor={ inputId }>
         <FormattedMessage { ...messages.languages } />
       </InputLabel>
