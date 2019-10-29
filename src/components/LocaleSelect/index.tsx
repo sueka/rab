@@ -1,5 +1,6 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
+import classnames from 'classnames'
 import { v4 } from 'uuid'
 
 import FormControl from '@material-ui/core/FormControl'
@@ -9,6 +10,12 @@ import Select, { SelectProps } from '@material-ui/core/Select'
 import { Tag, isTag, getNativeNameByTag } from '~/lib/languageNameSolver'
 
 import messages from './messages'
+
+interface OwnProps {
+  classes?: {
+    root: string
+  } | null
+}
 
 export interface StateProps {
   availableLocales: Tag[]
@@ -20,12 +27,15 @@ export interface DispatchProps {
 }
 
 type Props =
+  & OwnProps
   & StateProps
   & DispatchProps
 
-const LocaleSelect: React.FunctionComponent<Props> = ({ availableLocales, locale, select }) => {
+const LocaleSelect: React.FunctionComponent<Props> = ({ classes, availableLocales, locale, select }) => {
   const [labelWidth, setLabelWidth] = React.useState<number>(0)
   const inputId = React.useMemo(v4, [])
+
+  const rootClassName = React.useMemo(() => classnames(classes != null ? classes.root : classes), [classes]) // TODO: classes?.root
 
   const inputLabel = React.useCallback((node: HTMLLabelElement | null) => { // TODO: type
     if (node !== null) {
@@ -40,7 +50,7 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ availableLocales, locale
   }, [])
 
   return (
-    <FormControl>
+    <FormControl className={ rootClassName }>
       <InputLabel ref={ inputLabel } htmlFor={ inputId }>
         <FormattedMessage { ...messages.languages } />
       </InputLabel>
