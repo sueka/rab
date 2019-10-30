@@ -3,7 +3,11 @@ import { FormattedMessage } from 'react-intl'
 import classnames from 'classnames'
 import { v4 } from 'uuid'
 
+import { useTheme } from '@material-ui/core/styles'
 import FormControl, { FormControlProps } from '@material-ui/core/FormControl'
+import Input from '@material-ui/core/Input'
+import OutlinedInput from '@material-ui/core/OutlinedInput'
+import FilledInput from '@material-ui/core/FilledInput'
 import InputLabel from '@material-ui/core/InputLabel'
 import Select, { SelectProps } from '@material-ui/core/Select'
 
@@ -15,6 +19,7 @@ interface OwnProps {
   classes?: {
     root?: string
     label?: string
+    input?: string
   } | null
   FormControlProps?: FormControlProps | null
 }
@@ -36,9 +41,24 @@ type Props =
 const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProps, availableLocales, locale, select }) => {
   const [labelWidth, setLabelWidth] = React.useState<number>(0)
   const inputId = React.useMemo(v4, [])
+  const theme = useTheme()
+
+  // NOTE: Fortunately, FormControl is nothing but FormControl.
+  const variant = React.useMemo(() => {
+    if (FormControlProps != null && FormControlProps.variant !== undefined) {
+      return FormControlProps.variant
+    }
+
+    if (theme.props != null && theme.props.MuiFormControl !== undefined && theme.props.MuiFormControl.variant !== undefined) {
+      return theme.props.MuiFormControl.variant
+    }
+
+    return 'standard'
+  }, [FormControlProps, theme]) // TODO: FormControlProps?.variant, theme?.props?.MuiFormControl?.variant
 
   const rootClassName = React.useMemo(() => classnames(classes != null ? classes.root : classes, FormControlProps != null ? FormControlProps.className : FormControlProps), [classes, FormControlProps]) // TODO: classes?.root, FormControlProps?.className
   const labelClassName = React.useMemo(() => classnames(classes != null ? classes.label : classes), [classes]) // TODO: classes?.label
+  const inputClassName = React.useMemo(() => classnames(classes != null ? classes.input : classes), [classes]) // TODO: classes?.input
 
   const inputLabel = React.useCallback((node: HTMLLabelElement | null) => { // TODO: type
     if (node !== null) {
@@ -60,7 +80,19 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProp
       <InputLabel className={ labelClassName } ref={ inputLabel } htmlFor={ inputId }>
         <FormattedMessage { ...messages.languages } />
       </InputLabel>
-      <Select native labelWidth={ labelWidth } value={ locale } onChange={ handleChange } id={ inputId } inputProps={ { 'data-testid': 'localeSelect' } }>
+      <Select
+        native
+        labelWidth={ labelWidth }
+        value={ locale }
+        onChange={ handleChange }
+        id={ inputId }
+        inputProps={ { 'data-testid': 'localeSelect' } }
+        input={ {
+          standard: <Input className={ inputClassName } />,
+          outlined: <OutlinedInput className={ inputClassName } labelWidth={ labelWidth } />,
+          filled: <FilledInput className={ inputClassName } />,
+        }[variant] }
+      >
         { availableLocales.map((availableLocale, i) => (
           <option key={ i } value={ availableLocale }>{ getNativeNameByTag(availableLocale) }</option>
         )) }
