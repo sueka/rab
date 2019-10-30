@@ -62,7 +62,6 @@ const createReducer = (history: History) => combineReducers<State, Action>({
     ],
     locale: 'en',
     formats,
-    messages: {},
     errors: [],
   }),
   reminder: createReminderReducer({

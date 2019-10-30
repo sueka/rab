@@ -24,7 +24,7 @@ export interface LocaleSelectorState {
   availableLocales: Tag[]
   locale: Tag
   formats: Formats
-  messages: Record<string, string>
+  messages?: Record<string, string> | null
   errors: Error[]
 }
 
