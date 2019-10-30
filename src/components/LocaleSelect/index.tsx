@@ -51,7 +51,7 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProp
       return FormControlProps.variant
     }
 
-    if (theme.props != null && theme.props.MuiFormControl !== undefined && theme.props.MuiFormControl.variant !== undefined) {
+    if (theme.props !== undefined && theme.props.MuiFormControl !== undefined && theme.props.MuiFormControl.variant !== undefined) {
       return theme.props.MuiFormControl.variant
     }
 
@@ -95,9 +95,12 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProp
         id={ inputId }
         inputProps={ { 'data-testid': 'localeSelect' } }
         input={ {
-          standard: <Input className={ inputClassName } classes={ { 
-            underline: inputUnderlineClassName
-          } } />,
+          standard: <Input
+            className={ inputClassName }
+            classes={ {
+              underline: inputUnderlineClassName,
+            } }
+          />,
           outlined: <OutlinedInput className={ inputClassName } labelWidth={ labelWidth } />,
           filled: <FilledInput className={ inputClassName } />,
         }[variant] }
