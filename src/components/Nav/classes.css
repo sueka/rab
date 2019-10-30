@@ -1,3 +1,28 @@
 .Spacer {
   flex-grow: 1;
 }
+
+.LocaleSelectLabel.LocaleSelectLabel {
+  color: currentColor;
+
+  &:global(.Mui-focused) {
+    opacity: 0.618;
+    color: currentColor;
+  }
+}
+
+.LocaleSelectInput.LocaleSelectInput {
+  color: currentColor;
+}
+
+.LocaleSelectSelectIcon.LocaleSelectSelectIcon {
+  color: currentColor;
+}
+
+.LocaleSelectInputUnderline.LocaleSelectInputUnderline {
+  &::before,
+  &:hover:not(:global(.Mui-disabled))::before,
+  &::after {
+    border-bottom-color: currentColor;
+  }
+}

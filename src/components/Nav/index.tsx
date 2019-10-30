@@ -35,6 +35,12 @@ const Nav: React.FunctionComponent = () => {
           </IconButton>
           <div className={ classes.Spacer } />
           <LocaleSelect
+            classes={ {
+              label: classes.LocaleSelectLabel,
+              input: classes.LocaleSelectInput,
+              selectIcon: classes.LocaleSelectSelectIcon,
+              inputUnderline: classes.LocaleSelectInputUnderline,
+            } }
             FormControlProps={ {
               variant: 'standard',
             } }
