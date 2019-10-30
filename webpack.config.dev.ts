@@ -30,6 +30,8 @@ const config: Configuration = {
   ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
+    host: '0.0.0.0',
+    disableHostCheck: true,
     port: 1234,
     historyApiFallback: true,
   },
