@@ -13,7 +13,7 @@ import messages from './messages'
 
 interface OwnProps {
   classes?: {
-    root: string
+    root?: string
   } | null
   FormControlProps?: FormControlProps | null
 }
