@@ -5,14 +5,14 @@ import IntlProvider from '~/components/IntlProvider'
 import LocaleSelect from '.'
 
 test('LocaleSelect', () => {
-  const select = jest.fn()
+  const selectLocale = jest.fn()
 
   const { container, getByTestId } = render(
     <IntlProvider locale="en">
       <LocaleSelect
         availableLocales={ ['en', 'ja'] }
         locale="en"
-        select={ select }
+        selectLocale={ selectLocale }
       />
     </IntlProvider>
   )
@@ -20,5 +20,5 @@ test('LocaleSelect', () => {
   expect(container.firstChild).toMatchSnapshot()
 
   fireEvent.change(getByTestId('localeSelect'), { target: { value: 'ja' }})
-  expect(select).toHaveBeenCalledTimes(1)
+  expect(selectLocale).toHaveBeenCalledTimes(1)
 })

@@ -32,7 +32,7 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  select(locale: Tag): void
+  selectLocale(locale: Tag): void
 }
 
 type Props =
@@ -40,7 +40,7 @@ type Props =
   & StateProps
   & DispatchProps
 
-const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProps, availableLocales, locale, select }) => {
+const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProps, availableLocales, locale, selectLocale }) => {
   const [labelWidth, setLabelWidth] = React.useState<number>(0)
   const inputId = React.useMemo(v4, [])
   const theme = useTheme()
@@ -72,7 +72,7 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProp
 
   const handleChange = React.useCallback<NonNullable<SelectProps['onChange']>>((event) => {
     if (isTag(event.target.value)) {
-      select(event.target.value)
+      selectLocale(event.target.value)
     }
   }, [])
 

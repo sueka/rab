@@ -6,18 +6,18 @@ import typed from '~/lib/typed'
 import container from '~/container.dev'
 
 import {
-  SELECT, SET_LOCALE, SET_FORMATS, SET_MESSAGES, PUSH_ERROR,
+  SELECT_LOCALE, SET_LOCALE, SET_FORMATS, SET_MESSAGES, PUSH_ERROR,
   LocaleSelectorState,
-  select, setLocale, setFormats, setMessages, pushError,
+  selectLocale, setLocale, setFormats, setMessages, pushError,
   LocaleSelectorService,
   createLocaleSelectorReducer,
 } from './localeSelector'
 
 describe('action creators', () => {
-  describe('select', () => {
-    it('should return a select action', () => {
-      expect(select('ja')).toEqual({
-        type: SELECT,
+  describe('selectLocale', () => {
+    it('should return a select locale action', () => {
+      expect(selectLocale('ja')).toEqual({
+        type: SELECT_LOCALE,
         payload: {
           locale: 'ja',
         },
@@ -73,8 +73,8 @@ describe('action creators', () => {
 describe('LocaleSelectorService', () => {
   const localeSelectorService = container.resolve(LocaleSelectorService)
 
-  describe('selectSaga', () => {
-    const it = localeSelectorService.selectSaga(select('ja'))
+  describe('selectLocaleSaga', () => {
+    const it = localeSelectorService.selectLocaleSaga(selectLocale('ja'))
 
     expect(it.next().value).toEqual(call(fetch, {
       method: 'GET',
@@ -112,8 +112,8 @@ describe('reducer', () => {
     })).toEqual(initialState)
   })
 
-  it('should handle SELECT', () => {
-    expect(localeSelectorReducer(initialState, select('ja'))).toEqual(initialState)
+  it('should handle SELECT_LOCALE', () => {
+    expect(localeSelectorReducer(initialState, selectLocale('ja'))).toEqual(initialState)
   })
 
   it('should handle SET_LOCALE', () => {

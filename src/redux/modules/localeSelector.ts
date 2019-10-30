@@ -45,21 +45,21 @@ export interface LocaleSelectorState {
 //                 _|  _|
 //             _|_|    _|
 
-export /* for testing */ const SELECT = '@@react-app-prototype/localeSelector/SELECT'
+export /* for testing */ const SELECT_LOCALE = '@@react-app-prototype/localeSelector/SELECT_LOCALE'
 export /* for testing */ const SET_LOCALE = '@@react-app-prototype/localeSelector/SET_LOCALE'
 export /* for testing */ const SET_FORMATS = '@@react-app-prototype/localeSelector/SET_FORMATS'
 export /* for testing */ const SET_MESSAGES = '@@react-app-prototype/localeSelector/SET_MESSAGES'
 export /* for testing */ const PUSH_ERROR = '@@react-app-prototype/localeSelector/PUSH_ERROR'
 
 const localeSelectorActionTypes = [
-  SELECT,
+  SELECT_LOCALE,
   SET_LOCALE,
   SET_FORMATS,
   SET_MESSAGES,
   PUSH_ERROR,
 ]
 
-interface SelectAction extends Action<typeof SELECT> {
+interface SelectLocaleAction extends Action<typeof SELECT_LOCALE> {
   payload: {
     locale: Tag
   }
@@ -90,7 +90,7 @@ interface PushErrorAction extends Action<typeof PUSH_ERROR> {
 }
 
 export type LocaleSelectorAction =
-  | SelectAction
+  | SelectLocaleAction
   | SetLocaleAction
   | SetFormatsAction
   | SetMessagesAction
@@ -117,8 +117,8 @@ function isLocaleSelectorAction(action: Action): action is LocaleSelectorAction 
 //
 //
 
-export const select = (locale: Tag): SelectAction => ({
-  type: SELECT,
+export const selectLocale = (locale: Tag): SelectLocaleAction => ({
+  type: SELECT_LOCALE,
   payload: {
     locale,
   },
@@ -167,7 +167,7 @@ export const createLocaleSelectorReducer: (initialState: LocaleSelectorState) =>
   }
 
   switch (action.type) {
-    case SELECT: return state
+    case SELECT_LOCALE: return state
     case SET_LOCALE: return {
       ...state,
       locale: action.payload.locale,
@@ -201,7 +201,7 @@ export const createLocaleSelectorReducer: (initialState: LocaleSelectorState) =>
 
 @injectable()
 export class LocaleSelectorService {
-  public /* for testing */ *selectSaga({ payload: { locale } }: SelectAction): SagaIterator {
+  public /* for testing */ *selectLocaleSaga({ payload: { locale } }: SelectLocaleAction): SagaIterator {
     try {
       const { body: formats }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
         method: 'GET',
@@ -232,6 +232,6 @@ export class LocaleSelectorService {
   }
 
   public *rootSaga(): SagaIterator {
-    yield takeEvery(SELECT, [this, this.selectSaga])
+    yield takeEvery(SELECT_LOCALE, [this, this.selectLocaleSaga])
   }
 }
