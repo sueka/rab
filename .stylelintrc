@@ -1,6 +1,12 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
-    "linebreaks": "unix"
+    "linebreaks": "unix",
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global", "local"]
+      }
+    ]
   }
 }
