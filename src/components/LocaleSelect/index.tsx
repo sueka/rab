@@ -14,6 +14,7 @@ import messages from './messages'
 interface OwnProps {
   classes?: {
     root?: string
+    label?: string
   } | null
   FormControlProps?: FormControlProps | null
 }
@@ -37,6 +38,7 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProp
   const inputId = React.useMemo(v4, [])
 
   const rootClassName = React.useMemo(() => classnames(classes != null ? classes.root : classes, FormControlProps != null ? FormControlProps.className : FormControlProps), [classes, FormControlProps]) // TODO: classes?.root, FormControlProps?.className
+  const labelClassName = React.useMemo(() => classnames(classes != null ? classes.label : classes), [classes]) // TODO: classes?.label
 
   const inputLabel = React.useCallback((node: HTMLLabelElement | null) => { // TODO: type
     if (node !== null) {
@@ -55,7 +57,7 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProp
       { ...FormControlProps }
       className={ rootClassName } // NOTE: override FormControlProps.className
     >
-      <InputLabel ref={ inputLabel } htmlFor={ inputId }>
+      <InputLabel className={ labelClassName } ref={ inputLabel } htmlFor={ inputId }>
         <FormattedMessage { ...messages.languages } />
       </InputLabel>
       <Select native labelWidth={ labelWidth } value={ locale } onChange={ handleChange } id={ inputId } inputProps={ { 'data-testid': 'localeSelect' } }>
