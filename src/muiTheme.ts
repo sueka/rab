@@ -1,4 +1,4 @@
-import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
+import createMuiTheme, { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
 import teal from '@material-ui/core/colors/teal'
 import indigo from '@material-ui/core/colors/indigo'
 
@@ -23,4 +23,4 @@ const muiThemeOptions: ThemeOptions = {
   },
 }
 
-export default muiThemeOptions
+export default createMuiTheme(muiThemeOptions)

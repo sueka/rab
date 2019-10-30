@@ -9,12 +9,11 @@ import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { Provider as ServiceProdiver } from 'inversify-react'
 import { MuiThemeProvider } from '@material-ui/core/styles'
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 
 import './types/globalTypes'
 
 import { Service, configureStore } from './redux'
-import muiThemeOptions from './muiThemeOptions'
+import muiTheme from './muiTheme'
 
 import ErrorBoundary from './components/ErrorBoundary'
 import App from './components/App'
@@ -25,8 +24,6 @@ const containerImport = process.env.NODE_ENV === 'production' ? import('./contai
 containerImport.then(({ default: container }) => {
   const history = createBrowserHistory()
   const { store, sagaMiddleware } = configureStore(history)
-
-  const muiTheme = createMuiTheme(muiThemeOptions)
 
   const service = container.resolve(Service)
 
