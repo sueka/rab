@@ -5,13 +5,15 @@ import MuiListItem, { ListItemProps as MuiListItemProps } from '@material-ui/cor
 
 type ListItemLinkProps = MuiListItemProps<typeof RouterLink, { button?: true }>
 
-// TODO: delete this; See also https://material-ui.com/guides/composition/#link
-const RouterLinkWithRef = React.forwardRef<HTMLAnchorElement, RouterLinkProps>((props, ref) => (
-  <RouterLink innerRef={ ref } { ...props } />
-))
+const ListItemLink: React.FunctionComponent<ListItemLinkProps> = React.forwardRef<RouterLink, React.PropsWithoutRef<ListItemLinkProps>>(({ to, button, innerRef, ...props }, ref) => {
+  // See https://material-ui.com/guides/composition/#link
+  const RouterLinkWithRef = React.forwardRef<RouterLink, RouterLinkProps>((props, ref) => (
+    <RouterLink ref={ ref } innerRef={ innerRef } { ...props } />
+  ))
 
-const ListItemLink: React.FunctionComponent<ListItemLinkProps> = ({ to, button, ref, ...props }) => (
-  <MuiListItem button component={ RouterLinkWithRef } to={ to } { ...props } />
-)
+  return (
+    <MuiListItem button component={ RouterLinkWithRef } to={ to } ref={ ref } { ...props } />
+  )
+})
 
 export default ListItemLink
