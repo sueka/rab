@@ -2,101 +2,84 @@
 
 exports[`App at / 1`] = `
 <div>
-  <div
-    class="MuiFormControl-root"
+  <header
+    class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary"
   >
-    <label
-      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-      data-shrink="true"
-      for="stub uuid"
-    >
-      Languages
-    </label>
     <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
-      <select
-        aria-invalid="false"
-        class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
-        data-testid="localeSelect"
-        id="stub uuid"
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart"
+        tabindex="0"
+        type="button"
       >
-        <option
-          value="en"
+        <span
+          class="MuiIconButton-label"
         >
-          English
-        </option>
-        <option
-          value="ja"
-        >
-          日本語
-        </option>
-      </select>
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSelect-icon"
-        focusable="false"
-        role="presentation"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M7 10l5 5 5-5z"
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
         />
-      </svg>
+      </button>
+      <div
+        class="Spacer"
+      />
+      <div
+        class="MuiFormControl-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          data-shrink="true"
+          for="stub uuid"
+        >
+          Languages
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline LocaleSelectInputUnderline LocaleSelectInput MuiInputBase-formControl MuiInput-formControl"
+        >
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+            data-testid="localeSelect"
+            id="stub uuid"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
     </div>
-  </div>
-  <nav
-    class="MuiList-root MuiList-padding"
-  >
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/"
-      role="button"
-      tabindex="0"
-    >
-      home
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/counter"
-      role="button"
-      tabindex="0"
-    >
-      counter
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/info"
-      role="button"
-      tabindex="0"
-    >
-      info
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/reminder"
-      role="button"
-      tabindex="0"
-    >
-      reminder
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-  </nav>
+  </header>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
@@ -117,101 +100,84 @@ exports[`App at / 1`] = `
 
 exports[`App at /counter 1`] = `
 <div>
-  <div
-    class="MuiFormControl-root"
+  <header
+    class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary"
   >
-    <label
-      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-      data-shrink="true"
-      for="stub uuid"
-    >
-      Languages
-    </label>
     <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
-      <select
-        aria-invalid="false"
-        class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
-        data-testid="localeSelect"
-        id="stub uuid"
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart"
+        tabindex="0"
+        type="button"
       >
-        <option
-          value="en"
+        <span
+          class="MuiIconButton-label"
         >
-          English
-        </option>
-        <option
-          value="ja"
-        >
-          日本語
-        </option>
-      </select>
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSelect-icon"
-        focusable="false"
-        role="presentation"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M7 10l5 5 5-5z"
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
         />
-      </svg>
+      </button>
+      <div
+        class="Spacer"
+      />
+      <div
+        class="MuiFormControl-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          data-shrink="true"
+          for="stub uuid"
+        >
+          Languages
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline LocaleSelectInputUnderline LocaleSelectInput MuiInputBase-formControl MuiInput-formControl"
+        >
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+            data-testid="localeSelect"
+            id="stub uuid"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
     </div>
-  </div>
-  <nav
-    class="MuiList-root MuiList-padding"
-  >
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/"
-      role="button"
-      tabindex="0"
-    >
-      home
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/counter"
-      role="button"
-      tabindex="0"
-    >
-      counter
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/info"
-      role="button"
-      tabindex="0"
-    >
-      info
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/reminder"
-      role="button"
-      tabindex="0"
-    >
-      reminder
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-  </nav>
+  </header>
   <div>
     <span
       class="MuiTypography-root MuiTypography-body1"
@@ -286,101 +252,84 @@ exports[`App at /counter 1`] = `
 
 exports[`App at /info 1`] = `
 <div>
-  <div
-    class="MuiFormControl-root"
+  <header
+    class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary"
   >
-    <label
-      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-      data-shrink="true"
-      for="stub uuid"
-    >
-      Languages
-    </label>
     <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
-      <select
-        aria-invalid="false"
-        class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
-        data-testid="localeSelect"
-        id="stub uuid"
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart"
+        tabindex="0"
+        type="button"
       >
-        <option
-          value="en"
+        <span
+          class="MuiIconButton-label"
         >
-          English
-        </option>
-        <option
-          value="ja"
-        >
-          日本語
-        </option>
-      </select>
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSelect-icon"
-        focusable="false"
-        role="presentation"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M7 10l5 5 5-5z"
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
         />
-      </svg>
+      </button>
+      <div
+        class="Spacer"
+      />
+      <div
+        class="MuiFormControl-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          data-shrink="true"
+          for="stub uuid"
+        >
+          Languages
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline LocaleSelectInputUnderline LocaleSelectInput MuiInputBase-formControl MuiInput-formControl"
+        >
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+            data-testid="localeSelect"
+            id="stub uuid"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
     </div>
-  </div>
-  <nav
-    class="MuiList-root MuiList-padding"
-  >
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/"
-      role="button"
-      tabindex="0"
-    >
-      home
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/counter"
-      role="button"
-      tabindex="0"
-    >
-      counter
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/info"
-      role="button"
-      tabindex="0"
-    >
-      info
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/reminder"
-      role="button"
-      tabindex="0"
-    >
-      reminder
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-  </nav>
+  </header>
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
     tabindex="0"
@@ -402,202 +351,168 @@ exports[`App at /info 1`] = `
 
 exports[`App at /nonexistent-path 1`] = `
 <div>
-  <div
-    class="MuiFormControl-root"
+  <header
+    class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary"
   >
-    <label
-      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-      data-shrink="true"
-      for="stub uuid"
-    >
-      Languages
-    </label>
     <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
-      <select
-        aria-invalid="false"
-        class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
-        data-testid="localeSelect"
-        id="stub uuid"
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart"
+        tabindex="0"
+        type="button"
       >
-        <option
-          value="en"
+        <span
+          class="MuiIconButton-label"
         >
-          English
-        </option>
-        <option
-          value="ja"
-        >
-          日本語
-        </option>
-      </select>
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSelect-icon"
-        focusable="false"
-        role="presentation"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M7 10l5 5 5-5z"
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
         />
-      </svg>
+      </button>
+      <div
+        class="Spacer"
+      />
+      <div
+        class="MuiFormControl-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          data-shrink="true"
+          for="stub uuid"
+        >
+          Languages
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline LocaleSelectInputUnderline LocaleSelectInput MuiInputBase-formControl MuiInput-formControl"
+        >
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+            data-testid="localeSelect"
+            id="stub uuid"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
     </div>
-  </div>
-  <nav
-    class="MuiList-root MuiList-padding"
-  >
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/"
-      role="button"
-      tabindex="0"
-    >
-      home
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/counter"
-      role="button"
-      tabindex="0"
-    >
-      counter
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/info"
-      role="button"
-      tabindex="0"
-    >
-      info
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/reminder"
-      role="button"
-      tabindex="0"
-    >
-      reminder
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-  </nav>
+  </header>
   Error: No route matches /nonexistent-path.
 </div>
 `;
 
 exports[`App at /reminder 1`] = `
 <div>
-  <div
-    class="MuiFormControl-root"
+  <header
+    class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary"
   >
-    <label
-      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-      data-shrink="true"
-      for="stub uuid"
-    >
-      Languages
-    </label>
     <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
-      <select
-        aria-invalid="false"
-        class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
-        data-testid="localeSelect"
-        id="stub uuid"
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart"
+        tabindex="0"
+        type="button"
       >
-        <option
-          value="en"
+        <span
+          class="MuiIconButton-label"
         >
-          English
-        </option>
-        <option
-          value="ja"
-        >
-          日本語
-        </option>
-      </select>
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSelect-icon"
-        focusable="false"
-        role="presentation"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M7 10l5 5 5-5z"
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
         />
-      </svg>
+      </button>
+      <div
+        class="Spacer"
+      />
+      <div
+        class="MuiFormControl-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          data-shrink="true"
+          for="stub uuid"
+        >
+          Languages
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline LocaleSelectInputUnderline LocaleSelectInput MuiInputBase-formControl MuiInput-formControl"
+        >
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+            data-testid="localeSelect"
+            id="stub uuid"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
     </div>
-  </div>
-  <nav
-    class="MuiList-root MuiList-padding"
-  >
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/"
-      role="button"
-      tabindex="0"
-    >
-      home
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/counter"
-      role="button"
-      tabindex="0"
-    >
-      counter
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/info"
-      role="button"
-      tabindex="0"
-    >
-      info
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-    <a
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-      href="/reminder"
-      role="button"
-      tabindex="0"
-    >
-      reminder
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </a>
-  </nav>
+  </header>
   <ul
     class="MuiList-root MuiList-padding"
   />
