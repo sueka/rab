@@ -20,6 +20,8 @@ interface OwnProps {
     root?: string
     label?: string
     input?: string
+    selectIcon?: string
+    inputUnderline?: string
   } | null
   FormControlProps?: FormControlProps | null
 }
@@ -59,6 +61,8 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProp
   const rootClassName = React.useMemo(() => classnames(classes != null ? classes.root : classes, FormControlProps != null ? FormControlProps.className : FormControlProps), [classes, FormControlProps]) // TODO: classes?.root, FormControlProps?.className
   const labelClassName = React.useMemo(() => classnames(classes != null ? classes.label : classes), [classes]) // TODO: classes?.label
   const inputClassName = React.useMemo(() => classnames(classes != null ? classes.input : classes), [classes]) // TODO: classes?.input
+  const selectIconClassName = React.useMemo(() => classnames(classes != null ? classes.selectIcon : classes), [classes]) // TODO: classes?.selectIcon
+  const inputUnderlineClassName = React.useMemo(() => classnames(classes != null ? classes.inputUnderline : classes), [classes]) // TODO: classes?.inputUnderline
 
   const inputLabel = React.useCallback((node: HTMLLabelElement | null) => { // TODO: type
     if (node !== null) {
@@ -81,6 +85,9 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProp
         <FormattedMessage { ...messages.languages } />
       </InputLabel>
       <Select
+        classes={ {
+          icon: selectIconClassName,
+        } }
         native
         labelWidth={ labelWidth }
         value={ locale }
@@ -88,7 +95,9 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProp
         id={ inputId }
         inputProps={ { 'data-testid': 'localeSelect' } }
         input={ {
-          standard: <Input className={ inputClassName } />,
+          standard: <Input className={ inputClassName } classes={ { 
+            underline: inputUnderlineClassName
+          } } />,
           outlined: <OutlinedInput className={ inputClassName } labelWidth={ labelWidth } />,
           filled: <FilledInput className={ inputClassName } />,
         }[variant] }
