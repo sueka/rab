@@ -14,7 +14,7 @@ export interface Props {
   markTaskAsDone(taskId: TaskId): void
   markTaskAsUndone(taskId: TaskId): void
   deleteTask(taskId: TaskId): void
-  moveTask(sourceIndex: number, destinationIndex: number): void
+  moveTask(sourceIndex: number, targetIndex: number): void
 }
 
 const TaskList: React.FunctionComponent<Props> = ({ tasks, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => (

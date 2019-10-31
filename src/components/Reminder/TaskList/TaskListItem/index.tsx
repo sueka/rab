@@ -23,7 +23,7 @@ interface Props {
   markTaskAsDone(taskId: TaskId): void
   markTaskAsUndone(taskId: TaskId): void
   deleteTask(taskId: TaskId): void
-  moveTask(sourceIndex: number, destinationIndex: number): void
+  moveTask(sourceIndex: number, targetIndex: number): void
 }
 
 interface CollectedProps {
@@ -52,16 +52,16 @@ const TaskListItem: React.FunctionComponent<Props> = ({ task, index, changeTaskC
   const [, drop] = useDrop<DragObject, unknown, unknown>({
     accept: 'TaskListItem',
     hover(item) {
-      const destinationIndex = index
+      const targetIndex = index
 
-      if (item.index === destinationIndex) {
+      if (item.index === targetIndex) {
         return
       }
 
-      moveTask(item.index, destinationIndex)
+      moveTask(item.index, targetIndex)
 
       // tslint:disable-next-line:no-object-mutation
-      item.index = destinationIndex
+      item.index = targetIndex
     },
   })
 

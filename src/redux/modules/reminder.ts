@@ -91,7 +91,7 @@ interface DeleteTaskAsyncAction extends Action<typeof DELETE_TASK_ASYNC> {
 interface MoveTaskAction extends Action<typeof MOVE_TASK> {
   payload: {
     sourceIndex: number
-    destinationIndex: number
+    targetIndex: number
   }
 }
 
@@ -179,11 +179,11 @@ export const deleteTaskAsync = (taskId: TaskId): DeleteTaskAsyncAction => ({
   },
 })
 
-export const moveTask = (sourceIndex: number, destinationIndex: number): MoveTaskAction => ({
+export const moveTask = (sourceIndex: number, targetIndex: number): MoveTaskAction => ({
   type: MOVE_TASK,
   payload: {
     sourceIndex,
-    destinationIndex,
+    targetIndex,
   },
 })
 
@@ -282,9 +282,9 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         tasks: [
-          ...restTasks.slice(0, action.payload.destinationIndex),
+          ...restTasks.slice(0, action.payload.targetIndex),
           state.tasks[action.payload.sourceIndex],
-          ...restTasks.slice(action.payload.destinationIndex),
+          ...restTasks.slice(action.payload.targetIndex),
         ],
       }
     }
