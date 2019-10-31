@@ -46,6 +46,7 @@
     "no-shadowed-variable": [true, { "import": false }],
     "variable-name": [true, "allow-pascal-case", "allow-leading-underscore"],
     "new-parens": false, // TODO: [true, "never"]
+    "space-before-function-paren": [true, { "anonymous": "always" }],
 
     /* Type Constraints */
     "strict-boolean-expressions": true,
