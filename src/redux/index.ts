@@ -20,7 +20,7 @@ export interface State {
   reminder: ReminderState
 }
 
-type Action =
+export type Action =
   | LocationChangeAction
   | CounterAction
   | IoAction

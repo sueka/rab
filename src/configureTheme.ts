@@ -1,8 +1,12 @@
-import createMuiTheme, { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 import teal from '@material-ui/core/colors/teal'
 import indigo from '@material-ui/core/colors/indigo'
 
-const muiThemeOptions: ThemeOptions = {
+interface Props {
+  dark: boolean
+}
+
+const configureTheme = ({ dark }: Props) => createMuiTheme({
   typography: {
     fontFamily: 'sans-serif',
   },
@@ -20,7 +24,8 @@ const muiThemeOptions: ThemeOptions = {
   palette: {
     primary: teal,
     secondary: indigo,
+    type: dark ? 'dark' : 'light',
   },
-}
+})
 
-export default createMuiTheme(muiThemeOptions)
+export default configureTheme
