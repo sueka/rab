@@ -14,6 +14,11 @@ import formats from '../../../public/formats/en.json' // tslint:disable-line:no-
 
 // NOTE: connected-react-router ではないので router state は不要。
 const store = createMockStore<Omit<State, 'router'>>()({
+  chess: {
+    board: {
+      pieces: [],
+    },
+  },
   counter: {
     count: 0,
   },

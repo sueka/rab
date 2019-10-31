@@ -6,6 +6,7 @@ import { RouterState, LocationChangeAction, connectRouter, routerMiddleware } fr
 import { createLogger } from 'redux-logger'
 import { injectable, inject } from 'inversify'
 
+import { ChessState, ChessAction, createChessReducer } from './modules/chess'
 import { CounterState, CounterAction, CounterService, createCounterReducer } from './modules/counter'
 import { IoState, IoAction, createIoReducer } from './modules/io'
 import { LocaleSelectorState, LocaleSelectorAction, LocaleSelectorService, createLocaleSelectorReducer } from './modules/localeSelector'
@@ -14,6 +15,7 @@ import formats from '../../public/formats/en.json' // tslint:disable-line:no-rel
 
 export interface State {
   router: RouterState
+  chess: ChessState
   counter: CounterState
   io: IoState
   localeSelector: LocaleSelectorState
@@ -22,6 +24,7 @@ export interface State {
 
 export type Action =
   | LocationChangeAction
+  | ChessAction
   | CounterAction
   | IoAction
   | LocaleSelectorAction
@@ -49,6 +52,11 @@ export class Service {
 
 const createReducer = (history: History) => combineReducers<State, Action>({
   router: connectRouter(history) as Reducer<RouterState, AnyAction>, // TODO
+  chess: createChessReducer({
+    board: {
+      pieces: [],
+    },
+  }),
   counter: createCounterReducer({
     count: 0,
   }),
