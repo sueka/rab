@@ -20,5 +20,6 @@
   "src.components.Nav.info": "info",
   "src.components.Nav.reminder": "reminder",
   "src.components.Reminder.AddTaskButton.add": "add",
-  "src.components.Reminder.TaskList.TaskListItem.DeleteTaskButton.delete": "delete"
+  "src.components.Reminder.TaskList.TaskListItem.DeleteTaskButton.delete": "delete",
+  "src.components.SetClockButton.setTheClock": "Set the clock"
 }

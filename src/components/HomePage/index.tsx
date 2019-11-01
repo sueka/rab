@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography'
 
 import Today from '~/containers/Today'
 import CurrentTimeOfDay from '~/containers/CurrentTimeOfDay'
+import SetClockButton from '~/containers/SetClockButton'
 
 import messages from './messages'
 
@@ -18,6 +19,7 @@ const HomePage: React.FunctionComponent = () => (
     </Typography>
     <Today />
     <CurrentTimeOfDay />
+    <SetClockButton />
   </>
 )
 
