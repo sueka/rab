@@ -12,7 +12,7 @@ type Props =
 
 const Today: React.FunctionComponent<Props> = ({ now }) => (
   <Typography>
-    <FormattedDate format="medium" value={ now } />
+    <FormattedDate value={ now } format="medium" />
   </Typography>
 )
 
