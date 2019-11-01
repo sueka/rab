@@ -1,10 +1,50 @@
+import { put } from 'redux-saga/effects'
+
 import prsg from '~/lib/prsg'
 import typed from '~/lib/typed'
+import container from '~/container.dev'
 
 import {
+  UPDATE_NOW, SET_NOW,
   IoState,
+  updateNow, setNow,
+  IoService,
   createIoReducer,
 } from './io'
+
+describe('action creators', () => {
+  describe('updateNow', () => {
+    it('should return an update now action', () => {
+      expect(updateNow()).toEqual({
+        type: UPDATE_NOW,
+      })
+    })
+  })
+
+  describe('setNow', () => {
+    it('should return a set now action', () => {
+      const now = new Date('2019-11-01')
+
+      expect(setNow(now)).toEqual({
+        type: SET_NOW,
+        payload: {
+          now,
+        },
+      })
+    })
+  })
+})
+
+describe('IoService', () => {
+  const ioService = container.resolve(IoService)
+
+  test('updateNowSaga', async () => {
+    const it = ioService.updateNowSaga()
+
+    expect(it.next().value).toMatchObject(put(setNow(new Date)))
+    expect(it.next().done).toBeTruthy()
+  })
+})
 
 describe('reducer', () => {
   const initialState: IoState = {
@@ -17,5 +57,20 @@ describe('reducer', () => {
     expect(ioReducer(undefined, {
       type: typed<[string]>`@@react-app-prototype/io.spec/${ prsg() }`,
     })).toEqual(initialState)
+  })
+
+  it('should handle UPDATE_NOW', () => {
+    const now = new Date
+
+    expect(ioReducer({ now }, updateNow())).toEqual({ now })
+  })
+
+  it('should handle SET_NOW', () => {
+    const now = new Date
+
+    expect(ioReducer(initialState, setNow(now))).toEqual({
+      ...initialState,
+      now,
+    })
   })
 })
