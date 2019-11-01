@@ -40,7 +40,7 @@ export /* for testing */ const SET_NOW = '@@react-app-prototype/io/SET_NOW'
 
 const ioActionTypes = [
   UPDATE_NOW,
-  SET_NOW
+  SET_NOW,
 ]
 
 interface UpdateNowAction extends Action<typeof UPDATE_NOW> {}
