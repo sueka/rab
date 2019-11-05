@@ -95,6 +95,22 @@ exports[`App at / 1`] = `
   >
     Jul 27, 2019
   </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    09:00:00
+  </p>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Set the clock
+    </span>
+  </button>
 </div>
 `;
 
