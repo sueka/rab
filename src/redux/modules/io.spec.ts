@@ -1,5 +1,6 @@
 import { put } from 'redux-saga/effects'
 
+import delay from '~/lib/delay'
 import prsg from '~/lib/prsg'
 import typed from '~/lib/typed'
 import container from '~/container.dev'
@@ -40,8 +41,11 @@ describe('IoService', () => {
 
   test('updateNowSaga', async () => {
     const it = ioService.updateNowSaga()
+    const actualEffect = it.next().value
+    await delay(1000)
+    const expectedEffect = put(setNow(new Date))
 
-    expect(it.next().value).toMatchObject(put(setNow(new Date)))
+    expect(actualEffect).toMatchObject(expectedEffect)
     expect(it.next().done).toBeTruthy()
   })
 })
