@@ -46,23 +46,13 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProp
   const theme = useTheme()
 
   // NOTE: Fortunately, FormControl is nothing but FormControl.
-  const variant = React.useMemo(() => {
-    if (FormControlProps != null && FormControlProps.variant !== undefined) {
-      return FormControlProps.variant
-    }
+  const variant = React.useMemo(() => FormControlProps?.variant ?? theme?.props?.MuiFormControl?.variant ?? 'standard', [FormControlProps?.variant, theme?.props?.MuiFormControl?.variant])
 
-    if (theme.props !== undefined && theme.props.MuiFormControl !== undefined && theme.props.MuiFormControl.variant !== undefined) {
-      return theme.props.MuiFormControl.variant
-    }
-
-    return 'standard'
-  }, [FormControlProps, theme]) // TODO: FormControlProps?.variant, theme?.props?.MuiFormControl?.variant
-
-  const rootClassName = React.useMemo(() => classnames(classes != null ? classes.root : classes, FormControlProps != null ? FormControlProps.className : FormControlProps), [classes, FormControlProps]) // TODO: classes?.root, FormControlProps?.className
-  const labelClassName = React.useMemo(() => classnames(classes != null ? classes.label : classes), [classes]) // TODO: classes?.label
-  const inputClassName = React.useMemo(() => classnames(classes != null ? classes.input : classes), [classes]) // TODO: classes?.input
-  const selectIconClassName = React.useMemo(() => classnames(classes != null ? classes.selectIcon : classes), [classes]) // TODO: classes?.selectIcon
-  const inputUnderlineClassName = React.useMemo(() => classnames(classes != null ? classes.inputUnderline : classes), [classes]) // TODO: classes?.inputUnderline
+  const rootClassName = React.useMemo(() => classnames(classes?.root, FormControlProps?.className), [classes?.root, FormControlProps?.className])
+  const labelClassName = React.useMemo(() => classnames(classes?.label), [classes?.label])
+  const inputClassName = React.useMemo(() => classnames(classes?.input), [classes?.input])
+  const selectIconClassName = React.useMemo(() => classnames(classes?.selectIcon), [classes?.selectIcon])
+  const inputUnderlineClassName = React.useMemo(() => classnames(classes?.inputUnderline), [classes?.inputUnderline])
 
   const inputLabel = React.useCallback((node: HTMLLabelElement | null) => { // TODO: type
     if (node !== null) {

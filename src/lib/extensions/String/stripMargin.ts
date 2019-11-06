@@ -30,11 +30,13 @@ function stripMargin2(marginChar: string, that: string) {
   for (const line of generateLineWithEolIterator(that)) {
     const matches = new RegExp(typed<[string, string]>`^(?:[\\t ]*(?<marginChar>.))?(?<stripped>(?:.|${ eolCharPattern.source })*${ eolPattern.source }?)$`, 'u').exec(line)
 
-    if (matches === null || matches.groups === undefined) {
+    const groups = matches?.groups // TODO
+
+    if (groups === undefined) {
       throw new Error // TODO
     }
 
-    const { marginChar: marginCharCandidate, stripped } = matches.groups
+    const { marginChar: marginCharCandidate, stripped } = groups
 
     if (marginCharCandidate === marginChar) {
       result += stripped
