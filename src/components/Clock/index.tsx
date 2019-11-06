@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import Typography from '@material-ui/core/Typography'
 
 import delay from '~/lib/delay'
-import FormattedTimeOfDay from '~/components/FormattedTimeOfDay'
+import FormattedTimeOfDay from '~/lib/components/FormattedTimeOfDay'
 
 export interface StateProps {
   now: Date

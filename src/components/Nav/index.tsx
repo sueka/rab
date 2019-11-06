@@ -9,7 +9,7 @@ import Menu from '@material-ui/core/Menu'
 import Toolbar from '@material-ui/core/Toolbar'
 import MenuIcon from '@material-ui/icons/Menu'
 
-import MenuItemLink from '~/components/MenuItemLink'
+import MenuItemLink from '~/lib/components/MenuItemLink'
 import LocaleSelect from '~/containers/LocaleSelect' // TODO
 
 import classes from './classes.css'

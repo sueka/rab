@@ -2,7 +2,7 @@ import React from 'react'
 
 import Typography from '@material-ui/core/Typography'
 
-import FormattedTimeOfDay from '~/components/FormattedTimeOfDay'
+import FormattedTimeOfDay from '~/lib/components/FormattedTimeOfDay'
 
 export interface StateProps {
   now: Date

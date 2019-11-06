@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import { State } from '~/redux'
-import IntlProvider, { StateProps } from '~/components/IntlProvider'
+import IntlProvider, { StateProps } from '~/lib/components/IntlProvider'
 
 const mapStateToProps = ({ localeSelector: { locale, formats, messages } }: State): StateProps => ({
   locale,

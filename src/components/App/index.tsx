@@ -7,7 +7,7 @@ import { InjectedIntlProps, injectIntl } from 'react-intl'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 import Nav from '~/components/Nav'
-import Route from '~/components/Route'
+import Route from '~/lib/components/Route'
 
 import messages from './messages'
 
