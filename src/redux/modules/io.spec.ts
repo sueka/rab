@@ -1,4 +1,4 @@
-import { put } from 'redux-saga/effects'
+import { PutEffect, put } from 'redux-saga/effects'
 
 import delay from '~/lib/delay'
 import prsg from '~/lib/prsg'
@@ -8,6 +8,7 @@ import container from '~/container.dev'
 import {
   UPDATE_NOW, SET_NOW,
   IoState,
+  SetNowAction,
   updateNow, setNow,
   IoService,
   createIoReducer,
@@ -39,11 +40,19 @@ describe('action creators', () => {
 describe('IoService', () => {
   const ioService = container.resolve(IoService)
 
+  // FIXME: refactor
   test('updateNowSaga', async () => {
     const it = ioService.updateNowSaga()
-    const actualEffect = it.next().value
+    const actualEffect: PutEffect<SetNowAction> = it.next().value
+
     await delay(1000)
+
     const expectedEffect = put(setNow(new Date))
+
+    expect(actualEffect.payload.action.payload.now.valueOf() + 1000).toBeCloseTo(expectedEffect.payload.action.payload.now.valueOf(), -2) // ± 50 ms
+
+    delete actualEffect.payload.action.payload.now
+    delete expectedEffect.payload.action.payload.now
 
     expect(actualEffect).toMatchObject(expectedEffect)
     expect(it.next().done).toBeTruthy()

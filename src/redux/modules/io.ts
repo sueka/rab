@@ -45,7 +45,7 @@ const ioActionTypes = [
 
 interface UpdateNowAction extends Action<typeof UPDATE_NOW> {}
 
-interface SetNowAction extends Action<typeof SET_NOW> {
+export /* for testing */ interface SetNowAction extends Action<typeof SET_NOW> {
   payload: {
     now: Date
   }
