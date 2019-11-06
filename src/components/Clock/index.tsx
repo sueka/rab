@@ -19,9 +19,10 @@ type Props =
 
 const Clock: React.FunctionComponent<Props> = ({ now, updateNow }) => {
   React.useEffect(() => {
-    let mounted = true;
+    let mounted = true; // tslint:disable-line:no-let
 
     (async () => {
+      // tslint:disable-next-line:no-loop-statement
       while (mounted) {
         await delay(1000 - new Date().getMilliseconds())
 

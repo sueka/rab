@@ -51,8 +51,12 @@ describe('IoService', () => {
 
     expect(actualEffect.payload.action.payload.now.valueOf() + 1000).toBeCloseTo(expectedEffect.payload.action.payload.now.valueOf(), -2) // ± 50 ms
 
+    /* tslint:disable:no-object-mutation no-delete */
+
     delete actualEffect.payload.action.payload.now
     delete expectedEffect.payload.action.payload.now
+
+    /* tslint:enable:no-object-mutation no-delete */
 
     expect(actualEffect).toMatchObject(expectedEffect)
     expect(it.next().done).toBeTruthy()
