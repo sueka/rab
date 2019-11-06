@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { Store } from 'redux'
@@ -37,7 +37,7 @@ interface Props {
 const Main: React.FunctionComponent<Props> = ({ store, history, container }) => {
   const dark = useMediaQuery('(prefers-color-scheme: dark)')
 
-  const theme = React.useMemo(() => configureTheme({ dark }), [dark])
+  const theme = useMemo(() => configureTheme({ dark }), [dark])
 
   return (
     <ErrorBoundary>

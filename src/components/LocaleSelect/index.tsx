@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useMemo, useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
 import classnames from 'classnames'
 import { v4 } from 'uuid'
@@ -41,26 +41,26 @@ type Props =
   & DispatchProps
 
 const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProps, availableLocales, locale, selectLocale }) => {
-  const [labelWidth, setLabelWidth] = React.useState<number>(0)
-  const inputId = React.useMemo(v4, [])
+  const [labelWidth, setLabelWidth] = useState<number>(0)
+  const inputId = useMemo(v4, [])
   const theme = useTheme()
 
   // NOTE: Fortunately, FormControl is nothing but FormControl.
-  const variant = React.useMemo(() => FormControlProps?.variant ?? theme?.props?.MuiFormControl?.variant ?? 'standard', [FormControlProps?.variant, theme?.props?.MuiFormControl?.variant])
+  const variant = useMemo(() => FormControlProps?.variant ?? theme?.props?.MuiFormControl?.variant ?? 'standard', [FormControlProps?.variant, theme?.props?.MuiFormControl?.variant])
 
-  const rootClassName = React.useMemo(() => classnames(classes?.root, FormControlProps?.className), [classes?.root, FormControlProps?.className])
-  const labelClassName = React.useMemo(() => classnames(classes?.label), [classes?.label])
-  const inputClassName = React.useMemo(() => classnames(classes?.input), [classes?.input])
-  const selectIconClassName = React.useMemo(() => classnames(classes?.selectIcon), [classes?.selectIcon])
-  const inputUnderlineClassName = React.useMemo(() => classnames(classes?.inputUnderline), [classes?.inputUnderline])
+  const rootClassName = useMemo(() => classnames(classes?.root, FormControlProps?.className), [classes?.root, FormControlProps?.className])
+  const labelClassName = useMemo(() => classnames(classes?.label), [classes?.label])
+  const inputClassName = useMemo(() => classnames(classes?.input), [classes?.input])
+  const selectIconClassName = useMemo(() => classnames(classes?.selectIcon), [classes?.selectIcon])
+  const inputUnderlineClassName = useMemo(() => classnames(classes?.inputUnderline), [classes?.inputUnderline])
 
-  const inputLabel = React.useCallback((node: HTMLLabelElement | null) => { // TODO: type
+  const inputLabel = useCallback((node: HTMLLabelElement | null) => { // TODO: type
     if (node !== null) {
       setLabelWidth(node.offsetWidth)
     }
   }, [setLabelWidth])
 
-  const handleChange = React.useCallback<NonNullable<SelectProps['onChange']>>((event) => {
+  const handleChange = useCallback<NonNullable<SelectProps['onChange']>>((event) => {
     if (isTag(event.target.value)) {
       selectLocale(event.target.value)
     }

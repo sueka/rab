@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
 // import classnames from 'classnames'
 // import { createStyles, makeStyles } from '@material-ui/core/styles'
@@ -16,13 +16,13 @@ import classes from './classes.css'
 import messages from './messages'
 
 const Nav: React.FunctionComponent = () => {
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
 
-  const openMenu = React.useCallback<React.MouseEventHandler<HTMLButtonElement>>((event) => {
+  const openMenu = useCallback<React.MouseEventHandler<HTMLButtonElement>>((event) => {
     setAnchorEl(event.currentTarget)
   }, [setAnchorEl])
 
-  const closeMenu = React.useCallback(() => {
+  const closeMenu = useCallback(() => {
     setAnchorEl(null)
   }, [setAnchorEl])
 

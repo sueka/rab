@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useMemo, useCallback } from 'react'
 import { DragObjectWithType, useDrag, useDrop } from 'react-dnd'
 import classnames from 'classnames'
 
@@ -36,7 +36,7 @@ interface DragObject extends DragObjectWithType {
 }
 
 const TaskListItem: React.FunctionComponent<Props> = ({ task, index, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => {
-  const ref = React.useRef(null)
+  const ref = useRef(null)
 
   const [{ dragging }, drag] = useDrag<DragObject, unknown, CollectedProps>({
     item: {
@@ -67,15 +67,15 @@ const TaskListItem: React.FunctionComponent<Props> = ({ task, index, changeTaskC
 
   drop(drag(ref))
 
-  const className = React.useMemo(() => classnames(classes.TaskListItemContainer, {
+  const className = useMemo(() => classnames(classes.TaskListItemContainer, {
     [classes.Dragging]: dragging,
   }), [dragging])
 
-  const handleContentChange = React.useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
+  const handleContentChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     changeTaskContent(task.id, event.currentTarget.value)
   }, [])
 
-  const handleDoneChange = React.useCallback(() => {
+  const handleDoneChange = useCallback(() => {
     if (task.done) {
       markTaskAsUndone(task.id)
     } else {
@@ -83,7 +83,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ task, index, changeTaskC
     }
   }, [task.done])
 
-  const handleDeleteTaskButtonClick = React.useCallback(() => {
+  const handleDeleteTaskButtonClick = useCallback(() => {
     deleteTask(task.id)
   }, [])
 

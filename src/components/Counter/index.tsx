@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
 
 import Button from '@material-ui/core/Button'
@@ -24,7 +24,7 @@ type Props =
   & DispatchProps
 
 const Counter: React.FunctionComponent<Props> = ({ value, reset, increment, decrement, incrementIfOdd, incrementAsync }) => {
-  const handleIncrementAsync = React.useCallback(() => {
+  const handleIncrementAsync = useCallback(() => {
     incrementAsync(1000)
   }, [])
 

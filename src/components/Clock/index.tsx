@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Typography from '@material-ui/core/Typography'
 
@@ -18,7 +18,7 @@ type Props =
   & DispatchProps
 
 const Clock: React.FunctionComponent<Props> = ({ now, updateNow }) => {
-  React.useEffect(() => {
+  useEffect(() => {
     let mounted = true; // tslint:disable-line:no-let
 
     (async () => {
