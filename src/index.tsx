@@ -19,7 +19,7 @@ import './types/globalTypes'
 import { State, Action, Service, configureStore } from './redux'
 import configureTheme from './configureTheme'
 
-import ErrorBoundary from './components/ErrorBoundary'
+import ErrorBoundary from './lib/components/ErrorBoundary'
 import App from './components/App'
 import IntlProvider from './components/IntlProvider'
 
