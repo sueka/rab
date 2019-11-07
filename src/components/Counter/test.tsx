@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
 import IntlProvider from '~/lib/components/IntlProvider'
-import Counter from '.'
+import { Counter } from '.'
 
 test('Counter', () => {
   const reset = jest.fn()

@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
 import IntlProvider from '~/lib/components/IntlProvider'
-import LocaleSelect from '.'
+import { LocaleSelect } from '.'
 
 test('LocaleSelect', () => {
   const selectLocale = jest.fn()

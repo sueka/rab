@@ -3,9 +3,9 @@ import { FormattedMessage,  FormattedNumber } from 'react-intl'
 
 import Typography from '@material-ui/core/Typography'
 
-import Today from '~/containers/Today'
-import CurrentTimeOfDay from '~/containers/CurrentTimeOfDay'
-import SetClockButton from '~/containers/SetClockButton'
+import Today from '~/components/Today'
+import CurrentTimeOfDay from '~/components/CurrentTimeOfDay'
+import SetClockButton from '~/components/SetClockButton'
 
 import messages from './messages'
 

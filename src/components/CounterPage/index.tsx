@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Counter from '~/containers/Counter'
+import Counter from '~/components/Counter'
 
 const CounterPage: React.FunctionComponent = () => (
   <>

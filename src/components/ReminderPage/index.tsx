@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Reminder from '~/containers/Reminder'
+import Reminder from '~/components/Reminder'
 
 const ReminderPage: React.FunctionComponent = () => (
   <>

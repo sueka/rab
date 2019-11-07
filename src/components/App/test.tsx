@@ -8,7 +8,7 @@ import createMockStore from 'redux-mock-store'
 
 import typed from '~/lib/typed'
 import { State } from '~/redux'
-import IntlProvider from '~/containers/IntlProvider'
+import IntlProvider from '~/components/IntlProvider'
 import App, { HomePage, CounterPage, InfoPage, ReminderPage } from '.'
 import formats from '../../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 

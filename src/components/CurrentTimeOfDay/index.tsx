@@ -1,10 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Typography from '@material-ui/core/Typography'
 
 import FormattedTimeOfDay from '~/lib/components/FormattedTimeOfDay'
+import { State } from '~/redux'
 
-export interface StateProps {
+interface StateProps {
   now: Date
 }
 
@@ -17,4 +19,10 @@ const CurrentTimeOfDay: React.FunctionComponent<Props> = ({ now }) => (
   </Typography>
 )
 
-export default CurrentTimeOfDay
+// connect
+
+const mapStateToProps = ({ io: { now } }: State): StateProps => ({
+  now,
+})
+
+export default connect(mapStateToProps)(CurrentTimeOfDay)

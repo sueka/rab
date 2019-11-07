@@ -21,7 +21,7 @@ import configureTheme from './configureTheme'
 
 import ErrorBoundary from './components/ErrorBoundary'
 import App from './components/App'
-import IntlProvider from './containers/IntlProvider'
+import IntlProvider from './components/IntlProvider'
 
 const containerImport = process.env.NODE_ENV === 'production' ? import('./container') : import('./container.dev')
 

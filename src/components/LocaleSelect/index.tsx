@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback } from 'react'
+import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import classnames from 'classnames'
 import { v4 } from 'uuid'
@@ -12,6 +13,8 @@ import InputLabel from '@material-ui/core/InputLabel'
 import Select, { SelectProps } from '@material-ui/core/Select'
 
 import { Tag, isTag, getNativeNameByTag } from '~/lib/languageNameSolver'
+import { State } from '~/redux'
+import { selectLocale } from '~/redux/modules/localeSelector'
 
 import messages from './messages'
 
@@ -26,12 +29,12 @@ interface OwnProps {
   FormControlProps?: FormControlProps | null
 }
 
-export interface StateProps {
+interface StateProps {
   availableLocales: Tag[]
   locale: Tag
 }
 
-export interface DispatchProps {
+interface DispatchProps {
   selectLocale(locale: Tag): void
 }
 
@@ -40,7 +43,7 @@ type Props =
   & StateProps
   & DispatchProps
 
-const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProps, availableLocales, locale, selectLocale }) => {
+export /* for testing */ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProps, availableLocales, locale, selectLocale }) => {
   const [labelWidth, setLabelWidth] = useState<number>(0)
   const inputId = useMemo(v4, [])
   const theme = useTheme()
@@ -103,4 +106,15 @@ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProp
   )
 }
 
-export default LocaleSelect
+// connect
+
+const mapStateToProps = ({ localeSelector: { availableLocales, locale } }: State): StateProps => ({
+  availableLocales,
+  locale,
+})
+
+const mapDispatchToProps: DispatchProps = {
+  selectLocale,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LocaleSelect)

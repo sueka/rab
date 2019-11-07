@@ -10,7 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import MenuIcon from '@material-ui/icons/Menu'
 
 import MenuItemLink from '~/lib/components/MenuItemLink'
-import LocaleSelect from '~/containers/LocaleSelect' // TODO
+import LocaleSelect from '~/components/LocaleSelect' // TODO
 
 import classes from './classes.css'
 import messages from './messages'
