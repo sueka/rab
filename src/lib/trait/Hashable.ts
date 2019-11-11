@@ -9,5 +9,5 @@ export default abstract class Hashable extends Eq implements Eq {
   }
 
   abstract get hashCode(): number // int
-  // abstract readonly hashCode: number
+  // abstract readonly hashCode: number // runtime error
 }
