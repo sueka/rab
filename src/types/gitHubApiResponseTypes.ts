@@ -1,19 +1,21 @@
-type GetRepoResponse = Repository
+namespace GitHubApiResponse {
+  export type GetRepoResponse = Repository
 
-interface UnsuccessfulResponse {
-  message: string
-  documentation_url?: string
-}
+  export interface UnsuccessfulResponse {
+    message: string
+    documentation_url?: string
+  }
 
-//
-// _|_|_|    _|_|_|_|_|    _|_|
-// _|    _|      _|      _|    _|    _|_|_|
-// _|    _|      _|      _|    _|  _|_|
-// _|    _|      _|      _|    _|      _|_|
-// _|_|_|        _|        _|_|    _|_|_|
-//
-//
+  //
+  // _|_|_|    _|_|_|_|_|    _|_|
+  // _|    _|      _|      _|    _|    _|_|_|
+  // _|    _|      _|      _|    _|  _|_|
+  // _|    _|      _|      _|    _|      _|_|
+  // _|_|_|        _|        _|_|    _|_|_|
+  //
+  //
 
-interface Repository {
-  name: string
+  export interface Repository {
+    name: string
+  }
 }
