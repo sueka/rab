@@ -19,8 +19,12 @@ interface State {
   error?: unknown
 }
 
+const MAXIMUM_RECURSION_DEPTH = 100
+
 // TODO: renderError が Provider を返す場合を落とす
 export default function createProvider<S, A extends Action>(history: History, reducer: Reducer<S, A>, saga: Saga) {
+  let recursionDepth = 0 // tslint:disable-line:no-let
+
   return class Provider extends React.Component<Props, State> {
     private store: Store<S, A>
 
@@ -72,6 +76,12 @@ export default function createProvider<S, A extends Action>(history: History, re
       const { hasError, error } = this.state
 
       if (hasError) {
+        ++recursionDepth
+
+        if (recursionDepth > MAXIMUM_RECURSION_DEPTH) {
+          throw new Error('Maximum recursion depth exceeded')
+        }
+
         return renderError(error, children)
       }
 
