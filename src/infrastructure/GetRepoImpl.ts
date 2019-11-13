@@ -4,7 +4,7 @@ import typed from '~/lib/typed'
 import {
   asGetRepoResponse,
   asUnsuccessfulResponse,
-} from '~/lib/validators/gitHubApiResponseValidators'
+} from '~/lib/validators/gitHubApiResourceValidators'
 import fetch from '~/lib/fetch'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import GetRepo, { GetRepoInput, GetRepoOutput } from '~/useCase/GetRepo'

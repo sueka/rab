@@ -17,7 +17,7 @@ type Props =
 interface LocalState {
   successful: boolean
   fetching: boolean
-  repo?: either.Either<Error, GitHubApiResponse.Repository> | null
+  repo?: either.Either<Error, GitHubApiResource.Repository> | null
 }
 
 class Info extends React.Component<Props, LocalState> {

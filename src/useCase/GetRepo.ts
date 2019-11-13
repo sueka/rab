@@ -7,7 +7,7 @@ interface SuccessfulGetRepoOutput {
   successful: true
   response: {
     status: number
-    body: GitHubApiResponse.GetRepoResponse
+    body: GitHubApiResource.GetRepoResponse
   }
 }
 
@@ -15,7 +15,7 @@ interface UnsuccessfulGetRepoOutput {
   successful: false
   response: {
     status: number
-    body: GitHubApiResponse.UnsuccessfulResponse
+    body: GitHubApiResource.UnsuccessfulResponse
   }
 }
 
