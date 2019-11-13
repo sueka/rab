@@ -1,9 +1,8 @@
-import { Action as AnyAction, Reducer, Store, applyMiddleware, createStore, combineReducers, compose } from 'redux'
-import createSagaMiddleware, { SagaMiddleware, SagaIterator } from 'redux-saga'
+import { Action as AnyAction, Reducer, combineReducers } from 'redux'
+import { SagaIterator } from 'redux-saga'
 import { spawn } from 'redux-saga/effects'
 import { History } from 'history'
-import { RouterState, LocationChangeAction, connectRouter, routerMiddleware } from 'connected-react-router'
-import { createLogger } from 'redux-logger'
+import { RouterState, LocationChangeAction, connectRouter } from 'connected-react-router'
 import { injectable, inject } from 'inversify'
 
 import { ChessState, ChessAction, createChessReducer } from './modules/chess'
@@ -52,7 +51,7 @@ export class Service {
   }
 }
 
-const createReducer = (history: History) => combineReducers<State, Action>({
+export const createReducer = (history: History) => combineReducers<State, Action>({
   router: connectRouter(history) as Reducer<RouterState, AnyAction>, // TODO
   chess: createChessReducer({
     board: {
@@ -78,38 +77,3 @@ const createReducer = (history: History) => combineReducers<State, Action>({
     tasks: [],
   }),
 })
-
-const logger = createLogger({
-  diff: true,
-})
-
-const composeEnhancers =
-  process.env.NODE_ENV === 'development'
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?? compose
-    : compose
-
-export const configureStore = (history: History): {
-  store: Store<State, Action>
-  sagaMiddleware: SagaMiddleware
-} => {
-  const sagaMiddleware = createSagaMiddleware()
-
-  const storeEnhancers = [
-    applyMiddleware(sagaMiddleware),
-    applyMiddleware(routerMiddleware(history)),
-  ]
-
-  if (process.env.NODE_ENV === 'development') {
-    storeEnhancers.push(applyMiddleware(logger)) // tslint:disable-line:no-array-mutation
-  }
-
-  const store = createStore(
-    createReducer(history),
-    composeEnhancers(...storeEnhancers)
-  )
-
-  return {
-    store,
-    sagaMiddleware, // applied
-  }
-}
