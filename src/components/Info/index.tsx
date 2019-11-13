@@ -14,16 +14,16 @@ import messages from './messages'
 type Props =
   & InjectedIntlProps
 
-interface LocalState {
+interface State {
   successful: boolean
   fetching: boolean
   repo?: either.Either<Error, GitHubApiResource.Repository> | null
 }
 
-class Info extends React.Component<Props, LocalState> {
+class Info extends React.Component<Props, State> {
   @resolve('GetRepo') private getRepo!: GetRepo
 
-  public state: Readonly<LocalState> = {
+  public state: Readonly<State> = {
     successful: true,
     fetching: false,
   }

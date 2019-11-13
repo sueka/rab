@@ -2,15 +2,15 @@ import React from 'react'
 
 import typed from '~/lib/typed'
 
-interface LocalState {
+interface State {
   hasError: boolean
   error?: unknown
 }
 
-class ErrorBoundary extends React.Component<unknown, LocalState> {
+class ErrorBoundary extends React.Component<unknown, State> {
 
   // NOTE: https://github.com/DefinitelyTyped/DefinitelyTyped/blob/826ce0f1ce1d1887d199986283630d6f63075ad5/types/react/index.d.ts#L419 にも関わらず、初期化されていない state は null であるため、初期化を強制するためにプロパティ宣言を行う。
-  public state: Readonly<LocalState> = {
+  public state: Readonly<State> = {
     hasError: false,
   }
 
