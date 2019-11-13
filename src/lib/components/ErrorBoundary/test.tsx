@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
+import typed from '~/lib/typed'
 import ErrorBoundary from '.'
 
 const NoErrorThrowing: React.FunctionComponent = () => <>no error throwing</>
@@ -10,9 +11,19 @@ const NonErrorThrowing: React.FunctionComponent = () => {
 }
 
 describe('ErrorBoundary', () => {
-  test('without anything throwing', () => {
-    const renderError = jest.fn()
+  const renderError = jest.fn((error: unknown) => {
+    if (error instanceof Error) {
+      return typed<[string]>`${ String(error) }`
+    }
 
+    throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
+  })
+
+  beforeEach(() => {
+    renderError.mockClear()
+  })
+
+  test('without anything throwing', () => {
     const { container } = render(
       <ErrorBoundary renderError={ renderError }>
         <NoErrorThrowing />
@@ -23,8 +34,6 @@ describe('ErrorBoundary', () => {
   })
 
   test('with an error throwing', () => {
-    const renderError = jest.fn()
-
     const { container } = render(
       <ErrorBoundary renderError={ renderError }>
         <ErrorThrowing />
@@ -35,8 +44,6 @@ describe('ErrorBoundary', () => {
   })
 
   test('with a non-error throwing', () => {
-    const renderError = jest.fn()
-
     expect(() => {
       render(
       <ErrorBoundary renderError={ renderError }>
