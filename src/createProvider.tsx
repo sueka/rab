@@ -19,6 +19,7 @@ interface State {
   error?: unknown
 }
 
+// TODO: renderError が Provider を返す場合を落とす
 export default function createProvider<S, A extends Action>(history: History, reducer: Reducer<S, A>, saga: Saga) {
   return class Provider extends React.Component<Props, State> {
     private store: Store<S, A>
