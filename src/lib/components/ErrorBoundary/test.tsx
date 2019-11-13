@@ -11,8 +11,10 @@ const NonErrorThrowing: React.FunctionComponent = () => {
 
 describe('ErrorBoundary', () => {
   test('without anything throwing', () => {
+    const renderError = jest.fn()
+
     const { container } = render(
-      <ErrorBoundary>
+      <ErrorBoundary renderError={ renderError }>
         <NoErrorThrowing />
       </ErrorBoundary>
     )
@@ -21,8 +23,10 @@ describe('ErrorBoundary', () => {
   })
 
   test('with an error throwing', () => {
+    const renderError = jest.fn()
+
     const { container } = render(
-      <ErrorBoundary>
+      <ErrorBoundary renderError={ renderError }>
         <ErrorThrowing />
       </ErrorBoundary>
     )
@@ -31,9 +35,11 @@ describe('ErrorBoundary', () => {
   })
 
   test('with a non-error throwing', () => {
+    const renderError = jest.fn()
+
     expect(() => {
       render(
-        <ErrorBoundary>
+      <ErrorBoundary renderError={ renderError }>
           <NonErrorThrowing />
         </ErrorBoundary>
       )

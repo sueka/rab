@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 
-import React, { useMemo } from 'react'
+import React, { useMemo, useCallback } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { Store } from 'redux'
@@ -16,6 +16,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import './types/globalTypes'
 
+import typed from './lib/typed'
 import { State, Action, Service, configureStore } from './redux'
 import configureTheme from './configureTheme'
 
@@ -39,8 +40,16 @@ const Main: React.FunctionComponent<Props> = ({ store, history, container }) => 
 
   const theme = useMemo(() => configureTheme({ dark }), [dark])
 
+  const renderError = useCallback((error: unknown) => {
+    if (error instanceof Error) {
+      return typed<[string]>`${ String(error) }`
+    }
+
+    throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
+  }, [])
+
   return (
-    <ErrorBoundary>
+    <ErrorBoundary renderError={ renderError }>
       <Provider { ...{ store } }>
         <IntlProvider>
           <DndProvider backend={ HTML5Backend }>

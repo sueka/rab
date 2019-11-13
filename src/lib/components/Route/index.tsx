@@ -1,17 +1,28 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Omit } from 'react-redux'
 import { Route as OriginalRoute, RouteProps, RouteComponentProps } from 'react-router'
 import Helmet, { HelmetProps } from 'react-helmet'
 
 import CircularProgress from '@material-ui/core/CircularProgress'
 
+import typed from '~/lib/typed'
 import ErrorBoundary from '~/lib/components/ErrorBoundary'
 
-const withErrorBoundary: (Component: React.ComponentType<RouteComponentProps> | React.ComponentType<unknown>) => React.ComponentType<RouteComponentProps> = (Component) => (props) => (
-  <ErrorBoundary>
-    <Component { ...props } />
-  </ErrorBoundary>
-)
+const withErrorBoundary: (Component: React.ComponentType<RouteComponentProps> | React.ComponentType<unknown>) => React.ComponentType<RouteComponentProps> = (Component) => (props) => {
+  const renderError = useCallback((error: unknown) => {
+    if (error instanceof Error) {
+      return typed<[string]>`${ String(error) }`
+    }
+
+    throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
+  }, [])
+
+  return (
+    <ErrorBoundary renderError={ renderError }>
+      <Component { ...props } />
+    </ErrorBoundary>
+  )
+}
 
 const withSuspense: (Component: React.LazyExoticComponent<React.ComponentType<RouteComponentProps> | React.ComponentType<unknown>>) => React.ComponentType<RouteComponentProps> = (Component) => (props) => (
   <React.Suspense fallback={ <CircularProgress /> }>
