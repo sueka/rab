@@ -4,7 +4,6 @@ import { call, put } from 'redux-saga/effects'
 import { injectable } from 'inversify'
 
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
-import { Formats } from '~/types/intlTypes'
 import typed from '~/lib/typed'
 import { Tag } from '~/lib/languageNameSolver'
 import fetch from '~/lib/fetch'

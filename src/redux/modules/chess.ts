@@ -1,7 +1,5 @@
 import { Action, Reducer } from 'redux'
 
-import { CoordinatedPiece } from '~/types/chessTypes'
-
 //
 //             _|                  _|
 //   _|_|_|  _|_|_|_|    _|_|_|  _|_|_|_|    _|_|
@@ -13,7 +11,7 @@ import { CoordinatedPiece } from '~/types/chessTypes'
 
 export interface ChessState {
   board: {
-    pieces: CoordinatedPiece[]
+    pieces: Chess.CoordinatedPiece[]
   }
 }
 
