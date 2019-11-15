@@ -29,6 +29,7 @@
       "redux-saga/effects",
       "react-intl/locale-data/en",
       "react-intl/locale-data/ja",
+      "react-hot-loader/root",
       "@material-ui/core",
       "@material-ui/icons"
     ],
