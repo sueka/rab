@@ -1,4 +1,4 @@
-import { hot } from 'react-hot-loader'
+import { hot } from 'react-hot-loader/root'
 import React from 'react'
 import { Switch } from 'react-router'
 import Helmet from 'react-helmet'
@@ -38,4 +38,4 @@ const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
   </>
 )
 
-export default hot(module)(injectIntl(App))
+export default hot(injectIntl(App))

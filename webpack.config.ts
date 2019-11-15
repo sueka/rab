@@ -20,7 +20,7 @@ const config: Configuration = {
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'assets/scripts/[name].[chunkhash:8].js',
+    filename: 'assets/scripts/[name].[hash:8].js',
   },
   module: {
     rules: [
