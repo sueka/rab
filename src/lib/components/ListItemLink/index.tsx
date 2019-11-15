@@ -1,16 +1,15 @@
 import * as React from 'react'
-import { LinkProps as RouterLinkProps } from 'react-router-dom'
 
 import MuiListItem, { ListItemProps as MuiListItemProps } from '@material-ui/core/ListItem'
 
-import RouterLink from '~/lib/components/Link'
+import RouterLink, { Props as RouterLinkProps } from '~/lib/components/Link'
 
 type ListItemLinkProps = MuiListItemProps<typeof RouterLink, { button?: true }>
 
 const ListItemLink: React.FunctionComponent<ListItemLinkProps> = React.forwardRef<RouterLink, React.PropsWithoutRef<ListItemLinkProps>>(({ to, button, innerRef, ...listItemProps }, listItem) => {
   // See https://material-ui.com/guides/composition/#link
   const RouterLinkWithRef = React.forwardRef<RouterLink, RouterLinkProps>((linkProps, link) => (
-    <RouterLink ref={ link } innerRef={ innerRef } { ...linkProps } />
+    <RouterLink ref={ link } innerRef={ innerRef } color="initial" underline="none" { ...linkProps } />
   ))
 
   return (

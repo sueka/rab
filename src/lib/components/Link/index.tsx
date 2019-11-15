@@ -1,10 +1,15 @@
 import React from 'react'
 import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom'
+import { Omit } from 'react-redux'
 
-import MuiLink from '@material-ui/core/Link'
+import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link'
 import { TypographyProps } from '@material-ui/core/Typography'
 
 import typed from '~/lib/typed'
+
+export type Props =
+  & RouterLinkProps
+  & Omit<MuiLinkProps, 'color' | 'ref'>
 
 // TODO: move & test
 function isTypographyColor(color: string | undefined): color is TypographyProps['color'] {
@@ -25,7 +30,7 @@ const RouterLinkWithRef = React.forwardRef<HTMLAnchorElement, RouterLinkProps>((
   <RouterLink innerRef={ ref } { ...props } />
 ))
 
-export default class Link extends React.Component<RouterLinkProps> {
+export default class Link extends React.Component<Props> {
   public render() {
     const { color, ...restProps } = this.props
 
