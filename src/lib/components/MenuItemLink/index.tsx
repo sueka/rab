@@ -1,7 +1,9 @@
 import * as React from 'react'
-import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom'
+import { LinkProps as RouterLinkProps } from 'react-router-dom'
 
 import MuiMenuItem, { MenuItemProps as MuiMenuItemProps } from '@material-ui/core/MenuItem'
+
+import RouterLink from '~/lib/components/Link'
 
 type MenuItemLinkProps = MuiMenuItemProps<typeof RouterLink, { button?: true }>
 

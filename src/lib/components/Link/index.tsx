@@ -25,18 +25,20 @@ const RouterLinkWithRef = React.forwardRef<HTMLAnchorElement, RouterLinkProps>((
   <RouterLink innerRef={ ref } { ...props } />
 ))
 
-const Link: React.FunctionComponent<RouterLinkProps> = ({ color, ...restProps }) => {
-  if (!isTypographyColor(color)) {
-    console.warn(typed<[string]>`${ color } is not a Material-UI Typography color.`) // tslint:disable-line:no-console
+export default class Link extends React.Component<RouterLinkProps> {
+  public render() {
+    const { color, ...restProps } = this.props
+
+    if (!isTypographyColor(color)) {
+      console.warn(typed<[string]>`${ color } is not a Material-UI Typography color.`) // tslint:disable-line:no-console
+
+      return (
+        <MuiLink component={ RouterLinkWithRef } { ...restProps } />
+      )
+    }
 
     return (
-      <MuiLink component={ RouterLinkWithRef } { ...restProps } />
+      <MuiLink component={ RouterLinkWithRef } color={ color } { ...restProps } />
     )
   }
-
-  return (
-    <MuiLink component={ RouterLinkWithRef } color={ color } { ...restProps } />
-  )
 }
-
-export default Link
