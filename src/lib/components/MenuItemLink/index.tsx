@@ -9,7 +9,7 @@ type MenuItemLinkProps = MuiMenuItemProps<typeof RouterLink, { button?: true }>
 const MenuItemLink: React.FunctionComponent<MenuItemLinkProps> = React.forwardRef<RouterLink, React.PropsWithoutRef<MenuItemLinkProps>>(({ to, button, innerRef, ...menuItemProps }, menuItem) => {
   // See https://material-ui.com/guides/composition/#link
   const RouterLinkWithRef = React.forwardRef<RouterLink, RouterLinkProps>((linkProps, link) => (
-    <RouterLink ref={ link } innerRef={ innerRef } color="initial" underline="none" { ...linkProps } />
+    <RouterLink ref={ link } innerRef={ innerRef } color="inherit" underline="none" { ...linkProps } />
   ))
 
   return (
