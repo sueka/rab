@@ -8,6 +8,13 @@ import prodConfig from './webpack.config'
 const config: Configuration = {
   ...prodConfig,
   mode: 'development',
+  resolve: {
+    ...prodConfig.resolve,
+    alias: {
+      ...prodConfig.resolve!.alias,
+      'react-dom': '@hot-loader/react-dom',
+    },
+  },
   module: {
     rules: prodConfig.module!.rules.map((rule) => {
       if (rule.loader === 'babel-loader' && rule.options !== undefined) {
