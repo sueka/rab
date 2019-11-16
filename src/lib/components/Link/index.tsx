@@ -3,27 +3,15 @@ import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-d
 import { Omit } from 'react-redux'
 
 import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link'
-import { TypographyProps } from '@material-ui/core/Typography'
 
 import typed from '~/lib/typed'
+import { optional, isOneOf } from '~/lib/guards/commonGuards'
 
 export type Props =
   & RouterLinkProps
   & Omit<MuiLinkProps, 'color' | 'ref'>
 
-// TODO: move & test
-function isTypographyColor(color: string | undefined): color is TypographyProps['color'] {
-  return [
-    'initial',
-    'inherit',
-    'primary',
-    'secondary',
-    'textPrimary',
-    'textSecondary',
-    'error',
-    undefined,
-  ].includes(color)
-}
+const isTypographyColor = optional(isOneOf('initial', 'inherit', 'primary', 'secondary', 'textPrimary', 'textSecondary', 'error'))
 
 // TODO: delete this; See also https://material-ui.com/guides/composition/#link
 const RouterLinkWithRef = React.forwardRef<HTMLAnchorElement, RouterLinkProps>((props, ref) => (
