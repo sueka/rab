@@ -7,11 +7,11 @@ import { History } from 'history'
 import { UnreachableError } from './lib/errors'
 import configureStore from './configureStore'
 
-interface Props {
+interface Props<S, A extends Action> {
   /**
    * @param children that throws {error}
    */
-  renderError(error: unknown, children: React.ReactNode): React.ReactNode
+  renderError(error: unknown, children: React.ReactNode, store: Store<S, A>): React.ReactNode
 }
 
 interface State {
@@ -24,7 +24,7 @@ const MAXIMUM_RECURSION_DEPTH = 100
 export default function createProvider<S, A extends Action>(history: History, reducer: Reducer<S, A>, saga: Saga) {
   let recursionDepth = 0 // tslint:disable-line:no-let
 
-  return class Provider extends React.Component<Props, State> {
+  return class Provider extends React.Component<Props<S, A>, State> {
     private store: Store<S, A>
 
     // NOTE: https://github.com/DefinitelyTyped/DefinitelyTyped/blob/826ce0f1ce1d1887d199986283630d6f63075ad5/types/react/index.d.ts#L419 にも関わらず、初期化されていない state は null であるため、初期化を強制するためにプロパティ宣言を行う。
@@ -32,7 +32,7 @@ export default function createProvider<S, A extends Action>(history: History, re
       hasError: false,
     }
 
-    constructor(props: Props) {
+    constructor(props: Props<S, A>) {
       super(props)
 
       const exceptionNeutralReducer: Reducer<S, A> = (state, action) => {
@@ -81,7 +81,7 @@ export default function createProvider<S, A extends Action>(history: History, re
           throw new Error('Maximum recursion depth exceeded')
         }
 
-        return renderError(error, children)
+        return renderError(error, children, this.store)
       }
 
       return (
