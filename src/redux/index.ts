@@ -10,7 +10,6 @@ import { CounterState, CounterAction, CounterService, createCounterReducer } fro
 import { IoState, IoAction, IoService, createIoReducer } from './modules/io'
 import { LocaleSelectorState, LocaleSelectorAction, LocaleSelectorService, createLocaleSelectorReducer } from './modules/localeSelector'
 import { ReminderState, ReminderAction, ReminderService, createReminderReducer } from './modules/reminder'
-import formats from '../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 
 export interface State {
   router: RouterState
@@ -51,29 +50,11 @@ export class Service {
   }
 }
 
-export const createReducer = (history: History) => combineReducers<State, Action>({
+export const createReducer = (history: History, initialState: Alt.Omit<State, 'router'>) => combineReducers<State, Action>({
   router: connectRouter(history) as Reducer<RouterState, AnyAction>, // TODO
-  chess: createChessReducer({
-    board: {
-      pieces: [],
-    },
-  }),
-  counter: createCounterReducer({
-    count: 0,
-  }),
-  io: createIoReducer({
-    now: new Date,
-  }),
-  localeSelector: createLocaleSelectorReducer({
-    availableLocales: [
-      'en',
-      'ja',
-    ],
-    locale: 'en',
-    formats,
-    errors: [],
-  }),
-  reminder: createReminderReducer({
-    tasks: [],
-  }),
+  chess: createChessReducer(initialState.chess),
+  counter: createCounterReducer(initialState.counter),
+  io: createIoReducer(initialState.io),
+  localeSelector: createLocaleSelectorReducer(initialState.localeSelector),
+  reminder: createReminderReducer(initialState.reminder),
 })
