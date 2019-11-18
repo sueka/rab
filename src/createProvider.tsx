@@ -21,7 +21,6 @@ interface State {
 
 const MAXIMUM_RECURSION_DEPTH = 100
 
-// TODO: renderError が Provider を返す場合を落とす
 export default function createProvider<S, A extends Action>(history: History, reducer: Reducer<S, A>, saga: Saga) {
   let recursionDepth = 0 // tslint:disable-line:no-let
 
