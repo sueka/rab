@@ -7,3 +7,7 @@ interface JsonArray extends ReadonlyArray<Json> {}
 interface JsonObject extends Record<string, Json> {}
 
 type Json = JsonPrimitive | JsonArray | JsonObject
+
+namespace Alt {
+  export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+}

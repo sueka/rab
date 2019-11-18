@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-import { Omit } from 'react-redux'
 import { Route as OriginalRoute, RouteProps, RouteComponentProps } from 'react-router'
 import Helmet, { HelmetProps } from 'react-helmet'
 
@@ -37,7 +36,7 @@ const withHelmet: (Component: React.ComponentType<RouteComponentProps>, helmetPr
   </>
 )
 
-interface Props extends Omit<RouteProps, 'render' | 'component' | 'children'> {
+interface Props extends Alt.Omit<RouteProps, 'render' | 'component' | 'children'> {
   // TODO: ban mandatory props
   component?: Required<RouteProps>['component'] | React.LazyExoticComponent<Required<RouteProps>['component']>
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Provider, Omit } from 'react-redux'
+import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
 import { DndProvider } from 'react-dnd'
 import TestBackend from 'react-dnd-test-backend'
@@ -13,7 +13,7 @@ import App, { HomePage, CounterPage, InfoPage, ReminderPage } from '.'
 import formats from '../../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 
 // NOTE: connected-react-router ではないので router state は不要。
-const store = createMockStore<Omit<State, 'router'>>()({
+const store = createMockStore<Alt.Omit<State, 'router'>>()({
   chess: {
     board: {
       pieces: [],
