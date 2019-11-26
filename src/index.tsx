@@ -93,8 +93,8 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
     <Provider renderError={ renderError }>
       <IntlProvider>
         <DndProvider backend={ HTML5Backend }>
-          <ConnectedRouter { ...{ history } }>
-            <ServiceProdiver { ...{ container } }>
+          <ConnectedRouter history={ history }>
+            <ServiceProdiver container={ container }>
               <MuiThemeProvider theme={ theme }>
                 <App />
               </MuiThemeProvider>
@@ -109,5 +109,5 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
 containerImport.then(({ default: container }) => {
   const history = createBrowserHistory()
 
-  ReactDOM.render(<Main { ...{ history, container } } />, document.getElementById('root'))
+  ReactDOM.render( <Main history={ history } container={ container } />, document.getElementById('root'))
 })

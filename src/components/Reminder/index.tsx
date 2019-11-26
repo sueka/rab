@@ -31,7 +31,7 @@ type Props =
 const Reminder: React.FunctionComponent<Props> = ({ tasks, addTask, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => (
   <>
     <TaskList { ...{ tasks, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask } } />
-    <AddTaskButton { ...{ addTask } } />
+    <AddTaskButton addTask={ addTask } />
   </>
 )
 
