@@ -61,7 +61,7 @@ export /* for testing */ const LocaleSelect: React.FunctionComponent<Props> = ({
     if (node !== null) {
       setLabelWidth(node.offsetWidth)
     }
-  }, [setLabelWidth])
+  }, [])
 
   const handleChange = useCallback<NonNullable<SelectProps['onChange']>>((event) => {
     if (isTag(event.target.value)) {

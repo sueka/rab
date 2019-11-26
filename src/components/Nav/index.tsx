@@ -20,11 +20,11 @@ const Nav: React.FunctionComponent = () => {
 
   const openMenu = useCallback<React.MouseEventHandler<HTMLButtonElement>>((event) => {
     setAnchorEl(event.currentTarget)
-  }, [setAnchorEl])
+  }, [])
 
   const closeMenu = useCallback(() => {
     setAnchorEl(null)
-  }, [setAnchorEl])
+  }, [])
 
   return (
     <>
