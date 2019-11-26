@@ -22,6 +22,8 @@ exports[`Route with a lazy component 1`] = `
 </div>
 `;
 
+exports[`Route with a lazy component 2`] = `lazy`;
+
 exports[`Route with a non-lazy component 1`] = `non-lazy`;
 
 exports[`Route with no component 1`] = `null`;

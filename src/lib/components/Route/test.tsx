@@ -28,12 +28,16 @@ describe('Route', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  test('with a lazy component', () => {
+  test('with a lazy component', async () => {
     const { container } = render(
       <MemoryRouter>
         <Route component={ LazyComponent } />
       </MemoryRouter>
     )
+
+    expect(container.firstChild).toMatchSnapshot()
+
+    await LazyComponent
 
     expect(container.firstChild).toMatchSnapshot()
   })
