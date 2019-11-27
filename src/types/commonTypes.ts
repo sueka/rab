@@ -11,3 +11,7 @@ type Json = JsonPrimitive | JsonArray | JsonObject
 namespace Alt {
   export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 }
+
+namespace string {
+  export type Url = string & { _urlBrand: never }
+}
