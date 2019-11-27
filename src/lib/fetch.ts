@@ -23,7 +23,7 @@ interface ResponseParams {
   body: Json
 }
 
-function isEmpty(object: {}) {
+function isEmpty<T extends {}>(object: T): object is EmptyRecord<T> {
   return Object.keys(object).length === 0
 }
 

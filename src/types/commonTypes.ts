@@ -8,6 +8,8 @@ interface JsonObject extends Record<string, Json> {}
 
 type Json = JsonPrimitive | JsonArray | JsonObject
 
+type EmptyRecord<T> = Record<keyof T, never>
+
 namespace Alt {
   export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 }
