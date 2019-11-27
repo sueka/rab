@@ -11,7 +11,7 @@ interface Props {
   multiple?: boolean
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   buttonLabel?: React.ReactNode
-  resultMessageFormatter?(fileNames: string[]): React.ReactNode
+  renderResultMessage?(fileNames: string[]): React.ReactNode
   classes?: {
     root?: string
     button?: string
@@ -23,7 +23,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
   multiple = false,
   onChange,
   buttonLabel = <FormattedMessage { ...messages.browse } />,
-  resultMessageFormatter = (fileNames) => fileNames,
+  renderResultMessage = (fileNames) => fileNames,
   classes: muiClasses,
   component = 'div',
 }) => {
@@ -37,8 +37,8 @@ const FileUpload: React.FunctionComponent<Props> = ({
       return <FormattedMessage { ...messages.noFileSelected } />
     }
 
-    return resultMessageFormatter(Array.from(files, (file) => file.name))
-  }, [resultMessageFormatter, files])
+    return renderResultMessage(Array.from(files, (file) => file.name))
+  }, [renderResultMessage, files])
 
   const input = useRef<HTMLInputElement>(null)
 
