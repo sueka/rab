@@ -21,5 +21,7 @@
   "src.components.Nav.reminder": "reminder",
   "src.components.Reminder.AddTaskButton.add": "add",
   "src.components.Reminder.TaskList.TaskListItem.DeleteTaskButton.delete": "delete",
-  "src.components.SetClockButton.setTheClock": "Set the clock"
+  "src.components.SetClockButton.setTheClock": "Set the clock",
+  "src.lib.components.FileUpload.browse": "Browse…",
+  "src.lib.components.FileUpload.noFileSelected": "No file selected."
 }
