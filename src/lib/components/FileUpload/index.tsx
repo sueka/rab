@@ -2,7 +2,7 @@ import React, { useMemo, useState, useCallback, useRef } from 'react'
 import { FormattedMessage } from 'react-intl'
 import classnames from 'classnames'
 
-import Button from '@material-ui/core/Button'
+import Button, { ButtonProps } from '@material-ui/core/Button'
 
 import cssClasses from './classes.css'
 import messages from './messages'
@@ -16,6 +16,11 @@ interface Props extends Alt.ForceOmit<React.InputHTMLAttributes<HTMLInputElement
     button?: string
   }
   component?: React.ElementType<React.HTMLAttributes<HTMLElement>>
+
+  /**
+   * Overwrites onClick but merges className, by mimicking Material-UI. A default event is dispatched, if not prevented, even if it has onClick.
+   */
+  ButtonProps?: ButtonProps
 }
 
 const FileUpload: React.FunctionComponent<Props> = ({
@@ -24,12 +29,13 @@ const FileUpload: React.FunctionComponent<Props> = ({
   renderResultMessage = (fileNames) => fileNames,
   classes: muiClasses,
   component = 'div',
+  ButtonProps,
   ...restInputProps
 }) => {
   const [files, setFiles] = useState<FileList | null>(null)
 
   const rootClassName = useMemo(() => classnames(muiClasses?.root, cssClasses.FileUpload), [muiClasses?.root, cssClasses.FileUpload])
-  const buttonClassName = useMemo(() => classnames(muiClasses?.button, cssClasses.Button), [muiClasses?.button, cssClasses.Button])
+  const buttonClassName = useMemo(() => classnames(muiClasses?.button, cssClasses.Button, ButtonProps?.className), [muiClasses?.button, cssClasses.Button, ButtonProps?.className])
 
   const resultMessage = useMemo(() => {
     if (files === null) {
@@ -50,13 +56,30 @@ const FileUpload: React.FunctionComponent<Props> = ({
     input.current?.dispatchEvent(new MouseEvent('click')) // FIXME: Element.click()
   }, [input])
 
+  const handleButtonClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>((event) => {
+    ButtonProps?.onClick?.(event)
+
+    if (!event.isDefaultPrevented()) {
+      fireInputClick(event)
+    }
+  }, [ButtonProps?.onClick])
+
+  const restButtonProps = useMemo<Alt.Omit<ButtonProps, 'onClick'>>(() => {
+    const { onClick, ...result } = ButtonProps ?? {}
+
+    return result
+  }, [ButtonProps])
+
   return React.createElement(component, {
     className: rootClassName,
   }, (
     <>
-      <Button className={ buttonClassName } onClick={ fireInputClick }>
-        { buttonLabel }
-      </Button>
+      <Button
+        className={ buttonClassName }
+        onClick={ handleButtonClick }
+        children={ buttonLabel }
+        { ...restButtonProps }
+      />
       { resultMessage }
       <input
         className={ cssClasses.Input }
