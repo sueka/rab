@@ -7,7 +7,8 @@ import Button, { ButtonProps } from '@material-ui/core/Button'
 import cssClasses from './classes.css'
 import messages from './messages'
 
-interface Props extends Alt.ForceOmit<React.InputHTMLAttributes<HTMLInputElement>, 'className' | 'type' | 'onChange' | 'ref'> {
+interface Props extends Alt.ForceOmit<React.InputHTMLAttributes<HTMLInputElement>, 'className' | 'type' | 'onClick' | 'onChange' | 'ref'> {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   buttonLabel?: React.ReactNode
   renderResultMessage?(fileNames: string[]): React.ReactNode
@@ -18,12 +19,13 @@ interface Props extends Alt.ForceOmit<React.InputHTMLAttributes<HTMLInputElement
   component?: React.ElementType<React.HTMLAttributes<HTMLElement>>
 
   /**
-   * Overwrites onClick but merges className, by mimicking Material-UI. A default event is dispatched, if not prevented, even if it has onClick.
+   * Merges className, with mimicking Material-UI.
    */
-  ButtonProps?: ButtonProps
+  ButtonProps?: Alt.Omit<ButtonProps, 'onClick'>
 }
 
 const FileUpload: React.FunctionComponent<Props> = ({
+  onClick,
   onChange,
   buttonLabel = <FormattedMessage { ...messages.browse } />,
   renderResultMessage = (fileNames) => fileNames,
@@ -57,18 +59,12 @@ const FileUpload: React.FunctionComponent<Props> = ({
   }, [input])
 
   const handleButtonClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>((event) => {
-    ButtonProps?.onClick?.(event)
+    onClick?.(event)
 
     if (!event.isDefaultPrevented()) {
       fireInputClick(event)
     }
-  }, [ButtonProps?.onClick])
-
-  const restButtonProps = useMemo<Alt.Omit<ButtonProps, 'onClick'>>(() => {
-    const { onClick, ...result } = ButtonProps ?? {}
-
-    return result
-  }, [ButtonProps])
+  }, [onClick])
 
   return React.createElement(component, {
     className: rootClassName,
@@ -78,7 +74,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
         className={ buttonClassName }
         onClick={ handleButtonClick }
         children={ buttonLabel }
-        { ...restButtonProps }
+        { ...ButtonProps }
       />
       { resultMessage }
       <input
