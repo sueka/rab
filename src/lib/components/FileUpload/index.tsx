@@ -7,9 +7,7 @@ import Button from '@material-ui/core/Button'
 import cssClasses from './classes.css'
 import messages from './messages'
 
-interface Props {
-  multiple?: boolean
-  onChange?: React.ChangeEventHandler<HTMLInputElement>
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   buttonLabel?: React.ReactNode
   renderResultMessage?(fileNames: string[]): React.ReactNode
   classes?: {
@@ -20,12 +18,12 @@ interface Props {
 }
 
 const FileUpload: React.FunctionComponent<Props> = ({
-  multiple = false,
   onChange,
   buttonLabel = <FormattedMessage { ...messages.browse } />,
   renderResultMessage = (fileNames) => fileNames,
   classes: muiClasses,
   component = 'div',
+  ...restInputProps
 }) => {
   const [files, setFiles] = useState<FileList | null>(null)
 
@@ -62,9 +60,9 @@ const FileUpload: React.FunctionComponent<Props> = ({
       <input
         className={ cssClasses.Input }
         type="file"
-        multiple={ multiple }
         onChange={ handleInputChange }
         ref={ input }
+        { ...restInputProps }
       />
     </>
   ))
