@@ -24,3 +24,23 @@ jobs:
     strategy:
       matrix:
         node-version: [8, 10, 12]
+  test:
+    env:
+      NODE_ENV: test
+      TZ: Asia/Tokyo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Ensure .env
+        run: |
+          ln -s .env.example .env
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Test
+        run: |
+          npm ci
+          npm test
+    strategy:
+      matrix:
+        node-version: [8, 10, 12]
