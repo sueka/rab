@@ -1,5 +1,4 @@
-import assert from 'assert'
-
+import { ValidationError } from '~/lib/errors'
 import Eq from '~/lib/trait/Eq'
 import Hashable from '~/lib/trait/Hashable'
 
@@ -9,7 +8,9 @@ export default abstract class ValueObject<T> extends Hashable implements Eq {
   ) {
     super()
 
-    assert(this.checkInvariant())
+    if (!this.checkInvariant()) {
+      throw new ValidationError('Invariant Violation: ValueObject#checkInvariant() must be a tautology.')
+    }
   }
 
   protected checkInvariant() {
