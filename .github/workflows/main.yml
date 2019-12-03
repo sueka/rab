@@ -23,7 +23,7 @@ jobs:
           npm run build
     strategy:
       matrix:
-        node-version: [8, 10, 12]
+        node-version: [10, 12]
   test:
     env:
       NODE_ENV: test
@@ -43,4 +43,4 @@ jobs:
           npm test
     strategy:
       matrix:
-        node-version: [8, 10, 12]
+        node-version: [10, 12]
