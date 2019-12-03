@@ -14,7 +14,7 @@ describe('Object.fromEntries', () => {
   })
 
   it('should work with a circularly referenced object ', () => {
-    let object: Record<Index, unknown> = { a: 0 } // tslint:disable-line:no-let
+    const object: Record<Index, unknown> = { a: 0 }
 
     object.self = object // tslint:disable-line:no-object-mutation
 
