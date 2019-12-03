@@ -27,7 +27,7 @@ jobs:
   test:
     env:
       NODE_ENV: test
-      TZ: Asia/Tokyo
+      TZ: Asia/Tokyo # for snapshots
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
