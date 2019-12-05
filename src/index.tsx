@@ -73,7 +73,13 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
 
   const renderError = useCallback((error: unknown) => {
     if (error instanceof Error) {
-      return typed<[string]>`${ String(error) }`
+      return (
+        <Provider renderError={ renderError }>
+          <div>
+            { typed<[string]>`${ String(error) }` }
+          </div>
+        </Provider>
+      )
     }
 
     throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
