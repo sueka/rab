@@ -4,6 +4,7 @@ import { call, put } from 'redux-saga/effects'
 import { injectable, inject } from 'inversify'
 
 import { LogicError } from '~/lib/errors'
+import typed from '~/lib/typed'
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
 import TaskId from '~/domain/vo/TaskId'
 import Task from '~/domain/entity/Task'
@@ -20,6 +21,7 @@ import TaskRepository from '~/domain/repository/TaskRepository'
 
 export interface ReminderState {
   tasks: Task[]
+  errors: Error[]
 }
 
 //
@@ -48,6 +50,7 @@ export /* for testing */ const MOVE_TASK = '@@react-app-prototype/reminder/MOVE_
 export /* for testing */ const PUSH_TASK = '@@react-app-prototype/reminder/PUSH_TASK'
 export /* for testing */ const REMOVE_TASK = '@@react-app-prototype/reminder/REMOVE_TASK'
 export /* for testing */ const CHECK_TASK = '@@react-app-prototype/reminder/CHECK_TASK'
+export /* for testing */ const PUSH_ERROR = '@@react-app-prototype/reminder/PUSH_ERROR'
 
 const reminderActionTypes = [
   ADD_TASK_ASYNC,
@@ -59,6 +62,7 @@ const reminderActionTypes = [
   PUSH_TASK,
   REMOVE_TASK,
   CHECK_TASK,
+  PUSH_ERROR,
 ]
 
 interface AddTaskAsyncAction extends Action<typeof ADD_TASK_ASYNC> {}
@@ -114,6 +118,12 @@ interface CheckTaskAction extends Action<typeof CHECK_TASK> {
   }
 }
 
+interface PushErrorAction extends Action<typeof PUSH_ERROR> {
+  payload: {
+    error: Error
+  }
+}
+
 export type ReminderAction =
   | AddTaskAsyncAction
   | ChangeTaskContentAsyncAction
@@ -124,6 +134,7 @@ export type ReminderAction =
   | PushTaskAction
   | RemoveTaskAction
   | CheckTaskAction
+  | PushErrorAction
 
 function isReminderAction(action: Action): action is ReminderAction {
   return reminderActionTypes.includes(action.type)
@@ -209,6 +220,13 @@ export const checkTask = (taskId: TaskId, task: Task): CheckTaskAction => ({
   },
 })
 
+export /* for testing */ const pushError = (error: Error): PushErrorAction => ({
+  type: PUSH_ERROR,
+  payload: {
+    error,
+  },
+})
+
 //
 //                           _|
 // _|  _|_|    _|_|      _|_|_|  _|    _|    _|_|_|    _|_|    _|  _|_|
@@ -281,6 +299,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
       ]
 
       return {
+        ...state,
         tasks: [
           ...restTasks.slice(0, action.payload.targetIndex),
           state.tasks[action.payload.sourceIndex],
@@ -323,6 +342,13 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return state
     }
+    case PUSH_ERROR: return {
+      ...state,
+      errors: [
+        ...state.errors,
+        action.payload.error,
+      ],
+    }
   }
 }
 
@@ -349,10 +375,20 @@ export class ReminderService {
   private *changeTaskContentAsyncSaga({ payload: { taskId, content } }: ChangeTaskContentAsyncAction): SagaIterator {
     const task: ResultType<ReturnType<this['taskRepository']['findById']>> = yield call(this.taskRepository.findById, taskId)
 
-    task.content = content // tslint:disable-line:no-object-mutation
+    try {
+      task.content = content // tslint:disable-line:no-object-mutation
 
-    yield call(this.taskRepository.store, task)
-    yield put(checkTask(taskId, task))
+      yield call(this.taskRepository.store, task)
+      yield put(checkTask(taskId, task))
+    } catch (error) {
+      if (error instanceof Error) {
+        yield put(pushError(error))
+
+        return
+      }
+
+      throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
+    }
   }
 
   private *markTaskAsDoneAsyncSaga({ payload: { taskId } }: MarkTaskAsDoneAsyncAction): SagaIterator {

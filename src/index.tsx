@@ -55,6 +55,7 @@ const initialState: Alt.Omit<State, 'router'> = {
   },
   reminder: {
     tasks: [],
+    errors: [],
   },
 }
 
