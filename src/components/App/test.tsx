@@ -5,6 +5,7 @@ import { DndProvider } from 'react-dnd'
 import TestBackend from 'react-dnd-test-backend'
 import { render } from '@testing-library/react'
 import createMockStore from 'redux-mock-store'
+import { SnackbarProvider } from 'notistack'
 
 import typed from '~/lib/typed'
 import { State } from '~/redux'
@@ -57,7 +58,9 @@ ${ '/nonexistent-path' }
         <IntlProvider>
           <DndProvider backend={ TestBackend }>
             <StaticRouter context={ context } location={ location }>
-              <App />
+              <SnackbarProvider>
+                <App />
+              </SnackbarProvider>
             </StaticRouter>
           </DndProvider>
         </IntlProvider>
