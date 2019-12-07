@@ -40,8 +40,8 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, errors, addTask, chan
       variant: 'error',
     })
 
-    return (error) => {
-      removeError(error)
+    return (errorToBeCleanedUp) => {
+      removeError(errorToBeCleanedUp)
     }
   }, [errors])
 

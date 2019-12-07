@@ -448,7 +448,7 @@ export class ReminderService {
   private *checkTaskSaga({ payload: { taskId, task } }: CheckTaskAction): SagaIterator {
     const stateTasks: ReturnType<typeof selectTasks> = yield select(selectTasks)
 
-    const stateTask = stateTasks.find((stateTask) => stateTask.id.equals(taskId))
+    const stateTask = stateTasks.find(({ id }) => id.equals(taskId))
 
     if (stateTask === undefined) {
       throw new Error // TODO:
