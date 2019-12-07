@@ -14,6 +14,7 @@ import ja from 'react-intl/locale-data/ja'
 
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { SnackbarProvider } from 'notistack'
 
 import './types/globalTypes'
 
@@ -103,7 +104,9 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
           <ConnectedRouter history={ history }>
             <ServiceProdiver container={ container }>
               <MuiThemeProvider theme={ theme }>
-                <App />
+                <SnackbarProvider>
+                  <App />
+                </SnackbarProvider>
               </MuiThemeProvider>
             </ServiceProdiver>
           </ConnectedRouter>

@@ -69,6 +69,7 @@
     "inversify": "^5.0.1",
     "inversify-react": "^0.4.1",
     "jest": "^24.8.0",
+    "notistack": "^0.9.7",
     "path-to-regexp": "^2.4.0",
     "postcss-loader": "^3.0.0",
     "postcss-nesting": "^7.0.1",

@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { useSnackbar } from 'notistack'
 
+import useOnceForEachEffect from '~/lib/hooks/useOnceForEachEffect'
 import TaskId from '~/domain/vo/TaskId'
 import Task from '~/domain/entity/Task'
 
@@ -13,6 +15,7 @@ import AddTaskButton from './AddTaskButton'
 
 interface StateProps {
   tasks: Task[]
+  errors: Error[]
 }
 
 interface DispatchProps {
@@ -28,17 +31,28 @@ type Props =
   & StateProps
   & DispatchProps
 
-const Reminder: React.FunctionComponent<Props> = ({ tasks, addTask, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => (
-  <>
-    <TaskList { ...{ tasks, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask } } />
-    <AddTaskButton addTask={ addTask } />
-  </>
-)
+const Reminder: React.FunctionComponent<Props> = ({ tasks, errors, addTask, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => {
+  const { enqueueSnackbar } = useSnackbar()
+
+  useOnceForEachEffect(errors, (error) => {
+    enqueueSnackbar(error.message, {
+      variant: 'error',
+    })
+  }, [errors])
+
+  return (
+    <>
+      <TaskList { ...{ tasks, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask } } />
+      <AddTaskButton addTask={ addTask } />
+    </>
+  )
+}
 
 // connect
 
-const mapStateToProps = ({ reminder: { tasks } }: State): StateProps => ({
+const mapStateToProps = ({ reminder: { tasks, errors } }: State): StateProps => ({
   tasks,
+  errors,
 })
 
 const mapDispatchToProps: DispatchProps = {
