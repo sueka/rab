@@ -1,7 +1,8 @@
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
-import { call, put } from 'redux-saga/effects'
+import { call, put, select } from 'redux-saga/effects'
 import { injectable, inject } from 'inversify'
+import assert from 'assert'
 
 import { LogicError } from '~/lib/errors'
 import typed from '~/lib/typed'
@@ -9,6 +10,7 @@ import { takeEvery } from '~/lib/boni/redux-saga/effects'
 import TaskId from '~/domain/vo/TaskId'
 import Task from '~/domain/entity/Task'
 import TaskRepository from '~/domain/repository/TaskRepository'
+import { State } from '~/redux'
 
 //
 //             _|                  _|
@@ -330,15 +332,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
       }
     }
     case CHECK_TASK: {
-      const stateTask = state.tasks.find((task) => task.id.equals(action.payload.taskId))
-
-      if (stateTask === undefined) {
-        throw new Error // TODO:
-      }
-
-      if (!stateTask.equals(action.payload.task)) {
-        throw new LogicError // TODO:
-      }
+      assert(action.payload.taskId.equals(action.payload.task.id))
 
       return state
     }
@@ -351,6 +345,17 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
     }
   }
 }
+
+//
+//                     _|                        _|
+//   _|_|_|    _|_|    _|    _|_|      _|_|_|  _|_|_|_|    _|_|    _|  _|_|    _|_|_|
+// _|_|      _|_|_|_|  _|  _|_|_|_|  _|          _|      _|    _|  _|_|      _|_|
+//     _|_|  _|        _|  _|        _|          _|      _|    _|  _|            _|_|
+// _|_|_|      _|_|_|  _|    _|_|_|    _|_|_|      _|_|    _|_|    _|        _|_|_|
+//
+//
+
+const selectTasks = ({ reminder: { tasks } }: State) => tasks
 
 //
 //                                           _|
@@ -377,9 +382,6 @@ export class ReminderService {
 
     try {
       task.content = content // tslint:disable-line:no-object-mutation
-
-      yield call(this.taskRepository.store, task)
-      yield put(checkTask(taskId, task))
     } catch (error) {
       if (error instanceof Error) {
         yield put(pushError(error))
@@ -389,6 +391,9 @@ export class ReminderService {
 
       throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
     }
+
+    yield call(this.taskRepository.store, task)
+    yield put(checkTask(taskId, task))
   }
 
   private *markTaskAsDoneAsyncSaga({ payload: { taskId } }: MarkTaskAsDoneAsyncAction): SagaIterator {
@@ -414,11 +419,26 @@ export class ReminderService {
     yield put(removeTask(taskId))
   }
 
+  private *checkTaskSaga({ payload: { taskId, task } }: CheckTaskAction): SagaIterator {
+    const stateTasks: ReturnType<typeof selectTasks> = yield select(selectTasks)
+
+    const stateTask = stateTasks.find((stateTask) => stateTask.id.equals(taskId))
+
+    if (stateTask === undefined) {
+      throw new Error // TODO:
+    }
+
+    if (!stateTask.equals(task)) {
+      yield put(pushError(new LogicError)) // TODO:
+    }
+  }
+
   public *rootSaga(): SagaIterator {
     yield takeEvery(ADD_TASK_ASYNC, [this, this.addTaskAsyncSaga])
     yield takeEvery(CHANGE_TASK_CONTENT_ASYNC, [this, this.changeTaskContentAsyncSaga])
     yield takeEvery(MARK_TASK_AS_DONE_ASYNC, [this, this.markTaskAsDoneAsyncSaga])
     yield takeEvery(MARK_TASK_AS_UNDONE_ASYNC, [this, this.markTaskAsUndoneAsyncSaga])
     yield takeEvery(DELETE_TASK_ASYNC, [this, this.deleteTaskAsyncSaga])
+    yield takeEvery(CHECK_TASK, [this, this.checkTaskSaga])
   }
 }
