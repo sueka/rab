@@ -53,6 +53,7 @@ export /* for testing */ const PUSH_TASK = '@@react-app-prototype/reminder/PUSH_
 export /* for testing */ const REMOVE_TASK = '@@react-app-prototype/reminder/REMOVE_TASK'
 export /* for testing */ const CHECK_TASK = '@@react-app-prototype/reminder/CHECK_TASK'
 export /* for testing */ const PUSH_ERROR = '@@react-app-prototype/reminder/PUSH_ERROR'
+const REMOVE_ERROR = '@@react-app-prototype/reminder/REMOVE_ERROR'
 
 const reminderActionTypes = [
   ADD_TASK_ASYNC,
@@ -65,6 +66,7 @@ const reminderActionTypes = [
   REMOVE_TASK,
   CHECK_TASK,
   PUSH_ERROR,
+  REMOVE_ERROR,
 ]
 
 interface AddTaskAsyncAction extends Action<typeof ADD_TASK_ASYNC> {}
@@ -126,6 +128,12 @@ interface PushErrorAction extends Action<typeof PUSH_ERROR> {
   }
 }
 
+interface RemoveErrorAction extends Action<typeof REMOVE_ERROR> {
+  payload: {
+    error: Error // TODO: id
+  }
+}
+
 export type ReminderAction =
   | AddTaskAsyncAction
   | ChangeTaskContentAsyncAction
@@ -137,6 +145,7 @@ export type ReminderAction =
   | RemoveTaskAction
   | CheckTaskAction
   | PushErrorAction
+  | RemoveErrorAction
 
 function isReminderAction(action: Action): action is ReminderAction {
   return reminderActionTypes.includes(action.type)
@@ -224,6 +233,13 @@ export const checkTask = (taskId: TaskId, task: Task): CheckTaskAction => ({
 
 export /* for testing */ const pushError = (error: Error): PushErrorAction => ({
   type: PUSH_ERROR,
+  payload: {
+    error,
+  },
+})
+
+export const removeError = (error: Error): RemoveErrorAction => ({
+  type: REMOVE_ERROR,
   payload: {
     error,
   },
@@ -342,6 +358,16 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
         ...state.errors,
         action.payload.error,
       ],
+    }
+    case REMOVE_ERROR: {
+      if (!state.errors.includes(action.payload.error)) {
+        throw new Error // TODO:
+      }
+
+      return {
+        ...state,
+        errors: state.errors.filter((error) => error !== action.payload.error),
+      }
     }
   }
 }

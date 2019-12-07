@@ -7,7 +7,7 @@ import TaskId from '~/domain/vo/TaskId'
 import Task from '~/domain/entity/Task'
 
 import { State } from '~/redux'
-import { addTaskAsync, changeTaskContentAsync, markTaskAsDoneAsync, markTaskAsUndoneAsync, deleteTaskAsync, moveTask } from '~/redux/modules/reminder'
+import { addTaskAsync, changeTaskContentAsync, markTaskAsDoneAsync, markTaskAsUndoneAsync, deleteTaskAsync, moveTask, removeError } from '~/redux/modules/reminder'
 import TaskList from './TaskList'
 import AddTaskButton from './AddTaskButton'
 
@@ -25,19 +25,24 @@ interface DispatchProps {
   markTaskAsUndone(taskId: TaskId): void
   deleteTask(taskId: TaskId): void
   moveTask(source: number, dest: number): void
+  removeError(error: Error): void
 }
 
 type Props =
   & StateProps
   & DispatchProps
 
-const Reminder: React.FunctionComponent<Props> = ({ tasks, errors, addTask, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => {
+const Reminder: React.FunctionComponent<Props> = ({ tasks, errors, addTask, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask, removeError }) => {
   const { enqueueSnackbar } = useSnackbar()
 
   useOnceForEachEffect(errors, (error) => {
     enqueueSnackbar(error.message, {
       variant: 'error',
     })
+
+    return (error) => {
+      removeError(error)
+    }
   }, [errors])
 
   return (
@@ -62,6 +67,7 @@ const mapDispatchToProps: DispatchProps = {
   markTaskAsUndone: markTaskAsUndoneAsync,
   deleteTask: deleteTaskAsync,
   moveTask,
+  removeError,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Reminder)
