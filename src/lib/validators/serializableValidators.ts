@@ -1,7 +1,7 @@
-import { ValidationError } from '~/lib/errors'
 import typed from '~/lib/typed'
 import Id from '~/domain/vo/Id'
 import { TaskRequest } from '~/domain/entity/Task'
+import ValidationError from './ValidationError'
 import { optional, asObject, asBoolean, asString } from './commonValidators'
 
 function asId(input: unknown): Id {

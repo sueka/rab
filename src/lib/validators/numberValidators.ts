@@ -1,7 +1,7 @@
 import assert from 'assert'
 
-import { ValidationError } from '~/lib/errors'
 import typed from '~/lib/typed'
+import ValidationError from './ValidationError'
 import { asNumber } from './commonValidators'
 
 export const asBoundedNumber = ({

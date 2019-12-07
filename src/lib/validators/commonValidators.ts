@@ -1,11 +1,12 @@
 import { either } from 'fp-ts'
 
-import { UnreachableError, ValidationError } from '~/lib/errors'
+import { UnreachableError } from '~/lib/errors'
 import conj from '~/lib/extensions/String/conj'
 import typed from '~/lib/typed'
 import stripMargin from '~/lib/extensions/String/stripMargin'
 import trimEols from '~/lib/extensions/String/trimEols'
 import equalsJsons from '~/lib/extensions/Eq/equalsJsons'
+import ValidationError from './ValidationError'
 
 /**
  * @callback Validator

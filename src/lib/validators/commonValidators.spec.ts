@@ -1,4 +1,4 @@
-import { ValidationError } from '~/lib/errors'
+import ValidationError from './ValidationError'
 import { asUnionOf, asConstant, asBoolean, asNumber, asString } from './commonValidators'
 
 describe('validators', () => {
