@@ -38,8 +38,10 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, errors, addTask, chan
   useOnceForEachEffect(errors, (error) => {
     enqueueSnackbar(error.message, {
       variant: 'error',
-      onClose() {
-        removeError(error)
+      onClose(_event, reason) {
+        if(reason !== 'clickaway') {
+          removeError(error)
+        }
       },
     })
   }, [errors])
