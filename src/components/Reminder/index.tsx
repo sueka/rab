@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
-import { useSnackbar } from 'notistack'
+import { OptionsObject, useSnackbar } from 'notistack'
 
 import useOnceForEachEffect from '~/lib/hooks/useOnceForEachEffect'
 import TaskId from '~/domain/vo/TaskId'
@@ -33,10 +33,11 @@ type Props =
   & DispatchProps
 
 const Reminder: React.FunctionComponent<Props> = ({ tasks, errors, addTask, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask, removeError }) => {
-  const { enqueueSnackbar } = useSnackbar()
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar()
+  const enqueuedSnackbarKeys = useRef<OptionsObject['key'][]>([])
 
   useOnceForEachEffect(errors, (error) => {
-    enqueueSnackbar(error.message, {
+    const enqueuedSnackbarKey = enqueueSnackbar(error.message, {
       variant: 'error',
       onClose(_event, reason) {
         if(reason !== 'clickaway') {
@@ -44,7 +45,17 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, errors, addTask, chan
         }
       },
     })
+
+    if (enqueuedSnackbarKey !== null) {
+      enqueuedSnackbarKeys.current.push(enqueuedSnackbarKey)
+    }
   }, [errors])
+
+  useEffect(() => () => {
+    for (const enqueuedSnackbarKey of enqueuedSnackbarKeys.current) {
+      closeSnackbar(enqueuedSnackbarKey)
+    }
+  }, [])
 
   return (
     <>
