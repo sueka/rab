@@ -34,13 +34,13 @@ type Props =
 
 const Reminder: React.FunctionComponent<Props> = ({ tasks, errors, addTask, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask, removeError }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar()
-  const enqueuedSnackbarKeys = useRef<OptionsObject['key'][]>([])
+  const enqueuedSnackbarKeys = useRef<Array<OptionsObject['key']>>([])
 
   useOnceForEachEffect(errors, (error) => {
     const enqueuedSnackbarKey = enqueueSnackbar(error.message, {
       variant: 'error',
       onClose(_event, reason) {
-        if(reason !== 'clickaway') {
+        if (reason !== 'clickaway') {
           removeError(error)
         }
       },
@@ -52,6 +52,7 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, errors, addTask, chan
   }, [errors])
 
   useEffect(() => () => {
+    // tslint:disable-next-line:no-loop-statement
     for (const enqueuedSnackbarKey of enqueuedSnackbarKeys.current) {
       closeSnackbar(enqueuedSnackbarKey)
     }
