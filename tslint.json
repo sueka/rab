@@ -25,13 +25,14 @@
     ],
     "no-submodule-imports": [
       true,
-      "~",
-      "redux-saga/effects",
+      "@material-ui/core",
+      "@material-ui/icons",
+      "fp-ts/lib/Either",
+      "react-hot-loader/root",
       "react-intl/locale-data/en",
       "react-intl/locale-data/ja",
-      "react-hot-loader/root",
-      "@material-ui/core",
-      "@material-ui/icons"
+      "redux-saga/effects",
+      "~"
     ],
     "no-relative-imports": [true, "allow-siblings"],
     "jsx-curly-spacing": [true, "always"],

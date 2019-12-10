@@ -1,4 +1,4 @@
-import { either } from 'fp-ts'
+import { Either, left, right, isLeft, isRight } from 'fp-ts/lib/Either'
 
 import { UnreachableError } from '~/lib/errors'
 import conj from '~/lib/extensions/String/conj'
@@ -17,12 +17,12 @@ import ValidationError from './ValidationError'
  * @param asT {Validator}
  * @throws {never}
  */
-export const failSafe = <A extends unknown, T>(asT: (input: A) => T) => (input: A): either.Either<ValidationError, T> => {
+export const failSafe = <A extends unknown, T>(asT: (input: A) => T) => (input: A): Either<ValidationError, T> => {
   try {
-    return either.right(asT(input))
+    return right(asT(input))
   } catch (error) {
     if (error instanceof ValidationError) {
-      return either.left(error)
+      return left(error)
     }
 
     throw new UnreachableError
@@ -41,15 +41,15 @@ export const unionOf = <T, U>(asT: (input: unknown) => T, asU: (input: unknown) 
   const t = failSafe(asT)(input)
   const u = failSafe(asU)(input)
 
-  if (either.isLeft(t) && either.isLeft(u)) {
+  if (isLeft(t) && isLeft(u)) {
     throw new ValidationError(typed<[string, string]>`${ t.left.message } AND ${ u.left.message }`)
   }
 
-  if (either.isRight(t)) {
+  if (isRight(t)) {
     return t.right
   }
 
-  if (either.isRight(u)) {
+  if (isRight(u)) {
     return u.right
   }
 

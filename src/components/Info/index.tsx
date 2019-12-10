@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
 import assert from 'assert'
-import { either } from 'fp-ts'
+import { Either, left, right, isLeft, isRight } from 'fp-ts/lib/Either'
 import { resolve } from 'inversify-react'
 
 import Button from '@material-ui/core/Button'
@@ -17,7 +17,7 @@ type Props =
 interface State {
   successful: boolean
   fetching: boolean
-  repo?: either.Either<Error, GitHubApiResource.Repository> | null
+  repo?: Either<Error, GitHubApiResource.Repository> | null
 }
 
 class Info extends React.Component<Props, State> {
@@ -39,13 +39,13 @@ class Info extends React.Component<Props, State> {
           this.setState({
             successful: true,
             fetching: false,
-            repo: either.right(output.response.body),
+            repo: right(output.response.body),
           })
         } else {
           this.setState({
             successful: false,
             fetching: false,
-            repo: either.left(new Error(output.response.body.message)),
+            repo: left(new Error(output.response.body.message)),
           })
         }
       })
@@ -70,7 +70,7 @@ class Info extends React.Component<Props, State> {
       if (repo == null) {
         return formatMessage(messages.fetchingNotStarted)
       } else {
-        if (either.isRight(repo)) {
+        if (isRight(repo)) {
           assert(successful)
 
           return formatMessage(messages.fetchingDoneSuccessfully)
@@ -90,7 +90,7 @@ class Info extends React.Component<Props, State> {
       return repo
     }
 
-    if (either.isLeft(repo)) {
+    if (isLeft(repo)) {
       return repo.toString()
     }
 
