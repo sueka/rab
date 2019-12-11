@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
+import { FormattedMessage } from 'react-intl'
 import { OptionsObject, useSnackbar } from 'notistack'
 
+import ValidationError from '~/lib/validators/ValidationError'
 import useOnceForEachEffect from '~/lib/hooks/useOnceForEachEffect'
 import TaskId from '~/domain/vo/TaskId'
 import Task from '~/domain/entity/Task'
@@ -11,7 +13,7 @@ import { addTaskAsync, changeTaskContentAsync, markTaskAsDoneAsync, markTaskAsUn
 import TaskList from './TaskList'
 import AddTaskButton from './AddTaskButton'
 
-// import messages from './messages'
+import messages from './messages'
 
 interface StateProps {
   tasks: Task[]
@@ -37,7 +39,20 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, errors, addTask, chan
   const enqueuedSnackbarKeys = useRef<Array<OptionsObject['key']>>([])
 
   useOnceForEachEffect(errors, (error) => {
-    const enqueuedSnackbarKey = enqueueSnackbar(error.message, {
+    if (!(error instanceof ValidationError)) {
+      return // TODO
+    }
+
+    const message = (() => {
+      switch (error.type) {
+        case 'RangeError':
+          return <FormattedMessage { ...messages.inputIsNotBetweenLowerBoundAndUpperBound } values={ error.values } />
+        default:
+          throw new Error() // TODO
+      }
+    })()
+
+    const enqueuedSnackbarKey = enqueueSnackbar(message, {
       variant: 'error',
       onClose(_event, reason) {
         if (reason !== 'clickaway') {

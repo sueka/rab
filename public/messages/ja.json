@@ -21,6 +21,7 @@
   "src.components.Nav.reminder": "リマインダー",
   "src.components.Reminder.AddTaskButton.add": "追加",
   "src.components.Reminder.TaskList.TaskListItem.DeleteTaskButton.delete": "削除",
+  "src.components.Reminder.inputIsNotBetweenLowerBoundAndUpperBound": "{input} は {lowerBound} と {upperBound} の間にありません。",
   "src.components.SetClockButton.setTheClock": "時計を合わせる",
   "src.lib.components.FileUpload.browse": "選択…",
   "src.lib.components.FileUpload.noFileSelected": "ファイルが選択されていません。"
