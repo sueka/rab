@@ -23,7 +23,7 @@ import { State } from '~/redux'
 
 export interface ReminderState {
   tasks: Task[]
-  errors: Error[]
+  errors: Record<string, Error> // id -> error
 }
 
 //
