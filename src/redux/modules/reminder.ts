@@ -2,6 +2,7 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call, put, select } from 'redux-saga/effects'
 import { injectable, inject } from 'inversify'
+import { v4 } from 'uuid'
 import assert from 'assert'
 
 import { LogicError } from '~/lib/errors'
@@ -124,13 +125,14 @@ interface CheckTaskAction extends Action<typeof CHECK_TASK> {
 
 interface PushErrorAction extends Action<typeof PUSH_ERROR> {
   payload: {
+    errorId: string
     error: Error
   }
 }
 
 interface RemoveErrorAction extends Action<typeof REMOVE_ERROR> {
   payload: {
-    error: Error // TODO: id
+    errorId: string
   }
 }
 
@@ -231,17 +233,18 @@ export const checkTask = (taskId: TaskId, task: Task): CheckTaskAction => ({
   },
 })
 
-export /* for testing */ const pushError = (error: Error): PushErrorAction => ({
+export /* for testing */ const pushError = (errorId: string, error: Error): PushErrorAction => ({
   type: PUSH_ERROR,
   payload: {
+    errorId,
     error,
   },
 })
 
-export const removeError = (error: Error): RemoveErrorAction => ({
+export const removeError = (errorId: string): RemoveErrorAction => ({
   type: REMOVE_ERROR,
   payload: {
-    error,
+    errorId,
   },
 })
 
@@ -354,19 +357,21 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
     }
     case PUSH_ERROR: return {
       ...state,
-      errors: [
+      errors: {
         ...state.errors,
-        action.payload.error,
-      ],
+        [action.payload.errorId]: action.payload.error,
+      },
     }
     case REMOVE_ERROR: {
-      if (!state.errors.includes(action.payload.error)) {
+      if (!(action.payload.errorId in state.errors)) {
         throw new Error // TODO:
       }
 
+      const { [action.payload.errorId]: removedError, ...restErrors } = state.errors
+
       return {
         ...state,
-        errors: state.errors.filter((error) => error !== action.payload.error),
+        errors: restErrors,
       }
     }
   }
@@ -410,7 +415,7 @@ export class ReminderService {
       task.content = content // tslint:disable-line:no-object-mutation
     } catch (error) {
       if (error instanceof Error) {
-        yield put(pushError(error))
+        yield put(pushError(v4(), error)) // TODO:
 
         return
       }
@@ -455,7 +460,7 @@ export class ReminderService {
     }
 
     if (!stateTask.equals(task)) {
-      yield put(pushError(new LogicError)) // TODO:
+      yield put(pushError(v4(), new LogicError)) // TODO:
     }
   }
 

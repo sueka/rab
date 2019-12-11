@@ -17,7 +17,7 @@ import messages from './messages'
 
 interface StateProps {
   tasks: Task[]
-  errors: Error[]
+  errors: Record<string, Error> // errorId -> error
 }
 
 interface DispatchProps {
@@ -27,7 +27,7 @@ interface DispatchProps {
   markTaskAsUndone(taskId: TaskId): void
   deleteTask(taskId: TaskId): void
   moveTask(source: number, dest: number): void
-  removeError(error: Error): void
+  removeError(errorId: string): void
 }
 
 type Props =
@@ -38,7 +38,7 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, errors, addTask, chan
   const { enqueueSnackbar, closeSnackbar } = useSnackbar()
   const enqueuedSnackbarKeys = useRef<Array<OptionsObject['key']>>([])
 
-  useOnceForEachEffect(errors, (error) => {
+  useOnceForEachEffect(Object.entries(errors), ([errorId, error]) => {
     if (!(error instanceof ValidationError)) {
       return // TODO
     }
@@ -56,7 +56,7 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, errors, addTask, chan
       variant: 'error',
       onClose(_event, reason) {
         if (reason !== 'clickaway') {
-          removeError(error)
+          removeError(errorId)
         }
       },
     })

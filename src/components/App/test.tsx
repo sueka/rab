@@ -38,7 +38,7 @@ const store = createMockStore<Alt.Omit<State, 'router'>>()({
   },
   reminder: {
     tasks: [],
-    errors: [],
+    errors: {},
   },
 })
 
