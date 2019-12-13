@@ -13,6 +13,9 @@
     "clean": "gulp --silent clean",
     "gulp": "gulp"
   },
+  "sideEffects": [
+    "src/types/globalTypes.ts"
+  ],
   "engines": {
     "node": "^10.12.22"
   },
