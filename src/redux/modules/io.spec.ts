@@ -1,15 +1,16 @@
-import { PutEffect, put } from 'redux-saga/effects'
+import { PutEffect, put, call, cancel } from 'redux-saga/effects'
 
 import delay from '~/lib/delay'
 import prsg from '~/lib/prsg'
 import typed from '~/lib/typed'
+import { takeEvery } from '~/lib/boni/redux-saga/effects'
 import container from '~/container.dev'
 
 import {
-  UPDATE_NOW, SET_NOW,
+  UPDATE_NOW, START_CLOCK, SET_NOW,
   IoState,
   SetNowAction,
-  updateNow, setNow,
+  updateNow, /* startClock, stopClock,  */setNow,
   IoService,
   createIoReducer,
 } from './io'
@@ -59,6 +60,29 @@ describe('IoService', () => {
     /* tslint:enable:no-object-mutation no-delete */
 
     expect(actualEffect).toMatchObject(expectedEffect)
+    expect(it.next().done).toBeTruthy()
+  })
+
+  test('startClockSaga', async () => {
+    const it = ioService.startClockSaga()
+
+    expect(it.next().value).toEqual(call(delay, expect.any(Number)))
+    expect(it.next().value).toEqual(put(updateNow()))
+    expect(it.next().value).toEqual(call(delay, expect.any(Number)))
+    expect(it.next().value).toEqual(put(updateNow()))
+  })
+
+  test('stopClockSaga', async () => {
+    const it = ioService.stopClockSaga()
+    const rootIt = ioService.rootSaga()
+
+    // tslint:disable-next-line:no-loop-statement
+    while (rootIt.next().done === false) {
+      // Silence is golden.
+    }
+
+    expect(it.next().value).toEqual(cancel())
+    expect(JSON.stringify(it.next().value)).toBe(JSON.stringify(takeEvery(START_CLOCK, [ioService, ioService.startClockSaga]))) // TODO:
     expect(it.next().done).toBeTruthy()
   })
 })
