@@ -10,6 +10,7 @@ import configureStore from './configureStore'
 interface Props<S, A extends Action> {
   /**
    * @param children that throws {error}
+   * @param store when {error} is thrown
    */
   renderError(error: unknown, children: React.ReactNode, store: Store<S, A>): React.ReactNode
 }
