@@ -76,6 +76,7 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
 
   const renderError = useCallback((error: unknown) => {
     if (error instanceof Error) {
+      // NOTE: `rootSaga` とそれに attach された saga から error が投げられた場合、 Maximum recursion depth exceeded が発生する。
       return (
         <Provider renderError={ renderError }>
           <div>
