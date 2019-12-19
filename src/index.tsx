@@ -2,6 +2,7 @@ import 'reflect-metadata'
 
 import React, { useMemo, useCallback } from 'react'
 import ReactDOM from 'react-dom'
+import { Saga } from 'redux-saga'
 import { History, createBrowserHistory } from 'history'
 import { ConnectedRouter } from 'connected-react-router'
 import { DndProvider } from 'react-dnd'
@@ -89,7 +90,7 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
 
   const reducer = useMemo(() => createReducer(history, initialState), [history])
 
-  const rootSaga = useCallback(() => {
+  const rootSaga = useCallback<Saga>(() => {
     const service = container.resolve(Service)
 
     return service.rootSaga.call(service)
