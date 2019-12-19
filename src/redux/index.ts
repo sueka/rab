@@ -1,6 +1,6 @@
 import { Action as AnyAction, Reducer, combineReducers } from 'redux'
 import { SagaIterator } from 'redux-saga'
-import { spawn } from 'redux-saga/effects'
+import { fork } from 'redux-saga/effects'
 import { History } from 'history'
 import { RouterState, LocationChangeAction, connectRouter } from 'connected-react-router'
 import { injectable, inject } from 'inversify'
@@ -43,10 +43,10 @@ export class Service {
   @inject(ReminderService) private reminderService!: ReminderService
 
   public *rootSaga(): SagaIterator {
-    yield spawn([this.counterService, this.counterService.rootSaga])
-    yield spawn([this.ioService, this.ioService.rootSaga])
-    yield spawn([this.localeSelectorService, this.localeSelectorService.rootSaga])
-    yield spawn([this.reminderService, this.reminderService.rootSaga])
+    yield fork([this.counterService, this.counterService.rootSaga])
+    yield fork([this.ioService, this.ioService.rootSaga])
+    yield fork([this.localeSelectorService, this.localeSelectorService.rootSaga])
+    yield fork([this.reminderService, this.reminderService.rootSaga])
   }
 }
 
