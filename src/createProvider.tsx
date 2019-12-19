@@ -7,17 +7,20 @@ import { History } from 'history'
 import { UnreachableError } from './lib/errors'
 import configureStore from './configureStore'
 
+type ErrorCause = 'component' | 'reducer' | 'saga' | 'rootSaga'
+
 interface Props<S, A extends Action> {
   /**
    * @param children that throws {error}
    * @param store when {error} is thrown
    */
-  renderError(error: unknown, children: React.ReactNode, store: Store<S, A>): React.ReactNode
+  renderError(error: unknown, children: React.ReactNode, store: Store<S, A>, cause: ErrorCause): React.ReactNode
 }
 
 interface State {
   hasError: boolean
   error?: unknown
+  cause?: ErrorCause
 }
 
 const MAXIMUM_RECURSION_DEPTH = 100
@@ -40,7 +43,7 @@ export default function createProvider<S, A extends Action>(history: History, re
         try {
           return reducer(state, action)
         } catch (error) {
-          this.handleError(error)
+          this.handleError(error, 'reducer')
 
           if (state === undefined) {
             throw new UnreachableError()
@@ -51,29 +54,31 @@ export default function createProvider<S, A extends Action>(history: History, re
       }
 
       const { store, sagaMiddleware } = configureStore(history, exceptionNeutralReducer, {
-        onError: this.handleError,
+        onError: (error) => this.handleError(error, 'saga'),
       })
 
       this.store = store
 
-      sagaMiddleware.run(saga).toPromise().catch(this.handleError)
+      sagaMiddleware.run(saga).toPromise().catch((error) => this.handleError(error, 'rootSaga'))
     }
 
     public static getDerivedStateFromError = (error: unknown) => ({
       hasError: true,
       error,
+      cause: 'component',
     })
 
-    private handleError = (error: unknown) => {
+    private handleError = (error: unknown, cause: ErrorCause) => {
       this.setState({
         hasError: true,
         error,
+        cause,
       })
     }
 
     public render() {
       const { renderError, children } = this.props
-      const { hasError, error } = this.state
+      const { hasError, error, cause } = this.state
 
       if (hasError) {
         ++recursionDepth
@@ -82,7 +87,11 @@ export default function createProvider<S, A extends Action>(history: History, re
           throw new Error('Maximum recursion depth exceeded')
         }
 
-        return renderError(error, children, this.store)
+        if (cause === undefined) {
+          throw new Error // TODO
+        }
+
+        return renderError(error, children, this.store, cause)
       }
 
       return (
