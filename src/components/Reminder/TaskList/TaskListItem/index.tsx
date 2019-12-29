@@ -73,7 +73,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ task, index, changeTaskC
 
   const handleContentChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     changeTaskContent(task.id, event.currentTarget.value)
-  }, [])
+  }, [task.id, changeTaskContent])
 
   const handleDoneChange = useCallback(() => {
     if (task.done) {
@@ -81,11 +81,11 @@ const TaskListItem: React.FunctionComponent<Props> = ({ task, index, changeTaskC
     } else {
       markTaskAsDone(task.id)
     }
-  }, [task.done])
+  }, [task.id, markTaskAsUndone, markTaskAsDone])
 
   const handleDeleteTaskButtonClick = useCallback(() => {
     deleteTask(task.id)
-  }, [])
+  }, [deleteTask])
 
   return (
     <div ref={ ref }>
