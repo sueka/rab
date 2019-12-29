@@ -9,9 +9,6 @@ import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { Container } from 'inversify'
 import { Provider as ServiceProdiver } from 'inversify-react'
-import { addLocaleData } from 'react-intl'
-import en from 'react-intl/locale-data/en'
-import ja from 'react-intl/locale-data/ja'
 
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -30,9 +27,6 @@ import IntlProvider from './components/IntlProvider'
 import formats from '../public/formats/en.json' // tslint:disable-line:no-relative-imports
 
 const containerImport = process.env.NODE_ENV === 'production' ? import('./container') : import('./container.dev')
-
-addLocaleData(en)
-addLocaleData(ja)
 
 const initialState: Alt.Omit<State, 'router'> = {
   chess: {

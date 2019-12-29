@@ -6,7 +6,7 @@ import IntlProvider, { StateProps } from '~/lib/components/IntlProvider'
 const mapStateToProps = ({ localeSelector: { locale, formats, messages } }: State): StateProps => ({
   locale,
   formats,
-  messages,
+  messages: messages ?? undefined,
 })
 
 export default connect(mapStateToProps)(IntlProvider)

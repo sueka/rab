@@ -2,7 +2,7 @@ import { hot } from 'react-hot-loader/root'
 import React from 'react'
 import { Switch } from 'react-router'
 import Helmet from 'react-helmet'
-import { InjectedIntlProps, injectIntl } from 'react-intl'
+import { useIntl } from 'react-intl'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
 
@@ -17,25 +17,26 @@ export /* for testing */ const InfoPage = React.lazy(() => import(/* webpackChun
 export /* for testing */ const ReminderPage = React.lazy(() => import(/* webpackChunkName: "reminder" */ '~/components/ReminderPage'))
 export /* for testing */ const NoMatch = React.lazy(() => import(/* webpackChunkName: "noMatch" */ '~/components/NoMatch'))
 
-type Props =
-  & InjectedIntlProps
+const App: React.FunctionComponent = () => {
+  const { formatMessage } = useIntl()
 
-const App: React.FunctionComponent<Props> = ({ intl: { formatMessage } }) => (
-  <>
-    <CssBaseline />
-    <Helmet
-      titleTemplate="%s - react-app-prototype"
-      defaultTitle="react-app-prototype"
-    />
-    <Nav />
-    <Switch>
-      <Route path="/" component={ HomePage } helmetProps={ { title: formatMessage(messages.home) } } />
-      <Route path="/counter" component={ CounterPage } helmetProps={ { title: formatMessage(messages.counter) } } />
-      <Route path="/info" component={ InfoPage } helmetProps={ { title: formatMessage(messages.info) } } />
-      <Route path="/reminder" component={ ReminderPage } helmetProps={ { title: formatMessage(messages.reminder) } } />
-      <Route path="*" component={ NoMatch } />
-    </Switch>
-  </>
-)
+  return (
+    <>
+      <CssBaseline />
+      <Helmet
+        titleTemplate="%s - react-app-prototype"
+        defaultTitle="react-app-prototype"
+      />
+      <Nav />
+      <Switch>
+        <Route path="/" component={ HomePage } helmetProps={ { title: formatMessage(messages.home) } } />
+        <Route path="/counter" component={ CounterPage } helmetProps={ { title: formatMessage(messages.counter) } } />
+        <Route path="/info" component={ InfoPage } helmetProps={ { title: formatMessage(messages.info) } } />
+        <Route path="/reminder" component={ ReminderPage } helmetProps={ { title: formatMessage(messages.reminder) } } />
+        <Route path="*" component={ NoMatch } />
+      </Switch>
+    </>
+  )
+}
 
-export default hot(injectIntl(App))
+export default hot(App)

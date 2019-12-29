@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl'
+import { FormattedMessage, WrappedComponentProps, injectIntl } from 'react-intl'
 import assert from 'assert'
 import { Either, left, right, isLeft, isRight } from 'fp-ts/lib/Either'
 import { resolve } from 'inversify-react'
@@ -12,7 +12,7 @@ import GetRepo from '~/useCase/GetRepo'
 import messages from './messages'
 
 type Props =
-  & InjectedIntlProps
+  & WrappedComponentProps
 
 interface State {
   successful: boolean
