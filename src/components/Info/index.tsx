@@ -48,8 +48,7 @@ class Info extends React.Component<Props, State> {
             repo: left(new Error(output.response.body.message)),
           })
         }
-      })
-      .catch((reason: unknown) => {
+      }, (reason: unknown) => {
         console.error(reason) // tslint:disable-line:no-console
 
         this.setState({
