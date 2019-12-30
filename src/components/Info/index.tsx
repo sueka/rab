@@ -33,8 +33,8 @@ class Info extends React.Component<Props, State> {
       fetching: true,
     })
 
-    this.getRepo.apply({ owner: 'sueka', repo: 'react-app-prototype' })
-      .then((output) => {
+    this.getRepo.apply({ owner: 'sueka', repo: 'react-app-prototype' }).then(
+      (output) => {
         if (output.successful) {
           this.setState({
             successful: true,
@@ -48,7 +48,8 @@ class Info extends React.Component<Props, State> {
             repo: left(new Error(output.response.body.message)),
           })
         }
-      }, (reason: unknown) => {
+      },
+      (reason: unknown) => {
         console.error(reason) // tslint:disable-line:no-console
 
         this.setState({
@@ -56,7 +57,8 @@ class Info extends React.Component<Props, State> {
           fetching: false,
           repo: null,
         })
-      })
+      }
+    )
   }
 
   private get statusText() {
