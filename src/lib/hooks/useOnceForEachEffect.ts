@@ -1,9 +1,11 @@
 import { DependencyList, useEffect, useState } from 'react'
 
+import identity from '~/lib/identity'
+
 type OnceForEachEffectCallback<T> = (x: T) => (void | ((x: T) => void | undefined))
 
-export default function useOnceForEachEffect<T>(xs: T[], effect: OnceForEachEffectCallback<T>, deps?: DependencyList) {
-  const [doneXs, setDoneXs] = useState<T[]>([])
+export default function useOnceForEachEffect<T, U>(xs: T[], identify: (x: T) => U = identity as (x: T) => U, effect: OnceForEachEffectCallback<T>, deps?: DependencyList) { // TODO: not downcast
+  const [doneIds, setDoneIds] = useState<U[]>([])
 
   useEffect(() => {
     const cleanups: Array<{
@@ -13,7 +15,7 @@ export default function useOnceForEachEffect<T>(xs: T[], effect: OnceForEachEffe
 
     // tslint:disable-next-line:no-loop-statement
     for (const x of xs) {
-      if (!doneXs.includes(x)) {
+      if (!doneIds.includes(identify(x))) {
         // tslint:disable-next-line:no-array-mutation
         cleanups.push({
           x,
@@ -22,7 +24,7 @@ export default function useOnceForEachEffect<T>(xs: T[], effect: OnceForEachEffe
       }
     }
 
-    setDoneXs(xs)
+    setDoneIds(xs.map(identify))
 
     return () => {
       // tslint:disable-next-line:no-loop-statement

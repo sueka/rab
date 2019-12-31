@@ -38,7 +38,7 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, errors, addTask, chan
   const { enqueueSnackbar, closeSnackbar } = useSnackbar()
   const enqueuedSnackbarKeys = useRef<Array<OptionsObject['key']>>([])
 
-  useOnceForEachEffect(Object.entries(errors), ([errorId, error]) => {
+  useOnceForEachEffect(Object.entries(errors), ([id]) => id, ([errorId, error]) => {
     if (!(error instanceof ValidationError)) {
       return // TODO
     }
