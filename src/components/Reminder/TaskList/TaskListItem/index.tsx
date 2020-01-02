@@ -8,10 +8,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import TextField from '@material-ui/core/TextField'
 
-import DeleteTaskButton from './DeleteTaskButton'
-
 import TaskId from '~/domain/vo/TaskId'
 import Task from '~/domain/entity/Task'
+import DeleteTaskButton from './DeleteTaskButton'
 
 import classes from './classes.css'
 
