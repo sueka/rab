@@ -1,4 +1,4 @@
-export default function fromEntries<K extends string, V>(entries: Iterable<[K, V]>): Record<K, V> {
+export default function fromEntries<K extends Index, V>(entries: Iterable<[K, V]>): Record<K, V> {
   const result: Partial<Record<K, V>> = {}
 
   // tslint:disable-next-line:no-loop-statement

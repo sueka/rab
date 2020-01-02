@@ -64,7 +64,7 @@ const listOf = <T>(asT: (input: unknown) => T) => (input: unknown): T[] => {
   return input.map(asT)
 }
 
-export const recordOf = <T>(asT: (input: unknown) => T) => asObject<Record<string, T>>('a Record', (input) => Object.entries(input).map<[string, T]>(([key, value]) => [key, asT(value)]).reduce<Record<string, T>>((output, [key, value]) => ({ ...output, [key]: value }), {}))
+export const recordOf = <T>(asT: (input: unknown) => T) => asObject<Record<string, T>>('a Record', (input) => Object.entries<string, T>(input).map<[string, T]>(([key, value]) => [key, asT(value)]).reduce<Record<string, T>>((output, [key, value]) => ({ ...output, [key]: value }), {}))
 
 export function asUnionOf<T extends readonly Json[]>(...options: T): (input: unknown) => T[number]
 export function asUnionOf<T extends readonly unknown[]>(...options: T): (input: unknown) => T[number]
