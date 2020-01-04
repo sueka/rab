@@ -14,13 +14,11 @@ import DeleteTaskButton from './DeleteTaskButton'
 
 import classes from './classes.css'
 
-interface Props {
-  task: Task
+export interface Props {
+  value: Task
   index: number
 
-  changeTaskContent(taskId: TaskId, content: string): void
-  markTaskAsDone(taskId: TaskId): void
-  markTaskAsUndone(taskId: TaskId): void
+  onChange(taskId: TaskId, task: Partial<Task>): void
   deleteTask(taskId: TaskId): void
   moveTask(sourceIndex: number, targetIndex: number): void
 }
@@ -34,13 +32,13 @@ interface DragObject extends DragObjectWithType {
   index: number
 }
 
-const TaskListItem: React.FunctionComponent<Props> = ({ task, index, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => {
+const TaskListItem: React.FunctionComponent<Props> = ({ value, index, onChange, deleteTask, moveTask }) => {
   const ref = useRef(null)
 
   const [{ dragging }, drag] = useDrag<DragObject, unknown, CollectedProps>({
     item: {
       type: 'TaskListItem',
-      id: task.id,
+      id: value.id,
       index,
     },
     collect: (monitor) => ({
@@ -71,28 +69,28 @@ const TaskListItem: React.FunctionComponent<Props> = ({ task, index, changeTaskC
   }), [dragging])
 
   const handleContentChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
-    changeTaskContent(task.id, event.currentTarget.value)
-  }, [changeTaskContent])
+    onChange(value.id, {
+      content: event.currentTarget.value,
+    })
+  }, [onChange])
 
   const handleDoneChange = useCallback(() => {
-    if (task.done) {
-      markTaskAsUndone(task.id)
-    } else {
-      markTaskAsDone(task.id)
-    }
-  }, [task.done, markTaskAsUndone, markTaskAsDone])
+    onChange(value.id, {
+      done: !value.done,
+    })
+  }, [value.done, onChange])
 
   const handleDeleteTaskButtonClick = useCallback(() => {
-    deleteTask(task.id)
+    deleteTask(value.id)
   }, [deleteTask])
 
   return (
     <div ref={ ref }>
       <ListItem classes={ { container: className } }>
         <ListItemIcon>
-          <Checkbox checked={ task.done } onChange={ handleDoneChange } />
+          <Checkbox checked={ value.done } onChange={ handleDoneChange } />
         </ListItemIcon>
-        <TextField value={ task.content } onChange={ handleContentChange } disabled={ task.done } />
+        <TextField value={ value.content } onChange={ handleContentChange } disabled={ value.done } />
         <ListItemSecondaryAction>
           <DeleteTaskButton onClick={ handleDeleteTaskButtonClick } />
         </ListItemSecondaryAction>
