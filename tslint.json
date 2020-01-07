@@ -29,8 +29,6 @@
       "@material-ui/icons",
       "fp-ts/lib/Either",
       "react-hot-loader/root",
-      "react-intl/locale-data/en",
-      "react-intl/locale-data/ja",
       "redux-saga/effects",
       "~"
     ],
