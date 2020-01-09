@@ -1,7 +1,6 @@
 import yieldThis from '~/lib/extensions/Unknown/yieldThis'
 import hashCodeForBoolean from '~/lib/extensions/Boolean/hashCode'
 import hashCodeForString from '~/lib/extensions/String/hashCode'
-import { asBoundedNumber } from '~/lib/validators/numberValidators'
 import { asTaskRequest } from '~/lib/validators/serializableValidators'
 import TaskId from '~/domain/vo/TaskId'
 import Entity from './Entity'
@@ -70,8 +69,6 @@ export default class Task extends Entity {
 
   // TODO: immutable
   set content(value) {
-    asBoundedNumber({ upperBound: 140 })(value.length)
-
     this._content = value // tslint:disable-line:no-object-mutation
   }
 
