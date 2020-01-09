@@ -1,11 +1,18 @@
-import React from 'react'
+import { PrimitiveType } from 'intl-messageformat'
 
 import { AbstractError } from '~/lib/errors'
 
+/**
+ * @param key of results of defineMessages from react-intl
+ * @param values for react-intl
+ */
 export default class ValidationError extends AbstractError {
+  /**
+   * @param message as an error message
+   */
   constructor(message?: string)
-  constructor(message: string, type: string, values: Record<string, React.ReactNode>)
-  constructor(message?: string, public type?: string, public values?: Record<string, React.ReactNode>) {
+  constructor(message: string, key: string, values: Record<string, PrimitiveType>)
+  constructor(message?: string, public key?: string, public values?: Record<string, PrimitiveType>) {
     super(message)
   }
 }
