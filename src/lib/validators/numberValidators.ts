@@ -21,7 +21,7 @@ export const asBoundedNumber = ({
 
   throw new ValidationError(
     typed<[number, number, number]>`${ inputAsNumber } is not between ${ lowerBound } and ${ upperBound }.`,
-    'RangeError',
+    'asBoundedNumberErrorMessage',
     {
       input: inputAsNumber,
       lowerBound,

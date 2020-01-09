@@ -6,6 +6,7 @@ import typed from '~/lib/typed'
 import stripMargin from '~/lib/extensions/String/stripMargin'
 import trimEols from '~/lib/extensions/String/trimEols'
 import equalsJsons from '~/lib/extensions/Eq/equalsJsons'
+import { Validated } from '~/components/Reminder/TaskList/TaskListItem'
 import ValidationError from './ValidationError'
 
 /**
@@ -17,7 +18,7 @@ import ValidationError from './ValidationError'
  * @param asT {Validator}
  * @throws {never}
  */
-export const failSafe = <A extends unknown, T>(asT: (input: A) => T) => (input: A): Either<ValidationError, T> => {
+export const failSafe = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: A): Either<ValidationError, T> => {
   try {
     return right(asT(input))
   } catch (error) {
@@ -27,6 +28,44 @@ export const failSafe = <A extends unknown, T>(asT: (input: A) => T) => (input: 
 
     throw new UnreachableError
   }
+}
+
+export const validated = <A, T extends A>(asT: (input: A) => T) => (input: A): Validated<T, ValidationError> => {
+  const t = failSafe(asT)(input)
+
+  if (isRight(t)) {
+    return {
+      errors: [],
+      value: t.right,
+    }
+  } else {
+    if (t.left instanceof ValidationError) {
+      return {
+        errors: [t.left],
+        value: input as T,
+      }
+    }
+
+    throw new UnreachableError
+  }
+}
+
+export const named = <A, T extends A>(name: string, asT: (input: A) => T) => (input: A): T => {
+  const t = failSafe(asT)(input)
+
+  if (isLeft(t)) {
+    if (t.left.values === undefined) {
+      throw t.left
+    }
+
+    if (t.left.key === undefined) {
+      throw new UnreachableError
+    }
+
+    throw new ValidationError(t.left.message, t.left.key, { name, ...t.left.values })
+  }
+
+  return t.right
 }
 
 export const optional = <T>(asT: (input: unknown) => T) => (input: unknown | undefined): T | undefined => {
@@ -89,28 +128,31 @@ export function asUnionOf<T extends readonly unknown[]>(...options: T) {
  * @param className name of {T} with indefinite article
  * @param asT {ObjectTyper}
  */
-export const asObject = <T, A = any>(className: string, asT: (input: A) => T) => (input: unknown): T => { // tslint:disable-line:no-any
-  if (input == null) {
-    throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
-  }
-
-  try {
-    return asT(input as A)
-  } catch (error) {
-    if (error instanceof ValidationError) {
-      throw new ValidationError(trimEols(stripMargin(typed<[string, string, string]>`
-        |${ JSON.stringify(input) } is not ${ className }.
-        |${ error.message }
-        |`)))
+export function asObject<T extends A, A = any, B = A>(className: string, asT: (input: A) => T): (input: B) => T // tslint:disable-line:no-any
+export function asObject<T extends A, A = any>(className: string, asT: (input: A) => T): (input: unknown) => T { // tslint:disable-line:no-any
+  return (input) => {
+    if (input == null) {
+      throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
     }
 
-    if (error instanceof Error) {
-      console.error(error) // tslint:disable-line:no-console
+    try {
+      return asT(input as A)
+    } catch (error) {
+      if (error instanceof ValidationError) {
+        throw new ValidationError(trimEols(stripMargin(typed<[string, string, string]>`
+          |${ JSON.stringify(input) } is not ${ className }.
+          |${ error.message }
+          |`)))
+      }
 
-      throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is not ${ className }.`)
+      if (error instanceof Error) {
+        console.error(error) // tslint:disable-line:no-console
+
+        throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is not ${ className }.`)
+      }
+
+      throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
     }
-
-    throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
   }
 }
 

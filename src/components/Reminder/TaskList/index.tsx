@@ -2,6 +2,8 @@ import React, { useCallback } from 'react'
 
 import List from '@material-ui/core/List'
 
+import { validated, named, asBoolean } from '~/lib/validators/commonValidators'
+import { asBoundedLengthString } from '~/lib/validators/stringValidators'
 import TaskId from '~/domain/vo/TaskId'
 import Task from '~/domain/entity/Task'
 import TaskListItem, { Props as TaskListItemProps } from './TaskListItem'
@@ -15,6 +17,13 @@ export interface Props {
   deleteTask(taskId: TaskId): void
   moveTask(sourceIndex: number, targetIndex: number): void
 }
+
+const validate = (input: Task) => ({
+  content: validated(named('content', asBoundedLengthString<string>({
+    upperBound: 140,
+  })))(input.content),
+  done: validated(asBoolean)(input.done),
+})
 
 const TaskList: React.FunctionComponent<Props> = ({ tasks, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => {
   const handleTaskChange = useCallback<TaskListItemProps['onChange']>((taskId, { content, done }) => {
@@ -37,7 +46,8 @@ const TaskList: React.FunctionComponent<Props> = ({ tasks, changeTaskContent, ma
         tasks.map((task, index) => (
           <TaskListItem
             key={ task.id.value }
-            value={ task }
+            id={ task.id }
+            value={ validate(task) }
             onChange={ handleTaskChange }
             { ...{ index, deleteTask, moveTask } }
           />

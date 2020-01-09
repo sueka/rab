@@ -21,6 +21,7 @@
   "src.components.Nav.reminder": "reminder",
   "src.components.Reminder.AddTaskButton.add": "add",
   "src.components.Reminder.TaskList.TaskListItem.DeleteTaskButton.delete": "delete",
+  "src.components.Reminder.TaskList.TaskListItem.asBoundedLengthStringErrorMessage": "{name} must be 0-{upperBound} characters.",
   "src.components.Reminder.inputIsNotBetweenLowerBoundAndUpperBound": "{input} is not between {lowerBound} and {upperBound}.",
   "src.components.SetClockButton.setTheClock": "Set the clock",
   "src.lib.components.FileUpload.browse": "Browse…",
