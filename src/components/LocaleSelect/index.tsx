@@ -88,12 +88,14 @@ export /* for testing */ const LocaleSelect: React.FunctionComponent<Props> = ({
         id={ inputId }
         inputProps={ { 'data-testid': 'localeSelect' } }
         input={ {
-          standard: <Input
-            className={ inputClassName }
-            classes={ {
-              underline: inputUnderlineClassName,
-            } }
-          />,
+          standard: (
+            <Input
+              className={ inputClassName }
+              classes={ {
+                underline: inputUnderlineClassName,
+              } }
+            />
+          ),
           outlined: <OutlinedInput className={ inputClassName } labelWidth={ labelWidth } />,
           filled: <FilledInput className={ inputClassName } />,
         }[variant] }

@@ -3,7 +3,7 @@
 exports[`App at / 1`] = `
 <div>
   <header
-    class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary"
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary MuiPaper-elevation4"
   >
     <div
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
@@ -50,7 +50,7 @@ exports[`App at / 1`] = `
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
             data-testid="localeSelect"
             id="stub uuid"
           >
@@ -117,7 +117,7 @@ exports[`App at / 1`] = `
 exports[`App at /counter 1`] = `
 <div>
   <header
-    class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary"
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary MuiPaper-elevation4"
   >
     <div
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
@@ -164,7 +164,7 @@ exports[`App at /counter 1`] = `
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
             data-testid="localeSelect"
             id="stub uuid"
           >
@@ -205,7 +205,7 @@ exports[`App at /counter 1`] = `
       role="group"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
         tabindex="0"
         type="button"
       >
@@ -216,7 +216,7 @@ exports[`App at /counter 1`] = `
         </span>
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
         tabindex="0"
         type="button"
       >
@@ -227,7 +227,7 @@ exports[`App at /counter 1`] = `
         </span>
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
         tabindex="0"
         type="button"
       >
@@ -238,7 +238,7 @@ exports[`App at /counter 1`] = `
         </span>
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
         data-testid="incrementIfOddButton"
         tabindex="0"
         type="button"
@@ -250,7 +250,7 @@ exports[`App at /counter 1`] = `
         </span>
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
         data-testid="incrementAsyncButton"
         tabindex="0"
         type="button"
@@ -269,7 +269,7 @@ exports[`App at /counter 1`] = `
 exports[`App at /info 1`] = `
 <div>
   <header
-    class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary"
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary MuiPaper-elevation4"
   >
     <div
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
@@ -316,7 +316,7 @@ exports[`App at /info 1`] = `
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
             data-testid="localeSelect"
             id="stub uuid"
           >
@@ -368,7 +368,7 @@ exports[`App at /info 1`] = `
 exports[`App at /nonexistent-path 1`] = `
 <div>
   <header
-    class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary"
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary MuiPaper-elevation4"
   >
     <div
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
@@ -415,7 +415,7 @@ exports[`App at /nonexistent-path 1`] = `
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
             data-testid="localeSelect"
             id="stub uuid"
           >
@@ -452,7 +452,7 @@ exports[`App at /nonexistent-path 1`] = `
 exports[`App at /reminder 1`] = `
 <div>
   <header
-    class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary"
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary MuiPaper-elevation4"
   >
     <div
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
@@ -499,7 +499,7 @@ exports[`App at /reminder 1`] = `
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
             data-testid="localeSelect"
             id="stub uuid"
           >

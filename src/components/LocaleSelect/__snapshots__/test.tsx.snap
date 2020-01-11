@@ -16,7 +16,7 @@ exports[`LocaleSelect 1`] = `
   >
     <select
       aria-invalid="false"
-      class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect"
+      class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
       data-testid="localeSelect"
       id="stub uuid"
     >
