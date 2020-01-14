@@ -55,6 +55,7 @@
     "@types/webpack": "^4.41.2",
     "autoprefixer": "^9.7.3",
     "babel-loader": "^8.0.6",
+    "babel-plugin-react-intl-auto": "^3.1.0",
     "babel-plugin-unassert": "^3.0.1",
     "case": "^1.6.2",
     "classnames": "^2.2.6",
