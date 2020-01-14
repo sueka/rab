@@ -1,10 +1,4 @@
 module.exports = {
-  globals: {
-    'ts-jest': {
-      tsConfig: 'tsconfig.json',
-      isolatedModules: true,
-    },
-  },
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   moduleNameMapper: {
     '\\.css$': 'identity-obj-proxy',
@@ -18,13 +12,13 @@ module.exports = {
     '^react-dnd-test-backend$': 'react-dnd-test-backend/dist/cjs',
     '^react-dnd-test-utils$': 'react-dnd-test-utils/dist/cjs',
   },
+  modulePathIgnorePatterns: [
+    '^<rootDir>/src/.*\.css\.d\.ts$',
+  ],
   setupFiles: [
     '<rootDir>/src/setupTests.ts',
   ],
   testRegex: 'src/.*\\b(?:test|spec)\\.tsx?$',
-  transform: {
-    '\\.tsx?$': 'ts-jest',
-  },
   collectCoverageFrom: [
     '<rootDir>/src/**/*.ts{x,}',
     '!<rootDir>/src/components/**/messages.ts',

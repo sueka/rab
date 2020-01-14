@@ -12,11 +12,11 @@ type EmptyRecord<T> = Record<keyof T, never>
 
 type Index = keyof any // tslint:disable-line:no-any
 
-namespace Alt {
+declare namespace Alt {
   export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
   export type ForceOmit<T, K extends Index> = Omit<T, K & keyof T>
 }
 
-namespace string {
+declare namespace string {
   export type Url = string & { _urlBrand: never }
 }
