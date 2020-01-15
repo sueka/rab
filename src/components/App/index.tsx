@@ -11,11 +11,11 @@ import Route from '~/lib/components/Route'
 
 import messages from './messages'
 
-export /* for testing */ const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ '~/components/HomePage'))
-export /* for testing */ const CounterPage = React.lazy(() => import(/* webpackChunkName: "counter" */ '~/components/CounterPage'))
-export /* for testing */ const InfoPage = React.lazy(() => import(/* webpackChunkName: "info" */ '~/components/InfoPage'))
-export /* for testing */ const ReminderPage = React.lazy(() => import(/* webpackChunkName: "reminder" */ '~/components/ReminderPage'))
-export /* for testing */ const NoMatch = React.lazy(() => import(/* webpackChunkName: "noMatch" */ '~/components/NoMatch'))
+export /* for testing */ const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ './HomePage'))
+export /* for testing */ const CounterPage = React.lazy(() => import(/* webpackChunkName: "counter" */ './CounterPage'))
+export /* for testing */ const InfoPage = React.lazy(() => import(/* webpackChunkName: "info" */ './InfoPage'))
+export /* for testing */ const ReminderPage = React.lazy(() => import(/* webpackChunkName: "reminder" */ './ReminderPage'))
+export /* for testing */ const NoMatch = React.lazy(() => import(/* webpackChunkName: "noMatch" */ './NoMatch'))
 
 const App: React.FunctionComponent = () => {
   const { formatMessage } = useIntl()
