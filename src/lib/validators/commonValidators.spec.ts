@@ -28,7 +28,7 @@ describe('validators', () => {
     const asEmptyArray = asConstant([])
     const asCoins = asConstant([1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000] as const)
     const asEmptyObject = asConstant({})
-    const asObject = asConstant({ answer: 42 } as const)
+    const asSimpleObject = asConstant({ answer: 42 } as const)
 
     it('should do nothing with an OK argument', () => {
       expect(asNull(null)).toEqual(null)
@@ -41,7 +41,7 @@ describe('validators', () => {
       expect(asEmptyArray([])).toEqual([])
       expect(asCoins([1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000])).toEqual([1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000])
       expect(asEmptyObject({})).toEqual({})
-      expect(asObject({ answer: 42 })).toEqual({ answer: 42 })
+      expect(asSimpleObject({ answer: 42 })).toEqual({ answer: 42 })
     })
 
     it('should throw a ValidationError against a wrong argument', () => {
@@ -55,9 +55,9 @@ describe('validators', () => {
       expect(() => asEmptyArray('')).toThrowError(ValidationError)
       expect(() => asCoins([6, 1, 2, 3])).toThrowError(ValidationError)
       expect(() => asEmptyObject({ answer: 42 })).toThrowError(ValidationError)
-      expect(() => asObject({})).toThrowError(ValidationError)
-      expect(() => asObject({ answer: 0 })).toThrowError(ValidationError)
-      expect(() => asObject({ answer: 42, question: 'What do you get if you multiply six by nine?' })).toThrowError(ValidationError)
+      expect(() => asSimpleObject({})).toThrowError(ValidationError)
+      expect(() => asSimpleObject({ answer: 0 })).toThrowError(ValidationError)
+      expect(() => asSimpleObject({ answer: 42, question: 'What do you get if you multiply six by nine?' })).toThrowError(ValidationError)
     })
   })
 })
