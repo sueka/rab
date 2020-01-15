@@ -30,6 +30,7 @@ export const failSafe = <A extends unknown, T extends A>(asT: (input: A) => T) =
   }
 }
 
+// TODO: refactor
 export const validated = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: A): Validated<T, ValidationError> => {
   const t = failSafe(asT)(input)
 
@@ -50,6 +51,7 @@ export const validated = <A extends unknown, T extends A>(asT: (input: A) => T) 
   }
 }
 
+// TODO: refactor
 export const named = <A, T extends A>(name: string, asT: (input: A) => T) => (input: A): T => {
   const t = failSafe(asT)(input)
 
