@@ -73,9 +73,10 @@ const FileUpload: React.FunctionComponent<Props> = ({
       <Button
         className={ buttonClassName }
         onClick={ handleButtonClick }
-        children={ buttonLabel }
         { ...ButtonProps }
-      />
+      >
+        { buttonLabel }
+      </Button>
       { resultMessage }
       <input
         className={ cssClasses.Input }
