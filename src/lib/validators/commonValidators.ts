@@ -6,7 +6,6 @@ import typed from '~/lib/typed'
 import stripMargin from '~/lib/extensions/String/stripMargin'
 import trimEols from '~/lib/extensions/String/trimEols'
 import equalsJsons from '~/lib/extensions/Eq/equalsJsons'
-import { Validated } from '~/components/Reminder/TaskList/TaskListItem'
 import ValidationError from './ValidationError'
 
 /**
@@ -30,24 +29,13 @@ export const failSafe = <A extends unknown, T extends A>(asT: (input: A) => T) =
   }
 }
 
-// TODO: refactor
-export const validated = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: A): Validated<T, ValidationError> => {
+export const leftOnly = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: A): ValidationError | undefined => {
   const t = failSafe(asT)(input)
 
-  if (isRight(t)) {
-    return {
-      errors: [],
-      value: t.right,
-    }
+  if (isLeft(t)) {
+    return t.left
   } else {
-    if (t.left instanceof ValidationError) {
-      return {
-        errors: [t.left],
-        value: input as T,
-      }
-    }
-
-    throw new UnreachableError
+    return undefined
   }
 }
 
@@ -67,7 +55,7 @@ export const named = <A extends unknown, T extends A>(name: string, asT: (input:
     throw new ValidationError(t.left.message, t.left.key, { name, ...t.left.values })
   }
 
-  return t.right
+  return t.right // TODO
 }
 
 export const optional = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: A | undefined): T | undefined => {

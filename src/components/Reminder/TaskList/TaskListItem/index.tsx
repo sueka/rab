@@ -19,23 +19,15 @@ import DeleteTaskButton from './DeleteTaskButton'
 import classes from './classes.css'
 import messages from './messages'
 
-// TODO: remove
-export type Validated<T, E extends Error = Error> = {
-  value: T
-  errors: E[]
-}
-
 export interface Props {
   id: TaskId
-  value: {
-    content: Validated<Task['content'], ValidationError>
-    done: Validated<Task['done'], ValidationError>
-  }
+  value: Pick<Task, 'content' | 'done'>
   index: number
 
   onChange(taskId: TaskId, task: Partial<Task>): void
   deleteTask(taskId: TaskId): void
   moveTask(sourceIndex: number, targetIndex: number): void
+  validate(input: Pick<Task, 'content' | 'done'>): Partial<Record<'content' | 'done', ValidationError>>
 }
 
 interface CollectedProps {
@@ -47,7 +39,7 @@ interface DragObject extends DragObjectWithType {
   index: number
 }
 
-const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChange, deleteTask, moveTask }) => {
+const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChange, deleteTask, moveTask, validate }) => {
   const ref = useRef(null)
 
   const [{ dragging }, drag] = useDrag<DragObject, unknown, CollectedProps>({
@@ -101,27 +93,31 @@ const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChan
 
   const { formatMessage } = useIntl()
 
-  const helperText = useMemo(() => {
-    return value.content.errors.map((error) => {
-      if (isOneOf(...Object.keys(messages))(error?.key)) {
-        return Case.sentence(formatMessage(messages[error.key], error.values))
-      }
+  const errors = useMemo(() => validate(value), [value, validate])
 
-      return null // TODO
-    })
-  }, [value.content.errors])
+  const helperText = useMemo(() => {
+    if (errors.content === undefined) {
+      return null
+    }
+
+    if (isOneOf(...Object.keys(messages))(errors.content.key)) {
+      return Case.sentence(formatMessage(messages[errors.content.key], errors.content.values))
+    }
+
+    return null // TODO
+  }, [errors.content])
 
   return (
     <div ref={ ref }>
       <ListItem classes={ { container: className } }>
         <ListItemIcon>
-          <Checkbox checked={ value.done.value } onChange={ handleDoneChange } />
+          <Checkbox checked={ value.done } onChange={ handleDoneChange } />
         </ListItemIcon>
         <TextField
-          value={ value.content.value }
+          value={ value.content }
           onChange={ handleContentChange }
-          disabled={ value.done.value }
-          error={ value.content.errors.length !== 0 }
+          disabled={ value.done }
+          error={ errors.content !== undefined }
           helperText={ helperText }
         />
         <ListItemSecondaryAction>
