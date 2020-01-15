@@ -52,7 +52,7 @@ export const validated = <A extends unknown, T extends A>(asT: (input: A) => T) 
 }
 
 // TODO: refactor
-export const named = <A, T extends A>(name: string, asT: (input: A) => T) => (input: A): T => {
+export const named = <A extends unknown, T extends A>(name: string, asT: (input: A) => T) => (input: A): T => {
   const t = failSafe(asT)(input)
 
   if (isLeft(t)) {
@@ -70,7 +70,7 @@ export const named = <A, T extends A>(name: string, asT: (input: A) => T) => (in
   return t.right
 }
 
-export const optional = <T>(asT: (input: unknown) => T) => (input: unknown | undefined): T | undefined => {
+export const optional = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: A | undefined): T | undefined => {
   if (input === undefined) {
     return
   }
@@ -78,7 +78,7 @@ export const optional = <T>(asT: (input: unknown) => T) => (input: unknown | und
   return asT(input)
 }
 
-export const unionOf = <T, U>(asT: (input: unknown) => T, asU: (input: unknown) => U) => (input: unknown): T | U => {
+export const unionOf = <A extends unknown, T extends A, U extends A>(asT: (input: A) => T, asU: (input: A) => U) => (input: A): T | U => {
   const t = failSafe(asT)(input)
   const u = failSafe(asU)(input)
 
@@ -97,7 +97,7 @@ export const unionOf = <T, U>(asT: (input: unknown) => T, asU: (input: unknown) 
   throw new UnreachableError
 }
 
-const listOf = <T>(asT: (input: unknown) => T) => (input: unknown): T[] => {
+const listOf = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: readonly A[]): T[] => {
   if (!Array.isArray(input)) {
     throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an array.`)
   }
@@ -105,7 +105,7 @@ const listOf = <T>(asT: (input: unknown) => T) => (input: unknown): T[] => {
   return input.map(asT)
 }
 
-export const recordOf = <T>(asT: (input: unknown) => T) => asObject<Record<string, T>>('a Record', (input) => Object.entries<string, T>(input).map<[string, T]>(([key, value]) => [key, asT(value)]).reduce<Record<string, T>>((output, [key, value]) => ({ ...output, [key]: value }), {}))
+export const recordOf = <A extends unknown, T extends A>(asT: (input: A) => T) => asObject<Record<string, T>>('a Record', (input) => Object.entries<string, A>(input).map<[string, T]>(([key, value]) => [key, asT(value)]).reduce<Record<string, T>>((output, [key, value]) => ({ ...output, [key]: value }), {}))
 
 export function asUnionOf<T extends readonly Json[]>(...options: T): (input: unknown) => T[number]
 export function asUnionOf<T extends readonly unknown[]>(...options: T): (input: unknown) => T[number]
@@ -130,15 +130,14 @@ export function asUnionOf<T extends readonly unknown[]>(...options: T) {
  * @param className name of {T} with indefinite article
  * @param asT {ObjectTyper}
  */
-export function asObject<T extends A, A = any, B = A>(className: string, asT: (input: A) => T): (input: B) => T // tslint:disable-line:no-any
-export function asObject<T extends A, A = any>(className: string, asT: (input: A) => T): (input: unknown) => T { // tslint:disable-line:no-any
+export function asObject<T>(className: string, asT: (input: any) => T): (input: unknown) => T { // tslint:disable-line:no-any
   return (input) => {
     if (input == null) {
       throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
     }
 
     try {
-      return asT(input as A)
+      return asT(input)
     } catch (error) {
       if (error instanceof ValidationError) {
         throw new ValidationError(trimEols(stripMargin(typed<[string, string, string]>`

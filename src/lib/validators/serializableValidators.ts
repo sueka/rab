@@ -12,7 +12,7 @@ function asId(input: unknown): Id {
   return input
 }
 
-export const asTaskRequest = asObject<TaskRequest>('a Task', (input) => ({
+export const asTaskRequest = asObject<TaskRequest>('a TaskRequest', (input) => ({
   id: asId(input.id),
   content: optional(asString)(input.content),
   done: optional(asBoolean)(input.done),

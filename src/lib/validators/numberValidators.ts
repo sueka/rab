@@ -10,7 +10,7 @@ export const asBoundedNumber = ({
 }: {
   lowerBound?: number,
   upperBound?: number
-}) => (input: Json) => {
+}) => (input: unknown) => {
   assert(lowerBound <= upperBound)
 
   const inputAsNumber = asNumber(input)

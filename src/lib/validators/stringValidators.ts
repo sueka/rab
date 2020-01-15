@@ -4,13 +4,13 @@ import typed from '~/lib/typed'
 import ValidationError from './ValidationError'
 import { asString } from './commonValidators'
 
-export const asBoundedLengthString = <T>({
+export const asBoundedLengthString = ({
   lowerBound = -Infinity,
   upperBound = Infinity,
 }: {
   lowerBound?: number
   upperBound?: number
-}) => (input: T) => {
+}) => (input: unknown) => {
   assert(lowerBound <= upperBound)
 
   const inputAsString = asString(input)

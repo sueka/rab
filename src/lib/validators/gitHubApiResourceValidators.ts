@@ -1,6 +1,6 @@
 import { optional, asObject, asString } from './commonValidators'
 
-export function asGetRepoResponse(input: Json): GitHubApiResource.GetRepoResponse {
+export function asGetRepoResponse(input: unknown): GitHubApiResource.GetRepoResponse {
   return asRepository(input)
 }
 
