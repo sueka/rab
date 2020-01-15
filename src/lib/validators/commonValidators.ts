@@ -30,7 +30,7 @@ export const failSafe = <A extends unknown, T extends A>(asT: (input: A) => T) =
   }
 }
 
-export const validated = <A, T extends A>(asT: (input: A) => T) => (input: A): Validated<T, ValidationError> => {
+export const validated = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: A): Validated<T, ValidationError> => {
   const t = failSafe(asT)(input)
 
   if (isRight(t)) {
