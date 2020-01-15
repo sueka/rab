@@ -118,30 +118,28 @@ export function asUnionOf<T extends readonly unknown[]>(...options: T) {
  * @param className name of {T} with indefinite article
  * @param asT {ObjectTyper}
  */
-export function asObject<T>(className: string, asT: (input: any) => T): (input: unknown) => T { // tslint:disable-line:no-any
-  return (input) => {
-    if (input == null) {
-      throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
+export const asObject = <T>(className: string, asT: (input: any) => T) => (input: unknown): T => {
+  if (input == null) {
+    throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
+  }
+
+  try {
+    return asT(input)
+  } catch (error) {
+    if (error instanceof ValidationError) {
+      throw new ValidationError(trimEols(stripMargin(typed<[string, string, string]>`
+        |${ JSON.stringify(input) } is not ${ className }.
+        |${ error.message }
+        |`)))
     }
 
-    try {
-      return asT(input)
-    } catch (error) {
-      if (error instanceof ValidationError) {
-        throw new ValidationError(trimEols(stripMargin(typed<[string, string, string]>`
-          |${ JSON.stringify(input) } is not ${ className }.
-          |${ error.message }
-          |`)))
-      }
+    if (error instanceof Error) {
+      console.error(error) // tslint:disable-line:no-console
 
-      if (error instanceof Error) {
-        console.error(error) // tslint:disable-line:no-console
-
-        throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is not ${ className }.`)
-      }
-
-      throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
+      throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is not ${ className }.`)
     }
+
+    throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
   }
 }
 
