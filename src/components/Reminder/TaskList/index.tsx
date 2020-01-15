@@ -18,7 +18,7 @@ export interface Props {
   moveTask(sourceIndex: number, targetIndex: number): void
 }
 
-const validate = asObject('a validated Task', (input) => ({
+const validate = asObject('a Task for presentation', (input) => ({
   content: validated(named('content', asBoundedLengthString({
     upperBound: 140,
   })))(input.content),
