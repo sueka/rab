@@ -118,7 +118,7 @@ export function asUnionOf<T extends readonly unknown[]>(...options: T) {
  * @param className name of {T} with indefinite article
  * @param asT {ObjectTyper}
  */
-export const asObject = <T>(className: string, asT: (input: any) => T) => (input: unknown): T => {
+export const asObject = <T>(className: string, asT: (input: any) => T) => (input: unknown): T => { // tslint:disable-line:no-any
   if (input == null) {
     throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
   }
