@@ -43,12 +43,6 @@ interface Props extends Alt.Omit<RouteProps, 'render' | 'component' | 'children'
   helmetProps?: HelmetProps
 }
 
-const defaultProps: Pick<Props, 'exact' | 'strict' | 'sensitive'> = {
-  exact: true,
-  strict: true,
-  sensitive: true,
-}
-
 const Route: React.FunctionComponent<Props> = ({ component, helmetProps, ...restProps }) => {
   if (component === undefined) {
     return <OriginalRoute { ...restProps } />
@@ -68,8 +62,5 @@ const Route: React.FunctionComponent<Props> = ({ component, helmetProps, ...rest
     }
   }
 }
-
-// tslint:disable-next-line:no-object-mutation
-Route.defaultProps = defaultProps
 
 export default Route

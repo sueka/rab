@@ -29,10 +29,10 @@ const App: React.FunctionComponent = () => {
       />
       <Nav />
       <Switch>
-        <Route path="/" component={ HomePage } helmetProps={ { title: formatMessage(messages.home) } } />
-        <Route path="/counter" component={ CounterPage } helmetProps={ { title: formatMessage(messages.counter) } } />
-        <Route path="/info" component={ InfoPage } helmetProps={ { title: formatMessage(messages.info) } } />
-        <Route path="/reminder" component={ ReminderPage } helmetProps={ { title: formatMessage(messages.reminder) } } />
+        <Route exact strict sensitive path="/" component={ HomePage } helmetProps={ { title: formatMessage(messages.home) } } />
+        <Route exact strict sensitive path="/counter" component={ CounterPage } helmetProps={ { title: formatMessage(messages.counter) } } />
+        <Route exact strict sensitive path="/info" component={ InfoPage } helmetProps={ { title: formatMessage(messages.info) } } />
+        <Route exact strict sensitive path="/reminder" component={ ReminderPage } helmetProps={ { title: formatMessage(messages.reminder) } } />
         <Route path="*" component={ NoMatch } />
       </Switch>
     </>
