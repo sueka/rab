@@ -46,7 +46,7 @@ describe('ErrorBoundary', () => {
   test('with a non-error throwing', () => {
     expect(() => {
       render(
-      <ErrorBoundary renderError={ renderError }>
+        <ErrorBoundary renderError={ renderError }>
           <NonErrorThrowing />
         </ErrorBoundary>
       )
