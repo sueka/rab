@@ -7,7 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import typed from '~/lib/typed'
 import ErrorBoundary from '~/lib/components/ErrorBoundary'
 
-const withErrorBoundary: (Component: React.ComponentType<RouteComponentProps> | React.ComponentType<unknown>) => React.ComponentType<RouteComponentProps> = (Component) => (props) => {
+const withErrorBoundary: (Component: React.ComponentType<RouteComponentProps>) => React.ComponentType<RouteComponentProps> = (Component) => (props) => {
   const renderError = useCallback((error: unknown) => {
     if (error instanceof Error) {
       return typed<[string]>`${ String(error) }`
@@ -23,7 +23,7 @@ const withErrorBoundary: (Component: React.ComponentType<RouteComponentProps> | 
   )
 }
 
-const withSuspense: (Component: React.LazyExoticComponent<React.ComponentType<RouteComponentProps> | React.ComponentType<unknown>>) => React.ComponentType<RouteComponentProps> = (Component) => (props) => (
+const withSuspense: (Component: React.LazyExoticComponent<React.ComponentType<RouteComponentProps>>) => React.ComponentType<RouteComponentProps> = (Component) => (props) => (
   <React.Suspense fallback={ <CircularProgress /> }>
     <Component { ...props } />
   </React.Suspense>
