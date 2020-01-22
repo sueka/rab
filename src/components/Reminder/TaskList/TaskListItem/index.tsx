@@ -117,6 +117,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChan
           <Checkbox checked={ value.done } onChange={ handleDoneChange } />
         </ListItemIcon>
         <TextField
+          fullWidth
           value={ value.content }
           onChange={ handleContentChange }
           disabled={ value.done }
