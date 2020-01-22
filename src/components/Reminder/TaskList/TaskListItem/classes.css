@@ -1,3 +1,7 @@
 .TaskListItemContainer.Dragging {
   opacity: 0;
 }
+
+.ListItemSecondaryAction {
+  padding-right: 72px; /* TODO */
+}

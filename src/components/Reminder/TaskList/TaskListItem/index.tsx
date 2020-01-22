@@ -109,7 +109,10 @@ const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChan
 
   return (
     <div ref={ ref }>
-      <ListItem classes={ { container: className } }>
+      <ListItem classes={ {
+        container: className,
+        secondaryAction: classes.ListItemSecondaryAction,
+      } }>
         <ListItemIcon>
           <Checkbox checked={ value.done } onChange={ handleDoneChange } />
         </ListItemIcon>
