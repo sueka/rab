@@ -8,12 +8,10 @@ jobs:
     env:
       CI: true
       NODE_ENV: production
+      GITHUB_API_URL: https://api.github.com
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Ensure .env
-        run: |
-          ln -s .env.example .env
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
@@ -28,12 +26,10 @@ jobs:
     env:
       NODE_ENV: test
       TZ: Asia/Tokyo # for snapshots
+      GITHUB_API_URL: https://api.github.com
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Ensure .env
-        run: |
-          ln -s .env.example .env
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}

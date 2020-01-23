@@ -1,6 +1,9 @@
 [build]
-  command = "ln -s .env.example .env && npm run build"
+  command = "npm run build"
   publish = "dist/"
+
+[build.environment]
+  GITHUB_API_URL = "https://api.github.com"
 
 [[redirects]]
   from = "/*"
