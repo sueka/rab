@@ -7,7 +7,7 @@ import IntlProvider, { OwnProps, StateProps } from '~/lib/components/IntlProvide
 const mapStateToProps = ({ localeSelector: { locale, formats, messages } }: State, {}: React.PropsWithChildren<OwnProps>): StateProps => ({
   locale,
   formats,
-  messages: messages ?? undefined,
+  messages,
 })
 
 export default connect(mapStateToProps)(IntlProvider)

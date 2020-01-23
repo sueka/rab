@@ -12,6 +12,7 @@ import { State } from '~/redux'
 import IntlProvider from '~/components/IntlProvider'
 import App, { HomePage, CounterPage, InfoPage, ReminderPage } from '.'
 import formats from '../../../public/formats/en.json' // tslint:disable-line:no-relative-imports
+import messages from '../../../public/messages/en.json' // tslint:disable-line:no-relative-imports
 
 // NOTE: connected-react-router ではないので router state は不要。
 const store = createMockStore<Alt.Omit<State, 'router'>>()({
@@ -33,7 +34,7 @@ const store = createMockStore<Alt.Omit<State, 'router'>>()({
     ],
     locale: 'en',
     formats,
-    messages: {},
+    messages,
     errors: [],
   },
   reminder: {
