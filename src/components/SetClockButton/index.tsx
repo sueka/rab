@@ -13,7 +13,7 @@ interface DispatchProps {
 }
 
 type Props =
-  | DispatchProps
+  & DispatchProps
 
 const SetClockButton: React.FunctionComponent<Props> = ({ updateNow }) => (
   <Button onClick={ updateNow }>
