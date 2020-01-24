@@ -76,7 +76,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChan
 
   const handleContentChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     onChange({
-      content: event.currentTarget.value,
+      content: event.target.value,
     })
   }, [onChange])
 
