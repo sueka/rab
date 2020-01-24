@@ -27,7 +27,7 @@ const validate = asObject('a Task for presentation', (input) => ({
 }))
 
 const TaskList: React.FunctionComponent<Props> = ({ tasks, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => {
-  const handleTaskChange = useCallback((taskId, { content, done }) => {
+  const changeTask = useCallback((taskId, { content, done }) => {
     if (content !== undefined) {
       changeTaskContent(taskId, content)
     }
@@ -50,7 +50,7 @@ const TaskList: React.FunctionComponent<Props> = ({ tasks, changeTaskContent, ma
             id={ task.id }
             value={ task }
             validate={ validate }
-            onChange={ curry(handleTaskChange)(task.id) }
+            onChange={ curry(changeTask)(task.id) }
             onDelete={ curry(deleteTask)(task.id) }
             { ...{ index, moveTask } }
           />
