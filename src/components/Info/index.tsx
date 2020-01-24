@@ -1,14 +1,13 @@
+import assert from 'assert'
+import { Either, isLeft, isRight, left, right } from 'fp-ts/lib/Either'
+import { resolve } from 'inversify-react'
 import React from 'react'
 import { FormattedMessage, WrappedComponentProps, injectIntl } from 'react-intl'
-import assert from 'assert'
-import { Either, left, right, isLeft, isRight } from 'fp-ts/lib/Either'
-import { resolve } from 'inversify-react'
 
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
 import GetRepo from '~/useCase/GetRepo'
-
 import messages from './messages'
 
 type Props =

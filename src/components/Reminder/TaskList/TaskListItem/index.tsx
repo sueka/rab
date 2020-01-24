@@ -1,8 +1,8 @@
-import React, { useRef, useMemo, useCallback } from 'react'
+import Case from 'case'
+import classnames from 'classnames'
+import React, { useCallback, useMemo, useRef } from 'react'
 import { DragObjectWithType, useDrag, useDrop } from 'react-dnd'
 import { useIntl } from 'react-intl'
-import classnames from 'classnames'
-import Case from 'case'
 
 import Checkbox from '@material-ui/core/Checkbox'
 import ListItem from '@material-ui/core/ListItem'
@@ -10,12 +10,11 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import TextField from '@material-ui/core/TextField'
 
+import Task from '~/domain/entity/Task'
+import TaskId from '~/domain/vo/TaskId'
 import { isOneOf } from '~/lib/guards/commonGuards'
 import ValidationError from '~/lib/validators/ValidationError'
-import TaskId from '~/domain/vo/TaskId'
-import Task from '~/domain/entity/Task'
 import DeleteTaskButton from './DeleteTaskButton'
-
 import classes from './classes.css'
 import messages from './messages'
 

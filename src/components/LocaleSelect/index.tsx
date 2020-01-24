@@ -1,21 +1,20 @@
-import React, { useState, useMemo, useCallback } from 'react'
-import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
 import classnames from 'classnames'
+import React, { useCallback, useMemo, useState } from 'react'
+import { FormattedMessage } from 'react-intl'
+import { connect } from 'react-redux'
 import { v4 } from 'uuid'
 
-import { useTheme } from '@material-ui/core/styles'
+import FilledInput from '@material-ui/core/FilledInput'
 import FormControl, { FormControlProps } from '@material-ui/core/FormControl'
 import Input from '@material-ui/core/Input'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
-import FilledInput from '@material-ui/core/FilledInput'
 import InputLabel from '@material-ui/core/InputLabel'
+import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Select, { SelectProps } from '@material-ui/core/Select'
+import { useTheme } from '@material-ui/core/styles'
 
-import { Tag, isTag, getNativeNameByTag } from '~/lib/languageNameSolver'
+import { Tag, getNativeNameByTag, isTag } from '~/lib/languageNameSolver'
 import { State } from '~/redux'
 import { selectLocale } from '~/redux/modules/localeSelector'
-
 import messages from './messages'
 
 interface OwnProps {

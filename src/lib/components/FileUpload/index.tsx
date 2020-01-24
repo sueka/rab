@@ -1,6 +1,6 @@
-import React, { useMemo, useState, useCallback, useRef } from 'react'
-import { FormattedMessage } from 'react-intl'
 import classnames from 'classnames'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
+import { FormattedMessage } from 'react-intl'
 
 import Button, { ButtonProps } from '@material-ui/core/Button'
 

@@ -1,5 +1,5 @@
-import TaskId from '~/domain/vo/TaskId'
 import Task from '~/domain/entity/Task'
+import TaskId from '~/domain/vo/TaskId'
 
 export default interface TaskRepository {
   /**

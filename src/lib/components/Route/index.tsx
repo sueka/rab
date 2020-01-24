@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react'
-import { Route as OriginalRoute, RouteProps, RouteComponentProps } from 'react-router'
 import Helmet, { HelmetProps } from 'react-helmet'
+import { Route as OriginalRoute, RouteComponentProps, RouteProps } from 'react-router'
 
 import CircularProgress from '@material-ui/core/CircularProgress'
 
-import typed from '~/lib/typed'
 import ErrorBoundary from '~/lib/components/ErrorBoundary'
+import typed from '~/lib/typed'
 
 const withErrorBoundary: (Component: React.ComponentType<RouteComponentProps>) => React.ComponentType<RouteComponentProps> = (Component) => (props) => {
   const renderError = useCallback((error: unknown) => {

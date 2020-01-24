@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormattedTime, CustomFormatConfig } from 'react-intl'
+import { CustomFormatConfig, FormattedTime } from 'react-intl'
 
 type Props =
   & Alt.Omit<Intl.DateTimeFormatOptions, /* 'dateStyle' |  */'weekday' | 'era' | 'year' | 'month' | 'day'>

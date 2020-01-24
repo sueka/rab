@@ -1,11 +1,10 @@
 import { call, put, select } from 'redux-saga/effects'
 
+import container from '~/container.dev'
 import delay from '~/lib/delay'
 import prsg from '~/lib/prsg'
 import typed from '~/lib/typed'
-import container from '~/container.dev'
-
-import { RESET, INCREMENT_IF_ODD, INCREMENT_ASYNC, INCREMENT, DECREMENT, CounterState, reset, incrementIfOdd, incrementAsync, increment, decrement, selectCount, CounterService, createCounterReducer } from './counter'
+import { CounterService, CounterState, DECREMENT, INCREMENT, INCREMENT_ASYNC, INCREMENT_IF_ODD, RESET, createCounterReducer, decrement, increment, incrementAsync, incrementIfOdd, reset, selectCount } from './counter'
 
 describe('action creators', () => {
   describe('reset', () => {

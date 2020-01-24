@@ -1,8 +1,8 @@
 import { injectable } from 'inversify'
 
-import TaskId from '~/domain/vo/TaskId'
 import Task from '~/domain/entity/Task'
 import TaskRepository from '~/domain/repository/TaskRepository'
+import TaskId from '~/domain/vo/TaskId'
 
 @injectable()
 export default class TaskRepositoryFakeImpl implements TaskRepository {

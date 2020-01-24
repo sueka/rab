@@ -3,10 +3,9 @@ import { FormattedMessage,  FormattedNumber } from 'react-intl'
 
 import Typography from '@material-ui/core/Typography'
 
-import Today from '~/components/Today'
 import CurrentTimeOfDay from '~/components/CurrentTimeOfDay'
 import SetClockButton from '~/components/SetClockButton'
-
+import Today from '~/components/Today'
 import messages from './messages'
 
 const HomePage: React.FunctionComponent = () => (

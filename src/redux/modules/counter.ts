@@ -1,7 +1,7 @@
+import { injectable } from 'inversify'
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
-import { call, select, put } from 'redux-saga/effects'
-import { injectable } from 'inversify'
+import { call, put, select } from 'redux-saga/effects'
 
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
 import delay from '~/lib/delay'

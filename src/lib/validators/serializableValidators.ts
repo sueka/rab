@@ -1,8 +1,8 @@
-import typed from '~/lib/typed'
-import Id from '~/domain/vo/Id'
 import { TaskRequest } from '~/domain/entity/Task'
+import Id from '~/domain/vo/Id'
+import typed from '~/lib/typed'
 import ValidationError from './ValidationError'
-import { optional, asObject, asBoolean, asString } from './commonValidators'
+import { asBoolean, asObject, asString, optional } from './commonValidators'
 
 function asId(input: unknown): Id {
   if (!(input instanceof Id)) {

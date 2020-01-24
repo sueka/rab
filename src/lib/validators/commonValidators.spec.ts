@@ -1,5 +1,5 @@
 import ValidationError from './ValidationError'
-import { asUnionOf, asConstant, asBoolean, asNumber, asString } from './commonValidators'
+import { asBoolean, asConstant, asNumber, asString, asUnionOf } from './commonValidators'
 
 describe('validators', () => {
   describe('asUnionOf', () => {

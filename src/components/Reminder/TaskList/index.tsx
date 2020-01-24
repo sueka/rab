@@ -2,10 +2,10 @@ import React, { useCallback } from 'react'
 
 import List from '@material-ui/core/List'
 
-import { leftOnly, named, asBoolean, asObject } from '~/lib/validators/commonValidators'
-import { asBoundedLengthString } from '~/lib/validators/stringValidators'
-import TaskId from '~/domain/vo/TaskId'
 import Task from '~/domain/entity/Task'
+import TaskId from '~/domain/vo/TaskId'
+import { asBoolean, asObject, leftOnly, named } from '~/lib/validators/commonValidators'
+import { asBoundedLengthString } from '~/lib/validators/stringValidators'
 import TaskListItem, { Props as TaskListItemProps } from './TaskListItem'
 
 export interface Props {

@@ -1,10 +1,10 @@
+import { injectable } from 'inversify'
 import { Action, Reducer } from 'redux'
 import { SagaIterator, Task } from 'redux-saga'
-import { ForkEffect, put, call, cancel } from 'redux-saga/effects'
-import { injectable } from 'inversify'
+import { ForkEffect, call, cancel, put } from 'redux-saga/effects'
 
-import delay from '~/lib/delay'
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
+import delay from '~/lib/delay'
 
 //
 //             _|                  _|

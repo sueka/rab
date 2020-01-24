@@ -5,8 +5,8 @@
 import * as pathToRegexp from 'path-to-regexp'
 
 import UrlOrPathAbempty from './UrlOrPathAbempty'
-import typed from './typed'
 import mapValues from './extensions/Record/mapValues'
+import typed from './typed'
 
 type Method = 'GET' | 'POST'
 

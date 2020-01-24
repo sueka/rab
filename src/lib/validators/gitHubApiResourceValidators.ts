@@ -1,4 +1,4 @@
-import { optional, asObject, asString } from './commonValidators'
+import { asObject, asString, optional } from './commonValidators'
 
 export function asGetRepoResponse(input: unknown): GitHubApiResource.GetRepoResponse {
   return asRepository(input)

@@ -3,8 +3,8 @@ import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-d
 
 import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link'
 
+import { isOneOf, optional } from '~/lib/guards/commonGuards'
 import typed from '~/lib/typed'
-import { optional, isOneOf } from '~/lib/guards/commonGuards'
 
 export type Props =
   & RouterLinkProps

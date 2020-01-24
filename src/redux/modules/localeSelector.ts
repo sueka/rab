@@ -1,13 +1,13 @@
+import { injectable } from 'inversify'
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
-import { injectable } from 'inversify'
 
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
-import typed from '~/lib/typed'
-import { Tag } from '~/lib/languageNameSolver'
 import fetch from '~/lib/fetch'
-import { recordOf, asString } from '~/lib/validators/commonValidators'
+import { Tag } from '~/lib/languageNameSolver'
+import typed from '~/lib/typed'
+import { asString, recordOf } from '~/lib/validators/commonValidators'
 import { asFormats } from '~/lib/validators/intlValidators'
 
 //

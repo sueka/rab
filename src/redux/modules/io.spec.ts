@@ -1,12 +1,11 @@
-import { PutEffect, put, call, cancel } from 'redux-saga/effects'
+import { PutEffect, call, cancel, put } from 'redux-saga/effects'
 
+import container from '~/container.dev'
+import { takeEvery } from '~/lib/boni/redux-saga/effects'
 import delay from '~/lib/delay'
 import prsg from '~/lib/prsg'
 import typed from '~/lib/typed'
-import { takeEvery } from '~/lib/boni/redux-saga/effects'
-import container from '~/container.dev'
-
-import { UPDATE_NOW, START_CLOCK, SET_NOW, IoState, SetNowAction, updateNow, /* startClock, stopClock,  */setNow, IoService, createIoReducer } from './io'
+import { IoService, IoState, SET_NOW, START_CLOCK, SetNowAction, UPDATE_NOW, createIoReducer, setNow, /* startClock, stopClock,  */updateNow } from './io'
 
 describe('action creators', () => {
   describe('updateNow', () => {

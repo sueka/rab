@@ -1,17 +1,16 @@
-import React, { useState, useCallback } from 'react'
-import { FormattedMessage } from 'react-intl'
 // import classnames from 'classnames'
-// import { createStyles, makeStyles } from '@material-ui/core/styles'
+import React, { useCallback, useState } from 'react'
+import { FormattedMessage } from 'react-intl'
 
 import AppBar from '@material-ui/core/AppBar'
 import IconButton from '@material-ui/core/IconButton'
 import Menu from '@material-ui/core/Menu'
 import Toolbar from '@material-ui/core/Toolbar'
+// import { createStyles, makeStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 
-import MenuItemLink from '~/lib/components/MenuItemLink'
 import LocaleSelect from '~/components/LocaleSelect' // TODO
-
+import MenuItemLink from '~/lib/components/MenuItemLink'
 import classes from './classes.css'
 import messages from './messages'
 

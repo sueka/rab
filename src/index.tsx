@@ -1,28 +1,25 @@
-import 'reflect-metadata'
-
-import React, { useMemo, useCallback } from 'react'
-import ReactDOM from 'react-dom'
-import { Saga } from 'redux-saga'
-import { History, createBrowserHistory } from 'history'
 import { ConnectedRouter } from 'connected-react-router'
-import { DndProvider } from 'react-dnd'
-import HTML5Backend from 'react-dnd-html5-backend'
+import { History, createBrowserHistory } from 'history'
 import { Container } from 'inversify'
 import { Provider as ServiceProdiver } from 'inversify-react'
+import { SnackbarProvider } from 'notistack'
+import React, { useCallback, useMemo } from 'react'
+import { DndProvider } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
+import ReactDOM from 'react-dom'
+import { Saga } from 'redux-saga'
+import 'reflect-metadata'
 
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { SnackbarProvider } from 'notistack'
-
-import './types/globalTypes'
-
-import typed from './lib/typed'
-import { Service, State, createReducer } from './redux'
-import createProvider from './createProvider'
-import configureTheme from './configureTheme'
 
 import App from './components/App'
 import IntlProvider from './components/IntlProvider'
+import configureTheme from './configureTheme'
+import createProvider from './createProvider'
+import typed from './lib/typed'
+import { Service, State, createReducer } from './redux'
+import './types/globalTypes'
 
 import formats from '../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../public/messages/en.json' // tslint:disable-line:no-relative-imports

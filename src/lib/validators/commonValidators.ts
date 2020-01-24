@@ -1,11 +1,11 @@
-import { Either, left, right, isLeft, isRight } from 'fp-ts/lib/Either'
+import { Either, isLeft, isRight, left, right } from 'fp-ts/lib/Either'
 
 import { UnreachableError } from '~/lib/errors'
+import equalsJsons from '~/lib/extensions/Eq/equalsJsons'
 import conj from '~/lib/extensions/String/conj'
-import typed from '~/lib/typed'
 import stripMargin from '~/lib/extensions/String/stripMargin'
 import trimEols from '~/lib/extensions/String/trimEols'
-import equalsJsons from '~/lib/extensions/Eq/equalsJsons'
+import typed from '~/lib/typed'
 import ValidationError from './ValidationError'
 
 /**

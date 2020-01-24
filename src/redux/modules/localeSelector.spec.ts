@@ -1,11 +1,10 @@
 import { call, put } from 'redux-saga/effects'
 
+import container from '~/container.dev'
 import fetch from '~/lib/fetch'
 import prsg from '~/lib/prsg'
 import typed from '~/lib/typed'
-import container from '~/container.dev'
-
-import { SELECT_LOCALE, SET_LOCALE, SET_FORMATS, SET_MESSAGES, PUSH_ERROR, LocaleSelectorState, selectLocale, setLocale, setFormats, setMessages, pushError, LocaleSelectorService, createLocaleSelectorReducer } from './localeSelector'
+import { LocaleSelectorService, LocaleSelectorState, PUSH_ERROR, SELECT_LOCALE, SET_FORMATS, SET_LOCALE, SET_MESSAGES, createLocaleSelectorReducer, pushError, selectLocale, setFormats, setLocale, setMessages } from './localeSelector'
 
 describe('action creators', () => {
   describe('selectLocale', () => {

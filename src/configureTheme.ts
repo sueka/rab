@@ -1,6 +1,6 @@
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
-import teal from '@material-ui/core/colors/teal'
 import indigo from '@material-ui/core/colors/indigo'
+import teal from '@material-ui/core/colors/teal'
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 
 interface Props {
   dark: boolean

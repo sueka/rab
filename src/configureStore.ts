@@ -1,8 +1,8 @@
-import { Action, Reducer, Store, applyMiddleware, createStore, compose } from 'redux'
-import createSagaMiddleware, { SagaMiddleware, SagaMiddlewareOptions } from 'redux-saga'
-import { History } from 'history'
 import { routerMiddleware } from 'connected-react-router'
+import { History } from 'history'
+import { Action, Reducer, Store, applyMiddleware, compose, createStore } from 'redux'
 import { createLogger } from 'redux-logger'
+import createSagaMiddleware, { SagaMiddleware, SagaMiddlewareOptions } from 'redux-saga'
 
 const logger = createLogger({
   diff: true,

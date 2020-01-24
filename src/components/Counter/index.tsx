@@ -1,14 +1,13 @@
 import React, { useCallback } from 'react'
-import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
+import { connect } from 'react-redux'
 
 import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Typography from '@material-ui/core/Typography'
 
 import { State } from '~/redux'
-import { reset, increment, decrement, incrementIfOdd, incrementAsync } from '~/redux/modules/counter'
-
+import { decrement, increment, incrementAsync, incrementIfOdd, reset } from '~/redux/modules/counter'
 import messages from './messages'
 
 interface StateProps {

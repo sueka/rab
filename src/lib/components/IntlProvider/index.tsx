@@ -1,5 +1,5 @@
 import React from 'react'
-import { IntlProvider as OriginalIntlProvider, IntlConfig } from 'react-intl'
+import { IntlConfig, IntlProvider as OriginalIntlProvider } from 'react-intl'
 
 type DefaultIntlConfig = Pick<IntlConfig, 'formats' | 'messages' | 'timeZone' | 'textComponent' | 'defaultLocale' | 'defaultFormats' | 'onError'>
 

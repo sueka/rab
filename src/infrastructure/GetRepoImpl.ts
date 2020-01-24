@@ -1,9 +1,9 @@
-import { injectable, inject } from 'inversify'
+import { inject, injectable } from 'inversify'
 
+import ConfigRegistry from '~/config/ConfigRegistry'
+import fetch from '~/lib/fetch'
 import typed from '~/lib/typed'
 import { asGetRepoResponse, asUnsuccessfulResponse } from '~/lib/validators/gitHubApiResourceValidators'
-import fetch from '~/lib/fetch'
-import ConfigRegistry from '~/config/ConfigRegistry'
 import GetRepo, { GetRepoInput, GetRepoOutput } from '~/useCase/GetRepo'
 
 @injectable()

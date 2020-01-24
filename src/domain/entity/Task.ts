@@ -1,8 +1,8 @@
-import yieldThis from '~/lib/extensions/Unknown/yieldThis'
+import TaskId from '~/domain/vo/TaskId'
 import hashCodeForBoolean from '~/lib/extensions/Boolean/hashCode'
 import hashCodeForString from '~/lib/extensions/String/hashCode'
+import yieldThis from '~/lib/extensions/Unknown/yieldThis'
 import { asTaskRequest } from '~/lib/validators/serializableValidators'
-import TaskId from '~/domain/vo/TaskId'
 import Entity from './Entity'
 
 export interface TaskRequest {

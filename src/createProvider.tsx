@@ -1,11 +1,11 @@
-import React from 'react'
-import { Reducer, Store, Action } from 'redux'
-import { Provider as OriginalProvider } from 'react-redux'
-import { Saga } from 'redux-saga'
 import { History } from 'history'
+import React from 'react'
+import { Provider as OriginalProvider } from 'react-redux'
+import { Action, Reducer, Store } from 'redux'
+import { Saga } from 'redux-saga'
 
-import { UnreachableError } from './lib/errors'
 import configureStore from './configureStore'
+import { UnreachableError } from './lib/errors'
 
 type ErrorCause = 'component' | 'reducer' | 'saga' | 'rootSaga'
 

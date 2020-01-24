@@ -1,14 +1,13 @@
-import { hot } from 'react-hot-loader/root'
 import React from 'react'
-import { Switch } from 'react-router'
 import Helmet from 'react-helmet'
+import { hot } from 'react-hot-loader/root'
 import { useIntl } from 'react-intl'
+import { Switch } from 'react-router'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 import Nav from '~/components/Nav'
 import Route from '~/lib/components/Route'
-
 import messages from './messages'
 
 export /* for testing */ const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ './HomePage'))

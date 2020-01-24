@@ -1,13 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import TaskId from '~/domain/vo/TaskId'
 import Task from '~/domain/entity/Task'
-
+import TaskId from '~/domain/vo/TaskId'
 import { State } from '~/redux'
-import { addTaskAsync, changeTaskContentAsync, markTaskAsDoneAsync, markTaskAsUndoneAsync, deleteTaskAsync, moveTask } from '~/redux/modules/reminder'
-import TaskList from './TaskList'
+import { addTaskAsync, changeTaskContentAsync, deleteTaskAsync, markTaskAsDoneAsync, markTaskAsUndoneAsync, moveTask } from '~/redux/modules/reminder'
 import AddTaskButton from './AddTaskButton'
+import TaskList from './TaskList'
 
 interface StateProps {
   tasks: Task[]

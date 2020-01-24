@@ -1,18 +1,16 @@
 import { Container } from 'inversify'
 
 import ConfigRegistry from './config/ConfigRegistry'
+import TaskRepository from './domain/repository/TaskRepository'
 import EnvVarConfigRegistry from './infrastructure/EnvVarConfigRegistry'
+import GetRepoStubImpl from './infrastructure/double/GetRepoStubImpl'
+import TaskRepositoryFakeImpl from './infrastructure/persistence/double/TaskRepositoryFakeImpl'
 import { Service } from './redux'
 import { CounterService } from './redux/modules/counter'
 import { IoService } from './redux/modules/io'
 import { LocaleSelectorService } from './redux/modules/localeSelector'
 import { ReminderService } from './redux/modules/reminder'
-
 import GetRepo from './useCase/GetRepo'
-import GetRepoStubImpl from './infrastructure/double/GetRepoStubImpl'
-
-import TaskRepository from './domain/repository/TaskRepository'
-import TaskRepositoryFakeImpl from './infrastructure/persistence/double/TaskRepositoryFakeImpl'
 
 const container = new Container
 

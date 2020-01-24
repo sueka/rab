@@ -1,4 +1,4 @@
-import { optional, unionOf, recordOf, asObject, asUnionOf, asBoolean, asString } from './commonValidators'
+import { asBoolean, asObject, asString, asUnionOf, optional, recordOf, unionOf } from './commonValidators'
 
 export const asFormats = asObject<Formats>('a Formats', (input) => ({
   number: optional(recordOf(asIntlNumberFormatOptions))(input.number),

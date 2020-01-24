@@ -1,16 +1,17 @@
+import { render } from '@testing-library/react'
+import { SnackbarProvider } from 'notistack'
 import React from 'react'
-import { Provider } from 'react-redux'
-import { StaticRouter } from 'react-router'
 import { DndProvider } from 'react-dnd'
 import TestBackend from 'react-dnd-test-backend'
-import { render } from '@testing-library/react'
+import { Provider } from 'react-redux'
+import { StaticRouter } from 'react-router'
 import createMockStore from 'redux-mock-store'
-import { SnackbarProvider } from 'notistack'
 
+import IntlProvider from '~/components/IntlProvider'
 import typed from '~/lib/typed'
 import { State } from '~/redux'
-import IntlProvider from '~/components/IntlProvider'
-import App, { HomePage, CounterPage, InfoPage, ReminderPage } from '.'
+import App, { CounterPage, HomePage, InfoPage, ReminderPage } from '.'
+
 import formats from '../../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../../../public/messages/en.json' // tslint:disable-line:no-relative-imports
 

@@ -58,7 +58,20 @@
     /* Ordering Rules */
     "member-ordering": false,
     "object-literal-sort-keys": false,
-    "ordered-imports": false,
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "lowercase-last",
+        "named-imports-order": "lowercase-last",
+        "grouped-imports": true,
+        "groups": [
+          "^(?!\\.|~|@material-ui)", // third-party w/o Material-UI
+          "^@material-ui", // Material-UI
+          "^(?!\\.\\.)" // first-party w/o ancestor imports
+          // ancestor imports
+        ]
+      }
+    ],
 
     /* Bad Rules */
     "interface-name": false,

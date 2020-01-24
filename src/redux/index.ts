@@ -1,15 +1,15 @@
+import { LocationChangeAction, RouterState, connectRouter } from 'connected-react-router'
+import { History } from 'history'
+import { inject, injectable } from 'inversify'
 import { Action as AnyAction, Reducer, combineReducers } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { fork } from 'redux-saga/effects'
-import { History } from 'history'
-import { RouterState, LocationChangeAction, connectRouter } from 'connected-react-router'
-import { injectable, inject } from 'inversify'
 
-import { ChessState, ChessAction, createChessReducer } from './modules/chess'
-import { CounterState, CounterAction, CounterService, createCounterReducer } from './modules/counter'
-import { IoState, IoAction, IoService, createIoReducer } from './modules/io'
-import { LocaleSelectorState, LocaleSelectorAction, LocaleSelectorService, createLocaleSelectorReducer } from './modules/localeSelector'
-import { ReminderState, ReminderAction, ReminderService, createReminderReducer } from './modules/reminder'
+import { ChessAction, ChessState, createChessReducer } from './modules/chess'
+import { CounterAction, CounterService, CounterState, createCounterReducer } from './modules/counter'
+import { IoAction, IoService, IoState, createIoReducer } from './modules/io'
+import { LocaleSelectorAction, LocaleSelectorService, LocaleSelectorState, createLocaleSelectorReducer } from './modules/localeSelector'
+import { ReminderAction, ReminderService, ReminderState, createReminderReducer } from './modules/reminder'
 
 export interface State {
   router: RouterState
