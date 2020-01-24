@@ -6,14 +6,7 @@ import typed from '~/lib/typed'
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
 import container from '~/container.dev'
 
-import {
-  UPDATE_NOW, START_CLOCK, SET_NOW,
-  IoState,
-  SetNowAction,
-  updateNow, /* startClock, stopClock,  */setNow,
-  IoService,
-  createIoReducer,
-} from './io'
+import { UPDATE_NOW, START_CLOCK, SET_NOW, IoState, SetNowAction, updateNow, /* startClock, stopClock,  */setNow, IoService, createIoReducer } from './io'
 
 describe('action creators', () => {
   describe('updateNow', () => {

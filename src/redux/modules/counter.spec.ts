@@ -5,14 +5,7 @@ import prsg from '~/lib/prsg'
 import typed from '~/lib/typed'
 import container from '~/container.dev'
 
-import {
-  RESET, INCREMENT_IF_ODD, INCREMENT_ASYNC, INCREMENT, DECREMENT,
-  CounterState,
-  reset, incrementIfOdd, incrementAsync, increment, decrement,
-  selectCount,
-  CounterService,
-  createCounterReducer,
-} from './counter'
+import { RESET, INCREMENT_IF_ODD, INCREMENT_ASYNC, INCREMENT, DECREMENT, CounterState, reset, incrementIfOdd, incrementAsync, increment, decrement, selectCount, CounterService, createCounterReducer } from './counter'
 
 describe('action creators', () => {
   describe('reset', () => {

@@ -5,13 +5,7 @@ import prsg from '~/lib/prsg'
 import typed from '~/lib/typed'
 import container from '~/container.dev'
 
-import {
-  SELECT_LOCALE, SET_LOCALE, SET_FORMATS, SET_MESSAGES, PUSH_ERROR,
-  LocaleSelectorState,
-  selectLocale, setLocale, setFormats, setMessages, pushError,
-  LocaleSelectorService,
-  createLocaleSelectorReducer,
-} from './localeSelector'
+import { SELECT_LOCALE, SET_LOCALE, SET_FORMATS, SET_MESSAGES, PUSH_ERROR, LocaleSelectorState, selectLocale, setLocale, setFormats, setMessages, pushError, LocaleSelectorService, createLocaleSelectorReducer } from './localeSelector'
 
 describe('action creators', () => {
   describe('selectLocale', () => {
