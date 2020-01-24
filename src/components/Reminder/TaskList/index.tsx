@@ -4,9 +4,10 @@ import List from '@material-ui/core/List'
 
 import Task from '~/domain/entity/Task'
 import TaskId from '~/domain/vo/TaskId'
+import curry from '~/lib/curry'
 import { asBoolean, asObject, leftOnly, named } from '~/lib/validators/commonValidators'
 import { asBoundedLengthString } from '~/lib/validators/stringValidators'
-import TaskListItem, { Props as TaskListItemProps } from './TaskListItem'
+import TaskListItem from './TaskListItem'
 
 export interface Props {
   tasks: Task[]
@@ -26,7 +27,7 @@ const validate = asObject('a Task for presentation', (input) => ({
 }))
 
 const TaskList: React.FunctionComponent<Props> = ({ tasks, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => {
-  const handleTaskChange = useCallback<TaskListItemProps['onChange']>((taskId, { content, done }) => {
+  const handleTaskChange = useCallback((taskId, { content, done }) => {
     if (content !== undefined) {
       changeTaskContent(taskId, content)
     }
@@ -49,8 +50,9 @@ const TaskList: React.FunctionComponent<Props> = ({ tasks, changeTaskContent, ma
             id={ task.id }
             value={ task }
             validate={ validate }
-            onChange={ handleTaskChange }
-            { ...{ index, deleteTask, moveTask } }
+            onChange={ curry(handleTaskChange)(task.id) }
+            deleteTask={ curry(deleteTask)(task.id) }
+            { ...{ index, moveTask } }
           />
         ))
       }

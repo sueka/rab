@@ -23,8 +23,8 @@ export interface Props {
   value: Pick<Task, 'content' | 'done'>
   index: number
 
-  onChange(taskId: TaskId, task: Partial<Task>): void
-  deleteTask(taskId: TaskId): void
+  onChange(task: Partial<Task>): void
+  deleteTask(): void
   moveTask(sourceIndex: number, targetIndex: number): void
   validate(input: Pick<Task, 'content' | 'done'>): Partial<Record<'content' | 'done', ValidationError>>
 }
@@ -75,19 +75,19 @@ const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChan
   }), [dragging])
 
   const handleContentChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
-    onChange(id, {
+    onChange({
       content: event.currentTarget.value,
     })
   }, [onChange])
 
   const handleDoneChange = useCallback((event: React.ChangeEvent<HTMLInputElement>, _checked: boolean) => {
-    onChange(id, {
+    onChange({
       done: event.target.checked,
     })
   }, [onChange])
 
   const handleDeleteTaskButtonClick = useCallback(() => {
-    deleteTask(id)
+    deleteTask()
   }, [deleteTask])
 
   const { formatMessage } = useIntl()
