@@ -51,7 +51,7 @@ const TaskList: React.FunctionComponent<Props> = ({ tasks, changeTaskContent, ma
             value={ task }
             validate={ validate }
             onChange={ curry(handleTaskChange)(task.id) }
-            deleteTask={ curry(deleteTask)(task.id) }
+            onDelete={ curry(deleteTask)(task.id) }
             { ...{ index, moveTask } }
           />
         ))

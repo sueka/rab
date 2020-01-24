@@ -24,7 +24,7 @@ export interface Props {
   index: number
 
   onChange(task: Partial<Task>): void
-  deleteTask(): void
+  onDelete(): void
   moveTask(sourceIndex: number, targetIndex: number): void
   validate(input: Pick<Task, 'content' | 'done'>): Partial<Record<'content' | 'done', ValidationError>>
 }
@@ -38,7 +38,7 @@ interface DragObject extends DragObjectWithType {
   index: number
 }
 
-const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChange, deleteTask, moveTask, validate }) => {
+const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChange, onDelete, moveTask, validate }) => {
   const ref = useRef(null)
 
   const [{ dragging }, drag] = useDrag<DragObject, unknown, CollectedProps>({
@@ -87,8 +87,8 @@ const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChan
   }, [onChange])
 
   const handleDeleteTaskButtonClick = useCallback(() => {
-    deleteTask()
-  }, [deleteTask])
+    onDelete()
+  }, [onDelete])
 
   const { formatMessage } = useIntl()
 
