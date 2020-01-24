@@ -23,7 +23,7 @@ export interface Props {
   value: Pick<Task, 'content' | 'done'>
   index: number
 
-  onChange(task: Partial<Task>): void
+  onChange(value: Partial<Task>): void
   onDelete(): void
   moveTask(sourceIndex: number, targetIndex: number): void
   validate(input: Pick<Task, 'content' | 'done'>): Partial<Record<'content' | 'done', ValidationError>>
