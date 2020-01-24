@@ -86,10 +86,6 @@ const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChan
     })
   }, [onChange])
 
-  const handleDeleteTaskButtonClick = useCallback(() => {
-    onDelete()
-  }, [onDelete])
-
   const { formatMessage } = useIntl()
 
   const errors = useMemo(() => validate(value), [value, validate])
@@ -126,7 +122,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChan
           helperText={ helperText }
         />
         <ListItemSecondaryAction>
-          <DeleteTaskButton onClick={ handleDeleteTaskButtonClick } />
+          <DeleteTaskButton onClick={ onDelete } />
         </ListItemSecondaryAction>
       </ListItem>
     </div>
