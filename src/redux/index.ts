@@ -30,10 +30,12 @@ export type Action =
 
 @injectable()
 export class Service {
-  @inject(CounterService) private counterService!: CounterService
-  @inject(IoService) private ioService!: IoService
-  @inject(LocaleSelectorService) private localeSelectorService!: LocaleSelectorService
-  @inject(ReminderService) private reminderService!: ReminderService
+  constructor(
+    @inject(CounterService) private counterService: CounterService,
+    @inject(IoService) private ioService: IoService,
+    @inject(LocaleSelectorService) private localeSelectorService: LocaleSelectorService,
+    @inject(ReminderService) private reminderService: ReminderService
+  ) {}
 
   public *rootSaga(): SagaIterator {
     yield fork([this.counterService, this.counterService.rootSaga])

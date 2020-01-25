@@ -399,7 +399,9 @@ const selectTasks = ({ reminder: { tasks } }: State) => tasks
 
 @injectable()
 export class ReminderService {
-  @inject('TaskRepository') public taskRepository!: TaskRepository
+  constructor(
+    @inject('TaskRepository') public taskRepository: TaskRepository
+  ) {}
 
   private *addTaskAsyncSaga(): SagaIterator {
     const task = new Task({})
