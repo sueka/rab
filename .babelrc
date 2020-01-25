@@ -13,6 +13,7 @@
         "legacy": true
       }
     ],
+    "babel-plugin-parameter-decorator",
     [
       "@babel/plugin-proposal-class-properties",
       {
