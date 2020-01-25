@@ -9,7 +9,7 @@ import { ChessAction, ChessState, createChessReducer } from './modules/chess'
 import { CounterAction, CounterService, CounterState, createCounterReducer } from './modules/counter'
 import { IoAction, IoService, IoState, createIoReducer } from './modules/io'
 import { LocaleSelectorAction, LocaleSelectorService, LocaleSelectorState, createLocaleSelectorReducer } from './modules/localeSelector'
-import { ReminderAction, ReminderService, ReminderState, createReminderReducer } from './modules/reminder'
+import ReminderService, { ReminderAction, ReminderState, createReminderReducer } from './modules/reminder'
 
 export interface State {
   router: RouterState
@@ -29,7 +29,7 @@ export type Action =
   | ReminderAction
 
 @injectable()
-export class Service {
+export default class Service {
   constructor(
     @inject(CounterService) private counterService: CounterService,
     @inject(IoService) private ioService: IoService,

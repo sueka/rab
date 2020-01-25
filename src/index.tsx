@@ -18,7 +18,7 @@ import IntlProvider from './components/IntlProvider'
 import configureTheme from './configureTheme'
 import createProvider from './createProvider'
 import typed from './lib/typed'
-import { Service, State, createReducer } from './redux'
+import Service, { State, createReducer } from './redux'
 import './types/globalTypes'
 
 import formats from '../public/formats/en.json' // tslint:disable-line:no-relative-imports

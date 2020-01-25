@@ -5,11 +5,11 @@ import TaskRepository from './domain/repository/TaskRepository'
 import EnvVarConfigRegistry from './infrastructure/EnvVarConfigRegistry'
 import GetRepoImpl from './infrastructure/GetRepoImpl'
 import TaskRepositoryFakeImpl from './infrastructure/persistence/double/TaskRepositoryFakeImpl' // TODO:
-import { Service } from './redux'
+import Service from './redux'
 import { CounterService } from './redux/modules/counter'
 import { IoService } from './redux/modules/io'
 import { LocaleSelectorService } from './redux/modules/localeSelector'
-import { ReminderService } from './redux/modules/reminder'
+import ReminderService from './redux/modules/reminder'
 import GetRepo from './useCase/GetRepo'
 
 const container = new Container

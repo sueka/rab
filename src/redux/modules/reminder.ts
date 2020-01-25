@@ -398,7 +398,7 @@ const selectTasks = ({ reminder: { tasks } }: State) => tasks
 //
 
 @injectable()
-export class ReminderService {
+export default class ReminderService {
   constructor(
     @inject('TaskRepository') public taskRepository: TaskRepository
   ) {}
