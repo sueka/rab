@@ -31,10 +31,10 @@ export type Action =
 @injectable()
 export default class Service {
   constructor(
-    @inject(CounterService) private counterService: CounterService,
-    @inject(IoService) private ioService: IoService,
-    @inject(LocaleSelectorService) private localeSelectorService: LocaleSelectorService,
-    @inject(ReminderService) private reminderService: ReminderService
+    @inject('CounterService') private counterService: CounterService,
+    @inject('IoService') private ioService: IoService,
+    @inject('LocaleSelectorService') private localeSelectorService: LocaleSelectorService,
+    @inject('ReminderService') private reminderService: ReminderService
   ) {}
 
   public *rootSaga(): SagaIterator {

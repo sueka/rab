@@ -18,9 +18,9 @@ container.bind<ConfigRegistry>('EnvVarConfig').to(EnvVarConfigRegistry)
 container.bind<GetRepo>('GetRepo').to(GetRepoImpl)
 container.bind<TaskRepository>('TaskRepository').to(TaskRepositoryFakeImpl)
 container.bind<Service>('Service').to(Service)
-container.bind<CounterService>(CounterService).toSelf()
-container.bind<IoService>(IoService).toSelf()
-container.bind<LocaleSelectorService>(LocaleSelectorService).toSelf()
-container.bind<ReminderService>(ReminderService).toSelf()
+container.bind<CounterService>('CounterService').to(CounterService)
+container.bind<IoService>('IoService').to(IoService)
+container.bind<LocaleSelectorService>('LocaleSelectorService').to(LocaleSelectorService)
+container.bind<ReminderService>('ReminderService').to(ReminderService)
 
 export default container
