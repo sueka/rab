@@ -73,6 +73,11 @@ class PathAbempty implements URL {
     return this._url.pathname
   }
 
+  set pathname(value: string) {
+    // tslint:disable-next-line:no-object-mutation
+    this._url.pathname = value
+  }
+
   get search(): string {
     return this._url.search
   }
@@ -131,6 +136,11 @@ export default class UrlOrPathAbempty implements URL {
 
   get pathname(): string {
     return this._instance.pathname
+  }
+
+  set pathname(value: string) {
+    // tslint:disable-next-line:no-object-mutation
+    this._instance.pathname = value
   }
 
   get port(): string {
