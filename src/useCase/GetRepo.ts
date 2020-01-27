@@ -1,7 +1,6 @@
-export interface GetRepoInput {
-  owner: string
-  repo: string
-}
+import { ReposGetParams } from '@octokit/rest'
+
+export type GetRepoInput = ReposGetParams
 
 interface SuccessfulGetRepoOutput {
   successful: true
