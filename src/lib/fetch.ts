@@ -52,7 +52,12 @@ function toJson(input: unknown): Json {
 }
 
 function buildRequestInfo({ method, parameterizedEndpoint, params = {}, query = {} }: RequestParams): RequestInfo {
-  const endpoint = isEmpty(params) ? parameterizedEndpoint : pathToRegexp.compile(parameterizedEndpoint)(params)
+  const parameterizedUrl = new UrlOrPathAbempty(parameterizedEndpoint)
+
+  parameterizedUrl.pathname = isEmpty(params) ? parameterizedUrl.pathname : pathToRegexp.compile(parameterizedUrl.pathname)(params)
+
+  // tslint:disable-next-line:no-object-mutation
+  const endpoint = parameterizedUrl.href
 
   switch (method) {
     case 'GET':
