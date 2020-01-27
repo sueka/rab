@@ -52,29 +52,23 @@ function toJson(input: unknown): Json {
 }
 
 function buildRequestInfo({ method, parameterizedEndpoint, params = {}, query = {} }: RequestParams): RequestInfo {
-  const parameterizedUrl = new UrlOrPathAbempty(parameterizedEndpoint)
-
-  parameterizedUrl.pathname = isEmpty(params) ? parameterizedUrl.pathname : pathToRegexp.compile(parameterizedUrl.pathname)(params)
+  const url = new UrlOrPathAbempty(parameterizedEndpoint)
 
   // tslint:disable-next-line:no-object-mutation
-  const endpoint = parameterizedUrl.href
+  url.pathname = isEmpty(params) ? url.pathname : pathToRegexp.compile(url.pathname)(params)
 
-  switch (method) {
-    case 'GET':
-      const url = new UrlOrPathAbempty(endpoint)
-      const urlSearchParams = new URLSearchParams(url.search)
+  if (method === 'GET') {
+    const urlSearchParams = new URLSearchParams(url.search)
 
-      Object.entries(query).forEach(([key, value]) => {
-        urlSearchParams.append(key, value)
-      })
+    Object.entries(query).forEach(([key, value]) => {
+      urlSearchParams.append(key, value)
+    })
 
-      // tslint:disable-next-line:no-object-mutation
-      url.search = urlSearchParams.toString()
-
-      return url.href
-    case 'POST':
-      return endpoint
+    // tslint:disable-next-line:no-object-mutation
+    url.search = urlSearchParams.toString()
   }
+
+  return url.href
 }
 
 function buildRequestInit({ method, headers = {}, query = {} }: RequestParams): RequestInit {
