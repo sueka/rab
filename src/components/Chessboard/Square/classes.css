@@ -1,12 +1,15 @@
 .Square {
   height: 32px;
   width: 32px;
+
+  --white-square-color: white;
+  --black-square-color: black;
 }
 
 .White {
-  background-color: white; /* TODO: parameterize color */
+  background-color: var(--white-square-color);
 }
 
 .Black {
-  background-color: black; /* TODO: parameterize color */
+  background-color: var(--black-square-color);
 }
