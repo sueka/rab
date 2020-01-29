@@ -5,3 +5,11 @@
   /* TODO: delete next line */
   outline: solid lime 1px;
 }
+
+.White {
+  background-color: white; /* TODO: parameterize color */
+}
+
+.Black {
+  background-color: black; /* TODO: parameterize color */
+}

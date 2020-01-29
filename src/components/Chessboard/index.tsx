@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import equalsChessCoordinates from '~/lib/extensions/Eq/equalsChessCoordinates'
 import { State } from '~/redux'
 import { resetBoard } from '~/redux/modules/chess'
+import getColorFromChessCoordinates from '~/utils/chess/getColorFromChessCoordinates'
 import Chessman from './Chessman'
 import Square from './Square'
 import classes from './classes.css'
@@ -34,11 +35,12 @@ const Chessboard: React.FunctionComponent<Props> = ({ pieces, resetBoard }) => {
         { ranks.map((rank) => (
           <tr key={ rank }>
             { files.map((file) => {
+              const color = getColorFromChessCoordinates({ file, rank })
               const piece = pieces.find(({ coord }) => equalsChessCoordinates(coord, { file, rank }))
 
               return (
                 <td key={ file }>
-                  <Square>
+                  <Square color={ color }>
                     { piece !== undefined && (
                       <Chessman piece={ piece.piece } />
                     ) }
