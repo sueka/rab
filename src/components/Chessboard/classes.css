@@ -1,3 +1,7 @@
 .ChessboardTable {
   border-collapse: collapse;
 }
+
+.ChessboardTd {
+  padding: 0;
+}

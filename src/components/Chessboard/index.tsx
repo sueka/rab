@@ -39,7 +39,7 @@ const Chessboard: React.FunctionComponent<Props> = ({ pieces, resetBoard }) => {
               const piece = pieces.find(({ coord }) => equalsChessCoordinates(coord, { file, rank }))
 
               return (
-                <td key={ file }>
+                <td key={ file } className={ classes.ChessboardTd }>
                   <Square color={ color }>
                     { piece !== undefined && (
                       <Chessman piece={ piece.piece } />
