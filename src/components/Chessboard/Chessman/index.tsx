@@ -12,7 +12,7 @@ interface CollectedProps {
   dragging: boolean
 }
 
-interface DragObject extends DragObjectWithType {
+export interface DragObject extends DragObjectWithType {
   piece: Chess.Piece
 }
 
