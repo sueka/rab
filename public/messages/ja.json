@@ -1,5 +1,6 @@
 {
   "src.components.App.HomePage.helloWorld": "Hello, world!",
+  "src.components.App.chess": "チェス",
   "src.components.App.counter": "カウンター",
   "src.components.App.home": "ホーム",
   "src.components.App.info": "情報",
@@ -15,6 +16,7 @@
   "src.components.Info.fetchingFailed": "読み込みに失敗しました。",
   "src.components.Info.fetchingNotStarted": "読み込みは開始していません。",
   "src.components.LocaleSelect.languages": "言語",
+  "src.components.Nav.chess": "チェス",
   "src.components.Nav.counter": "カウンター",
   "src.components.Nav.home": "ホーム",
   "src.components.Nav.info": "情報",

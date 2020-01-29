@@ -1,5 +1,6 @@
 {
   "src.components.App.HomePage.helloWorld": "Hello, world!",
+  "src.components.App.chess": "chess",
   "src.components.App.counter": "counter",
   "src.components.App.home": "home",
   "src.components.App.info": "info",
@@ -15,6 +16,7 @@
   "src.components.Info.fetchingFailed": "Fetching failed.",
   "src.components.Info.fetchingNotStarted": "Fetching not started.",
   "src.components.LocaleSelect.languages": "Languages",
+  "src.components.Nav.chess": "chess",
   "src.components.Nav.counter": "counter",
   "src.components.Nav.home": "home",
   "src.components.Nav.info": "info",

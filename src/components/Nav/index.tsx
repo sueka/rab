@@ -50,6 +50,9 @@ const Nav: React.FunctionComponent = () => {
         <MenuItemLink to="/" onClick={ closeMenu }>
           <FormattedMessage { ...messages.home } />
         </MenuItemLink>
+        <MenuItemLink to="/chess" onClick={ closeMenu }>
+          <FormattedMessage { ...messages.chess } />
+        </MenuItemLink>
         <MenuItemLink to="/counter" onClick={ closeMenu }>
           <FormattedMessage { ...messages.counter } />
         </MenuItemLink>
