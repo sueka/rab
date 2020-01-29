@@ -6,6 +6,7 @@ import { State } from '~/redux'
 import { resetBoard } from '~/redux/modules/chess'
 import Chessman from './Chessman'
 import Square from './Square'
+import classes from './classes.css'
 
 interface StateProps {
   pieces: Chess.CoordinatedPiece[]
@@ -28,7 +29,7 @@ const Chessboard: React.FunctionComponent<Props> = ({ pieces, resetBoard }) => {
   }, [])
 
   return (
-    <table>
+    <table className={ classes.ChessboardTable }>
       <tbody>
         { ranks.map((rank) => (
           <tr key={ rank }>
