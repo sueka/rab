@@ -1,6 +1,9 @@
 .Square {
   height: 32px;
   width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   --white-square-color: white;
   --black-square-color: black;
