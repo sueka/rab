@@ -1,0 +1,7 @@
+.Square {
+  height: 32px;
+  width: 32px;
+
+  /* TODO: delete next line */
+  outline: solid lime 1px;
+}

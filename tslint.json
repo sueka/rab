@@ -50,7 +50,7 @@
     "no-namespace": false,
 
     /* Type Constraints */
-    "strict-boolean-expressions": true,
+    "strict-boolean-expressions": [true, "ignore-rhs"],
     "no-any": true,
     "no-non-null-assertion": true,
     "strict-type-predicates": true,
