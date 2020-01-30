@@ -1,4 +1,4 @@
-export default function getColorFromChessCoordinates({ file, rank }: Chess.Coordinates): Chess.Color {
+export default function getColorFromCoordinates({ file, rank }: Chess.Coordinates): Chess.Color {
   const fileOdd = (() => {
     switch (file) {
       case 'a':

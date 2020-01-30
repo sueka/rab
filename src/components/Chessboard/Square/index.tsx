@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import { useDrop } from 'react-dnd'
 
 import { DragObject, Props as ChessmanProps } from '~/components/Chessboard/Chessman'
-import getColorFromChessCoordinates from '~/utils/chess/getColorFromChessCoordinates'
+import getColorFromCoordinates from '~/utils/chess/getColorFromCoordinates'
 import classes from './classes.css'
 
 interface Props extends React.PropsWithChildren<{}> {
@@ -21,7 +21,7 @@ const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: P
     },
   })
 
-  const color = useMemo(() => getColorFromChessCoordinates(coord), [coord])
+  const color = useMemo(() => getColorFromCoordinates(coord), [coord])
 
   const squareClassName = useMemo(() => classnames(classes.Square, {
     [classes.White]: color === 'white',
