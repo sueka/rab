@@ -5,7 +5,7 @@ import { Action as AnyAction, Reducer, combineReducers } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { fork } from 'redux-saga/effects'
 
-import { ChessAction, ChessState, createChessReducer } from './modules/chess'
+import { ChessAction, ChessService, ChessState, createChessReducer } from './modules/chess'
 import { CounterAction, CounterService, CounterState, createCounterReducer } from './modules/counter'
 import { IoAction, IoService, IoState, createIoReducer } from './modules/io'
 import { LocaleSelectorAction, LocaleSelectorService, LocaleSelectorState, createLocaleSelectorReducer } from './modules/localeSelector'
@@ -31,6 +31,7 @@ export type Action =
 @injectable()
 export default class Service {
   constructor(
+    @inject('ChessService') private chessService: ChessService,
     @inject('CounterService') private counterService: CounterService,
     @inject('IoService') private ioService: IoService,
     @inject('LocaleSelectorService') private localeSelectorService: LocaleSelectorService,
@@ -38,6 +39,7 @@ export default class Service {
   ) {}
 
   public *rootSaga(): SagaIterator {
+    yield fork([this.chessService, this.chessService.rootSaga])
     yield fork([this.counterService, this.counterService.rootSaga])
     yield fork([this.ioService, this.ioService.rootSaga])
     yield fork([this.localeSelectorService, this.localeSelectorService.rootSaga])
