@@ -1,25 +1,3 @@
 export default function getColorFromCoordinates({ file, rank }: Chess.Coordinates): Chess.Color {
-  const fileOdd = (() => {
-    switch (file) {
-      case 'a':
-      case 'c':
-      case 'e':
-      case 'g': return true
-    }
-
-    return false
-  })()
-
-  const rankOdd = (() => {
-    switch (rank) {
-      case '1':
-      case '3':
-      case '5':
-      case '7': return true
-    }
-
-    return false
-  })()
-
-  return fileOdd === rankOdd ? 'black' : 'white'
+  return file % 2 === rank % 2 ? 'black' : 'white'
 }
