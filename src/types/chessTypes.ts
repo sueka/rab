@@ -9,7 +9,7 @@ declare namespace Chess {
     rank: Rank
   }
 
-  export interface CoordinatedPiece {
+  interface CoordinatedPiece {
     piece: Piece
     coord: Coordinates
   }

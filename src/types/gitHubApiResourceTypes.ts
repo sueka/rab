@@ -1,7 +1,7 @@
 declare namespace GitHubApiResource {
-  export type GetRepoResponse = Repository
+  type GetRepoResponse = Repository
 
-  export interface UnsuccessfulResponse {
+  interface UnsuccessfulResponse {
     message: string
     documentation_url?: string
   }
@@ -15,7 +15,7 @@ declare namespace GitHubApiResource {
   //
   //
 
-  export interface Repository {
+  interface Repository {
     name: string
   }
 }
