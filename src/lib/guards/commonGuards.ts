@@ -10,6 +10,6 @@ export const optional = <T extends unknown>(isT: (input: unknown) => input is T)
   return isT(input)
 }
 
-export const isObject = <K extends Index, V, A extends Record<K, V>, T extends A>(isT: (input: Record<K, V>) => Record<K, boolean>) => (input: A): input is T => {
+export const isObject = <A extends B, T extends A, B = A>(isT: (input: B) => Record<keyof A, boolean>) => (input: A): input is T => {
   return Object.values<boolean>(isT(input)).every(identity)
 }
