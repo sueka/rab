@@ -13,6 +13,7 @@ type EmptyRecord<T> = Record<keyof T, never>
 type Index = keyof any // tslint:disable-line:no-any
 
 declare namespace Alt {
+  type Exclude<T, U extends T> = T extends U ? never : T;
   type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
   type ForceOmit<T, K extends Index> = Omit<T, K & keyof T>
 }
