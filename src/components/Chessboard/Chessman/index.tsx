@@ -33,7 +33,7 @@ const Chessman: React.FunctionComponent<Props> = ({ piece }) => {
 
   return (
     <span ref={ drag } className={ chessmanClassName }>
-      { piece.piece }
+      { piece.piece.symbol }
     </span>
   )
 }

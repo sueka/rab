@@ -15,7 +15,7 @@ declare namespace Chess {
   }
 
   interface CoordinatedPiece {
-    piece: Alt.Exclude<Piece, '♙' | '♟' > | Pawn
+    piece: Piece | Pawn
     coord: Coordinates
   }
 
@@ -28,12 +28,16 @@ declare namespace Chess {
   //
   //
 
-  type Piece = '♔' | '♕' | '♖' | '♗' | '♘' | '♙' | '♚' | '♛' | '♜' | '♝' | '♞' | '♟' // colored
+  interface Piece {
+    symbol: Alt.Exclude<Symbol, '♙' | '♟' >
+  }
 
   interface Pawn {
-    piece: '♙' | '♟'
+    symbol: Alt.Extract<Symbol, '♙' | '♟'>
     hasAdvancedTwoSquares: boolean
   }
+
+  type Symbol = '♔' | '♕' | '♖' | '♗' | '♘' | '♙' | '♚' | '♛' | '♜' | '♝' | '♞' | '♟' // colored
 
   //
   //                                               _|  _|                        _|
