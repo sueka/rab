@@ -1,6 +1,6 @@
 .Chessman {
-  background-color: white;
-  color: black;
+  font-family: "Apple Symbols", sans-serif;
+  color: #222;
 }
 
 .Dragging {
