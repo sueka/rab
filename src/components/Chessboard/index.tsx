@@ -43,9 +43,9 @@ const Chessboard: React.FunctionComponent<Props> = ({ board, resetBoard, halfMov
 
               return (
                 <td key={ file } className={ classes.ChessboardTd }>
-                  <Square coord={ coord.value } halfMove={ halfMove }>
+                  <Square coord={ coord } halfMove={ halfMove }>
                     { chessman !== undefined && (
-                      <Chessman chessman={ chessman } coord={ coord.value } />
+                      <Chessman chessman={ chessman } coord={ coord } />
                     ) }
                   </Square>
                 </td>
