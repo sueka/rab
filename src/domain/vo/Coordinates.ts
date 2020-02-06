@@ -1,13 +1,19 @@
 import hashCode from '~/lib/extensions/Coordinates/hashCode'
-import ValueObject from './ValueObject'
+import Eq from '~/lib/trait/Eq'
+import Hashable from '~/lib/trait/Hashable'
 
-export default class Coordinates extends ValueObject<Chess.Coordinates> {
+export default class Coordinates extends Hashable implements Eq, Chess.Coordinates {
+  public readonly file: Chess.File
+  public readonly rank: Chess.Rank
+
+  constructor({ file, rank }: Chess.Coordinates) {
+    super()
+
+    this.file = file
+    this.rank = rank
+  }
+
   public hashCode() {
-    // tslint:disable-next-line:no-let
-    let result = 17
-
-    result = 31 * result + hashCode(this.value)
-
-    return result
+    return hashCode(this)
   }
 }
