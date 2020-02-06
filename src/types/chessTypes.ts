@@ -11,12 +11,7 @@ declare namespace Chess {
   //
 
   interface Chessboard {
-    pieces: CoordinatedPiece[] // pieces.map(({ coord }) => coord) is unique
-  }
-
-  interface CoordinatedPiece {
-    piece: Piece | Pawn
-    coord: Coordinates
+    chessmen: Map<Coordinates, Chessman> // TODO: use
   }
 
   //
@@ -27,6 +22,8 @@ declare namespace Chess {
   //   _|_|_|  _|    _|    _|_|_|  _|_|_|    _|_|_|    _|    _|    _|    _|_|_|  _|    _|
   //
   //
+
+  type Chessman = Piece | Pawn
 
   interface Piece {
     symbol: Alt.Exclude<Symbol, '♙' | '♟' >

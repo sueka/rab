@@ -5,7 +5,8 @@ import { DragObjectWithType, useDrag } from 'react-dnd'
 import classes from './classes.css'
 
 export interface Props {
-  piece: Chess.CoordinatedPiece
+  chessman: Chess.Chessman
+  coord: Chess.Coordinates
 }
 
 interface CollectedProps {
@@ -13,14 +14,16 @@ interface CollectedProps {
 }
 
 export interface DragObject extends DragObjectWithType {
-  piece: Chess.CoordinatedPiece
+  chessman: Chess.Chessman
+  coord: Chess.Coordinates
 }
 
-const Chessman: React.FunctionComponent<Props> = ({ piece }) => {
+const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
   const [{ dragging }, drag] = useDrag<DragObject, unknown, CollectedProps>({
     item: {
       type: 'Chessman',
-      piece,
+      chessman,
+      coord,
     },
     collect: (monitor) => ({
       dragging: monitor.isDragging(),
@@ -33,7 +36,7 @@ const Chessman: React.FunctionComponent<Props> = ({ piece }) => {
 
   return (
     <span ref={ drag } className={ chessmanClassName }>
-      { piece.piece.symbol }
+      { chessman.symbol }
     </span>
   )
 }

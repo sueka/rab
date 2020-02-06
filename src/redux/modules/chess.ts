@@ -15,7 +15,7 @@ import { takeEvery } from '~/lib/boni/redux-saga/effects'
 
 export interface ChessState {
   board: {
-    pieces: Chess.CoordinatedPiece[]
+    chessmen: Map<Chess.Coordinates, Chess.Chessman>
   }
 }
 
@@ -48,7 +48,8 @@ interface ResetBoardAction extends Action<typeof RESET_BOARD> {} // TODO: chess 
 
 interface HalfMoveAction extends Action<typeof HALF_MOVE> {
   payload: {
-    piece: Chess.CoordinatedPiece
+    chessman: Chess.Chessman
+    source: Chess.Coordinates
     target: Chess.Coordinates
   }
 }
@@ -82,10 +83,11 @@ export const resetBoard = (): ResetBoardAction => ({
   type: RESET_BOARD,
 })
 
-export const halfMove = (piece: Chess.CoordinatedPiece, target: Chess.Coordinates): HalfMoveAction => ({
+export const halfMove = (chessman: Chess.Chessman, source: Chess.Coordinates, target: Chess.Coordinates): HalfMoveAction => ({
   type: HALF_MOVE,
   payload: {
-    piece,
+    chessman,
+    source,
     target,
   },
 })
@@ -108,40 +110,40 @@ export const createChessReducer: (initialState: ChessState) => Reducer<ChessStat
     case RESET_BOARD: return {
       ...state,
       board: {
-        pieces: [
-          { piece: { symbol: '♖' }, coord: { file: 1, rank: 1 } },
-          { piece: { symbol: '♘' }, coord: { file: 2, rank: 1 } },
-          { piece: { symbol: '♗' }, coord: { file: 3, rank: 1 } },
-          { piece: { symbol: '♕' }, coord: { file: 4, rank: 1 } },
-          { piece: { symbol: '♔' }, coord: { file: 5, rank: 1 } },
-          { piece: { symbol: '♗' }, coord: { file: 6, rank: 1 } },
-          { piece: { symbol: '♘' }, coord: { file: 7, rank: 1 } },
-          { piece: { symbol: '♖' }, coord: { file: 8, rank: 1 } },
-          { piece: { symbol: '♙', hasAdvancedTwoSquares: false }, coord: { file: 1, rank: 2 } },
-          { piece: { symbol: '♙', hasAdvancedTwoSquares: false }, coord: { file: 2, rank: 2 } },
-          { piece: { symbol: '♙', hasAdvancedTwoSquares: false }, coord: { file: 3, rank: 2 } },
-          { piece: { symbol: '♙', hasAdvancedTwoSquares: false }, coord: { file: 4, rank: 2 } },
-          { piece: { symbol: '♙', hasAdvancedTwoSquares: false }, coord: { file: 5, rank: 2 } },
-          { piece: { symbol: '♙', hasAdvancedTwoSquares: false }, coord: { file: 6, rank: 2 } },
-          { piece: { symbol: '♙', hasAdvancedTwoSquares: false }, coord: { file: 7, rank: 2 } },
-          { piece: { symbol: '♙', hasAdvancedTwoSquares: false }, coord: { file: 8, rank: 2 } },
-          { piece: { symbol: '♟', hasAdvancedTwoSquares: false }, coord: { file: 1, rank: 7 } },
-          { piece: { symbol: '♟', hasAdvancedTwoSquares: false }, coord: { file: 2, rank: 7 } },
-          { piece: { symbol: '♟', hasAdvancedTwoSquares: false }, coord: { file: 3, rank: 7 } },
-          { piece: { symbol: '♟', hasAdvancedTwoSquares: false }, coord: { file: 4, rank: 7 } },
-          { piece: { symbol: '♟', hasAdvancedTwoSquares: false }, coord: { file: 5, rank: 7 } },
-          { piece: { symbol: '♟', hasAdvancedTwoSquares: false }, coord: { file: 6, rank: 7 } },
-          { piece: { symbol: '♟', hasAdvancedTwoSquares: false }, coord: { file: 7, rank: 7 } },
-          { piece: { symbol: '♟', hasAdvancedTwoSquares: false }, coord: { file: 8, rank: 7 } },
-          { piece: { symbol: '♜' }, coord: { file: 1, rank: 8 } },
-          { piece: { symbol: '♞' }, coord: { file: 2, rank: 8 } },
-          { piece: { symbol: '♝' }, coord: { file: 3, rank: 8 } },
-          { piece: { symbol: '♛' }, coord: { file: 4, rank: 8 } },
-          { piece: { symbol: '♚' }, coord: { file: 5, rank: 8 } },
-          { piece: { symbol: '♝' }, coord: { file: 6, rank: 8 } },
-          { piece: { symbol: '♞' }, coord: { file: 7, rank: 8 } },
-          { piece: { symbol: '♜' }, coord: { file: 8, rank: 8 } },
-        ],
+        chessmen: new Map([
+          [{ rank: 1, file: 1 }, { symbol: '♖' }],
+          [{ rank: 1, file: 2 }, { symbol: '♘' }],
+          [{ rank: 1, file: 3 }, { symbol: '♗' }],
+          [{ rank: 1, file: 4 }, { symbol: '♕' }],
+          [{ rank: 1, file: 5 }, { symbol: '♔' }],
+          [{ rank: 1, file: 6 }, { symbol: '♗' }],
+          [{ rank: 1, file: 7 }, { symbol: '♘' }],
+          [{ rank: 1, file: 8 }, { symbol: '♖' }],
+          [{ rank: 2, file: 1 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [{ rank: 2, file: 2 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [{ rank: 2, file: 3 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [{ rank: 2, file: 4 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [{ rank: 2, file: 5 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [{ rank: 2, file: 6 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [{ rank: 2, file: 7 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [{ rank: 2, file: 8 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [{ rank: 7, file: 1 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [{ rank: 7, file: 2 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [{ rank: 7, file: 3 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [{ rank: 7, file: 4 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [{ rank: 7, file: 5 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [{ rank: 7, file: 6 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [{ rank: 7, file: 7 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [{ rank: 7, file: 8 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [{ rank: 8, file: 1 }, { symbol: '♜' }],
+          [{ rank: 8, file: 2 }, { symbol: '♞' }],
+          [{ rank: 8, file: 3 }, { symbol: '♝' }],
+          [{ rank: 8, file: 4 }, { symbol: '♛' }],
+          [{ rank: 8, file: 5 }, { symbol: '♚' }],
+          [{ rank: 8, file: 6 }, { symbol: '♝' }],
+          [{ rank: 8, file: 7 }, { symbol: '♞' }],
+          [{ rank: 8, file: 8 }, { symbol: '♜' }],
+        ]),
       },
     }
     case HALF_MOVE: return state

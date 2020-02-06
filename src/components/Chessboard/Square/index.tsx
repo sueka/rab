@@ -10,14 +10,14 @@ interface Props extends React.PropsWithChildren<{}> {
   children?: React.ReactElement<ChessmanProps, React.ComponentType<ChessmanProps>> | false | null
   coord: Chess.Coordinates
 
-  halfMove(piece: Chess.CoordinatedPiece, target: Chess.Coordinates): void
+  halfMove(chessman: Chess.Chessman, source: Chess.Coordinates, target: Chess.Coordinates): void
 }
 
 const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: Props) => {
   const [, drop] = useDrop<DragObject, unknown, unknown>({
     accept: 'Chessman',
     drop(item) {
-      halfMove(item.piece, coord)
+      halfMove(item.chessman, item.coord, coord)
     },
   })
 

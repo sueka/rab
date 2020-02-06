@@ -29,7 +29,7 @@ const containerImport = process.env.NODE_ENV === 'production' ? import('./contai
 const initialState: Alt.Omit<State, 'router'> = {
   chess: {
     board: {
-      pieces: [],
+      chessmen: new Map(),
     },
   },
   counter: {

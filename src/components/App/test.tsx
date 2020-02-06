@@ -19,7 +19,7 @@ import messages from '../../../public/messages/en.json' // tslint:disable-line:n
 const store = createMockStore<Alt.Omit<State, 'router'>>()({
   chess: {
     board: {
-      pieces: [],
+      chessmen: new Map(),
     },
   },
   counter: {
