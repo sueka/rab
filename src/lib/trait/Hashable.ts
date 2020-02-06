@@ -5,7 +5,7 @@ import Eq from './Eq'
  */
 export default abstract class Hashable extends Eq implements Eq {
   public equals(that: this) {
-    return this.hashCode === that.hashCode
+    return this.hashCode() === that.hashCode()
   }
 
   abstract hashCode(): number // int
