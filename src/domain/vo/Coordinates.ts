@@ -2,10 +2,9 @@ import hashCode from '~/lib/extensions/Coordinates/hashCode'
 import Eq from '~/lib/trait/Eq'
 import Hashable from '~/lib/trait/Hashable'
 
-export default class Coordinates extends Hashable implements Eq, Chess.Coordinates {
-  public readonly file: Chess.File
-  public readonly rank: Chess.Rank
+export default interface Coordinates extends Chess.Coordinates {} // tslint:disable-line:no-empty-interface
 
+export default class Coordinates extends Hashable implements Eq, Chess.Coordinates {
   constructor({ file, rank }: Chess.Coordinates) {
     super()
 
