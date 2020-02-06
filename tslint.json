@@ -48,6 +48,7 @@
     "new-parens": false, // TODO: [true, "never"]
     "space-before-function-paren": [true, { "anonymous": "always" }],
     "no-namespace": false,
+    "no-bitwise": false,
 
     /* Type Constraints */
     "strict-boolean-expressions": [true, "ignore-rhs"],
