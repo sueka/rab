@@ -2,6 +2,7 @@ import { Map } from 'immutable'
 import { injectable } from 'inversify'
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
+import { put } from 'redux-saga/effects'
 
 import Coordinates from '~/domain/vo/Coordinates'
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
@@ -40,10 +41,14 @@ export interface ChessState {
 
 export /* for testing */ const RESET_BOARD = '@@react-app-base/chess/RESET_BOARD'
 export /* for testing */ const HALF_MOVE = '@@react-app-base/chess/HALF_MOVE' // neither castle nor capture pawn en passant
+export /* for testing */ const PUT_CHESSMAN = '@@react-app-base/chess/PUT_CHESSMAN'
+export /* for testing */ const REMOVE_CHESSMAN = '@@react-app-base/chess/REMOVE_CHESSMAN'
 
 const chessActionTypes = [
   RESET_BOARD,
   HALF_MOVE,
+  PUT_CHESSMAN,
+  REMOVE_CHESSMAN,
 ]
 
 interface ResetBoardAction extends Action<typeof RESET_BOARD> {} // TODO: chess 960
@@ -56,9 +61,24 @@ interface HalfMoveAction extends Action<typeof HALF_MOVE> {
   }
 }
 
+interface PutChessmanAction extends Action<typeof PUT_CHESSMAN> {
+  payload: {
+    chessman: Chess.Chessman
+    target: Chess.Coordinates
+  }
+}
+
+interface RemoveChessmanAction extends Action<typeof REMOVE_CHESSMAN> {
+  payload: {
+    coord: Chess.Coordinates
+  }
+}
+
 export type ChessAction =
   | ResetBoardAction
   | HalfMoveAction
+  | PutChessmanAction
+  | RemoveChessmanAction
 
 function isChessAction(action: Action): action is ChessAction {
   return chessActionTypes.includes(action.type)
@@ -91,6 +111,21 @@ export const halfMove = (chessman: Chess.Chessman, source: Chess.Coordinates, ta
     chessman,
     source,
     target,
+  },
+})
+
+export const putChessman = (chessman: Chess.Chessman, target: Chess.Coordinates): PutChessmanAction => ({
+  type: PUT_CHESSMAN,
+  payload: {
+    chessman,
+    target,
+  },
+})
+
+export const removeChessman = (coord: Chess.Coordinates): RemoveChessmanAction => ({
+  type: REMOVE_CHESSMAN,
+  payload: {
+    coord,
   },
 })
 
@@ -149,6 +184,20 @@ export const createChessReducer: (initialState: ChessState) => Reducer<ChessStat
       },
     }
     case HALF_MOVE: return state
+    case PUT_CHESSMAN: return {
+      ...state,
+      board: {
+        ...state.board,
+        chessmen: state.board.chessmen.set(new Coordinates(action.payload.target), action.payload.chessman), // TODO
+      },
+    }
+    case REMOVE_CHESSMAN: return {
+      ...state,
+      board: {
+        ...state.board,
+        chessmen: state.board.chessmen.delete(new Coordinates(action.payload.coord)), // TODO
+      },
+    }
   }
 }
 
@@ -163,10 +212,11 @@ export const createChessReducer: (initialState: ChessState) => Reducer<ChessStat
 
 @injectable()
 export class ChessService {
-  private *halfMoveSaga({}: HalfMoveAction): SagaIterator {
+  private *halfMoveSaga({ payload: { chessman, source, target } }: HalfMoveAction): SagaIterator {
     // TODO: check move
 
-    // TODO: update board
+    yield put(removeChessman(source))
+    yield put(putChessman(chessman, target))
 
     // TODO: turn
   }
