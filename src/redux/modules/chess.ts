@@ -215,6 +215,10 @@ export class ChessService {
   private *halfMoveSaga({ payload: { chessman, source, target } }: HalfMoveAction): SagaIterator {
     // TODO: check move
 
+    // TODO: castle
+
+    // TODO: remove en passant
+
     yield put(removeChessman(source))
     yield put(putChessman(chessman, target))
 
