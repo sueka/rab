@@ -2,7 +2,7 @@ import hashCode from '~/lib/extensions/Coordinates/hashCode'
 import ValueObject from './ValueObject'
 
 export default class Coordinates extends ValueObject<Chess.Coordinates> {
-  get hashCode() {
+  hashCode() {
     // tslint:disable-next-line:no-let
     let result = 17
 

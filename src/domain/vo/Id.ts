@@ -19,7 +19,7 @@ export default class Id extends ValueObject<string> {
     return seemsLikeUuid(this.value)
   }
 
-  get hashCode() {
+  hashCode() {
     // tslint:disable-next-line:no-let
     let result = 17
 

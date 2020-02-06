@@ -44,11 +44,11 @@ export default class Task extends Entity {
     })
   }
 
-  public get hashCode() {
+  public hashCode() {
     // tslint:disable-next-line:no-let
     let result = 17
 
-    result = 31 * result + this.id.hashCode
+    result = 31 * result + this.id.hashCode()
     result = 31 * result + hashCodeForString(this.content)
     result = 31 * result + hashCodeForBoolean(this.done)
 
