@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+import { Map } from 'immutable'
 import { SnackbarProvider } from 'notistack'
 import React from 'react'
 import { DndProvider } from 'react-dnd'
@@ -19,7 +20,7 @@ import messages from '../../../public/messages/en.json' // tslint:disable-line:n
 const store = createMockStore<Alt.Omit<State, 'router'>>()({
   chess: {
     board: {
-      chessmen: new Map(),
+      chessmen: Map(),
     },
   },
   counter: {

@@ -1,18 +1,18 @@
 declare namespace Chess {
   type Color = 'white' | 'black' // of square or player
 
+  // //
+  // // _|                                            _|
+  // // _|_|_|      _|_|      _|_|_|  _|  _|_|    _|_|_|
+  // // _|    _|  _|    _|  _|    _|  _|_|      _|    _|
+  // // _|    _|  _|    _|  _|    _|  _|        _|    _|
+  // // _|_|_|      _|_|      _|_|_|  _|          _|_|_|
+  // //
+  // //
   //
-  // _|                                            _|
-  // _|_|_|      _|_|      _|_|_|  _|  _|_|    _|_|_|
-  // _|    _|  _|    _|  _|    _|  _|_|      _|    _|
-  // _|    _|  _|    _|  _|    _|  _|        _|    _|
-  // _|_|_|      _|_|      _|_|_|  _|          _|_|_|
-  //
-  //
-
-  interface Chessboard {
-    chessmen: Map<Coordinates, Chessman>
-  }
+  // interface Chessboard {
+  //   chessmen: Map<{ value: Coordinates }, Chessman> // TODO: use
+  // }
 
   //
   //           _|

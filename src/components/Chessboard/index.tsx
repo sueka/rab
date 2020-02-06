@@ -1,6 +1,8 @@
+import { Map } from 'immutable'
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
+import Coordinates from '~/domain/vo/Coordinates'
 import { State } from '~/redux'
 import { halfMove, resetBoard } from '~/redux/modules/chess'
 import Chessman from './Chessman'
@@ -8,7 +10,9 @@ import Square from './Square'
 import classes from './classes.css'
 
 interface StateProps {
-  board: Chess.Chessboard
+  board: {
+    chessmen: Map<Coordinates, Chess.Chessman>
+  }
 }
 
 interface DispatchProps {
@@ -34,14 +38,14 @@ const Chessboard: React.FunctionComponent<Props> = ({ board, resetBoard, halfMov
         { ranks.map((rank) => (
           <tr key={ rank }>
             { files.map((file) => {
-              const coord = { file, rank }
+              const coord = new Coordinates({ file, rank })
               const chessman = board.chessmen.get(coord)
 
               return (
                 <td key={ file } className={ classes.ChessboardTd }>
-                  <Square coord={ coord } halfMove={ halfMove }>
+                  <Square coord={ coord.value } halfMove={ halfMove }>
                     { chessman !== undefined && (
-                      <Chessman chessman={ chessman } coord={ coord } />
+                      <Chessman chessman={ chessman } coord={ coord.value } />
                     ) }
                   </Square>
                 </td>

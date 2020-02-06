@@ -1,7 +1,9 @@
+import { Map } from 'immutable'
 import { injectable } from 'inversify'
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 
+import Coordinates from '~/domain/vo/Coordinates'
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
 
 //
@@ -15,7 +17,7 @@ import { takeEvery } from '~/lib/boni/redux-saga/effects'
 
 export interface ChessState {
   board: {
-    chessmen: Map<Chess.Coordinates, Chess.Chessman>
+    chessmen: Map<Coordinates, Chess.Chessman>
   }
 }
 
@@ -110,39 +112,39 @@ export const createChessReducer: (initialState: ChessState) => Reducer<ChessStat
     case RESET_BOARD: return {
       ...state,
       board: {
-        chessmen: new Map([
-          [{ rank: 1, file: 1 }, { symbol: '♖' }],
-          [{ rank: 1, file: 2 }, { symbol: '♘' }],
-          [{ rank: 1, file: 3 }, { symbol: '♗' }],
-          [{ rank: 1, file: 4 }, { symbol: '♕' }],
-          [{ rank: 1, file: 5 }, { symbol: '♔' }],
-          [{ rank: 1, file: 6 }, { symbol: '♗' }],
-          [{ rank: 1, file: 7 }, { symbol: '♘' }],
-          [{ rank: 1, file: 8 }, { symbol: '♖' }],
-          [{ rank: 2, file: 1 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
-          [{ rank: 2, file: 2 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
-          [{ rank: 2, file: 3 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
-          [{ rank: 2, file: 4 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
-          [{ rank: 2, file: 5 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
-          [{ rank: 2, file: 6 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
-          [{ rank: 2, file: 7 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
-          [{ rank: 2, file: 8 }, { symbol: '♙', hasAdvancedTwoSquares: false }],
-          [{ rank: 7, file: 1 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
-          [{ rank: 7, file: 2 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
-          [{ rank: 7, file: 3 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
-          [{ rank: 7, file: 4 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
-          [{ rank: 7, file: 5 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
-          [{ rank: 7, file: 6 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
-          [{ rank: 7, file: 7 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
-          [{ rank: 7, file: 8 }, { symbol: '♟', hasAdvancedTwoSquares: false }],
-          [{ rank: 8, file: 1 }, { symbol: '♜' }],
-          [{ rank: 8, file: 2 }, { symbol: '♞' }],
-          [{ rank: 8, file: 3 }, { symbol: '♝' }],
-          [{ rank: 8, file: 4 }, { symbol: '♛' }],
-          [{ rank: 8, file: 5 }, { symbol: '♚' }],
-          [{ rank: 8, file: 6 }, { symbol: '♝' }],
-          [{ rank: 8, file: 7 }, { symbol: '♞' }],
-          [{ rank: 8, file: 8 }, { symbol: '♜' }],
+        chessmen: Map([
+          [new Coordinates({ rank: 1, file: 1 }), { symbol: '♖' }],
+          [new Coordinates({ rank: 1, file: 2 }), { symbol: '♘' }],
+          [new Coordinates({ rank: 1, file: 3 }), { symbol: '♗' }],
+          [new Coordinates({ rank: 1, file: 4 }), { symbol: '♕' }],
+          [new Coordinates({ rank: 1, file: 5 }), { symbol: '♔' }],
+          [new Coordinates({ rank: 1, file: 6 }), { symbol: '♗' }],
+          [new Coordinates({ rank: 1, file: 7 }), { symbol: '♘' }],
+          [new Coordinates({ rank: 1, file: 8 }), { symbol: '♖' }],
+          [new Coordinates({ rank: 2, file: 1 }), { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 2, file: 2 }), { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 2, file: 3 }), { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 2, file: 4 }), { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 2, file: 5 }), { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 2, file: 6 }), { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 2, file: 7 }), { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 2, file: 8 }), { symbol: '♙', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 7, file: 1 }), { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 7, file: 2 }), { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 7, file: 3 }), { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 7, file: 4 }), { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 7, file: 5 }), { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 7, file: 6 }), { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 7, file: 7 }), { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 7, file: 8 }), { symbol: '♟', hasAdvancedTwoSquares: false }],
+          [new Coordinates({ rank: 8, file: 1 }), { symbol: '♜' }],
+          [new Coordinates({ rank: 8, file: 2 }), { symbol: '♞' }],
+          [new Coordinates({ rank: 8, file: 3 }), { symbol: '♝' }],
+          [new Coordinates({ rank: 8, file: 4 }), { symbol: '♛' }],
+          [new Coordinates({ rank: 8, file: 5 }), { symbol: '♚' }],
+          [new Coordinates({ rank: 8, file: 6 }), { symbol: '♝' }],
+          [new Coordinates({ rank: 8, file: 7 }), { symbol: '♞' }],
+          [new Coordinates({ rank: 8, file: 8 }), { symbol: '♜' }],
         ]),
       },
     }

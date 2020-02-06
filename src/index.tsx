@@ -1,5 +1,6 @@
 import { ConnectedRouter } from 'connected-react-router'
 import { History, createBrowserHistory } from 'history'
+import { Map } from 'immutable'
 import { Container } from 'inversify'
 import { Provider as ServiceProdiver } from 'inversify-react'
 import { SnackbarProvider } from 'notistack'
@@ -29,7 +30,7 @@ const containerImport = process.env.NODE_ENV === 'production' ? import('./contai
 const initialState: Alt.Omit<State, 'router'> = {
   chess: {
     board: {
-      chessmen: new Map(),
+      chessmen: Map(),
     },
   },
   counter: {
