@@ -11,7 +11,7 @@ declare namespace Chess {
   //
 
   interface Chessboard {
-    chessmen: Map<Coordinates, Chessman> // TODO: use
+    chessmen: Map<Coordinates, Chessman>
   }
 
   //
