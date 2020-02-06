@@ -8,6 +8,5 @@ export default abstract class Hashable extends Eq implements Eq {
     return this.hashCode === that.hashCode
   }
 
-  abstract get hashCode(): number // int
-  // abstract readonly hashCode: number // runtime error
+  abstract hashCode(): number // int
 }
