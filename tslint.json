@@ -49,6 +49,7 @@
     "space-before-function-paren": [true, { "anonymous": "always" }],
     "no-namespace": false,
     "no-bitwise": false,
+    "no-reference": false,
 
     /* Type Constraints */
     "strict-boolean-expressions": [true, "ignore-rhs"],
