@@ -2,7 +2,7 @@ import { Either, isLeft, isRight, left, right } from 'fp-ts/lib/Either'
 
 import { UnreachableError } from '~/lib/errors'
 import equalsJsons from '~/lib/extensions/Eq/equalsJsons'
-import conj from '~/lib/extensions/String/conj'
+import conj from '~/lib/extensions/Array/conj'
 import stripMargin from '~/lib/extensions/String/stripMargin'
 import trimEols from '~/lib/extensions/String/trimEols'
 import typed from '~/lib/typed'
@@ -100,7 +100,7 @@ export function asUnionOf<T extends readonly unknown[]>(...options: T): (input: 
 export function asUnionOf<T extends readonly unknown[]>(...options: T) {
   return (input: unknown): T[number] => {
     if (!options.some((option) => option === input)) {
-      throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is neigher ${ conj(', ', ' nor ', options.map(String)) }`)
+      throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is neigher ${ conj(options.map(String), ', ', ' nor ') }`)
     }
 
     return input

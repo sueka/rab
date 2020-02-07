@@ -27,11 +27,11 @@ export default class Task extends Entity {
   }
 
   public static deserialize(serialized: string): Task {
-    const deserialized = asTaskRequest(yieldThis(({ id, content, done }) => ({
+    const deserialized = asTaskRequest(yieldThis(JSON.parse(serialized), ({ id, content, done }) => ({
       id: TaskId.deserialize(id),
       content,
       done,
-    }), JSON.parse(serialized)))
+    })))
 
     return new Task(deserialized)
   }

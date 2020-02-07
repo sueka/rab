@@ -45,7 +45,7 @@ function toJson(input: unknown): Json {
       return input
     }
 
-    return mapValues((json) => toJson(json), toRecord(input))
+    return mapValues(toRecord(input), (json) => toJson(json))
   }
 
   throw new Error(typed<[string]>`${ String(input) } is not a Json.`)
