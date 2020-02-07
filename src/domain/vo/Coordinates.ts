@@ -1,4 +1,4 @@
-import hashCode from '~/lib/extensions/Coordinates/hashCode'
+import '~/lib/extensions/Number/Number.prototype.hashCode'
 import Eq from '~/lib/trait/Eq'
 import Hashable from '~/lib/trait/Hashable'
 
@@ -13,6 +13,11 @@ export default class Coordinates extends Hashable implements Eq, Chess.Coordinat
   }
 
   public hashCode() {
-    return hashCode(this)
+    // tslint:disable-next-line:no-let
+    let result = this.file.hashCode()
+
+    result = 31 * result + this.rank.hashCode()
+
+    return result
   }
 }

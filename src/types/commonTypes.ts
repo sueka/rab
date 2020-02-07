@@ -12,6 +12,8 @@ type EmptyRecord<T> = Record<keyof T, never>
 
 type Index = keyof any // tslint:disable-line:no-any
 
+type Method<T extends (that: never, ...args: never[]) => unknown> = T extends (that: infer U, ...args: infer V) => infer W ? (this: U, ...args: V) => W : never
+
 declare namespace Alt {
   type Extract<T, U extends T> = T extends U ? T : never
   type Exclude<T, U extends T> = T extends U ? never : T

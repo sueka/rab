@@ -1,4 +1,4 @@
-import hashCode from '~/lib/extensions/String/hashCode'
+import '~/lib/extensions/String/String.prototype.hashCode'
 import ValueObject from './ValueObject'
 
 // TODO: remove
@@ -23,7 +23,7 @@ export default class Id extends ValueObject<string> {
     // tslint:disable-next-line:no-let
     let result = 17
 
-    result = 31 * result + hashCode(this.value)
+    result = 31 * result + this.value.hashCode()
 
     return result
   }

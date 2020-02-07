@@ -1,6 +1,6 @@
 import TaskId from '~/domain/vo/TaskId'
-import hashCodeForBoolean from '~/lib/extensions/Boolean/hashCode'
-import hashCodeForString from '~/lib/extensions/String/hashCode'
+import '~/lib/extensions/Boolean/Boolean.prototype.hashCode'
+import '~/lib/extensions/String/String.prototype.hashCode'
 import yieldThis from '~/lib/extensions/Unknown/yieldThis'
 import { asTaskRequest } from '~/lib/validators/serializableValidators'
 import Entity from './Entity'
@@ -49,8 +49,8 @@ export default class Task extends Entity {
     let result = 17
 
     result = 31 * result + this.id.hashCode()
-    result = 31 * result + hashCodeForString(this.content)
-    result = 31 * result + hashCodeForBoolean(this.done)
+    result = 31 * result + this.content.hashCode()
+    result = 31 * result + this.done.hashCode()
 
     return result
   }
