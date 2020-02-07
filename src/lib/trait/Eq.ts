@@ -3,7 +3,7 @@
  *
  * TODO: PartialEq, Congruence 等検討
  */
-export default abstract class Eq {
+export default abstract class Eq implements Class.Eq {
   public abstract equals(that: this): boolean
 
   public isNotEqualTo(that: this): boolean {

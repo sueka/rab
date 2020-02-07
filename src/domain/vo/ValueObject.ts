@@ -1,11 +1,10 @@
 import { ValidationError } from '~/lib/errors'
-import Eq from '~/lib/trait/Eq'
 import Hashable from '~/lib/trait/Hashable'
 
 /**
  * A primitive ValueObject
  */
-export default abstract class ValueObject<T> extends Hashable implements Eq {
+export default abstract class ValueObject<T> extends Hashable implements Class.ValueObject<{ value: T }> {
   constructor(
     public readonly value: T
   ) {

@@ -1,18 +1,20 @@
+/// <reference path='../../node_modules/immutable/dist/immutable.d.ts'/>
+
 declare namespace Chess {
   type Color = 'white' | 'black' // of square or player
 
-  // //
-  // // _|                                            _|
-  // // _|_|_|      _|_|      _|_|_|  _|  _|_|    _|_|_|
-  // // _|    _|  _|    _|  _|    _|  _|_|      _|    _|
-  // // _|    _|  _|    _|  _|    _|  _|        _|    _|
-  // // _|_|_|      _|_|      _|_|_|  _|          _|_|_|
-  // //
-  // //
   //
-  // interface Chessboard {
-  //   chessmen: Map<{ value: Coordinates }, Chessman> // TODO: use
-  // }
+  // _|                                            _|
+  // _|_|_|      _|_|      _|_|_|  _|  _|_|    _|_|_|
+  // _|    _|  _|    _|  _|    _|  _|_|      _|    _|
+  // _|    _|  _|    _|  _|    _|  _|        _|    _|
+  // _|_|_|      _|_|      _|_|_|  _|          _|_|_|
+  //
+  //
+
+  interface Chessboard {
+    chessmen: Immutable.Map<Class.ValueObject<Coordinates>, Chessman>
+  }
 
   //
   //           _|

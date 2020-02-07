@@ -17,9 +17,7 @@ import { takeEvery } from '~/lib/boni/redux-saga/effects'
 //
 
 export interface ChessState {
-  board: {
-    chessmen: Map<Coordinates, Chess.Chessman>
-  }
+  board: Chess.Chessboard
 }
 
 //

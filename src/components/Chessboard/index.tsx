@@ -1,4 +1,3 @@
-import { Map } from 'immutable'
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
@@ -10,9 +9,7 @@ import Square from './Square'
 import classes from './classes.css'
 
 interface StateProps {
-  board: {
-    chessmen: Map<Coordinates, Chess.Chessman>
-  }
+  board: Chess.Chessboard
 }
 
 interface DispatchProps {
