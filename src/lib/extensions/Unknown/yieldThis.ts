@@ -1,3 +1,3 @@
-export default function yieldThis<T extends unknown, U>(decorate: (that: T) => U, that: T): U {
+export default function yieldThis<T extends unknown, U>(that: T, decorate: (that: T) => U): U {
   return decorate(that)
 }

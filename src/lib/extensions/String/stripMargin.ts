@@ -11,19 +11,19 @@ const eolCharPattern = new RegExp(typed<[string]>`(?:${ eols.map((eol) => typed<
 export default function stripMargin(...args: Parameters<typeof stripMargin1>): ReturnType<typeof stripMargin1>
 export default function stripMargin(...args: Parameters<typeof stripMargin2>): ReturnType<typeof stripMargin2>
 
-export default function stripMargin(marginCharOrThat: string, that?: string): string {
-  if (that === undefined) {
-    return stripMargin1(marginCharOrThat)
+export default function stripMargin(that: string, marginChar?: string): string {
+  if (marginChar === undefined) {
+    return stripMargin1(that)
   }
 
-  return stripMargin2(marginCharOrThat, that)
+  return stripMargin2(that, marginChar)
 }
 
 function stripMargin1(that: string) {
   return stripMargin2('|', that)
 }
 
-function stripMargin2(marginChar: string, that: string) {
+function stripMargin2(that: string, marginChar: string) {
   let result = '' // tslint:disable-line:no-let
 
   // tslint:disable-next-line:no-loop-statement

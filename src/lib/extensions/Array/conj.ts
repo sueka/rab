@@ -7,7 +7,7 @@ import typed from '~/lib/typed'
  * @example
  * conj(', ', ' or ', ['A', 'B', 'C']) // 'A, B or C'
  */
-export default function conj(separator: string, lastSeparator: string, xs: string[]): string {
+export default function conj(xs: string[], separator: string, lastSeparator: string): string {
   if (xs.length < 2) {
     throw new TypeError(typed<[string]>`The size of ${ xs.toString() } is less than two.`)
   }
