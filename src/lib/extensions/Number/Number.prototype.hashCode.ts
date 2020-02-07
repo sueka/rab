@@ -11,5 +11,5 @@ declare global {
 Object.defineProperty(Number.prototype, 'hashCode', {
   value(this: Parameters<typeof hashCode>[0]) {
     return hashCode(this)
-  }
+  },
 })
