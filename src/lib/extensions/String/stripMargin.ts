@@ -20,7 +20,7 @@ export default function stripMargin(that: string, marginChar?: string): string {
 }
 
 function stripMargin1(that: string) {
-  return stripMargin2('|', that)
+  return stripMargin2(that, '|')
 }
 
 function stripMargin2(that: string, marginChar: string) {
