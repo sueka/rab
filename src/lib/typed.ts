@@ -1,7 +1,7 @@
 import zipIterables from './extensions/Iterable/zipIterables'
 
 /**
- * Types substitutions of a template literal.  It is often used as a tag function.
+ * Type substitutions of a template literal.  It is often used as a tag function.
  *
  * @returns a string of alternate elements of template and substitutions.
  */
