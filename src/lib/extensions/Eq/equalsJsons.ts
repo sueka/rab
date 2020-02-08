@@ -46,7 +46,6 @@ function equalsJsonObjects(iXMap: JsonObject, jYMap: JsonObject): boolean {
   const is = Object.keys(iXMap)
   const js = Object.keys(jYMap)
 
-  // NOTE: 無くてもよいが、パフォーマンスのため。
   if (is.length !== js.length) {
     return false
   }
@@ -54,13 +53,8 @@ function equalsJsonObjects(iXMap: JsonObject, jYMap: JsonObject): boolean {
   is.sort() // tslint:disable-line:no-array-mutation
   js.sort() // tslint:disable-line:no-array-mutation
 
-  if (!equalsJsonArrays(is, js)) {
-    return false
-  }
-
   // tslint:disable-next-line:no-loop-statement
-  for (const i of is) {
-    const j = i
+  for (const [i, j] of zipIterables(is, js)) {
     const x = iXMap[i]
     const y = jYMap[j]
 
