@@ -57,6 +57,7 @@ describe('validators', () => {
       expect(() => asEmptyObject({ answer: 42 })).toThrowError(ValidationError)
       expect(() => asSimpleObject({})).toThrowError(ValidationError)
       expect(() => asSimpleObject({ answer: 0 })).toThrowError(ValidationError)
+      expect(() => asSimpleObject({ answerr: 42 })).toThrowError(ValidationError) // typo
       expect(() => asSimpleObject({ answer: 42, question: 'What do you get if you multiply six by nine?' })).toThrowError(ValidationError)
     })
   })
