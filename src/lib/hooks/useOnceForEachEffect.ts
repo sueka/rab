@@ -8,10 +8,10 @@ export default function useOnceForEachEffect<T, U>(xs: T[], identify: (x: T) => 
   const [doneIds, setDoneIds] = useState<U[]>([])
 
   useEffect(() => {
-    const cleanups: Array<{
+    const cleanups: {
       x: T,
       cleanup: ReturnType<typeof effect>
-    }> = []
+    }[] = []
 
     // tslint:disable-next-line:no-loop-statement
     for (const x of xs) {
