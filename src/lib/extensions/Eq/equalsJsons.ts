@@ -55,6 +55,10 @@ function equalsJsonObjects(iXMap: JsonObject, jYMap: JsonObject): boolean {
 
   // tslint:disable-next-line:no-loop-statement
   for (const [i, j] of zipIterables(is, js)) {
+    if (i !== j) {
+      return false
+    }
+
     const x = iXMap[i]
     const y = jYMap[j]
 
