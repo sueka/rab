@@ -2,8 +2,14 @@ import TaskId from '~/domain/vo/TaskId'
 import '~/lib/extensions/Boolean/Boolean.prototype.hashCode'
 import '~/lib/extensions/String/String.prototype.hashCode'
 import yieldThis from '~/lib/extensions/Unknown/yieldThis'
-import { asTaskRequest } from '~/lib/validators/serializableValidators'
+import { asBoolean, asObject, asString, optional } from '~/lib/validators/commonValidators'
 import Entity from './Entity'
+
+const asIdSerializedTask = asObject('an Id-serialized Task', (input) => ({
+  id: asString(input.id),
+  content: optional(asString)(input.content),
+  done: optional(asBoolean)(input.done),
+}))
 
 export interface TaskRequest {
   id?: TaskId
@@ -27,7 +33,7 @@ export default class Task extends Entity {
   }
 
   public static deserialize(serialized: string): Task {
-    const deserialized = asTaskRequest(yieldThis(JSON.parse(serialized), ({ id, content, done }) => ({
+    const deserialized = yieldThis(asIdSerializedTask(JSON.parse(serialized)), (({ id, content, done }) => ({
       id: TaskId.deserialize(id),
       content,
       done,
