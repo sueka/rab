@@ -1,5 +1,6 @@
 /* tslint:disable:no-import-side-effect */
 
+import dotenv from 'dotenv'
 import 'reflect-metadata'
 
 jest.mock('uuid', () => ({
@@ -7,3 +8,5 @@ jest.mock('uuid', () => ({
     return 'stub uuid'
   },
 }))
+
+dotenv.config()
