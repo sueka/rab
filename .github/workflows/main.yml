@@ -52,7 +52,7 @@ jobs:
     env:
       CI: true
       NODE_ENV: production
-      BASE_URL: http://sueka.github.io/react-app-prototype
+      BASE_URL: https://sueka.github.io/react-app-prototype
       GITHUB_API_URL: https://api.github.com
     runs-on: ubuntu-latest
     steps:
