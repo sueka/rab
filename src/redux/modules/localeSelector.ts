@@ -1,8 +1,9 @@
-import { injectable } from 'inversify'
+import { inject, injectable } from 'inversify'
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
 
+import ConfigRegistry from '~/config/ConfigRegistry'
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
 import fetch from '~/lib/fetch'
 import { Tag } from '~/lib/languageNameSolver'
@@ -200,17 +201,21 @@ export const createLocaleSelectorReducer: (initialState: LocaleSelectorState) =>
 
 @injectable()
 export class LocaleSelectorService {
+  constructor(
+    @inject('EnvVarConfig') private config: ConfigRegistry
+  ) {}
+
   public /* for testing */ *selectLocaleSaga({ payload: { locale } }: SelectLocaleAction): SagaIterator {
     try {
       const { body: formats }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
         method: 'GET',
-        parameterizedEndpoint: '/formats/:locale.json',
+        parameterizedEndpoint: typed<[string]>`${ this.config.get('BASE_URL') }/formats/:locale.json`,
         params: { locale },
       })
 
       const { body: messages }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
         method: 'GET',
-        parameterizedEndpoint: '/messages/:locale.json',
+        parameterizedEndpoint: typed<[string]>`${ this.config.get('BASE_URL') }/messages/:locale.json`,
         params: { locale },
       })
 
