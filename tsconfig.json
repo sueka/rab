@@ -41,5 +41,8 @@
   "include": [
     "src",
     "node_modules/babel-plugin-react-intl-auto/**/*.d.ts"
+  ],
+  "exclude": [
+    "src/setupTests.ts" // Jest entry point
   ]
 }

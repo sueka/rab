@@ -17,13 +17,14 @@ export const clean: TaskFunction = () => del([...ignored, '!node_modules/**', '!
 const extractMessages = npxTask('extract-messages', ['--flat', '--default-locale=en', '--locales=en,ja', '--output=public/messages', 'src/**/messages.ts'])
 const preTypeCheck = parallel(npxTask('tcm', ['src', '-s']), extractMessages)
 const typeCheck = series(preTypeCheck, npxTask('tsc', ['--noEmit', '-p', '.']))
+const typeCheckForTesting = series(preTypeCheck, npxTask('tsc', ['--noEmit', '-p', './tsconfig.test.json']))
 const tslint = npxTask('tslint', ['-p', '.'])
 const stylelint = npxTask('stylelint', ['src/**/*.css'])
 export const lint = parallel(tslint, stylelint)
-const testWithoutCoverage = series(typeCheck, npxTask('jest'))
-const testWithCoverage = series(typeCheck, npxTask('jest', ['--coverage']))
+const testWithoutCoverage = series(typeCheckForTesting, npxTask('jest'))
+const testWithCoverage = series(typeCheckForTesting, npxTask('jest', ['--coverage']))
 export const testInWatchMode = series(preTypeCheck, npxTask('jest', ['--onlyChanged', '--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''])) // TODO: interrupt に preTypeCheck を差し込む
-export const updateSnapshot = series(typeCheck, npxTask('jest', ['--updateSnapshot']))
+export const updateSnapshot = series(typeCheckForTesting, npxTask('jest', ['--updateSnapshot']))
 export const test = testWithCoverage
 export const build = series(() => del(['dist/**/*']), typeCheck, npxTask('webpack'))
 export const document = parallel(npxTask('typedoc'))
