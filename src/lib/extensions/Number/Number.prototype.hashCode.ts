@@ -4,12 +4,12 @@ export {}
 
 declare global {
   interface Number {
-    hashCode: Method<typeof hashCode>
+    hashCode(): number
   }
 }
 
 Object.defineProperty(Number.prototype, 'hashCode', {
-  value(this: Parameters<typeof hashCode>[0]) {
+  value(this: number) {
     return hashCode(this)
   },
 })
