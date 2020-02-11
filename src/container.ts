@@ -9,7 +9,7 @@ import Service from './redux'
 import { ChessService } from './redux/modules/chess'
 import { CounterService } from './redux/modules/counter'
 import { IoService } from './redux/modules/io'
-import { LocaleSelectorService } from './redux/modules/localeSelector'
+import LocaleSelectorService from './redux/modules/localeSelector'
 import ReminderService from './redux/modules/reminder'
 import GetRepo from './useCase/GetRepo'
 

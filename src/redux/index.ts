@@ -8,7 +8,7 @@ import { fork } from 'redux-saga/effects'
 import { ChessAction, ChessService, ChessState, createChessReducer } from './modules/chess'
 import { CounterAction, CounterService, CounterState, createCounterReducer } from './modules/counter'
 import { IoAction, IoService, IoState, createIoReducer } from './modules/io'
-import { LocaleSelectorAction, LocaleSelectorService, LocaleSelectorState, createLocaleSelectorReducer } from './modules/localeSelector'
+import LocaleSelectorService, { LocaleSelectorAction, LocaleSelectorState, createLocaleSelectorReducer } from './modules/localeSelector'
 import ReminderService, { ReminderAction, ReminderState, createReminderReducer } from './modules/reminder'
 
 export interface State {

@@ -200,7 +200,7 @@ export const createLocaleSelectorReducer: (initialState: LocaleSelectorState) =>
 //
 
 @injectable()
-export class LocaleSelectorService {
+export default class LocaleSelectorService {
   constructor(
     @inject('EnvVarConfig') private config: ConfigRegistry
   ) {}
