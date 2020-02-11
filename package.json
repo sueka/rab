@@ -14,6 +14,7 @@
     "gulp": "gulp"
   },
   "sideEffects": [
+    "**/*.prototype.*.ts",
     "src/types/globalTypes.ts"
   ],
   "engines": {
