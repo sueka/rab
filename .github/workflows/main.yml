@@ -19,6 +19,12 @@ jobs:
         run: |
           npm ci
           npm run build
+      - uses: actions/upload-artifact@v1
+        with:
+          name: build-artifact
+          path: ./dist
+        if: matrix.node-version == 10
+        # TODO: skip it if test fails
     strategy:
       matrix:
         node-version: [10, 12]
@@ -44,3 +50,15 @@ jobs:
     strategy:
       matrix:
         node-version: [10, 12]
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v1
+        with:
+          name: build-artifact
+          path: ./dist
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./dist
+    needs: build # TODO: not wait for building an app w/ Node 12
