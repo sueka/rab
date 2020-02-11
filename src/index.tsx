@@ -118,7 +118,19 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
 }
 
 containerImport.then(({ default: container }) => {
-  const history = createBrowserHistory()
+  if (process.env.BASE_URL === undefined) {
+    throw new Error // TODO
+  }
+
+  const basename = new RegExp(typed<[string]>`^${ document.location.origin }(.*)$`).exec(process.env.BASE_URL)?.[1]
+
+  if (basename === undefined) {
+    throw new Error // TODO
+  }
+
+  const history = createBrowserHistory({
+    basename,
+  })
 
   ReactDOM.render( <Main history={ history } container={ container } />, document.getElementById('root'))
 })

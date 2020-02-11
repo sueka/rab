@@ -8,6 +8,7 @@ jobs:
     env:
       CI: true
       NODE_ENV: production
+      BASE_URL: http://localhost:1234
       GITHUB_API_URL: https://api.github.com
     runs-on: ubuntu-latest
     steps:
@@ -19,19 +20,16 @@ jobs:
         run: |
           npm ci
           npm run build
-      - uses: actions/upload-artifact@v1
-        with:
-          name: build-artifact
-          path: ./dist
-        if: matrix.node-version == 10
-        # TODO: skip it if test fails
     strategy:
       matrix:
-        node-version: [10, 12]
+        node-version:
+          # - 10 # deployed
+          - 12
   test:
     env:
       NODE_ENV: test
       TZ: Asia/Tokyo # for snapshots
+      BASE_URL: http://localhost:1234
       GITHUB_API_URL: https://api.github.com
     runs-on: ubuntu-latest
     steps:
@@ -51,14 +49,22 @@ jobs:
       matrix:
         node-version: [10, 12]
   deploy:
+    env:
+      CI: true
+      NODE_ENV: production
+      BASE_URL: http://sueka.github.io/react-app-prototype
+      GITHUB_API_URL: https://api.github.com
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v1
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
-          name: build-artifact
-          path: ./dist
+          node-version: 10
+      - name: Build
+        run: |
+          npm ci
+          npm run build
       - uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./dist
-    needs: build # TODO: not wait for building an app w/ Node 12
