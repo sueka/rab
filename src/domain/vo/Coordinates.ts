@@ -1,4 +1,3 @@
-import '~/lib/extensions/Number/Number.prototype.hashCode'
 import Hashable from '~/lib/trait/Hashable'
 
 export default interface Coordinates extends Chess.Coordinates {} // tslint:disable-line:no-empty-interface

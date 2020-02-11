@@ -1,4 +1,3 @@
-import '~/lib/extensions/String/String.prototype.hashCode'
 import ValueObject from './ValueObject'
 
 // TODO: remove

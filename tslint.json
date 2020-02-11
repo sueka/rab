@@ -50,6 +50,7 @@
     "no-namespace": false,
     "no-bitwise": false,
     "no-reference": false,
+    "no-import-side-effect": true,
 
     /* Type Constraints */
     "strict-boolean-expressions": [true, "ignore-rhs"],

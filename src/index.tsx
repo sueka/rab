@@ -1,3 +1,5 @@
+/* tslint:disable:no-import-side-effect */
+
 import { ConnectedRouter } from 'connected-react-router'
 import { History, createBrowserHistory } from 'history'
 import { Map } from 'immutable'
@@ -18,6 +20,9 @@ import App from './components/App'
 import IntlProvider from './components/IntlProvider'
 import configureTheme from './configureTheme'
 import createProvider from './createProvider'
+import './lib/extensions/Boolean/Boolean.prototype.hashCode'
+import './lib/extensions/Number/Number.prototype.hashCode'
+import './lib/extensions/String/String.prototype.hashCode'
 import typed from './lib/typed'
 import Service, { State, createReducer } from './redux'
 import './types/globalTypes'
