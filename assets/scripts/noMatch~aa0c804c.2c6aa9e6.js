@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{396:function(n,t,o){"use strict";o.r(t);var r=o(13),a=o.n(r),e=o(14);function c(){var n=a()(["No route matches ","."]);return c=function(){return n},n}t.default=function(n){var t=n.location.pathname;throw new Error(Object(e.a)(c(),t))}}}]);
-//# sourceMappingURL=noMatch~aa0c804c.2c6aa9e6.js.map
