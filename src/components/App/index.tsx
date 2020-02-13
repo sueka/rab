@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { hot } from 'react-hot-loader/root'
 import { useIntl } from 'react-intl'
-import { Switch } from 'react-router'
+import { Redirect, Switch, useLocation } from 'react-router'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
 
@@ -19,6 +19,17 @@ export /* for testing */ const NoMatch = React.lazy(() => import(/* webpackChunk
 
 const App: React.FunctionComponent = () => {
   const { formatMessage } = useIntl()
+  const location = useLocation()
+
+  if (location.pathname === '/' && location.hash !== '') {
+    const pathname = /^#(.*)/.exec(location.hash)?.[1]
+
+    return (
+      <Redirect to={ {
+        pathname,
+      } } />
+    )
+  }
 
   return (
     <>
