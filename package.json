@@ -39,6 +39,7 @@
     "@types/classnames": "^2.2.9",
     "@types/copy-webpack-plugin": "^5.0.0",
     "@types/del": "^4.0.0",
+    "@types/dotenv": "^8.2.0",
     "@types/dotenv-webpack": "^1.7.0",
     "@types/gulp": "^4.0.6",
     "@types/history": "^4.7.5",
@@ -68,6 +69,7 @@
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
     "del": "^5.1.0",
+    "dotenv": "^8.2.0",
     "dotenv-webpack": "^1.7.0",
     "extract-react-intl-messages": "^2.3.5",
     "fp-ts": "^2.4.4",
@@ -107,11 +109,9 @@
     "webpack-cli": "^3.3.10"
   },
   "devDependencies": {
-    "@types/dotenv": "^8.2.0",
     "@types/webpack-bundle-analyzer": "^2.13.3",
     "@types/webpack-dev-server": "^3.10.0",
     "awesome-typescript-loader": "^5.2.1",
-    "dotenv": "^8.2.0",
     "identity-obj-proxy": "^3.0.0",
     "redux-mock-store": "^1.5.4",
     "stylelint": "^13.0.0",
