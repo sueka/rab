@@ -122,7 +122,7 @@ containerImport.then(({ default: container }) => {
     throw new Error // TODO
   }
 
-  const basename = new RegExp(typed<[string]>`^${ document.location.origin }(.*)$`).exec(process.env.BASE_URL)?.[1]
+  const basename = new RegExp(typed<[string]>`^${ window.location.origin }(.*)$`).exec(process.env.BASE_URL)?.[1]
 
   if (basename === undefined) {
     throw new Error // TODO
