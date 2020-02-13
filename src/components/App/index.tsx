@@ -24,6 +24,8 @@ const App: React.FunctionComponent = () => {
   if (location.pathname === '/' && location.hash !== '') {
     const pathname = /^#(.*)/.exec(location.hash)?.[1]
 
+    // TODO: shape check
+
     return (
       <Redirect to={ {
         pathname,
