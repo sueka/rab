@@ -118,15 +118,11 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
 }
 
 containerImport.then(({ default: container }) => {
-  if (process.env.BASE_URL === undefined) {
+  if (process.env.BASE_URL === undefined || !process.env.BASE_URL.startsWith(window.location.origin)) {
     throw new Error // TODO
   }
 
-  const basename = new RegExp(typed<[string]>`^${ window.location.origin }(.*)$`).exec(process.env.BASE_URL)?.[1]
-
-  if (basename === undefined) {
-    throw new Error // TODO
-  }
+  const basename = process.env.BASE_URL.slice(window.location.origin.length)
 
   const history = createBrowserHistory({
     basename,
