@@ -2,6 +2,9 @@ import { Configuration } from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import DotEnvPlugin from 'dotenv-webpack'
 import * as path from 'path'
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 const config: Configuration = {
   mode: 'production',
@@ -26,6 +29,7 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html'),
       filename: '404.html',
+      base: process.env.BASE_URL,
     }),
     new DotEnvPlugin({
       path: path.resolve(__dirname, '../.env'),
