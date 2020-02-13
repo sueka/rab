@@ -22,7 +22,7 @@ const App: React.FunctionComponent = () => {
   const location = useLocation()
 
   if (location.pathname === '/' && location.hash !== '') {
-    const pathname = /^#(.*)/.exec(location.hash)?.[1]
+    const pathname = /^#(.*)$/.exec(location.hash)?.[1]
 
     // TODO: shape check
 
