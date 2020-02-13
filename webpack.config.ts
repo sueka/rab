@@ -58,6 +58,8 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html'),
+      base: `${ process.env.BASE_URL }/`,
+      inject: 'head',
     }),
     new DotEnvPlugin({
       path: path.resolve(__dirname, '.env'),
