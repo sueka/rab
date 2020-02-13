@@ -65,7 +65,7 @@ jobs:
           npm ci
           npm run build
           npm run gulp buildGhPagesCustom404Page
-          cp gh-pages/dist/* dist/
+          cp -r gh-pages/dist/* dist/
       - uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
