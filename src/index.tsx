@@ -118,6 +118,8 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
 }
 
 containerImport.then(({ default: container }) => {
+  // TODO: DI BASE_URL
+
   if (process.env.BASE_URL === undefined || !process.env.BASE_URL.startsWith(window.location.origin)) {
     throw new Error // TODO
   }
