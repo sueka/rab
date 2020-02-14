@@ -91,7 +91,7 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
   const reducer = useMemo(() => createReducer(history, initialState), [history])
 
   const rootSaga = useCallback<Saga>(() => {
-    const service = container.resolve(Service)
+    const service = container.resolve(Service) // TODO: DI
 
     return service.rootSaga.call(service)
   }, [container])
