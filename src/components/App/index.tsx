@@ -26,11 +26,7 @@ const App: React.FunctionComponent = () => {
 
     // TODO: shape check
 
-    return (
-      <Redirect to={ {
-        pathname,
-      } } />
-    )
+    return <Redirect to={ { pathname } } />
   }
 
   return (
