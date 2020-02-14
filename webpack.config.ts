@@ -3,6 +3,9 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import DotEnvPlugin from 'dotenv-webpack'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import * as path from 'path'
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 const config: Configuration = {
   mode: 'production',
