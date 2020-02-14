@@ -130,5 +130,5 @@ containerImport.then(({ default: container }) => {
     basename,
   })
 
-  ReactDOM.render( <Main history={ history } container={ container } />, document.getElementById('root'))
+  ReactDOM.render(<Main history={ history } container={ container } />, document.getElementById('root'))
 })
