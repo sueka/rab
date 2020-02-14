@@ -4,7 +4,7 @@
 
 import * as pathToRegexp from 'path-to-regexp'
 
-import UrlOrPathAbempty from './UrlOrPathAbempty'
+import createUrlOrPathAbempty from './createUrlOrPathAbempty'
 import mapValues from './extensions/Record/mapValues'
 import typed from './typed'
 
@@ -52,7 +52,7 @@ function toJson(input: unknown): Json {
 }
 
 function buildRequestInfo({ method, parameterizedEndpoint, params = {}, query = {} }: RequestParams): RequestInfo {
-  const url = new UrlOrPathAbempty(parameterizedEndpoint)
+  const url = createUrlOrPathAbempty(parameterizedEndpoint)
 
   // tslint:disable-next-line:no-object-mutation
   url.pathname = isEmpty(params) ? url.pathname : pathToRegexp.compile(url.pathname)(params)

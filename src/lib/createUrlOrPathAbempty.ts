@@ -96,79 +96,12 @@ class PathAbempty implements URL {
   }
 }
 
-// tslint:disable-next-line:max-classes-per-file
-export default class UrlOrPathAbempty implements URL {
-  private readonly _instance: URL | PathAbempty
+export default function createUrlOrPathAbempty(...args: ConstructorParameters<typeof URL>): URL | PathAbempty {
+  const [urlOrPathAbempty] = args
 
-  constructor(...args: ConstructorParameters<typeof URL>) {
-    const [urlOrPathAbempty] = args
-
-    if (isUrl(urlOrPathAbempty)) {
-      this._instance = new URL(...args)
-    } else {
-      this._instance = new PathAbempty(...args)
-    }
-  }
-
-  get hash(): string {
-    return this._instance.hash
-  }
-
-  get host(): string {
-    return this._instance.host
-  }
-
-  get hostname(): string {
-    return this._instance.hostname
-  }
-
-  get href(): string {
-    return this._instance.href
-  }
-
-  get origin(): string {
-    return this._instance.origin
-  }
-
-  get password(): string {
-    return this._instance.password
-  }
-
-  get pathname(): string {
-    return this._instance.pathname
-  }
-
-  set pathname(value: string) {
-    // tslint:disable-next-line:no-object-mutation
-    this._instance.pathname = value
-  }
-
-  get port(): string {
-    return this._instance.port
-  }
-
-  get protocol(): string {
-    return this._instance.protocol
-  }
-
-  get search(): string {
-    return this._instance.search
-  }
-
-  set search(value: string) {
-    // tslint:disable-next-line:no-object-mutation
-    this._instance.search = value
-  }
-
-  get searchParams(): URLSearchParams {
-    return this._instance.searchParams
-  }
-
-  get username(): string {
-    return this._instance.username
-  }
-
-  public toJSON() {
-    return this._instance.toJSON()
+  if (isUrl(urlOrPathAbempty)) {
+    return new URL(...args)
+  } else {
+    return new PathAbempty(...args)
   }
 }
