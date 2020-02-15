@@ -71,7 +71,6 @@ export default class Task extends Entity {
     return this._content
   }
 
-  // TODO: immutable
   set content(value) {
     this._content = value // tslint:disable-line:no-object-mutation
   }
@@ -80,7 +79,6 @@ export default class Task extends Entity {
     return this._done
   }
 
-  // TODO: immutable
   set done(value) {
     this._done = value // tslint:disable-line:no-object-mutation
   }
