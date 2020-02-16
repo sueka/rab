@@ -60,11 +60,10 @@ export default class Task extends Entity {
   }
 
   public with({
-    id = this.id,
     content = this.content,
     done = this.done,
-  }: Partial<TaskRequest>): Task {
-    return new Task({ id, content, done })
+  }: Partial<Alt.Omit<TaskRequest, 'id'>>): Task {
+    return new Task({ id: this.id, content, done })
   }
 
   get content() {
