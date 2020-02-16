@@ -404,7 +404,11 @@ export default class ReminderService {
   ) {}
 
   private *addTaskAsyncSaga(): SagaIterator {
-    const task = new Task({})
+    const task = new Task({
+      id: new TaskId(v4()),
+      content: '',
+      done: false,
+    })
 
     yield call(this.taskRepository.store, task)
     yield put(pushTask(task))

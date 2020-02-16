@@ -1,18 +1,18 @@
 import TaskId from '~/domain/vo/TaskId'
 import yieldThis from '~/lib/extensions/Unknown/yieldThis'
-import { asBoolean, asObject, asString, optional } from '~/lib/validators/commonValidators'
+import { asBoolean, asObject, asString } from '~/lib/validators/commonValidators'
 import Entity from './Entity'
 
 const asIdSerializedTask = asObject('an Id-serialized Task', (input) => ({
   id: asString(input.id),
-  content: optional(asString)(input.content),
-  done: optional(asBoolean)(input.done),
+  content: asString(input.content),
+  done: asBoolean(input.done),
 }))
 
 interface TaskRequest {
-  id?: TaskId
-  content?: string
-  done?: boolean
+  id: TaskId
+  content: string
+  done: boolean
 }
 
 export default class Task extends Entity {
@@ -21,8 +21,8 @@ export default class Task extends Entity {
 
   constructor({
     id,
-    content = '',
-    done = false,
+    content,
+    done,
   }: TaskRequest) {
     super(id)
 
@@ -63,7 +63,7 @@ export default class Task extends Entity {
     id = this.id,
     content = this.content,
     done = this.done,
-  }: TaskRequest): Task {
+  }: Partial<TaskRequest>): Task {
     return new Task({ id, content, done })
   }
 

@@ -1,5 +1,3 @@
-import { v4 } from 'uuid'
-
 import Id from '~/domain/vo/Id'
 import Eq from '~/lib/trait/Eq'
 import Hashable from '~/lib/trait/Hashable'
@@ -11,7 +9,7 @@ interface Identifiable {
 
 export default abstract class Entity extends Hashable implements Identifiable, Eq {
   constructor(
-    public readonly id = new Id(v4())
+    public readonly id: Id
   ) {
     super()
   }
