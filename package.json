@@ -115,7 +115,7 @@
     "redux-mock-store": "^1.5.4",
     "stylelint": "^13.0.0",
     "stylelint-config-standard": "^19.0.0",
-    "tslint": "^6.0.0",
+    "tslint": "^5.20.1",
     "tslint-immutable": "^6.0.1",
     "tslint-microsoft-contrib": "^6.2.0",
     "tslint-react": "^4.2.0",
