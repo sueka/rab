@@ -26,35 +26,11 @@ function isUrl(input: string): input is string.Url {
 /**
  * URL から origin を取り除いたものを表す。
  */
-class PathAbempty implements URL {
+class PathAbempty {
   private readonly _url: URL
 
   constructor(...[pathAbempty, ...restArgs]: ConstructorParameters<typeof URL>) {
     this._url = new URL(typed<[string, string]>`${ DUMMY_ORIGIN }${ pathAbempty }`, ...restArgs)
-  }
-
-  get host(): string {
-    throw new Error // TODO:
-  }
-
-  get hostname(): string {
-    throw new Error // TODO:
-  }
-
-  get password(): string {
-    throw new Error // TODO:
-  }
-
-  get port(): string {
-    throw new Error // TODO:
-  }
-
-  get protocol(): string {
-    throw new Error // TODO:
-  }
-
-  get username(): string {
-    throw new Error // TODO:
   }
 
   get hash(): string {
