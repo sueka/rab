@@ -7,7 +7,7 @@ import Button, { ButtonProps } from '@material-ui/core/Button'
 import cssClasses from './classes.css'
 import messages from './messages'
 
-interface Props extends Alt.ForceOmit<React.InputHTMLAttributes<HTMLInputElement>, 'className' | 'type' | 'onClick' | 'onChange' | 'ref'> {
+interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 'className' | 'type' | 'onClick' | 'onChange'> {
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   buttonLabel?: React.ReactNode
