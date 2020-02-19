@@ -10,7 +10,7 @@ declare global {
 
   interface ObjectConstructor {
     keys<K extends Index>(o: Record<K, unknown>): K[]
-    entries<K extends Index, V>(o: Record<K, V> | ArrayLike<V>): [K, V][]
+    entries<K extends Index, V>(o: Record<K, V> | ArrayLike<V>): Array<[K, V]>
   }
 
   // TODO: use globalThis
