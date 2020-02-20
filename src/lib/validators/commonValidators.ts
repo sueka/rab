@@ -143,6 +143,7 @@ export const asObject = <T>(className: string, asT: (input: any) => T) => (input
   }
 }
 
+// TODO: undefined, symbol, bigint, bigdecimal 等に拡張する
 export function asConstant<T extends null>(a: T): (input: unknown) => T
 export function asConstant<T extends boolean>(a: T): (input: unknown) => T
 export function asConstant<T extends number>(a: T): (input: unknown) => T
