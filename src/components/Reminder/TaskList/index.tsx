@@ -1,62 +1,17 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 
 import List from '@material-ui/core/List'
 
-import Task from '~/domain/entity/Task'
-import TaskId from '~/domain/vo/TaskId'
-import curry from '~/lib/curry'
-import { asBoolean, asObject, leftOnly, named } from '~/lib/validators/commonValidators'
-import { asBoundedLengthString } from '~/lib/validators/stringValidators'
-import TaskListItem from './TaskListItem'
+import { Props as TaskListItemProps } from './TaskListItem'
 
 export interface Props {
-  tasks: Task[]
-
-  changeTaskContent(taskId: TaskId, content: string): void
-  markTaskAsDone(taskId: TaskId): void
-  markTaskAsUndone(taskId: TaskId): void
-  deleteTask(taskId: TaskId): void
-  moveTask(sourceIndex: number, targetIndex: number): void
+  children?: React.ReactElement<TaskListItemProps, React.ComponentType<TaskListItemProps>> | React.ReactElement<TaskListItemProps, React.ComponentType<TaskListItemProps>>[]
 }
 
-const validate = asObject('a Task for presentation', (input) => ({
-  content: leftOnly(named('content', asBoundedLengthString({
-    upperBound: 140,
-  })))(input.content),
-  done: leftOnly(asBoolean)(input.done),
-}))
+const TaskList: React.FunctionComponent<Props> = ({ children }) => (
+  <List>
+    { children }
+  </List>
+)
 
-const TaskList: React.FunctionComponent<Props> = ({ tasks, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => {
-  const changeTask = useCallback((taskId, { content, done }) => {
-    if (content !== undefined) {
-      changeTaskContent(taskId, content)
-    }
-
-    if (done !== undefined) {
-      if (done) {
-        markTaskAsDone(taskId)
-      } else {
-        markTaskAsUndone(taskId)
-      }
-    }
-  }, [changeTaskContent, markTaskAsDone, markTaskAsUndone])
-
-  return (
-    <List>
-      {
-        tasks.map((task, index) => (
-          <TaskListItem
-            key={ task.id.value }
-            id={ task.id }
-            value={ task }
-            validate={ validate }
-            onChange={ curry(changeTask)(task.id) }
-            onDelete={ curry(deleteTask)(task.id) }
-            { ...{ index, moveTask } }
-          />
-        ))
-      }
-    </List>
-  )
-}
 export default TaskList
