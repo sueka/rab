@@ -10,7 +10,7 @@ import { State } from '~/redux'
 import { addTaskAsync, changeTaskContentAsync, deleteTaskAsync, markTaskAsDoneAsync, markTaskAsUndoneAsync, moveTask } from '~/redux/modules/reminder'
 import AddTaskButton from './AddTaskButton'
 import TaskList from './TaskList'
-import TaskListItem from './TaskList/TaskListItem'
+import TaskListItem from './TaskListItem'
 
 interface StateProps {
   tasks: Task[]
