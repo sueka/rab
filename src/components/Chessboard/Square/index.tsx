@@ -7,7 +7,7 @@ import getColorFromCoordinates from '~/utils/chess/getColorFromCoordinates'
 import classes from './classes.css'
 
 interface Props extends React.PropsWithChildren<{}> {
-  children?: React.ReactElement<ChessmanProps, React.ComponentType<ChessmanProps>> | false | null
+  children?: React.ReactElement<ChessmanProps, React.ComponentType<ChessmanProps>> | null
   coord: Chess.Coordinates
 
   halfMove(chessman: Chess.Chessman, source: Chess.Coordinates, target: Chess.Coordinates): void
