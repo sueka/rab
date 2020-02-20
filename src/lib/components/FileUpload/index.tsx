@@ -7,7 +7,7 @@ import Button, { ButtonProps } from '@material-ui/core/Button'
 import cssClasses from './classes.css'
 import messages from './messages'
 
-interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 'className' | 'type' | 'onClick' | 'onChange'> {
+interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'onClick' | 'onChange'> {
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   buttonLabel?: React.ReactNode
@@ -25,6 +25,7 @@ interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 'c
 }
 
 const FileUpload: React.FunctionComponent<Props> = ({
+  className,
   onClick,
   onChange,
   buttonLabel = <FormattedMessage { ...messages.browse } />,
@@ -36,7 +37,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
 }) => {
   const [files, setFiles] = useState<FileList | null>(null)
 
-  const rootClassName = useMemo(() => classnames(muiClasses?.root, cssClasses.FileUpload), [muiClasses?.root, cssClasses.FileUpload])
+  const rootClassName = useMemo(() => classnames(className, muiClasses?.root, cssClasses.FileUpload), [className, muiClasses?.root, cssClasses.FileUpload])
   const buttonClassName = useMemo(() => classnames(muiClasses?.button, cssClasses.Button, ButtonProps?.className), [muiClasses?.button, cssClasses.Button, ButtonProps?.className])
 
   const resultMessage = useMemo(() => {
