@@ -70,71 +70,17 @@ const reminderActionTypes = [
   REMOVE_ERROR,
 ]
 
-interface AddTaskAsyncAction extends Action<typeof ADD_TASK_ASYNC> {}
-
-interface ChangeTaskContentAsyncAction extends Action<typeof CHANGE_TASK_CONTENT_ASYNC> {
-  payload: {
-    taskId: TaskId
-    content: Task['content']
-  }
-}
-
-interface MarkTaskAsDoneAsyncAction extends Action<typeof MARK_TASK_AS_DONE_ASYNC> {
-  payload: {
-    taskId: TaskId
-  }
-}
-
-interface MarkTaskAsUndoneAsyncAction extends Action<typeof MARK_TASK_AS_UNDONE_ASYNC> {
-  payload: {
-    taskId: TaskId
-  }
-}
-
-interface DeleteTaskAsyncAction extends Action<typeof DELETE_TASK_ASYNC> {
-  payload: {
-    taskId: TaskId
-  }
-}
-
-interface MoveTaskAction extends Action<typeof MOVE_TASK> {
-  payload: {
-    sourceIndex: number
-    targetIndex: number
-  }
-}
-
-interface PushTaskAction extends Action<typeof PUSH_TASK> {
-  payload: {
-    task: Task
-  }
-}
-
-interface RemoveTaskAction extends Action<typeof REMOVE_TASK> {
-  payload: {
-    taskId: TaskId
-  }
-}
-
-interface CheckTaskAction extends Action<typeof CHECK_TASK> {
-  payload: {
-    taskId: TaskId
-    task: Task
-  }
-}
-
-interface PushErrorAction extends Action<typeof PUSH_ERROR> {
-  payload: {
-    errorId: string
-    error: Error
-  }
-}
-
-interface RemoveErrorAction extends Action<typeof REMOVE_ERROR> {
-  payload: {
-    errorId: string
-  }
-}
+type AddTaskAsyncAction = ReturnType<typeof addTaskAsync>
+type ChangeTaskContentAsyncAction = ReturnType<typeof changeTaskContentAsync>
+type MarkTaskAsDoneAsyncAction = ReturnType<typeof markTaskAsDoneAsync>
+type MarkTaskAsUndoneAsyncAction = ReturnType<typeof markTaskAsUndoneAsync>
+type DeleteTaskAsyncAction = ReturnType<typeof deleteTaskAsync>
+type MoveTaskAction = ReturnType<typeof moveTask>
+type PushTaskAction = ReturnType<typeof pushTask>
+type RemoveTaskAction = ReturnType<typeof removeTask>
+type CheckTaskAction = ReturnType<typeof checkTask>
+type PushErrorAction = ReturnType<typeof pushError>
+type RemoveErrorAction = ReturnType<typeof removeError>
 
 export type ReminderAction =
   | AddTaskAsyncAction
@@ -170,11 +116,11 @@ function isReminderAction(action: Action): action is ReminderAction {
 //
 //
 
-export const addTaskAsync = (): AddTaskAsyncAction => ({
+export const addTaskAsync = () => <const> ({
   type: ADD_TASK_ASYNC,
 })
 
-export const changeTaskContentAsync = (taskId: TaskId, content: string): ChangeTaskContentAsyncAction => ({
+export const changeTaskContentAsync = (taskId: TaskId, content: string) => <const> ({
   type: CHANGE_TASK_CONTENT_ASYNC,
   payload: {
     taskId,
@@ -182,28 +128,28 @@ export const changeTaskContentAsync = (taskId: TaskId, content: string): ChangeT
   },
 })
 
-export const markTaskAsDoneAsync = (taskId: TaskId): MarkTaskAsDoneAsyncAction => ({
+export const markTaskAsDoneAsync = (taskId: TaskId) => <const> ({
   type: MARK_TASK_AS_DONE_ASYNC,
   payload: {
     taskId,
   },
 })
 
-export const markTaskAsUndoneAsync = (taskId: TaskId): MarkTaskAsUndoneAsyncAction => ({
+export const markTaskAsUndoneAsync = (taskId: TaskId) => <const> ({
   type: MARK_TASK_AS_UNDONE_ASYNC,
   payload: {
     taskId,
   },
 })
 
-export const deleteTaskAsync = (taskId: TaskId): DeleteTaskAsyncAction => ({
+export const deleteTaskAsync = (taskId: TaskId) => <const> ({
   type: DELETE_TASK_ASYNC,
   payload: {
     taskId,
   },
 })
 
-export const moveTask = (sourceIndex: number, targetIndex: number): MoveTaskAction => ({
+export const moveTask = (sourceIndex: number, targetIndex: number) => <const> ({
   type: MOVE_TASK,
   payload: {
     sourceIndex,
@@ -211,21 +157,21 @@ export const moveTask = (sourceIndex: number, targetIndex: number): MoveTaskActi
   },
 })
 
-export const pushTask = (task: Task): PushTaskAction => ({
+export const pushTask = (task: Task) => <const> ({
   type: PUSH_TASK,
   payload: {
     task,
   },
 })
 
-export const removeTask = (taskId: TaskId): RemoveTaskAction => ({
+export const removeTask = (taskId: TaskId) => <const> ({
   type: REMOVE_TASK,
   payload: {
     taskId,
   },
 })
 
-export const checkTask = (taskId: TaskId, task: Task): CheckTaskAction => ({
+export const checkTask = (taskId: TaskId, task: Task) => <const> ({
   type: CHECK_TASK,
   payload: {
     taskId,
@@ -233,7 +179,7 @@ export const checkTask = (taskId: TaskId, task: Task): CheckTaskAction => ({
   },
 })
 
-export /* for testing */ const pushError = (errorId: string, error: Error): PushErrorAction => ({
+export /* for testing */ const pushError = (errorId: string, error: Error) => <const> ({
   type: PUSH_ERROR,
   payload: {
     errorId,
@@ -241,7 +187,7 @@ export /* for testing */ const pushError = (errorId: string, error: Error): Push
   },
 })
 
-export const removeError = (errorId: string): RemoveErrorAction => ({
+export const removeError = (errorId: string) => <const> ({
   type: REMOVE_ERROR,
   payload: {
     errorId,

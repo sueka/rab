@@ -59,35 +59,11 @@ const localeSelectorActionTypes = [
   PUSH_ERROR,
 ]
 
-interface SelectLocaleAction extends Action<typeof SELECT_LOCALE> {
-  payload: {
-    locale: Tag
-  }
-}
-
-interface SetLocaleAction extends Action<typeof SET_LOCALE> {
-  payload: {
-    locale: Tag
-  }
-}
-
-interface SetFormatsAction extends Action<typeof SET_FORMATS> {
-  payload: {
-    formats: Formats
-  }
-}
-
-interface SetMessagesAction extends Action<typeof SET_MESSAGES> {
-  payload: {
-    messages: Record<string, string>
-  }
-}
-
-interface PushErrorAction extends Action<typeof PUSH_ERROR> {
-  payload: {
-    error: Error
-  }
-}
+type SelectLocaleAction = ReturnType<typeof selectLocale>
+type SetLocaleAction = ReturnType<typeof setLocale>
+type SetFormatsAction = ReturnType<typeof setFormats>
+type SetMessagesAction = ReturnType<typeof setMessages>
+type PushErrorAction = ReturnType<typeof pushError>
 
 export type LocaleSelectorAction =
   | SelectLocaleAction
@@ -117,35 +93,35 @@ function isLocaleSelectorAction(action: Action): action is LocaleSelectorAction 
 //
 //
 
-export const selectLocale = (locale: Tag): SelectLocaleAction => ({
+export const selectLocale = (locale: Tag) => <const> ({
   type: SELECT_LOCALE,
   payload: {
     locale,
   },
 })
 
-export /* for testing */ const setLocale = (locale: Tag): SetLocaleAction => ({
+export /* for testing */ const setLocale = (locale: Tag) => <const> ({
   type: SET_LOCALE,
   payload: {
     locale,
   },
 })
 
-export /* for testing */ const setFormats = (formats: Formats): SetFormatsAction => ({
+export /* for testing */ const setFormats = (formats: Formats) => <const> ({
   type: SET_FORMATS,
   payload: {
     formats,
   },
 })
 
-export /* for testing */ const setMessages = (messages: Record<string, string>): SetMessagesAction => ({
+export /* for testing */ const setMessages = (messages: Record<string, string>) => <const> ({
   type: SET_MESSAGES,
   payload: {
     messages,
   },
 })
 
-export /* for testing */ const pushError = (error: Error): PushErrorAction => ({
+export /* for testing */ const pushError = (error: Error) => <const> ({
   type: PUSH_ERROR,
   payload: {
     error,

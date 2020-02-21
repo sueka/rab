@@ -49,28 +49,10 @@ const chessActionTypes = [
   REMOVE_CHESSMAN,
 ]
 
-interface ResetBoardAction extends Action<typeof RESET_BOARD> {} // TODO: chess 960
-
-interface HalfMoveAction extends Action<typeof HALF_MOVE> {
-  payload: {
-    chessman: Chess.Chessman
-    source: Chess.Coordinates
-    target: Chess.Coordinates
-  }
-}
-
-interface PutChessmanAction extends Action<typeof PUT_CHESSMAN> {
-  payload: {
-    chessman: Chess.Chessman
-    target: Chess.Coordinates
-  }
-}
-
-interface RemoveChessmanAction extends Action<typeof REMOVE_CHESSMAN> {
-  payload: {
-    coord: Chess.Coordinates
-  }
-}
+type ResetBoardAction = ReturnType<typeof resetBoard> // TODO: chess 960
+type HalfMoveAction = ReturnType<typeof halfMove>
+type PutChessmanAction = ReturnType<typeof putChessman>
+type RemoveChessmanAction = ReturnType<typeof removeChessman>
 
 export type ChessAction =
   | ResetBoardAction
@@ -99,11 +81,11 @@ function isChessAction(action: Action): action is ChessAction {
 //
 //
 
-export const resetBoard = (): ResetBoardAction => ({
+export const resetBoard = () => <const> ({
   type: RESET_BOARD,
 })
 
-export const halfMove = (chessman: Chess.Chessman, source: Chess.Coordinates, target: Chess.Coordinates): HalfMoveAction => ({
+export const halfMove = (chessman: Chess.Chessman, source: Chess.Coordinates, target: Chess.Coordinates) => <const> ({
   type: HALF_MOVE,
   payload: {
     chessman,
@@ -112,7 +94,7 @@ export const halfMove = (chessman: Chess.Chessman, source: Chess.Coordinates, ta
   },
 })
 
-export const putChessman = (chessman: Chess.Chessman, target: Chess.Coordinates): PutChessmanAction => ({
+export const putChessman = (chessman: Chess.Chessman, target: Chess.Coordinates) => <const> ({
   type: PUT_CHESSMAN,
   payload: {
     chessman,
@@ -120,7 +102,7 @@ export const putChessman = (chessman: Chess.Chessman, target: Chess.Coordinates)
   },
 })
 
-export const removeChessman = (coord: Chess.Coordinates): RemoveChessmanAction => ({
+export const removeChessman = (coord: Chess.Coordinates) => <const> ({
   type: REMOVE_CHESSMAN,
   payload: {
     coord,

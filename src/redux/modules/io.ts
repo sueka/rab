@@ -48,17 +48,10 @@ const ioActionTypes = [
   SET_NOW,
 ]
 
-interface UpdateNowAction extends Action<typeof UPDATE_NOW> {}
-
-interface StartClockAction extends Action<typeof START_CLOCK> {}
-
-interface StopClockAction extends Action<typeof STOP_CLOCK> {}
-
-export /* for testing */ interface SetNowAction extends Action<typeof SET_NOW> {
-  payload: {
-    now: Date
-  }
-}
+type UpdateNowAction = ReturnType<typeof updateNow>
+type StartClockAction = ReturnType<typeof startClock>
+type StopClockAction = ReturnType<typeof stopClock>
+export /* for testing */ type SetNowAction = ReturnType<typeof setNow>
 
 export type IoAction =
   | UpdateNowAction
@@ -87,19 +80,19 @@ function isIoAction(action: Action): action is IoAction {
 //
 //
 
-export const updateNow = (): UpdateNowAction => ({
+export const updateNow = () => <const> ({
   type: UPDATE_NOW,
 })
 
-export const startClock = (): StartClockAction => ({
+export const startClock = () => <const> ({
   type: START_CLOCK,
 })
 
-export const stopClock = (): StopClockAction => ({
+export const stopClock = () => <const> ({
   type: STOP_CLOCK,
 })
 
-export /* for testing */ const setNow = (now: Date): SetNowAction => ({
+export /* for testing */ const setNow = (now: Date) => <const> ({
   type: SET_NOW,
   payload: {
     now,

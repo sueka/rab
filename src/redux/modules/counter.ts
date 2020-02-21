@@ -51,19 +51,11 @@ const counterActionTypes = [
   DECREMENT,
 ]
 
-interface ResetAction extends Action<typeof RESET> {}
-
-interface IncrementIfOddAction extends Action<typeof INCREMENT_IF_ODD> {}
-
-interface IncrementAsyncAction extends Action<typeof INCREMENT_ASYNC> {
-  payload: {
-    ms: number
-  }
-}
-
-interface IncrementAction extends Action<typeof INCREMENT> {}
-
-interface DecrementAction extends Action<typeof DECREMENT> {}
+type ResetAction = ReturnType<typeof reset>
+type IncrementIfOddAction = ReturnType<typeof incrementIfOdd>
+type IncrementAsyncAction = ReturnType<typeof incrementAsync>
+type IncrementAction = ReturnType<typeof increment>
+type DecrementAction = ReturnType<typeof decrement>
 
 export type CounterAction =
   | ResetAction
@@ -93,26 +85,26 @@ function isCounterAction(action: Action): action is CounterAction {
 //
 //
 
-export const reset = (): ResetAction => ({
+export const reset = () => <const> ({
   type: RESET,
 })
 
-export const incrementIfOdd = (): IncrementIfOddAction => ({
+export const incrementIfOdd = () => <const> ({
   type: INCREMENT_IF_ODD,
 })
 
-export const incrementAsync = (ms: number): IncrementAsyncAction => ({
+export const incrementAsync = (ms: number) => <const> ({
   type: INCREMENT_ASYNC,
   payload: {
     ms,
   },
 })
 
-export const increment = (): IncrementAction => ({
+export const increment = () => <const> ({
   type: INCREMENT,
 })
 
-export const decrement = (): DecrementAction => ({
+export const decrement = () => <const> ({
   type: DECREMENT,
 })
 

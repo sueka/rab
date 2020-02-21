@@ -51,6 +51,7 @@
     "no-bitwise": false,
     "no-reference": false,
     "no-import-side-effect": true,
+    "no-angle-bracket-type-assertion": false,
 
     /* Type Constraints */
     "strict-boolean-expressions": [true, "ignore-rhs"],
