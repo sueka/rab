@@ -2,7 +2,7 @@ import identity from '~/lib/identity'
 
 export const isOneOf = <T extends readonly Json[]>(...options: T) => (input: unknown): input is T[number] => options.some((option) => option === input)
 
-export const optional = <T extends unknown>(isT: (input: unknown) => input is T) => (input: unknown | undefined): input is T | undefined => {
+export const optional = <A extends unknown, T extends A>(isT: (input: A) => input is T) => (input: A | undefined): input is T | undefined => {
   if (input === undefined) {
     return true
   }
