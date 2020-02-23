@@ -1,5 +1,4 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { hot } from 'react-hot-loader/root'
 import { useIntl } from 'react-intl'
 import { Redirect, Switch, useLocation } from 'react-router'
@@ -32,10 +31,6 @@ const App: React.FunctionComponent = () => {
   return (
     <>
       <CssBaseline />
-      <Helmet
-        titleTemplate="%s - react-app-prototype"
-        defaultTitle="react-app-prototype"
-      />
       <Nav />
       <Switch>
         <Route exact strict sensitive path="/" component={ HomePage } helmetProps={ { title: formatMessage(messages.home) } } />

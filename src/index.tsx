@@ -10,6 +10,7 @@ import React, { useCallback, useMemo } from 'react'
 import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import ReactDOM from 'react-dom'
+import Helmet from 'react-helmet'
 import { Saga } from 'redux-saga'
 import 'reflect-metadata'
 
@@ -99,21 +100,27 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
   const Provider = createProvider(history, reducer, rootSaga)
 
   return (
-    <Provider renderError={ renderError }>
-      <IntlProvider>
-        <DndProvider backend={ HTML5Backend }>
-          <ConnectedRouter history={ history }>
-            <ServiceProdiver container={ container }>
-              <MuiThemeProvider theme={ theme }>
-                <SnackbarProvider>
-                  <App />
-                </SnackbarProvider>
-              </MuiThemeProvider>
-            </ServiceProdiver>
-          </ConnectedRouter>
-        </DndProvider>
-      </IntlProvider>
-    </Provider>
+    <>
+      <Helmet
+        titleTemplate="%s - react-app-prototype"
+        defaultTitle="react-app-prototype"
+      />
+      <Provider renderError={ renderError }>
+        <IntlProvider>
+          <DndProvider backend={ HTML5Backend }>
+            <ConnectedRouter history={ history }>
+              <ServiceProdiver container={ container }>
+                <MuiThemeProvider theme={ theme }>
+                  <SnackbarProvider>
+                    <App />
+                  </SnackbarProvider>
+                </MuiThemeProvider>
+              </ServiceProdiver>
+            </ConnectedRouter>
+          </DndProvider>
+        </IntlProvider>
+      </Provider>
+    </>
   )
 }
 
