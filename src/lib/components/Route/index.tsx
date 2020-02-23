@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-import Helmet, { HelmetProps } from 'react-helmet'
 import { Route as OriginalRoute, RouteComponentProps, RouteProps } from 'react-router'
 
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -29,37 +28,20 @@ const withSuspense: (Component: React.LazyExoticComponent<React.ComponentType<Ro
   </React.Suspense>
 )
 
-const withHelmet: (Component: React.ComponentType<RouteComponentProps>, helmetProps: HelmetProps) => React.ComponentType<RouteComponentProps> = (Component, helmetProps) => (props) => (
-  <>
-    <Helmet { ...helmetProps } />
-    <Component { ...props } />
-  </>
-)
-
 interface Props extends Alt.Omit<RouteProps, 'render' | 'component' | 'children'> {
   // TODO: ban mandatory props
   component?: Required<RouteProps>['component'] | React.LazyExoticComponent<Required<RouteProps>['component']>
-
-  helmetProps?: HelmetProps
 }
 
-const Route: React.FunctionComponent<Props> = ({ component, helmetProps, ...restProps }) => {
+const Route: React.FunctionComponent<Props> = ({ component, ...restProps }) => {
   if (component === undefined) {
     return <OriginalRoute { ...restProps } />
   }
 
   if ('_result' in component) { // FIXME: if LazyExoticComponent
-    if (helmetProps !== undefined) {
-      return <OriginalRoute component={ withErrorBoundary(withHelmet(withSuspense(component), helmetProps)) } { ...restProps } />
-    } else {
-      return <OriginalRoute component={ withErrorBoundary(withSuspense(component)) } { ...restProps } />
-    }
+    return <OriginalRoute component={ withErrorBoundary(withSuspense(component)) } { ...restProps } />
   } else {
-    if (helmetProps !== undefined) {
-      return <OriginalRoute component={ withErrorBoundary(withHelmet(component, helmetProps)) } { ...restProps } />
-    } else {
-      return <OriginalRoute component={ withErrorBoundary(component) } { ...restProps } />
-    }
+    return <OriginalRoute component={ withErrorBoundary(component) } { ...restProps } />
   }
 }
 
