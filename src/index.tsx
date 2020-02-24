@@ -14,6 +14,7 @@ import Helmet from 'react-helmet'
 import { Saga } from 'redux-saga'
 import 'reflect-metadata'
 
+import CssBaseline from '@material-ui/core/CssBaseline'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
@@ -111,6 +112,7 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
             <ConnectedRouter history={ history }>
               <ServiceProdiver container={ container }>
                 <MuiThemeProvider theme={ theme }>
+                  <CssBaseline />
                   <SnackbarProvider>
                     <App />
                   </SnackbarProvider>

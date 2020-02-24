@@ -2,8 +2,6 @@ import React from 'react'
 import { hot } from 'react-hot-loader/root'
 import { Redirect, Switch, useLocation } from 'react-router'
 
-import CssBaseline from '@material-ui/core/CssBaseline'
-
 import Nav from '~/components/Nav'
 import Route from '~/lib/components/Route'
 
@@ -27,7 +25,6 @@ const App: React.FunctionComponent = () => {
 
   return (
     <>
-      <CssBaseline />
       <Nav />
       <Switch>
         <Route exact strict sensitive path="/" component={ HomePage } />
