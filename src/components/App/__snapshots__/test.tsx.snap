@@ -28,9 +28,6 @@ exports[`App at / 1`] = `
             />
           </svg>
         </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
       </button>
       <div
         class="Spacer"
@@ -142,9 +139,6 @@ exports[`App at /counter 1`] = `
             />
           </svg>
         </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
       </button>
       <div
         class="Spacer"
@@ -294,9 +288,6 @@ exports[`App at /info 1`] = `
             />
           </svg>
         </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
       </button>
       <div
         class="Spacer"
@@ -393,9 +384,6 @@ exports[`App at /nonexistent-path 1`] = `
             />
           </svg>
         </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
       </button>
       <div
         class="Spacer"
@@ -477,9 +465,6 @@ exports[`App at /reminder 1`] = `
             />
           </svg>
         </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
       </button>
       <div
         class="Spacer"
