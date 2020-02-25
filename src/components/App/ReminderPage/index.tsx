@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import { useIntl } from 'react-intl'
 
 import Reminder from '~/components/Reminder'
+import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
 const ReminderPage: React.FunctionComponent = () => {
@@ -16,4 +17,4 @@ const ReminderPage: React.FunctionComponent = () => {
   )
 }
 
-export default ReminderPage
+export default createPage(ReminderPage)

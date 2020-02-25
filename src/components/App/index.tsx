@@ -2,7 +2,6 @@ import React from 'react'
 import { hot } from 'react-hot-loader/root'
 import { Redirect, Switch, useLocation } from 'react-router'
 
-import Nav from '~/components/Nav'
 import Route from '~/lib/components/Route'
 
 export /* for testing */ const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ './HomePage'))
@@ -24,17 +23,14 @@ const App: React.FunctionComponent = () => {
   }
 
   return (
-    <>
-      <Nav />
-      <Switch>
-        <Route exact strict sensitive path="/" component={ HomePage } />
-        <Route exact strict sensitive path="/chess" component={ ChessPage } />
-        <Route exact strict sensitive path="/counter" component={ CounterPage } />
-        <Route exact strict sensitive path="/info" component={ InfoPage } />
-        <Route exact strict sensitive path="/reminder" component={ ReminderPage } />
-        <Route path="*" component={ NoMatch } />
-      </Switch>
-    </>
+    <Switch>
+      <Route exact strict sensitive path="/" component={ HomePage } />
+      <Route exact strict sensitive path="/chess" component={ ChessPage } />
+      <Route exact strict sensitive path="/counter" component={ CounterPage } />
+      <Route exact strict sensitive path="/info" component={ InfoPage } />
+      <Route exact strict sensitive path="/reminder" component={ ReminderPage } />
+      <Route path="*" component={ NoMatch } />
+    </Switch>
   )
 }
 

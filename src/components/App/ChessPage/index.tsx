@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import { useIntl } from 'react-intl'
 
 import Chessboard from '~/components/Chessboard'
+import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
 const ChessPage: React.FunctionComponent = () => {
@@ -16,4 +17,4 @@ const ChessPage: React.FunctionComponent = () => {
   )
 }
 
-export default ChessPage
+export default createPage(ChessPage)

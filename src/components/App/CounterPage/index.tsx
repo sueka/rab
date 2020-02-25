@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import { useIntl } from 'react-intl'
 
 import Counter from '~/components/Counter'
+import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
 const CounterPage: React.FunctionComponent = () => {
@@ -16,4 +17,4 @@ const CounterPage: React.FunctionComponent = () => {
   )
 }
 
-export default CounterPage
+export default createPage(CounterPage)

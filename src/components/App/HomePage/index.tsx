@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import CurrentTimeOfDay from '~/components/CurrentTimeOfDay'
 import SetClockButton from '~/components/SetClockButton'
 import Today from '~/components/Today'
+import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
 const HomePage: React.FunctionComponent = () => {
@@ -28,4 +29,4 @@ const HomePage: React.FunctionComponent = () => {
   )
 }
 
-export default HomePage
+export default createPage(HomePage)
