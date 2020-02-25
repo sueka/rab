@@ -1,6 +1,6 @@
-import { Octokit } from '@octokit/rest'
+import { ReposGetParams } from '@octokit/plugin-rest-endpoint-methods/dist-types/generated/types'
 
-export type GetRepoInput = Octokit.ReposGetParams
+export type GetRepoInput = ReposGetParams
 
 interface SuccessfulGetRepoOutput {
   successful: true
