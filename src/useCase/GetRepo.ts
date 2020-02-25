@@ -1,4 +1,4 @@
-import { ReposGetParams } from '@octokit/plugin-rest-endpoint-methods/dist-types/generated/types'
+import { ReposGetParams } from '@octokit/plugin-rest-endpoint-methods/dist-types/generated/types' // tslint:disable-line:no-submodule-imports
 
 export type GetRepoInput = ReposGetParams
 
