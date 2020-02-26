@@ -11,6 +11,7 @@ export type StateProps = Pick<OriginalIntlProviderProps, 'locale' | 'formats' | 
 
 type Props = OriginalIntlProviderProps
 
+// NOTE: key が無い場合、 FormattedMessage 等は re-render されるが、 useIntl の結果は更新されない。
 // TODO: intl context でない要素を re-render しないようにする。 https://github.com/formatjs/react-intl/issues/234#issuecomment-163366518 によると現時点では難しいらしい。
 // cf. https://github.com/formatjs/react-intl/issues/371#issuecomment-275703796
 const IntlProvider: React.FunctionComponent<Props> = (props) => (
