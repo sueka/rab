@@ -6,8 +6,10 @@ import ErrorBoundary from '~/lib/components/ErrorBoundary'
 import typed from '~/lib/typed'
 
 interface PageTemplateProps {
-  children: React.ReactElement<PageProps, React.ComponentType<PageProps>>
+  children: React.ReactElement<BodyProps, React.ComponentType<BodyProps>>
 }
+
+type BodyProps = PageProps
 
 type PageProps =
   & RouteComponentProps
@@ -31,7 +33,7 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ children }) 
   )
 }
 
-export const createPage: (Body: React.FunctionComponent<PageProps>) => React.FunctionComponent<PageProps> = (Body) => (props) => (
+export const createPage: (Body: React.FunctionComponent<BodyProps>) => React.FunctionComponent<PageProps> = (Body) => (props) => (
   <PageTemplate>
     <Body { ...props } />
   </PageTemplate>
