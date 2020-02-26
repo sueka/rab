@@ -122,5 +122,8 @@
     "typedoc": "^0.16.10",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-dev-server": "^3.10.3"
+  },
+  "optionalDependencies": {
+    "seamless-immutable": "^7.1.4"
   }
 }
