@@ -31,9 +31,9 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ children }) 
   )
 }
 
-export const createPage: (Component: React.FunctionComponent<PageProps>) => React.FunctionComponent<PageProps> = (Component) => (props) => (
+export const createPage: (Body: React.FunctionComponent<PageProps>) => React.FunctionComponent<PageProps> = (Body) => (props) => (
   <PageTemplate>
-    <Component { ...props } />
+    <Body { ...props } />
   </PageTemplate>
 )
 
