@@ -26,7 +26,7 @@ import './lib/extensions/Boolean/Boolean.prototype.hashCode'
 import './lib/extensions/Number/Number.prototype.hashCode'
 import './lib/extensions/String/String.prototype.hashCode'
 import typed from './lib/typed'
-import Service, { State, createReducer } from './redux'
+import Service, { State, createReducer, invariant } from './redux'
 import './types/globalTypes'
 
 import formats from '../public/formats/en.json' // tslint:disable-line:no-relative-imports
@@ -98,7 +98,7 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
     return service.rootSaga.call(service)
   }, [container])
 
-  const Provider = createProvider(history, reducer, rootSaga)
+  const Provider = createProvider(history, reducer, invariant, rootSaga)
 
   return (
     <>
