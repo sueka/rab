@@ -4,6 +4,8 @@ import { Action, Reducer, Store, applyMiddleware, compose, createStore } from 'r
 import { createLogger } from 'redux-logger'
 import createSagaMiddleware, { SagaMiddleware, SagaMiddlewareOptions } from 'redux-saga'
 
+import createInvariantMiddleware, { Invariant } from '~/lib/middleware/invariantMiddleware/createInvariantMiddleware'
+
 const logger = createLogger({
   diff: true,
 })
@@ -13,13 +15,15 @@ const composeEnhancers =
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?? compose
     : compose
 
-export default function configureStore<S, A extends Action>(history: History, reducer: Reducer<S, A>, sagaMiddlewareOptions: SagaMiddlewareOptions): {
+export default function configureStore<S, A extends Action>(history: History, reducer: Reducer<S, A>, invariant: Invariant<S>, sagaMiddlewareOptions: SagaMiddlewareOptions): {
   store: Store<S, A>
   sagaMiddleware: SagaMiddleware
 } {
+  const invariantMiddleware = createInvariantMiddleware(reducer, invariant)
   const sagaMiddleware = createSagaMiddleware(sagaMiddlewareOptions)
 
   const storeEnhancers = [
+    applyMiddleware(invariantMiddleware),
     applyMiddleware(sagaMiddleware),
     applyMiddleware(routerMiddleware(history)),
   ]
