@@ -21,7 +21,7 @@ export interface CounterState {
 }
 
 export function counterInvariant(state: CounterState) {
-  return state.count > 0
+  return state.count >= 0
 }
 
 //
