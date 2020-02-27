@@ -20,6 +20,10 @@ export interface CounterState {
   count: number
 }
 
+export function counterInvariant(state: CounterState) {
+  return state.count > 0
+}
+
 //
 //                       _|      _|
 //   _|_|_|    _|_|_|  _|_|_|_|        _|_|    _|_|_|
