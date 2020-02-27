@@ -6,6 +6,7 @@ import { Saga } from 'redux-saga'
 
 import configureStore from './configureStore'
 import { UnreachableError } from './lib/errors'
+import { Invariant } from './lib/middleware/invariantMiddleware/createInvariantMiddleware'
 
 type ErrorCause = 'component' | 'reducer' | 'saga' | 'rootSaga'
 
@@ -25,7 +26,7 @@ interface State {
 
 const MAXIMUM_RECURSION_DEPTH = 100
 
-export default function createProvider<S, A extends Action>(history: History, reducer: Reducer<S, A>, saga: Saga) {
+export default function createProvider<S, A extends Action>(history: History, reducer: Reducer<S, A>, invariant: Invariant<S>, saga: Saga) {
   let recursionDepth = 0 // tslint:disable-line:no-let
 
   return class Provider extends React.Component<Props<S, A>, State> {
@@ -53,7 +54,7 @@ export default function createProvider<S, A extends Action>(history: History, re
         }
       }
 
-      const { store, sagaMiddleware } = configureStore(history, exceptionNeutralReducer, {
+      const { store, sagaMiddleware } = configureStore(history, exceptionNeutralReducer, invariant, {
         onError: (error) => this.handleError(error, 'saga'),
       })
 
