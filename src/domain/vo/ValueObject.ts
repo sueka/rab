@@ -11,7 +11,7 @@ export default abstract class ValueObject<T> extends Hashable implements Class.V
     super()
 
     if (!this.checkInvariant()) {
-      throw new ValidationError('Invariant Violation: ValueObject#checkInvariant() must be a tautology.')
+      throw new ValidationError('Invariant Violation: ValueObject#checkInvariant() must be a tautology.') // TODO
     }
   }
 
