@@ -37,10 +37,10 @@ export interface ChessState {
 //                 _|  _|
 //             _|_|    _|
 
-export /* for testing */ const RESET_BOARD = '@@react-app-base/chess/RESET_BOARD'
-export /* for testing */ const HALF_MOVE = '@@react-app-base/chess/HALF_MOVE' // neither castle nor capture pawn en passant
-export /* for testing */ const PUT_CHESSMAN = '@@react-app-base/chess/PUT_CHESSMAN'
-export /* for testing */ const REMOVE_CHESSMAN = '@@react-app-base/chess/REMOVE_CHESSMAN'
+const RESET_BOARD = '@@react-app-base/chess/RESET_BOARD'
+const HALF_MOVE = '@@react-app-base/chess/HALF_MOVE' // neither castle nor capture pawn en passant
+const PUT_CHESSMAN = '@@react-app-base/chess/PUT_CHESSMAN'
+const REMOVE_CHESSMAN = '@@react-app-base/chess/REMOVE_CHESSMAN'
 
 const chessActionTypes = [
   RESET_BOARD,
