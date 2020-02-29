@@ -193,6 +193,7 @@ export const createChessReducer: (initialState: ChessState) => Reducer<ChessStat
         ...state.board,
         chessmen: state.board.chessmen.set(new Coordinates(action.payload.target), action.payload.chessman), // TODO
       },
+      picking: undefined,
     }
     case REMOVE_CHESSMAN: return {
       ...state,
