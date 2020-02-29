@@ -18,6 +18,10 @@ import { takeEvery } from '~/lib/boni/redux-saga/effects'
 
 export interface ChessState {
   board: Chess.Chessboard
+  picking?: {
+    chessman: Chess.Chessman
+    coord: Chess.Coordinates
+  }
 }
 
 //
@@ -39,24 +43,28 @@ export interface ChessState {
 
 const RESET_BOARD = '@@react-app-base/chess/RESET_BOARD'
 const HALF_MOVE = '@@react-app-base/chess/HALF_MOVE' // neither castle nor capture pawn en passant
+const PICK_CHESSMAN = '@@react-app-base/chess/PICK_CHESSMAN'
 const PUT_CHESSMAN = '@@react-app-base/chess/PUT_CHESSMAN'
 const REMOVE_CHESSMAN = '@@react-app-base/chess/REMOVE_CHESSMAN'
 
 const chessActionTypes = [
   RESET_BOARD,
   HALF_MOVE,
+  PICK_CHESSMAN,
   PUT_CHESSMAN,
   REMOVE_CHESSMAN,
 ]
 
 type ResetBoardAction = ReturnType<typeof resetBoard> // TODO: chess 960
 type HalfMoveAction = ReturnType<typeof halfMove>
+type PickChessmanAction = ReturnType<typeof pickChessman>
 type PutChessmanAction = ReturnType<typeof putChessman>
 type RemoveChessmanAction = ReturnType<typeof removeChessman>
 
 export type ChessAction =
   | ResetBoardAction
   | HalfMoveAction
+  | PickChessmanAction
   | PutChessmanAction
   | RemoveChessmanAction
 
@@ -92,6 +100,14 @@ export const halfMove = (chessman: Chess.Chessman, source: Chess.Coordinates, ta
     source,
     target,
   },
+})
+
+export const pickChessman = (chessman: Chess.Chessman, source: Chess.Coordinates) => <const> ({
+  type: PICK_CHESSMAN,
+  payload: {
+    chessman,
+    source,
+  }
 })
 
 export const putChessman = (chessman: Chess.Chessman, target: Chess.Coordinates) => <const> ({
@@ -164,6 +180,13 @@ export const createChessReducer: (initialState: ChessState) => Reducer<ChessStat
       },
     }
     case HALF_MOVE: return state
+    case PICK_CHESSMAN: return {
+      ...state,
+      picking: {
+        chessman: action.payload.chessman,
+        coord: action.payload.source,
+      },
+    }
     case PUT_CHESSMAN: return {
       ...state,
       board: {
