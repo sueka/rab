@@ -1,8 +1,9 @@
 import classnames from 'classnames'
-import React, { useMemo } from 'react'
+import React, { useCallback, useContext, useMemo } from 'react'
 import { useDrop } from 'react-dnd'
 
 import { DragObject, Props as ChessmanProps } from '~/components/Chessboard/Chessman'
+import ChessContext from '~/contexts/ChessContext'
 import getColorFromCoordinates from '~/utils/chess/getColorFromCoordinates'
 import classes from './classes.css'
 
@@ -28,8 +29,17 @@ const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: P
     [classes.Black]: color === 'black',
   }), [])
 
+  const { picking } = useContext(ChessContext)
+
+  const handleSquareClick = useCallback(() => {
+    console.log(picking)
+    if (picking != undefined) {
+      halfMove(picking.chessman, picking.coord, coord)
+    }
+  }, [halfMove, picking, coord])
+
   return (
-    <div ref={ drop } className={ squareClassName }>
+    <div ref={ drop } className={ squareClassName } onClick={ handleSquareClick }>
       { children }
     </div>
   )

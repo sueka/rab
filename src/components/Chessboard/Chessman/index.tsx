@@ -1,7 +1,8 @@
 import classnames from 'classnames'
-import React, { useMemo } from 'react'
+import React, { useCallback, useContext, useMemo } from 'react'
 import { DragObjectWithType, useDrag } from 'react-dnd'
 
+import ChessContext from '~/contexts/ChessContext'
 import classes from './classes.css'
 
 export interface Props {
@@ -34,8 +35,14 @@ const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
     [classes.Dragging]: dragging,
   }), [dragging])
 
+  const { pickChessman } = useContext(ChessContext)
+
+  const handleChessmanClick = useCallback(() => {
+    pickChessman(chessman, coord) // bug
+  }, [])
+
   return (
-    <span ref={ drag } className={ chessmanClassName }>
+    <span ref={ drag } className={ chessmanClassName } onClick={ handleChessmanClick }>
       { chessman.symbol }
     </span>
   )
