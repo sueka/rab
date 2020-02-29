@@ -107,7 +107,7 @@ export const pickChessman = (chessman: Chess.Chessman, source: Chess.Coordinates
   payload: {
     chessman,
     source,
-  }
+  },
 })
 
 export const putChessman = (chessman: Chess.Chessman, target: Chess.Coordinates) => <const> ({

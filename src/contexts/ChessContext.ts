@@ -12,5 +12,5 @@ interface ChessContext {
 export default createContext<ChessContext>({
   pickChessman() {
     throw new Error // TODO
-  }
+  },
 })

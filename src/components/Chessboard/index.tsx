@@ -36,10 +36,12 @@ const Chessboard: React.FunctionComponent<Props> = ({ board, picking, resetBoard
   }, [])
 
   return (
-    <ChessContext.Provider value={ {
-      picking,
-      pickChessman,
-    } }>
+    <ChessContext.Provider
+      value={ {
+        picking,
+        pickChessman,
+      } }
+    >
       <table className={ classes.ChessboardTable }>
         <tbody>
           { ranks.map((rank) => (
