@@ -1,8 +1,8 @@
 import classnames from 'classnames'
 import React, { useCallback, useContext, useMemo } from 'react'
-import { useDrop } from 'react-dnd'
+import { DragObjectWithType, useDrop } from 'react-dnd'
 
-import { DragObject, Props as ChessmanProps } from '~/components/Chessboard/Chessman'
+import { Props as ChessmanProps } from '~/components/Chessboard/Chessman'
 import ChessContext from '~/contexts/ChessContext'
 import getColorFromCoordinates from '~/utils/chess/getColorFromCoordinates'
 import classes from './classes.css'
@@ -15,10 +15,14 @@ interface Props extends React.PropsWithChildren<{}> {
 }
 
 const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: Props) => {
-  const [, drop] = useDrop<DragObject, unknown, unknown>({
+  const { picking } = useContext(ChessContext)
+
+  const [, drop] = useDrop<DragObjectWithType, unknown, unknown>({
     accept: 'Chessman',
-    drop(item) {
-      halfMove(item.chessman, item.coord, coord)
+    drop() {
+      if (picking != undefined) {
+        halfMove(picking.chessman, picking.coord, coord)
+      }
     },
   })
 
@@ -28,8 +32,6 @@ const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: P
     [classes.White]: color === 'white',
     [classes.Black]: color === 'black',
   }), [])
-
-  const { picking } = useContext(ChessContext)
 
   const handleSquareClick = useCallback(() => {
     console.log(picking)

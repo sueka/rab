@@ -14,21 +14,17 @@ interface CollectedProps {
   dragging: boolean
 }
 
-export interface DragObject extends DragObjectWithType {
-  chessman: Chess.Chessman
-  coord: Chess.Coordinates
-}
-
 const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
-  const [{ dragging }, drag] = useDrag<DragObject, unknown, CollectedProps>({
+  const [{ dragging }, drag] = useDrag<DragObjectWithType, unknown, CollectedProps>({
     item: {
       type: 'Chessman',
-      chessman,
-      coord,
     },
     collect: (monitor) => ({
       dragging: monitor.isDragging(),
     }),
+    begin() {
+      pickChessman(chessman, coord)
+    },
   })
 
   const chessmanClassName = useMemo(() => classnames(classes.Chessman, {
