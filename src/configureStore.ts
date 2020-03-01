@@ -19,12 +19,12 @@ export default function configureStore<S, A extends Action>(history: History, re
   store: Store<S, A>
   sagaMiddleware: SagaMiddleware
 } {
-  const invariantMiddleware = createInvariantMiddleware(reducer, invariant)
   const sagaMiddleware = createSagaMiddleware(sagaMiddlewareOptions)
+  const invariantMiddleware = createInvariantMiddleware(reducer, invariant)
 
   const storeEnhancers = [
-    applyMiddleware(invariantMiddleware),
     applyMiddleware(sagaMiddleware),
+    applyMiddleware(invariantMiddleware),
     applyMiddleware(routerMiddleware(history)),
   ]
 
