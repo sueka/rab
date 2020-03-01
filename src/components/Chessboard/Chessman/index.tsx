@@ -35,7 +35,7 @@ const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
 
   const handleChessmanClick = useCallback(() => {
     pickChessman(chessman, coord) // bug
-  }, [])
+  }, [pickChessman, chessman, coord])
 
   return (
     <span ref={ drag } className={ chessmanClassName } onClick={ handleChessmanClick }>
