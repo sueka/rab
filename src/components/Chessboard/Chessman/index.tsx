@@ -31,11 +31,13 @@ const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
     [classes.Dragging]: dragging,
   }), [dragging])
 
-  const { pickChessman } = useContext(ChessContext)
+  const { picking, pickChessman } = useContext(ChessContext)
 
   const handleChessmanClick = useCallback(() => {
-    pickChessman(chessman, coord) // bug
-  }, [pickChessman, chessman, coord])
+    if (picking === undefined) {
+      pickChessman(chessman, coord)
+    }
+  }, [picking, pickChessman, chessman, coord])
 
   return (
     <span ref={ drag } className={ chessmanClassName } onClick={ handleChessmanClick }>
