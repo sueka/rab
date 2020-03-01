@@ -2,11 +2,13 @@ import { Map } from 'immutable'
 import { injectable } from 'inversify'
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
-import { put } from 'redux-saga/effects'
+import { put, select } from 'redux-saga/effects'
 
 import Coordinates from '~/domain/vo/Coordinates'
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
 import equalsChessmen from '~/lib/extensions/Eq/equalsChessmen'
+import { State } from '~/redux'
+import getCoordinatesAttackedBy from '~/utils/chess/getCoordinatesAttackedBy'
 
 //
 //             _|                  _|
@@ -220,6 +222,7 @@ export const createChessReducer: (initialState: ChessState) => Reducer<ChessStat
         chessmen: state.board.chessmen.set(new Coordinates(action.payload.target), action.payload.chessman), // TODO
       },
       picking: undefined,
+      targets: undefined,
     }
     case REMOVE_CHESSMAN: return {
       ...state,
@@ -259,7 +262,16 @@ export class ChessService {
     // TODO: turn
   }
 
+  private *pickChessmanSaga({ payload: { chessman, source } }: PickChessmanAction): SagaIterator {
+    const { chess: { board } }: State = yield select()
+
+    const targets = getCoordinatesAttackedBy(chessman, source, board)
+
+    yield put(setTargets(targets))
+  }
+
   public *rootSaga(): SagaIterator {
     yield takeEvery(HALF_MOVE, [this, this.halfMoveSaga])
+    yield takeEvery(PICK_CHESSMAN, [this, this.pickChessmanSaga])
   }
 }
