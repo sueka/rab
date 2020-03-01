@@ -26,8 +26,11 @@ export interface ChessState {
   targets?: Chess.Coordinates[]
 }
 
-export function chessInvariant({ board, picking }: ChessState) {
-  return picking === undefined || existsCoordinatedChessman(picking.chessman, picking.source, board)
+export function chessInvariant({ board, picking, targets }: ChessState) {
+  return (
+    (picking === undefined || existsCoordinatedChessman(picking.chessman, picking.source, board)) &&
+    (picking !== undefined || targets === undefined) // no picking → no targets
+  )
 }
 
 function existsCoordinatedChessman(chessman: Chess.Chessman, coord: Chess.Coordinates, board: Chess.Chessboard): boolean {
