@@ -3,6 +3,8 @@ import React, { useCallback, useContext, useMemo } from 'react'
 import { DragObjectWithType, useDrag } from 'react-dnd'
 
 import ChessContext from '~/contexts/ChessContext'
+import equalsChessCoordinates from '~/lib/extensions/Eq/equalsChessCoordinates'
+import equalsChessmen from '~/lib/extensions/Eq/equalsChessmen'
 import classes from './classes.css'
 
 export interface Props {
@@ -15,7 +17,7 @@ interface CollectedProps {
 }
 
 const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
-  const [{ dragging }, drag] = useDrag<DragObjectWithType, unknown, CollectedProps>({
+  const [{ dragging }, drag, preview] = useDrag<DragObjectWithType, unknown, CollectedProps>({
     item: {
       type: 'Chessman',
     },
@@ -27,11 +29,14 @@ const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
     },
   })
 
+  const { picking, pickChessman } = useContext(ChessContext)
+
   const chessmanClassName = useMemo(() => classnames(classes.Chessman, {
     [classes.Dragging]: dragging,
-  }), [dragging])
+    [classes.Picking]: picking !== undefined && equalsChessCoordinates(coord, picking.coord) && equalsChessmen(chessman, picking.chessman), // NOTE: chessInvariant ensures $ coord = picking.coord → chessman = picking.chessman $
+  }), [dragging, coord, picking?.coord])
 
-  const { picking, pickChessman } = useContext(ChessContext)
+  const chessmanPreviewClassName = useMemo(() => classnames(classes.Chessman, classes.Preview), [])
 
   const handleChessmanClick = useCallback(() => {
     if (picking === undefined) {
@@ -40,9 +45,14 @@ const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
   }, [picking, pickChessman, chessman, coord])
 
   return (
-    <span ref={ drag } className={ chessmanClassName } onClick={ handleChessmanClick }>
-      { chessman.symbol }
-    </span>
+    <>
+      <span ref={ preview } className={ chessmanPreviewClassName }>
+        { chessman.symbol }
+      </span>
+      <span ref={ drag } className={ chessmanClassName } onClick={ handleChessmanClick }>
+        { chessman.symbol }
+      </span>
+    </>
   )
 }
 

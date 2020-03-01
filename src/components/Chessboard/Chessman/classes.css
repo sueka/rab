@@ -6,3 +6,13 @@
 .Dragging {
   opacity: 0.5;
 }
+
+.Picking {
+  color: teal;
+}
+
+/* TODO: in a little more normal way */
+.Preview {
+  position: absolute;
+  z-index: -1;
+}
