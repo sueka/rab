@@ -4,6 +4,7 @@ import { DragObjectWithType, useDrop } from 'react-dnd'
 
 import { Props as ChessmanProps } from '~/components/Chessboard/Chessman'
 import ChessContext from '~/contexts/ChessContext'
+import equalsChessCoordinates from '~/lib/extensions/Eq/equalsChessCoordinates'
 import getColorFromCoordinates from '~/utils/chess/getColorFromCoordinates'
 import classes from './classes.css'
 
@@ -15,7 +16,7 @@ interface Props extends React.PropsWithChildren<{}> {
 }
 
 const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: Props) => {
-  const { picking } = useContext(ChessContext)
+  const { picking, targets } = useContext(ChessContext)
 
   const [, drop] = useDrop<DragObjectWithType, unknown, unknown>({
     accept: 'Chessman',
@@ -31,7 +32,8 @@ const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: P
   const squareClassName = useMemo(() => classnames(classes.Square, {
     [classes.White]: color === 'white',
     [classes.Black]: color === 'black',
-  }), [])
+    [classes.Target]: targets?.some((target) => equalsChessCoordinates(coord, target)) ?? false,
+  }), [targets])
 
   const handleSquareClick = useCallback(() => {
     if (picking != null) {

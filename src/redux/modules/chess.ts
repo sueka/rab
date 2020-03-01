@@ -23,6 +23,7 @@ export interface ChessState {
     chessman: Chess.Chessman
     source: Chess.Coordinates
   }
+  targets?: Chess.Coordinates[]
 }
 
 export function chessInvariant({ board, picking }: ChessState) {

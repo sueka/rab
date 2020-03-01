@@ -15,6 +15,7 @@ interface StateProps {
     chessman: Chess.Chessman
     source: Chess.Coordinates
   } | undefined | null
+  targets: Chess.Coordinates[] | undefined | null
 }
 
 interface DispatchProps {
@@ -30,7 +31,7 @@ type Props =
 const files: Chess.File[] = [1, 2, 3, 4, 5, 6, 7, 8]
 const ranks: Chess.Rank[] = [8, 7, 6, 5, 4, 3, 2, 1]
 
-const Chessboard: React.FunctionComponent<Props> = ({ board, picking, resetBoard, halfMove, pickChessman }) => {
+const Chessboard: React.FunctionComponent<Props> = ({ board, picking, targets, resetBoard, halfMove, pickChessman }) => {
   useEffect(() => {
     resetBoard()
   }, [])
@@ -39,6 +40,7 @@ const Chessboard: React.FunctionComponent<Props> = ({ board, picking, resetBoard
     <ChessContext.Provider
       value={ {
         picking,
+        targets,
         pickChessman,
       } }
     >
@@ -70,9 +72,10 @@ const Chessboard: React.FunctionComponent<Props> = ({ board, picking, resetBoard
 
 // connect
 
-const mapStateToProps = ({ chess: { board, picking } }: State): StateProps => ({
+const mapStateToProps = ({ chess: { board, picking, targets } }: State): StateProps => ({
   board,
   picking,
+  targets,
 })
 
 const mapDispatchToProps: DispatchProps = {
