@@ -1,6 +1,7 @@
 .Square {
   height: 32px;
   width: 32px;
+  font-size: 20px; /* of chessman; FIXME */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,6 +13,7 @@
   @media screen and (orientation: portrait) {
     height: 12.5vw;
     width: 12.5vw;
+    font-size: 7.8125vw;
   }
 }
 
