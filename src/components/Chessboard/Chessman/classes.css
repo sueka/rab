@@ -7,7 +7,7 @@
   opacity: 0.5;
 }
 
-.Picking {
+.Picking:not(.Dragging) {
   color: teal;
 }
 
