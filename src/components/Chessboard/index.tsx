@@ -13,7 +13,7 @@ interface StateProps {
   board: Chess.Chessboard
   picking?: {
     chessman: Chess.Chessman
-    coord: Chess.Coordinates
+    source: Chess.Coordinates
   }
 }
 

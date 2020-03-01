@@ -3,7 +3,7 @@ import { createContext } from 'react'
 interface ChessContext {
   picking?: {
     chessman: Chess.Chessman
-    coord: Chess.Coordinates
+    source: Chess.Coordinates
   }
 
   pickChessman(chessman: Chess.Chessman, source: Chess.Coordinates): void

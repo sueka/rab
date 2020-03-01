@@ -21,12 +21,12 @@ export interface ChessState {
   board: Chess.Chessboard
   picking?: {
     chessman: Chess.Chessman
-    coord: Chess.Coordinates
+    source: Chess.Coordinates
   }
 }
 
 export function chessInvariant({ board, picking }: ChessState) {
-  return picking === undefined || existsCoordinatedChessman(picking.chessman, picking.coord, board)
+  return picking === undefined || existsCoordinatedChessman(picking.chessman, picking.source, board)
 }
 
 function existsCoordinatedChessman(chessman: Chess.Chessman, coord: Chess.Coordinates, board: Chess.Chessboard): boolean {
@@ -195,7 +195,7 @@ export const createChessReducer: (initialState: ChessState) => Reducer<ChessStat
       ...state,
       picking: {
         chessman: action.payload.chessman,
-        coord: action.payload.source,
+        source: action.payload.source,
       },
     }
     case PUT_CHESSMAN: return {

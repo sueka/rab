@@ -21,7 +21,7 @@ const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: P
     accept: 'Chessman',
     drop() {
       if (picking !== undefined) {
-        halfMove(picking.chessman, picking.coord, coord)
+        halfMove(picking.chessman, picking.source, coord)
       }
     },
   })
@@ -35,7 +35,7 @@ const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: P
 
   const handleSquareClick = useCallback(() => {
     if (picking !== undefined) {
-      halfMove(picking.chessman, picking.coord, coord)
+      halfMove(picking.chessman, picking.source, coord)
     }
   }, [halfMove, picking, coord])
 
