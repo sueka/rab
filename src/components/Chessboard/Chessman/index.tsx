@@ -33,13 +33,13 @@ const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
 
   const chessmanClassName = useMemo(() => classnames(classes.Chessman, {
     [classes.Dragging]: dragging,
-    [classes.Picking]: picking !== undefined && equalsChessCoordinates(coord, picking.source) && equalsChessmen(chessman, picking.chessman), // NOTE: chessInvariant ensures $ coord = picking.source → chessman = picking.chessman $
+    [classes.Picking]: picking != null && equalsChessCoordinates(coord, picking.source) && equalsChessmen(chessman, picking.chessman), // NOTE: chessInvariant ensures $ coord = picking.source → chessman = picking.chessman $
   }), [dragging, coord, picking?.source])
 
   const chessmanPreviewClassName = useMemo(() => classnames(classes.Chessman, classes.Preview), [])
 
   const handleChessmanClick = useCallback(() => {
-    if (picking === undefined) {
+    if (picking == null) { // FIXME
       pickChessman(chessman, coord)
     }
   }, [picking, pickChessman, chessman, coord])

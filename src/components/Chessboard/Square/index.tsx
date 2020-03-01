@@ -20,7 +20,7 @@ const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: P
   const [, drop] = useDrop<DragObjectWithType, unknown, unknown>({
     accept: 'Chessman',
     drop() {
-      if (picking !== undefined) {
+      if (picking != null) {
         halfMove(picking.chessman, picking.source, coord)
       }
     },
@@ -34,7 +34,7 @@ const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: P
   }), [])
 
   const handleSquareClick = useCallback(() => {
-    if (picking !== undefined) {
+    if (picking != null) {
       halfMove(picking.chessman, picking.source, coord)
     }
   }, [halfMove, picking, coord])

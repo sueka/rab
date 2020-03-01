@@ -11,10 +11,10 @@ import classes from './classes.css'
 
 interface StateProps {
   board: Chess.Chessboard
-  picking?: {
+  picking: {
     chessman: Chess.Chessman
     source: Chess.Coordinates
-  }
+  } | undefined | null
 }
 
 interface DispatchProps {
