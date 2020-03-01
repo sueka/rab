@@ -8,6 +8,7 @@ interface ChessContext {
   targets: Chess.Coordinates[] | undefined | null
 
   pickChessman(chessman: Chess.Chessman, source: Chess.Coordinates): void
+  releaseChessman(): void
 }
 
 export default createContext<ChessContext>({
@@ -15,6 +16,9 @@ export default createContext<ChessContext>({
   targets: null,
 
   pickChessman() {
+    throw new Error // TODO
+  },
+  releaseChessman() {
     throw new Error // TODO
   },
 })

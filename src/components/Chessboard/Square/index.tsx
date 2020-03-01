@@ -16,7 +16,7 @@ interface Props extends React.PropsWithChildren<{}> {
 }
 
 const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: Props) => {
-  const { picking, targets } = useContext(ChessContext)
+  const { picking, targets, releaseChessman } = useContext(ChessContext)
 
   const attacked = useMemo(() => targets?.some((target) => equalsChessCoordinates(coord, target)) ?? false, [targets])
 
@@ -25,6 +25,8 @@ const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: P
     drop() {
       if (picking != null && attacked) {
         halfMove(picking.chessman, picking.source, coord)
+      } else {
+        releaseChessman()
       }
     },
   })
@@ -40,8 +42,10 @@ const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: P
   const handleSquareClick = useCallback(() => {
     if (picking != null && attacked) {
       halfMove(picking.chessman, picking.source, coord)
+    } else {
+      releaseChessman()
     }
-  }, [halfMove, picking, coord])
+  }, [halfMove, picking, coord, releaseChessman])
 
   return (
     <div ref={ drop } className={ squareClassName } onClick={ handleSquareClick }>

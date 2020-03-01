@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import ChessContext from '~/contexts/ChessContext'
 import Coordinates from '~/domain/vo/Coordinates'
 import { State } from '~/redux'
-import { halfMove, pickChessman, resetBoard } from '~/redux/modules/chess'
+import { halfMove, pickChessman, releaseChessman, resetBoard } from '~/redux/modules/chess'
 import Chessman from './Chessman'
 import Square from './Square'
 import classes from './classes.css'
@@ -22,6 +22,7 @@ interface DispatchProps {
   resetBoard(): void
   halfMove(chessman: Chess.Chessman, source: Chess.Coordinates, target: Chess.Coordinates): void
   pickChessman(chessman: Chess.Chessman, source: Chess.Coordinates): void
+  releaseChessman(): void
 }
 
 type Props =
@@ -31,7 +32,7 @@ type Props =
 const files: Chess.File[] = [1, 2, 3, 4, 5, 6, 7, 8]
 const ranks: Chess.Rank[] = [8, 7, 6, 5, 4, 3, 2, 1]
 
-const Chessboard: React.FunctionComponent<Props> = ({ board, picking, targets, resetBoard, halfMove, pickChessman }) => {
+const Chessboard: React.FunctionComponent<Props> = ({ board, picking, targets, resetBoard, halfMove, pickChessman, releaseChessman }) => {
   useEffect(() => {
     resetBoard()
   }, [])
@@ -42,6 +43,7 @@ const Chessboard: React.FunctionComponent<Props> = ({ board, picking, targets, r
         picking,
         targets,
         pickChessman,
+        releaseChessman,
       } }
     >
       <table className={ classes.ChessboardTable }>
@@ -82,6 +84,7 @@ const mapDispatchToProps: DispatchProps = {
   resetBoard,
   halfMove,
   pickChessman,
+  releaseChessman,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chessboard)
