@@ -7,6 +7,12 @@
 
   --white-square-color: white;
   --black-square-color: #c0c0c0;
+
+  /* TODO: consider Nav */
+  @media screen and (orientation: portrait) {
+    height: 12.5vw;
+    width: 12.5vw;
+  }
 }
 
 .White {
