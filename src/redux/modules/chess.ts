@@ -62,6 +62,7 @@ const RESET_BOARD = '@@react-app-base/chess/RESET_BOARD'
 const HALF_MOVE = '@@react-app-base/chess/HALF_MOVE' // neither castle nor capture pawn en passant
 const PICK_CHESSMAN = '@@react-app-base/chess/PICK_CHESSMAN'
 const PUT_CHESSMAN = '@@react-app-base/chess/PUT_CHESSMAN'
+const RELEASE_CHESSMAN = '@@react-app-base/chess/RELEASE_CHESSMAN'
 const REMOVE_CHESSMAN = '@@react-app-base/chess/REMOVE_CHESSMAN'
 const SET_TARGETS = '@@react-app-base/chess/SET_TARGETS'
 
@@ -70,6 +71,7 @@ const chessActionTypes = [
   HALF_MOVE,
   PICK_CHESSMAN,
   PUT_CHESSMAN,
+  RELEASE_CHESSMAN,
   REMOVE_CHESSMAN,
   SET_TARGETS,
 ]
@@ -78,6 +80,7 @@ type ResetBoardAction = ReturnType<typeof resetBoard> // TODO: chess 960
 type HalfMoveAction = ReturnType<typeof halfMove>
 type PickChessmanAction = ReturnType<typeof pickChessman>
 type PutChessmanAction = ReturnType<typeof putChessman>
+type ReleaseChessmanAction = ReturnType<typeof releaseChessman>
 type RemoveChessmanAction = ReturnType<typeof removeChessman>
 type SetTargets = ReturnType<typeof setTargets>
 
@@ -86,6 +89,7 @@ export type ChessAction =
   | HalfMoveAction
   | PickChessmanAction
   | PutChessmanAction
+  | ReleaseChessmanAction
   | RemoveChessmanAction
   | SetTargets
 
@@ -137,6 +141,10 @@ export const putChessman = (chessman: Chess.Chessman, target: Chess.Coordinates)
     chessman,
     target,
   },
+})
+
+export const releaseChessman = () => <const> ({
+  type: RELEASE_CHESSMAN,
 })
 
 export const removeChessman = (coord: Chess.Coordinates) => <const> ({
@@ -221,6 +229,11 @@ export const createChessReducer: (initialState: ChessState) => Reducer<ChessStat
         ...state.board,
         chessmen: state.board.chessmen.set(new Coordinates(action.payload.target), action.payload.chessman), // TODO
       },
+      picking: null,
+      targets: null,
+    }
+    case RELEASE_CHESSMAN: return {
+      ...state,
       picking: null,
       targets: null,
     }
