@@ -24,14 +24,14 @@ export interface ChessState {
   picking?: {
     chessman: Chess.Chessman
     source: Chess.Coordinates
-  }
-  targets?: Chess.Coordinates[]
+  } | null
+  targets?: Chess.Coordinates[] | null
 }
 
 export function chessInvariant({ board, picking, targets }: ChessState) {
   return (
     (picking == null || (!board.chessmen.has(new Coordinates(picking.source)) || existsCoordinatedChessman(picking.chessman, picking.source, board))) && // any picking → (any chessman at picking.source on board → chessman at picking.source on board = picking.chessman)
-    (picking != null || targets === undefined) // no picking → no targets
+    (picking != null || targets == null) // no picking → no targets
   )
 }
 
@@ -221,8 +221,8 @@ export const createChessReducer: (initialState: ChessState) => Reducer<ChessStat
         ...state.board,
         chessmen: state.board.chessmen.set(new Coordinates(action.payload.target), action.payload.chessman), // TODO
       },
-      picking: undefined,
-      targets: undefined,
+      picking: null,
+      targets: null,
     }
     case REMOVE_CHESSMAN: return {
       ...state,
