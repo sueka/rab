@@ -6,7 +6,7 @@ import { SagaIterator } from 'redux-saga'
 import { fork } from 'redux-saga/effects'
 
 import combineInvariants from '~/lib/middleware/invariantMiddleware/combineInvariants'
-import { ChessAction, ChessService, ChessState, createChessReducer } from './modules/chess'
+import { ChessAction, ChessService, ChessState, chessInvariant, createChessReducer } from './modules/chess'
 import { CounterAction, CounterService, CounterState, counterInvariant, createCounterReducer } from './modules/counter'
 import { IoAction, IoService, IoState, createIoReducer } from './modules/io'
 import LocaleSelectorService, { LocaleSelectorAction, LocaleSelectorState, createLocaleSelectorReducer } from './modules/localeSelector'
@@ -58,5 +58,6 @@ export const createReducer = (history: History, initialState: Alt.Omit<State, 'r
 })
 
 export const invariant = combineInvariants<State>({
+  chess: chessInvariant,
   counter: counterInvariant,
 })

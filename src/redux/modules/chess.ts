@@ -6,6 +6,7 @@ import { put } from 'redux-saga/effects'
 
 import Coordinates from '~/domain/vo/Coordinates'
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
+import equalsChessmen from '~/lib/extensions/Eq/equalsChessmen'
 
 //
 //             _|                  _|
@@ -22,6 +23,16 @@ export interface ChessState {
     chessman: Chess.Chessman
     coord: Chess.Coordinates
   }
+}
+
+export function chessInvariant({ board, picking }: ChessState) {
+  return picking === undefined || existsCoordinatedChessman(picking.chessman, picking.coord, board)
+}
+
+function existsCoordinatedChessman(chessman: Chess.Chessman, coord: Chess.Coordinates, board: Chess.Chessboard): boolean {
+  const actual = board.chessmen.get(new Coordinates(coord))
+
+  return actual !== undefined && equalsChessmen(actual, chessman)
 }
 
 //
