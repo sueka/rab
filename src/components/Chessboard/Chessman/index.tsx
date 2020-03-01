@@ -17,6 +17,8 @@ interface CollectedProps {
 }
 
 const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
+  const { picking, pickChessman } = useContext(ChessContext)
+
   const [{ dragging }, drag, preview] = useDrag<DragObjectWithType, unknown, CollectedProps>({
     item: {
       type: 'Chessman',
@@ -28,8 +30,6 @@ const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
       pickChessman(chessman, coord)
     },
   })
-
-  const { picking, pickChessman } = useContext(ChessContext)
 
   const chessmanClassName = useMemo(() => classnames(classes.Chessman, {
     [classes.Dragging]: dragging,
