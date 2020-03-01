@@ -30,8 +30,8 @@ export interface ChessState {
 
 export function chessInvariant({ board, picking, targets }: ChessState) {
   return (
-    (picking === undefined || existsCoordinatedChessman(picking.chessman, picking.source, board)) && // any picking → picking on board
-    (picking !== undefined || targets === undefined) // no picking → no targets
+    (picking == null || (!board.chessmen.has(new Coordinates(picking.source)) || existsCoordinatedChessman(picking.chessman, picking.source, board))) && // any picking → (any chessman at picking.source on board → chessman at picking.source on board = picking.chessman)
+    (picking != null || targets === undefined) // no picking → no targets
   )
 }
 
