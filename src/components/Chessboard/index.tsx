@@ -42,6 +42,7 @@ const Chessboard: React.FunctionComponent<Props> = ({ board, picking, targets, r
       value={ {
         picking,
         targets,
+        halfMove,
         pickChessman,
         releaseChessman,
       } }
@@ -56,7 +57,7 @@ const Chessboard: React.FunctionComponent<Props> = ({ board, picking, targets, r
 
                 return (
                   <td key={ file } className={ classes.ChessboardTd }>
-                    <Square coord={ coord } halfMove={ halfMove }>
+                    <Square coord={ coord }>
                       { chessman !== undefined ? (
                         <Chessman chessman={ chessman } coord={ coord } />
                       ) : null }

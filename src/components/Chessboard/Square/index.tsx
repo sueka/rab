@@ -11,12 +11,10 @@ import classes from './classes.css'
 interface Props extends React.PropsWithChildren<{}> {
   children?: React.ReactElement<ChessmanProps, React.ComponentType<ChessmanProps>> | null
   coord: Chess.Coordinates
-
-  halfMove(chessman: Chess.Chessman, source: Chess.Coordinates, target: Chess.Coordinates): void
 }
 
-const Square: React.FunctionComponent<Props> = ({ children, coord, halfMove }: Props) => {
-  const { picking, targets, releaseChessman } = useContext(ChessContext)
+const Square: React.FunctionComponent<Props> = ({ children, coord }: Props) => {
+  const { picking, targets, halfMove, releaseChessman } = useContext(ChessContext)
 
   const attacked = useMemo(() => targets?.some((target) => equalsChessCoordinates(coord, target)) ?? false, [targets])
 
