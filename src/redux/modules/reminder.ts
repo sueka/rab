@@ -324,17 +324,6 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 }
 
 //
-//                     _|                        _|
-//   _|_|_|    _|_|    _|    _|_|      _|_|_|  _|_|_|_|    _|_|    _|  _|_|    _|_|_|
-// _|_|      _|_|_|_|  _|  _|_|_|_|  _|          _|      _|    _|  _|_|      _|_|
-//     _|_|  _|        _|  _|        _|          _|      _|    _|  _|            _|_|
-// _|_|_|      _|_|_|  _|    _|_|_|    _|_|_|      _|_|    _|_|    _|        _|_|_|
-//
-//
-
-const selectTasks = ({ reminder: { tasks } }: State) => tasks
-
-//
 //                                           _|
 //   _|_|_|    _|_|    _|  _|_|  _|      _|        _|_|_|    _|_|
 // _|_|      _|_|_|_|  _|_|      _|      _|  _|  _|        _|_|_|_|
@@ -403,7 +392,7 @@ export default class ReminderService {
   }
 
   private *checkTaskSaga({ payload: { taskId, task } }: CheckTaskAction): SagaIterator {
-    const stateTasks: ReturnType<typeof selectTasks> = yield select(selectTasks)
+    const { reminder: { tasks: stateTasks } }: State = yield select()
 
     const stateTask = stateTasks.find(({ id }) => id.equals(taskId))
 

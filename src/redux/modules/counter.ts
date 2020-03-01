@@ -142,17 +142,6 @@ export const createCounterReducer: (initialState: CounterState) => Reducer<Count
 }
 
 //
-//                     _|                        _|
-//   _|_|_|    _|_|    _|    _|_|      _|_|_|  _|_|_|_|    _|_|    _|  _|_|    _|_|_|
-// _|_|      _|_|_|_|  _|  _|_|_|_|  _|          _|      _|    _|  _|_|      _|_|
-//     _|_|  _|        _|  _|        _|          _|      _|    _|  _|            _|_|
-// _|_|_|      _|_|_|  _|    _|_|_|    _|_|_|      _|_|    _|_|    _|        _|_|_|
-//
-//
-
-export /* for testing */ const selectCount = ({ counter: { count } }: State) => count
-
-//
 //                                           _|
 //   _|_|_|    _|_|    _|  _|_|  _|      _|        _|_|_|    _|_|
 // _|_|      _|_|_|_|  _|_|      _|      _|  _|  _|        _|_|_|_|
@@ -164,7 +153,7 @@ export /* for testing */ const selectCount = ({ counter: { count } }: State) => 
 @injectable()
 export class CounterService {
   public /* for testing */ *incrementIfOddSaga(): SagaIterator {
-    const count: ReturnType<typeof selectCount> = yield select(selectCount)
+    const { counter: { count } }: State = yield select()
 
     if (count % 2 !== 0) {
       yield put(increment())

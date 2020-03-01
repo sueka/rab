@@ -4,7 +4,7 @@ import container from '~/container.dev'
 import delay from '~/lib/delay'
 import prsg from '~/lib/prsg'
 import typed from '~/lib/typed'
-import { CounterService, CounterState, DECREMENT, INCREMENT, INCREMENT_ASYNC, INCREMENT_IF_ODD, RESET, createCounterReducer, decrement, increment, incrementAsync, incrementIfOdd, reset, selectCount } from './counter'
+import { CounterService, CounterState, DECREMENT, INCREMENT, INCREMENT_ASYNC, INCREMENT_IF_ODD, RESET, createCounterReducer, decrement, increment, incrementAsync, incrementIfOdd, reset } from './counter'
 
 describe('action creators', () => {
   describe('reset', () => {
@@ -58,24 +58,24 @@ describe('CounterService', () => {
     describe('with odd value', () => {
       const it = counterService.incrementIfOddSaga()
 
-      expect(it.next().value).toEqual(select(selectCount))
-      expect(it.next(1).value).toEqual(put(increment()))
+      expect(it.next().value).toEqual(select())
+      expect(it.next({ counter: { count: 1 } }).value).toEqual(put(increment()))
       expect(it.next().done).toBeTruthy()
     })
 
     describe('with negative odd value', () => {
       const it = counterService.incrementIfOddSaga()
 
-      expect(it.next().value).toEqual(select(selectCount))
-      expect(it.next(-1).value).toEqual(put(increment()))
+      expect(it.next().value).toEqual(select())
+      expect(it.next({ counter: { count: -1 } }).value).toEqual(put(increment()))
       expect(it.next().done).toBeTruthy()
     })
 
     describe('with even value', () => {
       const it = counterService.incrementIfOddSaga()
 
-      expect(it.next().value).toEqual(select(selectCount))
-      expect(it.next(2).done).toBeTruthy()
+      expect(it.next().value).toEqual(select())
+      expect(it.next({ counter: { count: 2 } }).done).toBeTruthy()
     })
   })
 
