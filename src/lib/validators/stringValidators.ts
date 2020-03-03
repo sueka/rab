@@ -1,6 +1,7 @@
 import assert from 'assert'
 
 import typed from '~/lib/typed'
+import { isUrl } from '~/lib/guards/stringGuards'
 import ValidationError from './ValidationError'
 import { asString } from './commonValidators'
 
@@ -28,4 +29,14 @@ export const asBoundedLengthString = ({
       upperBound,
     }
   )
+}
+
+export function asUrl(input: unknown): string.Url {
+  const inputAsString = asString(input)
+
+  if (!isUrl(inputAsString)) {
+    throw new ValidationError(typed<[string]>`${ inputAsString } is not a URL.`)
+  }
+
+  return inputAsString
 }
