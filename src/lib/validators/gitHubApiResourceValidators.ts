@@ -1,11 +1,13 @@
 import { asObject, asString, optional } from './commonValidators'
+import { asUrl } from './stringValidators'
 
 export function asGetRepoResponse(input: unknown): GitHubApiResource.GetRepoResponse {
   return asRepository(input)
 }
 
 const asRepository = asObject<GitHubApiResource.Repository>('a Repository', (input) => ({
-  name: asString(input.name),
+  fullName: asString(input.full_name),
+  htmlUrl: asUrl(input.html_url),
 }))
 
 export const asUnsuccessfulResponse = asObject<GitHubApiResource.UnsuccessfulResponse>('an UnsuccessfulResponse', (input) => ({

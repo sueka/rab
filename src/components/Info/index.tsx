@@ -94,7 +94,7 @@ class Info extends React.Component<Props, State> {
       return repo.toString()
     }
 
-    return repo.right.name
+    return repo.right.fullName
   }
 
   public render() {

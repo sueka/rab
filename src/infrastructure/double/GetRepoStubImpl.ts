@@ -1,5 +1,6 @@
 import { injectable } from 'inversify'
 
+import { asUrl } from '~/lib/validators/stringValidators'
 import GetRepo, { GetRepoOutput } from '~/useCase/GetRepo'
 
 @injectable()
@@ -10,7 +11,8 @@ export default class GetRepoStubImpl implements GetRepo {
       response: {
         status: 200,
         body: {
-          name: 'foobar',
+          fullName: 'anonymous/foobar',
+          htmlUrl: asUrl('https://github.com/anonymous/foobar.git'),
         },
       },
     }
