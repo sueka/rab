@@ -1,4 +1,5 @@
 import typed from '~/lib/typed'
+import { isUrl } from '~/lib/guards/stringGuards'
 
 const DUMMY_ORIGIN = 'http://example.com'
 
@@ -10,17 +11,6 @@ function dropDummyOrigin(x: string): string {
   }
 
   return result[1]
-}
-
-function isUrl(input: string): input is string.Url {
-  try {
-    // tslint:disable-next-line:no-unused-expression
-    new URL(input)
-
-    return true
-  } catch (_error) {
-    return false
-  }
 }
 
 /**
