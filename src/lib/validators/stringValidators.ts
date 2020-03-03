@@ -1,7 +1,7 @@
 import assert from 'assert'
 
-import typed from '~/lib/typed'
 import { isUrl } from '~/lib/guards/stringGuards'
+import typed from '~/lib/typed'
 import ValidationError from './ValidationError'
 import { asString } from './commonValidators'
 

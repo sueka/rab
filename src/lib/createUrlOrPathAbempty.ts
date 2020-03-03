@@ -1,5 +1,5 @@
-import typed from '~/lib/typed'
 import { isUrl } from '~/lib/guards/stringGuards'
+import typed from '~/lib/typed'
 
 const DUMMY_ORIGIN = 'http://example.com'
 
