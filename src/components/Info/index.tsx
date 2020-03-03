@@ -5,6 +5,7 @@ import React from 'react'
 import { FormattedMessage, WrappedComponentProps, injectIntl } from 'react-intl'
 
 import Button from '@material-ui/core/Button'
+import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
 
 import GetRepo from '~/useCase/GetRepo'
@@ -94,7 +95,7 @@ class Info extends React.Component<Props, State> {
       return repo.toString()
     }
 
-    return repo.right.fullName
+    return <Link href={ repo.right.htmlUrl }>{ repo.right.fullName }</Link>
   }
 
   public render() {
