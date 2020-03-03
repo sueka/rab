@@ -16,6 +16,7 @@ declare namespace GitHubApiResource {
   //
 
   interface Repository {
-    name: string
+    fullName: string
+    htmlUrl: string.Url
   }
 }
