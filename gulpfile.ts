@@ -26,7 +26,7 @@ const testWithCoverage = series(typeCheckForTesting, npxTask('jest', ['--coverag
 export const testInWatchMode = series(preTypeCheck, npxTask('jest', ['--onlyChanged', '--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''])) // TODO: interrupt に preTypeCheck を差し込む
 export const updateSnapshot = series(typeCheckForTesting, npxTask('jest', ['--updateSnapshot']))
 export const test = testWithCoverage
-export const build = series(() => del(['dist/**/*']), typeCheck, npxTask('webpack'))
+export const build = parallel(typeCheck, series(() => del(['dist/**/*']), npxTask('webpack')))
 export const buildGhPagesCustom404Page = series(() => del(['gh-pages/dist/**/*']), typeCheck, npxTask('webpack', ['--config', 'gh-pages/webpack.config.ts']))
 export const document = parallel(npxTask('typedoc'))
 
