@@ -1,14 +1,16 @@
-import { Configuration } from 'webpack'
+import { ConfigurationFactory } from 'webpack'
+import 'webpack-dev-server'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import DotEnvPlugin from 'dotenv-webpack'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import * as path from 'path'
 import * as dotenv from 'dotenv'
 
 dotenv.config()
 
-const config: Configuration = {
-  mode: 'production',
+const config: ConfigurationFactory = (_env, { mode = 'production' }) => ({
+  mode,
   bail: true,
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
@@ -18,6 +20,9 @@ const config: Configuration = {
     ],
     alias: {
       '~': path.resolve(__dirname, 'src'),
+      ...(mode === 'development' ? {
+        'react-dom': '@hot-loader/react-dom',
+      } : {}),
     },
   },
   entry: path.resolve(__dirname, 'src/index.tsx'),
@@ -31,7 +36,7 @@ const config: Configuration = {
         test: /\.tsx?$/,
         loader: 'babel-loader',
         options: {
-          envName: 'production',
+          envName: mode,
         },
       },
       {
@@ -77,8 +82,23 @@ const config: Configuration = {
         context: path.resolve(__dirname, 'public'),
       }
     ),
+    ...(mode === 'development' ? [
+      new BundleAnalyzerPlugin({
+        analyzerPort: 10122,
+        openAnalyzer: false,
+      }),
+    ] : []),
   ],
+  ...(mode === 'development' ? {
+    devServer: {
+      contentBase: path.join(__dirname, 'dist'),
+      host: '0.0.0.0',
+      disableHostCheck: true,
+      port: 1234,
+      historyApiFallback: true,
+    },
+  } : {}),
   devtool: 'source-map',
-}
+})
 
 export default config

@@ -33,7 +33,7 @@ export const document = parallel(npxTask('typedoc'))
 export const develop = parallel(
   continuousTask('src', typeCheck),
   continuousTask('src', lint),
-  npxTask('webpack-dev-server', ['--config', 'webpack.config.dev.ts', '--hot'])
+  npxTask('webpack-dev-server', ['--mode', 'development', '--hot'])
 )
 
 export default series(testWithoutCoverage, build)
