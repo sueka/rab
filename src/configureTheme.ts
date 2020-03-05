@@ -20,6 +20,9 @@ const configureTheme = ({ dark }: Props) => createMuiTheme({
     MuiFormControl: {
       variant: 'outlined',
     },
+    MuiTextField: {
+      variant: 'outlined',
+    },
   },
   palette: {
     primary: teal,

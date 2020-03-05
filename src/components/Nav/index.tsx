@@ -41,7 +41,7 @@ const Nav: React.FunctionComponent = () => {
               inputUnderline: classes.LocaleSelectInputUnderline,
             } }
             FormControlProps={ {
-              variant: 'standard',
+              variant: 'filled',
             } }
           />
         </Toolbar>
