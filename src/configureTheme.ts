@@ -23,6 +23,9 @@ const configureTheme = ({ dark }: Props) => createMuiTheme({
     MuiTextField: {
       variant: 'outlined',
     },
+    MuiCheckbox: {
+      color: 'primary',
+    },
   },
   palette: {
     primary: teal,
