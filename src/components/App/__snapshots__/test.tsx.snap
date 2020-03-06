@@ -36,18 +36,18 @@ exports[`App at / 1`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
           data-shrink="true"
           for="stub uuid"
         >
           Languages
         </label>
         <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline LocaleSelectInputUnderline LocaleSelectInput MuiInputBase-formControl MuiInput-formControl"
+          class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+            class="MuiSelect-root MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
             id="stub uuid"
           >
@@ -64,7 +64,7 @@ exports[`App at / 1`] = `
           </select>
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon"
+            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -147,18 +147,18 @@ exports[`App at /counter 1`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
           data-shrink="true"
           for="stub uuid"
         >
           Languages
         </label>
         <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline LocaleSelectInputUnderline LocaleSelectInput MuiInputBase-formControl MuiInput-formControl"
+          class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+            class="MuiSelect-root MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
             id="stub uuid"
           >
@@ -175,7 +175,7 @@ exports[`App at /counter 1`] = `
           </select>
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon"
+            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -296,18 +296,18 @@ exports[`App at /info 1`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
           data-shrink="true"
           for="stub uuid"
         >
           Languages
         </label>
         <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline LocaleSelectInputUnderline LocaleSelectInput MuiInputBase-formControl MuiInput-formControl"
+          class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+            class="MuiSelect-root MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
             id="stub uuid"
           >
@@ -324,7 +324,7 @@ exports[`App at /info 1`] = `
           </select>
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon"
+            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -392,18 +392,18 @@ exports[`App at /nonexistent-path 1`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
           data-shrink="true"
           for="stub uuid"
         >
           Languages
         </label>
         <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline LocaleSelectInputUnderline LocaleSelectInput MuiInputBase-formControl MuiInput-formControl"
+          class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+            class="MuiSelect-root MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
             id="stub uuid"
           >
@@ -420,7 +420,7 @@ exports[`App at /nonexistent-path 1`] = `
           </select>
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon"
+            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -473,18 +473,18 @@ exports[`App at /reminder 1`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
           data-shrink="true"
           for="stub uuid"
         >
           Languages
         </label>
         <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline LocaleSelectInputUnderline LocaleSelectInput MuiInputBase-formControl MuiInput-formControl"
+          class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+            class="MuiSelect-root MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
             id="stub uuid"
           >
@@ -501,7 +501,7 @@ exports[`App at /reminder 1`] = `
           </select>
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon"
+            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
