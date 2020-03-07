@@ -47,10 +47,6 @@ const initialState: Alt.Omit<State, 'router'> = {
     now: new Date,
   },
   localeSelector: {
-    availableLocales: [
-      'en',
-      'ja',
-    ],
     locale: 'en',
     formats,
     messages,
@@ -107,7 +103,7 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
         defaultTitle="react-app-prototype"
       />
       <Provider renderError={ renderError }>
-        <IntlProvider>
+        <IntlProvider availableLocales={ ['en', 'ja'] }>
           <DndProvider backend={ HTML5Backend }>
             <ConnectedRouter history={ history }>
               <ServiceProdiver container={ container }>

@@ -21,7 +21,6 @@ import { asFormats } from '~/lib/validators/intlValidators'
 //
 
 export interface LocaleSelectorState {
-  availableLocales: Tag[]
   locale: Tag
   formats: Formats
   messages: Record<string, string>

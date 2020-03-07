@@ -94,7 +94,6 @@ describe('LocaleSelectorService', () => {
 
 describe('reducer', () => {
   const initialState: LocaleSelectorState = {
-    availableLocales: ['en', 'ja'],
     locale: 'en',
     formats: {},
     messages: {},

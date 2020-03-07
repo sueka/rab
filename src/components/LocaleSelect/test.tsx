@@ -8,9 +8,8 @@ test('LocaleSelect', () => {
   const selectLocale = jest.fn()
 
   const { container, getByTestId } = render(
-    <IntlProvider locale="en">
+    <IntlProvider availableLocales={ ['en', 'ja'] } locale="en">
       <LocaleSelect
-        availableLocales={ ['en', 'ja'] }
         locale="en"
         selectLocale={ selectLocale }
       />

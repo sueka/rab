@@ -30,10 +30,6 @@ const store = createMockStore<Alt.Omit<State, 'router'>>()({
     now: new Date('2019-07-27'),
   },
   localeSelector: {
-    availableLocales: [
-      'en',
-      'ja',
-    ],
     locale: 'en',
     formats,
     messages,
@@ -58,7 +54,7 @@ ${ '/nonexistent-path' }
 
     const { container } = render(
       <Provider store={ store }>
-        <IntlProvider>
+        <IntlProvider availableLocales={ ['en', 'ja'] }>
           <DndProvider backend={ TestBackend }>
             <StaticRouter context={ context } location={ location }>
               <SnackbarProvider>

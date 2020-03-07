@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useContext, useMemo, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { v4 } from 'uuid'
@@ -12,6 +12,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Select, { SelectProps } from '@material-ui/core/Select'
 import { useTheme } from '@material-ui/core/styles'
 
+import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import { Tag, getNativeNameByTag, isTag } from '~/lib/languageNameSolver'
 import { State } from '~/redux'
 import { selectLocale } from '~/redux/modules/localeSelector'
@@ -29,7 +30,6 @@ interface OwnProps {
 }
 
 interface StateProps {
-  availableLocales: Tag[]
   locale: Tag
 }
 
@@ -42,7 +42,7 @@ type Props =
   & StateProps
   & DispatchProps
 
-export /* for testing */ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProps, availableLocales, locale, selectLocale }) => {
+export /* for testing */ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProps, locale, selectLocale }) => {
   const [labelWidth, setLabelWidth] = useState<number>(0)
   const inputId = useMemo(v4, [])
   const theme = useTheme()
@@ -67,6 +67,8 @@ export /* for testing */ const LocaleSelect: React.FunctionComponent<Props> = ({
       selectLocale(event.target.value)
     }
   }, [])
+
+  const { availableLocales } = useContext(IntlProviderContext)
 
   return (
     <FormControl
@@ -99,7 +101,7 @@ export /* for testing */ const LocaleSelect: React.FunctionComponent<Props> = ({
           filled: <FilledInput className={ inputClassName } />,
         }[variant] }
       >
-        { availableLocales.map((availableLocale, i) => (
+        { availableLocales?.map((availableLocale, i) => (
           <option key={ i } value={ availableLocale }>{ getNativeNameByTag(availableLocale) }</option>
         )) }
       </Select>
@@ -109,8 +111,7 @@ export /* for testing */ const LocaleSelect: React.FunctionComponent<Props> = ({
 
 // connect
 
-const mapStateToProps = ({ localeSelector: { availableLocales, locale } }: State): StateProps => ({
-  availableLocales,
+const mapStateToProps = ({ localeSelector: { locale } }: State): StateProps => ({
   locale,
 })
 
