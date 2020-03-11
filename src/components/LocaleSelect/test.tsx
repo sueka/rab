@@ -20,4 +20,5 @@ test('LocaleSelect', () => {
 
   fireEvent.change(getByTestId('localeSelect'), { target: { value: 'ja' }})
   expect(selectLocale).toHaveBeenCalledTimes(1)
+  expect(selectLocale.mock.calls[0]).toEqual(['ja'])
 })
