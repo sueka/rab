@@ -112,7 +112,6 @@
   "devDependencies": {
     "@types/webpack-bundle-analyzer": "^2.13.3",
     "@types/webpack-dev-server": "^3.10.0",
-    "awesome-typescript-loader": "^5.2.1",
     "identity-obj-proxy": "^3.0.0",
     "redux-mock-store": "^1.5.4",
     "stylelint": "^13.2.0",
