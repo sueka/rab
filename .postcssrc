@@ -2,6 +2,11 @@
   "modules": true,
   "plugins": {
     "autoprefixer": true,
-    "postcss-nesting": true
+    "postcss-preset-env": {
+      "stage": 4,
+       "features": {
+        "nesting-rules": true
+      }
+    }
   }
 }
