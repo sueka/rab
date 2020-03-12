@@ -3,6 +3,7 @@ import 'webpack-dev-server'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import DotEnvPlugin from 'dotenv-webpack'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+import TerserPlugin from 'terser-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import * as path from 'path'
 import * as dotenv from 'dotenv'
@@ -58,6 +59,11 @@ const config: ConfigurationFactory = (_env, { mode = 'production' }) => ({
     ]
   },
   optimization: {
+    minimizer: [
+      new TerserPlugin({
+        sourceMap: true,
+      }),
+    ],
     splitChunks: {
       chunks: 'all',
       maxSize: 1048576,
