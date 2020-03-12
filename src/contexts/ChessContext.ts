@@ -6,23 +6,15 @@ interface ChessContext {
     source: Chess.Coordinates
   } | undefined | null
   targets: Chess.Coordinates[] | undefined | null
-
-  halfMove(chessman: Chess.Chessman, source: Chess.Coordinates, target: Chess.Coordinates): void
-  pickChessman(chessman: Chess.Chessman, source: Chess.Coordinates): void
-  releaseChessman(): void
+  halfMove: ((chessman: Chess.Chessman, source: Chess.Coordinates, target: Chess.Coordinates) => void) | undefined | null
+  pickChessman: ((chessman: Chess.Chessman, source: Chess.Coordinates) => void) | undefined | null
+  releaseChessman: (() => void) | undefined | null
 }
 
 export default createContext<ChessContext>({
   picking: null,
   targets: null,
-
-  halfMove() {
-    throw new Error // TODO
-  },
-  pickChessman() {
-    throw new Error // TODO
-  },
-  releaseChessman() {
-    throw new Error // TODO
-  },
+  halfMove: null,
+  pickChessman: null,
+  releaseChessman: null,
 })

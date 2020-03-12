@@ -27,7 +27,7 @@ const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
       dragging: monitor.isDragging(),
     }),
     begin() {
-      pickChessman(chessman, coord)
+      pickChessman?.(chessman, coord)
     },
   })
 
@@ -40,7 +40,7 @@ const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
 
   const handleChessmanClick = useCallback(() => {
     if (picking == null) { // FIXME
-      pickChessman(chessman, coord)
+      pickChessman?.(chessman, coord)
     }
   }, [picking, pickChessman, chessman, coord])
 

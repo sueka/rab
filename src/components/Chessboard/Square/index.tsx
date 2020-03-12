@@ -23,9 +23,9 @@ const Square: React.FunctionComponent<Props> = ({ children, coord }: Props) => {
     drop() {
       if (picking != null) {
         if (attacked) {
-          halfMove(picking.chessman, picking.source, coord)
+          halfMove?.(picking.chessman, picking.source, coord)
         } else {
-          releaseChessman()
+          releaseChessman?.()
         }
       }
     },
@@ -42,9 +42,9 @@ const Square: React.FunctionComponent<Props> = ({ children, coord }: Props) => {
   const handleSquareClick = useCallback(() => {
     if (picking != null) {
       if (attacked) {
-        halfMove(picking.chessman, picking.source, coord)
+        halfMove?.(picking.chessman, picking.source, coord)
       } else {
-        releaseChessman()
+        releaseChessman?.()
       }
     }
   }, [halfMove, picking, coord, releaseChessman])
