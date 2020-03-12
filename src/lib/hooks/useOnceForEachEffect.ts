@@ -4,7 +4,7 @@ import identity from '~/lib/identity'
 
 type OnceForEachEffectCallback<T> = (x: T) => (void | ((x: T) => void | undefined))
 
-export default function useOnceForEachEffect<T, U>(xs: T[], identify: (x: T) => U = identity as (x: T) => U, effect: OnceForEachEffectCallback<T>, deps?: DependencyList) { // TODO: not downcast
+export default function useOnceForEachEffect<T extends U, U>(xs: T[], identify: (x: T) => U = identity, effect: OnceForEachEffectCallback<T>, deps?: DependencyList) {
   const [doneIds, setDoneIds] = useState<U[]>([])
 
   useEffect(() => {
