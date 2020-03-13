@@ -60,10 +60,11 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, addTask, changeTaskCo
               key={ task.id.value }
               id={ task.id }
               value={ task }
-              validate={ validate }
+              index={ index }
               onChange={ curry(changeTask)(task.id) }
               onDelete={ curry(deleteTask)(task.id) }
-              { ...{ index, moveTask } }
+              moveTask={ moveTask }
+              validate={ validate }
             />
           ))
         }
