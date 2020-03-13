@@ -2,10 +2,10 @@ import React from 'react'
 
 import List from '@material-ui/core/List'
 
-import { Props as TaskListItemProps } from '~/components/Reminder/TaskListItem'
+import { Props as TaskListItemDropTargetProps } from '~/components/Reminder/TaskListItemDropTarget'
 
 export interface Props {
-  children?: React.ReactElement<TaskListItemProps, React.ComponentType<TaskListItemProps>> | Array<React.ReactElement<TaskListItemProps, React.ComponentType<TaskListItemProps>>>
+  children?: React.ReactElement<TaskListItemDropTargetProps, React.ComponentType<TaskListItemDropTargetProps>> | Array<React.ReactElement<TaskListItemDropTargetProps, React.ComponentType<TaskListItemDropTargetProps>>>
 }
 
 const TaskList: React.FunctionComponent<Props> = ({ children }) => (

@@ -1,7 +1,7 @@
 import Case from 'case'
 import classnames from 'classnames'
-import React, { useCallback, useMemo, useRef } from 'react'
-import { DragObjectWithType, useDrag, useDrop } from 'react-dnd'
+import React, { useCallback, useMemo } from 'react'
+import { DragObjectWithType, useDrag } from 'react-dnd'
 import { useIntl } from 'react-intl'
 
 import Checkbox from '@material-ui/core/Checkbox'
@@ -25,7 +25,6 @@ export interface Props {
 
   onChange(value: Partial<Task>): void
   onDelete(): void
-  moveTask(sourceIndex: number, targetIndex: number): void
   validate(input: Pick<Task, 'content' | 'done'>): Partial<Record<'content' | 'done', ValidationError>>
 }
 
@@ -33,14 +32,12 @@ interface CollectedProps {
   dragging: boolean
 }
 
-interface DragObject extends DragObjectWithType {
+export interface DragObject extends DragObjectWithType {
   id: TaskId
   index: number
 }
 
-const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChange, onDelete, moveTask, validate }) => {
-  const ref = useRef(null)
-
+const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChange, onDelete, validate }) => {
   const [{ dragging }, drag] = useDrag<DragObject, unknown, CollectedProps>({
     item: {
       type: 'TaskListItem',
@@ -51,24 +48,6 @@ const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChan
       dragging: monitor.isDragging(),
     }),
   })
-
-  const [, drop] = useDrop<DragObject, unknown, unknown>({
-    accept: 'TaskListItem',
-    hover(item) {
-      const targetIndex = index
-
-      if (item.index === targetIndex) {
-        return
-      }
-
-      moveTask(item.index, targetIndex)
-
-      // tslint:disable-next-line:no-object-mutation
-      item.index = targetIndex
-    },
-  })
-
-  drop(drag(ref))
 
   const className = useMemo(() => classnames(classes.TaskListItemContainer, {
     [classes.Dragging]: dragging,
@@ -103,7 +82,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChan
   }, [errors.content])
 
   return (
-    <div ref={ ref }>
+    <div ref={ drag }>
       <ListItem
         classes={ {
           container: className,

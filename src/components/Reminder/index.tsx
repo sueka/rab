@@ -11,6 +11,7 @@ import { addTaskAsync, changeTaskContentAsync, deleteTaskAsync, markTaskAsDoneAs
 import AddTaskButton from './AddTaskButton'
 import TaskList from './TaskList'
 import TaskListItem from './TaskListItem'
+import TaskListItemDropTarget from './TaskListItemDropTarget'
 
 interface StateProps {
   tasks: Task[]
@@ -56,16 +57,20 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, addTask, changeTaskCo
       <TaskList>
         {
           tasks.map((task, index) => (
-            <TaskListItem
+            <TaskListItemDropTarget
               key={ task.id.value }
-              id={ task.id }
-              value={ task }
               index={ index }
-              onChange={ curry(changeTask)(task.id) }
-              onDelete={ curry(deleteTask)(task.id) }
               moveTask={ moveTask }
-              validate={ validate }
-            />
+            >
+              <TaskListItem
+                id={ task.id }
+                value={ task }
+                index={ index }
+                onChange={ curry(changeTask)(task.id) }
+                onDelete={ curry(deleteTask)(task.id) }
+                validate={ validate }
+              />
+            </TaskListItemDropTarget>
           ))
         }
       </TaskList>
