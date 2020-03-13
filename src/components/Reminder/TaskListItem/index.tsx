@@ -9,6 +9,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import TextField from '@material-ui/core/TextField'
+import DragHandleIcon from '@material-ui/icons/DragHandle'
 
 import Task from '~/domain/entity/Task'
 import TaskId from '~/domain/vo/TaskId'
@@ -38,7 +39,7 @@ export interface DragObject extends DragObjectWithType {
 }
 
 const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChange, onDelete, validate }) => {
-  const [{ dragging }, drag] = useDrag<DragObject, unknown, CollectedProps>({
+  const [{ dragging }, drag, preview] = useDrag<DragObject, unknown, CollectedProps>({
     item: {
       type: 'TaskListItem',
       id,
@@ -82,13 +83,18 @@ const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChan
   }, [errors.content])
 
   return (
-    <div ref={ drag }>
+    <div ref={ preview }>
       <ListItem
         classes={ {
           container: className,
           secondaryAction: classes.ListItemSecondaryAction,
         } }
       >
+        <ListItemIcon>
+          <div ref={ drag }>
+            <DragHandleIcon />
+          </div>
+        </ListItemIcon>
         <ListItemIcon>
           <Checkbox checked={ value.done } onChange={ handleDoneChange } />
         </ListItemIcon>
