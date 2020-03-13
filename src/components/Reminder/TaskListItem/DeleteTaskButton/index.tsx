@@ -7,10 +7,10 @@ export interface Props {
   onClick(): void
 }
 
-const TaskListItem: React.FunctionComponent<Props> = ({ onClick }) => (
+const DeleteTaskButton: React.FunctionComponent<Props> = ({ onClick }) => (
   <IconButton onClick={ onClick }>
     <DeleteIcon />
   </IconButton>
 )
 
-export default TaskListItem
+export default DeleteTaskButton
