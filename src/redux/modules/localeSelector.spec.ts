@@ -1,3 +1,4 @@
+import { List } from 'immutable'
 import { call, put } from 'redux-saga/effects'
 
 import container from '~/container.dev'
@@ -97,7 +98,7 @@ describe('reducer', () => {
     locale: 'en',
     formats: {},
     messages: {},
-    errors: [],
+    errors: List(),
   }
 
   const localeSelectorReducer = createLocaleSelectorReducer(initialState)

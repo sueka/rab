@@ -1,3 +1,4 @@
+import { List } from 'immutable'
 import React, { useCallback } from 'react'
 import { connect } from 'react-redux'
 
@@ -14,7 +15,7 @@ import TaskListItem from './TaskListItem'
 import TaskListItemDropTarget from './TaskListItemDropTarget'
 
 interface StateProps {
-  tasks: Task[]
+  tasks: List<Task>
 }
 
 interface DispatchProps {
@@ -71,7 +72,7 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, addTask, changeTaskCo
                 validate={ validate }
               />
             </TaskListItemDropTarget>
-          ))
+          )).toArray()
         }
       </TaskList>
       <AddTaskButton addTask={ addTask } />

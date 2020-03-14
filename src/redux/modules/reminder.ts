@@ -1,4 +1,5 @@
 import assert from 'assert'
+import { List, Map } from 'immutable'
 import { inject, injectable } from 'inversify'
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
@@ -23,8 +24,8 @@ import { State } from '~/redux'
 //
 
 export interface ReminderState {
-  tasks: Task[]
-  errors: Record<string, Error> // id -> error
+  tasks: List<Task>
+  errors: Map<string, Error> // id -> error
 }
 
 //
@@ -219,11 +220,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         ...state,
-        tasks: [
-          ...state.tasks.slice(0, i),
-          state.tasks[i].with({ content: action.payload.content }),
-          ...state.tasks.slice(i + 1),
-        ],
+        tasks: state.tasks.update(i, (task) => task.with({ content: action.payload.content })),
       }
     }
     case MARK_TASK_AS_DONE_ASYNC: {
@@ -235,11 +232,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         ...state,
-        tasks: [
-          ...state.tasks.slice(0, i),
-          state.tasks[i].with({ done: true }),
-          ...state.tasks.slice(i + 1),
-        ],
+        tasks: state.tasks.update(i, (task) => task.with({ done: true })),
       }
     }
     case MARK_TASK_AS_UNDONE_ASYNC: {
@@ -251,35 +244,25 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         ...state,
-        tasks: [
-          ...state.tasks.slice(0, i),
-          state.tasks[i].with({ done: false }),
-          ...state.tasks.slice(i + 1),
-        ],
+        tasks: state.tasks.update(i, (task) => task.with({ done: false })),
       }
     }
     case DELETE_TASK_ASYNC: return state
     case MOVE_TASK: {
-      const restTasks = [
-        ...state.tasks.slice(0, action.payload.sourceIndex),
-        ...state.tasks.slice(action.payload.sourceIndex + 1),
-      ]
+      const object = state.tasks.get(action.payload.sourceIndex)
+
+      if (object === undefined) {
+        throw new Error // TODO
+      }
 
       return {
         ...state,
-        tasks: [
-          ...restTasks.slice(0, action.payload.targetIndex),
-          state.tasks[action.payload.sourceIndex],
-          ...restTasks.slice(action.payload.targetIndex),
-        ],
+        tasks: state.tasks.remove(action.payload.sourceIndex).insert(action.payload.targetIndex, object),
       }
     }
     case PUSH_TASK: return {
       ...state,
-      tasks: [
-        ...state.tasks,
-        action.payload.task,
-      ],
+      tasks: state.tasks.push(action.payload.task),
     }
     case REMOVE_TASK: {
       const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
@@ -290,10 +273,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         ...state,
-        tasks: [
-          ...state.tasks.slice(0, i),
-          ...state.tasks.slice(i + 1),
-        ],
+        tasks: state.tasks.remove(i),
       }
     }
     case CHECK_TASK: {
@@ -303,21 +283,16 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
     }
     case PUSH_ERROR: return {
       ...state,
-      errors: {
-        ...state.errors,
-        [action.payload.errorId]: action.payload.error,
-      },
+      errors: state.errors.set(action.payload.errorId, action.payload.error),
     }
     case REMOVE_ERROR: {
       if (!(action.payload.errorId in state.errors)) {
         throw new Error // TODO:
       }
 
-      const { [action.payload.errorId]: removedError, ...restErrors } = state.errors
-
       return {
         ...state,
-        errors: restErrors,
+        errors: state.errors.remove(action.payload.errorId),
       }
     }
   }

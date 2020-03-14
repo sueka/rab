@@ -1,3 +1,4 @@
+import { List } from 'immutable'
 import { inject, injectable } from 'inversify'
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
@@ -24,7 +25,7 @@ export interface LocaleSelectorState {
   locale: Tag
   formats: Formats
   messages: Record<string, string>
-  errors: Error[]
+  errors: List<Error>
 }
 
 //
@@ -157,10 +158,7 @@ export const createLocaleSelectorReducer: (initialState: LocaleSelectorState) =>
     }
     case PUSH_ERROR: return {
       ...state,
-      errors: [
-        ...state.errors,
-        action.payload.error,
-      ],
+      errors: state.errors.push(action.payload.error),
     }
   }
 }

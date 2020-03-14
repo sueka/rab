@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import { Map } from 'immutable'
+import { List, Map } from 'immutable'
 import { SnackbarProvider } from 'notistack'
 import React from 'react'
 import { DndProvider } from 'react-dnd'
@@ -33,11 +33,11 @@ const store = createMockStore<Alt.Omit<State, 'router'>>()({
     locale: 'en',
     formats,
     messages,
-    errors: [],
+    errors: List(),
   },
   reminder: {
-    tasks: [],
-    errors: {},
+    tasks: List(),
+    errors: Map(),
   },
 })
 

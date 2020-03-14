@@ -2,7 +2,7 @@
 
 import { ConnectedRouter } from 'connected-react-router'
 import { History, createBrowserHistory } from 'history'
-import { Map } from 'immutable'
+import { List, Map } from 'immutable'
 import { Container } from 'inversify'
 import { Provider as ServiceProdiver } from 'inversify-react'
 import { SnackbarProvider } from 'notistack'
@@ -50,11 +50,11 @@ const initialState: Alt.Omit<State, 'router'> = {
     locale: 'en',
     formats,
     messages,
-    errors: [],
+    errors: List(),
   },
   reminder: {
-    tasks: [],
-    errors: {},
+    tasks: List(),
+    errors: Map(),
   },
 }
 
