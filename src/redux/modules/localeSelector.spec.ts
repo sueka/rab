@@ -140,10 +140,7 @@ describe('reducer', () => {
 
     expect(state).toMatchObject({
       ...initialState,
-      errors: [
-        ...initialState.errors,
-        expect.any(Error),
-      ],
+      errors: initialState.errors.push(expect.any(Error)),
     })
 
     expect(state.errors).toContain(error)
