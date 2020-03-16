@@ -31,13 +31,26 @@ export type Action =
 
 @injectable()
 export default class Service {
+  private chessService: ChessService
+  private counterService: CounterService
+  private ioService: IoService
+  private localeSelectorService: LocaleSelectorService
+  private reminderService: ReminderService
+
+  // NOTE: `@inject(Service) private service: Service` は、 `toSelf` された実装をコンストラクター引数の中で最後に `@inject` しているか、 `Service` が参照されているかのいずれでもなければ、 Service is not defined を投げる。おそらく inversify か babel-plugin-parameter-decorator がおかしい。
   constructor(
-    @inject('ChessService') private chessService: ChessService,
-    @inject('CounterService') private counterService: CounterService,
-    @inject('IoService') private ioService: IoService,
-    @inject('LocaleSelectorService') private localeSelectorService: LocaleSelectorService,
-    @inject('ReminderService') private reminderService: ReminderService
-  ) {}
+    @inject(ChessService) chessService: ChessService,
+    @inject(CounterService) counterService: CounterService,
+    @inject(IoService) ioService: IoService,
+    @inject(LocaleSelectorService) localeSelectorService: LocaleSelectorService,
+    @inject(ReminderService) reminderService: ReminderService
+  ) {
+    this.chessService = chessService
+    this.counterService = counterService
+    this.ioService = ioService
+    this.localeSelectorService = localeSelectorService
+    this.reminderService = reminderService
+  }
 
   public *rootSaga(): SagaIterator {
     yield fork([this.chessService, this.chessService.rootSaga])

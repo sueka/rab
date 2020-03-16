@@ -18,11 +18,11 @@ const container = new Container
 container.bind<ConfigRegistry>('EnvVarConfig').to(EnvVarConfigRegistry)
 container.bind<GetRepo>('GetRepo').to(GetRepoImpl)
 container.bind<TaskRepository>('TaskRepository').to(TaskRepositoryFakeImpl)
-container.bind<Service>('Service').to(Service)
-container.bind<ChessService>('ChessService').to(ChessService)
-container.bind<CounterService>('CounterService').to(CounterService)
-container.bind<IoService>('IoService').to(IoService)
-container.bind<LocaleSelectorService>('LocaleSelectorService').to(LocaleSelectorService)
-container.bind<ReminderService>('ReminderService').to(ReminderService)
+container.bind(Service).toSelf()
+container.bind(ChessService).toSelf()
+container.bind(CounterService).toSelf()
+container.bind(IoService).toSelf()
+container.bind(LocaleSelectorService).toSelf()
+container.bind(ReminderService).toSelf()
 
 export default container
