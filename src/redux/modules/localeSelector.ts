@@ -182,7 +182,7 @@ export default class LocaleSelectorService {
     try {
       const { body: formats }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
         method: 'GET',
-        parameterizedEndpoint: typed<[string]>`${ this.config.get('BASE_URL') }/formats/:locale.json`,
+        parameterizedEndpoint: typed<[string]>`${ this.config.get('BASE_URL') }/formats/:locale.json`, // NOTE: BASE_URL が origin でない場合、 BASE_URL が無ければ誤ったパスが生成される。
         params: { locale },
       })
 
