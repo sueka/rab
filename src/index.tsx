@@ -3,7 +3,7 @@
 import { ConnectedRouter } from 'connected-react-router'
 import { History, createBrowserHistory } from 'history'
 import { List, Map } from 'immutable'
-import { Container } from 'inversify'
+import { interfaces } from 'inversify'
 import { Provider as ServiceProdiver } from 'inversify-react'
 import { SnackbarProvider } from 'notistack'
 import React, { useCallback, useMemo } from 'react'
@@ -60,7 +60,7 @@ const initialState: Alt.Omit<State, 'router'> = {
 
 interface Props {
   history: History
-  container: Container
+  container: interfaces.Container
 }
 
 /**
