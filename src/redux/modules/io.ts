@@ -1,7 +1,7 @@
 import { injectable } from 'inversify'
 import { Action, Reducer } from 'redux'
 import { SagaIterator, Task } from 'redux-saga'
-import { ForkEffect, call, cancel, put } from 'redux-saga/effects'
+import { call, cancel, put } from 'redux-saga/effects'
 
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
 import delay from '~/lib/delay'
@@ -135,7 +135,7 @@ export const createIoReducer: (initialState: IoState) => Reducer<IoState, Action
 
 @injectable()
 export class IoService {
-  private startClockTask: ForkEffect & Task | null = null // NOTE: Redux-Saga の型定義のバグ？（ `ForkEffect extends Task` とするか、 `cancel(task: ForkEffect): CancelEffect` とオーバーロードするかすべき）
+  private startClockTask: Task | null = null
 
   public /* for testing */ *updateNowSaga(): SagaIterator {
     yield put(setNow(new Date))
