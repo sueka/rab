@@ -13,6 +13,6 @@ export default function takeEvery<
 >(
   pattern: ActionPattern<A>,
   [ctx, worker]: [Ctx, (this: Ctx, action: A) => unknown]
-): ForkEffect {
+): ForkEffect<never> {
   return originalTakeEvery(pattern, (action: A) => worker.call(ctx, action))
 }
