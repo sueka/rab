@@ -1,5 +1,5 @@
 import { List } from 'immutable'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import Task from '~/domain/entity/Task'
@@ -8,7 +8,7 @@ import curry from '~/lib/curry'
 import { asBoolean, asObject, leftOnly, named } from '~/lib/validators/commonValidators'
 import { asBoundedLengthString } from '~/lib/validators/stringValidators'
 import { State } from '~/redux'
-import { addTaskAsync, changeTaskContentAsync, deleteTaskAsync, markTaskAsDoneAsync, markTaskAsUndoneAsync, moveTask } from '~/redux/modules/reminder'
+import { getTasksAsync, addTaskAsync, changeTaskContentAsync, deleteTaskAsync, markTaskAsDoneAsync, markTaskAsUndoneAsync, moveTask } from '~/redux/modules/reminder'
 import AddTaskButton from './AddTaskButton'
 import TaskList from './TaskList'
 import TaskListItem from './TaskListItem'
@@ -19,6 +19,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
+  getTasks(): void
   addTask(): void
   changeTaskContent(taskId: TaskId, content: string): void
   markTaskAsDone(taskId: TaskId): void
@@ -38,7 +39,11 @@ const validate = asObject('a Task for presentation', (input) => ({
   done: leftOnly(asBoolean)(input.done),
 }))
 
-const Reminder: React.FunctionComponent<Props> = ({ tasks, addTask, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => {
+const Reminder: React.FunctionComponent<Props> = ({ tasks, getTasks, addTask, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => {
+  useEffect(() => {
+    getTasks()
+  }, [getTasks])
+
   const changeTask = useCallback((taskId, { content, done }) => {
     if (content !== undefined) {
       changeTaskContent(taskId, content)
@@ -87,6 +92,7 @@ const mapStateToProps = ({ reminder: { tasks } }: State): StateProps => ({
 })
 
 const mapDispatchToProps: DispatchProps = {
+  getTasks: getTasksAsync,
   addTask: addTaskAsync,
   changeTaskContent: changeTaskContentAsync,
   markTaskAsDone: markTaskAsDoneAsync,
