@@ -45,6 +45,8 @@ export interface ReminderState {
 //                 _|  _|
 //             _|_|    _|
 
+const GET_TASKS_ASYNC = '@@react-app-prototype/reminder/GET_TASKS_ASYNC'
+const SET_TASKS = '@@react-app-prototype/reminder/SET_TASKS'
 export /* for testing */ const ADD_TASK_ASYNC = '@@react-app-prototype/reminder/ADD_TASK_ASYNC'
 export /* for testing */ const CHANGE_TASK_CONTENT_ASYNC = '@@react-app-prototype/reminder/CHANGE_TASK_CONTENT_ASYNC'
 export /* for testing */ const MARK_TASK_AS_DONE_ASYNC = '@@react-app-prototype/reminder/MARK_TASK_AS_DONE_ASYNC'
@@ -58,6 +60,8 @@ export /* for testing */ const PUSH_ERROR = '@@react-app-prototype/reminder/PUSH
 const REMOVE_ERROR = '@@react-app-prototype/reminder/REMOVE_ERROR'
 
 const reminderActionTypes = [
+  GET_TASKS_ASYNC,
+  SET_TASKS,
   ADD_TASK_ASYNC,
   CHANGE_TASK_CONTENT_ASYNC,
   MARK_TASK_AS_DONE_ASYNC,
@@ -71,6 +75,8 @@ const reminderActionTypes = [
   REMOVE_ERROR,
 ]
 
+type GetTasksAsyncAction = ReturnType<typeof getTasksAsync>
+type SetTasksAction = ReturnType<typeof setTasks>
 type AddTaskAsyncAction = ReturnType<typeof addTaskAsync>
 type ChangeTaskContentAsyncAction = ReturnType<typeof changeTaskContentAsync>
 type MarkTaskAsDoneAsyncAction = ReturnType<typeof markTaskAsDoneAsync>
@@ -84,6 +90,8 @@ type PushErrorAction = ReturnType<typeof pushError>
 type RemoveErrorAction = ReturnType<typeof removeError>
 
 export type ReminderAction =
+  | GetTasksAsyncAction
+  | SetTasksAction
   | AddTaskAsyncAction
   | ChangeTaskContentAsyncAction
   | MarkTaskAsDoneAsyncAction
@@ -116,6 +124,17 @@ function isReminderAction(action: Action): action is ReminderAction {
 //   _|_|_|  _|          _|_|_|    _|_|_|      _|_|    _|_|    _|        _|_|_|
 //
 //
+
+export const getTasksAsync = () => <const> ({
+  type: GET_TASKS_ASYNC,
+})
+
+const setTasks = (tasks: List<Task>) => <const> ({
+  type: SET_TASKS,
+  payload: {
+    tasks,
+  },
+})
 
 export const addTaskAsync = () => <const> ({
   type: ADD_TASK_ASYNC,
@@ -210,6 +229,11 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
   }
 
   switch (action.type) {
+    case GET_TASKS_ASYNC: return state
+    case SET_TASKS: return {
+      ...state,
+      tasks: action.payload.tasks,
+    }
     case ADD_TASK_ASYNC: return state
     case CHANGE_TASK_CONTENT_ASYNC: {
       const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
@@ -313,6 +337,12 @@ export default class ReminderService {
     @inject('TaskRepository') public taskRepository: TaskRepository
   ) {}
 
+  private *getTasksAsyncSaga(): SagaIterator {
+    const tasks: ResultType<ReturnType<this['taskRepository']['list']>> = yield call(this.taskRepository.list)
+
+    yield put(setTasks(tasks))
+  }
+
   private *addTaskAsyncSaga(): SagaIterator {
     const task = new Task({
       id: new TaskId(v4()),
@@ -381,6 +411,7 @@ export default class ReminderService {
   }
 
   public *rootSaga(): SagaIterator {
+    yield takeEvery(GET_TASKS_ASYNC, [this, this.getTasksAsyncSaga])
     yield takeEvery(ADD_TASK_ASYNC, [this, this.addTaskAsyncSaga])
     yield takeEvery(CHANGE_TASK_CONTENT_ASYNC, [this, this.changeTaskContentAsyncSaga])
     yield takeEvery(MARK_TASK_AS_DONE_ASYNC, [this, this.markTaskAsDoneAsyncSaga])
