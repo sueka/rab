@@ -1,7 +1,11 @@
+import { List } from 'immutable'
+
 import Task from '~/domain/entity/Task'
 import TaskId from '~/domain/vo/TaskId'
 
 export default interface TaskRepository {
+  list(): Promise<List<Task>>
+
   /**
    * @throws {Error} if not found.
    */
