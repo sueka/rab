@@ -6,6 +6,7 @@ import TaskRepository from '~/domain/repository/TaskRepository'
 import TaskId from '~/domain/vo/TaskId'
 import shouldBePresent from '~/lib/shouldBePresent'
 
+// TODO: namespace in localStorage
 @injectable()
 export default class TaskRepositoryFakeImpl implements TaskRepository {
   public async list() {
@@ -20,7 +21,15 @@ export default class TaskRepositoryFakeImpl implements TaskRepository {
 
       shouldBePresent(item)
 
-      tasks.push(Task.deserialize(item))
+      let task: Task
+
+      try {
+        task = Task.deserialize(item)
+      } catch (error) {
+        continue
+      }
+
+      tasks.push(task)
     }
 
     return List(tasks)
