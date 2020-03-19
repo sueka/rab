@@ -17,14 +17,14 @@ export default class TaskRepositoryFakeImpl implements TaskRepository {
 
       shouldBePresent(key)
 
-      const item = localStorage.getItem(key)
+      const seriarized = localStorage.getItem(key)
 
-      shouldBePresent(item)
+      shouldBePresent(seriarized)
 
       let task: Task
 
       try {
-        task = Task.deserialize(item)
+        task = Task.deserialize(seriarized)
       } catch (error) {
         continue
       }
@@ -36,13 +36,13 @@ export default class TaskRepositoryFakeImpl implements TaskRepository {
   }
 
   public async findById(taskId: TaskId) {
-    const task = localStorage.getItem(taskId.value)
+    const seriarized = localStorage.getItem(taskId.value)
 
-    if (task === null) {
+    if (seriarized === null) {
       throw new Error // TODO:
     }
 
-    return Task.deserialize(task)
+    return Task.deserialize(seriarized)
   }
 
   public async store(task: Task) {
