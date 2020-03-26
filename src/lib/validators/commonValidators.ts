@@ -1,6 +1,6 @@
 import { Either, isLeft, isRight, left, right } from 'fp-ts/lib/Either'
 
-import { UnreachableError } from '~/lib/errors'
+import UnreachableError from '~/lib/errors/UnreachableError'
 import conj from '~/lib/extensions/Array/conj'
 import equalsJsons from '~/lib/extensions/Eq/equalsJsons'
 import stripMargin from '~/lib/extensions/String/stripMargin'

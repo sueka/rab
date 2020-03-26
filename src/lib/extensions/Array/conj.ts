@@ -1,4 +1,4 @@
-import { UnreachableError } from '~/lib/errors'
+import UnreachableError from '~/lib/errors/UnreachableError'
 import typed from '~/lib/typed'
 
 /**

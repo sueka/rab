@@ -10,7 +10,7 @@ import Task from '~/domain/entity/Task'
 import TaskRepository from '~/domain/repository/TaskRepository'
 import TaskId from '~/domain/vo/TaskId'
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
-import { LogicError } from '~/lib/errors'
+import LogicError from '~/lib/errors/LogicError'
 import typed from '~/lib/typed'
 import { State } from '~/redux'
 

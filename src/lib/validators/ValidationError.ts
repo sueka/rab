@@ -1,6 +1,6 @@
 import { PrimitiveType } from 'intl-messageformat'
 
-import { AbstractError } from '~/lib/errors'
+import AbstractError from '~/lib/errors/AbstractError'
 
 /**
  * @param key of results of defineMessages from react-intl
