@@ -1,4 +1,3 @@
-import { ValidationError } from '~/lib/errors'
 import Hashable from '~/lib/trait/Hashable'
 
 /**
@@ -11,7 +10,7 @@ export default abstract class ValueObject<T> extends Hashable implements Class.V
     super()
 
     if (!this.checkInvariant()) {
-      throw new ValidationError('Invariant Violation: ValueObject#checkInvariant() must be a tautology.') // TODO
+      throw new Error('Invariant Violation: ValueObject#checkInvariant() must be a tautology.') // TODO
     }
   }
 
