@@ -8,6 +8,7 @@ import cssClasses from './classes.css'
 import messages from './messages'
 
 interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'onClick' | 'onChange'> {
+  mutliple?: boolean
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   buttonLabel?: React.ReactNode
@@ -26,6 +27,7 @@ interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 't
 
 const FileUpload: React.FunctionComponent<Props> = ({
   className,
+  multiple = false,
   onClick,
   onChange,
   buttonLabel = <FormattedMessage { ...messages.browse } />,
@@ -80,6 +82,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
       <input
         className={ cssClasses.Input }
         type="file"
+        multiple={ multiple }
         onChange={ handleInputChange }
         ref={ input }
         { ...restInputProps }
