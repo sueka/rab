@@ -36,7 +36,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
   component: Component = 'div',
   ButtonProps,
   ...restInputProps
-}) => {
+}: Props) => {
   const [files, setFiles] = useState<FileList | null>(null)
 
   const rootClassName = useMemo(() => classnames(className, muiClasses?.root, cssClasses.FileUpload), [className, muiClasses?.root, cssClasses.FileUpload])
