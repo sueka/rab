@@ -12,7 +12,7 @@ interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 't
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   buttonLabel?: React.ReactNode
-  renderResultMessage?(fileNames: string[]): React.ReactNode
+  renderResultMessage?(files: FileList): React.ReactNode
   classes?: {
     root?: string
     button?: string
@@ -31,7 +31,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
   onClick,
   onChange,
   buttonLabel = <FormattedMessage { ...messages.browse } />,
-  renderResultMessage = (fileNames) => fileNames,
+  renderResultMessage = (files) => Array.from(files, (file) => file.name),
   classes: muiClasses,
   component: Component = 'div',
   ButtonProps,
@@ -47,7 +47,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
       return <FormattedMessage { ...messages.noFileSelected } />
     }
 
-    return renderResultMessage(Array.from(files, (file) => file.name))
+    return renderResultMessage(files)
   }, [renderResultMessage, files])
 
   const input = useRef<HTMLInputElement>(null)
