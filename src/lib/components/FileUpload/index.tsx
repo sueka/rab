@@ -12,7 +12,7 @@ interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 't
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   buttonLabel?: React.ReactNode
-  renderResultMessage?(files: FileList): React.ReactNode
+  renderResultMessage?(files: FileList | null): React.ReactNode
   classes?: {
     root?: string
     button?: string
@@ -31,7 +31,13 @@ const FileUpload: React.FunctionComponent<Props> = ({
   onClick,
   onChange,
   buttonLabel = <FormattedMessage { ...messages.browse } />,
-  renderResultMessage = (files) => Array.from(files, (file) => file.name),
+  renderResultMessage = (files) => {
+    if (files === null) {
+      return <FormattedMessage { ...messages.noFileSelected } />
+    }
+
+    return Array.from(files, (file) => file.name)
+  },
   classes: muiClasses,
   component: Component = 'div',
   ButtonProps,
@@ -42,13 +48,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
   const rootClassName = useMemo(() => classnames(className, muiClasses?.root, cssClasses.FileUpload), [className, muiClasses?.root, cssClasses.FileUpload])
   const buttonClassName = useMemo(() => classnames(muiClasses?.button, cssClasses.Button, ButtonProps?.className), [muiClasses?.button, cssClasses.Button, ButtonProps?.className])
 
-  const resultMessage = useMemo(() => {
-    if (files === null) {
-      return <FormattedMessage { ...messages.noFileSelected } />
-    }
-
-    return renderResultMessage(files)
-  }, [renderResultMessage, files])
+  const resultMessage = useMemo(() => renderResultMessage(files), [renderResultMessage, files])
 
   const input = useRef<HTMLInputElement>(null)
 
