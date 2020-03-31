@@ -31,7 +31,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
   buttonLabel = <FormattedMessage { ...messages.browse } />,
   renderResultMessage = (fileNames) => fileNames,
   classes: muiClasses,
-  component = 'div',
+  component: Component = 'div',
   ButtonProps,
   ...restInputProps
 }) => {
@@ -67,10 +67,8 @@ const FileUpload: React.FunctionComponent<Props> = ({
     }
   }, [onClick])
 
-  return React.createElement(component, {
-    className: rootClassName,
-  }, (
-    <>
+  return (
+    <Component className={ rootClassName }>
       <Button
         onClick={ handleButtonClick }
         { ...ButtonProps }
@@ -86,8 +84,8 @@ const FileUpload: React.FunctionComponent<Props> = ({
         ref={ input }
         { ...restInputProps }
       />
-    </>
-  ))
+    </Component>
+  )
 }
 
 export default FileUpload
