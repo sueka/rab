@@ -64,11 +64,12 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, getTasks, addTask, ch
         {
           tasks.map((task, index) => (
             <TaskListItemDropTarget
-              key={ task.id.value }
+              key={ index }
               index={ index }
               moveTask={ moveTask }
             >
               <TaskListItem
+                key={ task.id.value }
                 id={ task.id }
                 value={ task }
                 index={ index }
