@@ -12,7 +12,7 @@ interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 't
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   buttonLabel?: React.ReactNode
-  renderResultMessage?(files: FileList | null): React.ReactNode
+  renderResultMessage?(files: File[] | null): React.ReactNode
   classes?: {
     root?: string
     button?: string
@@ -36,14 +36,14 @@ const FileUpload: React.FunctionComponent<Props> = ({
       return <FormattedMessage { ...messages.noFileSelected } />
     }
 
-    return Array.from(files, (file) => file.name)
+    return files.map((file) => file.name)
   },
   classes: muiClasses,
   component: Component = 'div',
   ButtonProps,
   ...restInputProps
 }: Props) => {
-  const [files, setFiles] = useState<FileList | null>(null)
+  const [files, setFiles] = useState<File[] | null>(null)
 
   const rootClassName = useMemo(() => classnames(className, muiClasses?.root, cssClasses.FileUpload), [className, muiClasses?.root, cssClasses.FileUpload])
   const buttonClassName = useMemo(() => classnames(muiClasses?.button, cssClasses.Button, ButtonProps?.className), [muiClasses?.button, cssClasses.Button, ButtonProps?.className])
@@ -54,7 +54,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
 
   const handleInputChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     onChange?.(event)
-    setFiles(event.target.files)
+    setFiles(event.target.files !== null ? Array.from(event.target.files) : event.target.files)
   }, [onChange])
 
   const fireInputClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(() => {
