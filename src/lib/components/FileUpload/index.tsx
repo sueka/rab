@@ -72,9 +72,9 @@ const FileUpload: React.FunctionComponent<Props> = ({
   }, (
     <>
       <Button
-        className={ buttonClassName }
         onClick={ handleButtonClick }
         { ...ButtonProps }
+        className={ buttonClassName } // NOTE: override ButtonProps.className
       >
         { buttonLabel }
       </Button>
