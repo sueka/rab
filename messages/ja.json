@@ -26,5 +26,6 @@
   "src.components.Reminder.inputIsNotBetweenLowerBoundAndUpperBound": "{ input } は { lowerBound } と { upperBound } の間にありません。",
   "src.components.SetClockButton.setTheClock": "時計を合わせる",
   "src.lib.components.FileUpload.browse": "選択…",
+  "src.lib.components.FileUpload.nFilesSelected": "{ n } 個のファイルを選択しました。",
   "src.lib.components.FileUpload.noFileSelected": "ファイルが選択されていません。"
 }
