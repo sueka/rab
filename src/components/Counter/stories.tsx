@@ -2,7 +2,7 @@ import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import { withKnobs, number } from '@storybook/addon-knobs'
 
-import { withIntlProvider } from '~/storybook/decorators'
+import { withProvider, withIntlProvider } from '~/storybook/decorators'
 import Counter from '.'
 
 const doNothing = () => {
@@ -22,3 +22,8 @@ storiesOf('Counter', module)
       incrementAsync={ doNothing }
     />
   ))
+
+storiesOf('Counter', module)
+  .addDecorator(withProvider)
+  .addDecorator(withIntlProvider)
+  .add('default', () => (<Counter />))
