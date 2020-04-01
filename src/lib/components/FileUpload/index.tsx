@@ -21,11 +21,12 @@ interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 't
   /**
    * Merges className, with mimicking Material-UI.
    */
-  ButtonProps?: Alt.Omit<ButtonProps, 'onClick'>
+  ButtonProps?: Alt.Omit<ButtonProps, 'disabled' | 'onClick'>
 }
 
 const FileUpload: React.FunctionComponent<Props> = ({
   className,
+  disabled,
   multiple,
   onClick,
   onChange,
@@ -76,6 +77,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
   return (
     <Component className={ rootClassName }>
       <Button
+        disabled={ disabled }
         onClick={ handleButtonClick }
         { ...ButtonProps }
         className={ buttonClassName } // NOTE: override ButtonProps.className
@@ -86,6 +88,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
       <input
         className={ cssClasses.Input }
         type="file"
+        disabled={ disabled }
         multiple={ multiple }
         onChange={ handleInputChange }
         ref={ input }
