@@ -2,7 +2,7 @@ import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import { withKnobs, number } from '@storybook/addon-knobs'
 
-import { withIntlProvider } from 'src/storybook/decorators'
+import { withIntlProvider } from '~/storybook/decorators'
 import Counter from '.'
 
 const doNothing = () => {

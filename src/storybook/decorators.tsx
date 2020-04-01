@@ -8,9 +8,9 @@ import { StoryDecorator } from '@storybook/react'
 import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 
-import IntlProvider from 'src/components/IntlProvider'
-import { Service, configureStore } from 'src/redux'
-import container from 'src/container.dev'
+import IntlProvider from '~/components/IntlProvider'
+import { Service, configureStore } from '~/redux'
+import container from '~/container.dev'
 import formats from '../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../../public/messages/en.json' // tslint:disable-line:no-relative-imports
 
