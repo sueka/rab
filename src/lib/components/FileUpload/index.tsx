@@ -48,7 +48,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
   ButtonProps,
   ...restInputProps
 }: Props) => {
-  const [files, setFiles] = useState<File[] | null>(null)
+  const [files, setFiles] = useState<File[] | null>(null) // NOTE: (event: ChangeEvent).target.files をそのまま使うと参照が変わらないので rerender されない。
 
   const rootClassName = useMemo(() => classnames(className, muiClasses?.root, cssClasses.FileUpload), [className, muiClasses?.root, cssClasses.FileUpload])
   const buttonClassName = useMemo(() => classnames(muiClasses?.button, cssClasses.Button, ButtonProps?.className), [muiClasses?.button, cssClasses.Button, ButtonProps?.className])
