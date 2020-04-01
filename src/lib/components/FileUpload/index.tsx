@@ -26,7 +26,7 @@ interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 't
 
 const FileUpload: React.FunctionComponent<Props> = ({
   className,
-  multiple = false,
+  multiple,
   onClick,
   onChange,
   buttonLabel = <FormattedMessage { ...messages.browse } />,
