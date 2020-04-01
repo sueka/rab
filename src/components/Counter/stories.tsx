@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { withKnobs, number } from '@storybook/addon-knobs'
 
 import { withProvider, withIntlProvider } from '~/storybook/decorators'
-import Counter from '.'
+import CounterConnected, { Counter } from '.'
 
 const doNothing = () => {
   // Silence is golden.
@@ -26,4 +26,4 @@ storiesOf('Counter', module)
 storiesOf('Counter', module)
   .addDecorator(withProvider)
   .addDecorator(withIntlProvider)
-  .add('default', () => (<Counter />))
+  .add('default', () => (<CounterConnected />))
