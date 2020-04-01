@@ -5,7 +5,7 @@ import * as path from 'path'
 module.exports = (baseConfig: Configuration) => {
   baseConfig.resolve!.extensions!.push('.ts', '.tsx')
   baseConfig.resolve!.modules!.push(path.resolve(__dirname, '../src'))
-  baseConfig.resolve!.alias!.src = path.resolve(__dirname, '../src')
+  baseConfig.resolve!.alias!['~'] = path.resolve(__dirname, '../src')
 
   baseConfig.module!.rules.push({
     test: /\.css$/,
@@ -21,7 +21,7 @@ module.exports = (baseConfig: Configuration) => {
     ],
   }, {
     test: /\.tsx?$/,
-    loader: 'awesome-typescript-loader',
+    loader: 'babel-loader',
   })
 
   return baseConfig
