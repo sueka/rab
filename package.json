@@ -94,7 +94,7 @@
     "react-dnd": "^10.0.2",
     "react-dnd-html5-backend": "^10.0.2",
     "react-dnd-test-backend": "^10.0.2",
-    "react-dom": "^16.8.6",
+    "react-dom": "~16.8.6",
     "react-helmet": "^5.2.1",
     "react-hot-loader": "^4.12.19",
     "react-intl": "^3.12.0",
