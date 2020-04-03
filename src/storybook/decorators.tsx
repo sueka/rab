@@ -5,7 +5,7 @@ import * as React from 'react'
 import { MemoryRouter } from 'react-router'
 import { Provider } from 'react-redux'
 import { createBrowserHistory } from 'history'
-import { StoryDecorator } from '@storybook/react'
+import { DecoratorFn } from '@storybook/react'
 import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 
@@ -16,7 +16,7 @@ import container from '~/container.dev'
 import formats from '../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../../public/messages/en.json' // tslint:disable-line:no-relative-imports
 
-export const withProvider: StoryDecorator = (story) => {
+export const withProvider: DecoratorFn = (story) => {
   const history = createBrowserHistory()
 
   const reducer = createReducer(history, {
@@ -60,19 +60,19 @@ export const withProvider: StoryDecorator = (story) => {
   )
 }
 
-export const withMemoryRouter: StoryDecorator = (story) => (
+export const withMemoryRouter: DecoratorFn = (story) => (
   <MemoryRouter>
     { story() }
   </MemoryRouter>
 )
 
-export const withDragDropContextProvider: StoryDecorator = (story) => (
+export const withDragDropContextProvider: DecoratorFn = (story) => (
   <DndProvider backend={ HTML5Backend }>
     { story() }
   </DndProvider>
 )
 
-export const withIntlProvider: StoryDecorator = (story) => (
+export const withIntlProvider: DecoratorFn = (story) => (
   <IntlProvider availableLocales={ ['en', 'ja'] } locale="en" formats={ formats } messages={ messages }>
     { story() }
   </IntlProvider>
