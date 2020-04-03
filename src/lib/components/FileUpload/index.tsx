@@ -3,6 +3,7 @@ import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 
 import Button, { ButtonProps } from '@material-ui/core/Button'
+import FormLabel from '@material-ui/core/FormLabel'
 
 import cssClasses from './classes.css'
 import messages from './messages'
@@ -16,7 +17,7 @@ interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 't
     root?: string
     button?: string
   }
-  component?: React.ElementType<React.HTMLAttributes<HTMLElement>>
+  component?: React.ElementType
 
   /**
    * Merges className, with mimicking Material-UI.
@@ -44,7 +45,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
     }
   },
   classes: muiClasses,
-  component: Component = 'div',
+  component: Component = FormLabel,
   ButtonProps,
   ...restInputProps
 }: Props) => {
