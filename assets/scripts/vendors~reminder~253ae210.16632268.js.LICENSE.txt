@@ -1,2 +1,0 @@
-/*! Case - v1.6.2 - 2019-07-26
-* Copyright (c) 2019 Nathan Bubna; Licensed MIT, GPL */
