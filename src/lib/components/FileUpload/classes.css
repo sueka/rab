@@ -1,9 +1,11 @@
 .FileUpload {
   display: inline-block;
+  cursor: pointer;
 }
 
 .Button.Button {
   text-transform: none;
+  cursor: unset;
 }
 
 .Input {
