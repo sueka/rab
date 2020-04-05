@@ -1,18 +1,17 @@
-import 'reflect-metadata'
-
+import { DecoratorFn } from '@storybook/react'
+import { createBrowserHistory } from 'history'
 import { List, Map } from 'immutable'
 import * as React from 'react'
-import { MemoryRouter } from 'react-router'
-import { Provider } from 'react-redux'
-import { createBrowserHistory } from 'history'
-import { DecoratorFn } from '@storybook/react'
 import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router'
 
 import configureStore from '~/configureStore'
+import container from '~/container.dev'
 import IntlProvider from '~/lib/components/IntlProvider'
 import Service, { createReducer, invariant } from '~/redux'
-import container from '~/container.dev'
+
 import formats from '../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../../public/messages/en.json' // tslint:disable-line:no-relative-imports
 

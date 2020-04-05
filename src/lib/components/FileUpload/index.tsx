@@ -32,16 +32,16 @@ const FileUpload: React.FunctionComponent<Props> = ({
   onClick,
   onChange,
   buttonLabel = <FormattedMessage { ...messages.browse } />,
-  renderResultMessage = (files) => {
-    if (files === null) {
+  renderResultMessage = (fs) => {
+    if (fs === null) {
       return <FormattedMessage { ...messages.noFileSelected } />
     }
 
-    switch (files.length) {
+    switch (fs.length) {
       case 1:
-        return files[0].name
+        return fs[0].name
       default:
-        return <FormattedMessage { ...messages.nFilesSelected } values={ { n: files.length } } />
+        return <FormattedMessage { ...messages.nFilesSelected } values={ { n: fs.length } } />
     }
   },
   classes: muiClasses,
