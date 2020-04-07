@@ -1,4 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "exclude": [] // Stop excluding the Jest entry point.
-}
