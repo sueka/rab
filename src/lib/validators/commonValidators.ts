@@ -99,7 +99,7 @@ export function asUnionOf<T extends readonly Json[]>(...options: T): (input: unk
 export function asUnionOf<T extends readonly unknown[]>(...options: T): (input: unknown) => T[number]
 export function asUnionOf<T extends readonly unknown[]>(...options: T) {
   return (input: unknown): T[number] => {
-    if (!options.some((option) => option === input)) {
+    if (!options.includes(input)) {
       throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is neigher ${ conj(options.map(String), ', ', ' nor ') }`)
     }
 
