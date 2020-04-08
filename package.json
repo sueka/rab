@@ -53,8 +53,6 @@
     "@types/terser-webpack-plugin": "^2.2.0",
     "@types/uuid": "^7.0.2",
     "@types/webpack": "^4.41.10",
-    "@types/webpack-bundle-analyzer": "^2.13.3",
-    "@types/webpack-dev-server": "^3.10.1",
     "autoprefixer": "^9.7.5",
     "babel-loader": "^8.1.0",
     "babel-plugin-parameter-decorator": "^1.0.15",
@@ -100,9 +98,7 @@
     "typescript": "^3.8.3",
     "uuid": "^7.0.3",
     "webpack": "^4.42.1",
-    "webpack-bundle-analyzer": "^3.6.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.13.0",
@@ -113,6 +109,8 @@
     "@types/redux-mock-store": "^1.0.2",
     "@types/storybook__addon-knobs": "^5.2.1",
     "@types/storybook__react": "^5.2.1",
+    "@types/webpack-bundle-analyzer": "^2.13.3",
+    "@types/webpack-dev-server": "^3.10.1",
     "babel-jest": "^25.2.6",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.2.6",
@@ -124,7 +122,9 @@
     "tslint-immutable": "^6.0.1",
     "tslint-microsoft-contrib": "^6.2.0",
     "tslint-react": "^4.2.0",
-    "typedoc": "^0.16.11"
+    "typedoc": "^0.16.11",
+    "webpack-bundle-analyzer": "^3.6.1",
+    "webpack-dev-server": "^3.10.3"
   },
   "optionalDependencies": {
     "seamless-immutable": "^7.1.4"
