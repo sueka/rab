@@ -4,7 +4,7 @@ import { injectable } from 'inversify'
 import Task from '~/domain/entity/Task'
 import TaskRepository from '~/domain/repository/TaskRepository'
 import TaskId from '~/domain/vo/TaskId'
-import shouldBePresent from '~/lib/shouldBePresent'
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 
 // TODO: namespace in localStorage
 @injectable()
