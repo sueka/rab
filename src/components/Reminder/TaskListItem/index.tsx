@@ -25,7 +25,7 @@ export interface Props {
 
   onChange(value: Partial<Task>): void
   onDelete(): void
-  validate(input: Task): Partial<Record<'content' | 'done', ValidationError>>
+  validate(input: Task): Partial<Record<keyof Task, ValidationError>>
 }
 
 interface CollectedProps {
