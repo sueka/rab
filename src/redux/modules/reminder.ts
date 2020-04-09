@@ -54,6 +54,8 @@ export /* for testing */ const MARK_TASK_AS_UNDONE_ASYNC = '@@react-app-prototyp
 export /* for testing */ const DELETE_TASK_ASYNC = '@@react-app-prototype/reminder/DELETE_TASK_ASYNC'
 export /* for testing */ const MOVE_TASK = '@@react-app-prototype/reminder/MOVE_TASK' // TODO: rename?
 export /* for testing */ const PUSH_TASK = '@@react-app-prototype/reminder/PUSH_TASK'
+export const MARK_TASK_AS_DONE = '@@react-app-prototype/reminder/MARK_TASK_AS_DONE'
+export const MARK_TASK_AS_UNDONE = '@@react-app-prototype/reminder/MARK_TASK_AS_UNDONE'
 export /* for testing */ const REMOVE_TASK = '@@react-app-prototype/reminder/REMOVE_TASK'
 export /* for testing */ const CHECK_TASK = '@@react-app-prototype/reminder/CHECK_TASK'
 export /* for testing */ const PUSH_ERROR = '@@react-app-prototype/reminder/PUSH_ERROR'
@@ -69,6 +71,8 @@ const reminderActionTypes = [
   DELETE_TASK_ASYNC,
   MOVE_TASK,
   PUSH_TASK,
+  MARK_TASK_AS_DONE,
+  MARK_TASK_AS_UNDONE,
   REMOVE_TASK,
   CHECK_TASK,
   PUSH_ERROR,
@@ -84,6 +88,8 @@ type MarkTaskAsUndoneAsyncAction = ReturnType<typeof markTaskAsUndoneAsync>
 type DeleteTaskAsyncAction = ReturnType<typeof deleteTaskAsync>
 type MoveTaskAction = ReturnType<typeof moveTask>
 type PushTaskAction = ReturnType<typeof pushTask>
+type MarkTaskAsDoneAction = ReturnType<typeof markTaskAsDone>
+type MarkTaskAsUndoneAction = ReturnType<typeof markTaskAsUndone>
 type RemoveTaskAction = ReturnType<typeof removeTask>
 type CheckTaskAction = ReturnType<typeof checkTask>
 type PushErrorAction = ReturnType<typeof pushError>
@@ -99,6 +105,8 @@ export type ReminderAction =
   | DeleteTaskAsyncAction
   | MoveTaskAction
   | PushTaskAction
+  | MarkTaskAsDoneAction
+  | MarkTaskAsUndoneAction
   | RemoveTaskAction
   | CheckTaskAction
   | PushErrorAction
@@ -184,6 +192,20 @@ export const pushTask = (task: Task) => <const> ({
   },
 })
 
+export const markTaskAsDone = (taskId: TaskId) => <const> ({
+  type: MARK_TASK_AS_DONE,
+  payload: {
+    taskId,
+  },
+})
+
+export const markTaskAsUndone = (taskId: TaskId) => <const> ({
+  type: MARK_TASK_AS_UNDONE,
+  payload: {
+    taskId,
+  },
+})
+
 export const removeTask = (taskId: TaskId) => <const> ({
   type: REMOVE_TASK,
   payload: {
@@ -247,30 +269,8 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
         tasks: state.tasks.update(i, (task) => task.with({ content: action.payload.content })),
       }
     }
-    case MARK_TASK_AS_DONE_ASYNC: {
-      const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
-
-      if (i === -1) {
-        throw new Error // TODO:
-      }
-
-      return {
-        ...state,
-        tasks: state.tasks.update(i, (task) => task.with({ done: true })),
-      }
-    }
-    case MARK_TASK_AS_UNDONE_ASYNC: {
-      const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
-
-      if (i === -1) {
-        throw new Error // TODO:
-      }
-
-      return {
-        ...state,
-        tasks: state.tasks.update(i, (task) => task.with({ done: false })),
-      }
-    }
+    case MARK_TASK_AS_DONE_ASYNC: return state
+    case MARK_TASK_AS_UNDONE_ASYNC: return state
     case DELETE_TASK_ASYNC: return state
     case MOVE_TASK: {
       const object = state.tasks.get(action.payload.sourceIndex)
@@ -287,6 +287,30 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
     case PUSH_TASK: return {
       ...state,
       tasks: state.tasks.push(action.payload.task),
+    }
+    case MARK_TASK_AS_DONE: {
+      const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
+
+      if (i === -1) {
+        throw new Error // TODO:
+      }
+
+      return {
+        ...state,
+        tasks: state.tasks.update(i, (task) => task.with({ done: true })),
+      }
+    }
+    case MARK_TASK_AS_UNDONE: {
+      const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
+
+      if (i === -1) {
+        throw new Error // TODO:
+      }
+
+      return {
+        ...state,
+        tasks: state.tasks.update(i, (task) => task.with({ done: false })),
+      }
     }
     case REMOVE_TASK: {
       const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
@@ -379,7 +403,7 @@ export default class ReminderService {
     task.done = true // tslint:disable-line:no-object-mutation
 
     yield call(this.taskRepository.store, task)
-    yield put(checkTask(taskId, task))
+    yield put(markTaskAsDone(taskId))
   }
 
   private *markTaskAsUndoneAsyncSaga({ payload: { taskId } }: MarkTaskAsUndoneAsyncAction): SagaIterator {
@@ -388,7 +412,7 @@ export default class ReminderService {
     task.done = false // tslint:disable-line:no-object-mutation
 
     yield call(this.taskRepository.store, task)
-    yield put(checkTask(taskId, task))
+    yield put(markTaskAsUndone(taskId))
   }
 
   private *deleteTaskAsyncSaga({ payload: { taskId } }: DeleteTaskAsyncAction): SagaIterator {
