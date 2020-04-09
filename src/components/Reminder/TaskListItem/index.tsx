@@ -20,8 +20,7 @@ import classes from './classes.css'
 import messages from './messages'
 
 export interface Props {
-  id: TaskId
-  value: Pick<Task, 'content' | 'done'>
+  value: Task
   index: number
 
   onChange(value: Partial<Task>): void
@@ -38,17 +37,17 @@ export interface DragObject extends DragObjectWithType {
   index: number
 }
 
-const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChange, onDelete, validate }) => {
+const TaskListItem: React.FunctionComponent<Props> = ({ value, index, onChange, onDelete, validate }) => {
   const [{ dragging }, drag, preview] = useDrag<DragObject, unknown, CollectedProps>({
     item: {
       type: 'TaskListItem',
-      id,
+      id: value.id,
       index,
     },
     isDragging: (monitor) => {
       const item: DragObject = monitor.getItem()
 
-      return id.equals(item.id)
+      return value.id.equals(item.id)
     },
     collect: (monitor) => ({
       dragging: monitor.isDragging(),

@@ -76,7 +76,6 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, getTasks, addTask, ch
             >
               <TaskListItem
                 key={ task.id.value }
-                id={ task.id }
                 value={ task }
                 index={ index }
                 onChange={ curry(changeTask)(task.id) }
