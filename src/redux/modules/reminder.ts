@@ -258,6 +258,8 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
     }
     case ADD_TASK_ASYNC: return state
     case CHANGE_TASK_CONTENT_ASYNC: {
+      // NOTE: CHANGE_TASK_CONTENT_ASYNC から発生する状態遷移と非同期のデータ書き込みを分離させると、このモジュールを使用する <input> は、内容が変更されるたびに再レンダリングされ、 IME とうまく相互作用しなくなる。
+
       const i = state.tasks.findIndex((task) => task.id.equals(action.payload.taskId))
 
       if (i === -1) {
