@@ -45,7 +45,11 @@ const TaskListItem: React.FunctionComponent<Props> = ({ id, value, index, onChan
       id,
       index,
     },
-    isDragging: (monitor) => id === monitor.getItem().id,
+    isDragging: (monitor) => {
+      const item: DragObject = monitor.getItem()
+
+      return id.equals(item.id)
+    },
     collect: (monitor) => ({
       dragging: monitor.isDragging(),
     }),
