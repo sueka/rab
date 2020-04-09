@@ -11,7 +11,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import TextField from '@material-ui/core/TextField'
 import DragHandleIcon from '@material-ui/icons/DragHandle'
 
-import Task from '~/domain/entity/Task'
+import { Task } from '..'
 import TaskId from '~/domain/vo/TaskId'
 import { isOneOf } from '~/lib/guards/commonGuards'
 import ValidationError from '~/lib/validators/ValidationError'

@@ -2,7 +2,6 @@ import { List } from 'immutable'
 import React, { useCallback, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import Task from '~/domain/entity/Task'
 import TaskId from '~/domain/vo/TaskId'
 import curry from '~/lib/curry'
 import { asBoolean, asObject, leftOnly, named } from '~/lib/validators/commonValidators'
@@ -13,6 +12,13 @@ import AddTaskButton from './AddTaskButton'
 import TaskList from './TaskList'
 import TaskListItem from './TaskListItem'
 import TaskListItemDropTarget from './TaskListItemDropTarget'
+
+// TODO: move
+export interface Task {
+  id: TaskId
+  content: string
+  done: boolean
+}
 
 interface StateProps {
   tasks: List<Task>
