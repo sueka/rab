@@ -73,6 +73,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ value, index, onChange, 
   const { formatMessage } = useIntl()
 
   const errors = useMemo(() => validate(value), [value, validate])
+  const hasError = useMemo(() => Object.values(errors).some((error) => error !== undefined), [errors])
 
   const helperText = useMemo(() => {
     if (errors.content === undefined) {
@@ -107,7 +108,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ value, index, onChange, 
           value={ value.content }
           onChange={ handleContentChange }
           disabled={ value.done }
-          error={ errors.content !== undefined }
+          error={ hasError }
           helperText={ helperText }
         />
         <ListItemSecondaryAction>
