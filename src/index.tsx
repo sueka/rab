@@ -15,12 +15,10 @@ import { Saga } from 'redux-saga'
 import 'reflect-metadata'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
-import { MuiThemeProvider } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import App from './components/App'
 import IntlProvider from './components/IntlProvider'
-import configureTheme from './configureTheme'
+import ThemeProvider from './components/ThemeProvider'
 import createProvider from './createProvider'
 import './lib/extensions/Boolean/Boolean.prototype.hashCode'
 import './lib/extensions/Number/Number.prototype.hashCode'
@@ -67,10 +65,6 @@ interface Props {
  * The entry point component.
  */
 const Main: React.FunctionComponent<Props> = ({ history, container }) => {
-  const dark = useMediaQuery('(prefers-color-scheme: dark)')
-
-  const theme = useMemo(() => configureTheme({ dark }), [dark])
-
   const renderError = useCallback((error: unknown) => {
     if (error instanceof Error) {
       // NOTE: `rootSaga` とそれに attach された saga から error が投げられた場合、 Maximum recursion depth exceeded が発生する。
@@ -107,12 +101,12 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
           <DndProvider backend={ HTML5Backend }>
             <ConnectedRouter history={ history }>
               <ServiceProdiver container={ container }>
-                <MuiThemeProvider theme={ theme }>
+                <ThemeProvider>
                   <CssBaseline />
                   <SnackbarProvider>
                     <App />
                   </SnackbarProvider>
-                </MuiThemeProvider>
+                </ThemeProvider>
               </ServiceProdiver>
             </ConnectedRouter>
           </DndProvider>

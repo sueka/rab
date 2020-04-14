@@ -10,6 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import MenuIcon from '@material-ui/icons/Menu'
 
 import LocaleSelect from '~/components/LocaleSelect' // TODO
+import DarkSwitch from '~/components/DarkSwitch'
 import MenuItemLink from '~/lib/components/MenuItemLink'
 import classes from './classes.css'
 import messages from './messages'
@@ -33,6 +34,7 @@ const Nav: React.FunctionComponent = () => {
             <MenuIcon />
           </IconButton>
           <div className={ classes.Spacer } />
+          <DarkSwitch />
           <LocaleSelect
             classes={ {
               label: classes.LocaleSelectLabel,
