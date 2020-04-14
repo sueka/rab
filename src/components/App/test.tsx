@@ -9,6 +9,7 @@ import { StaticRouter } from 'react-router'
 import createMockStore from 'redux-mock-store'
 
 import IntlProvider from '~/components/IntlProvider'
+import ThemeProvider from '~/components/ThemeProvider'
 import typed from '~/lib/typed'
 import { State } from '~/redux'
 import App, { CounterPage, HomePage, InfoPage, ReminderPage } from '.'
@@ -58,7 +59,9 @@ ${ '/nonexistent-path' }
           <DndProvider backend={ TestBackend }>
             <StaticRouter context={ context } location={ location }>
               <SnackbarProvider>
-                <App />
+                <ThemeProvider>
+                  <App />
+                </ThemeProvider>
               </SnackbarProvider>
             </StaticRouter>
           </DndProvider>

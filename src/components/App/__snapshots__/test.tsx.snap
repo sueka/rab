@@ -31,6 +31,30 @@ exports[`App at / 1`] = `
       <div
         class="Spacer"
       />
+      <span
+        class="MuiSwitch-root"
+      >
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-89 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <input
+              class="PrivateSwitchBase-input-92 MuiSwitch-input"
+              type="checkbox"
+              value=""
+            />
+            <span
+              class="MuiSwitch-thumb"
+            />
+          </span>
+        </span>
+        <span
+          class="MuiSwitch-track"
+        />
+      </span>
       <div
         class="MuiFormControl-root"
       >
@@ -96,7 +120,7 @@ exports[`App at / 1`] = `
     09:00:00
   </p>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-text"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
     tabindex="0"
     type="button"
   >
@@ -140,6 +164,30 @@ exports[`App at /counter 1`] = `
       <div
         class="Spacer"
       />
+      <span
+        class="MuiSwitch-root"
+      >
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-322 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <input
+              class="PrivateSwitchBase-input-325 MuiSwitch-input"
+              type="checkbox"
+              value=""
+            />
+            <span
+              class="MuiSwitch-thumb"
+            />
+          </span>
+        </span>
+        <span
+          class="MuiSwitch-track"
+        />
+      </span>
       <div
         class="MuiFormControl-root"
       >
@@ -287,6 +335,30 @@ exports[`App at /info 1`] = `
       <div
         class="Spacer"
       />
+      <span
+        class="MuiSwitch-root"
+      >
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-578 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <input
+              class="PrivateSwitchBase-input-581 MuiSwitch-input"
+              type="checkbox"
+              value=""
+            />
+            <span
+              class="MuiSwitch-thumb"
+            />
+          </span>
+        </span>
+        <span
+          class="MuiSwitch-track"
+        />
+      </span>
       <div
         class="MuiFormControl-root"
       >
@@ -381,6 +453,30 @@ exports[`App at /nonexistent-path 1`] = `
       <div
         class="Spacer"
       />
+      <span
+        class="MuiSwitch-root"
+      >
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1018 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <input
+              class="PrivateSwitchBase-input-1021 MuiSwitch-input"
+              type="checkbox"
+              value=""
+            />
+            <span
+              class="MuiSwitch-thumb"
+            />
+          </span>
+        </span>
+        <span
+          class="MuiSwitch-track"
+        />
+      </span>
       <div
         class="MuiFormControl-root"
       >
@@ -460,6 +556,30 @@ exports[`App at /reminder 1`] = `
       <div
         class="Spacer"
       />
+      <span
+        class="MuiSwitch-root"
+      >
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-811 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <input
+              class="PrivateSwitchBase-input-814 MuiSwitch-input"
+              type="checkbox"
+              value=""
+            />
+            <span
+              class="MuiSwitch-thumb"
+            />
+          </span>
+        </span>
+        <span
+          class="MuiSwitch-track"
+        />
+      </span>
       <div
         class="MuiFormControl-root"
       >
