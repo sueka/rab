@@ -9,8 +9,8 @@ import Toolbar from '@material-ui/core/Toolbar'
 // import { createStyles, makeStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 
-import LocaleSelect from '~/components/LocaleSelect' // TODO
 import DarkSwitch from '~/components/DarkSwitch'
+import LocaleSelect from '~/components/LocaleSelect' // TODO
 import MenuItemLink from '~/lib/components/MenuItemLink'
 import classes from './classes.css'
 import messages from './messages'
