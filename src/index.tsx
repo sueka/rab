@@ -15,6 +15,7 @@ import { Saga } from 'redux-saga'
 import 'reflect-metadata'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import App from './components/App'
 import IntlProvider from './components/IntlProvider'
@@ -61,6 +62,20 @@ interface Props {
   container: interfaces.Container
 }
 
+// NOTE: prefers-color-scheme の変更によって Main が rerender されると、 Provider が変更され、 ThemeProvider の state がリセットされる。
+const ThemedApp: React.FunctionComponent<{}> = () => {
+  const dark = useMediaQuery('(prefers-color-scheme: dark)')
+
+  return (
+    <ThemeProvider defaultDark={ dark }>
+      <CssBaseline />
+      <SnackbarProvider>
+        <App />
+      </SnackbarProvider>
+    </ThemeProvider>
+  )
+}
+
 /**
  * The entry point component.
  */
@@ -101,12 +116,7 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
           <DndProvider backend={ HTML5Backend }>
             <ConnectedRouter history={ history }>
               <ServiceProdiver container={ container }>
-                <ThemeProvider>
-                  <CssBaseline />
-                  <SnackbarProvider>
-                    <App />
-                  </SnackbarProvider>
-                </ThemeProvider>
+                <ThemedApp />
               </ServiceProdiver>
             </ConnectedRouter>
           </DndProvider>

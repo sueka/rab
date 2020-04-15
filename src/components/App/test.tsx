@@ -59,7 +59,7 @@ ${ '/nonexistent-path' }
           <DndProvider backend={ TestBackend }>
             <StaticRouter context={ context } location={ location }>
               <SnackbarProvider>
-                <ThemeProvider>
+                <ThemeProvider defaultDark={ false }>
                   <App />
                 </ThemeProvider>
               </SnackbarProvider>
