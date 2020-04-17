@@ -4,12 +4,12 @@ if (process.env.BASE === undefined) {
 
 const basename = process.env.BASE.slice(0, -1)
 
-if (!window.location.pathname.startsWith(basename)) {
+if (!globalThis.location.pathname.startsWith(basename)) {
   throw new Error // TODO
 }
 
-const url = new URL(`${ window.location.origin }${ basename }`)
+const url = new URL(`${ globalThis.location.origin }${ basename }`)
 
-url.hash = window.location.pathname.slice(basename.length)
+url.hash = globalThis.location.pathname.slice(basename.length)
 
-window.location.replace(url.href)
+globalThis.location.replace(url.href)

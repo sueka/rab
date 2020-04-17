@@ -12,7 +12,7 @@ const logger = createLogger({
 
 const composeEnhancers =
   process.env.NODE_ENV === 'development'
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?? compose
+    ? (globalThis as Window & typeof globalThis).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?? compose
     : compose
 
 export default function configureStore<S, A extends Action>(history: History, reducer: Reducer<S, A>, invariant: Invariant<S>, sagaMiddlewareOptions: SagaMiddlewareOptions): {
