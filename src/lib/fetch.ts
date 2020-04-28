@@ -28,7 +28,7 @@ type QueryValue =
 
 type QueryValueString = string
 type QueryValueArray = QueryValue[]
-interface QueryValueObject extends Record<string, QueryValue> {}
+type QueryValueObject = { [member in string]: QueryValue }
 
 type VQuery = Record<string, QueryValue>
 
