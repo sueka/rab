@@ -86,7 +86,7 @@ export function toQueryMap(query: Query): QueryMap {
 
     return goWithArray(key, tail, index + 1, {
       ...result,
-      [`${ key }[${ index }]`]: head,
+      [typed<[string, number]>`${ key }[${ index }]`]: head,
     })
   }
 
@@ -98,11 +98,11 @@ export function toQueryMap(query: Query): QueryMap {
       return result
     }
 
-    const [[member, head], ...tailEntries] = Object.entries(value)
+    const [[member, head], ...tailEntries] = Object.entries<string, QueryValue>(value)
 
     return goWithObject(key, fromEntries(tailEntries), {
       ...result,
-      [`${ key }[${ member }]`]: head,
+      [typed<[string, string]>`${ key }[${ member }]`]: head,
     })
   }
 
