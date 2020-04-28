@@ -22,11 +22,10 @@ interface RequestParams {
 type Query = Record<string, QueryValue>
 
 type QueryValue =
-  | QueryValueString
+  | string
   | QueryValueArray
   | QueryValueObject
 
-type QueryValueString = string
 type QueryValueArray = QueryValue[]
 type QueryValueObject = { [member in string]: QueryValue }
 
