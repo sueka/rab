@@ -8,6 +8,7 @@ import createInvariantMiddleware, { Invariant } from '~/lib/middleware/invariant
 
 const logger = createLogger({
   diff: true,
+  collapsed: true,
 })
 
 const composeEnhancers =
