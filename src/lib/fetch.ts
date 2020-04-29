@@ -97,7 +97,7 @@ export function toQueryMap(query: Query): QueryMap {
       return result
     }
 
-    const [[member, head], ...tailEntries] = Object.entries<string, QueryValue>(value)
+    const [[member, head], ...tailEntries] = Object.entries(value)
 
     return goWithObject(key, fromEntries(tailEntries), {
       ...result,
