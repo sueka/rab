@@ -14,16 +14,14 @@ const TaskListItemDropTarget: React.FunctionComponent<Props> = ({ children, inde
   const [, drop] = useDrop<DragObject, unknown, unknown>({
     accept: 'TaskListItem',
     hover(item) {
-      const targetIndex = index
-
-      if (item.index === targetIndex) {
+      if (item.index === index) {
         return
       }
 
-      moveTask(item.index, targetIndex)
+      moveTask(item.index, index)
 
       // tslint:disable-next-line:no-object-mutation
-      item.index = targetIndex
+      item.index = index
     },
   })
 
