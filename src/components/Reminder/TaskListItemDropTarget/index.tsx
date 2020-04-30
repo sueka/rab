@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useDrop } from 'react-dnd'
 
 import { DragObject, Props as TaskListItemProps } from '~/components/Reminder/TaskListItem'
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 
 export interface Props {
   children?: React.ReactElement<TaskListItemProps, React.ComponentType<TaskListItemProps>>
@@ -11,10 +12,32 @@ export interface Props {
 }
 
 const TaskListItemDropTarget: React.FunctionComponent<Props> = ({ children, index, moveTask }) => {
+  const div = useRef<HTMLDivElement>(null)
+
   const [, drop] = useDrop<DragObject, unknown, unknown>({
     accept: 'TaskListItem',
-    hover(item) {
+    hover(item, monitor) {
+      shouldBePresent(div.current)
+
       if (item.index === index) {
+        return
+      }
+
+      const clientOffset = monitor.getClientOffset()
+
+      shouldBePresent(clientOffset)
+
+      const boundingClientRect = div.current.getBoundingClientRect()
+      const pointerY = clientOffset.y - boundingClientRect.top
+      const middleY = (boundingClientRect.bottom - boundingClientRect.top) / 2
+
+      // downwards
+      if (item.index < index && pointerY < middleY) {
+        return
+      }
+
+      // upwards
+      if (item.index > index && pointerY > middleY) {
         return
       }
 
@@ -25,8 +48,10 @@ const TaskListItemDropTarget: React.FunctionComponent<Props> = ({ children, inde
     },
   })
 
+  drop(div)
+
   return (
-    <div ref={ drop }>
+    <div ref={ div }>
       { children }
     </div>
   )
