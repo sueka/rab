@@ -1,3 +1,4 @@
+import Case from 'case'
 import classnames from 'classnames'
 import React, { useCallback, useMemo } from 'react'
 import { DragObjectWithType, useDrag } from 'react-dnd'
@@ -69,7 +70,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ value, index, onChange, 
     })
   }, [onChange])
 
-  const { formatMessage } = useIntl()
+  const { formatMessage, locale } = useIntl()
 
   const errors = useMemo(() => validate(value), [value, validate])
   const hasError = useMemo(() => Object.values(errors).some((error) => error !== undefined), [errors])
@@ -80,7 +81,13 @@ const TaskListItem: React.FunctionComponent<Props> = ({ value, index, onChange, 
     }
 
     if (isOneOf(...Object.keys(messages))(errors.content.key)) {
-      return formatMessage(messages[errors.content.key], errors.content.values)
+      const text = formatMessage(messages[errors.content.key], errors.content.values)
+
+      switch (locale) {
+        case 'en': return Case.sentence(text)
+        case 'ja': return text
+        default: throw new Error // TODO
+      }
     }
 
     return null // TODO
