@@ -1,4 +1,3 @@
-import Case from 'case'
 import classnames from 'classnames'
 import React, { useCallback, useMemo } from 'react'
 import { DragObjectWithType, useDrag } from 'react-dnd'
@@ -81,7 +80,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ value, index, onChange, 
     }
 
     if (isOneOf(...Object.keys(messages))(errors.content.key)) {
-      return Case.sentence(formatMessage(messages[errors.content.key], errors.content.values))
+      return formatMessage(messages[errors.content.key], errors.content.values)
     }
 
     return null // TODO
