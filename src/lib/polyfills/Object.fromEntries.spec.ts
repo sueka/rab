@@ -1,7 +1,5 @@
 import fromEntries from './Object.fromEntries'
 
-type Index = keyof any // tslint:disable-line:no-any
-
 describe('Object.fromEntries', () => {
   it('should undo applying Object.entries for a record', () => {
     expect(fromEntries(Object.entries({}))).toEqual({})
