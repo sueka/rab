@@ -61,6 +61,9 @@ const Nav: React.FunctionComponent = () => {
         <MenuItemLink to="/info" onClick={ closeMenu }>
           <FormattedMessage { ...messages.info } />
         </MenuItemLink>
+        <MenuItemLink to="/paint" onClick={ closeMenu }>
+          <FormattedMessage { ...messages.paint } />
+        </MenuItemLink>
         <MenuItemLink to="/reminder" onClick={ closeMenu }>
           <FormattedMessage { ...messages.reminder } />
         </MenuItemLink>
