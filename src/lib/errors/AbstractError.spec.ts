@@ -1,4 +1,4 @@
-import AbstractError from '~/lib/errors/AbstractError'
+import AbstractError from './AbstractError'
 
 class FooError extends AbstractError {}
 
