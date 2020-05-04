@@ -6,13 +6,14 @@ import classes from './classes.css'
 interface InnerProps {
   width: number
   height: number
+  lineWidth: number
   innerRef: React.Ref<HTMLCanvasElement>
   context: CanvasRenderingContext2D | null | undefined
 }
 
 type Props = React.PropsWithRef<Alt.Omit<InnerProps, 'innerRef'>>
 
-const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, innerRef, context }) => {
+const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth, innerRef, context }) => {
   const [drawing, setDrawing] = useState(false)
 
   const handlePointerDown = useCallback<React.PointerEventHandler<HTMLCanvasElement>>((event) => {
@@ -29,6 +30,7 @@ const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, innerRef, 
     shouldBePresent(context)
 
     context.lineCap = 'round'
+    context.lineWidth = lineWidth
 
     context.lineTo(event.nativeEvent.offsetX, event.nativeEvent.offsetY)
     context.stroke()

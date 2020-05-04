@@ -18,7 +18,7 @@ const PaintPage: React.FunctionComponent = () => {
   return (
     <>
       <Helmet title={ formatMessage(messages.paint) } />
-      <Canvas width={ 320 } height={ 320 } ref={ canvas } context={ context } />
+      <Canvas width={ 320 } height={ 320 } lineWidth={ 10 } ref={ canvas } context={ context } />
     </>
   )
 }
