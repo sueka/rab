@@ -31,6 +31,7 @@ const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth,
 
     context.lineCap = 'round'
     context.lineWidth = lineWidth
+    context.lineJoin = 'round'
 
     context.lineTo(event.nativeEvent.offsetX, event.nativeEvent.offsetY)
     context.stroke()
