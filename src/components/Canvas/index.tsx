@@ -1,5 +1,6 @@
 import React, { forwardRef, useCallback, useState } from 'react'
 
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import classes from './classes.css'
 
 interface InnerProps {
@@ -25,8 +26,12 @@ const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, innerRef, 
       return
     }
 
-    context?.lineTo(event.nativeEvent.offsetX, event.nativeEvent.offsetY)
-    context?.stroke()
+    shouldBePresent(context)
+
+    context.lineCap = 'round'
+
+    context.lineTo(event.nativeEvent.offsetX, event.nativeEvent.offsetY)
+    context.stroke()
   }, [drawing, context])
 
   const handlePointerUp = useCallback(() => {
