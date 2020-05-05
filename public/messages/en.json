@@ -4,6 +4,7 @@
   "src.components.App.HomePage.helloWorld": "Hello, world!",
   "src.components.App.HomePage.home": "home",
   "src.components.App.InfoPage.info": "info",
+  "src.components.App.PaintPage.clear": "clear",
   "src.components.App.PaintPage.paint": "paint",
   "src.components.App.ReminderPage.reminder": "reminder",
   "src.components.Counter.decrement": "-",

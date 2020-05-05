@@ -1,8 +1,9 @@
 import React, { useCallback, useState } from 'react'
 import Helmet from 'react-helmet'
-import { useIntl } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 
 import Canvas from '~/components/Canvas'
+import ClearCanvasButton from '~/components/ClearCanvasButton'
 import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
@@ -19,6 +20,7 @@ const PaintPage: React.FunctionComponent = () => {
     <>
       <Helmet title={ formatMessage(messages.paint) } />
       <Canvas width={ 320 } height={ 320 } lineWidth={ 10 } ref={ canvas } context={ context } />
+      <ClearCanvasButton width={ 320 } height={ 320 } context={ context }><FormattedMessage { ...messages.clear } /></ClearCanvasButton>
     </>
   )
 }
