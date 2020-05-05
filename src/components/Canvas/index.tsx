@@ -1,7 +1,13 @@
 import React, { forwardRef, useCallback, useState } from 'react'
 
-import { shouldBePresent } from '~/lib/asserters/commonAsserters'
+import { shouldBePresent, shouldBeNullable } from '~/lib/asserters/commonAsserters'
 import classes from './classes.css'
+
+// TODO: remove
+interface Point {
+  x: number
+  y: number
+}
 
 interface InnerProps {
   width: number
@@ -15,12 +21,18 @@ type Props = React.PropsWithRef<Alt.Omit<InnerProps, 'innerRef'>>
 
 const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth, innerRef, context }) => {
   const [drawing, setDrawing] = useState(false)
+  const [previousPoint, setPreviousPoint] = useState<Point | null>(null)
 
   const handlePointerDown = useCallback<React.PointerEventHandler<HTMLCanvasElement>>((event) => {
+    shouldBeNullable(previousPoint)
+
     setDrawing(true)
 
-    context?.moveTo(event.nativeEvent.offsetX, event.nativeEvent.offsetY)
-  }, [context])
+    setPreviousPoint({
+      x: event.nativeEvent.offsetX,
+      y: event.nativeEvent.offsetY,
+    })
+  }, [context, previousPoint])
 
   const handlePointerMove = useCallback<React.PointerEventHandler<HTMLCanvasElement>>((event) => {
     if (!drawing) {
@@ -28,21 +40,31 @@ const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth,
     }
 
     shouldBePresent(context)
+    shouldBePresent(previousPoint)
 
     context.lineCap = 'round'
-    context.lineWidth = lineWidth
+    context.lineWidth = lineWidth * event.pressure
     context.lineJoin = 'round'
 
+    context.beginPath()
+    context.moveTo(previousPoint.x, previousPoint.y)
     context.lineTo(event.nativeEvent.offsetX, event.nativeEvent.offsetY)
     context.stroke()
-  }, [drawing, context])
+
+    setPreviousPoint({
+      x: event.nativeEvent.offsetX,
+      y: event.nativeEvent.offsetY,
+    })
+  }, [context, drawing, previousPoint])
 
   const handlePointerUp = useCallback(() => {
     setDrawing(false)
+    setPreviousPoint(null)
   }, [])
 
   const handlePointerLeave = useCallback(() => {
     setDrawing(false)
+    setPreviousPoint(null)
   }, [])
 
   return (
