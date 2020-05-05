@@ -1,6 +1,6 @@
 import React, { forwardRef, useCallback, useState } from 'react'
 
-import { shouldBePresent, shouldBeNullable } from '~/lib/asserters/commonAsserters'
+import { shouldBeNullable, shouldBePresent } from '~/lib/asserters/commonAsserters'
 import classes from './classes.css'
 
 // TODO: remove
@@ -42,9 +42,11 @@ const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth,
     shouldBePresent(context)
     shouldBePresent(previousPoint)
 
+    /* tslint:disable:no-object-mutation */
     context.lineCap = 'round'
     context.lineWidth = lineWidth * event.pressure
     context.lineJoin = 'round'
+    /* tslint:enable:no-object-mutation */
 
     context.beginPath()
     context.moveTo(previousPoint.x, previousPoint.y)
