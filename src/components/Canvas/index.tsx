@@ -4,6 +4,10 @@ import { shouldBeNullable, shouldBePresent } from '~/lib/asserters/commonAsserte
 import classes from './classes.css'
 
 // TODO: remove
+type Tool =
+  | 'pen'
+
+// TODO: remove
 interface Point {
   x: number
   y: number
@@ -15,15 +19,20 @@ interface InnerProps {
   lineWidth: number
   innerRef: React.Ref<HTMLCanvasElement>
   context: CanvasRenderingContext2D | null | undefined
+  tool: Tool
 }
 
 type Props = React.PropsWithRef<Alt.Omit<InnerProps, 'innerRef'>>
 
-const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth, innerRef, context }) => {
+const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth, innerRef, context, tool }) => {
   const [drawing, setDrawing] = useState(false)
   const [previousPoint, setPreviousPoint] = useState<Point | null>(null)
 
   const handlePointerDown = useCallback<React.PointerEventHandler<HTMLCanvasElement>>((event) => {
+    if (tool !== 'pen') {
+      return
+    }
+
     shouldBeNullable(previousPoint)
 
     setDrawing(true)
@@ -32,7 +41,7 @@ const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth,
       x: event.nativeEvent.offsetX,
       y: event.nativeEvent.offsetY,
     })
-  }, [context, previousPoint])
+  }, [context, tool, previousPoint])
 
   const handlePointerMove = useCallback<React.PointerEventHandler<HTMLCanvasElement>>((event) => {
     if (!drawing) {
