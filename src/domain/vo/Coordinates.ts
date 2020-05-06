@@ -12,8 +12,9 @@ export default class Coordinates extends Hashable implements Class.ValueObject<C
 
   public hashCode() {
     // tslint:disable-next-line:no-let
-    let result = this.file.hashCode()
+    let result = 0
 
+    result = 31 * result + this.file.hashCode()
     result = 31 * result + this.rank.hashCode()
 
     return result
