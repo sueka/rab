@@ -43,7 +43,6 @@ const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth,
     shouldBePresent(previousPoint)
 
     /* tslint:disable:no-object-mutation */
-    context.lineCap = 'round'
     context.lineWidth = lineWidth * event.pressure
     context.lineJoin = 'round'
     /* tslint:enable:no-object-mutation */
