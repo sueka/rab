@@ -16,9 +16,10 @@ import messages from './messages'
 // TODO: remove
 type Tool =
   | 'pen'
+  | 'bucket'
 
 const isCanvasLineCap = isOneOf('butt', 'round', 'square')
-const isTool = isOneOf('pen')
+const isTool = isOneOf('pen', 'bucket')
 
 const Paint: React.FunctionComponent = () => {
   const [context, setContext] = useState<CanvasRenderingContext2D | null>()

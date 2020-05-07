@@ -1,11 +1,13 @@
 import React, { forwardRef, useCallback, useState } from 'react'
 
+import Color from '~/domain/vo/Color'
 import { shouldBeNullable, shouldBePresent } from '~/lib/asserters/commonAsserters'
 import classes from './classes.css'
 
 // TODO: remove
 type Tool =
   | 'pen'
+  | 'bucket'
 
 // TODO: remove
 interface Point {
@@ -23,6 +25,58 @@ interface InnerProps {
 }
 
 type Props = React.PropsWithRef<Alt.Omit<InnerProps, 'innerRef'>>
+
+// TODO: remove
+function getColor({ x, y }: Point, context: CanvasRenderingContext2D): Color {
+  const { data: [red, green, blue, alpha] } = context.getImageData(x, y, 1, 1)
+
+  return new Color({
+    red,
+    green,
+    blue,
+    alpha,
+  })
+}
+
+// TODO: remove
+function floodFill(targetPoint: Point, width: number, height: number, context: CanvasRenderingContext2D) {
+  shouldBePresent(context)
+
+  const queue: Point[] = [] // TODO
+  const targetColor = getColor(targetPoint, context)
+
+  queue.push(targetPoint)
+
+  while (queue.length !== 0) {
+    const currentPoint = queue.shift()
+
+    shouldBePresent(currentPoint)
+
+    const currentColor = getColor(currentPoint, context)
+
+    if (!targetColor.equals(currentColor)) {
+      continue
+    }
+
+    context.fillRect(currentPoint.x, currentPoint.y, 1, 1)
+
+    if (currentPoint.x > 0) {
+      queue.push({ x: currentPoint.x - 1, y: currentPoint.y })
+    }
+
+    if (currentPoint.y > 0) {
+      queue.push({ x: currentPoint.x, y: currentPoint.y - 1 })
+    }
+
+    if (currentPoint.x < width - 1) {
+      queue.push({ x: currentPoint.x + 1, y: currentPoint.y })
+    }
+
+    if (currentPoint.y < height - 1) {
+      queue.push({ x: currentPoint.x, y: currentPoint.y + 1 })
+    }
+  }
+}
 
 const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth, innerRef, context, tool }) => {
   const [drawing, setDrawing] = useState(false)
@@ -77,6 +131,16 @@ const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth,
     setPreviousPoint(null)
   }, [])
 
+  const handleClick = useCallback<React.MouseEventHandler<HTMLCanvasElement>>((event) => {
+    if (tool !== 'bucket') {
+      return
+    }
+
+    shouldBePresent(context)
+
+    floodFill({ x: event.nativeEvent.offsetX, y: event.nativeEvent.offsetY }, width, height, context)
+  }, [width, height, context, tool])
+
   return (
     <canvas
       ref={ innerRef }
@@ -87,6 +151,7 @@ const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth,
       onPointerMove={ handlePointerMove }
       onPointerUp={ handlePointerUp }
       onPointerLeave={ handlePointerLeave }
+      onClick={ handleClick }
     />
   )
 }
