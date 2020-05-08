@@ -58,7 +58,7 @@ const Paint: React.FunctionComponent = () => {
       <Canvas width={ 320 } height={ 320 } lineWidth={ 10 } ref={ canvas } context={ context } tool={ tool } />
       <ClearCanvasButton width={ 320 } height={ 320 } context={ context }><FormattedMessage { ...messages.clear } /></ClearCanvasButton>
       <Toolbox value={ tool } onChange={ handleToolChange } />
-      <FormControl>
+      <FormControl disabled={ tool !== 'pen' }>
         <FormLabel>line cap</FormLabel>
         <RadioGroup value={ lineCap } onChange={ handlePenCapRadioChange }>
           <FormControlLabel value="butt" label="butt" control={ <Radio /> } />
