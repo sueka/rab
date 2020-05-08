@@ -45,10 +45,12 @@ function floodFill(targetPoint: Point, width: number, height: number, context: C
   const queue: Point[] = [] // TODO
   const targetColor = getColor(targetPoint, context)
 
+  // tslint:disable-next-line:no-array-mutation
   queue.push(targetPoint)
 
+  // tslint:disable-next-line:no-loop-statement
   while (queue.length !== 0) {
-    const currentPoint = queue.shift()
+    const currentPoint = queue.shift() // tslint:disable-line:no-array-mutation
 
     shouldBePresent(currentPoint)
 
@@ -61,18 +63,22 @@ function floodFill(targetPoint: Point, width: number, height: number, context: C
     context.fillRect(currentPoint.x, currentPoint.y, 1, 1)
 
     if (currentPoint.x > 0) {
+      // tslint:disable-next-line:no-array-mutation
       queue.push({ x: currentPoint.x - 1, y: currentPoint.y })
     }
 
     if (currentPoint.y > 0) {
+      // tslint:disable-next-line:no-array-mutation
       queue.push({ x: currentPoint.x, y: currentPoint.y - 1 })
     }
 
     if (currentPoint.x < width - 1) {
+      // tslint:disable-next-line:no-array-mutation
       queue.push({ x: currentPoint.x + 1, y: currentPoint.y })
     }
 
     if (currentPoint.y < height - 1) {
+      // tslint:disable-next-line:no-array-mutation
       queue.push({ x: currentPoint.x, y: currentPoint.y + 1 })
     }
   }
