@@ -1,6 +1,6 @@
 import { TaskFunction, Globs, parallel, series, watch } from 'gulp'
 import del from 'del'
-import { spawn } from 'child_process'
+import { ChildProcess, spawn } from 'child_process'
 
 const ignored = ['.cache', 'coverage', 'dist', 'doc', 'storybook-static', '**/*.css.d.ts', '**/*.js{,x}', '!jest.config.js', '!typedoc.js']
 
@@ -49,7 +49,7 @@ export default series(testWithoutCoverage, build)
 //                         _|
 //                         _|
 
-function npx(util: string, args: string[], env: NodeJS.ProcessEnv) {
+function npx(util: string, args: string[], env: NodeJS.ProcessEnv): ChildProcess {
   return spawn(util, args, { stdio: 'inherit', env: { ...process.env, ...env } })
 }
 
@@ -61,7 +61,7 @@ declare global {
   }
 }
 
-function npxTask(util: string, args: string[] = [], env: NodeJS.ProcessEnv = {}) {
+function npxTask(util: string, args: string[] = [], env: NodeJS.ProcessEnv = {}): TaskFunction {
   const task: TaskFunction = () => npx(util, args, env)
 
   task.displayName = `${ Object.entries(env).map(([name, value]) => `${ name }=${ value } `).join('') }${ util }${ args.map((arg) => ` ${ arg }`).join('') }`
@@ -69,7 +69,7 @@ function npxTask(util: string, args: string[] = [], env: NodeJS.ProcessEnv = {})
   return series(task) // name automatically
 }
 
-function continuousTask(globs: Globs, watchedTask: TaskFunction) {
+function continuousTask(globs: Globs, watchedTask: TaskFunction): TaskFunction {
   const task = () => watch(globs, { ignoreInitial: false, ignored }, watchedTask)
 
   task.displayName = `${ watchedTask.displayName } --watch`
