@@ -33,7 +33,7 @@ export const test = testWithCoverage
 export const build = parallel(typeCheck, series(() => del(['dist/**/*']), npxTask('webpack')))
 export const buildStorybook = parallel(typeCheckForDevelopment, npxTask('build-storybook', [], { NODE_ENV: 'development' }))
 export const buildGhPagesCustom404Page = series(() => del(['gh-pages/dist/**/*']), typeCheck, npxTask('webpack', ['--config', 'gh-pages/webpack.config.ts']))
-export const document = parallel(npxTask('typedoc'))
+export const document = npxTask('typedoc')
 
 export const develop = parallel(
   continuousTask('src', typeCheck),
