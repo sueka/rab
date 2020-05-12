@@ -13,7 +13,11 @@ const ignored = ['.cache', 'coverage', 'dist', 'doc', 'storybook-static', '**/*.
 //
 //
 
-export const clean: TaskFunction = () => del([...ignored, '!node_modules/**', '!.env'])
+export const clean: TaskFunction = describedTask(
+  'Remove all files that are neither tracked by Git, are in node_modules/ nor are .env`',
+  () => del([...ignored, '!node_modules/**', '!.env'])
+)
+
 const extractMessages = npxTask('extract-messages', ['--flat', '--default-locale=en', '--locales=en,ja', '--output=public/messages', 'src/**/messages.ts'])
 const preTypeCheck = parallel(npxTask('tcm', ['src', '-s']), extractMessages)
 const typeCheck = series(preTypeCheck, npxTask('tsc', ['--noEmit', '-p', './tsconfig.prod.json']))
@@ -73,6 +77,12 @@ function continuousTask(globs: Globs, watchedTask: TaskFunction): TaskFunction {
   const task = () => watch(globs, { ignoreInitial: false, ignored }, watchedTask)
 
   task.displayName = `${ watchedTask.displayName } --watch`
+
+  return task
+}
+
+function describedTask(description: string, task: TaskFunction): TaskFunction {
+  task.description = description
 
   return task
 }
