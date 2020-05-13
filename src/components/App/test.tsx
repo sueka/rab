@@ -12,7 +12,7 @@ import IntlProvider from '~/components/IntlProvider'
 import ThemeProvider from '~/components/ThemeProvider'
 import typed from '~/lib/typed'
 import { State } from '~/redux'
-import App, { CounterPage, HomePage, InfoPage, ReminderPage } from '.'
+import App, { ChessPage, CounterPage, HomePage, InfoPage, PaintPage, ReminderPage } from '.'
 
 import formats from '../../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../../../public/messages/en.json' // tslint:disable-line:no-relative-imports
@@ -45,8 +45,10 @@ const store = createMockStore<Alt.Omit<State, 'router'>>()({
 describe.each`
 location
 ${ '/' }
+${ '/chess' }
 ${ '/counter' }
 ${ '/info' }
+${ '/paint' }
 ${ '/reminder' }
 ${ '/nonexistent-path' }
 `('App', ({ location }: { location: string }) => {
@@ -70,8 +72,10 @@ ${ '/nonexistent-path' }
     )
 
     await HomePage
+    await ChessPage
     await CounterPage
     await InfoPage
+    await PaintPage
     await ReminderPage
 
     expect(container).toMatchSnapshot()
