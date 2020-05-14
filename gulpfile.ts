@@ -14,7 +14,7 @@ const ignored = ['.cache', 'coverage', 'dist', 'doc', 'storybook-static', '**/*.
 //
 
 export const clean: TaskFunction = describedTask(
-  'Remove all files that are neither tracked by Git, are in node_modules/ nor are .env`',
+  'Remove all files that neither are tracked by Git, are in node_modules/ nor are .env`',
   () => del([...ignored, '!node_modules/**', '!.env'])
 )
 
