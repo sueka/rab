@@ -114,6 +114,7 @@
     "babel-jest": "^25.2.6",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.2.6",
+    "jest-canvas-mock": "^2.2.0",
     "react-dnd-test-backend": "^10.0.2",
     "redux-mock-store": "^1.5.4",
     "stylelint": "^13.2.1",

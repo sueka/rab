@@ -27,7 +27,7 @@ interface InnerProps {
 type Props = React.PropsWithRef<Alt.Omit<InnerProps, 'innerRef'>>
 
 // TODO: remove
-function getColor({ x, y }: Point, context: CanvasRenderingContext2D): Color {
+export /* for testing */ function getColor({ x, y }: Point, context: CanvasRenderingContext2D): Color {
   const { data: [red, green, blue, alpha] } = context.getImageData(x, y, 1, 1)
 
   return new Color({

@@ -2,6 +2,7 @@
 
 import * as dotenv from 'dotenv'
 import 'reflect-metadata'
+import 'jest-canvas-mock'
 
 jest.mock('uuid', () => ({
   v4() {
