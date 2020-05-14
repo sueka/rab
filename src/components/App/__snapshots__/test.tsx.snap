@@ -741,13 +741,13 @@ exports[`App at /counter 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-322 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-496 MuiSwitch-switchBase MuiSwitch-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-325 MuiSwitch-input"
+              class="PrivateSwitchBase-input-499 MuiSwitch-input"
               type="checkbox"
               value=""
             />
@@ -912,13 +912,13 @@ exports[`App at /info 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-578 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-752 MuiSwitch-switchBase MuiSwitch-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-581 MuiSwitch-input"
+              class="PrivateSwitchBase-input-755 MuiSwitch-input"
               type="checkbox"
               value=""
             />
@@ -1030,13 +1030,13 @@ exports[`App at /nonexistent-path 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1018 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1441 MuiSwitch-switchBase MuiSwitch-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-1021 MuiSwitch-input"
+              class="PrivateSwitchBase-input-1444 MuiSwitch-input"
               type="checkbox"
               value=""
             />
@@ -1238,7 +1238,7 @@ exports[`App at /paint 1`] = `
           <input
             checked=""
             class="PrivateSwitchBase-input-988"
-            name="mui-radiogroup-19904"
+            name="tool"
             type="radio"
             value="pen"
           />
@@ -1266,7 +1266,7 @@ exports[`App at /paint 1`] = `
         >
           <input
             class="PrivateSwitchBase-input-988"
-            name="mui-radiogroup-19904"
+            name="tool"
             type="radio"
             value="bucket"
           />
@@ -1315,7 +1315,7 @@ exports[`App at /paint 1`] = `
           >
             <input
               class="PrivateSwitchBase-input-988"
-              name="mui-radiogroup-89027"
+              name="lineCap"
               type="radio"
               value="butt"
             />
@@ -1367,7 +1367,7 @@ exports[`App at /paint 1`] = `
             <input
               checked=""
               class="PrivateSwitchBase-input-988"
-              name="mui-radiogroup-89027"
+              name="lineCap"
               type="radio"
               value="round"
             />
@@ -1418,7 +1418,7 @@ exports[`App at /paint 1`] = `
           >
             <input
               class="PrivateSwitchBase-input-988"
-              name="mui-radiogroup-89027"
+              name="lineCap"
               type="radio"
               value="square"
             />
@@ -1498,13 +1498,13 @@ exports[`App at /reminder 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-811 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1234 MuiSwitch-switchBase MuiSwitch-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-814 MuiSwitch-input"
+              class="PrivateSwitchBase-input-1237 MuiSwitch-input"
               type="checkbox"
               value=""
             />

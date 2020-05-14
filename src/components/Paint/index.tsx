@@ -60,7 +60,7 @@ const Paint: React.FunctionComponent = () => {
       <Toolbox value={ tool } onChange={ handleToolChange } />
       <FormControl disabled={ tool !== 'pen' }>
         <FormLabel>line cap</FormLabel>
-        <RadioGroup value={ lineCap } onChange={ handlePenCapRadioChange }>
+        <RadioGroup name="lineCap" value={ lineCap } onChange={ handlePenCapRadioChange }>
           <FormControlLabel value="butt" label="butt" control={ <Radio /> } />
           <FormControlLabel value="round" label="round" control={ <Radio /> } />
           <FormControlLabel value="square" label="square" control={ <Radio /> } />

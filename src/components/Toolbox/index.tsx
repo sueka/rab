@@ -18,7 +18,7 @@ export interface Props {
 
 const Toolbox: React.FunctionComponent<Props> = ({ value, onChange }) => (
   <FormControl>
-    <RadioGroup value={ value } onChange={ onChange }>
+    <RadioGroup name="tool" value={ value } onChange={ onChange }>
       <Radio icon={ <CreateIcon /> } checkedIcon={ <CreateIcon /> } value="pen" />
       <Radio icon={ <FormatColorFillIcon /> } checkedIcon={ <FormatColorFillIcon /> } value="bucket" />
     </RadioGroup>
