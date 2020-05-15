@@ -69,7 +69,7 @@ declare global {
 function npxTask(util: string, args: string[] = [], env: NodeJS.ProcessEnv = {}): TaskFunction {
   const task: TaskFunction = () => npx(util, args, env)
 
-  task.displayName = `${ Object.entries(env).map(([name, value]) => `${ name }=${ value } `).join('') }${ util }${ args.map((arg) => ` ${ arg }`).join('') }`
+  task.displayName = `${ Object.entries(env).map(([name, value]) => `${ name }=${ value } `).join('') }${ util }${ args.map((arg) => /\s/.test(arg) ? ` '${ arg }'` : ` ${ arg }`).join('') }`
 
   return series(task) // name automatically
 }
