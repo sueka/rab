@@ -4,6 +4,9 @@ import identity from '~/lib/identity'
 
 type OnceForEachEffectCallback<T> = (x: T) => (void | ((x: T) => void | undefined))
 
+/**
+ * @param hashCode that meets `a` is `b` in SameValueZero → `hashCode(a) === hashCode(b)`
+ */
 export default function useOnceForEachEffect<T extends U, U>(xs: T[], hashCode: (x: T) => U = identity, effect: OnceForEachEffectCallback<T>, deps?: DependencyList) {
   const [doneIds, setDoneIds] = useState<U[]>([])
 
