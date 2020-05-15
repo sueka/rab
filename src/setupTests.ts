@@ -1,8 +1,8 @@
 /* tslint:disable:no-import-side-effect */
 
 import * as dotenv from 'dotenv'
-import 'reflect-metadata'
 import 'jest-canvas-mock'
+import 'reflect-metadata'
 
 jest.mock('uuid', () => ({
   v4() {
