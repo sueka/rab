@@ -101,7 +101,7 @@ const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth,
       x: event.nativeEvent.offsetX,
       y: event.nativeEvent.offsetY,
     })
-  }, [context, tool, previousPoint])
+  }, [tool, previousPoint])
 
   const handlePointerMove = useCallback<React.PointerEventHandler<HTMLCanvasElement>>((event) => {
     if (!drawing) {
@@ -125,7 +125,7 @@ const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth,
       x: event.nativeEvent.offsetX,
       y: event.nativeEvent.offsetY,
     })
-  }, [context, drawing, previousPoint])
+  }, [lineWidth, context, drawing, previousPoint])
 
   const handlePointerUp = useCallback(() => {
     setDrawing(false)

@@ -29,7 +29,7 @@ type Props =
 export /* for testing */ const Counter: React.FunctionComponent<Props> = ({ value, reset, increment, decrement, incrementIfOdd, incrementAsync }) => {
   const handleIncrementAsync = useCallback(() => {
     incrementAsync(1000)
-  }, [])
+  }, [incrementAsync])
 
   return (
     <div>

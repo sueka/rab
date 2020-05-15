@@ -35,7 +35,7 @@ const ranks: Chess.Rank[] = [8, 7, 6, 5, 4, 3, 2, 1]
 const Chessboard: React.FunctionComponent<Props> = ({ board, picking, targets, resetBoard, halfMove, pickChessman, releaseChessman }) => {
   useEffect(() => {
     resetBoard() // TODO: skip when LOCATION_CHANGE is dispatched
-  }, [])
+  }, [resetBoard])
 
   return (
     <ChessContext.Provider

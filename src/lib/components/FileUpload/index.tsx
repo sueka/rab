@@ -51,8 +51,8 @@ const FileUpload: React.FunctionComponent<Props> = ({
 }: Props) => {
   const [files, setFiles] = useState<File[] | null>(null) // NOTE: (event: ChangeEvent).target.files をそのまま使うと参照が変わらないので rerender されない。
 
-  const rootClassName = useMemo(() => classnames(className, muiClasses?.root, cssClasses.FileUpload), [className, muiClasses?.root, cssClasses.FileUpload])
-  const buttonClassName = useMemo(() => classnames(muiClasses?.button, cssClasses.Button, ButtonProps?.className), [muiClasses?.button, cssClasses.Button, ButtonProps?.className])
+  const rootClassName = useMemo(() => classnames(className, muiClasses?.root, cssClasses.FileUpload), [className, muiClasses?.root])
+  const buttonClassName = useMemo(() => classnames(muiClasses?.button, cssClasses.Button, ButtonProps?.className), [muiClasses?.button, ButtonProps?.className])
 
   const resultMessage = useMemo(() => renderResultMessage(files), [renderResultMessage, files])
 
@@ -73,7 +73,7 @@ const FileUpload: React.FunctionComponent<Props> = ({
     if (!event.isDefaultPrevented()) {
       fireInputClick(event)
     }
-  }, [onClick])
+  }, [onClick, fireInputClick])
 
   return (
     <Component className={ rootClassName }>

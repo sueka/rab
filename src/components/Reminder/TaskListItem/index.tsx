@@ -91,7 +91,7 @@ const TaskListItem: React.FunctionComponent<Props> = ({ value, index, onChange, 
     }
 
     return null // TODO
-  }, [errors.content])
+  }, [locale, formatMessage, errors.content])
 
   return (
     <div ref={ preview }>

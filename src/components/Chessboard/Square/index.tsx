@@ -16,7 +16,7 @@ interface Props extends React.PropsWithChildren<{}> {
 const Square: React.FunctionComponent<Props> = ({ children, coord }: Props) => {
   const { picking, targets, halfMove, releaseChessman } = useContext(ChessContext)
 
-  const attacked = useMemo(() => targets?.some((target) => equalsChessCoordinates(coord, target)) ?? false, [targets])
+  const attacked = useMemo(() => targets?.some((target) => equalsChessCoordinates(coord, target)) ?? false, [coord, targets?.some])
 
   const [, drop] = useDrop<DragObjectWithType, unknown, unknown>({
     accept: 'Chessman',
@@ -37,7 +37,7 @@ const Square: React.FunctionComponent<Props> = ({ children, coord }: Props) => {
     [classes.White]: color === 'white',
     [classes.Black]: color === 'black',
     [classes.Target]: attacked,
-  }), [attacked])
+  }), [color, attacked])
 
   const handleSquareClick = useCallback(() => {
     if (picking != null) {
@@ -47,7 +47,7 @@ const Square: React.FunctionComponent<Props> = ({ children, coord }: Props) => {
         releaseChessman?.()
       }
     }
-  }, [halfMove, picking, coord, releaseChessman])
+  }, [halfMove, picking, coord, releaseChessman, attacked])
 
   return (
     <div ref={ drop } className={ squareClassName } onClick={ handleSquareClick }>

@@ -66,7 +66,7 @@ export /* for testing */ const LocaleSelect: React.FunctionComponent<Props> = ({
     if (isTag(event.target.value)) {
       selectLocale(event.target.value)
     }
-  }, [])
+  }, [selectLocale])
 
   const { availableLocales } = useContext(IntlProviderContext)
 
