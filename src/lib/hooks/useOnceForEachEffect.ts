@@ -4,7 +4,7 @@ import identity from '~/lib/identity'
 
 type OnceForEachEffectCallback<T> = (x: T) => (void | ((x: T) => void | undefined))
 
-export default function useOnceForEachEffect<T extends U, U>(xs: T[], identify: (x: T) => U = identity, effect: OnceForEachEffectCallback<T>, deps?: DependencyList) {
+export default function useOnceForEachEffect<T extends U, U>(xs: T[], hashCode: (x: T) => U = identity, effect: OnceForEachEffectCallback<T>, deps?: DependencyList) {
   const [doneIds, setDoneIds] = useState<U[]>([])
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function useOnceForEachEffect<T extends U, U>(xs: T[], identify: 
 
     // tslint:disable-next-line:no-loop-statement
     for (const x of xs) {
-      if (!doneIds.includes(identify(x))) {
+      if (!doneIds.includes(hashCode(x))) {
         // tslint:disable-next-line:no-array-mutation
         cleanups.push({
           x,
@@ -24,7 +24,7 @@ export default function useOnceForEachEffect<T extends U, U>(xs: T[], identify: 
       }
     }
 
-    setDoneIds(xs.map(identify))
+    setDoneIds(xs.map(hashCode))
 
     return () => {
       // tslint:disable-next-line:no-loop-statement
