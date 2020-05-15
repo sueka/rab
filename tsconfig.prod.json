@@ -49,7 +49,6 @@
 
     /* test */
     "src/setupTests.ts",
-    "src/**/test.tsx",
     "src/**/*.spec.ts"
   ]
 }
