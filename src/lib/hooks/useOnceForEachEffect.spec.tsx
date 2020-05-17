@@ -39,4 +39,21 @@ describe('useOnceForEachEffect', () => {
     expect(effect).toBeCalledWith(1)
     expect(effect).toBeCalledWith(2)
   })
+
+  it('should call cleanup with each element of xs when unmounted', () => {
+    const cleanup = jest.fn()
+
+    const effect = () => cleanup
+
+    const { unmount } = renderHook(() => useOnceForEachEffect(['a', 'b', 'c'], undefined, effect))
+
+    expect(cleanup).toBeCalledTimes(0)
+
+    unmount()
+
+    expect(cleanup).toBeCalledTimes(3)
+    expect(cleanup).toBeCalledWith('a')
+    expect(cleanup).toBeCalledWith('b')
+    expect(cleanup).toBeCalledWith('c')
+  })
 })
