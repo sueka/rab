@@ -17,7 +17,7 @@ describe('useOnceForEachEffect', () => {
     expect(useEffect).toBeCalled()
   })
 
-  it('should call effect with each element of xs the size of xs times', () => {
+  it('should call effect with each element of xs', () => {
     const effect = jest.fn()
 
     renderHook(() => useOnceForEachEffect(['a', 'b', 'c'], undefined, effect))
@@ -28,7 +28,7 @@ describe('useOnceForEachEffect', () => {
     expect(effect).toBeCalledWith('c')
   })
 
-  it('should call effect with each element of xs the size of identified xs times', () => {
+  it('should call effect with each element identified of xs', () => {
     const effect = jest.fn()
 
     const isOdd = (x: number) => Number.isInteger(x) && x % 2 === 1
