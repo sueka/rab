@@ -5,9 +5,9 @@ import identity from '~/lib/identity'
 type OnceForEachEffectCallback<T> = (x: T) => (void | ((x: T) => void | undefined))
 
 /**
- * @param hashCode that meets `a` is `b` in SameValueZero → `hashCode(a) === hashCode(b)`
+ * @param identify that meets `a` is `b` in SameValueZero → `identify(a) === identify(b)`
  */
-export default function useOnceForEachEffect<T extends U, U>(xs: T[], hashCode: (x: T) => U = identity, effect: OnceForEachEffectCallback<T>, deps?: DependencyList) {
+export default function useOnceForEachEffect<T extends U, U>(xs: T[], identify: (x: T) => U = identity, effect: OnceForEachEffectCallback<T>, deps?: DependencyList) {
   const [doneIds, setDoneIds] = useState<U[]>([])
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function useOnceForEachEffect<T extends U, U>(xs: T[], hashCode: 
 
     // tslint:disable-next-line:no-loop-statement
     for (const x of xs) {
-      if (!doneIds.includes(hashCode(x))) {
+      if (!doneIds.includes(identify(x))) {
         // tslint:disable-next-line:no-array-mutation
         cleanups.push({
           x,
@@ -27,7 +27,7 @@ export default function useOnceForEachEffect<T extends U, U>(xs: T[], hashCode: 
       }
     }
 
-    setDoneIds(xs.map(hashCode))
+    setDoneIds(xs.map(identify))
 
     return () => {
       // tslint:disable-next-line:no-loop-statement
