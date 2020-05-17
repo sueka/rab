@@ -40,8 +40,6 @@ export default function useOnceForEachEffect<T extends U, U>(xs: T[], hashCode: 
       }
     }
   }, [
-    hashCode,
-    effect,
     ...deps ?? [], // eslint-disable-line react-hooks/exhaustive-deps
   ])
 }
