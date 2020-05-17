@@ -7,7 +7,7 @@ type OnceForEachEffectCallback<T> = (x: T) => (void | ((x: T) => void | undefine
 /**
  * @param identify that meets `a` is `b` in SameValueZero → `identify(a) === identify(b)`
  */
-export default function useOnceForEachEffect<T extends U, U>(xs: T[], identify: (x: T) => U = identity, effect: OnceForEachEffectCallback<T>, deps?: DependencyList) {
+export default function useOnceForEachEffect<T, U = T>(xs: T[], identify: (x: T) => U = identity as (x: T) => U, effect: OnceForEachEffectCallback<T>, deps?: DependencyList) { // TODO
   const [doneIds, setDoneIds] = useState<U[]>([])
 
   useEffect(() => {
