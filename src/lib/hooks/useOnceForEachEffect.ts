@@ -41,7 +41,5 @@ export default function useOnceForEachEffect<T, U = T>(xs: T[], identify: (x: T)
         }
       }
     }
-  }, [
-    ...deps ?? [], // eslint-disable-line react-hooks/exhaustive-deps
-  ])
+  }, deps ?? []) // eslint-disable-line react-hooks/exhaustive-deps
 }
