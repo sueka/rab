@@ -40,6 +40,30 @@ describe('useOnceForEachEffect', () => {
     expect(effect).toBeCalledWith(2)
   })
 
+  it('should call effect with each element of xs when deps update', () => {
+    const effect = jest.fn()
+
+    const { rerender } = renderHook(({ foo }) => useOnceForEachEffect(['a', 'b', 'c'], undefined, effect, [foo]), {
+      initialProps: {
+        foo: 0,
+      },
+    })
+
+    expect(effect).toBeCalledTimes(3)
+    expect(effect).toBeCalledWith('a')
+    expect(effect).toBeCalledWith('b')
+    expect(effect).toBeCalledWith('c')
+
+    effect.mockClear()
+
+    rerender({ foo: 1 })
+
+    expect(effect).toBeCalledTimes(3)
+    expect(effect).toBeCalledWith('a')
+    expect(effect).toBeCalledWith('b')
+    expect(effect).toBeCalledWith('c')
+  })
+
   it('should call cleanup with each element of xs when unmounted', () => { // NOTE: effect は deps が変更されたときにも cleanup される
     const cleanup = jest.fn()
 
