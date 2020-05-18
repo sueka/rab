@@ -40,14 +40,27 @@ describe('useOnceForEachEffect', () => {
     expect(effect).toBeCalledWith(2)
   })
 
-  it('should call cleanup with each element of xs when unmounted', () => {
+  it('should call cleanup with each element of xs when unmounted', () => { // NOTE: effect は deps が変更されたときにも cleanup される
     const cleanup = jest.fn()
 
     const effect = () => cleanup
 
-    const { unmount } = renderHook(() => useOnceForEachEffect(['a', 'b', 'c'], undefined, effect))
+    const { rerender, unmount } = renderHook(({ foo }) => useOnceForEachEffect(['a', 'b', 'c'], undefined, effect, [foo]), {
+      initialProps: {
+        foo: 0,
+      },
+    })
 
     expect(cleanup).toBeCalledTimes(0)
+
+    rerender({ foo: 1 })
+
+    expect(cleanup).toBeCalledTimes(3)
+    expect(cleanup).toBeCalledWith('a')
+    expect(cleanup).toBeCalledWith('b')
+    expect(cleanup).toBeCalledWith('c')
+
+    cleanup.mockClear()
 
     unmount()
 
