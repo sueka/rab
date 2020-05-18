@@ -2,7 +2,7 @@
 
 import { render } from '@testing-library/react'
 import React from 'react'
-import * as reactRouter from 'react-router'
+import reactRouter, { Redirect } from 'react-router'
 
 import App from '.'
 
@@ -24,8 +24,8 @@ describe('App', () => {
       )
 
       expect(container).toMatchSnapshot()
-      expect(mockedReactRouter.Redirect).toBeCalledTimes(1)
-      expect(mockedReactRouter.Redirect).toBeCalledWith({ to: { pathname: '/foo' } }, {})
+      expect(Redirect).toBeCalledTimes(1)
+      expect(Redirect).toBeCalledWith({ to: { pathname: '/foo' } }, {})
     })
   })
 })
