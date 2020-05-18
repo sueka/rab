@@ -14,7 +14,7 @@ export default function useOnceForEachEffect<T, U = T>(xs: T[], identify: (x: T)
       cleanup: ReturnType<typeof effect>
     }> = []
 
-    let doneIds: U[] = []
+    const doneIds: U[] = []
 
     // tslint:disable-next-line:no-loop-statement
     for (const x of xs) {
@@ -27,6 +27,7 @@ export default function useOnceForEachEffect<T, U = T>(xs: T[], identify: (x: T)
           cleanup: effect(x),
         })
 
+        // tslint:disable-next-line:no-array-mutation
         doneIds.push(id)
       }
     }

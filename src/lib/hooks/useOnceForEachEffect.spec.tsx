@@ -10,7 +10,9 @@ jest.mock('react', () => ({
 
 describe('useOnceForEachEffect', () => {
   it('should call useEffect', () => {
-    const effect = (_x: never) => {}
+    const effect = (_x: never) => {
+      // Silence is golden.
+    }
 
     renderHook(() => useOnceForEachEffect([], undefined, effect))
 
