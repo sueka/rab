@@ -1,6 +1,6 @@
 import hashCode from './hashCode'
 
-describe('Number#hashCode', () => {
+describe('String#hashCode', () => {
   it('should work like that of java.lang.Double', () => {
     expect(hashCode('')).toBe(0)
     expect(hashCode('a')).toBe(97)
