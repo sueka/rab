@@ -1,13 +1,13 @@
 import { DependencyList, useEffect, useState } from 'react'
 
-type OnceForEachEffectCallback<T> = (element: T) => (void | ((element: T) => void | undefined))
+type OnceForEachEffectCallback<T> = (x: T) => (void | ((x: T) => void | undefined))
 
 export default function useOnceForEachEffect<T>(xs: T[], effect: OnceForEachEffectCallback<T>, deps?: DependencyList) {
   const [doneXs, setDoneXs] = useState<T[]>([])
 
   useEffect(() => {
     const cleanups: Array<{
-      element: T,
+      x: T,
       cleanup: ReturnType<typeof effect>
     }> = []
 
@@ -16,7 +16,7 @@ export default function useOnceForEachEffect<T>(xs: T[], effect: OnceForEachEffe
       if (!doneXs.includes(x)) {
         // tslint:disable-next-line:no-array-mutation
         cleanups.push({
-          element: x,
+          x,
           cleanup: effect(x),
         })
       }
@@ -26,11 +26,11 @@ export default function useOnceForEachEffect<T>(xs: T[], effect: OnceForEachEffe
 
     return () => {
       // tslint:disable-next-line:no-loop-statement
-      for (const { element, cleanup } of cleanups) {
-        // cleanup?.(element)
+      for (const { x, cleanup } of cleanups) {
+        // cleanup?.(x)
 
         if (typeof cleanup !== 'undefined') {
-          cleanup(element)
+          cleanup(x)
         }
       }
     }
