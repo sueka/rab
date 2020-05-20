@@ -28,6 +28,18 @@ export interface ChessState {
   targets?: Chess.Coordinates[] | null
 }
 
+/**
+ * 次の条件を満たすときに TRUE を返し、そうでないときに FALSE を返す。
+ *
+ * - {picking} が存在するならば、 {board} 上の {picking}.source に何らかの駒が存在するならば、その駒は {picking}.chessman であり、かつ
+ * - {picking} が存在しないならば、 {targets} も存在しない
+ *
+ * 言い換えると、
+ *
+ * - {picking} が存在せず、かつ {targets} も存在しないか、
+ * - {picking} が存在し、かつ {board} 上の {picking}.source に駒が存在しないか、または // NOTE: HALF_MOVE では、まず {board} 上の {picking}.source に存在する駒を取り除き、その後、取り除いた駒を {targets} に割り当てるため、一時的にこの状態になる。
+ * - {picking} が存在し、 {board} 上の {picking}.source に何らかの駒が存在し、かつその駒は {picking}.chessman である
+ */
 export function chessInvariant({ board, picking, targets }: ChessState) {
   return (
     (picking == null || (!board.chessmen.has(new Coordinates(picking.source)) || existsCoordinatedChessman(picking.chessman, picking.source, board))) && // any picking → (any chessman at picking.source on board → chessman at picking.source on board = picking.chessman)
@@ -35,10 +47,13 @@ export function chessInvariant({ board, picking, targets }: ChessState) {
   )
 }
 
-function existsCoordinatedChessman(chessman: Chess.Chessman, coord: Chess.Coordinates, board: Chess.Chessboard): boolean {
+/**
+ * {board} 上の {coord} にある駒が {expected} ならば TRUE を返し、そうでなければ FALSE を返す。
+ */
+function existsCoordinatedChessman(expected: Chess.Chessman, coord: Chess.Coordinates, board: Chess.Chessboard): boolean {
   const actual = board.chessmen.get(new Coordinates(coord))
 
-  return actual !== undefined && equalsChessmen(actual, chessman)
+  return actual !== undefined && equalsChessmen(actual, expected)
 }
 
 //
