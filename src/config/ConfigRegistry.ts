@@ -1,5 +1,5 @@
 export type ConfigKey =
-  | 'BASE_URL'
+  | 'BASE'
   | 'GITHUB_API_URL'
 
 export default interface ConfigRegistry {

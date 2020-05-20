@@ -1,14 +1,14 @@
-if (process.env.BASE_URL === undefined || !process.env.BASE_URL.startsWith(window.location.origin)) {
+if (process.env.BASE === undefined) {
   throw new Error // TODO
 }
 
-const basename = process.env.BASE_URL.slice(window.location.origin.length)
+const basename = process.env.BASE.slice(0, -1)
 
 if (!window.location.pathname.startsWith(basename)) {
   throw new Error // TODO
 }
 
-const url = new URL(process.env.BASE_URL)
+const url = new URL(`${ window.location.origin }${ basename }`)
 
 url.hash = window.location.pathname.slice(basename.length)
 

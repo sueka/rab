@@ -127,13 +127,13 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
 }
 
 containerImport.then(({ default: container }) => {
-  // TODO: DI BASE_URL
+  // TODO: DI BASE
 
-  if (process.env.BASE_URL === undefined || !process.env.BASE_URL.startsWith(window.location.origin)) {
+  if (process.env.BASE === undefined) {
     throw new Error // TODO
   }
 
-  const basename = process.env.BASE_URL.slice(window.location.origin.length)
+  const basename = process.env.BASE.slice(0, -1)
 
   const history = createBrowserHistory({
     basename,
