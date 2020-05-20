@@ -12,7 +12,7 @@ export const staticCheck = namedTask('staticCheck', parallel(typeCheck, tslint, 
 export const build = series(staticCheck, npxTask('parcel build src/index.html'))
 export const buildStorybook = series(staticCheck, npxTask('build-storybook'))
 
-export const develop = parallel(continuousTask('src', staticCheck), npxTask('parcel --open --log-level 2 src/index.html'), npxTask('start-storybook --quiet -p 5678'))
+export const develop = parallel(continuousTask('src', staticCheck), npxTask('parcel --log-level 2 src/index.html'), npxTask('start-storybook --ci --quiet -p 5678'))
 
 function npx(cmd: string) {
   const cp = exec(cmd)
