@@ -1,6 +1,4 @@
 import TaskId from '~/domain/vo/TaskId'
-import '~/lib/extensions/Boolean/Boolean.prototype.hashCode'
-import '~/lib/extensions/String/String.prototype.hashCode'
 import yieldThis from '~/lib/extensions/Unknown/yieldThis'
 import { asBoolean, asObject, asString } from '~/lib/validators/commonValidators'
 import Entity from './Entity'
