@@ -7,7 +7,7 @@ exports[`LocaleSelect 1`] = `
   <label
     class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
     data-shrink="true"
-    for="stub uuid"
+    for="00000000-0000-4000-0000-000000000000"
   >
     Languages
   </label>
@@ -18,7 +18,7 @@ exports[`LocaleSelect 1`] = `
       aria-invalid="false"
       class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
       data-testid="localeSelect"
-      id="stub uuid"
+      id="00000000-0000-4000-0000-000000000000"
     >
       <option
         value="en"
