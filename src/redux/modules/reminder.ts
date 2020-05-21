@@ -418,7 +418,9 @@ export default class ReminderService {
   }
 
   private *deleteTaskAsyncSaga({ payload: { taskId } }: DeleteTaskAsyncAction): SagaIterator {
-    yield call(this.taskRepository.remove, taskId)
+    const task: ResultType<ReturnType<this['taskRepository']['findById']>> = yield call(this.taskRepository.findById, taskId)
+
+    yield call(this.taskRepository.remove, task)
     yield put(removeTask(taskId))
   }
 
