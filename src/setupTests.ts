@@ -6,7 +6,7 @@ import 'reflect-metadata'
 
 jest.mock('uuid', () => ({
   v4() {
-    return 'stub uuid'
+    return '00000000-0000-4000-0000-000000000000' // TODO
   },
 }))
 
