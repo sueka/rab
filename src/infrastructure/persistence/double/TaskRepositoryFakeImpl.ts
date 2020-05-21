@@ -52,7 +52,7 @@ export default class TaskRepositoryFakeImpl implements TaskRepository {
     return localStorage.setItem(task.id.value, task.serialize())
   }
 
-  public async remove(taskId: TaskId) {
-    return localStorage.removeItem(taskId.value)
+  public async remove(task: Task) {
+    return localStorage.removeItem(task.id.value)
   }
 }
