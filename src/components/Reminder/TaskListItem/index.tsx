@@ -11,8 +11,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import TextField from '@material-ui/core/TextField'
 import DragHandleIcon from '@material-ui/icons/DragHandle'
 
-import { Task } from '~/components/Reminder'
-import TaskId from '~/domain/vo/TaskId'
+import Task from '~/domain/entity/Task'
 import { isOneOf } from '~/lib/guards/commonGuards'
 import ValidationError from '~/lib/validators/ValidationError'
 import DeleteTaskButton from './DeleteTaskButton'
@@ -33,7 +32,7 @@ interface CollectedProps {
 }
 
 export interface DragObject extends DragObjectWithType {
-  id: TaskId
+  value: Task
   index: number
 }
 
@@ -41,13 +40,13 @@ const TaskListItem: React.FunctionComponent<Props> = ({ value, index, onChange, 
   const [{ dragging }, drag, preview] = useDrag<DragObject, unknown, CollectedProps>({
     item: {
       type: 'TaskListItem',
-      id: value.id,
+      value,
       index,
     },
     isDragging: (monitor) => {
       const item: DragObject = monitor.getItem()
 
-      return value.id.equals(item.id)
+      return value.isIdenticalTo(item.value)
     },
     collect: (monitor) => ({
       dragging: monitor.isDragging(),

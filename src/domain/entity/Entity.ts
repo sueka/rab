@@ -13,4 +13,8 @@ export default abstract class Entity extends Hashable implements Identifiable, E
   ) {
     super()
   }
+
+  public isIdenticalTo(that: this): boolean {
+    return this.id.equals(that.id)
+  }
 }
