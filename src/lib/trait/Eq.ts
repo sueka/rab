@@ -5,7 +5,7 @@
  *
  *       - a.equals(a) であり、
  *       - a.equals(b) → b.equals(a) であり、かつ
- *       - a.equals(b) && b.equals(c) → a.equals(c) である
+ *       - a.equals(b) ∧ b.equals(c) → a.equals(c) である
  *
  * TODO: PartialEq, Congruence 等検討
  */
