@@ -19,5 +19,5 @@ export default interface TaskRepository {
   /**
    * @throws {Error} if not found.
    */
-  remove(todoId: TaskId): Promise<void>
+  remove(todoId: Task): Promise<void>
 }
