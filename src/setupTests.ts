@@ -4,6 +4,7 @@ import * as dotenv from 'dotenv'
 import 'jest-canvas-mock'
 import 'reflect-metadata'
 
+import './lib/extensions/Array/Array.prototype.hashCode'
 import './lib/extensions/Boolean/Boolean.prototype.hashCode'
 import './lib/extensions/Number/Number.prototype.hashCode'
 import './lib/extensions/String/String.prototype.hashCode'
