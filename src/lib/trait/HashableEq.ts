@@ -12,7 +12,7 @@ export default abstract class HashableEq extends Eq implements Class.Hashable {
   }
 
   public equals(that: Eq): boolean {
-    if (that instanceof this.constructor) {
+    if (that instanceof HashableEq) {
       const thatAsThis = that as this // TODO
 
       return thatAsThis.canEqual(this) && this.hashCode() === thatAsThis.hashCode()
