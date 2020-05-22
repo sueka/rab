@@ -50,9 +50,12 @@ describe('HashableEq', () => {
     it('should be symmetric', () => {
       const p = new Point(1, 2)
       const cp = new ColoredPoint(1, 2, 'red')
+      const sp = new SmellPoint(1, 2)
 
       expect(!p.equals(cp) || cp.equals(p)).toBeTruthy()
       expect(!cp.equals(p) || p.equals(cp)).toBeTruthy()
+      expect(!p.equals(sp) || sp.equals(p)).toBeTruthy()
+      expect(!sp.equals(p) || p.equals(sp)).toBeTruthy()
     })
 
     it('should be transitive', () => {
