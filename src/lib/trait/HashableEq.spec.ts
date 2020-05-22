@@ -71,5 +71,15 @@ describe('HashableEq', () => {
 
       done()
     })
+
+    it('should return true if applied to instances of classes that have a common ancestor class and do not override canEqual, otherwise false', () => {
+      const p = new Point(1, 2)
+      const cp = new ColoredPoint(1, 2, 'red')
+      const sp = new SmellPoint(1, 2)
+
+      expect(p.equals(cp)).toBeFalsy()
+      expect(cp.equals(sp)).toBeFalsy()
+      expect(sp.equals(p)).toBeTruthy()
+    })
   })
 })
