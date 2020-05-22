@@ -3,7 +3,7 @@ import Eq from './Eq'
 /**
  * Eq であり、さらに a.equals(b) → a.hashCode() === b.hashCode() な hashCode を持つ。
  */
-export default abstract class Hashable extends Eq implements Class.Hashable {
+export default abstract class HashableEq extends Eq implements Class.Hashable {
   /**
    * @final
    */

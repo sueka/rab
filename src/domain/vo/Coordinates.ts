@@ -1,8 +1,8 @@
-import Hashable from '~/lib/trait/Hashable'
+import HashableEq from '~/lib/trait/HashableEq'
 
 export default interface Coordinates extends Chess.Coordinates {} // tslint:disable-line:no-empty-interface
 
-export default class Coordinates extends Hashable implements Class.ValueObject<Chess.Coordinates> {
+export default class Coordinates extends HashableEq implements Class.ValueObject<Chess.Coordinates> {
   constructor({ file, rank }: Chess.Coordinates) {
     super()
 

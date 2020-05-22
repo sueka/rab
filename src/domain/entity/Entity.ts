@@ -1,13 +1,13 @@
 import Id from '~/domain/vo/Id'
 import Eq from '~/lib/trait/Eq'
-import Hashable from '~/lib/trait/Hashable'
+import HashableEq from '~/lib/trait/HashableEq'
 
 // TODO: move?
 interface Identifiable {
   id: Id
 }
 
-export default abstract class Entity extends Hashable implements Identifiable, Eq {
+export default abstract class Entity extends HashableEq implements Identifiable, Eq {
   constructor(
     public readonly id: Id
   ) {

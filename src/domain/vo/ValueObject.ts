@@ -1,9 +1,9 @@
-import Hashable from '~/lib/trait/Hashable'
+import HashableEq from '~/lib/trait/HashableEq'
 
 /**
  * A primitive ValueObject
  */
-export default abstract class ValueObject<T> extends Hashable implements Class.ValueObject<{ value: T }> {
+export default abstract class ValueObject<T> extends HashableEq implements Class.ValueObject<{ value: T }> {
   constructor(
     public readonly value: T
   ) {

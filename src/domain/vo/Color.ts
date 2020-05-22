@@ -1,4 +1,4 @@
-import Hashable from '~/lib/trait/Hashable'
+import HashableEq from '~/lib/trait/HashableEq'
 
 // TODO: remove
 interface RgbaColor {
@@ -10,7 +10,7 @@ interface RgbaColor {
 
 export default interface Color extends RgbaColor {} // tslint:disable-line:no-empty-interface
 
-export default class Color extends Hashable implements Class.ValueObject<RgbaColor> {
+export default class Color extends HashableEq implements Class.ValueObject<RgbaColor> {
   constructor({ red, green, blue, alpha }: RgbaColor) {
     super()
 
