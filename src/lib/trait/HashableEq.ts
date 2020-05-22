@@ -8,7 +8,7 @@ export default abstract class HashableEq extends Eq implements Class.Hashable {
    * @final
    */
   protected canEqual(that: Eq): boolean {
-    return that instanceof this.constructor
+    return that instanceof HashableEq
   }
 
   public equals(that: Eq): boolean {
