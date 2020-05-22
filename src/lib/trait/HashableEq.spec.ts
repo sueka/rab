@@ -3,30 +3,32 @@ import HashableEq from './HashableEq'
 class Point extends HashableEq {
   constructor(
     public x: number,
-    public y: number,
+    public y: number
   ) {
     super()
   }
 
-  hashCode() {
+  public hashCode() {
     return [this.x, this.y].hashCode()
   }
 }
 
+// tslint:disable-next-line:max-classes-per-file
 class ColoredPoint extends Point {
   constructor(
     public x: number,
     public y: number,
-    public color: Color,
+    public color: Color
   ) {
     super(x, y)
   }
 
-  hashCode() {
+  public hashCode() {
     return [this.x, this.y, this.color].hashCode()
   }
 }
 
+// tslint:disable-next-line:max-classes-per-file
 class SmellPoint extends Point {}
 
 type Color =
