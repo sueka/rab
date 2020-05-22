@@ -4,11 +4,18 @@ import Eq from './Eq'
  * Eq であり、さらに a.equals(b) → a.hashCode() === b.hashCode() な hashCode を持つ。
  */
 export default abstract class Hashable extends Eq implements Class.Hashable {
+  /**
+   * @final
+   */
+  protected canEqual(that: Eq): boolean {
+    return that instanceof this.constructor
+  }
+
   public equals(that: Eq): boolean {
     if (that instanceof this.constructor) {
       const thatAsThis = that as this // TODO
 
-      return this.hashCode() === thatAsThis.hashCode()
+      return thatAsThis.canEqual(this) && this.hashCode() === thatAsThis.hashCode()
     } else {
       return false
     }
