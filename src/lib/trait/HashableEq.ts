@@ -5,7 +5,6 @@ import Eq from './Eq'
  */
 export default abstract class HashableEq extends Eq implements Class.Hashable {
   /**
-   * @final
    */
   protected canEqual(that: Eq): boolean {
     return that instanceof HashableEq
