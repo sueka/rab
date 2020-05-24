@@ -66,6 +66,13 @@ describe('HashableEq', () => {
       expect(!(redP.equals(p) && p.equals(blueP)) || redP.equals(blueP)).toBeTruthy()
     })
 
+    it('should meet the contract between equals and hashCode', () => {
+      const p = new Point(1, 2)
+      const cp = new ColoredPoint(1, 2, 'black')
+
+      expect(!p.equals(cp) || p.hashCode() === cp.hashCode()).toBeTruthy()
+    })
+
     it('should finish comparing instances of classes different from each other that have their common ancestor class', (done) => {
       const sp = new SmellPoint(1, 2)
       const cp = new ColoredPoint(1, 2, 'red')
@@ -83,6 +90,14 @@ describe('HashableEq', () => {
       expect(p.equals(sp)).toBeTruthy()
       expect(sp.equals(cp)).toBeFalsy()
       expect(cp.equals(p)).toBeFalsy()
+    })
+
+    it('should consider that instances of ColoredPoints with different colors are not equal', () => {
+      const redP = new ColoredPoint(1, 2, 'red')
+      const blueP = new ColoredPoint(1, 2, 'blue')
+
+      expect(redP.equals(blueP)).toBeFalsy()
+      expect(blueP.equals(redP)).toBeFalsy()
     })
   })
 })
