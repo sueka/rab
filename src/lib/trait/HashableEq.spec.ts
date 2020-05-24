@@ -14,6 +14,9 @@ class Point extends HashableEq {
 }
 
 // tslint:disable-next-line:max-classes-per-file
+class SmellPoint extends Point {}
+
+// tslint:disable-next-line:max-classes-per-file
 class ColoredPoint extends Point {
   constructor(
     public x: number,
@@ -27,9 +30,6 @@ class ColoredPoint extends Point {
     return [this.x, this.y, this.color].hashCode()
   }
 }
-
-// tslint:disable-next-line:max-classes-per-file
-class SmellPoint extends Point {}
 
 type Color =
   | 'transparent'
@@ -49,13 +49,13 @@ describe('HashableEq', () => {
 
     it('should be symmetric', () => {
       const p = new Point(1, 2)
-      const cp = new ColoredPoint(1, 2, 'red')
       const sp = new SmellPoint(1, 2)
+      const cp = new ColoredPoint(1, 2, 'red')
 
-      expect(!p.equals(cp) || cp.equals(p)).toBeTruthy()
-      expect(!cp.equals(p) || p.equals(cp)).toBeTruthy()
       expect(!p.equals(sp) || sp.equals(p)).toBeTruthy()
       expect(!sp.equals(p) || p.equals(sp)).toBeTruthy()
+      expect(!p.equals(cp) || cp.equals(p)).toBeTruthy()
+      expect(!cp.equals(p) || p.equals(cp)).toBeTruthy()
     })
 
     it('should be transitive', () => {
@@ -67,22 +67,22 @@ describe('HashableEq', () => {
     })
 
     it('should finish comparing instances of classes different from each other that have their common ancestor class', (done) => {
-      const cp = new ColoredPoint(1, 2, 'red')
       const sp = new SmellPoint(1, 2)
+      const cp = new ColoredPoint(1, 2, 'red')
 
-      cp.equals(sp)
+      sp.equals(cp)
 
       done()
     })
 
     it('should return true if applied to instances of classes that have a common ancestor class and do not override canEqual, otherwise false', () => {
       const p = new Point(1, 2)
-      const cp = new ColoredPoint(1, 2, 'red')
       const sp = new SmellPoint(1, 2)
+      const cp = new ColoredPoint(1, 2, 'red')
 
-      expect(p.equals(cp)).toBeFalsy()
-      expect(cp.equals(sp)).toBeFalsy()
-      expect(sp.equals(p)).toBeTruthy()
+      expect(p.equals(sp)).toBeTruthy()
+      expect(sp.equals(cp)).toBeFalsy()
+      expect(cp.equals(p)).toBeFalsy()
     })
   })
 })
