@@ -9,15 +9,15 @@ export default interface TaskRepository {
   /**
    * @throws {Error} if not found.
    */
-  findById(todoId: TaskId): Promise<Task>
+  findById(taskId: TaskId): Promise<Task>
 
   /**
    * @throws {Error} if failed to store.
    */
-  store(todo: Task): Promise<void>
+  store(task: Task): Promise<void>
 
   /**
    * @throws {Error} if not found.
    */
-  remove(todoId: Task): Promise<void>
+  remove(taskId: Task): Promise<void>
 }
