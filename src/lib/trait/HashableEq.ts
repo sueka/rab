@@ -1,7 +1,7 @@
 import Eq from './Eq'
 
 /**
- * Eq であり、さらに a.equals(b) → a.hashCode() === b.hashCode() な hashCode を持つ。
+ * [[Eq]] であり、さらにハッシュ関数 [[hashCode]] を持つ。
  */
 export default abstract class HashableEq extends Eq implements Class.Hashable {
   protected canEqual(that: Eq): that is HashableEq {
@@ -9,7 +9,9 @@ export default abstract class HashableEq extends Eq implements Class.Hashable {
   }
 
   /**
-   * NOTE: このメソッドをオーバーライドする場合、 `this.canEqual(that) && that.canEqual(this) && this.hashCode() === that.hashCode()` でなければ FALSE を返すように実装しなければならない。
+   * {this} と {that} が同値かどうかを返す。
+   *
+   * @implNote このメソッドをオーバーライドする場合、 `this.hashCode() === that.hashCode()` でなければ FALSE を返すように実装しなければならない。
    */
   public equals(that: Eq): boolean {
     return this.canEqual(that) && that.canEqual(this) && this.hashCode() === that.hashCode()
