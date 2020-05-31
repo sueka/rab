@@ -1,9 +1,9 @@
 declare namespace Class {
-  interface Eq<T = unknown> {
-    equals(this: T, that: T): boolean
+  interface Eq {
+    equals(that: unknown): boolean
   }
 
-  interface Hashable extends Eq {
+  interface Hashable {
     hashCode(): number // int
   }
 
