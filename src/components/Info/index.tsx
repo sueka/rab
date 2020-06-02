@@ -17,7 +17,7 @@ type Props =
 interface State {
   successful: boolean
   fetching: boolean
-  repo?: Either<Error, GitHubApiResource.Repository> | null
+  repo?: Either<Error, GitHubApi.Repository> | null
 }
 
 class Info extends React.Component<Props, State> {

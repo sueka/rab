@@ -1,4 +1,4 @@
-declare namespace GitHubApiResource {
+declare namespace GitHubApi {
   type GetRepoResponse = Repository
 
   interface UnsuccessfulResponse {
