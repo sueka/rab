@@ -3,7 +3,7 @@ declare namespace GitHubApi {
 
   interface UnsuccessfulResponse {
     message: string
-    documentation_url?: string
+    documentationUrl?: string
   }
 
   //

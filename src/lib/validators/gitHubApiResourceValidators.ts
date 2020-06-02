@@ -12,5 +12,5 @@ const asRepository = asObject<GitHubApi.Repository>('a Repository', (input) => (
 
 export const asUnsuccessfulResponse = asObject<GitHubApi.UnsuccessfulResponse>('an UnsuccessfulResponse', (input) => ({
   message: asString(input.message),
-  documentation_url: optional(asString)(input.documentation_url),
+  documentationUrl: optional(asString)(input.documentation_url),
 }))
