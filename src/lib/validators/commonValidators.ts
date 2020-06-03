@@ -85,7 +85,7 @@ export const unionOf = <A extends unknown, T extends A, U extends A>(asT: (input
   throw new UnreachableError
 }
 
-const listOf = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: readonly A[]): T[] => {
+const listOf = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: readonly A[]): T[] => { // TODO: input: unknown
   if (!Array.isArray(input)) {
     throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an array.`)
   }
