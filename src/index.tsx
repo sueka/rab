@@ -26,7 +26,6 @@ import './lib/extensions/Number/Number.prototype.hashCode'
 import './lib/extensions/String/String.prototype.hashCode'
 import typed from './lib/typed'
 import Service, { State, createReducer, invariant } from './redux'
-import './types/globalTypes'
 
 import formats from '../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../public/messages/en.json' // tslint:disable-line:no-relative-imports

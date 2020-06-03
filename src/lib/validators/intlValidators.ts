@@ -1,6 +1,8 @@
+import { Formats } from 'intl-messageformat'
+
 import { asBoolean, asObject, asString, asUnionOf, optional, recordOf, unionOf } from './commonValidators'
 
-export const asFormats = asObject<Formats>('a Formats', (input) => ({
+export const asFormats = asObject<Partial<Formats>>('a Formats', (input) => ({ // TODO
   number: optional(recordOf(asIntlNumberFormatOptions))(input.number),
   date: optional(recordOf(asIntlDateTimeFormatOptions))(input.date),
   time: optional(recordOf(asIntlDateTimeFormatOptions))(input.time),

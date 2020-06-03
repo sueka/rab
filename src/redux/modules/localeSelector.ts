@@ -1,4 +1,5 @@
 import { List } from 'immutable'
+import { Formats } from 'intl-messageformat'
 import { inject, injectable } from 'inversify'
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
@@ -23,7 +24,7 @@ import { asFormats } from '~/lib/validators/intlValidators'
 
 export interface LocaleSelectorState {
   locale: Tag
-  formats: Formats
+  formats: Partial<Formats>
   messages: Record<string, string>
   errors: List<Error>
 }
@@ -107,7 +108,7 @@ export /* for testing */ const setLocale = (locale: Tag) => <const> ({
   },
 })
 
-export /* for testing */ const setFormats = (formats: Formats) => <const> ({
+export /* for testing */ const setFormats = (formats: Partial<Formats>) => <const> ({
   type: SET_FORMATS,
   payload: {
     formats,
