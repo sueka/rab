@@ -34,6 +34,7 @@ const config: Configuration = {
     alias: {
       '~': path.resolve(__dirname, 'src'),
     },
+    mainFields: ['browser', 'main'],
   },
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {

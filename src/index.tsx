@@ -1,5 +1,8 @@
 /* tslint:disable:no-import-side-effect */
 
+import 'react-app-polyfill/ie11'
+import 'react-app-polyfill/stable'
+
 import { ConnectedRouter } from 'connected-react-router'
 import { History, createBrowserHistory } from 'history'
 import { List, Map } from 'immutable'

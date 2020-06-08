@@ -28,6 +28,8 @@
       "@material-ui/core",
       "@material-ui/icons",
       "fp-ts/lib/Either",
+      "react-app-polyfill/ie11",
+      "react-app-polyfill/stable",
       "react-hot-loader/root",
       "redux-saga/effects",
       "~"
@@ -69,6 +71,7 @@
         "named-imports-order": "lowercase-last",
         "grouped-imports": true,
         "groups": [
+          "^react-app-polyfill\/",
           "^(?!\\.|~|@material-ui)", // third-party w/o Material-UI
           "^@material-ui", // Material-UI
           "^(?!\\.\\.)" // first-party w/o ancestor imports
