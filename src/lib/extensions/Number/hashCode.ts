@@ -1,14 +1,16 @@
+import JSBI from 'jsbi'
+
 export default function hashCode(x: number) {
   const v = doubleToLongBits(x)
 
-  return Number(v & BigInt(0xFFFFFFFF)) ^ Number(v >> BigInt(32))
+  return Number(JSBI.bitwiseAnd(v, JSBI.BigInt(0xFFFFFFFF))) ^ Number(JSBI.signedRightShift(v, JSBI.BigInt(32)))
 }
 
 // TODO: remove
-function doubleToLongBits(value: number): bigint {
+function doubleToLongBits(value: number): JSBI {
   const buf = Buffer.allocUnsafe(8)
 
   buf.writeDoubleBE(value, 0)
 
-  return (BigInt(buf.readUInt32BE(0)) << BigInt(32)) + BigInt(buf.readUInt32BE(4))
+  return JSBI.add((JSBI.leftShift(JSBI.BigInt(buf.readUInt32BE(0)), JSBI.BigInt(32))), JSBI.BigInt(buf.readUInt32BE(4)))
 }
