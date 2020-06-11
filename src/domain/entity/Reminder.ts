@@ -34,7 +34,7 @@ export default class Reminder extends Entity {
   public with({
     tasks = this.tasks,
   }: Partial<Alt.Omit<ReminderRequest, 'id'>>): Reminder {
-    return new Reminder({ id: this.id, tasks })
+    return new Reminder({ id: this.id as ReminderId, tasks }) // TODO
   }
 
   get tasks() {
