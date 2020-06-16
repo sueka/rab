@@ -9,7 +9,7 @@ const asIdSerializedTask = asObject('an Id-serialized Task', (input) => ({
   done: asBoolean(input.done),
 }))
 
-interface TaskRequest {
+interface TaskParams {
   id: TaskId
   content: string
   done: boolean
@@ -23,7 +23,7 @@ export default class Task extends Entity {
     id,
     content,
     done,
-  }: TaskRequest) {
+  }: TaskParams) {
     super(id)
 
     this._content = content
@@ -62,7 +62,7 @@ export default class Task extends Entity {
   public with({
     content = this.content,
     done = this.done,
-  }: Partial<Alt.Omit<TaskRequest, 'id'>>): Task {
+  }: Partial<Alt.Omit<TaskParams, 'id'>>): Task {
     return new Task({ id: this.id, content, done })
   }
 
