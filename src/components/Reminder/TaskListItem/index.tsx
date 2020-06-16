@@ -11,7 +11,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import TextField from '@material-ui/core/TextField'
 import DragHandleIcon from '@material-ui/icons/DragHandle'
 
-import Task from '~/domain/entity/Task'
+import Task, { TaskParams } from '~/domain/entity/Task'
 import { isOneOf } from '~/lib/guards/commonGuards'
 import ValidationError from '~/lib/validators/ValidationError'
 import DeleteTaskButton from './DeleteTaskButton'
@@ -22,7 +22,7 @@ export interface Props {
   value: Task
   index: number
 
-  onChange(value: Partial<Task>): void
+  onChange(value: Partial<TaskParams>): void
   onDelete(): void
   validate(input: Task): Partial<Record<keyof Task, ValidationError>>
 }

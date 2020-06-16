@@ -9,7 +9,7 @@ const asIdSerializedTask = asObject('an Id-serialized Task', (input) => ({
   done: asBoolean(input.done),
 }))
 
-interface TaskParams {
+export interface TaskParams {
   id: TaskId
   content: string
   done: boolean

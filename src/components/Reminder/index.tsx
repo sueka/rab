@@ -2,7 +2,7 @@ import { List } from 'immutable'
 import React, { useCallback, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import Task from '~/domain/entity/Task'
+import Task, { TaskParams } from '~/domain/entity/Task'
 import TaskId from '~/domain/vo/TaskId'
 import curry from '~/lib/curry'
 import { asBoolean, asObject, leftOnly, named } from '~/lib/validators/commonValidators'
@@ -44,7 +44,7 @@ const Reminder: React.FunctionComponent<Props> = ({ tasks, getTasks, addTask, ch
     getTasks()
   }, [getTasks])
 
-  const changeTask = useCallback((taskId, { content, done }) => {
+  const changeTask = useCallback((taskId: TaskId, { content, done }: Partial<Alt.Omit<TaskParams, 'id'>>) => {
     if (content !== undefined) {
       changeTaskContent(taskId, content)
     }
