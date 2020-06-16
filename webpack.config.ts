@@ -82,11 +82,12 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html'),
-      base: `${ process.env.BASE }`,
+      base: `${ process.env.BASE_NAME }/`,
       inject: 'head',
     }),
     new DotEnvPlugin({
       path: path.resolve(__dirname, '.env'),
+      allowEmptyValues: true,
       safe: true,
       systemvars: true,
     }),

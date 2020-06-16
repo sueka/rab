@@ -129,16 +129,14 @@ const Main: React.FunctionComponent<Props> = ({ history, container }) => {
 }
 
 containerImport.then(({ default: container }) => {
-  // TODO: DI BASE
+  // TODO: DI BASE_NAME
 
-  if (process.env.BASE === undefined) {
+  if (process.env.BASE_NAME === undefined) {
     throw new Error // TODO
   }
 
-  const basename = process.env.BASE.slice(0, -1)
-
   const history = createBrowserHistory({
-    basename,
+    basename: process.env.BASE_NAME,
   })
 
   ReactDOM.render(<Main history={ history } container={ container } />, document.getElementById('root'))

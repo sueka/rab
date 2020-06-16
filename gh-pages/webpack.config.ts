@@ -29,7 +29,7 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html'),
       filename: '404.html',
-      base: `${ process.env.BASE }`,
+      base: `${ process.env.BASE_NAME }/`,
       inject: 'head',
     }),
     new DotEnvPlugin({

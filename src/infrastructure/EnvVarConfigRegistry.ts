@@ -6,7 +6,7 @@ import typed from '~/lib/typed'
 @injectable()
 export default class EnvVarConfigRegistry implements ConfigRegistry {
   private env: Record<ConfigKey, string | undefined> = {
-    BASE: process.env.BASE,
+    BASE_NAME: process.env.BASE_NAME,
     GITHUB_API_URL: process.env.GITHUB_API_URL,
   }
 

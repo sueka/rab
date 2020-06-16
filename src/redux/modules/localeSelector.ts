@@ -183,13 +183,13 @@ export default class LocaleSelectorService {
     try {
       const { body: formats }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
         method: 'GET',
-        parameterizedEndpoint: typed<[string]>`${ this.config.get('BASE').slice(0, -1) }/formats/:locale.json`, // NOTE: BASE が空文字列でない場合、 BASE が無ければ誤ったパスが生成される。
+        parameterizedEndpoint: typed<[string]>`${ this.config.get('BASE_NAME') }/formats/:locale.json`,
         params: { locale },
       })
 
       const { body: messages }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
         method: 'GET',
-        parameterizedEndpoint: typed<[string]>`${ this.config.get('BASE').slice(0, -1) }/messages/:locale.json`,
+        parameterizedEndpoint: typed<[string]>`${ this.config.get('BASE_NAME') }/messages/:locale.json`,
         params: { locale },
       })
 

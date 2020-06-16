@@ -70,20 +70,20 @@ describe('LocaleSelectorService', () => {
   describe('selectLocaleSaga', () => {
     const it = localeSelectorService.selectLocaleSaga(selectLocale('ja'))
 
-    if (process.env.BASE === undefined) {
+    if (process.env.BASE_NAME === undefined) {
       throw new Error // FIXME: describe を落とすだけでいいかも
     }
 
     expect(it.next().value).toEqual(call(fetch, {
       method: 'GET',
-      parameterizedEndpoint: typed<[string]>`${ process.env.BASE.slice(0, -1) }/formats/:locale.json`,
+      parameterizedEndpoint: typed<[string]>`${ process.env.BASE_NAME }/formats/:locale.json`,
       params: { locale: 'ja' },
     }))
 
     // TODO: yield の結果のテスト手法を再考する
     expect(it.next({ body: { date: { short: { month: 'short', day: 'numeric' } } } }).value).toEqual(call(fetch, {
       method: 'GET',
-      parameterizedEndpoint: typed<[string]>`${ process.env.BASE.slice(0, -1) }/messages/:locale.json`,
+      parameterizedEndpoint: typed<[string]>`${ process.env.BASE_NAME }/messages/:locale.json`,
       params: { locale: 'ja' },
     }))
 
