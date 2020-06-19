@@ -1,4 +1,4 @@
-import { getColor } from '.'
+import { getColor } from './floodFill'
 
 type JestCanvasMockUtilityName =
   | '__getEvents'
@@ -9,7 +9,7 @@ type JestCanvasMockUtilityName =
   | '__clearPath'
 
 describe('getColor', () => {
-  it('should ', () => {
+  it('should get a color of the point', () => {
     const context = new CanvasRenderingContext2D as
       & Pick<CanvasRenderingContext2D, JestCanvasMockUtilityName>
       & jest.Mocked<Alt.Omit<CanvasRenderingContext2D, JestCanvasMockUtilityName>>
