@@ -69,7 +69,7 @@ function toJson(input: unknown): Json {
 /**
  * Query を QueryMap に変換する。
  */
-export function toQueryMap(query: Query): QueryMap {
+export /* for testing */ function toQueryMap(query: Query): QueryMap {
 
   /**
    * QueryValueArray を展開し、より簡単な Query を返す。
