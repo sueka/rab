@@ -1,8 +1,8 @@
-import { Configuration } from 'webpack'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import DotEnvPlugin from 'dotenv-webpack'
-import * as path from 'path'
 import * as dotenv from 'dotenv'
+import DotEnvPlugin from 'dotenv-webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import * as path from 'path'
+import { Configuration } from 'webpack'
 
 dotenv.config()
 

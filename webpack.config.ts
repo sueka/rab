@@ -1,10 +1,10 @@
-import { Configuration } from 'webpack'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import DotEnvPlugin from 'dotenv-webpack'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
-import TerserPlugin from 'terser-webpack-plugin'
-import * as path from 'path'
 import * as dotenv from 'dotenv'
+import DotEnvPlugin from 'dotenv-webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import * as path from 'path'
+import TerserPlugin from 'terser-webpack-plugin'
+import { Configuration } from 'webpack'
 
 dotenv.config()
 
