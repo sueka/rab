@@ -6,11 +6,11 @@ export function asGetRepoResponse(input: unknown): GitHubApi.GetRepoResponse {
 }
 
 const asRepository = asObject<GitHubApi.Repository>('a Repository', (input) => ({
-  fullName: asString(input.full_name),
-  htmlUrl: asUrl(input.html_url),
+  full_name: asString(input.full_name),
+  html_url: asUrl(input.html_url),
 }))
 
 export const asUnsuccessfulResponse = asObject<GitHubApi.UnsuccessfulResponse>('an UnsuccessfulResponse', (input) => ({
   message: asString(input.message),
-  documentationUrl: optional(asString)(input.documentation_url),
+  documentation_url: optional(asString)(input.documentation_url),
 }))

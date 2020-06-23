@@ -95,7 +95,7 @@ class Info extends React.Component<Props, State> {
       return repo.toString()
     }
 
-    return <Link href={ repo.right.htmlUrl }>{ repo.right.fullName }</Link>
+    return <Link href={ repo.right.html_url }>{ repo.right.full_name }</Link>
   }
 
   public render() {

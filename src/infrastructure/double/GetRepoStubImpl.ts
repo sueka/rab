@@ -11,8 +11,8 @@ export default class GetRepoStubImpl implements GetRepo {
       response: {
         status: 200,
         body: {
-          fullName: 'anonymous/foobar',
-          htmlUrl: asUrl('https://github.com/anonymous/foobar.git'),
+          full_name: 'anonymous/foobar',
+          html_url: asUrl('https://github.com/anonymous/foobar.git'),
         },
       },
     }
