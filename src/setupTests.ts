@@ -2,6 +2,7 @@
 
 import * as dotenv from 'dotenv'
 import 'jest-canvas-mock'
+import fetchMock from 'jest-fetch-mock'
 import 'reflect-metadata'
 
 import './lib/extensions/Array/Array.prototype.hashCode'
@@ -16,3 +17,5 @@ jest.mock('uuid', () => ({
 }))
 
 dotenv.config()
+
+fetchMock.enableMocks()

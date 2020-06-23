@@ -1,4 +1,37 @@
-import { toQueryMap } from './fetch'
+import fetch, { toQueryMap } from './fetch'
+
+describe('fetch', () => {
+  beforeEach(() => {
+    fetchMock.resetMocks()
+
+    fetchMock.doMock(async (request) => {
+      if (request.method === 'POST' && request.url === 'https://example.com/api/v1/login') {
+        return JSON.stringify({
+          accessToken: '+-./0123456789=ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~',
+        })
+      }
+
+      throw new Error
+    })
+  })
+
+  it('works', async () => {
+    const response = await fetch({
+      method: 'POST',
+      parameterizedEndpoint: 'https://example.com/api/v1/login',
+    })
+
+    expect(fetchMock).toBeCalledTimes(1)
+
+    expect(fetchMock).toBeCalledWith('https://example.com/api/v1/login', expect.objectContaining({
+      method: 'POST',
+    }))
+
+    expect(response.body).toMatchObject({
+      accessToken: '+-./0123456789=ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~',
+    })
+  })
+})
 
 describe('toQueryMap', () => {
   it('works', () => {

@@ -174,7 +174,7 @@ function buildRequestInit({ method, headers = {}, query = {} }: RequestParams): 
 export default async function fetch(request: RequestParams): Promise<ResponseParams> {
   const requestInfo = buildRequestInfo(request)
   const requestInit = buildRequestInit(request)
-  const response = await globalThis.fetch(requestInfo, requestInit)
+  const response = await window.fetch(requestInfo, requestInit) // TODO: use globalThis
 
   const body = toJson(await response.json())
 
