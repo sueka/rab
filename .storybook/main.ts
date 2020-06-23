@@ -3,6 +3,10 @@ import { Configuration } from 'webpack'
 import ourConfig from '../webpack.config'
 
 module.exports = {
+  stories: [
+    '../src/**/stories.tsx',
+    '../src/**/*.stories.tsx',
+  ],
   addons: [
     '@storybook/addon-knobs/register',
   ],
