@@ -8,7 +8,7 @@ jobs:
     env:
       CI: true
       NODE_ENV: production
-      BASE_NAME:
+      BASE_NAME: /react-app-prototype
       GITHUB_API_URL: https://api.github.com
     runs-on: ubuntu-latest
     steps:
@@ -20,10 +20,22 @@ jobs:
         run: |
           npm ci
           npm run build
+      - name: Build GitHub Pages Custom 404 Page
+        run: |
+          # npm ci
+          npm run gulp buildGhPagesCustom404Page
+          cp -r gh-pages/dist/* dist/
+        if: matrix.node-version == 10
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist
+        if: matrix.node-version == 10
     strategy:
       matrix:
         node-version:
-          # - 10 # deployed
+          - 10
           - 12
   test:
     env:
@@ -50,24 +62,17 @@ jobs:
       matrix:
         node-version: [10, 12]
   deploy:
-    env:
-      CI: true
-      NODE_ENV: production
-      BASE_NAME: /react-app-prototype
-      GITHUB_API_URL: https://api.github.com
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Download build artifact
+        uses: actions/download-artifact@v2
         with:
-          node-version: 10
-      - name: Build
-        run: |
-          npm ci
-          npm run build
-          npm run gulp buildGhPagesCustom404Page
-          cp -r gh-pages/dist/* dist/
+          name: dist
+          path: dist
       - uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./dist
+    needs:
+      - build
+      - test
