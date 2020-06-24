@@ -37,7 +37,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Lint & test
+      - name: Lint & Test
         run: |
           npm ci
           npm run gulp lint
