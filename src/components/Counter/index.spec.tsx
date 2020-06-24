@@ -1,34 +1,45 @@
 import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import IntlProvider from '~/lib/components/IntlProvider'
-import { Counter } from '.'
+import identity from '~/lib/identity'
+import { incrementAsync, incrementIfOdd, selectCount } from '~/redux/modules/counter'
+import Counter from '.'
 
-test('Counter', () => {
-  const reset = jest.fn()
-  const increment = jest.fn()
-  const decrement = jest.fn()
-  const incrementIfOdd = jest.fn()
-  const incrementAsync = jest.fn()
+jest.mock('react-redux')
 
-  const { container, getByTestId } = render(
-    <IntlProvider availableLocales={ ['en'] } locale="en">
-      <Counter
-        value={ 0 }
-        reset={ reset }
-        increment={ increment }
-        decrement={ decrement }
-        incrementIfOdd={ incrementIfOdd }
-        incrementAsync={ incrementAsync }
-      />
-    </IntlProvider>
-  )
+jest.mock('~/redux/modules/counter', () => ({
+  incrementIfOdd: jest.fn(),
+  incrementAsync: jest.fn(),
+}))
 
-  expect(container.firstChild).toMatchSnapshot()
+;(useDispatch as jest.MockedFunction<typeof useDispatch>).mockImplementation(() => identity)
 
-  fireEvent.click(getByTestId('incrementIfOddButton'))
-  expect(incrementIfOdd).toHaveBeenCalledTimes(1)
+describe('Counter', () => {
+  beforeAll(() => {
+    ;(useSelector as jest.MockedFunction<typeof useSelector>).mockImplementation((selector) => {
+      switch (selector) {
+        case selectCount: return 0
+      }
 
-  fireEvent.click(getByTestId('incrementAsyncButton'))
-  expect(incrementAsync).toHaveBeenCalledTimes(1)
+      throw new Error
+    })
+  })
+
+  it('works', () => {
+    const { container, getByTestId } = render(
+      <IntlProvider availableLocales={ ['en'] } locale="en">
+        <Counter />
+      </IntlProvider>
+    )
+
+    expect(container.firstChild).toMatchSnapshot()
+
+    fireEvent.click(getByTestId('incrementIfOddButton'))
+    expect(incrementIfOdd).toHaveBeenCalledTimes(1)
+
+    fireEvent.click(getByTestId('incrementAsyncButton'))
+    expect(incrementAsync).toHaveBeenCalledTimes(1)
+  })
 })
