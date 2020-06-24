@@ -14,11 +14,14 @@ jest.mock('~/redux/modules/counter', () => ({
   incrementAsync: jest.fn(),
 }))
 
-;(useDispatch as jest.MockedFunction<typeof useDispatch>).mockImplementation(() => identity)
+const useDispatchMocked = useDispatch as jest.MockedFunction<typeof useDispatch>
+const useSelectorMocked = useSelector as jest.MockedFunction<typeof useSelector>
+
+useDispatchMocked.mockImplementation(() => identity)
 
 describe('Counter', () => {
   beforeAll(() => {
-    ;(useSelector as jest.MockedFunction<typeof useSelector>).mockImplementation((selector) => {
+    useSelectorMocked.mockImplementation((selector) => {
       switch (selector) {
         case selectCount: return 0
       }
