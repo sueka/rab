@@ -23,7 +23,7 @@ if (env === 'test') {
 }
 
 const config: Configuration = {
-  mode: env as Configuration['mode'],
+  mode: env,
   bail: true,
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
