@@ -4,6 +4,20 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
 import config from './webpack.config'
 
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      NODE_ENV?: 'production' | 'development' | 'test'
+    }
+  }
+}
+
+if (process.env.NODE_ENV === 'test') {
+  throw new Error //
+}
+
+config.mode = process.env.NODE_ENV ?? config.mode
+
 config.resolve.alias = {
   ...config.resolve.alias,
   'react-dom': '@hot-loader/react-dom',

@@ -32,15 +32,20 @@ export const testInWatchMode = series(preTypeCheck, npxTask('jest', ['--onlyChan
 export const updateSnapshots = series(typeCheckForDevelopment, npxTask('jest', ['--updateSnapshot']))
 export const test = testWithCoverage
 export const build = parallel(typeCheck, series(() => del(['dist/**/*']), npxTask('webpack')))
-export const buildStorybook = parallel(typeCheckForDevelopment, npxTask('build-storybook', [], { NODE_ENV: 'development' }))
+
+export const buildStorybook = parallel(
+  typeCheckForDevelopment,
+  npxTask('build-storybook', [], { NODE_ENV: process.env.NODE_ENV ?? 'development' })
+)
+
 export const buildGhPagesCustom404Page = series(() => del(['gh-pages/dist/**/*']), typeCheck, npxTask('webpack', ['--config', 'gh-pages/webpack.config.ts']))
 export const document = npxTask('typedoc')
 
 export const develop = parallel(
   continuousTask('src', typeCheck),
   continuousTask('src', lint),
-  npxTask('webpack-dev-server', ['--config', 'webpack.config.dev.ts', '--hot'], { NODE_ENV: 'development' }),
-  npxTask('start-storybook', ['--ci', '--quiet', '-p', '5678'], { NODE_ENV: 'development' })
+  npxTask('webpack-dev-server', ['--config', 'webpack.config.dev.ts', '--hot']),
+  npxTask('start-storybook', ['--ci', '--quiet', '-p', '5678'])
 )
 
 export default series(testWithoutCoverage, build)
