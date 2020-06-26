@@ -16,7 +16,7 @@ declare global {
   }
 }
 
-const env = process.env.NODE_ENV != null ? process.env.NODE_ENV : 'production'
+const env = process.env.NODE_ENV ?? 'production'
 
 if (env === 'test') {
   throw new Error //
