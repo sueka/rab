@@ -42,8 +42,9 @@ function isEmpty<T extends {}>(object: T): object is EmptyRecord<T> {
   return Object.keys(object).length === 0
 }
 
-function toRecord(input: {}): Record<string, unknown> {
-  return Object.entries(input).reduce((result, [i, x]) => ({ ...result, [i]: x }), {})
+// NOTE: メンバー代入を使わない場合、メンバーアクセスは部分関数なので、オブジェクトのキーの型を縮小することができる。ただし、 TypeScript のメンバーアクセス演算は部分関数ではない (cf. https://github.com/microsoft/TypeScript/issues/13778)
+function asStringVObject<V>(input: Record<never, V>): Record<string, V> {
+  return input
 }
 
 function toJson(input: unknown): Json {
@@ -60,7 +61,9 @@ function toJson(input: unknown): Json {
       return input
     }
 
-    return mapValues(toRecord(input), (json) => toJson(json))
+    const typeSafeInput: Record<never, unknown> = input // NOTE: object 型の仕様に問題がある。
+
+    return mapValues(asStringVObject(typeSafeInput), (json) => toJson(json))
   }
 
   throw new Error(typed<[string]>`${ String(input) } is not a Json.`)
