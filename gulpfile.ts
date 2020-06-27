@@ -18,17 +18,22 @@ export const clean: TaskFunction = describedTask(
   () => del([...ignored, '!node_modules/**', '!.env'])
 )
 
-const extractMessages = npxTask('extract-messages', ['--flat', '--default-locale=en', '--locales=en,ja', '--output=public/messages', 'src/**/messages.ts'])
-const preTypeCheck = parallel(npxTask('tcm', ['src', '-s']), extractMessages)
-const typeCheck = series(preTypeCheck, npxTask('tsc', ['--noEmit', '-p', './tsconfig.prod.json']))
-const typeCheckForDevelopment = series(preTypeCheck, npxTask('tsc', ['--noEmit', '-p', '.']))
+export const extractMessages = npxTask('extract-messages', ['--flat', '--default-locale=en', '--locales=en,ja', '--output=public/messages', 'src/**/messages.ts'])
+export const tcm = npxTask('tcm', ['src', '-s'])
+const typeCheck = npxTask('tsc', ['--noEmit', '-p', './tsconfig.prod.json'])
+const typeCheckForDevelopment = npxTask('tsc', ['--noEmit', '-p', '.'])
 const eslint = npxTask('eslint', ['--ext', '.ts, .tsx', 'src'])
 const tslint = npxTask('tslint', ['-p', '.'])
 const stylelint = npxTask('stylelint', ['src/**/*.css'])
 export const lint = parallel(eslint, tslint, stylelint)
 const testWithoutCoverage = parallel(typeCheckForDevelopment, npxTask('jest'))
 const testWithCoverage = parallel(typeCheckForDevelopment, npxTask('jest', ['--coverage']))
-export const testInWatchMode = series(preTypeCheck, npxTask('jest', ['--onlyChanged', '--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''])) // TODO: interrupt に preTypeCheck を差し込む
+
+export const testInWatchMode = series(
+  parallel(extractMessages, tcm), // TODO: interrupt に差し込む
+  npxTask('jest', ['--onlyChanged', '--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''])
+)
+
 export const updateSnapshots = parallel(typeCheckForDevelopment, npxTask('jest', ['--updateSnapshot']))
 export const test = testWithCoverage
 export const build = parallel(typeCheck, series(() => del(['dist/**/*']), npxTask('webpack')))
@@ -41,11 +46,14 @@ export const buildStorybook = parallel(
 export const buildGhPagesCustom404Page = series(() => del(['gh-pages/dist/**/*']), typeCheck, npxTask('webpack', ['--config', 'gh-pages/webpack.config.ts']))
 export const document = npxTask('typedoc')
 
-export const develop = parallel(
-  continuousTask('src', typeCheck),
-  continuousTask('src', lint),
-  npxTask('webpack-dev-server', ['--config', 'webpack.config.dev.ts', '--hot']),
-  npxTask('start-storybook', ['--ci', '--quiet', '-p', '5678'])
+export const develop = series(
+  parallel(extractMessages, tcm), // TODO: interrupt に差し込む
+  parallel(
+    continuousTask('src', typeCheck),
+    continuousTask('src', lint),
+    npxTask('webpack-dev-server', ['--config', 'webpack.config.dev.ts', '--hot']),
+    npxTask('start-storybook', ['--ci', '--quiet', '-p', '5678'])
+  )
 )
 
 export default parallel(testWithoutCoverage, build)
