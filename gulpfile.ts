@@ -43,7 +43,7 @@ export const buildStorybook = parallel(
   npxTask('build-storybook', [], { NODE_ENV: process.env.NODE_ENV ?? 'development' })
 )
 
-export const buildGhPagesCustom404Page = series(() => del(['gh-pages/dist/**/*']), typeCheck, npxTask('webpack', ['--config', 'gh-pages/webpack.config.ts']))
+export const buildGhPagesCustom404Page = parallel(typeCheck, series(() => del(['gh-pages/dist/**/*']), npxTask('webpack', ['--config', 'gh-pages/webpack.config.ts'])))
 export const document = npxTask('typedoc')
 
 export const develop = series(
