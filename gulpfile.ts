@@ -26,10 +26,10 @@ const eslint = npxTask('eslint', ['--ext', '.ts, .tsx', 'src'])
 const tslint = npxTask('tslint', ['-p', '.'])
 const stylelint = npxTask('stylelint', ['src/**/*.css'])
 export const lint = parallel(eslint, tslint, stylelint)
-const testWithoutCoverage = series(typeCheckForDevelopment, npxTask('jest'))
-const testWithCoverage = series(typeCheckForDevelopment, npxTask('jest', ['--coverage']))
+const testWithoutCoverage = parallel(typeCheckForDevelopment, npxTask('jest'))
+const testWithCoverage = parallel(typeCheckForDevelopment, npxTask('jest', ['--coverage']))
 export const testInWatchMode = series(preTypeCheck, npxTask('jest', ['--onlyChanged', '--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''])) // TODO: interrupt に preTypeCheck を差し込む
-export const updateSnapshots = series(typeCheckForDevelopment, npxTask('jest', ['--updateSnapshot']))
+export const updateSnapshots = parallel(typeCheckForDevelopment, npxTask('jest', ['--updateSnapshot']))
 export const test = testWithCoverage
 export const build = parallel(typeCheck, series(() => del(['dist/**/*']), npxTask('webpack')))
 
@@ -48,7 +48,7 @@ export const develop = parallel(
   npxTask('start-storybook', ['--ci', '--quiet', '-p', '5678'])
 )
 
-export default series(testWithoutCoverage, build)
+export default parallel(testWithoutCoverage, build)
 
 //
 // _|                  _|
