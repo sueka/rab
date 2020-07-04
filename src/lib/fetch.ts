@@ -63,7 +63,7 @@ function toJson(input: unknown): Json {
 
     const typeSafeInput: Record<never, unknown> = input // NOTE: object 型の仕様に問題がある。
 
-    return mapValues(asStringVObject(typeSafeInput), (json) => toJson(json))
+    return mapValues(asStringVObject(typeSafeInput), toJson)
   }
 
   throw new Error(typed<[string]>`${ String(input) } is not a Json.`)
