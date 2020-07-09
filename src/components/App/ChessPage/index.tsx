@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { useSelector, useDispatch } from 'react-redux'
 import { useIntl } from 'react-intl'
+import { useDispatch, useSelector } from 'react-redux'
 import { compose } from 'redux'
 
 import Chessboard from '~/components/Chessboard'
