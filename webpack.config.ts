@@ -91,14 +91,15 @@ const config: Configuration = {
       safe: true,
       systemvars: true,
     }),
-    new CopyWebpackPlugin(
-      [
-        { from: '.', to: '' },
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: '.',
+          to: '',
+          context: path.resolve(__dirname, 'public'),
+        },
       ],
-      {
-        context: path.resolve(__dirname, 'public'),
-      }
-    ),
+    }),
   ],
   devtool: 'source-map',
 }
