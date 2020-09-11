@@ -15,7 +15,7 @@ import MenuItemLink from '~/lib/components/MenuItemLink'
 import classes from './classes.css'
 import messages from './messages'
 
-const Nav: React.FunctionComponent = () => {
+const Nav: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
 
   const openMenu = useCallback<React.MouseEventHandler<HTMLButtonElement>>((event) => {

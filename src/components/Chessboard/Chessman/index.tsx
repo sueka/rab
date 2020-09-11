@@ -16,7 +16,7 @@ interface CollectedProps {
   dragging: boolean
 }
 
-const Chessman: React.FunctionComponent<Props> = ({ chessman, coord }) => {
+const Chessman: React.FC<Props> = ({ chessman, coord }) => {
   const { picking, pickChessman } = useContext(ChessContext)
 
   const [{ dragging }, drag, preview] = useDrag<DragObjectWithType, unknown, CollectedProps>({

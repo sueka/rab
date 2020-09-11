@@ -12,7 +12,7 @@ export /* for testing */ const PaintPage = React.lazy(() => import(/* webpackChu
 export /* for testing */ const ReminderPage = React.lazy(() => import(/* webpackChunkName: "reminder" */ './ReminderPage'))
 export /* for testing */ const NoMatch = React.lazy(() => import(/* webpackChunkName: "noMatch" */ './NoMatch'))
 
-const App: React.FunctionComponent = () => {
+const App: React.FC = () => {
   const location = useLocation()
 
   if (location.pathname === '/' && location.hash !== '') {

@@ -8,7 +8,7 @@ export interface Props {
   children?: React.ReactElement<TaskListItemDropTargetProps, React.ComponentType<TaskListItemDropTargetProps>> | Array<React.ReactElement<TaskListItemDropTargetProps, React.ComponentType<TaskListItemDropTargetProps>>>
 }
 
-const TaskList: React.FunctionComponent<Props> = ({ children }) => (
+const TaskList: React.FC<Props> = ({ children }) => (
   <List>
     { children }
   </List>

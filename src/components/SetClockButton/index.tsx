@@ -14,7 +14,7 @@ interface DispatchProps {
 type Props =
   & DispatchProps
 
-const SetClockButton: React.FunctionComponent<Props> = ({ updateNow }) => (
+const SetClockButton: React.FC<Props> = ({ updateNow }) => (
   <Button onClick={ updateNow }>
     <FormattedMessage { ...messages.setTheClock } />
   </Button>

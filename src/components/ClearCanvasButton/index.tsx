@@ -8,7 +8,7 @@ interface Props {
   context: CanvasRenderingContext2D | null | undefined
 }
 
-const ClearCanvasButton: React.FunctionComponent<Props> = ({ children, width, height, context }) => {
+const ClearCanvasButton: React.FC<Props> = ({ children, width, height, context }) => {
   const handleClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(() => {
     context?.clearRect(0, 0, width, height)
   }, [context?.clearRect, width, height])

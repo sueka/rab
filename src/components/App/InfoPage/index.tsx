@@ -6,7 +6,7 @@ import Info from '~/components/Info'
 import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
-const InfoPage: React.FunctionComponent = () => {
+const InfoPage: React.FC = () => {
   const { formatMessage } = useIntl()
 
   return (

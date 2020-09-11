@@ -11,7 +11,7 @@ import { halfMove, pickChessman, releaseChessman } from '~/redux/modules/chess'
 import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
-const ChessPage: React.FunctionComponent = () => {
+const ChessPage: React.FC = () => {
   const { formatMessage } = useIntl()
 
   const picking = useSelector((state: State) => state.chess.picking)

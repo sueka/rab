@@ -23,7 +23,7 @@ type Props =
 const files: Chess.File[] = [1, 2, 3, 4, 5, 6, 7, 8]
 const ranks: Chess.Rank[] = [8, 7, 6, 5, 4, 3, 2, 1]
 
-const Chessboard: React.FunctionComponent<Props> = ({ board, resetBoard }) => {
+const Chessboard: React.FC<Props> = ({ board, resetBoard }) => {
   useEffect(() => {
     resetBoard() // TODO: skip when LOCATION_CHANGE is dispatched
   }, [resetBoard])

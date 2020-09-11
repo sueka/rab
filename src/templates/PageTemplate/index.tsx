@@ -14,7 +14,7 @@ type BodyProps = PageProps
 type PageProps =
   & RouteComponentProps
 
-const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ children }) => {
+const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
   const renderError = useCallback((error: unknown) => {
     if (error instanceof Error) {
       return typed<[string]>`${ String(error) }`
@@ -33,7 +33,7 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ children }) 
   )
 }
 
-export const createPage: (Body: React.FunctionComponent<BodyProps>) => React.FunctionComponent<PageProps> = (Body) => (props) => (
+export const createPage: (Body: React.FC<BodyProps>) => React.FC<PageProps> = (Body) => (props) => (
   <PageTemplate>
     <Body { ...props } />
   </PageTemplate>

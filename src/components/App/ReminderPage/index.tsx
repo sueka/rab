@@ -6,7 +6,7 @@ import Reminder from '~/components/Reminder'
 import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
-const ReminderPage: React.FunctionComponent = () => {
+const ReminderPage: React.FC = () => {
   const { formatMessage } = useIntl()
 
   return (

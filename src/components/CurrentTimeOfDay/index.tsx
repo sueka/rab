@@ -13,7 +13,7 @@ interface StateProps {
 type Props =
   & StateProps
 
-const CurrentTimeOfDay: React.FunctionComponent<Props> = ({ now }) => (
+const CurrentTimeOfDay: React.FC<Props> = ({ now }) => (
   <Typography>
     <FormattedTimeOfDay value={ now } format="medium" />
   </Typography>

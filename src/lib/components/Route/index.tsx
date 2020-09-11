@@ -14,7 +14,7 @@ interface Props extends Alt.Omit<RouteProps, 'render' | 'component' | 'children'
   component?: Required<RouteProps>['component'] | React.LazyExoticComponent<Required<RouteProps>['component']>
 }
 
-const Route: React.FunctionComponent<Props> = ({ component, ...restProps }) => {
+const Route: React.FC<Props> = ({ component, ...restProps }) => {
   if (component === undefined) {
     return <OriginalRoute { ...restProps } />
   }

@@ -8,7 +8,7 @@ type Props =
       value: string | number | Date | undefined
     }
 
-const FormattedTimeOfDay: React.FunctionComponent<Props> = (props) => (
+const FormattedTimeOfDay: React.FC<Props> = (props) => (
   <FormattedTime
     { ...props }
     // dateStyle={ undefined }

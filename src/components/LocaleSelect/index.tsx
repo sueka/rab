@@ -42,7 +42,7 @@ type Props =
   & StateProps
   & DispatchProps
 
-export /* for testing */ const LocaleSelect: React.FunctionComponent<Props> = ({ classes, FormControlProps, locale, selectLocale }) => {
+export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes, FormControlProps, locale, selectLocale }) => {
   const [labelWidth, setLabelWidth] = useState<number>(0)
   const inputId = useMemo(v4, [])
   const theme = useTheme()

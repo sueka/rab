@@ -6,7 +6,7 @@ import Paint from '~/components/Paint'
 import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
-const PaintPage: React.FunctionComponent = () => {
+const PaintPage: React.FC = () => {
   const { formatMessage } = useIntl()
 
   return (

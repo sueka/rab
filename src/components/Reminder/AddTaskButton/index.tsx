@@ -9,7 +9,7 @@ export interface Props {
   addTask(): void
 }
 
-const AddTaskButton: React.FunctionComponent<Props> = ({ addTask }) => (
+const AddTaskButton: React.FC<Props> = ({ addTask }) => (
   <Button onClick={ addTask } variant="contained" color="secondary">
     <FormattedMessage { ...messages.add } />
   </Button>

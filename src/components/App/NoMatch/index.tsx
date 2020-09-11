@@ -7,7 +7,7 @@ import { createPage } from '~/templates/PageTemplate'
 type Props =
   & RouteComponentProps
 
-const NoMatch: React.FunctionComponent<Props> = ({ location: { pathname } }) => {
+const NoMatch: React.FC<Props> = ({ location: { pathname } }) => {
   throw new Error(typed<[string]>`No route matches ${ pathname }.`)
 }
 

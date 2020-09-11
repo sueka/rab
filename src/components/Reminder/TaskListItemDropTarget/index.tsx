@@ -11,7 +11,7 @@ export interface Props {
   moveTask(sourceIndex: number, targetIndex: number): void
 }
 
-const TaskListItemDropTarget: React.FunctionComponent<Props> = ({ children, index, moveTask }) => {
+const TaskListItemDropTarget: React.FC<Props> = ({ children, index, moveTask }) => {
   const div = useRef<HTMLDivElement>(null)
 
   const [, drop] = useDrop<DragObject, unknown, unknown>({

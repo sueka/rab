@@ -21,7 +21,7 @@ type Props =
 // NOTE: key が無い場合、 FormattedMessage 等は re-render されるが、 useIntl の結果は更新されない。
 // TODO: intl context でない要素を re-render しないようにする。 https://github.com/formatjs/react-intl/issues/234#issuecomment-163366518 によると現時点では難しいらしい。
 // cf. https://github.com/formatjs/react-intl/issues/371#issuecomment-275703796
-const IntlProvider: React.FunctionComponent<Props> = ({ availableLocales, ...props }) => (
+const IntlProvider: React.FC<Props> = ({ availableLocales, ...props }) => (
   <IntlProviderContext.Provider value={ { availableLocales } }>
     <OriginalIntlProvider key={ props.locale } textComponent={ React.Fragment } { ...props } />
   </IntlProviderContext.Provider>

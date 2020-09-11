@@ -4,9 +4,9 @@ import React from 'react'
 import typed from '~/lib/typed'
 import ErrorBoundary from '.'
 
-const NoErrorThrowing: React.FunctionComponent = () => <>no error throwing</>
-const ErrorThrowing: React.FunctionComponent = () => { throw new Error('error throwing') }
-const NonErrorThrowing: React.FunctionComponent = () => {
+const NoErrorThrowing: React.FC = () => <>no error throwing</>
+const ErrorThrowing: React.FC = () => { throw new Error('error throwing') }
+const NonErrorThrowing: React.FC = () => {
   throw 'non-error throwing' // tslint:disable-line:no-string-throw
 }
 

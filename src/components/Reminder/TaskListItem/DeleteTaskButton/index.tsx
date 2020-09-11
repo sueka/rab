@@ -7,7 +7,7 @@ export interface Props {
   onClick(): void
 }
 
-const DeleteTaskButton: React.FunctionComponent<Props> = ({ onClick }) => (
+const DeleteTaskButton: React.FC<Props> = ({ onClick }) => (
   <IconButton onClick={ onClick }>
     <DeleteIcon />
   </IconButton>

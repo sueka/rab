@@ -65,7 +65,7 @@ interface Props {
 }
 
 // NOTE: prefers-color-scheme の変更によって Main が rerender されると、 Provider が変更され、 ThemeProvider の state がリセットされる。
-const ThemedApp: React.FunctionComponent<{}> = () => {
+const ThemedApp: React.FC<{}> = () => {
   const dark = useMediaQuery('(prefers-color-scheme: dark)')
 
   return (
@@ -81,7 +81,7 @@ const ThemedApp: React.FunctionComponent<{}> = () => {
 /**
  * The entry point component.
  */
-const Main: React.FunctionComponent<Props> = ({ history, container }) => {
+const Main: React.FC<Props> = ({ history, container }) => {
   const renderError = useCallback((error: unknown) => {
     if (error instanceof Error) {
       // NOTE: `rootSaga` とそれに attach された saga から error が投げられた場合、 Maximum recursion depth exceeded が発生する。

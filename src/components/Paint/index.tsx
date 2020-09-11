@@ -21,7 +21,7 @@ type Tool =
 const isCanvasLineCap = isOneOf('butt', 'round', 'square')
 const isTool = isOneOf('pen', 'bucket')
 
-const Paint: React.FunctionComponent = () => {
+const Paint: React.FC = () => {
   const [context, setContext] = useState<CanvasRenderingContext2D | null>()
   const [lineCap, setLineCap] = useState<CanvasLineCap>('round')
   const [tool, setTool] = useState<Tool>('pen')

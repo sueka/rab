@@ -20,7 +20,7 @@ type Props =
   & StateProps
   & DispatchProps
 
-const Clock: React.FunctionComponent<Props> = ({ now, startClock, stopClock }) => {
+const Clock: React.FC<Props> = ({ now, startClock, stopClock }) => {
   useEffect(() => {
     startClock()
 

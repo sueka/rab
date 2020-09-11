@@ -13,7 +13,7 @@ interface Props extends React.PropsWithChildren<{}> {
   coord: Chess.Coordinates
 }
 
-const Square: React.FunctionComponent<Props> = ({ children, coord }: Props) => {
+const Square: React.FC<Props> = ({ children, coord }: Props) => {
   const { picking, targets, halfMove, releaseChessman } = useContext(ChessContext)
 
   const attacked = useMemo(() => targets?.some((target) => equalsChessCoordinates(coord, target)) ?? false, [coord, targets?.some])

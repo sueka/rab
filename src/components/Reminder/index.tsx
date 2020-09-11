@@ -39,7 +39,7 @@ const validate = asObject('a Task for presentation', (input) => ({
   done: leftOnly(asBoolean)(input.done),
 }))
 
-const Reminder: React.FunctionComponent<Props> = ({ tasks, getTasks, addTask, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => {
+const Reminder: React.FC<Props> = ({ tasks, getTasks, addTask, changeTaskContent, markTaskAsDone, markTaskAsUndone, deleteTask, moveTask }) => {
   useEffect(() => {
     getTasks()
   }, [getTasks])

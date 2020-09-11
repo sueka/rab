@@ -6,7 +6,7 @@ import Link, { Props as LinkProps } from '~/lib/components/Link'
 
 type Props = ListItemProps<typeof Link, { button?: true }>
 
-const ListItemLink: React.FunctionComponent<Props> = React.forwardRef<Link, React.PropsWithoutRef<Props>>(({ to, button, innerRef, ...listItemProps }, listItem) => {
+const ListItemLink: React.FC<Props> = React.forwardRef<Link, React.PropsWithoutRef<Props>>(({ to, button, innerRef, ...listItemProps }, listItem) => {
   // See https://material-ui.com/guides/composition/#link
   const LinkWithRef = React.forwardRef<Link, LinkProps>((linkProps, link) => (
     <Link ref={ link } innerRef={ innerRef } color="inherit" underline="none" { ...linkProps } />

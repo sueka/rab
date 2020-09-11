@@ -15,7 +15,7 @@ interface InnerProps {
 
 type Props = React.PropsWithRef<Alt.Omit<InnerProps, 'innerRef'>>
 
-const Canvas: React.FunctionComponent<InnerProps> = ({ width, height, lineWidth, innerRef, context, tool }) => {
+const Canvas: React.FC<InnerProps> = ({ width, height, lineWidth, innerRef, context, tool }) => {
   const [drawing, setDrawing] = useState(false)
   const [previousPoint, setPreviousPoint] = useState<Canvas.Point | null>(null)
 

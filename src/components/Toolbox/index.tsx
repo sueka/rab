@@ -16,7 +16,7 @@ export interface Props {
   onChange: NonNullable<RadioGroupProps['onChange']>
 }
 
-const Toolbox: React.FunctionComponent<Props> = ({ value, onChange }) => (
+const Toolbox: React.FC<Props> = ({ value, onChange }) => (
   <FormControl>
     <RadioGroup name="tool" value={ value } onChange={ onChange }>
       <Radio icon={ <CreateIcon /> } checkedIcon={ <CreateIcon /> } value="pen" />

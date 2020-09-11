@@ -6,7 +6,7 @@ import Counter from '~/components/Counter'
 import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
-const CounterPage: React.FunctionComponent = () => {
+const CounterPage: React.FC = () => {
   const { formatMessage } = useIntl()
 
   return (

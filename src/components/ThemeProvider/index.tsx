@@ -9,7 +9,7 @@ interface ThemeProviderProps {
   defaultDark: boolean
 }
 
-const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = ({ children, defaultDark }) => {
+const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, defaultDark }) => {
   const [dark, setDark] = useState<boolean | null>(null)
 
   const theme = useMemo(() => configureTheme({ dark: dark ?? defaultDark }), [dark, defaultDark])

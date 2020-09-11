@@ -25,7 +25,7 @@ interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 't
   ButtonProps?: Alt.Omit<ButtonProps, 'disabled' | 'onClick'>
 }
 
-const FileUpload: React.FunctionComponent<Props> = ({
+const FileUpload: React.FC<Props> = ({
   className,
   disabled,
   multiple,

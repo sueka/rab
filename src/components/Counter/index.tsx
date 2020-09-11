@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import { decrement, increment, incrementAsync, incrementIfOdd, reset, selectCount } from '~/redux/modules/counter'
 import messages from './messages'
 
-const Counter: React.FunctionComponent = () => {
+const Counter: React.FC = () => {
   const value = useSelector(selectCount)
 
   const dispatch = useDispatch()

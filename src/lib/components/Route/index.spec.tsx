@@ -4,8 +4,8 @@ import { MemoryRouter } from 'react-router'
 
 import Route from '.'
 
-const NonLazyComponent: React.FunctionComponent = () => <>non-lazy</>
-const LazyComponent: React.FunctionComponent = React.lazy(async () => ({ default: () => <>lazy</> }))
+const NonLazyComponent: React.FC = () => <>non-lazy</>
+const LazyComponent: React.FC = React.lazy(async () => ({ default: () => <>lazy</> }))
 
 describe('Route', () => {
   test('with no component', () => {

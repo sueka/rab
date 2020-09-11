@@ -10,7 +10,7 @@ import Today from '~/components/Today'
 import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
-const HomePage: React.FunctionComponent = () => {
+const HomePage: React.FC = () => {
   const { formatMessage } = useIntl()
 
   return (

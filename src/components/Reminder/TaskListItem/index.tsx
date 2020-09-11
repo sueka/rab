@@ -36,7 +36,7 @@ export interface DragObject extends DragObjectWithType {
   index: number
 }
 
-const TaskListItem: React.FunctionComponent<Props> = ({ value, index, onChange, onDelete, validate }) => {
+const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, validate }) => {
   const [{ dragging }, drag, preview] = useDrag<DragObject, unknown, CollectedProps>({
     item: {
       type: 'TaskListItem',
