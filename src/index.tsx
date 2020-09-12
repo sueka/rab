@@ -7,7 +7,7 @@ import { ConnectedRouter } from 'connected-react-router'
 import { History, createBrowserHistory } from 'history'
 import { List, Map } from 'immutable'
 import { interfaces } from 'inversify'
-import { Provider as ServiceProdiver } from 'inversify-react'
+import { Provider as ServiceProvider } from 'inversify-react'
 import { SnackbarProvider } from 'notistack'
 import React, { useCallback, useMemo } from 'react'
 import { DndProvider } from 'react-dnd'
@@ -117,9 +117,9 @@ const Main: React.FC<Props> = ({ history, container }) => {
         <IntlProvider availableLocales={ ['en', 'ja'] }>
           <DndProvider backend={ HTML5Backend }>
             <ConnectedRouter history={ history }>
-              <ServiceProdiver container={ container }>
+              <ServiceProvider container={ container }>
                 <ThemedApp />
-              </ServiceProdiver>
+              </ServiceProvider>
             </ConnectedRouter>
           </DndProvider>
         </IntlProvider>
