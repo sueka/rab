@@ -11,6 +11,7 @@ import { CounterAction, CounterService, CounterState, counterInvariant, createCo
 import { IoAction, IoService, IoState, createIoReducer } from './modules/io'
 import LocaleSelectorService, { LocaleSelectorAction, LocaleSelectorState, createLocaleSelectorReducer } from './modules/localeSelector'
 import ReminderService, { ReminderAction, ReminderState, createReminderReducer } from './modules/reminder'
+import UserAuthnService, { UserAuthnAction, UserAuthnState, createUserAuthnReducer } from './modules/userAuthn'
 
 export interface State {
   router: RouterState
@@ -19,6 +20,7 @@ export interface State {
   io: IoState
   localeSelector: LocaleSelectorState
   reminder: ReminderState
+  userAuthn: UserAuthnState
 }
 
 export type Action =
@@ -28,6 +30,7 @@ export type Action =
   | IoAction
   | LocaleSelectorAction
   | ReminderAction
+  | UserAuthnAction
 
 @injectable()
 export default class Service {
@@ -36,6 +39,7 @@ export default class Service {
   private ioService: IoService
   private localeSelectorService: LocaleSelectorService
   private reminderService: ReminderService
+  private userAuthnService: UserAuthnService
 
   // NOTE: `@inject(Service) private service: Service` は、 `toSelf` された実装をコンストラクター引数の中で最後に `@inject` しているか、 `Service` が参照されているかのいずれでもなければ、 Service is not defined を投げる。おそらく inversify か babel-plugin-parameter-decorator がおかしい。
   constructor(
@@ -43,13 +47,15 @@ export default class Service {
     @inject(CounterService) counterService: CounterService,
     @inject(IoService) ioService: IoService,
     @inject(LocaleSelectorService) localeSelectorService: LocaleSelectorService,
-    @inject(ReminderService) reminderService: ReminderService
+    @inject(ReminderService) reminderService: ReminderService,
+    @inject(UserAuthnService) userAuthnService: UserAuthnService
   ) {
     this.chessService = chessService
     this.counterService = counterService
     this.ioService = ioService
     this.localeSelectorService = localeSelectorService
     this.reminderService = reminderService
+    this.userAuthnService = userAuthnService
   }
 
   public *rootSaga(): SagaIterator {
@@ -58,6 +64,7 @@ export default class Service {
     yield fork([this.ioService, this.ioService.rootSaga])
     yield fork([this.localeSelectorService, this.localeSelectorService.rootSaga])
     yield fork([this.reminderService, this.reminderService.rootSaga])
+    yield fork([this.userAuthnService, this.userAuthnService.rootSaga])
   }
 }
 
@@ -68,6 +75,7 @@ export const createReducer = (history: History, initialState: Alt.Omit<State, 'r
   io: createIoReducer(initialState.io),
   localeSelector: createLocaleSelectorReducer(initialState.localeSelector),
   reminder: createReminderReducer(initialState.reminder),
+  userAuthn: createUserAuthnReducer(initialState.userAuthn),
 })
 
 export const invariant = combineInvariants<State>({
