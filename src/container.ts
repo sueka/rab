@@ -11,6 +11,7 @@ import { CounterService } from './redux/modules/counter'
 import { IoService } from './redux/modules/io'
 import LocaleSelectorService from './redux/modules/localeSelector'
 import ReminderService from './redux/modules/reminder'
+import UserAuthnService from './redux/modules/userAuthn'
 import GetRepo from './useCase/GetRepo'
 
 const container = new Container
@@ -24,5 +25,6 @@ container.bind(CounterService).toSelf()
 container.bind(IoService).toSelf()
 container.bind(LocaleSelectorService).toSelf()
 container.bind(ReminderService).toSelf()
+container.bind(UserAuthnService).toSelf()
 
 export default container
