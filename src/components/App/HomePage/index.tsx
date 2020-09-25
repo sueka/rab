@@ -5,6 +5,7 @@ import { FormattedMessage,  FormattedNumber, useIntl } from 'react-intl'
 import Typography from '@material-ui/core/Typography'
 
 import CurrentTimeOfDay from '~/components/CurrentTimeOfDay'
+import GitHubAuthnButton from '~/components/GitHubAuthnButton'
 import SetClockButton from '~/components/SetClockButton'
 import Today from '~/components/Today'
 import { createPage } from '~/templates/PageTemplate'
@@ -25,6 +26,7 @@ const HomePage: React.FC = () => {
       <Today />
       <CurrentTimeOfDay />
       <SetClockButton />
+      <GitHubAuthnButton />
     </>
   )
 }
