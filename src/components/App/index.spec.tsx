@@ -40,6 +40,7 @@ const store = createMockStore<Alt.Omit<State, 'router'>>()({
     tasks: List(),
     errors: Map(),
   },
+  userAuthn: {},
 })
 
 describe.each`

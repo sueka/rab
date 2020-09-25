@@ -40,6 +40,7 @@ export const withProvider: DecoratorFn = (story) => {
       tasks: List(),
       errors: Map(),
     },
+    userAuthn: {},
   })
 
   const { store, sagaMiddleware } = configureStore(history, reducer, invariant, {})

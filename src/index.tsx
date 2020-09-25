@@ -57,6 +57,7 @@ const initialState: Alt.Omit<State, 'router'> = {
     tasks: List(),
     errors: Map(),
   },
+  userAuthn: {},
 }
 
 interface Props {
