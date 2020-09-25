@@ -81,7 +81,7 @@ const FileUpload: React.FC<Props> = ({
         disabled={ disabled }
         onClick={ handleButtonClick }
         { ...ButtonProps }
-        className={ buttonClassName } // NOTE: override ButtonProps.className
+        className={ buttonClassName } // NOTE: overrides ButtonProps.className
       >
         { buttonLabel }
       </Button>
