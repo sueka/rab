@@ -8,6 +8,7 @@ export default class EnvVarConfigRegistry implements ConfigRegistry {
   private env: Record<ConfigKey, string | undefined> = {
     BASE_NAME: process.env.BASE_NAME,
     GITHUB_API_URL: process.env.GITHUB_API_URL,
+    USER_AUTHN_API_URL: process.env.USER_AUTHN_API_URL,
   }
 
   /**
