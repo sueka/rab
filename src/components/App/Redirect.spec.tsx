@@ -7,7 +7,7 @@ import reactRouter, { Redirect } from 'react-router'
 import App from '.'
 
 jest.mock('react-router', () => ({
-  ...jest.requireActual('react-router'),
+  ...(jest.requireActual('react-router') as any), // tslint:disable-line:no-any
   Redirect: jest.fn(() => null),
   useLocation: jest.fn(),
 }))
