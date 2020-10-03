@@ -11,7 +11,7 @@ interface Props {
 const ClearCanvasButton: React.FC<Props> = ({ children, width, height, context }) => {
   const handleClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(() => {
     context?.clearRect(0, 0, width, height)
-  }, [context?.clearRect, width, height])
+  }, [context, width, height])
 
   return (
     <Button onClick={ handleClick }>

@@ -23,12 +23,12 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import App from './components/App'
 import IntlProvider from './components/IntlProvider'
 import ThemeProvider from './components/ThemeProvider'
-import createProvider from './createProvider'
+import createProvider, { Props as ProviderProps } from './createProvider'
 import './lib/extensions/Boolean/Boolean.prototype.hashCode'
 import './lib/extensions/Number/Number.prototype.hashCode'
 import './lib/extensions/String/String.prototype.hashCode'
 import typed from './lib/typed'
-import Service, { State, createReducer, invariant } from './redux'
+import Service, { Action, State, createReducer, invariant } from './redux'
 
 import formats from '../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../public/messages/en.json' // tslint:disable-line:no-relative-imports
@@ -83,21 +83,6 @@ const ThemedApp: React.FC<{}> = () => {
  * The entry point component.
  */
 const Main: React.FC<Props> = ({ history, container }) => {
-  const renderError = useCallback((error: unknown) => {
-    if (error instanceof Error) {
-      // NOTE: `rootSaga` とそれに attach された saga から error が投げられた場合、 Maximum recursion depth exceeded が発生する。
-      return (
-        <Provider renderError={ renderError }>
-          <div>
-            { typed<[string]>`${ String(error) }` }
-          </div>
-        </Provider>
-      )
-    }
-
-    throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
-  }, [])
-
   const reducer = useMemo(() => createReducer(history, initialState), [history])
 
   const rootSaga = useCallback<Saga>(() => {
@@ -107,6 +92,21 @@ const Main: React.FC<Props> = ({ history, container }) => {
   }, [container])
 
   const Provider = createProvider(history, reducer, invariant, rootSaga)
+
+  const renderError: ProviderProps<State, Action>['renderError'] = useCallback((error: unknown) => {
+    if (error instanceof Error) {
+      // NOTE: `rootSaga` とそれに attach された saga から error が投げられた場合、 Maximum recursion depth exceeded が発生する。
+      return React.createElement(Provider, {
+        renderError,
+      }, (
+        <div>
+          { typed<[string]>`${ String(error) }` }
+        </div>
+      ))
+    }
+
+    throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
+  }, [Provider])
 
   return (
     <>

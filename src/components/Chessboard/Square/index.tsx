@@ -16,7 +16,7 @@ interface Props extends React.PropsWithChildren<{}> {
 const Square: React.FC<Props> = ({ children, coord }: Props) => {
   const { picking, targets, halfMove, releaseChessman } = useContext(ChessContext)
 
-  const attacked = useMemo(() => targets?.some((target) => equalsChessCoordinates(coord, target)) ?? false, [coord, targets?.some])
+  const attacked = useMemo(() => targets?.some((target) => equalsChessCoordinates(coord, target)) ?? false, [coord, targets])
 
   const [, drop] = useDrop<DragObjectWithType, unknown, unknown>({
     accept: 'Chessman',

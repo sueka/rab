@@ -10,7 +10,7 @@ import { Invariant } from './lib/middleware/invariantMiddleware/createInvariantM
 
 type ErrorCause = 'component' | 'reducer' | 'saga' | 'rootSaga'
 
-interface Props<S, A extends Action> {
+export interface Props<S, A extends Action> {
   /**
    * @param children that throws {error}
    * @param store when {error} is thrown
