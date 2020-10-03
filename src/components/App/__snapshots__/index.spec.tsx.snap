@@ -130,6 +130,17 @@ exports[`App at / 1`] = `
       Set the clock
     </span>
   </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Authenticate a user with Google
+    </span>
+  </button>
 </div>
 `;
 
