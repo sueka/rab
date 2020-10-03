@@ -1,6 +1,6 @@
-import { ReposGetParams } from '@octokit/plugin-rest-endpoint-methods/dist-types/generated/types' // tslint:disable-line:no-submodule-imports
+import { Endpoints } from '@octokit/types' // tslint:disable-line:no-submodule-imports
 
-export type GetRepoInput = ReposGetParams
+export type GetRepoInput = Endpoints['GET /repos/:owner/:repo']['parameters']
 
 interface SuccessfulGetRepoOutput {
   successful: true
