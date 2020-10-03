@@ -36,13 +36,13 @@ exports[`App at / 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-89 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiSwitch-switchBase MuiSwitch-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-92 MuiSwitch-input"
+              class="PrivateSwitchBase-input-4 MuiSwitch-input"
               type="checkbox"
               value=""
             />
@@ -180,13 +180,13 @@ exports[`App at /chess 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-322 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiSwitch-switchBase MuiSwitch-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-325 MuiSwitch-input"
+              class="PrivateSwitchBase-input-8 MuiSwitch-input"
               type="checkbox"
               value=""
             />
@@ -752,13 +752,13 @@ exports[`App at /counter 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-496 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-9 MuiSwitch-switchBase MuiSwitch-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-499 MuiSwitch-input"
+              class="PrivateSwitchBase-input-12 MuiSwitch-input"
               type="checkbox"
               value=""
             />
@@ -923,13 +923,13 @@ exports[`App at /info 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-752 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-13 MuiSwitch-switchBase MuiSwitch-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-755 MuiSwitch-input"
+              class="PrivateSwitchBase-input-16 MuiSwitch-input"
               type="checkbox"
               value=""
             />
@@ -1041,13 +1041,13 @@ exports[`App at /nonexistent-path 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1441 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-28 MuiSwitch-switchBase MuiSwitch-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-1444 MuiSwitch-input"
+              class="PrivateSwitchBase-input-31 MuiSwitch-input"
               type="checkbox"
               value=""
             />
@@ -1147,13 +1147,13 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-985 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-17 MuiSwitch-switchBase MuiSwitch-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-988 MuiSwitch-input"
+              class="PrivateSwitchBase-input-20 MuiSwitch-input"
               type="checkbox"
               value=""
             />
@@ -1241,14 +1241,14 @@ exports[`App at /paint 1`] = `
     >
       <span
         aria-disabled="false"
-        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-985 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-986 Mui-checked MuiIconButton-colorSecondary"
+        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-17 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-18 Mui-checked MuiIconButton-colorSecondary"
       >
         <span
           class="MuiIconButton-label"
         >
           <input
             checked=""
-            class="PrivateSwitchBase-input-988"
+            class="PrivateSwitchBase-input-20"
             name="tool"
             type="radio"
             value="pen"
@@ -1270,13 +1270,13 @@ exports[`App at /paint 1`] = `
       </span>
       <span
         aria-disabled="false"
-        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-985 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-17 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
       >
         <span
           class="MuiIconButton-label"
         >
           <input
-            class="PrivateSwitchBase-input-988"
+            class="PrivateSwitchBase-input-20"
             name="tool"
             type="radio"
             value="bucket"
@@ -1319,19 +1319,19 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-985 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-17 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-988"
+              class="PrivateSwitchBase-input-20"
               name="lineCap"
               type="radio"
               value="butt"
             />
             <div
-              class="PrivateRadioButtonIcon-root-1103"
+              class="PrivateRadioButtonIcon-root-21"
             >
               <svg
                 aria-hidden="true"
@@ -1345,7 +1345,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-1104"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-22"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -1370,20 +1370,20 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-985 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-986 Mui-checked MuiIconButton-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-17 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-18 Mui-checked MuiIconButton-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
               checked=""
-              class="PrivateSwitchBase-input-988"
+              class="PrivateSwitchBase-input-20"
               name="lineCap"
               type="radio"
               value="round"
             />
             <div
-              class="PrivateRadioButtonIcon-root-1103 PrivateRadioButtonIcon-checked-1105"
+              class="PrivateRadioButtonIcon-root-21 PrivateRadioButtonIcon-checked-23"
             >
               <svg
                 aria-hidden="true"
@@ -1397,7 +1397,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-1104"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-22"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -1422,19 +1422,19 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-985 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-17 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-988"
+              class="PrivateSwitchBase-input-20"
               name="lineCap"
               type="radio"
               value="square"
             />
             <div
-              class="PrivateRadioButtonIcon-root-1103"
+              class="PrivateRadioButtonIcon-root-21"
             >
               <svg
                 aria-hidden="true"
@@ -1448,7 +1448,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-1104"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-22"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -1509,13 +1509,13 @@ exports[`App at /reminder 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1234 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-24 MuiSwitch-switchBase MuiSwitch-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-1237 MuiSwitch-input"
+              class="PrivateSwitchBase-input-27 MuiSwitch-input"
               type="checkbox"
               value=""
             />
