@@ -16,7 +16,7 @@ import typed from '~/lib/typed'
 //
 //
 
-export interface UserAuthnState {}
+export type UserAuthnState = {}
 
 //
 //                       _|      _|
