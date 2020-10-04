@@ -138,7 +138,7 @@ exports[`App at / 1`] = `
     <span
       class="MuiButton-label"
     >
-      Authenticate a user with Google
+      Authenticate a user with GitHub
     </span>
   </button>
 </div>
