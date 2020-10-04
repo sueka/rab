@@ -11,7 +11,7 @@
   "src.components.Counter.incrementIfOdd": "+ if odd",
   "src.components.Counter.reset": "reset",
   "src.components.Counter.willIncrementInOneSecond": "+ in 1 second",
-  "src.components.GitHubAuthnButton.authenticateAUserWithGitHub": "Authenticate a user with Google",
+  "src.components.GitHubAuthnButton.authenticateAUserWithGitHub": "Authenticate a user with GitHub",
   "src.components.Info.fetchData": "Fetch data",
   "src.components.Info.fetching": "Fetching..",
   "src.components.Info.fetchingDoneSuccessfully": "Fetching done successfully.",
