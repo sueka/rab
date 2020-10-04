@@ -27,7 +27,7 @@ export default class TaskRepositoryFakeImpl implements TaskRepository {
 
       try {
         task = Task.deserialize(seriarized)
-      } catch (error) {
+      } catch (error: unknown) {
         continue
       }
 

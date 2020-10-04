@@ -43,7 +43,7 @@ export default function createProvider<S, A extends Action>(history: History, re
       const exceptionNeutralReducer: Reducer<S, A> = (state, action) => {
         try {
           return reducer(state, action)
-        } catch (error) {
+        } catch (error: unknown) {
           this.handleError(error, 'reducer')
 
           if (state === undefined) {

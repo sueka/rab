@@ -20,7 +20,7 @@ import ValidationError from './ValidationError'
 export const failSafe = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: A): Either<ValidationError, T> => {
   try {
     return right(asT(input))
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof ValidationError) {
       return left(error)
     }
@@ -125,7 +125,7 @@ export const asObject = <T>(className: string, asT: (input: any) => T) => (input
 
   try {
     return asT(input)
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof ValidationError) {
       throw new ValidationError(trimEols(stripMargin(typed<[string, string, string]>`
         |${ JSON.stringify(input) } is not ${ className }.
@@ -197,7 +197,7 @@ export function asJson(input: unknown): Json {
 
   try {
     return recordOf(asJson)(input)
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof ValidationError) {
       throw new ValidationError(trimEols(stripMargin(typed<[string, string]>`
         |${ JSON.stringify(input) } is not a Json.

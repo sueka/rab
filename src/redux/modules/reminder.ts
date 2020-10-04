@@ -385,7 +385,7 @@ export default class ReminderService {
 
     try {
       task.content = content // tslint:disable-line:no-object-mutation
-    } catch (error) {
+    } catch (error: unknown) {
       if (error instanceof Error) {
         yield put(pushError(v4(), error)) // TODO:
 

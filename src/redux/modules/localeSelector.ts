@@ -198,7 +198,7 @@ export default class LocaleSelectorService {
       yield put(setFormats(asFormats(formats)))
       yield put(setMessages(recordOf(asString)(messages)))
       yield put(setLocale(locale))
-    } catch (error) {
+    } catch (error: unknown) {
       if (error instanceof Error) {
         yield put(pushError(error))
 

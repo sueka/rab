@@ -4,7 +4,7 @@ export function isUrl(input: string): input is string.Url {
     new URL(input)
 
     return true
-  } catch (_error) {
+  } catch (error: unknown) {
     return false
   }
 }
