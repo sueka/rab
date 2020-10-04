@@ -9,6 +9,9 @@ interface Props {
 const configureTheme = ({ dark }: Props) => createMuiTheme({
   typography: {
     fontFamily: 'sans-serif',
+    button: {
+      textTransform: 'capitalize',
+    },
   },
   props: {
     MuiLink: {
