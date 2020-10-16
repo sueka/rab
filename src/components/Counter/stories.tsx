@@ -1,10 +1,18 @@
-import { storiesOf } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 import * as React from 'react'
 
 import { withIntlProvider, withProvider } from '~/storybook/decorators'
 import Counter from '.'
 
-storiesOf('Counter', module)
-.addDecorator(withProvider)
-.addDecorator(withIntlProvider)
-.add('default', () => (<Counter />))
+const metadata: Meta<unknown> = {
+  title: 'Counter',
+  component: Counter,
+  decorators: [
+    withProvider,
+    withIntlProvider,
+  ],
+}
+
+export default metadata
+
+export const Basic: Story<unknown> = () => <Counter />
