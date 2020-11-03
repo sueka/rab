@@ -29,7 +29,7 @@ const Chessboard: React.FC<Props> = ({ board, resetBoard }) => {
   }, [resetBoard])
 
   return (
-    <table className={ classes.ChessboardTable }>
+    <table className={ classes.ChessboardTable } dir="ltr">
       <tbody>
         { ranks.map((rank) => (
           <tr key={ rank }>

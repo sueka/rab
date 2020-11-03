@@ -271,6 +271,7 @@ exports[`App at /chess 1`] = `
   </header>
   <table
     class="ChessboardTable"
+    dir="ltr"
   >
     <tbody>
       <tr>
