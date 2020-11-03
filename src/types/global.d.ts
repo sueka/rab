@@ -21,3 +21,7 @@ declare namespace Alt {
 declare namespace string {
   type Url = string & { _urlBrand: never }
 }
+
+declare namespace React {
+  type PropsOf<T> = T extends React.Component<infer P> ? P : never // TODO: Support FC
+}

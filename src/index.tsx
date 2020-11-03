@@ -8,6 +8,8 @@ import { History, createBrowserHistory } from 'history'
 import { List, Map } from 'immutable'
 import { interfaces } from 'inversify'
 import { Provider as ServiceProvider } from 'inversify-react'
+import { create } from 'jss'
+import rtl from 'jss-rtl'
 import { SnackbarProvider } from 'notistack'
 import React, { useCallback, useMemo } from 'react'
 import { DndProvider } from 'react-dnd'
@@ -18,6 +20,7 @@ import { Saga } from 'redux-saga'
 import 'reflect-metadata'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { StylesProvider, jssPreset } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import App from './components/App'
@@ -79,6 +82,8 @@ const ThemedApp: React.FC<{}> = () => {
   )
 }
 
+const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
+
 /**
  * The entry point component.
  */
@@ -115,11 +120,13 @@ const Main: React.FC<Props> = ({ history, container }) => {
         defaultTitle="react-app-prototype"
       />
       <Provider renderError={ renderError }>
-        <IntlProvider availableLocales={ ['en', 'ja'] }>
+        <IntlProvider availableLocales={ ['en', 'ja', 'he'] }>
           <DndProvider backend={ HTML5Backend }>
             <ConnectedRouter history={ history }>
               <ServiceProvider container={ container }>
-                <ThemedApp />
+                <StylesProvider jss={ jss }>
+                  <ThemedApp />
+                </StylesProvider>
               </ServiceProvider>
             </ConnectedRouter>
           </DndProvider>

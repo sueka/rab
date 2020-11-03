@@ -63,7 +63,9 @@ exports[`App at / 1`] = `
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
-          Languages
+          <bdi>
+            Languages
+          </bdi>
         </label>
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
@@ -84,6 +86,11 @@ exports[`App at / 1`] = `
             >
               日本語
             </option>
+            <option
+              value="he"
+            >
+              עברית
+            </option>
           </select>
           <svg
             aria-hidden="true"
@@ -102,22 +109,30 @@ exports[`App at / 1`] = `
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    Hello, world!
+    <bdi>
+      Hello, world!
+    </bdi>
   </p>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    $100.00
+    <bdi>
+      $100.00
+    </bdi>
   </p>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    Jul 27, 2019
+    <bdi>
+      Jul 27, 2019
+    </bdi>
   </p>
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    09:00:00
+    <bdi>
+      09:00:00
+    </bdi>
   </p>
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
@@ -127,7 +142,9 @@ exports[`App at / 1`] = `
     <span
       class="MuiButton-label"
     >
-      Set the clock
+      <bdi>
+        Set the clock
+      </bdi>
     </span>
   </button>
   <button
@@ -138,7 +155,9 @@ exports[`App at / 1`] = `
     <span
       class="MuiButton-label"
     >
-      Authenticate a user with GitHub
+      <bdi>
+        Authenticate a user with GitHub
+      </bdi>
     </span>
   </button>
 </div>
@@ -207,7 +226,9 @@ exports[`App at /chess 1`] = `
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
-          Languages
+          <bdi>
+            Languages
+          </bdi>
         </label>
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
@@ -227,6 +248,11 @@ exports[`App at /chess 1`] = `
               value="ja"
             >
               日本語
+            </option>
+            <option
+              value="he"
+            >
+              עברית
             </option>
           </select>
           <svg
@@ -779,7 +805,9 @@ exports[`App at /counter 1`] = `
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
-          Languages
+          <bdi>
+            Languages
+          </bdi>
         </label>
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
@@ -799,6 +827,11 @@ exports[`App at /counter 1`] = `
               value="ja"
             >
               日本語
+            </option>
+            <option
+              value="he"
+            >
+              עברית
             </option>
           </select>
           <svg
@@ -833,7 +866,9 @@ exports[`App at /counter 1`] = `
         <span
           class="MuiButton-label"
         >
-          reset
+          <bdi>
+            reset
+          </bdi>
         </span>
       </button>
       <button
@@ -844,7 +879,9 @@ exports[`App at /counter 1`] = `
         <span
           class="MuiButton-label"
         >
-          +
+          <bdi>
+            +
+          </bdi>
         </span>
       </button>
       <button
@@ -855,7 +892,9 @@ exports[`App at /counter 1`] = `
         <span
           class="MuiButton-label"
         >
-          -
+          <bdi>
+            -
+          </bdi>
         </span>
       </button>
       <button
@@ -867,7 +906,9 @@ exports[`App at /counter 1`] = `
         <span
           class="MuiButton-label"
         >
-          + if odd
+          <bdi>
+            + if odd
+          </bdi>
         </span>
       </button>
       <button
@@ -879,7 +920,9 @@ exports[`App at /counter 1`] = `
         <span
           class="MuiButton-label"
         >
-          + in 1 second
+          <bdi>
+            + in 1 second
+          </bdi>
         </span>
       </button>
     </div>
@@ -950,7 +993,9 @@ exports[`App at /info 1`] = `
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
-          Languages
+          <bdi>
+            Languages
+          </bdi>
         </label>
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
@@ -970,6 +1015,11 @@ exports[`App at /info 1`] = `
               value="ja"
             >
               日本語
+            </option>
+            <option
+              value="he"
+            >
+              עברית
             </option>
           </select>
           <svg
@@ -994,7 +1044,9 @@ exports[`App at /info 1`] = `
     <span
       class="MuiButton-label"
     >
-      Fetch data
+      <bdi>
+        Fetch data
+      </bdi>
     </span>
   </button>
   <p
@@ -1068,7 +1120,9 @@ exports[`App at /nonexistent-path 1`] = `
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
-          Languages
+          <bdi>
+            Languages
+          </bdi>
         </label>
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
@@ -1088,6 +1142,11 @@ exports[`App at /nonexistent-path 1`] = `
               value="ja"
             >
               日本語
+            </option>
+            <option
+              value="he"
+            >
+              עברית
             </option>
           </select>
           <svg
@@ -1177,7 +1236,9 @@ exports[`App at /paint 1`] = `
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
-          Languages
+          <bdi>
+            Languages
+          </bdi>
         </label>
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
@@ -1197,6 +1258,11 @@ exports[`App at /paint 1`] = `
               value="ja"
             >
               日本語
+            </option>
+            <option
+              value="he"
+            >
+              עברית
             </option>
           </select>
           <svg
@@ -1226,7 +1292,9 @@ exports[`App at /paint 1`] = `
     <span
       class="MuiButton-label"
     >
-      clear
+      <bdi>
+        clear
+      </bdi>
     </span>
     <span
       class="MuiTouchRipple-root"
@@ -1536,7 +1604,9 @@ exports[`App at /reminder 1`] = `
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
-          Languages
+          <bdi>
+            Languages
+          </bdi>
         </label>
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
@@ -1556,6 +1626,11 @@ exports[`App at /reminder 1`] = `
               value="ja"
             >
               日本語
+            </option>
+            <option
+              value="he"
+            >
+              עברית
             </option>
           </select>
           <svg
@@ -1583,7 +1658,9 @@ exports[`App at /reminder 1`] = `
     <span
       class="MuiButton-label"
     >
-      add
+      <bdi>
+        add
+      </bdi>
     </span>
   </button>
 </div>

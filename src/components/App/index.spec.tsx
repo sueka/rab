@@ -58,7 +58,7 @@ ${ '/nonexistent-path' }
 
     const { container } = render(
       <Provider store={ store }>
-        <IntlProvider availableLocales={ ['en', 'ja'] }>
+        <IntlProvider availableLocales={ ['en', 'ja', 'he'] }>
           <DndProvider backend={ TestBackend }>
             <StaticRouter context={ context } location={ location }>
               <SnackbarProvider>

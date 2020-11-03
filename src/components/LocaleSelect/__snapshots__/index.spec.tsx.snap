@@ -9,7 +9,9 @@ exports[`LocaleSelect 1`] = `
     data-shrink="true"
     for="00000000-0000-4000-0000-000000000000"
   >
-    Languages
+    <bdi>
+      Languages
+    </bdi>
   </label>
   <div
     class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -29,6 +31,11 @@ exports[`LocaleSelect 1`] = `
         value="ja"
       >
         日本語
+      </option>
+      <option
+        value="he"
+      >
+        עברית
       </option>
     </select>
     <svg

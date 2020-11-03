@@ -3,10 +3,12 @@ import teal from '@material-ui/core/colors/teal'
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 
 interface Props {
+  direction?: 'rtl' | 'ltr'
   dark: boolean
 }
 
-const configureTheme = ({ dark }: Props) => createMuiTheme({
+const configureTheme = ({ direction, dark }: Props) => createMuiTheme({
+  direction,
   typography: {
     fontFamily: 'sans-serif',
     button: {

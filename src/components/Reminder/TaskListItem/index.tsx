@@ -84,7 +84,8 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
 
       switch (locale) {
         case 'en': return Case.sentence(text)
-        case 'ja': return text
+        case 'ja':
+        case 'he': return text
         default: throw new Error // TODO
       }
     }

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import Helmet from 'react-helmet'
 import { IntlConfig, IntlProvider as OriginalIntlProvider } from 'react-intl'
 
 import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
@@ -21,10 +22,18 @@ type Props =
 // NOTE: key が無い場合、 FormattedMessage 等は re-render されるが、 useIntl の結果は更新されない。
 // TODO: intl context でない要素を re-render しないようにする。 https://github.com/formatjs/react-intl/issues/234#issuecomment-163366518 によると現時点では難しいらしい。
 // cf. https://github.com/formatjs/react-intl/issues/371#issuecomment-275703796
-const IntlProvider: React.FC<Props> = ({ availableLocales, ...props }) => (
-  <IntlProviderContext.Provider value={ { availableLocales } }>
-    <OriginalIntlProvider key={ props.locale } textComponent={ React.Fragment } { ...props } />
-  </IntlProviderContext.Provider>
-)
+const IntlProvider: React.FC<Props> = ({ availableLocales, ...props }) => {
+  const dir = useMemo(() => props.locale === 'he' ? 'rtl' : 'ltr', [props.locale]) // TODO
+
+  // NOTE: <bdi> は Internet Explorer で動作しないが、翻訳はフォールバックされることがあるので、翻訳の書字方向をロケールから計算することはできない。
+  return (
+    <>
+      <Helmet htmlAttributes={ { dir } } />
+      <IntlProviderContext.Provider value={ { availableLocales } }>
+        <OriginalIntlProvider key={ props.locale } textComponent="bdi" { ...props } />
+      </IntlProviderContext.Provider>
+    </>
+  )
+}
 
 export default IntlProvider

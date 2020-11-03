@@ -73,7 +73,7 @@ export const withDragDropContextProvider: DecoratorFn = (story) => (
 )
 
 export const withIntlProvider: DecoratorFn = (story) => (
-  <IntlProvider availableLocales={ ['en', 'ja'] } locale="en" formats={ formats } messages={ messages }>
+  <IntlProvider availableLocales={ ['en', 'ja', 'he'] } locale="en" formats={ formats } messages={ messages }>
     { story() }
   </IntlProvider>
 )

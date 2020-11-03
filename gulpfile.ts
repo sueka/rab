@@ -18,7 +18,7 @@ export const clean: TaskFunction = describedTask(
   () => del([...ignored, '!node_modules/**', '!.env'])
 )
 
-export const extractMessages = npxTask('extract-messages', ['--flat', '--default-locale=en', '--locales=en,ja', '--output=public/messages', 'src/**/messages.ts'])
+export const extractMessages = npxTask('extract-messages', ['--flat', '--default-locale=en', '--locales=en,ja,he', '--output=public/messages', 'src/**/messages.ts'])
 export const tcm = npxTask('tcm', ['src', '-s'])
 const typeCheck = npxTask('tsc', ['--noEmit', '-p', './tsconfig.prod.json'])
 const typeCheckForDevelopment = npxTask('tsc', ['--noEmit', '-p', '.'])
