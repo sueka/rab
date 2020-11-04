@@ -7,11 +7,10 @@
 }
 
 /* TODO: Polyfill and delete the following */
-.ListItemSecondaryAction,
-:root[dir="ltr"] .ListItemSecondaryAction {
+.ListItemSecondaryAction.Ltr {
   padding-right: 72px;
 }
 
-:root[dir="rtl"] .ListItemSecondaryAction {
+.ListItemSecondaryAction.Rtl {
   padding-left: 72px;
 }

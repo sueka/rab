@@ -1,6 +1,6 @@
 import Case from 'case'
 import classnames from 'classnames'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useContext, useMemo } from 'react'
 import { DragObjectWithType, useDrag } from 'react-dnd'
 import { useIntl } from 'react-intl'
 
@@ -12,6 +12,7 @@ import TextField from '@material-ui/core/TextField'
 import DragHandleIcon from '@material-ui/icons/DragHandle'
 
 import Task, { TaskParams } from '~/domain/entity/Task'
+import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import { isOneOf } from '~/lib/guards/commonGuards'
 import ValidationError from '~/lib/validators/ValidationError'
 import DeleteTaskButton from './DeleteTaskButton'
@@ -53,9 +54,13 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
     }),
   })
 
+  const { dir } = useContext(IntlProviderContext)
+
   const className = useMemo(() => classnames(classes.TaskListItemContainer, {
+    [classes.Ltr]: dir === 'ltr',
+    [classes.Rtl]: dir === 'rtl',
     [classes.Dragging]: dragging,
-  }), [dragging])
+  }), [dir, dragging])
 
   const handleContentChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     onChange({

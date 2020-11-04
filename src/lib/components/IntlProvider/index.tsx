@@ -29,7 +29,7 @@ const IntlProvider: React.FC<Props> = ({ availableLocales, ...props }) => {
   return (
     <>
       <Helmet htmlAttributes={ { dir } } />
-      <IntlProviderContext.Provider value={ { availableLocales } }>
+      <IntlProviderContext.Provider value={ { availableLocales, dir } }>
         <OriginalIntlProvider key={ props.locale } textComponent="bdi" { ...props } />
       </IntlProviderContext.Provider>
     </>
