@@ -6,7 +6,7 @@ import RadioGroup, { RadioGroupProps } from '@material-ui/core/RadioGroup'
 import CreateIcon from '@material-ui/icons/Create'
 import FormatColorFillIcon from '@material-ui/icons/FormatColorFill'
 
-// TODO: remove
+// TODO: Remove
 type Tool =
   | 'pen'
   | 'bucket'

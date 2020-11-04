@@ -1,4 +1,4 @@
-// TODO: remove
+// TODO: Delete
 
 interface ObjectConstructor {
   keys<K extends Index>(o: Record<K, unknown>): K[]

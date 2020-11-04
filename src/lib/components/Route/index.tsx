@@ -10,7 +10,7 @@ const withSuspense: (Component: React.LazyExoticComponent<React.ComponentType<Ro
 )
 
 interface Props extends Alt.Omit<RouteProps, 'render' | 'component' | 'children'> {
-  // TODO: ban mandatory props
+  // TODO: Ban mandatory props
   component?: Required<RouteProps>['component'] | React.LazyExoticComponent<Required<RouteProps>['component']>
 }
 
@@ -19,7 +19,7 @@ const Route: React.FC<Props> = ({ component, ...restProps }) => {
     return <OriginalRoute { ...restProps } />
   }
 
-  if ('_result' in component) { // FIXME: if LazyExoticComponent
+  if ('_result' in component) { // FIXME: if (component instanceof LazyExoticComponent) {
     return <OriginalRoute component={ withSuspense(component) } { ...restProps } />
   } else {
     return <OriginalRoute component={ component } { ...restProps } />

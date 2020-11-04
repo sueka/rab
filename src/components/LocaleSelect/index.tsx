@@ -56,7 +56,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes, FormC
   const selectIconClassName = useMemo(() => classnames(classes?.selectIcon), [classes?.selectIcon])
   const inputUnderlineClassName = useMemo(() => classnames(classes?.inputUnderline), [classes?.inputUnderline])
 
-  const inputLabel = useCallback((node: HTMLLabelElement | null) => { // TODO: type
+  const inputLabel = useCallback((node: HTMLLabelElement | null) => { // TODO: Type
     if (node !== null) {
       setLabelWidth(node.offsetWidth)
     }
@@ -73,7 +73,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes, FormC
   return (
     <FormControl
       { ...FormControlProps }
-      className={ rootClassName } // NOTE: overrides FormControlProps.className
+      className={ rootClassName } // NOTE: Overrides FormControlProps.className
     >
       <InputLabel className={ labelClassName } ref={ inputLabel } htmlFor={ inputId }>
         <FormattedMessage { ...messages.languages } />

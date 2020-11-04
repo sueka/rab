@@ -1,10 +1,10 @@
-// TODO: remove
+// TODO: Delete
 
 import { compose } from 'redux'
 export {}
 
 declare global {
-  // TODO: use globalThis
+  // TODO: Use globalThis
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
   }

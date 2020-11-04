@@ -1,6 +1,6 @@
 import ValueObject from './ValueObject'
 
-// TODO: remove
+// TODO: Remove
 function seemsLikeUuid(s: string) {
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(s)
 }

@@ -13,7 +13,7 @@ import Toolbox, { Props as ToolboxProps } from '~/components/Toolbox'
 import { isOneOf } from '~/lib/guards/commonGuards'
 import messages from './messages'
 
-// TODO: remove
+// TODO: Remove
 type Tool =
   | 'pen'
   | 'bucket'

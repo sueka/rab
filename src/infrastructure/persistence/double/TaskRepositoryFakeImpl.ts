@@ -6,7 +6,7 @@ import TaskRepository from '~/domain/repository/TaskRepository'
 import TaskId from '~/domain/vo/TaskId'
 import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 
-// TODO: namespace in localStorage
+// TODO: Create namespace in localStorage
 @injectable()
 export default class TaskRepositoryFakeImpl implements TaskRepository {
   public async list() {

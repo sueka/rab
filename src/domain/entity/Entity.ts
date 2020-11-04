@@ -2,7 +2,7 @@ import Id from '~/domain/vo/Id'
 import Eq from '~/lib/trait/Eq'
 import HashableEq from '~/lib/trait/HashableEq'
 
-// TODO: move?
+// TODO: Move?
 interface Identifiable {
   id: Id
 }

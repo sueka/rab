@@ -1,7 +1,7 @@
 import delay from './delay'
 
 describe('delay', () => {
-  jest.useFakeTimers() // TODO: reset timer spies
+  jest.useFakeTimers() // TODO: Reset timer spies
 
   it('should set an argument milliseconds timer', () => {
     delay(1000)

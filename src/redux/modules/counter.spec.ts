@@ -59,7 +59,7 @@ describe('CounterService', () => {
       const it = counterService.incrementIfOddSaga()
 
       expect(it.next().value).toEqual(select())
-      expect(it.next({ counter: { count: 1 } }).value).toEqual(put(increment())) // TODO: not depends on the interface CounterState
+      expect(it.next({ counter: { count: 1 } }).value).toEqual(put(increment())) // TODO: Don't depend on the interface CounterState
       expect(it.next().done).toBeTruthy()
     })
 

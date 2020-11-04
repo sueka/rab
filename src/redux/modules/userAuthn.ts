@@ -106,7 +106,7 @@ export default class UserAuthnService {
   ) {}
 
   public /* for testing */ *redirectToGitHub(): SagaIterator {
-    yield call( // NOTE: supports IE 11. See also https://github.com/redux-saga/redux-saga/issues/2076
+    yield call( // NOTE: Supports IE 11. See also https://github.com/redux-saga/redux-saga/issues/2076
       (...args: Parameters<typeof globalThis.location.assign>) => globalThis.location.assign(...args),
       typed<[string]>`${ this.config.get('USER_AUTHN_API_URL') }/redirect-to-github`
     )

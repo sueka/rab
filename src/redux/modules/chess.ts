@@ -278,16 +278,16 @@ export const createChessReducer: (initialState: ChessState) => Reducer<ChessStat
 @injectable()
 export class ChessService {
   private *halfMoveSaga({ payload: { chessman, source, target } }: HalfMoveAction): SagaIterator {
-    // TODO: check move
+    // TODO: Check move
 
-    // TODO: castle
+    // TODO: Castle
 
-    // TODO: remove en passant
+    // TODO: Remove en passant
 
     yield put(removeChessman(source))
     yield put(putChessman(chessman, target))
 
-    // TODO: turn
+    // TODO: Turn
   }
 
   private *pickChessmanSaga({ payload: { chessman, source } }: PickChessmanAction): SagaIterator {

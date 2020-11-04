@@ -12,7 +12,7 @@ export type Props =
 
 const isTypographyColor = optional(isOneOf('initial', 'inherit', 'primary', 'secondary', 'textPrimary', 'textSecondary', 'error'))
 
-// TODO: delete this; See also https://material-ui.com/guides/composition/#link
+// TODO: Delete; See also https://material-ui.com/guides/composition/#link
 const RouterLinkWithRef = React.forwardRef<HTMLAnchorElement, RouterLinkProps>((props, ref) => (
   <RouterLink innerRef={ ref } { ...props } />
 ))

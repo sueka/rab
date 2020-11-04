@@ -39,7 +39,7 @@ export const leftOnly = <A extends unknown, T extends A>(asT: (input: A) => T) =
   }
 }
 
-// TODO: refactor
+// TODO: Refactor
 export const named = <A extends unknown, T extends A>(name: string, asT: (input: A) => T) => (input: A): T => {
   const t = failSafe(asT)(input)
 
@@ -85,7 +85,7 @@ export const unionOf = <A extends unknown, T extends A, U extends A>(asT: (input
   throw new UnreachableError
 }
 
-const listOf = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: readonly A[]): T[] => { // TODO: input: unknown
+const listOf = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: readonly A[]): T[] => {
   if (!Array.isArray(input)) {
     throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an array.`)
   }

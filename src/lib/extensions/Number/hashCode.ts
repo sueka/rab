@@ -6,7 +6,7 @@ export default function hashCode(x: number) {
   return Number(JSBI.bitwiseAnd(v, JSBI.BigInt(0xFFFFFFFF))) ^ Number(JSBI.signedRightShift(v, JSBI.BigInt(32)))
 }
 
-// TODO: remove
+// TODO: Remove
 function doubleToLongBits(value: number): JSBI {
   const buf = Buffer.allocUnsafe(8)
 

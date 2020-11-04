@@ -26,7 +26,7 @@ describe('getColor', () => {
     expect(context.getImageData).toBeCalledWith(expect.anything(), expect.anything(), 1, 1)
     expect(context.getImageData).toReturnWith(expect.objectContaining({ data: expect.any(Uint8ClampedArray) }))
 
-    // TODO: test data size is four
+    // TODO: Test data size is four
 
     expect(color).toMatchObject({ red: 30, green: 144, blue: 255, alpha: 0 })
   })

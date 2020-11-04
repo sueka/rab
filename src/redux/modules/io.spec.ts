@@ -33,7 +33,7 @@ describe('action creators', () => {
 describe('IoService', () => {
   const ioService = container.resolve(IoService)
 
-  // FIXME: refactor
+  // FIXME: Refactor
   test('updateNowSaga', async () => {
     const it = ioService.updateNowSaga()
     const actualEffect: PutEffect<SetNowAction> = it.next().value

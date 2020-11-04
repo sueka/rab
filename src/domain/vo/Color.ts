@@ -1,6 +1,6 @@
 import HashableEq from '~/lib/trait/HashableEq'
 
-// TODO: remove
+// TODO: Remove
 interface RgbaColor {
   red: number
   green: number

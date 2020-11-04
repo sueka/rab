@@ -36,7 +36,7 @@ export interface IoState {
 //                 _|  _|
 //             _|_|    _|
 
-export /* for testing */ const UPDATE_NOW = '@@react-app-prototype/io/UPDATE_NOW' // TODO: rename
+export /* for testing */ const UPDATE_NOW = '@@react-app-prototype/io/UPDATE_NOW' // TODO: Rename
 export /* for testing */ const START_CLOCK = '@@react-app-prototype/io/START_CLOCK'
 const STOP_CLOCK = '@@react-app-prototype/io/STOP_CLOCK'
 export /* for testing */ const SET_NOW = '@@react-app-prototype/io/SET_NOW'
