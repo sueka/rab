@@ -8,6 +8,7 @@ import FilledInput from '@material-ui/core/FilledInput'
 import FormControl, { FormControlProps } from '@material-ui/core/FormControl'
 import Input from '@material-ui/core/Input'
 import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Select, { SelectProps } from '@material-ui/core/Select'
 import { useTheme } from '@material-ui/core/styles'
@@ -82,7 +83,6 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes, FormC
         classes={ {
           icon: selectIconClassName,
         } }
-        native
         labelWidth={ labelWidth }
         value={ locale }
         onChange={ handleChange }
@@ -102,7 +102,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes, FormC
         }[variant] }
       >
         { availableLocales?.map((availableLocale, i) => (
-          <option key={ i } value={ availableLocale }>{ getNativeNameByTag(availableLocale) }</option>
+          <MenuItem key={ i } value={ availableLocale }>{ getNativeNameByTag(availableLocale) }</MenuItem>
         )) }
       </Select>
     </FormControl>
