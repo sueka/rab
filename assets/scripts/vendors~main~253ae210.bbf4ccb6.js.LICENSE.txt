@@ -4,13 +4,6 @@
   All rights reserved.
 */
 
-/*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <http://feross.org>
- * @license  MIT
- */
-
 /** @license Material-UI v4.10.0
  *
  * This source code is licensed under the MIT license found in the
