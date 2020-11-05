@@ -27,6 +27,9 @@ exports[`App at / 1`] = `
             />
           </svg>
         </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
       </button>
       <div
         class="Spacer"
@@ -50,6 +53,9 @@ exports[`App at / 1`] = `
               class="MuiSwitch-thumb"
             />
           </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
         </span>
         <span
           class="MuiSwitch-track"
@@ -70,28 +76,23 @@ exports[`App at / 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <select
-            aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            data-testid="localeSelect"
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="00000000-0000-4000-0000-000000000000"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
+            role="button"
+            tabindex="0"
           >
-            <option
-              value="en"
-            >
-              English
-            </option>
-            <option
-              value="ja"
-            >
-              日本語
-            </option>
-            <option
-              value="he"
-            >
-              עברית
-            </option>
-          </select>
+            English
+          </div>
+          <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            data-testid="localeSelect"
+            tabindex="-1"
+            value="en"
+          />
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -146,6 +147,9 @@ exports[`App at / 1`] = `
         Set the clock
       </bdi>
     </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
   </button>
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
@@ -159,6 +163,9 @@ exports[`App at / 1`] = `
         Authenticate a user with GitHub
       </bdi>
     </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
   </button>
 </div>
 `;
@@ -190,6 +197,9 @@ exports[`App at /chess 1`] = `
             />
           </svg>
         </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
       </button>
       <div
         class="Spacer"
@@ -213,6 +223,9 @@ exports[`App at /chess 1`] = `
               class="MuiSwitch-thumb"
             />
           </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
         </span>
         <span
           class="MuiSwitch-track"
@@ -233,28 +246,23 @@ exports[`App at /chess 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <select
-            aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            data-testid="localeSelect"
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="00000000-0000-4000-0000-000000000000"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
+            role="button"
+            tabindex="0"
           >
-            <option
-              value="en"
-            >
-              English
-            </option>
-            <option
-              value="ja"
-            >
-              日本語
-            </option>
-            <option
-              value="he"
-            >
-              עברית
-            </option>
-          </select>
+            English
+          </div>
+          <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            data-testid="localeSelect"
+            tabindex="-1"
+            value="en"
+          />
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -770,6 +778,9 @@ exports[`App at /counter 1`] = `
             />
           </svg>
         </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
       </button>
       <div
         class="Spacer"
@@ -793,6 +804,9 @@ exports[`App at /counter 1`] = `
               class="MuiSwitch-thumb"
             />
           </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
         </span>
         <span
           class="MuiSwitch-track"
@@ -813,28 +827,23 @@ exports[`App at /counter 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <select
-            aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            data-testid="localeSelect"
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="00000000-0000-4000-0000-000000000000"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
+            role="button"
+            tabindex="0"
           >
-            <option
-              value="en"
-            >
-              English
-            </option>
-            <option
-              value="ja"
-            >
-              日本語
-            </option>
-            <option
-              value="he"
-            >
-              עברית
-            </option>
-          </select>
+            English
+          </div>
+          <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            data-testid="localeSelect"
+            tabindex="-1"
+            value="en"
+          />
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -871,6 +880,9 @@ exports[`App at /counter 1`] = `
             reset
           </bdi>
         </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
       </button>
       <button
         class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
@@ -884,6 +896,9 @@ exports[`App at /counter 1`] = `
             +
           </bdi>
         </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
       </button>
       <button
         class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
@@ -897,6 +912,9 @@ exports[`App at /counter 1`] = `
             -
           </bdi>
         </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
       </button>
       <button
         class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
@@ -911,6 +929,9 @@ exports[`App at /counter 1`] = `
             + if odd
           </bdi>
         </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
       </button>
       <button
         class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
@@ -925,6 +946,9 @@ exports[`App at /counter 1`] = `
             + in 1 second
           </bdi>
         </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
       </button>
     </div>
   </div>
@@ -958,6 +982,9 @@ exports[`App at /info 1`] = `
             />
           </svg>
         </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
       </button>
       <div
         class="Spacer"
@@ -981,6 +1008,9 @@ exports[`App at /info 1`] = `
               class="MuiSwitch-thumb"
             />
           </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
         </span>
         <span
           class="MuiSwitch-track"
@@ -1001,28 +1031,23 @@ exports[`App at /info 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <select
-            aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            data-testid="localeSelect"
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="00000000-0000-4000-0000-000000000000"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
+            role="button"
+            tabindex="0"
           >
-            <option
-              value="en"
-            >
-              English
-            </option>
-            <option
-              value="ja"
-            >
-              日本語
-            </option>
-            <option
-              value="he"
-            >
-              עברית
-            </option>
-          </select>
+            English
+          </div>
+          <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            data-testid="localeSelect"
+            tabindex="-1"
+            value="en"
+          />
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -1049,6 +1074,9 @@ exports[`App at /info 1`] = `
         Fetch data
       </bdi>
     </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
   </button>
   <p
     class="MuiTypography-root MuiTypography-body1"
@@ -1085,6 +1113,9 @@ exports[`App at /nonexistent-path 1`] = `
             />
           </svg>
         </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
       </button>
       <div
         class="Spacer"
@@ -1108,6 +1139,9 @@ exports[`App at /nonexistent-path 1`] = `
               class="MuiSwitch-thumb"
             />
           </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
         </span>
         <span
           class="MuiSwitch-track"
@@ -1128,28 +1162,23 @@ exports[`App at /nonexistent-path 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <select
-            aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            data-testid="localeSelect"
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="00000000-0000-4000-0000-000000000000"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
+            role="button"
+            tabindex="0"
           >
-            <option
-              value="en"
-            >
-              English
-            </option>
-            <option
-              value="ja"
-            >
-              日本語
-            </option>
-            <option
-              value="he"
-            >
-              עברית
-            </option>
-          </select>
+            English
+          </div>
+          <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            data-testid="localeSelect"
+            tabindex="-1"
+            value="en"
+          />
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -1244,28 +1273,23 @@ exports[`App at /paint 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <select
-            aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            data-testid="localeSelect"
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="00000000-0000-4000-0000-000000000000"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
+            role="button"
+            tabindex="0"
           >
-            <option
-              value="en"
-            >
-              English
-            </option>
-            <option
-              value="ja"
-            >
-              日本語
-            </option>
-            <option
-              value="he"
-            >
-              עברית
-            </option>
-          </select>
+            English
+          </div>
+          <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            data-testid="localeSelect"
+            tabindex="-1"
+            value="en"
+          />
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -1569,6 +1593,9 @@ exports[`App at /reminder 1`] = `
             />
           </svg>
         </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
       </button>
       <div
         class="Spacer"
@@ -1592,6 +1619,9 @@ exports[`App at /reminder 1`] = `
               class="MuiSwitch-thumb"
             />
           </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
         </span>
         <span
           class="MuiSwitch-track"
@@ -1612,28 +1642,23 @@ exports[`App at /reminder 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <select
-            aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            data-testid="localeSelect"
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="00000000-0000-4000-0000-000000000000"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
+            role="button"
+            tabindex="0"
           >
-            <option
-              value="en"
-            >
-              English
-            </option>
-            <option
-              value="ja"
-            >
-              日本語
-            </option>
-            <option
-              value="he"
-            >
-              עברית
-            </option>
-          </select>
+            English
+          </div>
+          <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            data-testid="localeSelect"
+            tabindex="-1"
+            value="en"
+          />
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -1663,6 +1688,9 @@ exports[`App at /reminder 1`] = `
         add
       </bdi>
     </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
   </button>
 </div>
 `;

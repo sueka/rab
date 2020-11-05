@@ -16,28 +16,23 @@ exports[`LocaleSelect 1`] = `
   <div
     class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
   >
-    <select
-      aria-invalid="false"
-      class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
-      data-testid="localeSelect"
+    <div
+      aria-haspopup="listbox"
+      aria-labelledby="00000000-0000-4000-0000-000000000000"
+      class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
       id="00000000-0000-4000-0000-000000000000"
+      role="button"
+      tabindex="0"
     >
-      <option
-        value="en"
-      >
-        English
-      </option>
-      <option
-        value="ja"
-      >
-        日本語
-      </option>
-      <option
-        value="he"
-      >
-        עברית
-      </option>
-    </select>
+      English
+    </div>
+    <input
+      aria-hidden="true"
+      class="MuiSelect-nativeInput"
+      data-testid="localeSelect"
+      tabindex="-1"
+      value="en"
+    />
     <svg
       aria-hidden="true"
       class="MuiSvgIcon-root MuiSelect-icon"
