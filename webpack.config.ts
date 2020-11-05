@@ -25,6 +25,9 @@ if (env === 'test') {
 const config: Configuration = {
   mode: env,
   bail: true,
+  node: {
+    Buffer: false,
+  },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     modules: [

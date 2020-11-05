@@ -8,9 +8,11 @@ export default function hashCode(x: number) {
 
 // TODO: Remove
 function doubleToLongBits(value: number): JSBI {
-  const buf = Buffer.allocUnsafe(8)
+  const ab = new ArrayBuffer(8)
+  const doubleContainer = new Float64Array(ab, 0, 1)
+  const uintContainer = new Uint32Array(ab, 0, 2) // NOTE: IE does not support BigUint64Array
 
-  buf.writeDoubleBE(value, 0)
+  doubleContainer[0] = value // tslint:disable-line:no-object-mutation
 
-  return JSBI.add((JSBI.leftShift(JSBI.BigInt(buf.readUInt32BE(0)), JSBI.BigInt(32))), JSBI.BigInt(buf.readUInt32BE(4)))
+  return JSBI.add((JSBI.leftShift(JSBI.BigInt(uintContainer[1]), JSBI.BigInt(32))), JSBI.BigInt(uintContainer[0]))
 }
