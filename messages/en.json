@@ -13,7 +13,7 @@
   "src.components.Counter.willIncrementInOneSecond": "+ in 1 second",
   "src.components.GitHubAuthnButton.authenticateAUserWithGitHub": "Authenticate a user with GitHub",
   "src.components.Info.fetchData": "Fetch data",
-  "src.components.Info.fetching": "Fetching..",
+  "src.components.Info.fetching": "Fetching…",
   "src.components.Info.fetchingDoneSuccessfully": "Fetching done successfully.",
   "src.components.Info.fetchingFailed": "Fetching failed.",
   "src.components.Info.fetchingNotStarted": "Fetching not started.",
