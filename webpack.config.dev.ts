@@ -1,6 +1,5 @@
 import * as path from 'path'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-// import 'webpack-dev-server'
 
 import config from './webpack.config'
 
