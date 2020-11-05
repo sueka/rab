@@ -16,7 +16,7 @@ const mockedReactRouter = reactRouter as jest.Mocked<typeof reactRouter>
 
 describe('App', () => {
   describe('with #fragment', () => {
-    it('should redirect to the page whose path-abempty is the fragment when the path-abempty is "/" and the fragment does exist', () => {
+    it('should redirect to the page whose path-abempty is the fragment when the path-abempty is "/" and the fragment exists', () => {
       mockedReactRouter.useLocation.mockImplementationOnce(() => ({ pathname: '/', hash: '#/foo', search: '', state: undefined }))
 
       const { container } = render(
