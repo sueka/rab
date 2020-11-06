@@ -65,7 +65,7 @@ exports[`App at / 1`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel InputLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
@@ -79,7 +79,7 @@ exports[`App at / 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -235,7 +235,7 @@ exports[`App at /chess 1`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel InputLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
@@ -249,7 +249,7 @@ exports[`App at /chess 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -816,7 +816,7 @@ exports[`App at /counter 1`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel InputLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
@@ -830,7 +830,7 @@ exports[`App at /counter 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1020,7 +1020,7 @@ exports[`App at /info 1`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel InputLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
@@ -1034,7 +1034,7 @@ exports[`App at /info 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1151,7 +1151,7 @@ exports[`App at /nonexistent-path 1`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel InputLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
@@ -1165,7 +1165,7 @@ exports[`App at /nonexistent-path 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1262,7 +1262,7 @@ exports[`App at /paint 1`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel InputLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
@@ -1276,7 +1276,7 @@ exports[`App at /paint 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1631,7 +1631,7 @@ exports[`App at /reminder 1`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel InputLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
           data-shrink="true"
           for="00000000-0000-4000-0000-000000000000"
         >
@@ -1645,7 +1645,7 @@ exports[`App at /reminder 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"

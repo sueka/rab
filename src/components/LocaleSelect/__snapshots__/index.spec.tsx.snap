@@ -5,7 +5,7 @@ exports[`LocaleSelect 1`] = `
   class="MuiFormControl-root"
 >
   <label
-    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+    class="MuiFormLabel-root MuiInputLabel-root InputLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
     data-shrink="true"
     for="00000000-0000-4000-0000-000000000000"
   >
@@ -19,7 +19,7 @@ exports[`LocaleSelect 1`] = `
     <div
       aria-haspopup="listbox"
       aria-labelledby="00000000-0000-4000-0000-000000000000"
-      class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+      class="MuiSelect-root MuiSelect-select Select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
       id="00000000-0000-4000-0000-000000000000"
       role="button"
       tabindex="0"

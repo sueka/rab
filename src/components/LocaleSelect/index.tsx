@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React, { useCallback, useContext, useMemo, useState } from 'react'
+import React, { useCallback, useContext, useMemo, useRef, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { v4 } from 'uuid'
@@ -17,6 +17,7 @@ import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import { Tag, getNativeNameByTag, isTag } from '~/lib/languageNameSolver'
 import { State } from '~/redux'
 import { selectLocale } from '~/redux/modules/localeSelector'
+import cssClasses from './classes.css'
 import messages from './messages'
 
 interface OwnProps {
@@ -43,7 +44,7 @@ type Props =
   & StateProps
   & DispatchProps
 
-export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes, FormControlProps, locale, selectLocale }) => {
+export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propClasses, FormControlProps, locale, selectLocale }) => {
   const [labelWidth, setLabelWidth] = useState<number>(0)
   const inputId = useMemo(v4, [])
   const theme = useTheme()
@@ -51,17 +52,34 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes, FormC
   // NOTE: Fortunately, FormControl is nothing but FormControl.
   const variant = useMemo(() => FormControlProps?.variant ?? theme?.props?.MuiFormControl?.variant ?? 'standard', [FormControlProps?.variant, theme?.props?.MuiFormControl?.variant])
 
-  const rootClassName = useMemo(() => classnames(classes?.root, FormControlProps?.className), [classes?.root, FormControlProps?.className])
-  const labelClassName = useMemo(() => classnames(classes?.label), [classes?.label])
-  const inputClassName = useMemo(() => classnames(classes?.input), [classes?.input])
-  const selectIconClassName = useMemo(() => classnames(classes?.selectIcon), [classes?.selectIcon])
-  const inputUnderlineClassName = useMemo(() => classnames(classes?.inputUnderline), [classes?.inputUnderline])
+  const rootClassName = useMemo(() => classnames(propClasses?.root,  FormControlProps?.className), [propClasses?.root, FormControlProps?.className])
+  const labelClassName = useMemo(() => classnames(propClasses?.label, cssClasses.InputLabel), [propClasses?.label])
+  const inputClassName = useMemo(() => classnames(propClasses?.input), [propClasses?.input])
+  const selectIconClassName = useMemo(() => classnames(propClasses?.selectIcon), [propClasses?.selectIcon])
+  const inputUnderlineClassName = useMemo(() => classnames(propClasses?.inputUnderline), [propClasses?.inputUnderline])
+
+  const select = useRef<HTMLDivElement>(null)
 
   const inputLabel = useCallback((node: HTMLLabelElement | null) => { // TODO: Type
     if (node !== null) {
       setLabelWidth(node.offsetWidth)
+
+      if (select.current === null) {
+        return
+      }
+
+      const selectSelect = select.current.querySelector(`:scope > .${ cssClasses.Select }`)
+
+      if (selectSelect === null || !(selectSelect instanceof HTMLDivElement)) {
+        return
+      }
+
+      const rect = node.getBoundingClientRect()
+
+      // tslint:disable-next-line:no-object-mutation
+      selectSelect.style.minWidth = `${ rect.width }px` // FIXME: style を操作しないようにする
     }
-  }, [])
+  }, [select.current]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleChange = useCallback<NonNullable<SelectProps['onChange']>>((event) => {
     if (isTag(event.target.value)) {
@@ -81,8 +99,10 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes, FormC
       </InputLabel>
       <Select
         classes={ {
+          select: cssClasses.Select,
           icon: selectIconClassName,
         } }
+        ref={ select }
         labelWidth={ labelWidth }
         value={ locale }
         onChange={ handleChange }
