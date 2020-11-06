@@ -193,8 +193,6 @@ export default class LocaleSelectorService {
         params: { locale },
       })
 
-      // TODO: Cache
-
       yield put(setFormats(asFormats(formats)))
       yield put(setMessages(recordOf(asString)(messages)))
       yield put(setLocale(locale))
