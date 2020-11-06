@@ -44,15 +44,15 @@ const FileUpload: React.FC<Props> = ({
         return <FormattedMessage { ...messages.nFilesSelected } values={ { n: fs.length } } />
     }
   },
-  classes: muiClasses,
+  classes: propClasses,
   component: Component = FormLabel,
   ButtonProps,
   ...restInputProps
 }: Props) => {
   const [files, setFiles] = useState<File[] | null>(null) // NOTE: (event: ChangeEvent).target.files をそのまま使うと参照が変わらないので re-render されない。
 
-  const rootClassName = useMemo(() => classnames(className, muiClasses?.root, cssClasses.FileUpload), [className, muiClasses?.root])
-  const buttonClassName = useMemo(() => classnames(muiClasses?.button, cssClasses.Button, ButtonProps?.className), [muiClasses?.button, ButtonProps?.className])
+  const rootClassName = useMemo(() => classnames(className, propClasses?.root, cssClasses.FileUpload), [className, propClasses?.root])
+  const buttonClassName = useMemo(() => classnames(propClasses?.button, cssClasses.Button, ButtonProps?.className), [propClasses?.button, ButtonProps?.className])
 
   const resultMessage = useMemo(() => renderResultMessage(files), [renderResultMessage, files])
 
