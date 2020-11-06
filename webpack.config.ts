@@ -27,6 +27,7 @@ const config: Configuration = {
   bail: true,
   node: {
     Buffer: false,
+    process: false,
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
@@ -37,7 +38,7 @@ const config: Configuration = {
     alias: {
       '~': path.resolve(__dirname, 'src'),
     },
-    mainFields: ['browser', 'main'],
+    mainFields: ['browser', 'module', 'main'],
   },
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
