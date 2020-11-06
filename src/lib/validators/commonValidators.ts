@@ -100,7 +100,7 @@ export function asUnionOf<T extends readonly unknown[]>(...options: T): (input: 
 export function asUnionOf<T extends readonly unknown[]>(...options: T) {
   return (input: unknown): T[number] => {
     if (!options.includes(input)) {
-      throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is neigher ${ conj(options.map(String), ', ', ' nor ') }`)
+      throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is neither ${ conj(options.map(String), ', ', ' nor ') }`)
     }
 
     return input
