@@ -9,6 +9,7 @@
       "ES2017",
       "ES2018.RegExp"
     ],
+    "skipLibCheck": true, // TODO: @types/dotenv-webpack が修正されたら削除する
     "jsx": "React",
 
     /* Strict Type-Checking Options */

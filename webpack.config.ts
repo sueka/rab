@@ -25,10 +25,6 @@ if (env === 'test') {
 const config: Configuration = {
   mode: env,
   bail: true,
-  node: {
-    Buffer: false,
-    process: false,
-  },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     modules: [
@@ -43,7 +39,7 @@ const config: Configuration = {
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'assets/scripts/[name].[hash:8].js',
+    filename: 'assets/scripts/[name].[fullhash:8].js',
   },
   module: {
     rules: [
@@ -55,6 +51,12 @@ const config: Configuration = {
         },
       },
       {
+        test: /\.m?js$/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+      {
         test: /\.css$/,
         use: [
           'style-loader',
@@ -63,7 +65,7 @@ const config: Configuration = {
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                localIdentName: '[path][name]__[local]--[contenthash:base64:5]',
               },
             },
           },
@@ -74,9 +76,7 @@ const config: Configuration = {
   },
   optimization: {
     minimizer: [
-      new TerserPlugin({
-        sourceMap: true,
-      }),
+      new TerserPlugin({}),
     ],
     splitChunks: {
       chunks: 'all',

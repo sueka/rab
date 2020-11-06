@@ -36,7 +36,7 @@ export const testInWatchMode = series(
 
 export const updateSnapshots = parallel(typeCheckForDevelopment, npxTask('jest', ['--updateSnapshot']))
 export const test = testWithCoverage
-export const build = parallel(typeCheck, series(() => del(['dist/**/*']), npxTask('webpack')))
+export const build = parallel(typeCheck, series(() => del(['dist/**/*']), npxTask('webpack', ['--config', 'webpack.config.ts'])))
 
 export const buildStorybook = parallel(
   typeCheckForDevelopment,
@@ -51,8 +51,8 @@ export const develop = series(
   parallel(
     continuousTask('src', typeCheck),
     continuousTask('src', lint),
-    npxTask('webpack-dev-server', ['--config', 'webpack.config.dev.ts', '--hot']),
-    npxTask('start-storybook', ['--ci', '--quiet', '-p', '5678'])
+    npxTask('webpack', ['serve', '--config', 'webpack.config.dev.ts', '--hot'])/* ,
+    npxTask('start-storybook', ['--ci', '--quiet', '-p', '5678']) */ // TODO: https://github.com/storybookjs/storybook/issues/9216 が解決したら元に戻す。 Storybook 要らないかも。
   )
 )
 
