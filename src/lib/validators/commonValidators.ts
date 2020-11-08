@@ -66,6 +66,24 @@ export const optional = <A extends unknown, T extends A>(asT: (input: A) => T) =
   return asT(input)
 }
 
+export const required = <A extends unknown, T extends A>(asT: (input: A | undefined) => T | undefined) => (input: A | undefined): T => {
+  const inputAsT = asT(input)
+
+  if (inputAsT === undefined) {
+    throw new ValidationError(typed<[string]>`${ JSON.stringify(inputAsT) } must exist.`)
+  }
+
+  return inputAsT
+}
+
+export const asRequired = <A extends unknown>(input: A | undefined): A => {
+  if (input === undefined) {
+    throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } must exist.`)
+  }
+
+  return input
+}
+
 export const unionOf = <A extends unknown, T extends A, U extends A>(asT: (input: A) => T, asU: (input: A) => U) => (input: A): T | U => {
   const t = failSafe(asT)(input)
   const u = failSafe(asU)(input)
