@@ -6,7 +6,7 @@ import typed from '~/lib/typed'
 
 @injectable()
 export default class EnvVarConfigRegistry implements ConfigRegistry {
-  private env: ConfigKeyValueMap = {
+  private env: Partial<ConfigKeyValueMap> = {
     DEBUG: isOneOf('1', 'TRUE', 'True', 'true')(process.env.DEBUG),
     BASE_NAME: process.env.BASE_NAME,
     GITHUB_API_URL: process.env.GITHUB_API_URL,
@@ -23,6 +23,6 @@ export default class EnvVarConfigRegistry implements ConfigRegistry {
       throw new Error(typed<[string]>`The ${ name } environment variable does not exist.`) // TODO:
     }
 
-    return value
+    return value as ConfigKeyValueMap[T] // FIXME
   }
 }
