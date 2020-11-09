@@ -15,6 +15,9 @@ module.exports = {
   modulePathIgnorePatterns: [
     '^<rootDir>/src/.*\.css\.d\.ts$',
   ],
+  watchPathIgnorePatterns: [
+    '^<rootDir>/src/.*\\.css\\.d\\.ts$',
+  ],
   setupFiles: [
     '<rootDir>/src/setupTests.ts',
   ],

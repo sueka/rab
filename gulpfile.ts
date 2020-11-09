@@ -31,7 +31,7 @@ const testWithCoverage = parallel(typeCheckForDevelopment, npxTask('jest', ['--c
 
 export const testInWatchMode = series(
   parallel(extractMessages, tcm), // TODO: interrupt に差し込む
-  npxTask('jest', ['--onlyChanged', '--watch', '--watchPathIgnorePatterns', '\'\\.css\\.d\\.ts$\''])
+  npxTask('jest', ['--onlyChanged', '--watch'])
 )
 
 export const updateSnapshots = parallel(typeCheckForDevelopment, npxTask('jest', ['--updateSnapshot']))
