@@ -13,7 +13,7 @@ module.exports = {
     '^react-dnd-test-utils$': 'react-dnd-test-utils/dist/cjs',
   },
   modulePathIgnorePatterns: [
-    '^<rootDir>/src/.*\.css\.d\.ts$',
+    '^<rootDir>/src/.*\\.css\\.d\\.ts$',
   ],
   watchPathIgnorePatterns: [
     '^<rootDir>/src/.*\\.css\\.d\\.ts$',
