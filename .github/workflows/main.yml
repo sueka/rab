@@ -13,7 +13,7 @@ jobs:
       USER_AUTHN_API_URL: http://localhost:14566 # TODO: deploy a User Authn API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
@@ -47,7 +47,7 @@ jobs:
       USER_AUTHN_API_URL: http://localhost:14566
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
