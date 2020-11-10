@@ -42,7 +42,7 @@ jobs:
     env:
       NODE_ENV: test
       TZ: Asia/Tokyo # for snapshots
-      BASE_NAME:
+      BASE_NAME: ''
       GITHUB_API_URL: https://api.github.com
       USER_AUTHN_API_URL: http://localhost:14566
     runs-on: ubuntu-latest
