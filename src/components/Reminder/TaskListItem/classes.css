@@ -7,10 +7,10 @@
 }
 
 /* TODO: Polyfill and delete the following */
-.ListItemSecondaryAction.Ltr {
+.TaskListItemContainer.Ltr .ListItemSecondaryAction {
   padding-right: 72px;
 }
 
-.ListItemSecondaryAction.Rtl {
+.TaskListItemContainer.Rtl .ListItemSecondaryAction {
   padding-left: 72px;
 }
