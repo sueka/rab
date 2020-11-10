@@ -1,4 +1,4 @@
-import { render, waitForDomChange } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import { List, Map } from 'immutable'
 import { SnackbarProvider } from 'notistack'
 import React from 'react'
@@ -72,7 +72,14 @@ ${ '/nonexistent-path' }
       </Provider>
     )
 
-    await waitForDomChange({ container })
+    const mutationCallback = jest.fn()
+    const observer = new MutationObserver(mutationCallback)
+
+    observer.observe(container, { childList: true })
+
+    await waitFor(() => {
+      expect(mutationCallback).toBeCalledTimes(1)
+    }, { container })
 
     expect(container).toMatchSnapshot()
   })

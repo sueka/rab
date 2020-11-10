@@ -1,4 +1,4 @@
-import { render, waitForDomChange } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import React from 'react'
 import { MemoryRouter } from 'react-router'
 
@@ -37,7 +37,14 @@ describe('Route', () => {
 
     expect(container.firstChild).toMatchSnapshot()
 
-    await waitForDomChange({ container })
+    const mutationCallback = jest.fn()
+    const observer = new MutationObserver(mutationCallback)
+
+    observer.observe(container, { childList: true })
+
+    await waitFor(() => {
+      expect(mutationCallback).toBeCalledTimes(1)
+    }, { container })
 
     expect(container.firstChild).toMatchSnapshot()
   })

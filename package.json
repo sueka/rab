@@ -105,7 +105,7 @@
     "@hot-loader/react-dom": "^17.0.0",
     "@storybook/addon-knobs": "^6.0.26",
     "@storybook/react": "^6.0.26",
-    "@testing-library/react": "^9.5.0",
+    "@testing-library/react": "^11.1.1",
     "@testing-library/react-hooks": "^3.4.2",
     "@types/jest": "^25.2.3",
     "@types/redux-mock-store": "^1.0.2",
