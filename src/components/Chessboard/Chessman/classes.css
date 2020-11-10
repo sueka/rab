@@ -3,16 +3,16 @@
   color: #222;
 }
 
-.Dragging {
+.Chessman.Dragging {
   opacity: 0.5;
 }
 
-.Picking:not(.Dragging) {
+.Chessman.Picking:not(.Dragging) {
   color: teal;
 }
 
 /* TODO: in a little more normal way */
-.Preview {
+.Chessman.Preview {
   position: absolute;
   z-index: -1;
 }
