@@ -4,13 +4,13 @@ import { Redirect, Switch, useLocation } from 'react-router'
 
 import Route from '~/lib/components/Route'
 
-export /* for testing */ const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ './HomePage'))
-export /* for testing */ const ChessPage = React.lazy(() => import(/* webpackChunkName: "chess" */ './ChessPage'))
-export /* for testing */ const CounterPage = React.lazy(() => import(/* webpackChunkName: "counter" */ './CounterPage'))
-export /* for testing */ const InfoPage = React.lazy(() => import(/* webpackChunkName: "info" */ './InfoPage'))
-export /* for testing */ const PaintPage = React.lazy(() => import(/* webpackChunkName: "paint" */ './PaintPage'))
-export /* for testing */ const ReminderPage = React.lazy(() => import(/* webpackChunkName: "reminder" */ './ReminderPage'))
-export /* for testing */ const NoMatch = React.lazy(() => import(/* webpackChunkName: "noMatch" */ './NoMatch'))
+export const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ './HomePage'))
+export const ChessPage = React.lazy(() => import(/* webpackChunkName: "chess" */ './ChessPage'))
+export const CounterPage = React.lazy(() => import(/* webpackChunkName: "counter" */ './CounterPage'))
+export const InfoPage = React.lazy(() => import(/* webpackChunkName: "info" */ './InfoPage'))
+export const PaintPage = React.lazy(() => import(/* webpackChunkName: "paint" */ './PaintPage'))
+export const ReminderPage = React.lazy(() => import(/* webpackChunkName: "reminder" */ './ReminderPage'))
+export const NoMatch = React.lazy(() => import(/* webpackChunkName: "noMatch" */ './NoMatch'))
 
 const App: React.FC = () => {
   const location = useLocation()
