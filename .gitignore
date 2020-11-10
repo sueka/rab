@@ -11,6 +11,9 @@
 *.js
 *.jsx
 
+# babel
+!/babel.config.js
+
 # storybook
 /storybook-static/
 
