@@ -17,11 +17,12 @@
   }
 }
 
-.White {
+/* NOTE: できれば .Square.White にしたいが、そうすると postcss-css-variables がうまく動作しない。 */
+.White.Square {
   background-color: var(--white-square-color);
 }
 
-.Black {
+.Black.Square {
   background-color: var(--black-square-color);
 }
 

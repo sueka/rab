@@ -44,6 +44,14 @@ const config: Configuration = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        include: /node_modules\/react-intl\//,
+        loader: 'babel-loader',
+        options: {
+          envName: env,
+        },
+      },
+      {
         test: /\.tsx?$/,
         loader: 'babel-loader',
         options: {

@@ -1,5 +1,6 @@
 /* tslint:disable:no-import-side-effect */
 
+import 'element-qsa-scope'
 import 'react-app-polyfill/ie11'
 import 'react-app-polyfill/stable'
 

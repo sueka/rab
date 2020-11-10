@@ -2,6 +2,7 @@
   "modules": true,
   "plugins": {
     "autoprefixer": true,
+    "postcss-css-variables": true,
     "postcss-preset-env": {
       "stage": 4,
       "features": {
