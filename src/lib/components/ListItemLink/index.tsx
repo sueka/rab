@@ -1,6 +1,5 @@
-import * as React from 'react'
-
 import ListItem, { ListItemProps } from '@material-ui/core/ListItem'
+import * as React from 'react'
 
 import Link, { Props as LinkProps } from '~/lib/components/Link'
 

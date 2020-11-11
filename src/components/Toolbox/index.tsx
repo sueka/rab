@@ -1,10 +1,9 @@
-import React from 'react'
-
 import FormControl from '@material-ui/core/FormControl'
 import Radio from '@material-ui/core/Radio'
 import RadioGroup, { RadioGroupProps } from '@material-ui/core/RadioGroup'
 import CreateIcon from '@material-ui/icons/Create'
 import FormatColorFillIcon from '@material-ui/icons/FormatColorFill'
+import React from 'react'
 
 // TODO: Remove
 type Tool =

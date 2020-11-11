@@ -1,8 +1,7 @@
+import Button from '@material-ui/core/Button'
 import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useDispatch } from 'react-redux'
-
-import Button from '@material-ui/core/Button'
 
 import { redirectToGitHub } from '~/redux/modules/userAuthn'
 import messages from './messages'

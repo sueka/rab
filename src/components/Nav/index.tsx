@@ -1,11 +1,10 @@
-import React, { useCallback, useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-
 import AppBar from '@material-ui/core/AppBar'
 import IconButton from '@material-ui/core/IconButton'
 import Menu from '@material-ui/core/Menu'
 import Toolbar from '@material-ui/core/Toolbar'
 import MenuIcon from '@material-ui/icons/Menu'
+import React, { useCallback, useState } from 'react'
+import { FormattedMessage } from 'react-intl'
 
 import DarkSwitch from '~/components/DarkSwitch'
 import LocaleSelect from '~/components/LocaleSelect' // TODO

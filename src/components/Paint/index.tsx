@@ -1,11 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-
 import FormControl from '@material-ui/core/FormControl'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormLabel from '@material-ui/core/FormLabel'
 import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
+import React, { useCallback, useEffect, useState } from 'react'
+import { FormattedMessage } from 'react-intl'
 
 import Canvas from '~/components/Canvas'
 import ClearCanvasButton from '~/components/ClearCanvasButton'

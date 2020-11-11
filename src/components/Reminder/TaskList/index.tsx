@@ -1,6 +1,5 @@
-import React from 'react'
-
 import List from '@material-ui/core/List'
+import React from 'react'
 
 import { Props as TaskListItemDropTargetProps } from '~/components/Reminder/TaskListItemDropTarget'
 

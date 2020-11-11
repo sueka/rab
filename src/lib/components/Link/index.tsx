@@ -1,7 +1,6 @@
+import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link'
 import React from 'react'
 import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom'
-
-import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link'
 
 import { isOneOf, optional } from '~/lib/guards/commonGuards'
 import typed from '~/lib/typed'

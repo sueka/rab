@@ -1,6 +1,5 @@
-import React, { useCallback, useContext } from 'react'
-
 import Switch from '@material-ui/core/Switch'
+import React, { useCallback, useContext } from 'react'
 
 import ThemeProviderContext from '~/contexts/ThemeProviderContext'
 

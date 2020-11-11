@@ -1,7 +1,6 @@
+import Typography from '@material-ui/core/Typography'
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-
-import Typography from '@material-ui/core/Typography'
 
 import FormattedTimeOfDay from '~/lib/components/FormattedTimeOfDay'
 import { State } from '~/redux'

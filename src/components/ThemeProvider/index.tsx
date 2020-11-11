@@ -1,6 +1,5 @@
-import React, { useContext, useMemo, useState } from 'react'
-
 import { ThemeProvider as OriginalThemeProvider } from '@material-ui/core/styles'
+import React, { useContext, useMemo, useState } from 'react'
 
 import configureTheme from '~/configureTheme'
 import ThemeProviderContext from '~/contexts/ThemeProviderContext'

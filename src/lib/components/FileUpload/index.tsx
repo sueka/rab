@@ -1,9 +1,8 @@
+import Button, { ButtonProps } from '@material-ui/core/Button'
+import FormLabel from '@material-ui/core/FormLabel'
 import classnames from 'classnames'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
-
-import Button, { ButtonProps } from '@material-ui/core/Button'
-import FormLabel from '@material-ui/core/FormLabel'
 
 import cssClasses from './classes.css'
 import messages from './messages'

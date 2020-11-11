@@ -1,8 +1,7 @@
+import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { FormattedDate } from 'react-intl'
 import { connect } from 'react-redux'
-
-import Typography from '@material-ui/core/Typography'
 
 import { State } from '~/redux'
 

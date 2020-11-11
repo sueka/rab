@@ -1,7 +1,6 @@
+import CircularProgress from '@material-ui/core/CircularProgress'
 import React from 'react'
 import { Route as OriginalRoute, RouteComponentProps, RouteProps } from 'react-router'
-
-import CircularProgress from '@material-ui/core/CircularProgress'
 
 const withSuspense: (Component: React.LazyExoticComponent<React.ComponentType<RouteComponentProps>>) => React.ComponentType<RouteComponentProps> = (Component) => (props) => (
   <React.Suspense fallback={ <CircularProgress /> }>

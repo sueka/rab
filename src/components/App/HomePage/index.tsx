@@ -1,8 +1,7 @@
+import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage,  FormattedNumber, useIntl } from 'react-intl'
-
-import Typography from '@material-ui/core/Typography'
 
 import CurrentTimeOfDay from '~/components/CurrentTimeOfDay'
 import GitHubAuthnButton from '~/components/GitHubAuthnButton'

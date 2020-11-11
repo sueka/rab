@@ -1,12 +1,11 @@
+import Button from '@material-ui/core/Button'
+import Link from '@material-ui/core/Link'
+import Typography from '@material-ui/core/Typography'
 import assert from 'assert'
 import { Either, isLeft, isRight, left, right } from 'fp-ts/lib/Either'
 import { resolve } from 'inversify-react'
 import React from 'react'
 import { FormattedMessage, WrappedComponentProps, injectIntl } from 'react-intl'
-
-import Button from '@material-ui/core/Button'
-import Link from '@material-ui/core/Link'
-import Typography from '@material-ui/core/Typography'
 
 import GetRepo from '~/useCase/GetRepo'
 import messages from './messages'

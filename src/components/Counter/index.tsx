@@ -1,10 +1,9 @@
-import React, { memo, useCallback } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { useDispatch, useSelector } from 'react-redux'
-
 import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Typography from '@material-ui/core/Typography'
+import React, { memo, useCallback } from 'react'
+import { FormattedMessage } from 'react-intl'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { decrement, increment, incrementAsync, incrementIfOdd, reset, selectCount } from '~/redux/modules/counter'
 import messages from './messages'
