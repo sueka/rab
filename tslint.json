@@ -71,7 +71,7 @@
         "named-imports-order": "lowercase-last",
         "grouped-imports": true,
         "groups": [
-          "^(?:element-qsa-scope$|react-app-polyfill\/)",
+          "^(?:element-qsa-scope$|react-app-polyfill\/)", // polyfill imports
           "^(?!\\.|~|@material-ui)", // third-party w/o Material-UI
           "^@material-ui", // Material-UI
           "^(?!\\.\\.)" // first-party w/o ancestor imports
