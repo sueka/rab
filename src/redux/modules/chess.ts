@@ -29,7 +29,9 @@ export interface ChessState {
 }
 
 /**
- * 次の条件を満たすときに TRUE を返し、そうでないときに FALSE を返す。
+ * {ChessState} の不変条件を表す。
+ *
+ * 次の条件を満たせば TRUE を返し、そうでなければ FALSE を返す。
  *
  * - {picking} が存在するならば、 {board} 上の {picking}.source に何らかの駒が存在するならば、その駒は {picking}.chessman であり、かつ
  * - {picking} が存在しないならば、 {targets} も存在しない
