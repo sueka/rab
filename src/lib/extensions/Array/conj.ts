@@ -2,10 +2,12 @@ import UnreachableError from '~/lib/errors/UnreachableError'
 import typed from '~/lib/typed'
 
 /**
- * @throw {TypeError} if the size of {xs} is less than two.
+ * @throws [[TypeError]] if the size of `xs` is less than two.
  *
  * @example
+ * ``` ts
  * conj(', ', ' or ', ['A', 'B', 'C']) // 'A, B or C'
+ * ```
  */
 export default function conj(xs: string[], separator: string, lastSeparator: string): string {
   if (xs.length < 2) {

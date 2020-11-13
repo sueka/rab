@@ -9,7 +9,7 @@ export default abstract class HashableEq extends Eq implements Class.Hashable {
   }
 
   /**
-   * {this} と {that} が同値かどうかを返す。
+   * `this` と `that` が同値かどうかを返す。
    *
    * @implNote このメソッドをオーバーライドする場合、 `this.hashCode() === that.hashCode()` でなければ FALSE を返すように実装しなければならない。
    */

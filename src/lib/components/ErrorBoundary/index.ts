@@ -2,7 +2,7 @@ import React from 'react'
 
 interface Props {
   /**
-   * @param children that throws {error}
+   * @param children that throws `error`
    */
   renderError(error: unknown, children: React.ReactNode): React.ReactNode
 }

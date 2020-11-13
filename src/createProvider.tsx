@@ -12,8 +12,8 @@ type ErrorCause = 'component' | 'reducer' | 'saga' | 'rootSaga'
 
 export interface Props<S, A extends Action> {
   /**
-   * @param children that throws {error}
-   * @param store when {error} is thrown
+   * @param children that throws `error`
+   * @param store when `error` is thrown
    */
   renderError(error: unknown, children: React.ReactNode, store: Store<S, A>, cause: ErrorCause): React.ReactNode
 }

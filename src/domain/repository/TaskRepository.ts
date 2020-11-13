@@ -7,17 +7,17 @@ export default interface TaskRepository {
   list(): Promise<List<Task>>
 
   /**
-   * @throws {Error} if not found.
+   * @throws [[Error]] if not found.
    */
   findById(taskId: TaskId): Promise<Task>
 
   /**
-   * @throws {Error} if failed to store.
+   * @throws [[Error]] if failed to store.
    */
   store(task: Task): Promise<void>
 
   /**
-   * @throws {Error} if not found.
+   * @throws [[Error]] if not found.
    */
   remove(taskId: Task): Promise<void>
 }

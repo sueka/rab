@@ -7,14 +7,14 @@
  */
 export default abstract class Eq implements Class.Eq {
   /**
-   * {this} と {that} が同値でありうるかどうかを返す。
+   * `this` と `that` が同値でありうるかどうかを返す。
    *
-   * @implNote このメソッドをサブクラスでオーバーライドする場合、 {that} がそのクラスのインスタンスであるかどうかを返すように実装しなければならない。
+   * @implNote このメソッドをサブクラスでオーバーライドする場合、 `that` がそのクラスのインスタンスであるかどうかを返すように実装しなければならない。
    */
   protected abstract canEqual(that: Eq): boolean
 
   /**
-   * {this} と {that} が同値かどうかを返す。
+   * `this` と `that` が同値かどうかを返す。
    *
    * @implNote このメソッドをオーバーライドする場合、 `this.canEqual(that) && that.canEqual(this)` でなければ FALSE を返すように実装しなければならない。
    */
