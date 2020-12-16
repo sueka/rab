@@ -79,7 +79,7 @@ ${ '/nonexistent-path' }
 
     await waitFor(() => {
       expect(mutationCallback).toBeCalledTimes(1)
-    }, { container })
+    }, { container: container as HTMLElement }) // TODO
 
     expect(container).toMatchSnapshot()
   })

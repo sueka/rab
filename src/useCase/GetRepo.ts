@@ -1,6 +1,6 @@
 import { Endpoints } from '@octokit/types' // tslint:disable-line:no-submodule-imports
 
-export type GetRepoInput = Endpoints['GET /repos/:owner/:repo']['parameters']
+export type GetRepoInput = Endpoints['GET /repos/{owner}/{repo}']['parameters']
 
 interface SuccessfulGetRepoOutput {
   successful: true

@@ -44,7 +44,7 @@ describe('Route', () => {
 
     await waitFor(() => {
       expect(mutationCallback).toBeCalledTimes(1)
-    }, { container })
+    })
 
     expect(container.firstChild).toMatchSnapshot()
   })

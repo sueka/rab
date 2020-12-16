@@ -9,10 +9,10 @@ type OnceForEachEffectCallback<T> = (x: T) => (void | ((x: T) => void | undefine
  */
 export default function useOnceForEachEffect<T, U = T>(xs: T[], identify: (x: T) => U = identity as (x: T) => U, effect: OnceForEachEffectCallback<T>, deps?: DependencyList) { // TODO: delete `as (x: T) => U`; 引数の型は反変なので、デフォルト引数の型は、引数の型と同じかそれより狭い型に安全に変換できるが、 TypeScript の実装はそうなっていない。
   useEffect(() => {
-    const cleanups: Array<{
+    const cleanups: {
       x: T,
       cleanup: ReturnType<typeof effect>
-    }> = []
+    }[] = []
 
     const doneIds: U[] = []
 
