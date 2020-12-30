@@ -10,7 +10,7 @@ export default class EnvVarConfigRegistry implements ConfigRegistry {
     DEBUG: optional(isOneOf('1', 'TRUE', 'True', 'true'))(process.env.DEBUG) ?? false,
     BASE_NAME: asRequired(process.env.BASE_NAME),
     GITHUB_API_URL: asRequired(process.env.GITHUB_API_URL),
-    USER_AUTHN_API_URL: asRequired(process.env.USER_AUTHN_API_URL),
+    USER_SERVICE_URL: asRequired(process.env.USER_SERVICE_URL),
   }
 
   /**
