@@ -3,7 +3,7 @@ import yieldThis from '~/lib/extensions/Unknown/yieldThis'
 import { asBoolean, asObject, asString } from '~/lib/validators/commonValidators'
 import Entity from './Entity'
 
-const asIdSerializedTask = asObject('an Id-serialized Task', (input) => ({
+export const asDomainObjectSerializedTask = asObject('an Id-serialized Task', (input) => ({
   id: asString(input.id),
   content: asString(input.content),
   done: asBoolean(input.done),
@@ -31,7 +31,7 @@ export default class Task extends Entity {
   }
 
   public static deserialize(serialized: string): Task {
-    const deserialized = yieldThis(asIdSerializedTask(JSON.parse(serialized)), (({ id, content, done }) => ({
+    const deserialized = yieldThis(asDomainObjectSerializedTask(JSON.parse(serialized)), (({ id, content, done }) => ({
       id: TaskId.deserialize(id),
       content,
       done,
