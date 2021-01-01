@@ -4,7 +4,7 @@ import Task from '~/domain/entity/Task'
 import ReminderId from '~/domain/vo/ReminderId'
 import Entity from './Entity'
 
-interface ReminderRequest {
+interface ReminderParams {
   id: ReminderId
   tasks: List<Task>
 }
@@ -15,7 +15,7 @@ export default class Reminder extends Entity {
   constructor({
     id,
     tasks,
-  }: ReminderRequest) {
+  }: ReminderParams) {
     super(id)
 
     this._tasks = tasks
@@ -33,7 +33,7 @@ export default class Reminder extends Entity {
 
   public with({
     tasks = this.tasks,
-  }: Partial<Alt.Omit<ReminderRequest, 'id'>>): Reminder {
+  }: Partial<Alt.Omit<ReminderParams, 'id'>>): Reminder {
     return new Reminder({ id: this.id as ReminderId, tasks }) // TODO
   }
 
