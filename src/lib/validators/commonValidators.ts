@@ -103,7 +103,7 @@ export const unionOf = <A extends unknown, T extends A, U extends A>(asT: (input
   throw new UnreachableError
 }
 
-const listOf = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: readonly A[]): T[] => {
+export const listOf = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: readonly A[]): T[] => {
   if (!Array.isArray(input)) {
     throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an array.`)
   }
@@ -158,6 +158,14 @@ export const asObject = <T>(className: string, asT: (input: any) => T) => (input
     }
 
     throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
+  }
+}
+
+export const asInstanceOf = <T>(Class: new (...args: any[]) => T) => (input: unknown): T => {
+  if (input instanceof Class) {
+    return input
+  } else {
+    throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is not a/an ${ Class.name }.`)
   }
 }
 
