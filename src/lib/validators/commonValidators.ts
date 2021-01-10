@@ -161,7 +161,7 @@ export const asObject = <T>(className: string, asT: (input: any) => T) => (input
   }
 }
 
-export const asInstanceOf = <T>(Class: new (...args: any[]) => T) => (input: unknown): T => {
+export const asInstanceOf = <T>(Class: new (...args: any[]) => T) => (input: unknown): T => { // tslint:disable-line:no-any
   if (input instanceof Class) {
     return input
   } else {
