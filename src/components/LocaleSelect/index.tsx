@@ -51,7 +51,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
   // NOTE: Fortunately, FormControl is nothing but FormControl.
   const variant = useMemo(() => FormControlProps?.variant ?? theme?.props?.MuiFormControl?.variant ?? 'standard', [FormControlProps?.variant, theme?.props?.MuiFormControl?.variant])
 
-  const rootClassName = useMemo(() => classnames(propClasses?.root,  FormControlProps?.className), [propClasses?.root, FormControlProps?.className])
+  const rootClassName = useMemo(() => classnames(propClasses?.root, FormControlProps?.className), [propClasses?.root, FormControlProps?.className])
   const labelClassName = useMemo(() => classnames(propClasses?.label, cssClasses.InputLabel), [propClasses?.label])
   const inputClassName = useMemo(() => classnames(propClasses?.input), [propClasses?.input])
   const selectIconClassName = useMemo(() => classnames(propClasses?.selectIcon), [propClasses?.selectIcon])
