@@ -1,5 +1,6 @@
 {
   "src.components.App.ChessPage.chess": "chess",
+  "src.components.App.ClockPage.clock": "clock",
   "src.components.App.CounterPage.counter": "counter",
   "src.components.App.HomePage.helloWorld": "Hello, world!",
   "src.components.App.HomePage.home": "home",
@@ -19,6 +20,7 @@
   "src.components.Info.fetchingNotStarted": "Fetching not started.",
   "src.components.LocaleSelect.languages": "Languages",
   "src.components.Nav.chess": "chess",
+  "src.components.Nav.clock": "clock",
   "src.components.Nav.counter": "counter",
   "src.components.Nav.home": "home",
   "src.components.Nav.info": "info",

@@ -1,5 +1,6 @@
 {
   "src.components.App.ChessPage.chess": "שחמט",
+  "src.components.App.ClockPage.clock": "שעון",
   "src.components.App.CounterPage.counter": "מונה",
   "src.components.App.HomePage.helloWorld": "Hello, world!",
   "src.components.App.HomePage.home": "בית",
@@ -19,6 +20,7 @@
   "src.components.Info.fetchingNotStarted": "האחזור לא התחיל.",
   "src.components.LocaleSelect.languages": "דף זה בשפות אחרות",
   "src.components.Nav.chess": "שחמט",
+  "src.components.Nav.clock": "שעון",
   "src.components.Nav.counter": "מונה",
   "src.components.Nav.home": "בית",
   "src.components.Nav.info": "מידע",

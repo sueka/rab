@@ -1,5 +1,6 @@
 {
   "src.components.App.ChessPage.chess": "チェス",
+  "src.components.App.ClockPage.clock": "時計",
   "src.components.App.CounterPage.counter": "カウンター",
   "src.components.App.HomePage.helloWorld": "Hello, world!",
   "src.components.App.HomePage.home": "ホーム",
@@ -19,6 +20,7 @@
   "src.components.Info.fetchingNotStarted": "読み込みは開始していません。",
   "src.components.LocaleSelect.languages": "言語",
   "src.components.Nav.chess": "チェス",
+  "src.components.Nav.clock": "時計",
   "src.components.Nav.counter": "カウンター",
   "src.components.Nav.home": "ホーム",
   "src.components.Nav.info": "情報",
