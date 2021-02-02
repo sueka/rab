@@ -47,6 +47,7 @@ describe.each`
 location
 ${ '/' }
 ${ '/chess' }
+${ '/clock' }
 ${ '/counter' }
 ${ '/info' }
 ${ '/paint' }

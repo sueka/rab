@@ -6,6 +6,7 @@ import Route from '~/lib/components/Route'
 
 export const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ './HomePage'))
 export const ChessPage = React.lazy(() => import(/* webpackChunkName: "chess" */ './ChessPage'))
+export const ClockPage = React.lazy(() => import(/* webpackChunkName: "clock" */ './ClockPage'))
 export const CounterPage = React.lazy(() => import(/* webpackChunkName: "counter" */ './CounterPage'))
 export const InfoPage = React.lazy(() => import(/* webpackChunkName: "info" */ './InfoPage'))
 export const PaintPage = React.lazy(() => import(/* webpackChunkName: "paint" */ './PaintPage'))
@@ -27,6 +28,7 @@ const App: React.FC = () => {
     <Switch>
       <Route exact strict sensitive path="/" component={ HomePage } />
       <Route exact strict sensitive path="/chess" component={ ChessPage } />
+      <Route exact strict sensitive path="/clock" component={ ClockPage } />
       <Route exact strict sensitive path="/counter" component={ CounterPage } />
       <Route exact strict sensitive path="/info" component={ InfoPage } />
       <Route exact strict sensitive path="/paint" component={ PaintPage } />

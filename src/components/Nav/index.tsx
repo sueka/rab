@@ -52,6 +52,9 @@ const Nav: React.FC = () => {
         <MenuItemLink to="/chess" onClick={ closeMenu }>
           <FormattedMessage { ...messages.chess } />
         </MenuItemLink>
+        <MenuItemLink to="/clock" onClick={ closeMenu }>
+          <FormattedMessage { ...messages.clock } />
+        </MenuItemLink>
         <MenuItemLink to="/counter" onClick={ closeMenu }>
           <FormattedMessage { ...messages.counter } />
         </MenuItemLink>
