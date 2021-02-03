@@ -142,6 +142,8 @@ export class IoService {
   }
 
   public /* for testing */ *startClockSaga(): SagaIterator {
+    yield put(updateNow())
+
     // tslint:disable-next-line:no-loop-statement
     while (true) {
       yield call(delay, 1000 - new Date().getMilliseconds())
