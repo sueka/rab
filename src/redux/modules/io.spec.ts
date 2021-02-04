@@ -50,6 +50,7 @@ describe('IoService', () => {
   test('startClockSaga', async () => {
     const it = ioService.startClockSaga()
 
+    expect(it.next().value).toEqual(put(updateNow()))
     expect(it.next().value).toEqual(call(delay, expect.any(Number)))
     expect(it.next().value).toEqual(put(updateNow()))
     expect(it.next().value).toEqual(call(delay, expect.any(Number)))
