@@ -80,6 +80,7 @@
     "postcss-css-variables": "^0.17.0",
     "postcss-loader": "^4.1.0",
     "postcss-preset-env": "^6.7.0",
+    "proposal-temporal": "^0.7.0",
     "react": "^17.0.1",
     "react-app-polyfill": "^2.0.0",
     "react-dnd": "^11.1.3",

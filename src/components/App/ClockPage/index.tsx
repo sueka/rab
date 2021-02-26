@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { useIntl } from 'react-intl'
 
-import Clock from '~/components/Clock'
+import AnalogClock from '~/components/AnalogClock'
 import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
@@ -12,7 +12,7 @@ const ClockPage: React.FC = () => {
   return (
     <>
       <Helmet title={ formatMessage(messages.clock) } />
-      <Clock />
+      <AnalogClock />
     </>
   )
 }
