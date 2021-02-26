@@ -14,6 +14,7 @@ import { v4 } from 'uuid'
 
 import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import { Tag, getNativeNameByTag, isTag } from '~/lib/languageNameSolver'
+import typed from '~/lib/typed'
 import { State } from '~/redux'
 import { selectLocale } from '~/redux/modules/localeSelector'
 import cssClasses from './classes.css'
@@ -76,7 +77,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
       const rect = node.getBoundingClientRect()
 
       // tslint:disable-next-line:no-object-mutation
-      selectSelect.style.minWidth = `${ rect.width }px` // FIXME: style を操作しないようにする
+      selectSelect.style.minWidth = typed<[number]>`${ rect.width }px` // FIXME: style を操作しないようにする
     }
   }, [select.current]) // eslint-disable-line react-hooks/exhaustive-deps
 
