@@ -1,7 +1,7 @@
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import Helmet from 'react-helmet'
-import { FormattedMessage, FormattedNumber, useIntl } from 'react-intl'
+import { FormattedNumber, useIntl } from 'react-intl'
 
 import CurrentTimeOfDay from '~/components/CurrentTimeOfDay'
 import GitHubAuthnButton from '~/components/GitHubAuthnButton'
@@ -16,9 +16,6 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Helmet title={ formatMessage(messages.home) } />
-      <Typography>
-        <FormattedMessage { ...messages.helloWorld } />
-      </Typography>
       <Typography>
         <FormattedNumber format="usd" value={ 100 } />
       </Typography>

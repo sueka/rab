@@ -2,7 +2,6 @@
   "src.components.App.ChessPage.chess": "chess",
   "src.components.App.ClockPage.clock": "clock",
   "src.components.App.CounterPage.counter": "counter",
-  "src.components.App.HomePage.helloWorld": "Hello, world!",
   "src.components.App.HomePage.home": "home",
   "src.components.App.InfoPage.info": "info",
   "src.components.App.PaintPage.paint": "paint",

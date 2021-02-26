@@ -111,13 +111,6 @@ exports[`App at / 1`] = `
     class="MuiTypography-root MuiTypography-body1"
   >
     <bdi>
-      Hello, world!
-    </bdi>
-  </p>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    <bdi>
       $100.00
     </bdi>
   </p>
