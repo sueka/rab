@@ -68,20 +68,6 @@ interface Props {
   container: interfaces.Container
 }
 
-// NOTE: prefers-color-scheme の変更によって Main が re-render されると、 Provider が変更され、 ThemeProvider の state がリセットされる。
-const ThemedApp: React.FC<{}> = () => {
-  const dark = useMediaQuery('(prefers-color-scheme: dark)')
-
-  return (
-    <ThemeProvider defaultDark={ dark }>
-      <CssBaseline />
-      <SnackbarProvider>
-        <App />
-      </SnackbarProvider>
-    </ThemeProvider>
-  )
-}
-
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
 
 /**
@@ -96,7 +82,7 @@ const Main: React.FC<Props> = ({ history, container }) => {
     return service.rootSaga.call(service)
   }, [container])
 
-  const Provider = createProvider(history, reducer, invariant, rootSaga)
+  const Provider = useMemo(() => createProvider(history, reducer, invariant, rootSaga), [history, reducer, rootSaga])
 
   const renderError: ProviderProps<State, Action>['renderError'] = useCallback((error: unknown) => {
     if (error instanceof Error) {
@@ -113,6 +99,8 @@ const Main: React.FC<Props> = ({ history, container }) => {
     throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
   }, [Provider])
 
+  const dark = useMediaQuery('(prefers-color-scheme: dark)')
+
   return (
     <>
       <Helmet
@@ -125,7 +113,12 @@ const Main: React.FC<Props> = ({ history, container }) => {
             <ConnectedRouter history={ history }>
               <ServiceProvider container={ container }>
                 <StylesProvider jss={ jss }>
-                  <ThemedApp />
+                  <ThemeProvider defaultDark={ dark }>
+                    <CssBaseline />
+                    <SnackbarProvider>
+                      <App />
+                    </SnackbarProvider>
+                  </ThemeProvider>
                 </StylesProvider>
               </ServiceProvider>
             </ConnectedRouter>
