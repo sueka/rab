@@ -40,7 +40,7 @@ const CopiableTextField: React.FC<Props> = ({ InputProps, ...restProps }) => {
 
   // TODO: Support IE
   const handleClickCopyTextButton = useCallback(async () => {
-    if (input.current?.value === undefined) {
+    if (input.current === undefined) {
       throw new Error
     }
 
