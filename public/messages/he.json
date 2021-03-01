@@ -30,6 +30,8 @@
   "src.components.Reminder.TaskListItem.asBoundedLengthStringErrorMessage": "{ name } לכלול לא יותר מ-{ upperBound } תווים.",
   "src.components.Reminder.inputIsNotBetweenLowerBoundAndUpperBound": "{ input } לא בין { lowerBound } ל { upperBound }.",
   "src.components.SetClockButton.setTheClock": "כוון את השעון",
+  "src.lib.components.CopiableTextField.copyText": "העתקת הטקסט",
+  "src.lib.components.CopiableTextField.textCopied": "הטקסט הועתק.",
   "src.lib.components.FileUpload.browse": "עיון…",
   "src.lib.components.FileUpload.nFilesSelected": "{ n } קבצים נבחרו.",
   "src.lib.components.FileUpload.noFileSelected": "לא נבחר קובץ."
