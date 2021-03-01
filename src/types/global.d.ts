@@ -25,5 +25,5 @@ declare namespace string {
 }
 
 declare namespace React {
-  type PropsOf<T> = T extends React.Component<infer P> ? P : never // TODO: Support FC
+  type PropsOf<T> = T extends React.ComponentType<infer P> ? P : never
 }
