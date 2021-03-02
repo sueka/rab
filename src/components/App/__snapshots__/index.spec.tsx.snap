@@ -906,14 +906,10 @@ exports[`App at /clock 1`] = `
       </div>
     </div>
   </header>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    <canvas
-      height="400"
-      width="400"
-    />
-  </p>
+  <canvas
+    height="400"
+    width="400"
+  />
 </div>
 `;
 

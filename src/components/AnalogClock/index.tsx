@@ -1,4 +1,3 @@
-import Typography from '@material-ui/core/Typography'
 import { Temporal } from 'proposal-temporal'
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
@@ -30,22 +29,20 @@ const AnalogClock: React.FC<Props> = ({ now, startClock, stopClock }) => {
   }, [startClock, stopClock])
 
   return (
-    <Typography>
-      <StoppedClock
-        time={
-          // NOTE: locale は時刻の書式が hh:mm:ss なロケールなら何でもよいが、 Firefox 85 では new Date(0).toLocaleString('ja', { hour: '2-digit', minute: '2-digit' }) が "9:00" となる。
-          Temporal.PlainTime.from(now.toLocaleTimeString('en', {
-            calendar: 'gregory',
-            numberingSystem: 'latn',
-            timeZone,
-            hourCycle: 'h23',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-          }))
-        }
-      />
-    </Typography>
+    <StoppedClock
+      time={
+        // NOTE: locale は時刻の書式が hh:mm:ss なロケールなら何でもよいが、 Firefox 85 では new Date(0).toLocaleString('ja', { hour: '2-digit', minute: '2-digit' }) が "9:00" となる。
+        Temporal.PlainTime.from(now.toLocaleTimeString('en', {
+          calendar: 'gregory',
+          numberingSystem: 'latn',
+          timeZone,
+          hourCycle: 'h23',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        }))
+      }
+    />
   )
 }
 
