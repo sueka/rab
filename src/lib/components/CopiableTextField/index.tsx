@@ -4,7 +4,7 @@ import TextField, { TextFieldProps } from '@material-ui/core/TextField'
 import Tooltip from '@material-ui/core/Tooltip'
 import FilterNoneIcon from '@material-ui/icons/FilterNone'
 import { useSnackbar } from 'notistack'
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useIntl } from 'react-intl'
 
 import messages from './messages'
@@ -53,6 +53,13 @@ const CopiableTextField: React.FC<Props> = ({ InputProps, ...restProps }) => {
     enqueueSnackbar(formatMessage(messages.textCopied))
   }, [input, formatMessage, enqueueSnackbar])
 
+  const [copyTextButtonDisabled, setCopyTextButtonDisabled] = useState(false)
+
+  // NOTE: render 後の input.current が必要なので、 useMemo ではなく useState + useEffect を使う。また、 ref は deps にできない。
+  useEffect(() => {
+    setCopyTextButtonDisabled(input.current === undefined || input.current.value === '')
+  })
+
   return (
     <TextField
       inputRef={ input }
@@ -60,7 +67,7 @@ const CopiableTextField: React.FC<Props> = ({ InputProps, ...restProps }) => {
         endAdornment: (
           <InputAdornment position="end">
             <Tooltip title={ formatMessage(messages.copyText) } >
-              <IconButton onClick={ handleClickCopyTextButton } disabled={ input.current === undefined || input.current.value === '' }>
+              <IconButton onClick={ handleClickCopyTextButton } disabled={ copyTextButtonDisabled }>
                 <ContentCopyIcon />
               </IconButton>
             </Tooltip>
