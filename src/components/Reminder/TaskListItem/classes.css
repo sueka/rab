@@ -1,16 +1,3 @@
 .TaskListItemContainer.Dragging {
   opacity: 0;
 }
-
-.ListItemSecondaryAction {
-  padding-inline-end: 72px; /* TODO */
-}
-
-/* TODO: Polyfill and delete the following */
-.TaskListItemContainer.Ltr .ListItemSecondaryAction {
-  padding-right: 72px;
-}
-
-.TaskListItemContainer.Rtl .ListItemSecondaryAction {
-  padding-left: 72px;
-}

@@ -8,12 +8,11 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import DragHandleIcon from '@material-ui/icons/DragHandle'
 import Case from 'case'
 import classnames from 'classnames'
-import React, { useCallback, useContext, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { DragObjectWithType, useDrag } from 'react-dnd'
 import { useIntl } from 'react-intl'
 
 import Task, { TaskParams } from '~/domain/entity/Task'
-import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import { isOneOf } from '~/lib/guards/commonGuards'
 import ValidationError from '~/lib/validators/ValidationError'
 import classes from './classes.css'
@@ -54,13 +53,9 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
     }),
   })
 
-  const { dir } = useContext(IntlProviderContext)
-
   const className = useMemo(() => classnames(classes.TaskListItemContainer, {
-    [classes.Ltr]: dir === 'ltr',
-    [classes.Rtl]: dir === 'rtl',
     [classes.Dragging]: dragging,
-  }), [dir, dragging])
+  }), [dragging])
 
   const handleContentChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     onChange({
@@ -103,7 +98,6 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
       <ListItem
         classes={ {
           container: className,
-          secondaryAction: classes.ListItemSecondaryAction,
         } }
       >
         <ListItemIcon>
@@ -123,7 +117,7 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
           helperText={ helperText }
         />
         <ListItemSecondaryAction>
-          <IconButton onClick={ onDelete }>
+          <IconButton onClick={ onDelete } edge="end">
             <DeleteIcon />
           </IconButton>
         </ListItemSecondaryAction>
