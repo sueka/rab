@@ -109,6 +109,7 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
           <Checkbox checked={ value.done } onChange={ handleDoneChange } />
         </ListItemIcon>
         <TextField
+          variant="standard"
           fullWidth
           value={ value.content }
           onChange={ handleContentChange }
