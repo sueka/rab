@@ -1,8 +1,10 @@
 import Checkbox from '@material-ui/core/Checkbox'
+import IconButton from '@material-ui/core/IconButton'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import TextField from '@material-ui/core/TextField'
+import DeleteIcon from '@material-ui/icons/Delete'
 import DragHandleIcon from '@material-ui/icons/DragHandle'
 import Case from 'case'
 import classnames from 'classnames'
@@ -14,7 +16,6 @@ import Task, { TaskParams } from '~/domain/entity/Task'
 import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import { isOneOf } from '~/lib/guards/commonGuards'
 import ValidationError from '~/lib/validators/ValidationError'
-import DeleteTaskButton from './DeleteTaskButton'
 import classes from './classes.css'
 import messages from './messages'
 
@@ -122,7 +123,9 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
           helperText={ helperText }
         />
         <ListItemSecondaryAction>
-          <DeleteTaskButton onClick={ onDelete } />
+          <IconButton onClick={ onDelete }>
+            <DeleteIcon />
+          </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
     </div>
