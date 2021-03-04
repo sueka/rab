@@ -8,13 +8,6 @@
 
   --white-square-color: white;
   --black-square-color: #c0c0c0;
-
-  /* TODO: Consider Nav */
-  @media screen and (orientation: portrait) {
-    height: 12.5vw;
-    width: 12.5vw;
-    font-size: 7.8125vw;
-  }
 }
 
 /* NOTE: できれば .Square.White にしたいが、そうすると postcss-css-variables がうまく動作しない。 */
