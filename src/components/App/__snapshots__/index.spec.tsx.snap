@@ -117,16 +117,21 @@ exports[`App at / 1`] = `
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    <bdi>
-      Jul 27, 2019
-    </bdi>
-  </p>
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
-    <bdi>
-      09:00:00
-    </bdi>
+    <p
+      class="MuiTypography-root MuiTypography-body1"
+    >
+      <bdi>
+        Jul 27, 2019
+      </bdi>
+    </p>
+     
+    <p
+      class="MuiTypography-root MuiTypography-body1"
+    >
+      <bdi>
+        09:00:00
+      </bdi>
+    </p>
   </p>
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-outlined"

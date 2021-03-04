@@ -25,8 +25,9 @@ const HomePage: React.FC = () => {
       <Typography>
         <FormattedNumber format="usd" value={ 100 } />
       </Typography>
-      <Today />
-      <CurrentTimeOfDay />
+      <Typography>
+        <Today /> <CurrentTimeOfDay />
+      </Typography>
       <SetClockButton />
       <GitHubAuthnButton />
       <CopiableTextField value={ text } onChange={ handleChange } />
