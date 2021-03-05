@@ -184,7 +184,7 @@ export function asConstant<T extends Json>(a: T): (input: unknown) => T {
       throw new ValidationError(typed<[string, string]>`${ JSON.stringify(inputAsJson) } is not ${ JSON.stringify(a) }.`)
     }
 
-    return inputAsJson as T
+    return inputAsJson as T // NOTE: !equalsJsons(a, b) → a is not a typeof b ではないので、 equalsJsons で inputAsJson の型を狭めることはできない。
   }
 }
 
