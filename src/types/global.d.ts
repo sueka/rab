@@ -18,7 +18,7 @@ declare namespace Alt {
   type Exclude<T, U extends T> = T extends U ? never : T
   type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
   type SoftOmit<T, K extends keyof T> = T & { [key in K]: never }
-  type ForceOmit<T, K extends Index> = Omit<T, K & keyof T>
+  type ForceOmit<T, K extends Index> = Omit<T, K & keyof T> // NOTE: 実際には Alt ではないが Omit との関聯が分かりやすいようにここに置いている
 }
 
 declare namespace string {
