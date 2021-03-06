@@ -33,6 +33,11 @@ module.exports = (api) => {
           'babel-plugin-unassert',
         ],
       },
+      development: {
+        plugins: [
+          'react-hot-loader/babel',
+        ],
+      },
     },
   }
 }
