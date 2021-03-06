@@ -4,7 +4,6 @@ import Helmet from 'react-helmet'
 import { FormattedNumber, useIntl } from 'react-intl'
 
 import CurrentTimeOfDay from '~/components/CurrentTimeOfDay'
-import GitHubAuthnButton from '~/components/GitHubAuthnButton'
 import SetClockButton from '~/components/SetClockButton'
 import Today from '~/components/Today'
 import CopiableTextField from '~/lib/components/CopiableTextField'
@@ -29,7 +28,6 @@ const HomePage: React.FC = () => {
         <Today /> <CurrentTimeOfDay />
       </Typography>
       <SetClockButton />
-      <GitHubAuthnButton />
       <CopiableTextField value={ text } onChange={ handleChange } />
     </>
   )
