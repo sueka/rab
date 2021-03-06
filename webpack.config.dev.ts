@@ -22,6 +22,19 @@ config.resolve.alias = {
   'react-dom': '@hot-loader/react-dom',
 }
 
+if (typeof config.entry !== 'string') {
+  throw new Error('Not implemented')
+}
+
+const host = '0.0.0.0'
+const port = 1234
+
+config.entry = [
+  `webpack-dev-server/client?http://${ host }:${ port }`,
+  'webpack/hot/only-dev-server',
+  config.entry,
+]
+
 config.plugins.push(new BundleAnalyzerPlugin({
   analyzerPort: 10122,
   openAnalyzer: false,
@@ -29,9 +42,9 @@ config.plugins.push(new BundleAnalyzerPlugin({
 
 config.devServer = {
   contentBase: path.join(__dirname, 'dist'),
-  host: '0.0.0.0',
+  host,
   disableHostCheck: true,
-  port: 1234,
+  port,
   historyApiFallback: true,
 }
 
