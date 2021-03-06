@@ -1,4 +1,3 @@
-import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { FormattedDate } from 'react-intl'
 import { connect } from 'react-redux'
@@ -13,9 +12,7 @@ type Props =
   & StateProps
 
 const Today: React.FC<Props> = ({ now }) => (
-  <Typography>
-    <FormattedDate value={ now } format="medium" />
-  </Typography>
+  <FormattedDate value={ now } format="medium" />
 )
 
 // connect
