@@ -117,21 +117,13 @@ exports[`App at / 1`] = `
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    <p
-      class="MuiTypography-root MuiTypography-body1"
-    >
-      <bdi>
-        Jul 27, 2019
-      </bdi>
-    </p>
+    <bdi>
+      Jul 27, 2019
+    </bdi>
      
-    <p
-      class="MuiTypography-root MuiTypography-body1"
-    >
-      <bdi>
-        09:00:00
-      </bdi>
-    </p>
+    <bdi>
+      09:00:00
+    </bdi>
   </p>
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
@@ -143,22 +135,6 @@ exports[`App at / 1`] = `
     >
       <bdi>
         Set the clock
-      </bdi>
-    </span>
-    <span
-      class="MuiTouchRipple-root"
-    />
-  </button>
-  <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
-    tabindex="0"
-    type="button"
-  >
-    <span
-      class="MuiButton-label"
-    >
-      <bdi>
-        Authenticate a user with GitHub
       </bdi>
     </span>
     <span
