@@ -2,7 +2,7 @@ import { ChildProcess, spawn } from 'child_process'
 import del from 'del'
 import { TaskFunction, Globs, parallel, series, watch } from 'gulp'
 
-const ignored = ['.cache', 'coverage', 'dist', 'doc', 'storybook-static', '**/*.js{,x}', '!babel.config.js', '!jest.config.js', '!typedoc.js']
+const ignored = ['.cache', 'coverage', 'dist', 'doc', '**/*.js{,x}', '!babel.config.js', '!jest.config.js', '!typedoc.js']
 
 //
 //   _|                          _|
@@ -38,11 +38,6 @@ export const updateSnapshots = parallel(typeCheckForDevelopment, npxTask('jest',
 export const test = testWithCoverage
 export const build = parallel(typeCheck, series(() => del(['dist/**/*']), npxTask('webpack', ['--config', 'webpack.config.ts'])))
 
-export const buildStorybook = parallel(
-  typeCheckForDevelopment,
-  npxTask('build-storybook', [], { NODE_ENV: process.env.NODE_ENV ?? 'development' })
-)
-
 export const buildGhPagesCustom404Page = parallel(typeCheck, series(() => del(['gh-pages/dist/**/*']), npxTask('webpack', ['--config', 'gh-pages/webpack.config.ts'])))
 export const document = npxTask('typedoc')
 
@@ -51,8 +46,7 @@ export const develop = series(
   parallel(
     continuousTask('src', typeCheck),
     continuousTask('src', lint),
-    npxTask('webpack', ['serve', '--config', 'webpack.config.dev.ts', '--hot'])/* ,
-    npxTask('start-storybook', ['--ci', '--quiet', '-p', '5678']) */ // TODO: https://github.com/storybookjs/storybook/issues/9216 が解決したら元に戻す。 Storybook 要らないかも。
+    npxTask('webpack', ['serve', '--config', 'webpack.config.dev.ts', '--hot'])
   )
 )
 

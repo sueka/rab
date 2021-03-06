@@ -44,10 +44,6 @@
     "node_modules/babel-plugin-react-intl-auto/**/*.d.ts"
   ],
   "exclude": [
-    /* development */
-    "src/storybook/**/*",
-    "src/**/stories.tsx",
-
     /* test */
     "src/setupTests.ts",
     "src/**/*.spec.ts",

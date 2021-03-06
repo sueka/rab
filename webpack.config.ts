@@ -34,6 +34,9 @@ const config: Configuration = {
     alias: {
       '~': path.resolve(__dirname, 'src'),
     },
+    fallback: {
+      assert: require.resolve('assert'),
+    },
     mainFields: ['browser', 'module', 'main'],
   },
   entry: path.resolve(__dirname, 'src/index.tsx'),

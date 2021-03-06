@@ -26,7 +26,5 @@ module.exports = {
     '<rootDir>/src/**/*.ts{x,}',
     '!<rootDir>/src/components/**/messages.ts',
     '!<rootDir>/src/lib/components/**/messages.ts',
-    '!<rootDir>/src/components/**/{*.,}stories.ts{x,}',
-    '!<rootDir>/src/lib/components/**/{*.,}stories.ts{x,}',
   ],
 }

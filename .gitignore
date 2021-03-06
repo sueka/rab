@@ -14,9 +14,6 @@
 # babel
 !/babel.config.js
 
-# storybook
-/storybook-static/
-
 # jest
 /coverage/
 !/jest.config.js
