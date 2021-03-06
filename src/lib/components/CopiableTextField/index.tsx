@@ -3,6 +3,7 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import TextField, { TextFieldProps } from '@material-ui/core/TextField'
 import Tooltip from '@material-ui/core/Tooltip'
 import FilterNoneIcon from '@material-ui/icons/FilterNone'
+import copy from 'copy-to-clipboard'
 import { useSnackbar } from 'notistack'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useIntl } from 'react-intl'
@@ -38,8 +39,7 @@ const CopiableTextField: React.FC<Props> = ({ InputProps, ...restProps }) => {
   const { enqueueSnackbar } = useSnackbar()
   const input = useRef<HTMLInputElement>()
 
-  // TODO: Support IE
-  const handleClickCopyTextButton = useCallback(async () => {
+  const handleClickCopyTextButton = useCallback(() => {
     if (input.current === undefined) {
       throw new Error
     }
@@ -48,7 +48,7 @@ const CopiableTextField: React.FC<Props> = ({ InputProps, ...restProps }) => {
       return
     }
 
-    await navigator.clipboard.writeText(input.current.value)
+    copy(input.current.value) // TODO: await navigator.clipboard.writeText(input.current.value)
 
     enqueueSnackbar(formatMessage(messages.textCopied))
   }, [input, formatMessage, enqueueSnackbar])
