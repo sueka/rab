@@ -66,7 +66,7 @@ const CopiableTextField: React.FC<Props> = ({ InputProps, ...restProps }) => {
       InputProps={ {
         endAdornment: (
           <InputAdornment position="end">
-            <Tooltip title={ formatMessage(messages.copyText) } >
+            <Tooltip title={ formatMessage(messages.copyText) }>
               <IconButton onClick={ handleClickCopyTextButton } disabled={ copyTextButtonDisabled }>
                 <ContentCopyIcon />
               </IconButton>
