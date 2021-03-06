@@ -160,7 +160,6 @@ exports[`App at / 1`] = `
           class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
-          title="Copy text"
           type="button"
         >
           <span
