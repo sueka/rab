@@ -46,7 +46,7 @@ export const develop = series(
   parallel(
     continuousTask('src', typeCheck),
     continuousTask('src', lint),
-    npxTask('webpack', ['serve', '--config', 'webpack.config.dev.ts', '--hot'])
+    npxTask('webpack', ['serve', '--config', 'webpack.config.dev.ts'])
   )
 )
 

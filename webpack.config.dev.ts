@@ -1,4 +1,5 @@
 import * as path from 'path'
+import { HotModuleReplacementPlugin } from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
 import config from './webpack.config'
@@ -17,23 +18,8 @@ if (process.env.NODE_ENV === 'test') {
 
 config.mode = process.env.NODE_ENV ?? config.mode
 
-config.resolve.alias = {
-  ...config.resolve.alias,
-  'react-dom': '@hot-loader/react-dom',
-}
-
-if (typeof config.entry !== 'string') {
-  throw new Error('Not implemented')
-}
-
 const host = '0.0.0.0'
 const port = 1234
-
-config.entry = [
-  `webpack-dev-server/client?http://${ host }:${ port }`,
-  'webpack/hot/only-dev-server',
-  config.entry,
-]
 
 config.plugins.push(new BundleAnalyzerPlugin({
   analyzerPort: 10122,
@@ -46,6 +32,28 @@ config.devServer = {
   disableHostCheck: true,
   port,
   historyApiFallback: true,
+}
+
+if (process.env.NODE_ENV === 'development') {
+  // Enable HMR
+  config.resolve.alias = {
+    ...config.resolve.alias,
+    'react-dom': '@hot-loader/react-dom',
+  }
+
+  if (typeof config.entry !== 'string') {
+    throw new Error('Not implemented')
+  }
+
+  config.entry = [
+    `webpack-dev-server/client?http://${ host }:${ port }`,
+    'webpack/hot/only-dev-server',
+    config.entry,
+  ]
+
+  config.plugins.push(new HotModuleReplacementPlugin())
+
+  config.devServer.hotOnly = true
 }
 
 export default config
