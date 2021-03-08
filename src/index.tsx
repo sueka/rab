@@ -35,6 +35,7 @@ import Service, { Action, State, createReducer, invariant } from './redux'
 
 import formats from '../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../public/messages/en.json' // tslint:disable-line:no-relative-imports
+import { asFormats } from './lib/validators/intlValidators'
 
 const containerImport = process.env.NODE_ENV === 'production' ? import('./container') : import('./container.dev')
 
@@ -52,7 +53,7 @@ const initialState: Alt.Omit<State, 'router'> = {
   },
   localeSelector: {
     locale: 'en',
-    formats,
+    formats: asFormats(formats),
     messages,
     errors: List(),
   },
