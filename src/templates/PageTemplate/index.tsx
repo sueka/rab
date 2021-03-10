@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
 import Nav from '~/components/Nav'
@@ -23,9 +23,25 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
     throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
   }, [])
 
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const drawerRef = useRef<HTMLDivElement>(null)
+
+  const openDrawer = useCallback<React.MouseEventHandler>(() => {
+    setDrawerOpen(true)
+  }, [])
+
+  const closeDrawer = useCallback(() => {
+    setDrawerOpen(false)
+  }, [])
+
   return (
     <>
-      <Nav />
+      <Nav
+        drawerRef={ drawerRef }
+        drawerOpen={ drawerOpen }
+        onMenuIconButtonClick={ openDrawer }
+        onDrawerClose={ closeDrawer }
+      />
       <ErrorBoundary renderError={ renderError }>
         { children }
       </ErrorBoundary>
