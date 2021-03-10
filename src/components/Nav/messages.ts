@@ -1,11 +1,11 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  home: 'home',
-  chess: 'chess',
-  clock: 'clock',
-  counter: 'counter',
-  info: 'info',
-  paint: 'paint',
-  reminder: 'reminder',
+  home: 'Home',
+  chess: 'Chess',
+  clock: 'Clock',
+  counter: 'Counter',
+  info: 'Info',
+  paint: 'Paint',
+  reminder: 'Reminder',
 })
