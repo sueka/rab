@@ -1,7 +1,7 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  reset: 'reset',
+  reset: 'Reset',
   increment: '+',
   decrement: '-',
   incrementIfOdd: '+ if odd',

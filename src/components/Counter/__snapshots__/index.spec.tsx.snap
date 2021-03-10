@@ -20,7 +20,7 @@ exports[`Counter works 1`] = `
         class="MuiButton-label"
       >
         <bdi>
-          reset
+          Reset
         </bdi>
       </span>
       <span

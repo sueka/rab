@@ -1019,7 +1019,7 @@ exports[`App at /counter 1`] = `
           class="MuiButton-label"
         >
           <bdi>
-            reset
+            Reset
           </bdi>
         </span>
         <span
@@ -1460,7 +1460,7 @@ exports[`App at /paint 1`] = `
       class="MuiButton-label"
     >
       <bdi>
-        clear
+        Clear
       </bdi>
     </span>
     <span
@@ -1827,7 +1827,7 @@ exports[`App at /reminder 1`] = `
       class="MuiButton-label"
     >
       <bdi>
-        add
+        Add
       </bdi>
     </span>
     <span

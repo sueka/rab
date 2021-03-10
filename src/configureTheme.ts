@@ -12,7 +12,7 @@ const configureTheme = ({ direction, dark }: Props) => createMuiTheme({
   typography: {
     fontFamily: 'sans-serif',
     button: {
-      textTransform: 'capitalize',
+      textTransform: 'none',
     },
   },
   props: {
