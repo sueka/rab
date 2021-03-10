@@ -46,7 +46,7 @@ const Nav: React.FC = () => {
           />
         </Toolbar>
       </AppBar>
-      {/* NOTE: anchor はページが RtL であることを検出すると水平反転するので、 dir から計算する必要は無い。 */}
+      { /* NOTE: anchor はページが RtL であることを検出すると水平反転するので、 dir から計算する必要は無い。 */ }
       <Drawer anchor="left" open={ open } onClose={ closeDrawer }>
         <List>
           <ListItemLink to="/" onClick={ closeDrawer }>
