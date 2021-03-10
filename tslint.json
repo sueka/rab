@@ -25,6 +25,7 @@
     ],
     "no-submodule-imports": [
       true,
+      "@iconify-icons/mdi",
       "@material-ui/core",
       "@material-ui/icons",
       "fp-ts/lib/Either",

@@ -1,8 +1,18 @@
+import chessPawn from '@iconify-icons/mdi/chess-pawn'
+import clock from '@iconify-icons/mdi/clock'
+import counter from '@iconify-icons/mdi/counter'
+import { Icon } from '@iconify/react'
 import AppBar from '@material-ui/core/AppBar'
 import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
 import Toolbar from '@material-ui/core/Toolbar'
+import BrushIcon from '@material-ui/icons/Brush'
+import HomeIcon from '@material-ui/icons/Home'
+import InfoIcon from '@material-ui/icons/Info'
+import ListIcon from '@material-ui/icons/List'
 import MenuIcon from '@material-ui/icons/Menu'
 import React, { useCallback, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
@@ -50,25 +60,60 @@ const Nav: React.FC = () => {
       <Drawer anchor="left" open={ open } onClose={ closeDrawer }>
         <List>
           <ListItemLink to="/" onClick={ closeDrawer }>
-            <FormattedMessage { ...messages.home } />
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText>
+              <FormattedMessage { ...messages.home } />
+            </ListItemText>
           </ListItemLink>
           <ListItemLink to="/chess" onClick={ closeDrawer }>
-            <FormattedMessage { ...messages.chess } />
+            <ListItemIcon>
+              <Icon icon={ chessPawn } width="24" height="24" />
+            </ListItemIcon>
+            <ListItemText>
+              <FormattedMessage { ...messages.chess } />
+            </ListItemText>
           </ListItemLink>
           <ListItemLink to="/clock" onClick={ closeDrawer }>
-            <FormattedMessage { ...messages.clock } />
+            <ListItemIcon>
+              <Icon icon={ clock } width="24" height="24" />
+            </ListItemIcon>
+            <ListItemText>
+              <FormattedMessage { ...messages.clock } />
+            </ListItemText>
           </ListItemLink>
           <ListItemLink to="/counter" onClick={ closeDrawer }>
-            <FormattedMessage { ...messages.counter } />
+            <ListItemIcon>
+              <Icon icon={ counter } width="24" height="24" />
+            </ListItemIcon>
+            <ListItemText>
+              <FormattedMessage { ...messages.counter } />
+            </ListItemText>
           </ListItemLink>
           <ListItemLink to="/info" onClick={ closeDrawer }>
-            <FormattedMessage { ...messages.info } />
+            <ListItemIcon>
+              <InfoIcon />
+            </ListItemIcon>
+            <ListItemText>
+              <FormattedMessage { ...messages.info } />
+            </ListItemText>
           </ListItemLink>
           <ListItemLink to="/paint" onClick={ closeDrawer }>
-            <FormattedMessage { ...messages.paint } />
+            <ListItemIcon>
+              <BrushIcon />
+            </ListItemIcon>
+            <ListItemText>
+              <FormattedMessage { ...messages.paint } />
+            </ListItemText>
           </ListItemLink>
           <ListItemLink to="/reminder" onClick={ closeDrawer }>
-            <FormattedMessage { ...messages.reminder } />
+            <ListItemIcon>
+              <ListIcon />
+            </ListItemIcon>
+            <ListItemText>
+              <FormattedMessage { ...messages.reminder } />
+            </ListItemText>
           </ListItemLink>
         </List>
       </Drawer>
