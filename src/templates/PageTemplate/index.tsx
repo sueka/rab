@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
 import Nav from '~/components/Nav'
+import TopAppbar from '~/components/TopAppbar'
 import ErrorBoundary from '~/lib/components/ErrorBoundary'
 import typed from '~/lib/typed'
 
@@ -36,12 +37,8 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
 
   return (
     <>
-      <Nav
-        drawerRef={ drawerRef }
-        drawerOpen={ drawerOpen }
-        onMenuIconButtonClick={ openDrawer }
-        onDrawerClose={ closeDrawer }
-      />
+      <TopAppbar onMenuIconButtonClick={ openDrawer } />
+      <Nav ref={ drawerRef } open={ drawerOpen } onClose={ closeDrawer } />
       <ErrorBoundary renderError={ renderError }>
         { children }
       </ErrorBoundary>
