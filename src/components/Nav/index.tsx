@@ -14,17 +14,43 @@ import HomeIcon from '@material-ui/icons/Home'
 import InfoIcon from '@material-ui/icons/Info'
 import ListIcon from '@material-ui/icons/List'
 import MenuIcon from '@material-ui/icons/Menu'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useContext, useMemo, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 
 import DarkSwitch from '~/components/DarkSwitch'
 import LocaleSelect from '~/components/LocaleSelect' // TODO
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import ListItemLink from '~/lib/components/ListItemLink'
+import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import classes from './classes.css'
 import messages from './messages'
 
+const FlippedListIcon: React.FC<React.PropsOf<typeof ListIcon>> = ({ style, ...restProps }) => {
+  if (style === undefined) {
+    return <ListIcon style={ { transform: 'scaleX(-1)' } } { ...restProps } />
+  }
+
+  const { transform, ...restStyle } = style
+
+  if (transform !== undefined) {
+    throw new Error
+  }
+
+  return <ListIcon style={ { transform: 'scaleX(-1)', ...restStyle } } { ...restProps } />
+}
+
 const Nav: React.FC = () => {
   const [open, setOpen] = useState(false)
+  const { dir } = useContext(IntlProviderContext)
+
+  const RtlFriendlyListIcon = useMemo(() => {
+    shouldBePresent(dir)
+
+    switch (dir) {
+      case 'ltr': return ListIcon
+      case 'rtl': return FlippedListIcon
+    }
+  }, [dir])
 
   const openDrawer = useCallback<React.MouseEventHandler>(() => {
     setOpen(true)
@@ -109,7 +135,7 @@ const Nav: React.FC = () => {
           </ListItemLink>
           <ListItemLink to="/reminder" onClick={ closeDrawer }>
             <ListItemIcon>
-              <ListIcon />
+              <RtlFriendlyListIcon />
             </ListItemIcon>
             <ListItemText>
               <FormattedMessage { ...messages.reminder } />
