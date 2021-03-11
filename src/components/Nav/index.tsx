@@ -2,14 +2,18 @@ import chessPawn from '@iconify/icons-mdi/chess-pawn'
 import clock from '@iconify/icons-mdi/clock'
 import counter from '@iconify/icons-mdi/counter'
 import { Icon } from '@iconify/react'
+import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
+import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
+import { makeStyles } from '@material-ui/core/styles'
 import BrushIcon from '@material-ui/icons/Brush'
 import HomeIcon from '@material-ui/icons/Home'
 import InfoIcon from '@material-ui/icons/Info'
 import ListIcon from '@material-ui/icons/List'
+import MenuIcon from '@material-ui/icons/Menu'
 import React, { useContext, useMemo } from 'react'
 import { FormattedMessage } from 'react-intl'
 
@@ -22,6 +26,16 @@ interface Props {
   open: boolean
   onClose(): void
 }
+
+const useStyles = makeStyles((theme) => ({
+  DrawerHeader: {
+    ...theme.mixins.toolbar,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    padding: theme.spacing(0, 3),
+  },
+}))
 
 const FlippedListIcon: React.FC<React.PropsOf<typeof ListIcon>> = ({ style, ...restProps }) => {
   if (style === undefined) {
@@ -49,9 +63,17 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose }, ref) => 
     }
   }, [dir])
 
+  const jssClasses = useStyles()
+
   // NOTE: anchor はページが RtL であることを検出すると水平反転するので、 dir から計算する必要は無い。
   return (
     <Drawer anchor="left" open={ open } onClose={ onClose } PaperProps={ { ref } }>
+      <div className={ jssClasses.DrawerHeader }>
+        <IconButton edge="start" color="inherit" onClick={ onClose }>
+          <MenuIcon />
+        </IconButton>
+      </div>
+      <Divider />
       <List>
         <ListItemLink to="/" onClick={ onClose }>
           <ListItemIcon>
