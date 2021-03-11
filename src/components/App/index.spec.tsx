@@ -11,6 +11,7 @@ import createMockStore from 'redux-mock-store'
 import IntlProvider from '~/components/IntlProvider'
 import ThemeProvider from '~/components/ThemeProvider'
 import typed from '~/lib/typed'
+import { asFormats } from '~/lib/validators/intlValidators'
 import { State } from '~/redux'
 import App from '.'
 
@@ -32,7 +33,7 @@ const store = createMockStore<Alt.Omit<State, 'router'>>()({
   },
   localeSelector: {
     locale: 'en',
-    formats,
+    formats: asFormats(formats),
     messages,
     errors: List(),
   },
