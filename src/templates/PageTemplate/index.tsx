@@ -1,4 +1,3 @@
-import assert from 'assert'
 import React, { useCallback, useRef, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
@@ -33,6 +32,11 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
   const [topAppbarHeight, setTopAppbarHeight] = useState<number | null>(null)
 
   const topAppbarRef = useCallback((node: HTMLDivElement | null) => {
+    // To silence the ESLint rule react-hooks/exhaustive-deps
+    if (width === null) {
+      return
+    }
+
     const topAppbar = node?.getBoundingClientRect()
 
     if (topAppbar === undefined) {
@@ -40,8 +44,6 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
     }
 
     setTopAppbarHeight(topAppbar.height)
-
-    assert(width !== null) // To silence the ESLint rule react-hooks/exhaustive-deps
   }, [width])
 
   const openDrawer = useCallback<React.MouseEventHandler>(() => {
