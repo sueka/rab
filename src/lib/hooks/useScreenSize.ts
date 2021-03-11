@@ -13,21 +13,11 @@ export default function useScreenSize() {
     updateScreenSize()
 
     globalThis.addEventListener('resize', updateScreenSize)
-    globalThis.addEventListener('deviceorientation', updateScreenSize)
 
     return () => {
       globalThis.removeEventListener('resize', updateScreenSize)
-      globalThis.removeEventListener('deviceorientation', updateScreenSize)
     }
   }, [updateScreenSize])
 
-  const requestPermission = useCallback(async () => {
-    const state = await DeviceOrientationEvent.requestPermission()
-
-    if (state === 'granted') {
-      globalThis.addEventListener('deviceorientation', updateScreenSize)
-    }
-  }, [])
-
-  return { width, height, requestPermission }
+  return { width, height }
 }

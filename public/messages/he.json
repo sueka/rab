@@ -3,7 +3,6 @@
   "src.components.App.ClockPage.clock": "שעון",
   "src.components.App.CounterPage.counter": "מונה",
   "src.components.App.HomePage.home": "בית",
-  "src.components.App.HomePage.requestPermissionToUseDeviceorientation": "לבקש הרשאה להשתמש deviceorientation",
   "src.components.App.InfoPage.info": "מידע",
   "src.components.App.PaintPage.paint": "צייר",
   "src.components.App.ReminderPage.reminder": "תזכורת",
