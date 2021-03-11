@@ -10,9 +10,15 @@ export default function useScreenSize() {
   }, [])
 
   useEffect(() => {
-    globalThis.addEventListener('resize', updateScreenSize)
+    updateScreenSize()
 
-    return () => globalThis.removeEventListener('resize', updateScreenSize)
+    globalThis.addEventListener('resize', updateScreenSize)
+    globalThis.addEventListener('deviceorientation', updateScreenSize)
+
+    return () => {
+      globalThis.removeEventListener('resize', updateScreenSize)
+      globalThis.removeEventListener('deviceorientation', updateScreenSize)
+    }
   }, [updateScreenSize])
 
   return { width, height }
