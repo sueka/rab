@@ -1,7 +1,8 @@
+import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import React, { useCallback, useState } from 'react'
 import Helmet from 'react-helmet'
-import { FormattedNumber, useIntl } from 'react-intl'
+import { FormattedMessage, FormattedNumber, useIntl } from 'react-intl'
 
 import CurrentTimeOfDay from '~/components/CurrentTimeOfDay'
 import SetClockButton from '~/components/SetClockButton'
@@ -18,6 +19,10 @@ const HomePage: React.FC = () => {
     setText(event.target.value)
   }, [])
 
+  const requestOrientationPermission = useCallback(() => {
+    DeviceOrientationEvent.requestPermission()
+  }, [])
+
   return (
     <>
       <Helmet title={ formatMessage(messages.home) } />
@@ -29,6 +34,9 @@ const HomePage: React.FC = () => {
       </Typography>
       <SetClockButton />
       <CopiableTextField value={ text } onChange={ handleChange } />
+      <Button onClick={ requestOrientationPermission }>
+        <FormattedMessage { ...messages.requestPermissionToUseDeviceorientation } />
+      </Button>
     </>
   )
 }

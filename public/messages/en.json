@@ -3,6 +3,7 @@
   "src.components.App.ClockPage.clock": "Clock",
   "src.components.App.CounterPage.counter": "Counter",
   "src.components.App.HomePage.home": "Home",
+  "src.components.App.HomePage.requestPermissionToUseDeviceorientation": "Request permission to use deviceorientation",
   "src.components.App.InfoPage.info": "Info",
   "src.components.App.PaintPage.paint": "Paint",
   "src.components.App.ReminderPage.reminder": "Reminder",

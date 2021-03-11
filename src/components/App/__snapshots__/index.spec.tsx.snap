@@ -196,6 +196,22 @@ exports[`App at / 1`] = `
       </fieldset>
     </div>
   </div>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      <bdi>
+        Request permission to use deviceorientation
+      </bdi>
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
 </div>
 `;
 
