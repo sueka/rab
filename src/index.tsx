@@ -116,7 +116,7 @@ const Main: React.FC<Props> = ({ history, container }) => {
                 <StylesProvider jss={ jss }>
                   <ThemeProvider defaultDark={ dark }>
                     <CssBaseline />
-                    <SnackbarProvider>
+                    <SnackbarProvider maxSnack={ 1 } hideIconVariant>
                       <App />
                     </SnackbarProvider>
                   </ThemeProvider>
