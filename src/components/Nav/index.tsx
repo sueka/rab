@@ -21,6 +21,7 @@ import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import ListItemLink from '~/lib/components/ListItemLink'
 import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import typed from '~/lib/typed'
+import classes from './classes.css'
 import messages from './messages'
 
 interface Props {
@@ -80,7 +81,7 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
         </IconButton>
       </div>
       <Divider />
-      <List>
+      <List className={ classes.List }>
         <ListItemLink to="/" onClick={ onClose }>
           <ListItemIcon>
             <HomeIcon />
