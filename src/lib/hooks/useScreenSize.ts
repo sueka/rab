@@ -21,5 +21,13 @@ export default function useScreenSize() {
     }
   }, [updateScreenSize])
 
-  return { width, height }
+  const requestPermission = useCallback(async () => {
+    const state = await DeviceOrientationEvent.requestPermission()
+
+    if (state === 'granted') {
+      globalThis.addEventListener('deviceorientation', updateScreenSize)
+    }
+  }, [])
+
+  return { width, height, requestPermission }
 }

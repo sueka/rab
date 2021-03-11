@@ -8,6 +8,7 @@ import CurrentTimeOfDay from '~/components/CurrentTimeOfDay'
 import SetClockButton from '~/components/SetClockButton'
 import Today from '~/components/Today'
 import CopiableTextField from '~/lib/components/CopiableTextField'
+import useScreenSize from '~/lib/hooks/useScreenSize'
 import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
@@ -19,9 +20,7 @@ const HomePage: React.FC = () => {
     setText(event.target.value)
   }, [])
 
-  const requestOrientationPermission = useCallback(() => {
-    DeviceOrientationEvent.requestPermission()
-  }, [])
+  const { requestPermission } = useScreenSize()
 
   return (
     <>
@@ -34,7 +33,7 @@ const HomePage: React.FC = () => {
       </Typography>
       <SetClockButton />
       <CopiableTextField value={ text } onChange={ handleChange } />
-      <Button onClick={ requestOrientationPermission }>
+      <Button onClick={ requestPermission }>
         <FormattedMessage { ...messages.requestPermissionToUseDeviceorientation } />
       </Button>
     </>
