@@ -10,6 +10,7 @@ import createMockStore from 'redux-mock-store'
 
 import IntlProvider from '~/components/IntlProvider'
 import ThemeProvider from '~/components/ThemeProvider'
+import useScreenSize from '~/lib/hooks/useScreenSize'
 import typed from '~/lib/typed'
 import { asFormats } from '~/lib/validators/intlValidators'
 import { State } from '~/redux'
@@ -17,6 +18,10 @@ import App from '.'
 
 import formats from '../../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../../../public/messages/en.json' // tslint:disable-line:no-relative-imports
+
+jest.mock('~/lib/hooks/useScreenSize', () => jest.fn())
+
+const useScreenSizeMocked = useScreenSize as jest.MockedFunction<typeof useScreenSize>
 
 // NOTE: connected-react-router ではないので router state は不要。
 const store = createMockStore<Alt.Omit<State, 'router'>>()({
@@ -55,6 +60,10 @@ ${ '/paint' }
 ${ '/reminder' }
 ${ '/nonexistent-path' }
 `('App', ({ location }: { location: string }) => {
+  beforeAll(() => {
+    useScreenSizeMocked.mockImplementation(() => ({ width: 1366, height: 768 }))
+  })
+
   test(typed<[string]>`at ${ location }`, async () => {
     const context = {}
 
