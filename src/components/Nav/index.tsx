@@ -35,9 +35,7 @@ interface StyleProps {
 
 const useStyles = makeStyles<Theme, StyleProps, 'DrawerHeader'>((theme) => ({
   DrawerHeader: {
-    ...theme.mixins.toolbar,
     ...theme.mixins.gutters(),
-    minHeight: undefined,
     height: ({ topAppbarHeight }) => topAppbarHeight !== undefined ? typed<[number]>`${ topAppbarHeight }px` : undefined,
     display: 'flex',
     alignItems: 'center',
