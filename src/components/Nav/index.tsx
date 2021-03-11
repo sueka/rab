@@ -37,9 +37,9 @@ const useStyles = makeStyles<Theme, StyleProps, 'DrawerHeader'>((theme) => ({
   DrawerHeader: {
     ...theme.mixins.gutters(),
     height: ({ topAppbarHeight }) => topAppbarHeight !== undefined ? typed<[number]>`${ topAppbarHeight }px` : undefined,
-    display: 'flex',
+    display: 'grid',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'start',
   },
 }), { name: 'Nav' })
 
