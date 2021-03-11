@@ -12,9 +12,9 @@ interface Props {
   onMenuIconButtonClick: React.MouseEventHandler<HTMLButtonElement>
 }
 
-const TopAppbar: React.FC<Props> = ({ onMenuIconButtonClick }) => (
+const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonClick }, ref) => (
   // TODO: Support IE 11
-  <AppBar position="sticky">
+  <AppBar position="sticky" ref={ ref }>
     <Toolbar>
       <IconButton edge="start" color="inherit" onClick={ onMenuIconButtonClick }>
         <MenuIcon />
@@ -34,6 +34,6 @@ const TopAppbar: React.FC<Props> = ({ onMenuIconButtonClick }) => (
       />
     </Toolbar>
   </AppBar>
-)
+))
 
 export default TopAppbar
