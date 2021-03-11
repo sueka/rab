@@ -37,13 +37,13 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
       return
     }
 
-    const topAppbar = node?.getBoundingClientRect()
+    const topAppbarRect = node?.getBoundingClientRect()
 
-    if (topAppbar === undefined) {
+    if (topAppbarRect === undefined) {
       return
     }
 
-    setTopAppbarHeight(topAppbar.height)
+    setTopAppbarHeight(topAppbarRect.height)
   }, [width])
 
   const openDrawer = useCallback<React.MouseEventHandler>(() => {
