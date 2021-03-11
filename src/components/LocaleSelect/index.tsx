@@ -60,7 +60,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
 
   const select = useRef<HTMLDivElement>(null)
 
-  const inputLabel = useCallback((node: HTMLLabelElement | null) => { // TODO: Type
+  const inputLabel = useCallback<React.RefCallback<HTMLLabelElement>>((node) => {
     if (node !== null) {
       setLabelWidth(node.offsetWidth)
 

@@ -31,7 +31,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
   const { width } = useScreenSize()
   const [topAppbarHeight, setTopAppbarHeight] = useState<number | null>(null)
 
-  const topAppbarRef = useCallback((node: HTMLDivElement | null) => {
+  const topAppbarRef = useCallback<React.RefCallback<HTMLDivElement>>((node) => {
     // To silence the ESLint rule react-hooks/exhaustive-deps
     if (width === null) {
       return

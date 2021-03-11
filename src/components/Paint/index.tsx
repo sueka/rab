@@ -25,7 +25,7 @@ const Paint: React.FC = () => {
   const [lineCap, setLineCap] = useState<CanvasLineCap>('round')
   const [tool, setTool] = useState<Tool>('pen')
 
-  const canvas = useCallback((node: HTMLCanvasElement | null) => {
+  const canvas = useCallback<React.RefCallback<HTMLCanvasElement>>((node) => {
     setContext(node?.getContext('2d'))
   }, [])
 

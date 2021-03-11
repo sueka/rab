@@ -124,7 +124,7 @@ const RADIUS = 200 // diameter = 2 radius - 2
 const StoppedClock: React.FC<StoppedClockProps> = ({ time }) => {
   const [context, setContext] = useState<CanvasRenderingContext2D | null>()
 
-  const canvas = useCallback((node: HTMLCanvasElement | null) => {
+  const canvas = useCallback<React.RefCallback<HTMLCanvasElement>>((node) => {
     setContext(node?.getContext('2d'))
   }, [])
 
