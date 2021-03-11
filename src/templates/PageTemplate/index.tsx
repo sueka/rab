@@ -1,9 +1,11 @@
+import assert from 'assert'
 import React, { useCallback, useRef, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
 import Nav from '~/components/Nav'
 import TopAppbar from '~/components/TopAppbar'
 import ErrorBoundary from '~/lib/components/ErrorBoundary'
+import useScreenSize from '~/lib/hooks/useScreenSize'
 import typed from '~/lib/typed'
 
 interface PageTemplateProps {
@@ -27,6 +29,21 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const drawerRef = useRef<HTMLDivElement>(null)
 
+  const { width } = useScreenSize()
+  const [topAppbarHeight, setTopAppbarHeight] = useState<number | null>(null)
+
+  const topAppbarRef = useCallback((node: HTMLDivElement | null) => {
+    const topAppbar = node?.getBoundingClientRect()
+
+    if (topAppbar === undefined) {
+      return
+    }
+
+    setTopAppbarHeight(topAppbar.height)
+
+    assert(width !== null) // To silence the ESLint rule react-hooks/exhaustive-deps
+  }, [width])
+
   const openDrawer = useCallback<React.MouseEventHandler>(() => {
     setDrawerOpen(true)
   }, [])
@@ -37,8 +54,13 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
 
   return (
     <>
-      <TopAppbar onMenuIconButtonClick={ openDrawer } />
-      <Nav ref={ drawerRef } open={ drawerOpen } onClose={ closeDrawer } />
+      <TopAppbar ref={ topAppbarRef } onMenuIconButtonClick={ openDrawer } />
+      <Nav
+        ref={ drawerRef }
+        open={ drawerOpen }
+        onClose={ closeDrawer }
+        topAppbarHeight={ topAppbarHeight ?? undefined }
+      />
       <ErrorBoundary renderError={ renderError }>
         { children }
       </ErrorBoundary>

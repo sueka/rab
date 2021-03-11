@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import { makeStyles } from '@material-ui/core/styles'
+import { Theme, makeStyles } from '@material-ui/core/styles'
 import BrushIcon from '@material-ui/icons/Brush'
 import HomeIcon from '@material-ui/icons/Home'
 import InfoIcon from '@material-ui/icons/Info'
@@ -20,22 +20,30 @@ import { FormattedMessage } from 'react-intl'
 import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import ListItemLink from '~/lib/components/ListItemLink'
 import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
+import typed from '~/lib/typed'
 import messages from './messages'
 
 interface Props {
   open: boolean
   onClose(): void
+  topAppbarHeight?: number
 }
 
-const useStyles = makeStyles((theme) => ({
+interface StyleProps {
+  topAppbarHeight?: number
+}
+
+const useStyles = makeStyles<Theme, StyleProps, 'DrawerHeader'>((theme) => ({
   DrawerHeader: {
     ...theme.mixins.toolbar,
+    ...theme.mixins.gutters(),
+    minHeight: undefined,
+    height: ({ topAppbarHeight }) => topAppbarHeight !== undefined ? typed<[number]>`${ topAppbarHeight }px` : undefined,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    padding: theme.spacing(0, 3),
   },
-}))
+}), { name: 'Nav' })
 
 const FlippedListIcon: React.FC<React.PropsOf<typeof ListIcon>> = ({ style, ...restProps }) => {
   if (style === undefined) {
@@ -51,7 +59,7 @@ const FlippedListIcon: React.FC<React.PropsOf<typeof ListIcon>> = ({ style, ...r
   return <ListIcon style={ { transform: 'scaleX(-1)', ...restStyle } } { ...restProps } />
 }
 
-const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose }, ref) => {
+const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarHeight }, ref) => {
   const { dir } = useContext(IntlProviderContext)
 
   const RtlFriendlyListIcon = useMemo(() => {
@@ -63,7 +71,7 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose }, ref) => 
     }
   }, [dir])
 
-  const jssClasses = useStyles()
+  const jssClasses = useStyles({ topAppbarHeight })
 
   // NOTE: anchor はページが RtL であることを検出すると水平反転するので、 dir から計算する必要は無い。
   return (
