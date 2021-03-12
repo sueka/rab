@@ -48,6 +48,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
   const [labelWidth, setLabelWidth] = useState<number | null>(null)
   const inputId = useMemo(v4, [])
   const theme = useTheme()
+  const { dir } = useContext(IntlProviderContext)
 
   // NOTE: Fortunately, FormControl is nothing but FormControl.
   const variant = useMemo(() => FormControlProps?.variant ?? theme?.props?.MuiFormControl?.variant ?? 'standard', [FormControlProps?.variant, theme?.props?.MuiFormControl?.variant])
@@ -74,12 +75,18 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
         return
       }
 
-      const rect = node.getBoundingClientRect()
+      const rect = node.getBoundingClientRect() // NOTE: node.offsetWidth は transform 前の値、 rect.width は transform 後の値を返す。
+
+      const style = globalThis.getComputedStyle(selectSelect)
+
+      // NOTE: document.dir 変更前なので style.paddingInlineStart 等で得ることはできない。
+      const paddingInlineStart = parseFloat(dir === 'ltr' ? style.paddingLeft : style.paddingRight)
+      const paddingInlineEnd = parseFloat(dir === 'ltr' ? style.paddingRight : style.paddingLeft)
 
       // tslint:disable-next-line:no-object-mutation
-      selectSelect.style.minWidth = typed<[number]>`${ rect.width }px` // FIXME: style を操作しないようにする
+      selectSelect.style.minWidth = typed<[number]>`${ rect.width + paddingInlineStart - paddingInlineEnd }px` // FIXME: style を操作しないようにする
     }
-  }, [select.current]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [select.current, locale]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleChange = useCallback<NonNullable<SelectProps['onChange']>>((event) => {
     if (isTag(event.target.value)) {
