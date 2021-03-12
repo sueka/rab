@@ -37,10 +37,10 @@ const ContentCopyIcon: React.FC<React.PropsOf<typeof FilterNoneIcon>> = ({ style
 const CopiableTextField: React.FC<Props> = ({ InputProps, ...restProps }) => {
   const { formatMessage } = useIntl()
   const { enqueueSnackbar } = useSnackbar()
-  const input = useRef<HTMLInputElement>()
+  const input = useRef<HTMLInputElement>(null)
 
   const handleClickCopyTextButton = useCallback(() => {
-    if (input.current === undefined) {
+    if (input.current === null) {
       throw new Error
     }
 
@@ -57,7 +57,7 @@ const CopiableTextField: React.FC<Props> = ({ InputProps, ...restProps }) => {
 
   // NOTE: render 後の input.current が必要なので、 useMemo ではなく useState + useEffect を使う。また、 ref は deps にできない。
   useEffect(() => {
-    setCopyTextButtonDisabled(input.current === undefined || input.current.value === '')
+    setCopyTextButtonDisabled(input.current === null || input.current.value === '')
   })
 
   return (
