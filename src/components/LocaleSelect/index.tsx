@@ -7,7 +7,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Select, { SelectProps } from '@material-ui/core/Select'
 import { useTheme } from '@material-ui/core/styles'
 import classnames from 'classnames'
-import React, { useCallback, useContext, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { v4 } from 'uuid'
@@ -59,11 +59,12 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
   const selectIconClassName = useMemo(() => classnames(propClasses?.selectIcon), [propClasses?.selectIcon])
   const inputUnderlineClassName = useMemo(() => classnames(propClasses?.inputUnderline), [propClasses?.inputUnderline])
 
+  const inputLabel = useRef<HTMLLabelElement>(null)
   const select = useRef<HTMLDivElement>(null)
 
-  const inputLabel = useCallback<React.RefCallback<HTMLLabelElement>>((node) => {
-    if (node !== null) {
-      setLabelWidth(node.offsetWidth)
+  useEffect(() => {
+    if (inputLabel.current !== null) {
+      setLabelWidth(inputLabel.current.offsetWidth)
 
       if (select.current === null) {
         return
@@ -75,7 +76,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
         return
       }
 
-      const rect = node.getBoundingClientRect() // NOTE: node.offsetWidth は transform 前の値、 rect.width は transform 後の値を返す。
+      const rect = inputLabel.current.getBoundingClientRect() // NOTE: node.offsetWidth は transform 前の値、 rect.width は transform 後の値を返す。
 
       const style = globalThis.getComputedStyle(selectSelect)
 
@@ -86,7 +87,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
       // tslint:disable-next-line:no-object-mutation
       selectSelect.style.minWidth = typed<[number]>`${ rect.width + paddingInlineStart - paddingInlineEnd }px` // FIXME: style を操作しないようにする
     }
-  }, [select.current, locale]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [locale, dir])
 
   const handleChange = useCallback<NonNullable<SelectProps['onChange']>>((event) => {
     if (isTag(event.target.value)) {
