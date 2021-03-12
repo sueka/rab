@@ -6,7 +6,7 @@ import FilterNoneIcon from '@material-ui/icons/FilterNone'
 import copy from 'copy-to-clipboard'
 import { useSnackbar } from 'notistack'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { useIntl } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 
 import messages from './messages'
@@ -49,8 +49,10 @@ const CopiableTextField: React.FC<Props> = ({ InputProps, ...restProps }) => {
 
     copy(input.current.value) // TODO: await navigator.clipboard.writeText(input.current.value)
 
-    enqueueSnackbar(formatMessage(messages.textCopied))
-  }, [input, formatMessage, enqueueSnackbar])
+    enqueueSnackbar(
+      <FormattedMessage { ...messages.textCopied } />
+    )
+  }, [enqueueSnackbar])
 
   const [copyTextButtonDisabled, setCopyTextButtonDisabled] = useState(false)
 
