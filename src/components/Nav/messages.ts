@@ -8,4 +8,5 @@ export default defineMessages({
   info: 'Info',
   paint: 'Paint',
   reminder: 'Reminder',
+  settings: 'Settings',
 })

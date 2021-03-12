@@ -14,6 +14,7 @@ import HomeIcon from '@material-ui/icons/Home'
 import InfoIcon from '@material-ui/icons/Info'
 import ListIcon from '@material-ui/icons/List'
 import MenuIcon from '@material-ui/icons/Menu'
+import SettingsIcon from '@material-ui/icons/Settings'
 import React, { useContext, useMemo } from 'react'
 import { FormattedMessage } from 'react-intl'
 
@@ -136,6 +137,14 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
           </ListItemIcon>
           <ListItemText>
             <FormattedMessage { ...messages.reminder } />
+          </ListItemText>
+        </ListItemLink>
+        <ListItemLink to="/settings" onClick={ onClose }>
+          <ListItemIcon>
+            <SettingsIcon />
+          </ListItemIcon>
+          <ListItemText>
+            <FormattedMessage { ...messages.settings } />
           </ListItemText>
         </ListItemLink>
       </List>
