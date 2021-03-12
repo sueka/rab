@@ -3,8 +3,8 @@ import FormLabel from '@material-ui/core/FormLabel'
 import classnames from 'classnames'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
-import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import cssClasses from './classes.css'
 import messages from './messages'
 

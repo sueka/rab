@@ -7,8 +7,8 @@ import copy from 'copy-to-clipboard'
 import { useSnackbar } from 'notistack'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import messages from './messages'
 
 interface OwnProps {
