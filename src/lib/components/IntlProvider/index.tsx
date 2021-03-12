@@ -19,9 +19,6 @@ type Props =
   & OwnProps
   & StateProps
 
-// NOTE: key が無い場合、 FormattedMessage 等は re-render されるが、 useIntl の結果は更新されない。
-// TODO: intl context でない要素を re-render しないようにする。 https://github.com/formatjs/react-intl/issues/234#issuecomment-163366518 によると現時点では難しいらしい。
-// cf. https://github.com/formatjs/react-intl/issues/371#issuecomment-275703796
 const IntlProvider: React.FC<Props> = ({ availableLocales, ...props }) => {
   const dir = useMemo(() => props.locale === 'he' ? 'rtl' : 'ltr', [props.locale]) // TODO
 
@@ -30,7 +27,7 @@ const IntlProvider: React.FC<Props> = ({ availableLocales, ...props }) => {
     <>
       <Helmet htmlAttributes={ { dir } } />
       <IntlProviderContext.Provider value={ { availableLocales, dir } }>
-        <OriginalIntlProvider key={ props.locale } textComponent="bdi" { ...props } />
+        <OriginalIntlProvider textComponent="bdi" { ...props } />
       </IntlProviderContext.Provider>
     </>
   )
