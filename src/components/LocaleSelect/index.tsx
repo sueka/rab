@@ -5,7 +5,8 @@ import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Select, { SelectProps } from '@material-ui/core/Select'
-import { useTheme } from '@material-ui/core/styles'
+import { Theme, makeStyles, useTheme } from '@material-ui/core/styles'
+import classNames from 'classnames'
 import classnames from 'classnames'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
@@ -14,7 +15,6 @@ import { v4 } from 'uuid'
 
 import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import { Tag, getNativeNameByTag, isTag } from '~/lib/languageNameSolver'
-import typed from '~/lib/typed'
 import { State } from '~/redux'
 import { selectLocale } from '~/redux/modules/localeSelector'
 import cssClasses from './classes.css'
@@ -44,17 +44,30 @@ type Props =
   & StateProps
   & DispatchProps
 
+interface StyleProps {
+  selectMinWidth?: number
+}
+
+const useStyles = makeStyles<Theme, StyleProps, 'Select'>({
+  Select: {
+    minWidth: ({ selectMinWidth }) => selectMinWidth,
+  },
+})
+
 export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propClasses, FormControlProps, locale, selectLocale }) => {
   const [labelWidth, setLabelWidth] = useState<number | null>(null)
+  const [selectMinWidth, setSelectMinWidth] = useState<number | null>(null)
   const inputId = useMemo(v4, [])
   const theme = useTheme()
   const { dir } = useContext(IntlProviderContext)
+  const jssClasses = useStyles({ selectMinWidth: selectMinWidth ?? undefined })
 
   // NOTE: Fortunately, FormControl is nothing but FormControl.
   const variant = useMemo(() => FormControlProps?.variant ?? theme?.props?.MuiFormControl?.variant ?? 'standard', [FormControlProps?.variant, theme?.props?.MuiFormControl?.variant])
 
   const rootClassName = useMemo(() => classnames(propClasses?.root, FormControlProps?.className), [propClasses?.root, FormControlProps?.className])
   const labelClassName = useMemo(() => classnames(propClasses?.label, cssClasses.InputLabel), [propClasses?.label])
+  const selectSelectClassName = useMemo(() => classNames(jssClasses.Select, cssClasses.Select), [jssClasses.Select])
   const inputClassName = useMemo(() => classnames(propClasses?.input), [propClasses?.input])
   const selectIconClassName = useMemo(() => classnames(propClasses?.selectIcon), [propClasses?.selectIcon])
   const inputUnderlineClassName = useMemo(() => classnames(propClasses?.inputUnderline), [propClasses?.inputUnderline])
@@ -85,7 +98,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
       const paddingInlineEnd = parseFloat(dir === 'ltr' ? style.paddingRight : style.paddingLeft)
 
       // tslint:disable-next-line:no-object-mutation
-      selectSelect.style.minWidth = typed<[number]>`${ rect.width + paddingInlineStart - paddingInlineEnd }px` // FIXME: style を操作しないようにする
+      setSelectMinWidth(rect.width + paddingInlineStart - paddingInlineEnd)
     }
   }, [locale, dir])
 
@@ -107,7 +120,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
       </InputLabel>
       <Select
         classes={ {
-          select: cssClasses.Select,
+          select: selectSelectClassName,
           icon: selectIconClassName,
         } }
         ref={ select }
