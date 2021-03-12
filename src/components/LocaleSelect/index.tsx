@@ -45,7 +45,7 @@ type Props =
   & DispatchProps
 
 export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propClasses, FormControlProps, locale, selectLocale }) => {
-  const [labelWidth, setLabelWidth] = useState<number>(0)
+  const [labelWidth, setLabelWidth] = useState<number | null>(null)
   const inputId = useMemo(v4, [])
   const theme = useTheme()
 
@@ -103,7 +103,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
           icon: selectIconClassName,
         } }
         ref={ select }
-        labelWidth={ labelWidth }
+        labelWidth={ labelWidth ?? undefined }
         value={ locale }
         onChange={ handleChange }
         id={ inputId }
@@ -117,7 +117,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
               } }
             />
           ),
-          outlined: <OutlinedInput className={ inputClassName } labelWidth={ labelWidth } />,
+          outlined: <OutlinedInput className={ inputClassName } labelWidth={ labelWidth ?? undefined } />,
           filled: <FilledInput className={ inputClassName } />,
         }[variant] }
       >
