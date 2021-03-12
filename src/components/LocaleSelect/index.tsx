@@ -76,30 +76,32 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
   const select = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (inputLabel.current !== null) {
-      setLabelWidth(inputLabel.current.offsetWidth)
-
-      if (select.current === null) {
-        return
-      }
-
-      const selectSelect = select.current.querySelector(`:scope > .${ cssClasses.Select }`)
-
-      if (selectSelect === null || !(selectSelect instanceof HTMLDivElement)) {
-        return
-      }
-
-      const rect = inputLabel.current.getBoundingClientRect() // NOTE: node.offsetWidth は transform 前の値、 rect.width は transform 後の値を返す。
-
-      const style = globalThis.getComputedStyle(selectSelect)
-
-      // NOTE: document.dir 変更前なので style.paddingInlineStart 等で得ることはできない。
-      const paddingInlineStart = parseFloat(dir === 'ltr' ? style.paddingLeft : style.paddingRight)
-      const paddingInlineEnd = parseFloat(dir === 'ltr' ? style.paddingRight : style.paddingLeft)
-
-      // tslint:disable-next-line:no-object-mutation
-      setSelectMinWidth(rect.width + paddingInlineStart - paddingInlineEnd)
+    if (inputLabel.current === null) {
+      return
     }
+
+    setLabelWidth(inputLabel.current.offsetWidth)
+
+    if (select.current === null) {
+      return
+    }
+
+    const selectSelect = select.current.querySelector(`:scope > .${ cssClasses.Select }`)
+
+    if (selectSelect === null || !(selectSelect instanceof HTMLDivElement)) {
+      return
+    }
+
+    const rect = inputLabel.current.getBoundingClientRect() // NOTE: node.offsetWidth は transform 前の値、 rect.width は transform 後の値を返す。
+
+    const style = globalThis.getComputedStyle(selectSelect)
+
+    // NOTE: document.dir 変更前なので style.paddingInlineStart 等で得ることはできない。
+    const paddingInlineStart = parseFloat(dir === 'ltr' ? style.paddingLeft : style.paddingRight)
+    const paddingInlineEnd = parseFloat(dir === 'ltr' ? style.paddingRight : style.paddingLeft)
+
+    // tslint:disable-next-line:no-object-mutation
+    setSelectMinWidth(rect.width + paddingInlineStart - paddingInlineEnd)
   }, [locale, dir])
 
   const handleChange = useCallback<NonNullable<SelectProps['onChange']>>((event) => {
