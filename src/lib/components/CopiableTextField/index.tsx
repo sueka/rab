@@ -7,6 +7,7 @@ import copy from 'copy-to-clipboard'
 import { useSnackbar } from 'notistack'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useIntl } from 'react-intl'
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 
 import messages from './messages'
 
@@ -40,9 +41,7 @@ const CopiableTextField: React.FC<Props> = ({ InputProps, ...restProps }) => {
   const input = useRef<HTMLInputElement>(null)
 
   const handleClickCopyTextButton = useCallback(() => {
-    if (input.current === null) {
-      throw new Error
-    }
+    shouldBePresent(input.current)
 
     if (input.current.value === '') {
       return

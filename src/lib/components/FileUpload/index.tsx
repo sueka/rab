@@ -3,6 +3,7 @@ import FormLabel from '@material-ui/core/FormLabel'
 import classnames from 'classnames'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 
 import cssClasses from './classes.css'
 import messages from './messages'
@@ -63,7 +64,9 @@ const FileUpload: React.FC<Props> = ({
   }, [onChange])
 
   const fireInputClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(() => {
-    input.current?.dispatchEvent(new MouseEvent('click')) // FIXME: Element.click()
+    shouldBePresent(input.current)
+
+    input.current.dispatchEvent(new MouseEvent('click')) // FIXME: Element.click()
   }, [input])
 
   const handleButtonClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>((event) => {
