@@ -57,7 +57,7 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
             <MenuIcon />
           </IconButton>
           <div className={ classes.Spacer } />
-          <Box m={ 1 }>
+          <Box mx={ 1 }>
             <ToggleDarkButton />
           </Box>
           <LocaleSelect
