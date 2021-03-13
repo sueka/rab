@@ -12,6 +12,8 @@
   "src.components.Counter.incrementIfOdd": "+ אם זה מספר אי זוגי",
   "src.components.Counter.reset": "לאתחל",
   "src.components.Counter.willIncrementInOneSecond": "+ בשנייה אחת",
+  "src.components.DarkSwitch.dark": "כהה",
+  "src.components.DarkSwitch.light": "בהיר",
   "src.components.GitHubAuthnButton.authenticateAUserWithGitHub": "לאמת משתמש באמצעות GitHub",
   "src.components.Info.fetchData": "אחזר נתונים",
   "src.components.Info.fetching": "מאוחזר…",

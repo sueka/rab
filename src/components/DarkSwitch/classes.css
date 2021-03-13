@@ -1,0 +1,5 @@
+.DarkSwitch.DarkSwitchContainer {
+  display: inline-flex; /* TODO: polyfill */
+  display: inline flex;
+  width: unset;
+}

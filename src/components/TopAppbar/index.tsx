@@ -1,4 +1,5 @@
 import AppBar from '@material-ui/core/AppBar'
+import Box from '@material-ui/core/Box'
 import IconButton from '@material-ui/core/IconButton'
 import Toolbar from '@material-ui/core/Toolbar'
 import { Theme, makeStyles } from '@material-ui/core/styles'
@@ -56,7 +57,9 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
             <MenuIcon />
           </IconButton>
           <div className={ classes.Spacer } />
-          <DarkSwitch />
+          <Box m={ 1 }>
+            <DarkSwitch />
+          </Box>
           <LocaleSelect
             classes={ {
               label: classes.LocaleSelectLabel,
