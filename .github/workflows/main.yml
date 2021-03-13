@@ -32,12 +32,12 @@ jobs:
         with:
           name: dist
           path: dist
-        if: matrix.node-version == 10
+        if: matrix.node-version == 14
     strategy:
       matrix:
         node-version:
-          - 10
           - 12
+          - 14
   test:
     env:
       NODE_ENV: test
@@ -59,10 +59,10 @@ jobs:
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-        if: matrix.node-version == 10
+        if: matrix.node-version == 14
     strategy:
       matrix:
-        node-version: [10, 12]
+        node-version: [12, 14]
   deploy:
     runs-on: ubuntu-latest
     steps:
