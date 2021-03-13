@@ -1,1 +1,0 @@
-!function(){if(!globalThis.location.pathname.startsWith("/react-app-prototype"))throw new Error;var a=new URL("".concat(globalThis.location.origin).concat("/react-app-prototype"));a.hash=globalThis.location.pathname.slice("/react-app-prototype".length),globalThis.location.replace(a.href)}();
