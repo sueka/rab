@@ -1,3 +1,7 @@
+html {
+  text-size-adjust: none;
+}
+
 body {
   transition: background-color 400ms linear;
 }
