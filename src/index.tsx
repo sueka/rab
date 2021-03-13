@@ -22,6 +22,7 @@ import Helmet from 'react-helmet'
 import { Saga } from 'redux-saga'
 import 'reflect-metadata'
 
+import './classes.css'
 import App from './components/App'
 import IntlProvider from './components/IntlProvider'
 import ThemeProvider from './components/ThemeProvider'

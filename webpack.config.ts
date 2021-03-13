@@ -76,6 +76,15 @@ const config: Configuration = {
             options: {
               importLoaders: 1,
               modules: {
+                mode(resourcePath: string) {
+                  const relativeResourcePath = path.relative(__dirname, resourcePath)
+
+                  if (relativeResourcePath === 'src/classes.css') {
+                    return 'global'
+                  }
+
+                  return 'local'
+                },
                 localIdentName: '[path][name]__[local]--[contenthash:base64:5]',
               },
             },

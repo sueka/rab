@@ -19,7 +19,7 @@ export const clean: TaskFunction = describedTask(
 )
 
 export const extractMessages = npxTask('extract-messages', ['--flat', '--default-locale=en', '--locales=en,ja,he', '--output=public/messages', 'src/**/messages.ts'])
-export const tcm = npxTask('tcm', ['src', '-s'])
+export const tcm = series(npxTask('tcm', ['src', '-s']), () => del('src/classes.css.d.ts'))
 const typeCheck = npxTask('tsc', ['--noEmit', '-p', './tsconfig.prod.json'])
 const typeCheckForDevelopment = npxTask('tsc', ['--noEmit', '-p', '.'])
 const eslint = npxTask('eslint', ['--ext', '.ts, .tsx', 'src'])
