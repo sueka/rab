@@ -35,6 +35,67 @@ exports[`App at / 1`] = `
         class="Spacer"
       />
       <div
+        class="MuiBox-root MuiBox-root-3"
+      >
+        <label
+          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Light
+              </bdi>
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiSwitch-root"
+            >
+              <span
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-4 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <input
+                    class="PrivateSwitchBase-input-7 MuiSwitch-input"
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    class="MuiSwitch-thumb"
+                  />
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track"
+              />
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Dark
+              </bdi>
+            </span>
+          </div>
+        </label>
+      </div>
+      <div
         class="MuiFormControl-root"
       >
         <label
@@ -52,7 +113,7 @@ exports[`App at / 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-3 makeStyles-Select-4 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-8 makeStyles-Select-9 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -157,11 +218,11 @@ exports[`App at / 1`] = `
       </div>
       <fieldset
         aria-hidden="true"
-        class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+        class="PrivateNotchedOutline-root-12 MuiOutlinedInput-notchedOutline"
         style="padding-left: 8px;"
       >
         <legend
-          class="PrivateNotchedOutline-legend-8"
+          class="PrivateNotchedOutline-legend-13"
           style="width: 0.01px;"
         >
           <span>
@@ -209,6 +270,67 @@ exports[`App at /chess 1`] = `
         class="Spacer"
       />
       <div
+        class="MuiBox-root MuiBox-root-18"
+      >
+        <label
+          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Light
+              </bdi>
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiSwitch-root"
+            >
+              <span
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-19 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <input
+                    class="PrivateSwitchBase-input-22 MuiSwitch-input"
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    class="MuiSwitch-thumb"
+                  />
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track"
+              />
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Dark
+              </bdi>
+            </span>
+          </div>
+        </label>
+      </div>
+      <div
         class="MuiFormControl-root"
       >
         <label
@@ -226,7 +348,7 @@ exports[`App at /chess 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-13 makeStyles-Select-14 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-23 makeStyles-Select-24 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -255,7 +377,7 @@ exports[`App at /chess 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-11 makeStyles-Offset-12"
+    class="makeStyles-Offset-16 makeStyles-Offset-17"
   />
   <table
     class="ChessboardTable"
@@ -766,6 +888,67 @@ exports[`App at /clock 1`] = `
         class="Spacer"
       />
       <div
+        class="MuiBox-root MuiBox-root-29"
+      >
+        <label
+          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Light
+              </bdi>
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiSwitch-root"
+            >
+              <span
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-30 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <input
+                    class="PrivateSwitchBase-input-33 MuiSwitch-input"
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    class="MuiSwitch-thumb"
+                  />
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track"
+              />
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Dark
+              </bdi>
+            </span>
+          </div>
+        </label>
+      </div>
+      <div
         class="MuiFormControl-root"
       >
         <label
@@ -783,7 +966,7 @@ exports[`App at /clock 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-19 makeStyles-Select-20 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-34 makeStyles-Select-35 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -812,7 +995,7 @@ exports[`App at /clock 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-17 makeStyles-Offset-18"
+    class="makeStyles-Offset-27 makeStyles-Offset-28"
   />
   <canvas
     height="400"
@@ -856,6 +1039,67 @@ exports[`App at /counter 1`] = `
         class="Spacer"
       />
       <div
+        class="MuiBox-root MuiBox-root-40"
+      >
+        <label
+          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Light
+              </bdi>
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiSwitch-root"
+            >
+              <span
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-41 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <input
+                    class="PrivateSwitchBase-input-44 MuiSwitch-input"
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    class="MuiSwitch-thumb"
+                  />
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track"
+              />
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Dark
+              </bdi>
+            </span>
+          </div>
+        </label>
+      </div>
+      <div
         class="MuiFormControl-root"
       >
         <label
@@ -873,7 +1117,7 @@ exports[`App at /counter 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-25 makeStyles-Select-26 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-45 makeStyles-Select-46 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -902,7 +1146,7 @@ exports[`App at /counter 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-23 makeStyles-Offset-24"
+    class="makeStyles-Offset-38 makeStyles-Offset-39"
   />
   <div>
     <span
@@ -1036,6 +1280,67 @@ exports[`App at /info 1`] = `
         class="Spacer"
       />
       <div
+        class="MuiBox-root MuiBox-root-51"
+      >
+        <label
+          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Light
+              </bdi>
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiSwitch-root"
+            >
+              <span
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-52 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <input
+                    class="PrivateSwitchBase-input-55 MuiSwitch-input"
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    class="MuiSwitch-thumb"
+                  />
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track"
+              />
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Dark
+              </bdi>
+            </span>
+          </div>
+        </label>
+      </div>
+      <div
         class="MuiFormControl-root"
       >
         <label
@@ -1053,7 +1358,7 @@ exports[`App at /info 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-31 makeStyles-Select-32 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-56 makeStyles-Select-57 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1082,7 +1387,7 @@ exports[`App at /info 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-29 makeStyles-Offset-30"
+    class="makeStyles-Offset-49 makeStyles-Offset-50"
   />
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
@@ -1143,6 +1448,67 @@ exports[`App at /nonexistent-path 1`] = `
         class="Spacer"
       />
       <div
+        class="MuiBox-root MuiBox-root-87"
+      >
+        <label
+          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Light
+              </bdi>
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiSwitch-root"
+            >
+              <span
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-88 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <input
+                    class="PrivateSwitchBase-input-91 MuiSwitch-input"
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    class="MuiSwitch-thumb"
+                  />
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track"
+              />
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Dark
+              </bdi>
+            </span>
+          </div>
+        </label>
+      </div>
+      <div
         class="MuiFormControl-root"
       >
         <label
@@ -1160,7 +1526,7 @@ exports[`App at /nonexistent-path 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-56 makeStyles-Select-57 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-92 makeStyles-Select-93 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1189,7 +1555,7 @@ exports[`App at /nonexistent-path 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-54 makeStyles-Offset-55"
+    class="makeStyles-Offset-85 makeStyles-Offset-86"
   />
   Error: No route matches /nonexistent-path.
 </div>
@@ -1230,6 +1596,67 @@ exports[`App at /paint 1`] = `
         class="Spacer"
       />
       <div
+        class="MuiBox-root MuiBox-root-62"
+      >
+        <label
+          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Light
+              </bdi>
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiSwitch-root"
+            >
+              <span
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-63 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <input
+                    class="PrivateSwitchBase-input-66 MuiSwitch-input"
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    class="MuiSwitch-thumb"
+                  />
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track"
+              />
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Dark
+              </bdi>
+            </span>
+          </div>
+        </label>
+      </div>
+      <div
         class="MuiFormControl-root"
       >
         <label
@@ -1247,7 +1674,7 @@ exports[`App at /paint 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-37 makeStyles-Select-38 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-67 makeStyles-Select-68 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1276,7 +1703,7 @@ exports[`App at /paint 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-35 makeStyles-Offset-36"
+    class="makeStyles-Offset-60 makeStyles-Offset-61"
   />
   <canvas
     class="Canvas"
@@ -1308,14 +1735,14 @@ exports[`App at /paint 1`] = `
     >
       <span
         aria-disabled="false"
-        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-41 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-42 Mui-checked MuiIconButton-colorSecondary"
+        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-63 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-64 Mui-checked MuiIconButton-colorSecondary"
       >
         <span
           class="MuiIconButton-label"
         >
           <input
             checked=""
-            class="PrivateSwitchBase-input-44"
+            class="PrivateSwitchBase-input-66"
             name="tool"
             type="radio"
             value="pen"
@@ -1337,13 +1764,13 @@ exports[`App at /paint 1`] = `
       </span>
       <span
         aria-disabled="false"
-        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-41 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-63 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
       >
         <span
           class="MuiIconButton-label"
         >
           <input
-            class="PrivateSwitchBase-input-44"
+            class="PrivateSwitchBase-input-66"
             name="tool"
             type="radio"
             value="bucket"
@@ -1386,19 +1813,19 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-41 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-63 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-44"
+              class="PrivateSwitchBase-input-66"
               name="lineCap"
               type="radio"
               value="butt"
             />
             <div
-              class="PrivateRadioButtonIcon-root-45"
+              class="PrivateRadioButtonIcon-root-71"
             >
               <svg
                 aria-hidden="true"
@@ -1412,7 +1839,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-46"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-72"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -1437,20 +1864,20 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-41 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-42 Mui-checked MuiIconButton-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-63 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-64 Mui-checked MuiIconButton-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
               checked=""
-              class="PrivateSwitchBase-input-44"
+              class="PrivateSwitchBase-input-66"
               name="lineCap"
               type="radio"
               value="round"
             />
             <div
-              class="PrivateRadioButtonIcon-root-45 PrivateRadioButtonIcon-checked-47"
+              class="PrivateRadioButtonIcon-root-71 PrivateRadioButtonIcon-checked-73"
             >
               <svg
                 aria-hidden="true"
@@ -1464,7 +1891,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-46"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-72"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -1489,19 +1916,19 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-41 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-63 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-44"
+              class="PrivateSwitchBase-input-66"
               name="lineCap"
               type="radio"
               value="square"
             />
             <div
-              class="PrivateRadioButtonIcon-root-45"
+              class="PrivateRadioButtonIcon-root-71"
             >
               <svg
                 aria-hidden="true"
@@ -1515,7 +1942,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-46"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-72"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -1575,6 +2002,67 @@ exports[`App at /reminder 1`] = `
         class="Spacer"
       />
       <div
+        class="MuiBox-root MuiBox-root-76"
+      >
+        <label
+          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Light
+              </bdi>
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiSwitch-root"
+            >
+              <span
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <input
+                    class="PrivateSwitchBase-input-80 MuiSwitch-input"
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    class="MuiSwitch-thumb"
+                  />
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track"
+              />
+            </span>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-body1"
+            >
+              <bdi>
+                Dark
+              </bdi>
+            </span>
+          </div>
+        </label>
+      </div>
+      <div
         class="MuiFormControl-root"
       >
         <label
@@ -1592,7 +2080,7 @@ exports[`App at /reminder 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-50 makeStyles-Select-51 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-81 makeStyles-Select-82 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1621,7 +2109,7 @@ exports[`App at /reminder 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-48 makeStyles-Offset-49"
+    class="makeStyles-Offset-74 makeStyles-Offset-75"
   />
   <ul
     class="MuiList-root MuiList-padding"
