@@ -6,8 +6,8 @@ import { Theme, makeStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import React, { useCallback, useState } from 'react'
 
-import DarkSwitch from '~/components/DarkSwitch'
 import LocaleSelect from '~/components/LocaleSelect' // TODO
+import ToggleDarkButton from '~/components/ToggleDarkButton'
 import useScreenSize from '~/lib/hooks/useScreenSize'
 import mergeRefs from '~/lib/mergeRefs'
 import classes from './classes.css'
@@ -58,7 +58,7 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
           </IconButton>
           <div className={ classes.Spacer } />
           <Box m={ 1 }>
-            <DarkSwitch />
+            <ToggleDarkButton />
           </Box>
           <LocaleSelect
             classes={ {

@@ -34,6 +34,7 @@
   "src.components.Reminder.TaskListItem.asBoundedLengthStringErrorMessage": "{ name } must be 0-{ upperBound } characters.",
   "src.components.Reminder.inputIsNotBetweenLowerBoundAndUpperBound": "{ input } is not between { lowerBound } and { upperBound }.",
   "src.components.SetClockButton.setTheClock": "Set the clock",
+  "src.components.ToggleDarkButton.toggleLightDarkTheme": "Toggle light/dark theme",
   "src.lib.components.CopiableTextField.copyText": "Copy text",
   "src.lib.components.CopiableTextField.textCopied": "Text copied.",
   "src.lib.components.FileUpload.browse": "Browse…",

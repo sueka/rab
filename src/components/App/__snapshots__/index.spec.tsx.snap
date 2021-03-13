@@ -37,63 +37,34 @@ exports[`App at / 1`] = `
       <div
         class="MuiBox-root MuiBox-root-3"
       >
-        <label
-          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-4 MuiCheckbox-root Checkbox"
         >
-          <div
-            class="MuiGrid-root MuiGrid-item"
+          <span
+            class="MuiIconButton-label"
           >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
+            <input
+              class="PrivateSwitchBase-input-7"
+              data-indeterminate="false"
+              type="checkbox"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
             >
-              <bdi>
-                Light
-              </bdi>
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiSwitch-root"
-            >
-              <span
-                aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-4 MuiSwitch-switchBase MuiSwitch-colorSecondary"
-              >
-                <span
-                  class="MuiIconButton-label"
-                >
-                  <input
-                    class="PrivateSwitchBase-input-7 MuiSwitch-input"
-                    type="checkbox"
-                    value=""
-                  />
-                  <span
-                    class="MuiSwitch-thumb"
-                  />
-                </span>
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </span>
-              <span
-                class="MuiSwitch-track"
+              <path
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
-            >
-              <bdi>
-                Dark
-              </bdi>
-            </span>
-          </div>
-        </label>
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </span>
       </div>
       <div
         class="MuiFormControl-root"
@@ -272,63 +243,34 @@ exports[`App at /chess 1`] = `
       <div
         class="MuiBox-root MuiBox-root-18"
       >
-        <label
-          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-19 MuiCheckbox-root Checkbox"
         >
-          <div
-            class="MuiGrid-root MuiGrid-item"
+          <span
+            class="MuiIconButton-label"
           >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
+            <input
+              class="PrivateSwitchBase-input-22"
+              data-indeterminate="false"
+              type="checkbox"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
             >
-              <bdi>
-                Light
-              </bdi>
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiSwitch-root"
-            >
-              <span
-                aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-19 MuiSwitch-switchBase MuiSwitch-colorSecondary"
-              >
-                <span
-                  class="MuiIconButton-label"
-                >
-                  <input
-                    class="PrivateSwitchBase-input-22 MuiSwitch-input"
-                    type="checkbox"
-                    value=""
-                  />
-                  <span
-                    class="MuiSwitch-thumb"
-                  />
-                </span>
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </span>
-              <span
-                class="MuiSwitch-track"
+              <path
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
-            >
-              <bdi>
-                Dark
-              </bdi>
-            </span>
-          </div>
-        </label>
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </span>
       </div>
       <div
         class="MuiFormControl-root"
@@ -890,63 +832,34 @@ exports[`App at /clock 1`] = `
       <div
         class="MuiBox-root MuiBox-root-29"
       >
-        <label
-          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-30 MuiCheckbox-root Checkbox"
         >
-          <div
-            class="MuiGrid-root MuiGrid-item"
+          <span
+            class="MuiIconButton-label"
           >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
+            <input
+              class="PrivateSwitchBase-input-33"
+              data-indeterminate="false"
+              type="checkbox"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
             >
-              <bdi>
-                Light
-              </bdi>
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiSwitch-root"
-            >
-              <span
-                aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-30 MuiSwitch-switchBase MuiSwitch-colorSecondary"
-              >
-                <span
-                  class="MuiIconButton-label"
-                >
-                  <input
-                    class="PrivateSwitchBase-input-33 MuiSwitch-input"
-                    type="checkbox"
-                    value=""
-                  />
-                  <span
-                    class="MuiSwitch-thumb"
-                  />
-                </span>
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </span>
-              <span
-                class="MuiSwitch-track"
+              <path
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
-            >
-              <bdi>
-                Dark
-              </bdi>
-            </span>
-          </div>
-        </label>
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </span>
       </div>
       <div
         class="MuiFormControl-root"
@@ -1041,63 +954,34 @@ exports[`App at /counter 1`] = `
       <div
         class="MuiBox-root MuiBox-root-40"
       >
-        <label
-          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-41 MuiCheckbox-root Checkbox"
         >
-          <div
-            class="MuiGrid-root MuiGrid-item"
+          <span
+            class="MuiIconButton-label"
           >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
+            <input
+              class="PrivateSwitchBase-input-44"
+              data-indeterminate="false"
+              type="checkbox"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
             >
-              <bdi>
-                Light
-              </bdi>
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiSwitch-root"
-            >
-              <span
-                aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-41 MuiSwitch-switchBase MuiSwitch-colorSecondary"
-              >
-                <span
-                  class="MuiIconButton-label"
-                >
-                  <input
-                    class="PrivateSwitchBase-input-44 MuiSwitch-input"
-                    type="checkbox"
-                    value=""
-                  />
-                  <span
-                    class="MuiSwitch-thumb"
-                  />
-                </span>
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </span>
-              <span
-                class="MuiSwitch-track"
+              <path
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
-            >
-              <bdi>
-                Dark
-              </bdi>
-            </span>
-          </div>
-        </label>
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </span>
       </div>
       <div
         class="MuiFormControl-root"
@@ -1282,63 +1166,34 @@ exports[`App at /info 1`] = `
       <div
         class="MuiBox-root MuiBox-root-51"
       >
-        <label
-          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-52 MuiCheckbox-root Checkbox"
         >
-          <div
-            class="MuiGrid-root MuiGrid-item"
+          <span
+            class="MuiIconButton-label"
           >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
+            <input
+              class="PrivateSwitchBase-input-55"
+              data-indeterminate="false"
+              type="checkbox"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
             >
-              <bdi>
-                Light
-              </bdi>
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiSwitch-root"
-            >
-              <span
-                aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-52 MuiSwitch-switchBase MuiSwitch-colorSecondary"
-              >
-                <span
-                  class="MuiIconButton-label"
-                >
-                  <input
-                    class="PrivateSwitchBase-input-55 MuiSwitch-input"
-                    type="checkbox"
-                    value=""
-                  />
-                  <span
-                    class="MuiSwitch-thumb"
-                  />
-                </span>
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </span>
-              <span
-                class="MuiSwitch-track"
+              <path
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
-            >
-              <bdi>
-                Dark
-              </bdi>
-            </span>
-          </div>
-        </label>
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </span>
       </div>
       <div
         class="MuiFormControl-root"
@@ -1450,63 +1305,34 @@ exports[`App at /nonexistent-path 1`] = `
       <div
         class="MuiBox-root MuiBox-root-87"
       >
-        <label
-          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-88 MuiCheckbox-root Checkbox"
         >
-          <div
-            class="MuiGrid-root MuiGrid-item"
+          <span
+            class="MuiIconButton-label"
           >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
+            <input
+              class="PrivateSwitchBase-input-91"
+              data-indeterminate="false"
+              type="checkbox"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
             >
-              <bdi>
-                Light
-              </bdi>
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiSwitch-root"
-            >
-              <span
-                aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-88 MuiSwitch-switchBase MuiSwitch-colorSecondary"
-              >
-                <span
-                  class="MuiIconButton-label"
-                >
-                  <input
-                    class="PrivateSwitchBase-input-91 MuiSwitch-input"
-                    type="checkbox"
-                    value=""
-                  />
-                  <span
-                    class="MuiSwitch-thumb"
-                  />
-                </span>
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </span>
-              <span
-                class="MuiSwitch-track"
+              <path
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
-            >
-              <bdi>
-                Dark
-              </bdi>
-            </span>
-          </div>
-        </label>
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </span>
       </div>
       <div
         class="MuiFormControl-root"
@@ -1598,63 +1424,34 @@ exports[`App at /paint 1`] = `
       <div
         class="MuiBox-root MuiBox-root-62"
       >
-        <label
-          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-63 MuiCheckbox-root Checkbox"
         >
-          <div
-            class="MuiGrid-root MuiGrid-item"
+          <span
+            class="MuiIconButton-label"
           >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
+            <input
+              class="PrivateSwitchBase-input-66"
+              data-indeterminate="false"
+              type="checkbox"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
             >
-              <bdi>
-                Light
-              </bdi>
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiSwitch-root"
-            >
-              <span
-                aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-63 MuiSwitch-switchBase MuiSwitch-colorSecondary"
-              >
-                <span
-                  class="MuiIconButton-label"
-                >
-                  <input
-                    class="PrivateSwitchBase-input-66 MuiSwitch-input"
-                    type="checkbox"
-                    value=""
-                  />
-                  <span
-                    class="MuiSwitch-thumb"
-                  />
-                </span>
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </span>
-              <span
-                class="MuiSwitch-track"
+              <path
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
-            >
-              <bdi>
-                Dark
-              </bdi>
-            </span>
-          </div>
-        </label>
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </span>
       </div>
       <div
         class="MuiFormControl-root"
@@ -2004,63 +1801,34 @@ exports[`App at /reminder 1`] = `
       <div
         class="MuiBox-root MuiBox-root-76"
       >
-        <label
-          class="MuiGrid-root DarkSwitch MuiGrid-container DarkSwitchContainer MuiGrid-align-items-xs-center"
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiCheckbox-root Checkbox"
         >
-          <div
-            class="MuiGrid-root MuiGrid-item"
+          <span
+            class="MuiIconButton-label"
           >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
+            <input
+              class="PrivateSwitchBase-input-80"
+              data-indeterminate="false"
+              type="checkbox"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
             >
-              <bdi>
-                Light
-              </bdi>
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiSwitch-root"
-            >
-              <span
-                aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiSwitch-switchBase MuiSwitch-colorSecondary"
-              >
-                <span
-                  class="MuiIconButton-label"
-                >
-                  <input
-                    class="PrivateSwitchBase-input-80 MuiSwitch-input"
-                    type="checkbox"
-                    value=""
-                  />
-                  <span
-                    class="MuiSwitch-thumb"
-                  />
-                </span>
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </span>
-              <span
-                class="MuiSwitch-track"
+              <path
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
-            </span>
-          </div>
-          <div
-            class="MuiGrid-root MuiGrid-item"
-          >
-            <span
-              class="MuiTypography-root MuiTypography-body1"
-            >
-              <bdi>
-                Dark
-              </bdi>
-            </span>
-          </div>
-        </label>
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </span>
       </div>
       <div
         class="MuiFormControl-root"

@@ -34,6 +34,7 @@
   "src.components.Reminder.TaskListItem.asBoundedLengthStringErrorMessage": "{ name } は 0-{ upperBound } 文字でなければなりません。",
   "src.components.Reminder.inputIsNotBetweenLowerBoundAndUpperBound": "{ input } は { lowerBound } と { upperBound } の間にありません。",
   "src.components.SetClockButton.setTheClock": "時計を合わせる",
+  "src.components.ToggleDarkButton.toggleLightDarkTheme": "ライトテーマ/ダークテーマを切り替える",
   "src.lib.components.CopiableTextField.copyText": "テキストをコピー",
   "src.lib.components.CopiableTextField.textCopied": "テキストをコピーしました。",
   "src.lib.components.FileUpload.browse": "選択…",
