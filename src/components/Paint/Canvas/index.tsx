@@ -1,23 +1,24 @@
-import React, { forwardRef, useCallback, useState } from 'react'
+import React, { forwardRef, useCallback, useRef, useState } from 'react'
 
 import { shouldBeNullable, shouldBePresent } from '~/lib/asserters/commonAsserters'
+import mergeRefs from '~/lib/mergeRefs'
 import floodFill from '~/utils/canvas/floodFill'
 import classes from './classes.css'
 
-interface InnerProps {
+interface Props {
   width: number
   height: number
   lineWidth: number
-  innerRef: React.Ref<HTMLCanvasElement>
   context: CanvasRenderingContext2D | null | undefined
   tool: Canvas.Tool
 }
 
-type Props = React.PropsWithRef<Alt.Omit<InnerProps, 'innerRef'>>
-
-const Canvas: React.FC<InnerProps> = ({ width, height, lineWidth, innerRef, context, tool }) => {
+const Canvas = forwardRef<HTMLCanvasElement, Props>(({ width, height, lineWidth, context, tool }, forwardedRef) => {
   const [drawing, setDrawing] = useState(false)
   const [previousPoint, setPreviousPoint] = useState<Canvas.Point | null>(null)
+
+  const ownRef = useRef<HTMLCanvasElement | null>(null)
+  const ref = mergeRefs(forwardedRef, ownRef)
 
   const handlePointerDown = useCallback<React.PointerEventHandler<HTMLCanvasElement>>((event) => {
     if (tool !== 'pen') {
@@ -80,7 +81,7 @@ const Canvas: React.FC<InnerProps> = ({ width, height, lineWidth, innerRef, cont
 
   return (
     <canvas
-      ref={ innerRef }
+      ref={ ref }
       className={ classes.Canvas }
       width={ width }
       height={ height }
@@ -91,8 +92,6 @@ const Canvas: React.FC<InnerProps> = ({ width, height, lineWidth, innerRef, cont
       onClick={ handleClick }
     />
   )
-}
+})
 
-export default forwardRef<HTMLCanvasElement, Props>((props, ref) => (
-  <Canvas innerRef={ ref } { ...props } />
-))
+export default Canvas
