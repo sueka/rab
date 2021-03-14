@@ -1,6 +1,6 @@
 import Checkbox from '@material-ui/core/Checkbox'
 import Tooltip from '@material-ui/core/Tooltip'
-import Brightness2Icon from '@material-ui/icons/Brightness2'
+import Brightness4Icon from '@material-ui/icons/Brightness4'
 import Brightness7Icon from '@material-ui/icons/Brightness7'
 import React, { useCallback, useContext } from 'react'
 import { FormattedMessage } from 'react-intl'
@@ -23,8 +23,8 @@ const ToggleDarkButton = () => {
   return (
     <Tooltip title={ <FormattedMessage { ...messages.toggleLightDarkTheme } /> }>
       <Checkbox
-        icon={ <Brightness7Icon /> }
-        checkedIcon={ <Brightness2Icon /> }
+        icon={ <Brightness4Icon /> }
+        checkedIcon={ <Brightness7Icon /> }
         color="default" // To change the focus ripple color
         classes={ {
           root: classes.Checkbox,
