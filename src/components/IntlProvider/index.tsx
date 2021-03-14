@@ -22,7 +22,7 @@ type Props =
   & StateProps
 
 export /* for testing */ const IntlProvider: React.FC<Props> = ({ availableLocales, ...props }) => {
-  const dir = useMemo(() => props.locale === 'he' ? 'rtl' : 'ltr', [props.locale]) // TODO
+  const dir = useMemo(() => props.locale === 'he' ? 'rtl' : 'ltr', [props.locale]) // TODO: RtL の判定方法を修正する
 
   // NOTE: <bdi> は Internet Explorer で動作しないが、翻訳はフォールバックされることがあるので、翻訳の書字方向をロケールから計算することはできない。
   return (
