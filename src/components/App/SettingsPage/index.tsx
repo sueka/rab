@@ -28,7 +28,7 @@ const SettingsPage: React.FC = () => {
   return (
     <>
       <Helmet title={ formatMessage(messages.settings) } />
-      <Grid sm={ 6 } md={ 4 } lg={ 3 } xl={ 2 }>
+      <Grid item sm={ 6 } md={ 4 } lg={ 3 } xl={ 2 }>
         <List>
           <ListItem>
             <ListItemText primary={ <FormattedMessage { ...messages.darkTheme } /> } />
