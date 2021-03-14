@@ -1524,74 +1524,63 @@ exports[`App at /paint 1`] = `
     />
   </button>
   <div
-    class="MuiFormControl-root"
+    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-vertical"
+    role="group"
   >
-    <div
-      class="MuiFormGroup-root"
-      role="radiogroup"
+    <button
+      aria-pressed="true"
+      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedVertical Mui-selected"
+      tabindex="0"
+      type="button"
+      value="pen"
     >
       <span
-        aria-disabled="false"
-        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-63 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-64 Mui-checked MuiIconButton-colorSecondary"
+        class="MuiToggleButton-label"
       >
-        <span
-          class="MuiIconButton-label"
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          <input
-            checked=""
-            class="PrivateSwitchBase-input-66"
-            name="tool"
-            type="radio"
-            value="pen"
+          <path
+            d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
           />
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-            />
-          </svg>
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
+        </svg>
       </span>
       <span
-        aria-disabled="false"
-        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-63 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      aria-pressed="false"
+      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedVertical"
+      tabindex="0"
+      type="button"
+      value="bucket"
+    >
+      <span
+        class="MuiToggleButton-label"
       >
-        <span
-          class="MuiIconButton-label"
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          <input
-            class="PrivateSwitchBase-input-66"
-            name="tool"
-            type="radio"
-            value="bucket"
+          <path
+            d="M16.56 8.94L7.62 0 6.21 1.41l2.38 2.38-5.15 5.15c-.59.59-.59 1.54 0 2.12l5.5 5.5c.29.29.68.44 1.06.44s.77-.15 1.06-.44l5.5-5.5c.59-.58.59-1.53 0-2.12zM5.21 10L10 5.21 14.79 10H5.21zM19 11.5s-2 2.17-2 3.5c0 1.1.9 2 2 2s2-.9 2-2c0-1.33-2-3.5-2-3.5z"
           />
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M16.56 8.94L7.62 0 6.21 1.41l2.38 2.38-5.15 5.15c-.59.59-.59 1.54 0 2.12l5.5 5.5c.29.29.68.44 1.06.44s.77-.15 1.06-.44l5.5-5.5c.59-.58.59-1.53 0-2.12zM5.21 10L10 5.21 14.79 10H5.21zM19 11.5s-2 2.17-2 3.5c0 1.1.9 2 2 2s2-.9 2-2c0-1.33-2-3.5-2-3.5z"
-            />
-            <path
-              d="M0 20h24v4H0z"
-              fill-opacity=".36"
-            />
-          </svg>
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
+          <path
+            d="M0 20h24v4H0z"
+            fill-opacity=".36"
+          />
+        </svg>
       </span>
-    </div>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
   </div>
   <div
     class="MuiFormControl-root"

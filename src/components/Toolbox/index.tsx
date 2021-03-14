@@ -1,8 +1,7 @@
-import FormControl from '@material-ui/core/FormControl'
-import Radio from '@material-ui/core/Radio'
-import RadioGroup, { RadioGroupProps } from '@material-ui/core/RadioGroup'
 import CreateIcon from '@material-ui/icons/Create'
 import FormatColorFillIcon from '@material-ui/icons/FormatColorFill'
+import ToggleButton from '@material-ui/lab/ToggleButton'
+import ToggleButtonGroup, { ToggleButtonGroupProps } from '@material-ui/lab/ToggleButtonGroup'
 import React from 'react'
 
 // TODO: Remove
@@ -12,16 +11,18 @@ type Tool =
 
 export interface Props {
   value: Tool
-  onChange: NonNullable<RadioGroupProps['onChange']>
+  onChange: NonNullable<ToggleButtonGroupProps['onChange']>
 }
 
 const Toolbox: React.FC<Props> = ({ value, onChange }) => (
-  <FormControl>
-    <RadioGroup name="tool" value={ value } onChange={ onChange }>
-      <Radio icon={ <CreateIcon /> } checkedIcon={ <CreateIcon /> } value="pen" />
-      <Radio icon={ <FormatColorFillIcon /> } checkedIcon={ <FormatColorFillIcon /> } value="bucket" />
-    </RadioGroup>
-  </FormControl>
+  <ToggleButtonGroup orientation="vertical" exclusive value={ value } onChange={ onChange }>
+    <ToggleButton value="pen">
+      <CreateIcon />
+    </ToggleButton>
+    <ToggleButton value="bucket">
+      <FormatColorFillIcon />
+    </ToggleButton>
+  </ToggleButtonGroup>
 )
 
 export default Toolbox

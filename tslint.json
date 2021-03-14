@@ -28,6 +28,7 @@
       "@iconify/icons-mdi",
       "@material-ui/core",
       "@material-ui/icons",
+      "@material-ui/lab",
       "fp-ts/lib/Either",
       "react-app-polyfill/ie11",
       "react-app-polyfill/stable",
