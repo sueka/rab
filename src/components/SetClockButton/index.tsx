@@ -13,6 +13,7 @@ interface DispatchProps {
 type Props =
   & DispatchProps
 
+// TODO: delete
 const SetClockButton: React.FC<Props> = ({ updateNow }) => (
   <Button onClick={ updateNow }>
     <FormattedMessage { ...messages.setTheClock } />

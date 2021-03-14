@@ -4,10 +4,10 @@ import Helmet from 'react-helmet'
 import { FormattedNumber, useIntl } from 'react-intl'
 
 import CurrentTimeOfDay from '~/components/CurrentTimeOfDay'
+import { createPage } from '~/components/PageTemplate'
 import SetClockButton from '~/components/SetClockButton'
 import Today from '~/components/Today'
 import CopiableTextField from '~/lib/components/CopiableTextField'
-import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
 const HomePage: React.FC = () => {

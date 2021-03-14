@@ -6,7 +6,6 @@ import MenuItem from '@material-ui/core/MenuItem'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Select, { SelectProps } from '@material-ui/core/Select'
 import { Theme, makeStyles, useTheme } from '@material-ui/core/styles'
-import classNames from 'classnames'
 import classnames from 'classnames'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
@@ -67,7 +66,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
 
   const rootClassName = useMemo(() => classnames(propClasses?.root, FormControlProps?.className), [propClasses?.root, FormControlProps?.className])
   const labelClassName = useMemo(() => classnames(propClasses?.label, cssClasses.InputLabel), [propClasses?.label])
-  const selectSelectClassName = useMemo(() => classNames(jssClasses.Select, cssClasses.Select), [jssClasses.Select])
+  const selectSelectClassName = useMemo(() => classnames(jssClasses.Select, cssClasses.Select), [jssClasses.Select])
   const inputClassName = useMemo(() => classnames(propClasses?.input), [propClasses?.input])
   const selectIconClassName = useMemo(() => classnames(propClasses?.selectIcon), [propClasses?.selectIcon])
   const inputUnderlineClassName = useMemo(() => classnames(propClasses?.inputUnderline), [propClasses?.inputUnderline])

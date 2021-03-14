@@ -1,3 +1,4 @@
+import Button from '@material-ui/core/Button'
 import FormControl from '@material-ui/core/FormControl'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormLabel from '@material-ui/core/FormLabel'
@@ -6,10 +7,9 @@ import RadioGroup from '@material-ui/core/RadioGroup'
 import React, { useCallback, useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import Canvas from '~/components/Canvas'
-import ClearCanvasButton from '~/components/ClearCanvasButton'
-import Toolbox, { Props as ToolboxProps } from '~/components/Toolbox'
 import { isOneOf } from '~/lib/guards/commonGuards'
+import Canvas from './Canvas'
+import Toolbox, { Props as ToolboxProps } from './Toolbox'
 import messages from './messages'
 
 // TODO: Remove
@@ -20,6 +20,9 @@ type Tool =
 const isCanvasLineCap = isOneOf('butt', 'round', 'square')
 const isTool = isOneOf('pen', 'bucket')
 
+const WIDTH = 320
+const HEIGHT = 320
+
 const Paint: React.FC = () => {
   const [context, setContext] = useState<CanvasRenderingContext2D | null>()
   const [lineCap, setLineCap] = useState<CanvasLineCap>('round')
@@ -28,6 +31,10 @@ const Paint: React.FC = () => {
   const canvas = useCallback<React.RefCallback<HTMLCanvasElement>>((node) => {
     setContext(node?.getContext('2d'))
   }, [])
+
+  const handleClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(() => {
+    context?.clearRect(0, 0, WIDTH, HEIGHT)
+  }, [context])
 
   const handleToolChange = useCallback<ToolboxProps['onChange']>((_event, value) => {
     if (!isTool(value)) {
@@ -54,8 +61,10 @@ const Paint: React.FC = () => {
 
   return (
     <>
-      <Canvas width={ 320 } height={ 320 } lineWidth={ 10 } ref={ canvas } context={ context } tool={ tool } />
-      <ClearCanvasButton width={ 320 } height={ 320 } context={ context }><FormattedMessage { ...messages.clear } /></ClearCanvasButton>
+      <Canvas width={ WIDTH } height={ HEIGHT } lineWidth={ 10 } ref={ canvas } context={ context } tool={ tool } />
+      <Button onClick={ handleClick }>
+        <FormattedMessage { ...messages.clear } />
+      </Button>
       <Toolbox value={ tool } onChange={ handleToolChange } />
       <FormControl disabled={ tool !== 'pen' }>
         <FormLabel>line cap</FormLabel>

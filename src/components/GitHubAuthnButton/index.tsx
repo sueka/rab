@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { redirectToGitHub } from '~/redux/modules/userAuthn'
 import messages from './messages'
 
+// TODO: delete
 const GitHubAuthnButton: React.FC = () => {
   const dispatch = useDispatch()
 

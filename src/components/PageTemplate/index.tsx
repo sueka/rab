@@ -1,11 +1,11 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
-import Nav from '~/components/Nav'
-import TopAppbar from '~/components/TopAppbar'
 import ErrorBoundary from '~/lib/components/ErrorBoundary'
 import useScreenSize from '~/lib/hooks/useScreenSize'
 import typed from '~/lib/typed'
+import Nav from './Nav'
+import TopAppbar from './TopAppbar'
 
 interface PageTemplateProps {
   children: React.ReactElement<BodyProps, React.ComponentType<BodyProps>>

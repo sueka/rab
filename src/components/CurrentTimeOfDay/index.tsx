@@ -11,6 +11,7 @@ interface StateProps {
 type Props =
   & StateProps
 
+// TODO: delete?
 const CurrentTimeOfDay: React.FC<Props> = ({ now }) => (
   <FormattedTimeOfDay value={ now } format="medium" />
 )

@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { compose } from 'redux'
 
 import Chessboard from '~/components/Chessboard'
+import { createPage } from '~/components/PageTemplate'
 import ChessContext from '~/contexts/ChessContext'
 import { State } from '~/redux'
 import { halfMove, pickChessman, releaseChessman } from '~/redux/modules/chess'
-import { createPage } from '~/templates/PageTemplate'
 import messages from './messages'
 
 const ChessPage: React.FC = () => {

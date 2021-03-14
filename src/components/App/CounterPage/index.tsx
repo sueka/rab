@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import { useIntl } from 'react-intl'
 
 import Counter from '~/components/Counter'
-import { createPage } from '~/templates/PageTemplate'
+import { createPage } from '~/components/PageTemplate'
 import messages from './messages'
 
 const CounterPage: React.FC = () => {

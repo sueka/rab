@@ -2,12 +2,16 @@ import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import IntlProvider from '~/lib/components/IntlProvider'
+import { IntlProvider } from '~/components/IntlProvider'
 import identity from '~/lib/identity'
 import { incrementAsync, incrementIfOdd, selectCount } from '~/redux/modules/counter'
 import Counter from '.'
 
-jest.mock('react-redux')
+jest.mock('react-redux', () => ({
+  ...(jest.requireActual('react-redux') as any), // tslint:disable-line:no-any
+  useDispatch: jest.fn(),
+  useSelector: jest.fn(),
+}))
 
 jest.mock('~/redux/modules/counter', () => ({
   incrementIfOdd: jest.fn(),

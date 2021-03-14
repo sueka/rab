@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import { useIntl } from 'react-intl'
 
 import Info from '~/components/Info'
-import { createPage } from '~/templates/PageTemplate'
+import { createPage } from '~/components/PageTemplate'
 import messages from './messages'
 
 const InfoPage: React.FC = () => {

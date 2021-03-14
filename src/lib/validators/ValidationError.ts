@@ -2,6 +2,8 @@ import { PrimitiveType } from 'intl-messageformat'
 
 import AbstractError from '~/lib/errors/AbstractError'
 
+// TODO: remove
+// TODO: revise
 /**
  * @param key of results of defineMessages from react-intl
  * @param values for react-intl

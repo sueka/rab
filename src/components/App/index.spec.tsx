@@ -23,6 +23,7 @@ jest.mock('~/lib/hooks/useScreenSize', () => jest.fn())
 
 const useScreenSizeMocked = useScreenSize as jest.MockedFunction<typeof useScreenSize>
 
+// TODO: remove?
 // NOTE: connected-react-router ではないので router state は不要。
 const store = createMockStore<Alt.Omit<State, 'router'>>()({
   chess: {
