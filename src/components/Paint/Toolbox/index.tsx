@@ -19,7 +19,7 @@ const Toolbox: React.FC<Props> = ({ value, onChange }) => (
     <ToggleButton value="pen">
       <CreateIcon />
     </ToggleButton>
-    <ToggleButton value="bucket">
+    <ToggleButton value="bucket" disabled>
       <FormatColorFillIcon />
     </ToggleButton>
   </ToggleButtonGroup>
