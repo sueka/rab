@@ -1303,17 +1303,17 @@ exports[`App at /nonexistent-path 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-87"
+        class="MuiBox-root MuiBox-root-89"
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-88 MuiCheckbox-root Checkbox"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-90 MuiCheckbox-root Checkbox"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-91"
+              class="PrivateSwitchBase-input-93"
               data-indeterminate="false"
               type="checkbox"
               value=""
@@ -1352,7 +1352,7 @@ exports[`App at /nonexistent-path 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-92 makeStyles-Select-93 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-94 makeStyles-Select-95 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1381,7 +1381,7 @@ exports[`App at /nonexistent-path 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-85 makeStyles-Offset-86"
+    class="makeStyles-Offset-87 makeStyles-Offset-88"
   />
   Error: No route matches /nonexistent-path.
 </div>
@@ -1503,7 +1503,7 @@ exports[`App at /paint 1`] = `
     class="makeStyles-Offset-60 makeStyles-Offset-61"
   />
   <canvas
-    class="Canvas"
+    class="makeStyles-Canvas-71 makeStyles-Canvas-72 Canvas"
     height="320"
     width="320"
   />
@@ -1611,7 +1611,7 @@ exports[`App at /paint 1`] = `
               value="butt"
             />
             <div
-              class="PrivateRadioButtonIcon-root-71"
+              class="PrivateRadioButtonIcon-root-73"
             >
               <svg
                 aria-hidden="true"
@@ -1625,7 +1625,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-72"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-74"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -1663,7 +1663,7 @@ exports[`App at /paint 1`] = `
               value="round"
             />
             <div
-              class="PrivateRadioButtonIcon-root-71 PrivateRadioButtonIcon-checked-73"
+              class="PrivateRadioButtonIcon-root-73 PrivateRadioButtonIcon-checked-75"
             >
               <svg
                 aria-hidden="true"
@@ -1677,7 +1677,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-72"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-74"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -1714,7 +1714,7 @@ exports[`App at /paint 1`] = `
               value="square"
             />
             <div
-              class="PrivateRadioButtonIcon-root-71"
+              class="PrivateRadioButtonIcon-root-73"
             >
               <svg
                 aria-hidden="true"
@@ -1728,7 +1728,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-72"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-74"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -1788,17 +1788,17 @@ exports[`App at /reminder 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-76"
+        class="MuiBox-root MuiBox-root-78"
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiCheckbox-root Checkbox"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-79 MuiCheckbox-root Checkbox"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-80"
+              class="PrivateSwitchBase-input-82"
               data-indeterminate="false"
               type="checkbox"
               value=""
@@ -1837,7 +1837,7 @@ exports[`App at /reminder 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-81 makeStyles-Select-82 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-83 makeStyles-Select-84 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1866,7 +1866,7 @@ exports[`App at /reminder 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-74 makeStyles-Offset-75"
+    class="makeStyles-Offset-76 makeStyles-Offset-77"
   />
   <ul
     class="MuiList-root MuiList-padding"
