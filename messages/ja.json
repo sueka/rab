@@ -28,6 +28,7 @@
   "src.components.PageTemplate.Nav.paint": "ペイント",
   "src.components.PageTemplate.Nav.reminder": "リマインダー",
   "src.components.PageTemplate.Nav.settings": "設定",
+  "src.components.Paint.brushSize": "ブラシサイズ",
   "src.components.Paint.clear": "クリア",
   "src.components.Reminder.AddTaskButton.add": "追加",
   "src.components.Reminder.TaskListItem.asBoundedLengthStringErrorMessage": "{ name } は 0-{ upperBound } 文字でなければなりません。",

@@ -28,6 +28,7 @@
   "src.components.PageTemplate.Nav.paint": "Paint",
   "src.components.PageTemplate.Nav.reminder": "Reminder",
   "src.components.PageTemplate.Nav.settings": "Settings",
+  "src.components.Paint.brushSize": "Brush size",
   "src.components.Paint.clear": "Clear",
   "src.components.Reminder.AddTaskButton.add": "Add",
   "src.components.Reminder.TaskListItem.asBoundedLengthStringErrorMessage": "{ name } must be 0-{ upperBound } characters.",
