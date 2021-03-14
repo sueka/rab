@@ -77,7 +77,7 @@ const Canvas = forwardRef<HTMLCanvasElement, Props>(({ width, height, lineWidth,
     shouldBePresent(previousPoint)
 
     /* tslint:disable:no-object-mutation */
-    context.lineWidth = lineWidth * event.pressure
+    context.lineWidth = lineWidth * (event.pressure !== 0 ? event.pressure : 1)
     context.lineJoin = 'round'
     /* tslint:enable:no-object-mutation */
 
