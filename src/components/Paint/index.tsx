@@ -1,3 +1,4 @@
+import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
 import FormControl from '@material-ui/core/FormControl'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
@@ -90,14 +91,16 @@ const Paint: React.FC = () => {
           <FormControlLabel value="square" label="square" control={ <Radio /> } />
         </RadioGroup>
       </FormControl>
-      <List>
-        <ListItem>
-          <ListItemText>
-            <Typography gutterBottom><FormattedMessage { ...messages.brushSize } /></Typography>
-            <Slider min={ 1 / (dpr ?? 1) } value={ lineWidth } onChange={ handleLineWidthSliderChange } />
-          </ListItemText>
-        </ListItem>
-      </List>
+      <Box m={ 1 }>
+        <List>
+          <ListItem>
+            <ListItemText>
+              <Typography gutterBottom><FormattedMessage { ...messages.brushSize } /></Typography>
+              <Slider min={ 1 / (dpr ?? 1) } value={ lineWidth } onChange={ handleLineWidthSliderChange } />
+            </ListItemText>
+          </ListItem>
+        </List>
+      </Box>
     </>
   )
 }
