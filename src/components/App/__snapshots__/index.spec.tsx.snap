@@ -1303,17 +1303,17 @@ exports[`App at /nonexistent-path 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-89"
+        class="MuiBox-root MuiBox-root-94"
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-90 MuiCheckbox-root Checkbox"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-95 MuiCheckbox-root Checkbox"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-93"
+              class="PrivateSwitchBase-input-98"
               data-indeterminate="false"
               type="checkbox"
               value=""
@@ -1352,7 +1352,7 @@ exports[`App at /nonexistent-path 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-94 makeStyles-Select-95 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-99 makeStyles-Select-100 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1381,7 +1381,7 @@ exports[`App at /nonexistent-path 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-87 makeStyles-Offset-88"
+    class="makeStyles-Offset-92 makeStyles-Offset-93"
   />
   Error: No route matches /nonexistent-path.
 </div>
@@ -1554,8 +1554,9 @@ exports[`App at /paint 1`] = `
     </button>
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedVertical"
-      tabindex="0"
+      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedVertical Mui-disabled Mui-disabled"
+      disabled=""
+      tabindex="-1"
       type="button"
       value="bucket"
     >
@@ -1577,9 +1578,6 @@ exports[`App at /paint 1`] = `
           />
         </svg>
       </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
     </button>
   </div>
   <div
@@ -1750,6 +1748,55 @@ exports[`App at /paint 1`] = `
       </label>
     </div>
   </div>
+  <ul
+    class="MuiList-root MuiList-padding"
+  >
+    <li
+      class="MuiListItem-root MuiListItem-gutters"
+    >
+      <div
+        class="MuiListItemText-root"
+      >
+        <span
+          class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+          >
+            <bdi>
+              Brush size
+            </bdi>
+          </p>
+          <span
+            class="MuiSlider-root MuiSlider-colorPrimary"
+          >
+            <span
+              class="MuiSlider-rail"
+            />
+            <span
+              class="MuiSlider-track"
+              style="left: 0%; width: 9.090909090909092%;"
+            />
+            <input
+              type="hidden"
+              value="10"
+            />
+            <span
+              aria-orientation="horizontal"
+              aria-valuemax="100"
+              aria-valuemin="1"
+              aria-valuenow="10"
+              class="MuiSlider-thumb MuiSlider-thumbColorPrimary"
+              data-index="0"
+              role="slider"
+              style="left: 9.090909090909092%;"
+              tabindex="0"
+            />
+          </span>
+        </span>
+      </div>
+    </li>
+  </ul>
 </div>
 `;
 
@@ -1788,17 +1835,17 @@ exports[`App at /reminder 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-78"
+        class="MuiBox-root MuiBox-root-83"
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-79 MuiCheckbox-root Checkbox"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-84 MuiCheckbox-root Checkbox"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-82"
+              class="PrivateSwitchBase-input-87"
               data-indeterminate="false"
               type="checkbox"
               value=""
@@ -1837,7 +1884,7 @@ exports[`App at /reminder 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-83 makeStyles-Select-84 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-88 makeStyles-Select-89 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1866,7 +1913,7 @@ exports[`App at /reminder 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-76 makeStyles-Offset-77"
+    class="makeStyles-Offset-81 makeStyles-Offset-82"
   />
   <ul
     class="MuiList-root MuiList-padding"

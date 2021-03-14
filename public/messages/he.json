@@ -28,6 +28,7 @@
   "src.components.PageTemplate.Nav.paint": "צייר",
   "src.components.PageTemplate.Nav.reminder": "תזכורת",
   "src.components.PageTemplate.Nav.settings": "הגדרות",
+  "src.components.Paint.brushSize": "גודל המברשת",
   "src.components.Paint.clear": "נקה",
   "src.components.Reminder.AddTaskButton.add": "להוסיף",
   "src.components.Reminder.TaskListItem.asBoundedLengthStringErrorMessage": "{ name } לכלול לא יותר מ-{ upperBound } תווים.",
