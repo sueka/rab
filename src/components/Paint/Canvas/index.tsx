@@ -102,14 +102,14 @@ const Canvas = forwardRef<HTMLCanvasElement, Props>(({ width, height, lineWidth,
     setPreviousPoint(null)
   }, [])
 
-  const handleClick = useCallback<React.MouseEventHandler<HTMLCanvasElement>>((event) => {
+  const handleClick = useCallback<React.MouseEventHandler<HTMLCanvasElement>>(async (event) => {
     if (tool !== 'bucket') {
       return
     }
 
     shouldBePresent(context)
 
-    floodFill({ x: event.nativeEvent.offsetX, y: event.nativeEvent.offsetY }, width, height, context)
+    await floodFill({ x: event.nativeEvent.offsetX, y: event.nativeEvent.offsetY }, width, height, context)
   }, [width, height, context, tool])
 
   return (

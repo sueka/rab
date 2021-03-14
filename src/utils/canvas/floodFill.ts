@@ -1,5 +1,6 @@
 import Color from '~/domain/vo/Color'
 import { shouldBePresent } from '~/lib/asserters/commonAsserters'
+import delay from '~/lib/delay'
 
 export /* for testing */ function getColor({ x, y }: Canvas.Point, context: CanvasRenderingContext2D): Color {
   const { data: [red, green, blue, alpha] } = context.getImageData(x, y, 1, 1)
@@ -12,7 +13,7 @@ export /* for testing */ function getColor({ x, y }: Canvas.Point, context: Canv
   })
 }
 
-export default function floodFill(targetPoint: Canvas.Point, width: number, height: number, context: CanvasRenderingContext2D) {
+export default async function floodFill(targetPoint: Canvas.Point, width: number, height: number, context: CanvasRenderingContext2D) {
   shouldBePresent(context)
 
   const queue: Canvas.Point[] = [] // TODO
@@ -54,5 +55,7 @@ export default function floodFill(targetPoint: Canvas.Point, width: number, heig
       // tslint:disable-next-line:no-array-mutation
       queue.push({ x: currentPoint.x, y: currentPoint.y + 1 })
     }
+
+    await delay(30)
   }
 }
