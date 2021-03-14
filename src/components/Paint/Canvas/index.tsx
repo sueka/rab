@@ -1,6 +1,9 @@
-import React, { forwardRef, useCallback, useRef, useState } from 'react'
+import { Theme, makeStyles } from '@material-ui/core/styles'
+import classnames from 'classnames'
+import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { shouldBeNullable, shouldBePresent } from '~/lib/asserters/commonAsserters'
+import useScreen from '~/lib/hooks/useScreen'
 import mergeRefs from '~/lib/mergeRefs'
 import floodFill from '~/utils/canvas/floodFill'
 import classes from './classes.css'
@@ -13,12 +16,42 @@ interface Props {
   tool: Canvas.Tool
 }
 
+interface StyleProps {
+  width: number
+  height: number
+}
+
+const useStyles = makeStyles<Theme, StyleProps, 'Canvas'>({
+  Canvas: ({ width, height }) => ({
+    width,
+    height,
+  }),
+})
+
 const Canvas = forwardRef<HTMLCanvasElement, Props>(({ width, height, lineWidth, context, tool }, forwardedRef) => {
   const [drawing, setDrawing] = useState(false)
   const [previousPoint, setPreviousPoint] = useState<Canvas.Point | null>(null)
 
   const ownRef = useRef<HTMLCanvasElement | null>(null)
   const ref = mergeRefs(forwardedRef, ownRef)
+
+  const jssClasses = useStyles({ width,  height })
+  const canvasClassName = useMemo(() => classnames(jssClasses.Canvas, classes.Canvas), [jssClasses.Canvas])
+
+  const { dpr } = useScreen()
+
+  useEffect(() => {
+    if (context == null || ownRef.current === null || dpr === null) {
+      return
+    }
+
+    /* tslint:disable:no-object-mutation */
+    ownRef.current.width = dpr * width
+    ownRef.current.height = dpr * height
+    /* tslint:enable:no-object-mutation */
+
+    context.scale(dpr, dpr)
+  }, [width, height, context, ownRef, dpr])
 
   const handlePointerDown = useCallback<React.PointerEventHandler<HTMLCanvasElement>>((event) => {
     if (tool !== 'pen') {
@@ -82,7 +115,7 @@ const Canvas = forwardRef<HTMLCanvasElement, Props>(({ width, height, lineWidth,
   return (
     <canvas
       ref={ ref }
-      className={ classes.Canvas }
+      className={ canvasClassName }
       width={ width }
       height={ height }
       onPointerDown={ handlePointerDown }
