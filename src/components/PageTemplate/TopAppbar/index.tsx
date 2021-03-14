@@ -8,7 +8,7 @@ import React, { useCallback, useState } from 'react'
 
 import LocaleSelect from '~/components/LocaleSelect' // TODO
 import ToggleDarkButton from '~/components/ToggleDarkButton'
-import useScreenSize from '~/lib/hooks/useScreenSize'
+import useScreen from '~/lib/hooks/useScreen'
 import mergeRefs from '~/lib/mergeRefs'
 import classes from './classes.css'
 
@@ -27,7 +27,7 @@ const useStyles = makeStyles<Theme, StyleProps, 'Offset'>({
 })
 
 const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonClick }, forwardedRef) => {
-  const { width: screenWidth } = useScreenSize()
+  const { width: screenWidth } = useScreen()
   const [height, setHeight] = useState<number | null>(null)
 
   const ownRef = useCallback<React.RefCallback<HTMLDivElement>>((node) => {

@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
 import ErrorBoundary from '~/lib/components/ErrorBoundary'
-import useScreenSize from '~/lib/hooks/useScreenSize'
+import useScreen from '~/lib/hooks/useScreen'
 import typed from '~/lib/typed'
 import Nav from './Nav'
 import TopAppbar from './TopAppbar'
@@ -28,7 +28,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const drawerRef = useRef<HTMLDivElement>(null)
 
-  const { width } = useScreenSize()
+  const { width } = useScreen()
   const [topAppbarHeight, setTopAppbarHeight] = useState<number | null>(null)
 
   const topAppbarRef = useCallback<React.RefCallback<HTMLDivElement>>((node) => {
