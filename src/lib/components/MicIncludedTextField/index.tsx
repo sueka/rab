@@ -61,6 +61,8 @@ const MicIncludedTextField: React.FC<Props> = ({ onResult, InputProps, ...restPr
 
   // NOTE: locale は recognition やイベントハンドラーと比べると変わりやすい。
   useEffect(() => {
+    recognition.stop() // NOTE: recognition の言語を途中で変更することはできないので、 locale が変更されたら停止する。
+
     recognition.lang = locale // tslint:disable-line:no-object-mutation
   }, [recognition, locale])
 
