@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
       </Typography>
       <SetClockButton />
       <CopiableTextField value={ text } onChange={ handleChange } />
-      <MicIncludedTextField value={ text } onChange={ handleChange } onResult={ handleResult } />
+      <MicIncludedTextField value={ text } onChange={ handleChange } onResult={ handleResult } fallback={ null } />
     </>
   )
 }

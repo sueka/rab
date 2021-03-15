@@ -13,6 +13,7 @@ import { State } from '~/redux'
 import messages from './messages'
 
 interface OwnProps {
+  fallback?: React.ReactElement | null
   onResult(event: SpeechRecognitionEvent, value: string): void
   InputProps?: Alt.Omit<NonNullable<TextFieldProps['InputProps']>, 'endAdornment'>
 }
@@ -22,12 +23,12 @@ export type Props =
   & Alt.Omit<TextFieldProps, 'inputRef' | 'InputProps'>
   & OwnProps
 
-const MicIncludedTextField: React.FC<Props> = ({ onResult, InputProps, ...restProps }) => {
+const MicIncludedTextField: React.FC<Props> = ({ onResult, fallback, InputProps, ...restProps }) => {
   const { formatMessage } = useIntl()
   const input = useRef<HTMLInputElement>(null)
   const locale = useSelector((state: State) => state.localeSelector.locale)
   const [listening, setListening] = useState(false)
-  const recognition = useMemo(() => new SpeechRecognition(), [])
+  const recognition = useMemo(() => 'SpeechRecognition' in globalThis ? new SpeechRecognition() : null, [])
   const tooltip = useMemo(() => listening ? formatMessage(messages.stop) : formatMessage(messages.typeWithYourVoice), [listening, formatMessage])
   const { dir } = useContext(IntlProviderContext)
 
@@ -60,6 +61,10 @@ const MicIncludedTextField: React.FC<Props> = ({ onResult, InputProps, ...restPr
   }, [onResult, dir])
 
   useEffect(() => {
+    if (recognition === null) {
+      return
+    }
+
     /* tslint:disable:no-object-mutation */
     recognition.continuous = true
     recognition.interimResults = true
@@ -79,12 +84,20 @@ const MicIncludedTextField: React.FC<Props> = ({ onResult, InputProps, ...restPr
 
   // NOTE: locale は recognition やイベントハンドラーと比べると変わりやすい。
   useEffect(() => {
+    if (recognition === null) {
+      return
+    }
+
     recognition.stop() // NOTE: recognition の言語を途中で変更することはできないので、 locale が変更されたら停止する。
 
     recognition.lang = locale // tslint:disable-line:no-object-mutation
   }, [recognition, locale])
 
   const handleMicChange = useCallback<NonNullable<CheckboxProps['onChange']>>((_event, checked) => {
+    if (recognition === null) {
+      return
+    }
+
     setListening(checked) // NOTE: recognitionstart/recognitionend でも同じことを行うが、 change で変更しないと状態がおかしくなることがある。
 
     if (checked) {
@@ -93,6 +106,10 @@ const MicIncludedTextField: React.FC<Props> = ({ onResult, InputProps, ...restPr
       recognition.stop()
     }
   }, [recognition])
+
+  if (recognition === null && fallback !== undefined) {
+    return fallback
+  }
 
   return (
     <TextField
