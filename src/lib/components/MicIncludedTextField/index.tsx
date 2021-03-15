@@ -4,10 +4,11 @@ import TextField, { TextFieldProps } from '@material-ui/core/TextField'
 import Tooltip from '@material-ui/core/Tooltip'
 import MicIcon from '@material-ui/icons/Mic'
 import MicNoneIcon from '@material-ui/icons/MicNone'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { useIntl } from 'react-intl'
 import { useSelector } from 'react-redux'
 
+import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import { State } from '~/redux'
 import messages from './messages'
 
@@ -28,6 +29,7 @@ const MicIncludedTextField: React.FC<Props> = ({ onResult, InputProps, ...restPr
   const [listening, setListening] = useState(false)
   const recognition = useMemo(() => new SpeechRecognition(), [])
   const tooltip = useMemo(() => listening ? formatMessage(messages.stop) : formatMessage(messages.typeWithYourVoice), [listening, formatMessage])
+  const { dir } = useContext(IntlProviderContext)
 
   const handleRecognitionStart = useCallback<NonNullable<SpeechRecognition['onstart']>>(() => {
     setListening(true)
@@ -38,8 +40,24 @@ const MicIncludedTextField: React.FC<Props> = ({ onResult, InputProps, ...restPr
   }, [])
 
   const handleRecognitionResult = useCallback<NonNullable<SpeechRecognition['onresult']>>((event) => {
+    if (input.current === null || dir == null) {
+      return
+    }
+
     onResult(event, Array.from(event.results).map(result => result[0].transcript).join('')) // TODO: result.isFinal な result をメモしてパフォーマンスを改善させる。
-  }, [onResult])
+
+    /* tslint:disable:no-object-mutation */
+    input.current.scrollTop = input.current.scrollHeight - input.current.offsetHeight
+
+    switch (dir) {
+      case 'ltr':
+        input.current.scrollLeft = input.current.scrollWidth - input.current.offsetWidth
+        break
+      case 'rtl':
+        input.current.scrollLeft = -(input.current.scrollWidth - input.current.offsetWidth)
+    }
+    /* tslint:enable:no-object-mutation */
+  }, [onResult, dir])
 
   useEffect(() => {
     /* tslint:disable:no-object-mutation */

@@ -10,8 +10,11 @@ import './lib/extensions/Boolean/Boolean.prototype.hashCode'
 import './lib/extensions/Number/Number.prototype.hashCode'
 import './lib/extensions/String/String.prototype.hashCode'
 
-// tslint:disable-next-line:no-any no-object-mutation
-globalThis.SpeechRecognition = class { addEventListener = jest.fn() } as any
+// tslint:disable-next-line:no-object-mutation
+globalThis.SpeechRecognition = class {
+  addEventListener = jest.fn()
+  stop = jest.fn()
+} as any // tslint:disable-line:no-any
 
 jest.mock('uuid', () => ({
   v4() {
