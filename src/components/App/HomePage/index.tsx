@@ -8,6 +8,7 @@ import { createPage } from '~/components/PageTemplate'
 import SetClockButton from '~/components/SetClockButton'
 import Today from '~/components/Today'
 import CopiableTextField from '~/lib/components/CopiableTextField'
+import MicIncludedTextField, { Props as MicIncludedTextFieldProps } from '~/lib/components/MicIncludedTextField'
 import messages from './messages'
 
 const HomePage: React.FC = () => {
@@ -16,6 +17,10 @@ const HomePage: React.FC = () => {
 
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     setText(event.target.value)
+  }, [])
+
+  const handleResult = useCallback<MicIncludedTextFieldProps['onResult']>((_event, value) => {
+    setText(value)
   }, [])
 
   return (
@@ -29,6 +34,7 @@ const HomePage: React.FC = () => {
       </Typography>
       <SetClockButton />
       <CopiableTextField value={ text } onChange={ handleChange } />
+      <MicIncludedTextField value={ text } onChange={ handleChange } onResult={ handleResult } />
     </>
   )
 }

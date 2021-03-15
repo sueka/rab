@@ -39,5 +39,7 @@
   "src.lib.components.CopiableTextField.textCopied": "テキストをコピーしました。",
   "src.lib.components.FileUpload.browse": "選択…",
   "src.lib.components.FileUpload.nFilesSelected": "{ n } 個のファイルを選択しました。",
-  "src.lib.components.FileUpload.noFileSelected": "ファイルが選択されていません。"
+  "src.lib.components.FileUpload.noFileSelected": "ファイルが選択されていません。",
+  "src.lib.components.MicIncludedTextField.stop": "停止",
+  "src.lib.components.MicIncludedTextField.typeWithYourVoice": "音声で入力…"
 }

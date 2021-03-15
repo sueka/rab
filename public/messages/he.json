@@ -39,5 +39,7 @@
   "src.lib.components.CopiableTextField.textCopied": "הטקסט הועתק.",
   "src.lib.components.FileUpload.browse": "עיון…",
   "src.lib.components.FileUpload.nFilesSelected": "{ n } קבצים נבחרו.",
-  "src.lib.components.FileUpload.noFileSelected": "לא נבחר קובץ."
+  "src.lib.components.FileUpload.noFileSelected": "לא נבחר קובץ.",
+  "src.lib.components.MicIncludedTextField.stop": "להפסיק",
+  "src.lib.components.MicIncludedTextField.typeWithYourVoice": "להקליד עם הקול שלך…"
 }
