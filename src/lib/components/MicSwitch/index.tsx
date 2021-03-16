@@ -105,6 +105,16 @@ const MicSwitch: React.FC<Props> = ({ inputFor: input, onResult, fallback }) => 
     setDisabled(input.current === null || input.current.disabled)
   })
 
+  useEffect(() => {
+    if (recognition === null) {
+      return
+    }
+
+    if (disabled) {
+      recognition.abort()
+    }
+  }, [disabled])
+
   return (
     <Tooltip title={ tooltip }>
       <Checkbox
