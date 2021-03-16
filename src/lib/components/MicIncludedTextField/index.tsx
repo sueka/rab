@@ -4,8 +4,9 @@ import TextField, { TextFieldProps } from '@material-ui/core/TextField'
 import Tooltip from '@material-ui/core/Tooltip'
 import MicIcon from '@material-ui/icons/Mic'
 import MicNoneIcon from '@material-ui/icons/MicNone'
+import { useSnackbar } from 'notistack'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
-import { useIntl } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { useSelector } from 'react-redux'
 
 import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
@@ -31,6 +32,7 @@ const MicIncludedTextField: React.FC<Props> = ({ onResult, fallback, InputProps,
   const recognition = useMemo(() => 'SpeechRecognition' in globalThis ? new SpeechRecognition() : null, [])
   const tooltip = useMemo(() => listening ? formatMessage(messages.stop) : formatMessage(messages.typeWithYourVoice), [listening, formatMessage])
   const { dir } = useContext(IntlProviderContext)
+  const { enqueueSnackbar } = useSnackbar()
 
   const handleRecognitionStart = useCallback<NonNullable<SpeechRecognition['onstart']>>(() => {
     setListening(true)
@@ -39,6 +41,12 @@ const MicIncludedTextField: React.FC<Props> = ({ onResult, fallback, InputProps,
   const handleRecognitionEnd = useCallback<NonNullable<SpeechRecognition['onend']>>(() => {
     setListening(false)
   }, [])
+
+  const handleRecognitionError = useCallback<NonNullable<SpeechRecognition['onerror']>>((event) => {
+    enqueueSnackbar(<FormattedMessage { ...messages.speechRecognitionErrorOccurred } values={ { error: event.error } } />, {
+      variant: 'error',
+    })
+  }, [enqueueSnackbar])
 
   const handleRecognitionResult = useCallback<NonNullable<SpeechRecognition['onresult']>>((event) => {
     if (input.current === null || dir == null) {
@@ -73,14 +81,16 @@ const MicIncludedTextField: React.FC<Props> = ({ onResult, fallback, InputProps,
 
     recognition.addEventListener('start', handleRecognitionStart)
     recognition.addEventListener('end', handleRecognitionEnd)
+    recognition.addEventListener('error', handleRecognitionError)
     recognition.addEventListener('result', handleRecognitionResult)
 
     return () => {
       recognition.removeEventListener('start', handleRecognitionStart)
       recognition.removeEventListener('end', handleRecognitionEnd)
+      recognition.removeEventListener('error', handleRecognitionError)
       recognition.removeEventListener('result', handleRecognitionResult)
     }
-  }, [recognition, handleRecognitionStart, handleRecognitionEnd, handleRecognitionResult])
+  }, [recognition, handleRecognitionStart, handleRecognitionEnd, handleRecognitionError, handleRecognitionResult])
 
   // NOTE: locale は recognition やイベントハンドラーと比べると変わりやすい。
   useEffect(() => {
