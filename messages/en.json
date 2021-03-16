@@ -39,5 +39,8 @@
   "src.lib.components.CopiableTextField.textCopied": "Text copied.",
   "src.lib.components.FileUpload.browse": "Browse…",
   "src.lib.components.FileUpload.nFilesSelected": "{ n } files selected.",
-  "src.lib.components.FileUpload.noFileSelected": "No file selected."
+  "src.lib.components.FileUpload.noFileSelected": "No file selected.",
+  "src.lib.components.MicIncludedTextField.speechRecognitionErrorOccurred": "Speech recognition error occurred: { error }",
+  "src.lib.components.MicIncludedTextField.stop": "Stop",
+  "src.lib.components.MicIncludedTextField.typeWithYourVoice": "Type with your voice…"
 }
