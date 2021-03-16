@@ -33,7 +33,7 @@ const FileUpload: React.FC<Props> = ({
   onChange,
   buttonLabel = <FormattedMessage { ...messages.browse } />,
   renderResultMessage = (fs) => {
-    if (fs === null) {
+    if (fs === null || fs.length === 0) {
       return <FormattedMessage { ...messages.noFileSelected } />
     }
 
