@@ -3,7 +3,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import FilterNoneIcon from '@material-ui/icons/FilterNone'
 import copy from 'copy-to-clipboard'
 import { useSnackbar } from 'notistack'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
 
 import { shouldBePresent } from '~/lib/asserters/commonAsserters'
@@ -46,11 +46,12 @@ const CopyTextButton: React.FC<Props> = ({ inputFor: input }) => {
     )
   }, [enqueueSnackbar, input])
 
-  const disabled = useMemo(() => input.current === null || input.current.value === '', [
-    input,
-    input.current,
-    input.current?.value,
-  ])
+  // NOTE: input が render された後の input.current が必要なので、 useMemo ではなく useState + useEffect を使う。
+  const [disabled, setDisabled] = useState(true)
+
+  useEffect(() => {
+    setDisabled(input.current === null || input.current.value === '' || input.current.disabled)
+  })
 
   if (disabled) {
     return (

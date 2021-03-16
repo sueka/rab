@@ -11,11 +11,12 @@ import { State } from '~/redux'
 import messages from './messages'
 
 export interface Props {
+  inputFor: React.RefObject<HTMLInputElement>
   fallback?: React.ReactElement | null
   onResult(event: SpeechRecognitionEvent, value: string): void
 }
 
-const MicSwitch: React.FC<Props> = ({ onResult, fallback }) => {
+const MicSwitch: React.FC<Props> = ({ inputFor: input, onResult, fallback }) => {
   const { formatMessage } = useIntl()
   const locale = useSelector((state: State) => state.localeSelector.locale)
   const [listening, setListening] = useState(false)
@@ -96,9 +97,18 @@ const MicSwitch: React.FC<Props> = ({ onResult, fallback }) => {
     return fallback
   }
 
+  // NOTE: input が render された後の input.current が必要なので、 useMemo ではなく useState + useEffect を使う。
+  const [disabled, setDisabled] = useState(true)
+
+  useEffect(() => {
+    // NOTE: `input.current === null` のときに not disabled だと、レンダリングの途中でクリックすることで、本来は disabled な <input> で onChange が発生させることができる。
+    setDisabled(input.current === null || input.current.disabled)
+  })
+
   return (
     <Tooltip title={ tooltip }>
       <Checkbox
+        disabled={ disabled }
         color="default"
         icon={ <MicNoneIcon /> }
         checkedIcon={ <MicIcon /> }
