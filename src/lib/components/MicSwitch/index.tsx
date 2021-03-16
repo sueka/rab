@@ -1,37 +1,26 @@
 import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import TextField, { TextFieldProps } from '@material-ui/core/TextField'
 import Tooltip from '@material-ui/core/Tooltip'
 import MicIcon from '@material-ui/icons/Mic'
 import MicNoneIcon from '@material-ui/icons/MicNone'
 import { useSnackbar } from 'notistack'
-import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { useSelector } from 'react-redux'
 
-import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import { State } from '~/redux'
 import messages from './messages'
 
-interface OwnProps {
+export interface Props {
   fallback?: React.ReactElement | null
   onResult(event: SpeechRecognitionEvent, value: string): void
-  InputProps?: Alt.Omit<NonNullable<TextFieldProps['InputProps']>, 'endAdornment'>
 }
 
-// ref は通せるようにしてもよさそう
-export type Props =
-  & Alt.Omit<TextFieldProps, 'inputRef' | 'InputProps'>
-  & OwnProps
-
-const MicIncludedTextField: React.FC<Props> = ({ onResult, fallback, InputProps, ...restProps }) => {
+const MicSwitch: React.FC<Props> = ({ onResult, fallback }) => {
   const { formatMessage } = useIntl()
-  const input = useRef<HTMLInputElement>(null)
   const locale = useSelector((state: State) => state.localeSelector.locale)
   const [listening, setListening] = useState(false)
   const recognition = useMemo(() => 'SpeechRecognition' in globalThis ? new SpeechRecognition() : null, [])
   const tooltip = useMemo(() => listening ? formatMessage(messages.stop) : formatMessage(messages.typeWithYourVoice), [listening, formatMessage])
-  const { dir } = useContext(IntlProviderContext)
   const { enqueueSnackbar } = useSnackbar()
 
   const handleRecognitionStart = useCallback<NonNullable<SpeechRecognition['onstart']>>(() => {
@@ -46,27 +35,13 @@ const MicIncludedTextField: React.FC<Props> = ({ onResult, fallback, InputProps,
     enqueueSnackbar(<FormattedMessage { ...messages.speechRecognitionErrorOccurred } values={ { error: event.error } } />, {
       variant: 'error',
     })
+
+    // TODO: recognition が終了しない致命的なエラーがあれば、 recognition.abort() する。
   }, [enqueueSnackbar])
 
   const handleRecognitionResult = useCallback<NonNullable<SpeechRecognition['onresult']>>((event) => {
-    if (input.current === null || dir == null) {
-      return
-    }
-
     onResult(event, Array.from(event.results).map(result => result[0].transcript).join('')) // TODO: result.isFinal な result をメモしてパフォーマンスを改善させる。
-
-    /* tslint:disable:no-object-mutation */
-    input.current.scrollTop = input.current.scrollHeight - input.current.offsetHeight
-
-    switch (dir) {
-      case 'ltr':
-        input.current.scrollLeft = input.current.scrollWidth - input.current.offsetWidth
-        break
-      case 'rtl':
-        input.current.scrollLeft = -(input.current.scrollWidth - input.current.offsetWidth)
-    }
-    /* tslint:enable:no-object-mutation */
-  }, [onResult, dir])
+  }, [onResult])
 
   useEffect(() => {
     if (recognition === null) {
@@ -122,27 +97,16 @@ const MicIncludedTextField: React.FC<Props> = ({ onResult, fallback, InputProps,
   }
 
   return (
-    <TextField
-      inputRef={ input }
-      InputProps={ {
-        endAdornment: (
-          <InputAdornment position="end">
-            <Tooltip title={ tooltip }>
-              <Checkbox
-                color="default"
-                icon={ <MicNoneIcon /> }
-                checkedIcon={ <MicIcon /> }
-                checked={ listening }
-                onChange={ handleMicChange }
-              />
-            </Tooltip>
-          </InputAdornment>
-        ),
-        ...InputProps,
-      } }
-      { ...restProps }
-    />
+    <Tooltip title={ tooltip }>
+      <Checkbox
+        color="default"
+        icon={ <MicNoneIcon /> }
+        checkedIcon={ <MicIcon /> }
+        checked={ listening }
+        onChange={ handleMicChange }
+      />
+    </Tooltip>
   )
 }
 
-export default MicIncludedTextField
+export default MicSwitch
