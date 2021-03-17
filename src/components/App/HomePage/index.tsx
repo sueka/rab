@@ -82,6 +82,7 @@ const HomePage: React.FC = () => {
           endAdornment: (
             <InputAdornment position="end">
               <MicSwitch
+                inputFor={ copiableInput }
                 onResult={ handleResult }
                 fallback={ null }
               />
