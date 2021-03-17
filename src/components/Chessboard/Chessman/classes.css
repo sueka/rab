@@ -7,10 +7,6 @@
   opacity: 0.5;
 }
 
-.Chessman.Picking:not(.Dragging) {
-  color: teal;
-}
-
 /* TODO: in a little more normal way */
 .Chessman.Preview {
   position: absolute;

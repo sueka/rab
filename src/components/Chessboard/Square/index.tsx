@@ -1,3 +1,4 @@
+import { Theme, makeStyles } from '@material-ui/core/styles'
 import classnames from 'classnames'
 import React, { useCallback, useContext, useMemo } from 'react'
 import { DragObjectWithType, useDrop } from 'react-dnd'
@@ -13,8 +14,24 @@ interface Props extends React.PropsWithChildren<{}> {
   coord: Chess.Coordinates
 }
 
+declare module '@material-ui/core/styles/createPalette' {
+  interface PaletteColor {
+    '100': string
+  }
+}
+
+const useStyles = makeStyles((theme: Theme) => ({
+  Square: {
+    '&$Square$Target': { // NOTE: 詳細度を CSS の .White.Square より大きくするためにセレクターを冗長にしている。
+      backgroundColor: theme.palette.primary['100'],
+    },
+  },
+  Target: {},
+}))
+
 const Square: React.FC<Props> = ({ children, coord }: Props) => {
   const { picking, targets, halfMove, releaseChessman } = useContext(ChessContext)
+  const jssClasses = useStyles()
 
   const attacked = useMemo(() => targets?.some((target) => equalsChessCoordinates(coord, target)) ?? false, [coord, targets])
 
@@ -33,11 +50,11 @@ const Square: React.FC<Props> = ({ children, coord }: Props) => {
 
   const color = useMemo(() => getColorFromCoordinates(coord), [coord])
 
-  const squareClassName = useMemo(() => classnames(classes.Square, {
+  const squareClassName = useMemo(() => classnames(jssClasses.Square, classes.Square, {
     [classes.White]: color === 'white',
     [classes.Black]: color === 'black',
-    [classes.Target]: attacked,
-  }), [color, attacked])
+    [jssClasses.Target]: attacked,
+  }), [jssClasses.Square, jssClasses.Target, color, attacked])
 
   const handleSquareClick = useCallback(() => {
     if (picking != null) {

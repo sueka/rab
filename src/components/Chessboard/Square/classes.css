@@ -18,7 +18,3 @@
 .Black.Square {
   background-color: var(--black-square-color);
 }
-
-.Target {
-  filter: sepia(100%);
-}

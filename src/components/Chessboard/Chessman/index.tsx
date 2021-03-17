@@ -1,3 +1,4 @@
+import { Theme, makeStyles } from '@material-ui/core/styles'
 import classnames from 'classnames'
 import React, { useCallback, useContext, useMemo } from 'react'
 import { DragObjectWithType, useDrag } from 'react-dnd'
@@ -16,8 +17,25 @@ interface CollectedProps {
   dragging: boolean
 }
 
+declare module '@material-ui/core/styles/createPalette' {
+  interface PaletteColor {
+    A700: string
+  }
+}
+
+const useStyles = makeStyles((theme: Theme) => ({
+  Chessman: {
+    '&$Picking:not($Dragging)': {
+      color: theme.palette.primary.A700,
+    },
+  },
+  Picking: {},
+  Dragging: {},
+}))
+
 const Chessman: React.FC<Props> = ({ chessman, coord }) => {
   const { picking, pickChessman } = useContext(ChessContext)
+  const jssClasses = useStyles()
 
   const [{ dragging }, drag, preview] = useDrag<DragObjectWithType, unknown, CollectedProps>({
     item: {
@@ -31,12 +49,13 @@ const Chessman: React.FC<Props> = ({ chessman, coord }) => {
     },
   })
 
-  const chessmanClassName = useMemo(() => classnames(classes.Chessman, {
+  const chessmanClassName = useMemo(() => classnames(jssClasses.Chessman, classes.Chessman, {
+    [jssClasses.Dragging]: dragging,
+    [jssClasses.Picking]: picking != null && equalsChessCoordinates(coord, picking.source) && equalsChessmen(chessman, picking.chessman), // NOTE: ChessInvariant ensures equalsChessCoordinates(coord, picking.source) → equalsChessmen(chessman, picking.chessman)
     [classes.Dragging]: dragging,
-    [classes.Picking]: picking != null && equalsChessCoordinates(coord, picking.source) && equalsChessmen(chessman, picking.chessman), // NOTE: ChessInvariant ensures equalsChessCoordinates(coord, picking.source) → equalsChessmen(chessman, picking.chessman)
-  }), [dragging, chessman, coord, picking])
+  }), [jssClasses.Chessman, jssClasses.Dragging, jssClasses.Picking, dragging, chessman, coord, picking])
 
-  const chessmanPreviewClassName = useMemo(() => classnames(classes.Chessman, classes.Preview), [])
+  const chessmanPreviewClassName = useMemo(() => classnames(jssClasses.Chessman, classes.Chessman, classes.Preview), [jssClasses.Chessman])
 
   const handleChessmanClick = useCallback(() => {
     if (picking == null) { // FIXME
