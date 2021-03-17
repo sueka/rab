@@ -93,10 +93,6 @@ const MicSwitch: React.FC<Props> = ({ inputFor: input, onResult, fallback }) => 
     }
   }, [recognition])
 
-  if (recognition === null && fallback !== undefined) {
-    return fallback
-  }
-
   // NOTE: input が render された後の input.current が必要なので、 useMemo ではなく useState + useEffect を使う。
   const [disabled, setDisabled] = useState(true)
 
@@ -113,7 +109,11 @@ const MicSwitch: React.FC<Props> = ({ inputFor: input, onResult, fallback }) => 
     if (disabled) {
       recognition.abort()
     }
-  }, [disabled])
+  }, [disabled, recognition])
+
+  if (recognition === null && fallback !== undefined) {
+    return fallback
+  }
 
   return (
     <Tooltip title={ tooltip }>
