@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
+import ListSubheader from '@material-ui/core/ListSubheader'
 import { Theme, makeStyles } from '@material-ui/core/styles'
 import BrushIcon from '@material-ui/icons/Brush'
 import HomeIcon from '@material-ui/icons/Home'
@@ -15,6 +16,7 @@ import InfoIcon from '@material-ui/icons/Info'
 import ListIcon from '@material-ui/icons/List'
 import MenuIcon from '@material-ui/icons/Menu'
 import SettingsIcon from '@material-ui/icons/Settings'
+import TextFieldsIcon from '@material-ui/icons/TextFields'
 import React, { useContext, useMemo } from 'react'
 import { FormattedMessage } from 'react-intl'
 
@@ -91,6 +93,20 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
             <FormattedMessage { ...messages.home } />
           </ListItemText>
         </ListItemLink>
+        <ListSubheader>
+          <FormattedMessage { ...messages.components } />
+        </ListSubheader>
+        <ListItemLink to="/form-controls" onClick={ onClose }>
+          <ListItemIcon>
+            <TextFieldsIcon />
+          </ListItemIcon>
+          <ListItemText>
+            <FormattedMessage { ...messages.formControls } />
+          </ListItemText>
+        </ListItemLink>
+        <ListSubheader>
+          <FormattedMessage { ...messages.apps } />
+        </ListSubheader>
         <ListItemLink to="/chess" onClick={ onClose }>
           <ListItemIcon>
             <Icon icon={ chessPawn } width="24" height="24" />

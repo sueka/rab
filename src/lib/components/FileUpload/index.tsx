@@ -8,7 +8,7 @@ import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import cssClasses from './classes.css'
 import messages from './messages'
 
-interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'onClick' | 'onChange'> {
+export interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'onClick' | 'onChange'> {
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   buttonLabel?: React.ReactNode

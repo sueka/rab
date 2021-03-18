@@ -8,6 +8,7 @@ export const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ '
 export const ChessPage = React.lazy(() => import(/* webpackChunkName: "chess" */ './ChessPage'))
 export const ClockPage = React.lazy(() => import(/* webpackChunkName: "clock" */ './ClockPage'))
 export const CounterPage = React.lazy(() => import(/* webpackChunkName: "counter" */ './CounterPage'))
+export const FormControlsPage = React.lazy(() => import(/* webpackChunkName: "formControls" */ './FormControlsPage'))
 export const InfoPage = React.lazy(() => import(/* webpackChunkName: "info" */ './InfoPage'))
 export const PaintPage = React.lazy(() => import(/* webpackChunkName: "paint" */ './PaintPage'))
 export const ReminderPage = React.lazy(() => import(/* webpackChunkName: "reminder" */ './ReminderPage'))
@@ -31,6 +32,7 @@ const App: React.FC = () => {
       <Route exact strict sensitive path="/chess" component={ ChessPage } />
       <Route exact strict sensitive path="/clock" component={ ClockPage } />
       <Route exact strict sensitive path="/counter" component={ CounterPage } />
+      <Route exact strict sensitive path="/form-controls" component={ FormControlsPage } />
       <Route exact strict sensitive path="/info" component={ InfoPage } />
       <Route exact strict sensitive path="/paint" component={ PaintPage } />
       <Route exact strict sensitive path="/reminder" component={ ReminderPage } />
