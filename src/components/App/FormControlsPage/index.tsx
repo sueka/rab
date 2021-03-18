@@ -3,6 +3,7 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import TextField from '@material-ui/core/TextField'
+import { Theme, makeStyles } from '@material-ui/core/styles'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
@@ -13,6 +14,7 @@ import FileUpload, { Props as FileUploadProps } from '~/lib/components/FileUploa
 import fileUploadMessages from '~/lib/components/FileUpload/messages'
 import MicSwitch, { Props as MicSwitchProps } from '~/lib/components/MicSwitch'
 import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
+import useScreen from '~/lib/hooks/useScreen'
 import messages from './messages'
 
 const CopiableTextField: React.FC = () => {
@@ -161,9 +163,23 @@ interface ImageFileProps {
   file: File
 }
 
+interface StyleProps {
+  width: number | null
+  height: number | null
+}
+
+const useStyles = makeStyles<Theme, StyleProps, 'Image'>({
+  Image: {
+    maxWidth: ({ width }) => width !== null ? width / 2 : undefined,
+    maxHeight: ({ height }) => height !== null ? height / 2 : undefined,
+  },
+})
+
 const ImageFile: React.FC<ImageFileProps> = ({ file }) => {
   const [src, setSrc] = useState<string | null>(null)
   const reader = useMemo(() => new FileReader, [])
+  const { width, height } = useScreen()
+  const jssClasses = useStyles({ width, height })
 
   const handleReaderLoad = useCallback<NonNullable<FileReader['onload']>>((event) => {
     if (event.target?.result == null) {
@@ -190,7 +206,7 @@ const ImageFile: React.FC<ImageFileProps> = ({ file }) => {
   }, [file, reader])
 
   return (
-    <img src={ src ?? undefined } />
+    <img src={ src ?? undefined } className={ jssClasses.Image } />
   )
 }
 
