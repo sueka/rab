@@ -84,7 +84,7 @@ const MicSwitch: React.FC<Props> = ({ inputFor: input, onResult, fallback }) => 
       return
     }
 
-    setListening(checked) // NOTE: recognitionstart/recognitionend でも同じことを行うが、 change で変更しないと状態がおかしくなることがある。
+    setListening(checked) // NOTE: onrecognitionstart/onrecognitionend でも同じことを行うが、一般に onChange で value を変更しないと状態がおかしくなることがある。
 
     if (checked) {
       recognition.start()
