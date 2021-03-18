@@ -202,7 +202,7 @@ const FormControlsPage: React.FC = () => {
       return <FormattedMessage { ...fileUploadMessages.noFileSelected } />
     }
 
-    return Array.from(files).map((file) => <ImageFile file={ file } />)
+    return Array.from(files).map((file, i) => <ImageFile key={ i } file={ file } />)
   }, [])
 
   return (
