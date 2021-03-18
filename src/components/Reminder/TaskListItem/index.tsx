@@ -106,7 +106,11 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
           </div>
         </ListItemIcon>
         <ListItemIcon>
-          <Checkbox checked={ value.done } onChange={ handleDoneChange } />
+          <Checkbox
+            color="primary" // NOTE: 選択コントロールには secondary を使うべきとされている (https://material.io/design/color/the-color-system.html) が、これは強調のためであって、リマインダーのチェックボックスは項目を強調するためのものではない。
+            checked={ value.done }
+            onChange={ handleDoneChange }
+          />
         </ListItemIcon>
         <TextField
           variant="standard"
