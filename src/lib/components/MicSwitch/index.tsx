@@ -61,6 +61,8 @@ const MicSwitch: React.FC<Props> = ({ inputFor: input, onResult, fallback }) => 
     recognition.addEventListener('result', handleRecognitionResult)
 
     return () => {
+      recognition.stop()
+
       recognition.removeEventListener('start', handleRecognitionStart)
       recognition.removeEventListener('end', handleRecognitionEnd)
       recognition.removeEventListener('error', handleRecognitionError)
