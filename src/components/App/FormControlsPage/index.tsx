@@ -202,6 +202,10 @@ const ImageFile: React.FC<ImageFileProps> = ({ file }) => {
   }, [reader, handleReaderLoad])
 
   useEffect(() => {
+    if (!/^image\/[0-9A-Za-z][!#$&+-.0-9A-Z^_a-z]*$/.test(file.type)) {
+      throw new Error
+    }
+
     reader.readAsDataURL(file)
   }, [file, reader])
 
