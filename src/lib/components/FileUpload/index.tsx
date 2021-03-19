@@ -78,12 +78,13 @@ const FileUpload: React.FC<Props> = ({
   }, [onClick, fireInputClick])
 
   return (
-    <Component className={ rootClassName }>
+    <Component className={ rootClassName } tabIndex={ 0 }>
       <Button
         disabled={ disabled }
         onClick={ handleButtonClick }
         { ...ButtonProps }
         className={ buttonClassName } // NOTE: Overrides ButtonProps.className
+        tabIndex={ -1 }
       >
         { buttonLabel }
       </Button>
