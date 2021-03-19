@@ -50,6 +50,7 @@ const Canvas = forwardRef<HTMLCanvasElement, Props>(({ width, height, lineWidth,
     ownRef.current.height = dpr * height
     /* tslint:enable:no-object-mutation */
 
+    context.resetTransform()
     context.scale(dpr, dpr)
   }, [width, height, context, ownRef, dpr])
 
