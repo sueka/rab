@@ -10,7 +10,7 @@ import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import messages from './messages'
 
 interface Props {
-  inputFor: React.RefObject<HTMLInputElement>
+  inputFor: React.RefObject<HTMLInputElement | HTMLTextAreaElement>
 }
 
 // TODO: @material-ui/icons/ContentCopy が実装されたら削除する
