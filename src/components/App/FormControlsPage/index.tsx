@@ -72,7 +72,7 @@ const MicIncludedTextField: React.FC = () => {
     /* tslint:enable:no-object-mutation */
   }, [
     dir,
-    input.current,
+    input,
     // To handle resizing, DOM updates, etc:
     input.current?.scrollWidth,
     input.current?.scrollHeight,
@@ -130,7 +130,7 @@ const MicIncludedCopiableTextField: React.FC = () => {
     /* tslint:enable:no-object-mutation */
   }, [
     dir,
-    input.current,
+    input,
     // To handle resizing, DOM updates, etc:
     input.current?.scrollWidth,
     input.current?.scrollHeight,
