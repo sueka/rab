@@ -1441,6 +1441,12 @@ exports[`App at /form-controls 1`] = `
             <div
               class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
             >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                data-shrink="false"
+              >
+                code
+              </label>
               <div
                 class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
               >
@@ -1487,14 +1493,12 @@ exports[`App at /form-controls 1`] = `
                 <fieldset
                   aria-hidden="true"
                   class="PrivateNotchedOutline-root-58 MuiOutlinedInput-notchedOutline"
-                  style="padding-left: 8px;"
                 >
                   <legend
-                    class="PrivateNotchedOutline-legend-59"
-                    style="width: 0.01px;"
+                    class="PrivateNotchedOutline-legendLabelled-60"
                   >
                     <span>
-                      ​
+                      code
                     </span>
                   </legend>
                 </fieldset>

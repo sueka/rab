@@ -265,6 +265,7 @@ const FormControlsPage: React.FC = () => {
         <ListItem>
           <ListItemText>
             <CodeField
+              label="code"
               value={ code }
               onChange={ handleCodeFieldChange }
               InputProps={ {
