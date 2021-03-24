@@ -70,7 +70,7 @@ const CodeField: React.FC<Props> = ({
   }
 
   return (
-    <div className={ containerClassName }>
+    <div className={ containerClassName } dir="ltr">
       <Helmet>
         <link
           rel="stylesheet"

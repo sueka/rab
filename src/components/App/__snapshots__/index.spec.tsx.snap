@@ -1433,6 +1433,7 @@ exports[`App at /form-controls 1`] = `
         >
           <div
             class="Container"
+            dir="ltr"
           >
             <pre
               class="Pre"
