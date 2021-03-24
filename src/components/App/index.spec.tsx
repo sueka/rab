@@ -56,6 +56,7 @@ ${ '/' }
 ${ '/chess' }
 ${ '/clock' }
 ${ '/counter' }
+${ '/form-controls' }
 ${ '/info' }
 ${ '/paint' }
 ${ '/reminder' }
