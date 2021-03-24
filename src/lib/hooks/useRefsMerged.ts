@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 
-export default function mergeRefs<T>(...refs: React.Ref<T>[]): React.RefCallback<T> {
-  return (node) => {
+export default function useRefsMerged<T>(...refs: React.Ref<T>[]): React.RefCallback<T> {
+  return useCallback((node) => {
     for (const ref of refs) { // tslint:disable-line:no-loop-statement
       if (ref === null) {
         continue
@@ -16,5 +16,5 @@ export default function mergeRefs<T>(...refs: React.Ref<T>[]): React.RefCallback
         mutableRef.current = node // tslint:disable-line:no-object-mutation
       }
     }
-  }
+  }, refs)
 }

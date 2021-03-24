@@ -8,8 +8,8 @@ import React, { useCallback, useState } from 'react'
 
 import LocaleSelect from '~/components/LocaleSelect' // TODO
 import ToggleDarkButton from '~/components/ToggleDarkButton'
+import useRefsMerged from '~/lib/hooks/useRefsMerged'
 import useScreen from '~/lib/hooks/useScreen'
-import mergeRefs from '~/lib/mergeRefs'
 import classes from './classes.css'
 
 interface Props {
@@ -45,7 +45,7 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
     setHeight(rect.height)
   }, [screenWidth])
 
-  const ref = mergeRefs(forwardedRef, ownRef)
+  const ref = useRefsMerged(forwardedRef, ownRef)
 
   const jssClasses = useStyles({ topAppbarHeight: height ?? undefined })
 

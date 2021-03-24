@@ -3,8 +3,8 @@ import classnames from 'classnames'
 import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { shouldBeNullable, shouldBePresent } from '~/lib/asserters/commonAsserters'
+import useRefsMerged from '~/lib/hooks/useRefsMerged'
 import useScreen from '~/lib/hooks/useScreen'
-import mergeRefs from '~/lib/mergeRefs'
 import floodFill from '~/utils/canvas/floodFill'
 import classes from './classes.css'
 
@@ -33,7 +33,7 @@ const Canvas = forwardRef<HTMLCanvasElement, Props>(({ width, height, lineWidth,
   const [previousPoint, setPreviousPoint] = useState<Canvas.Point | null>(null)
 
   const ownRef = useRef<HTMLCanvasElement | null>(null)
-  const ref = mergeRefs(forwardedRef, ownRef)
+  const ref = useRefsMerged(forwardedRef, ownRef)
 
   const jssClasses = useStyles({ width,  height })
   const canvasClassName = useMemo(() => classnames(jssClasses.Canvas, classes.Canvas), [jssClasses.Canvas])
