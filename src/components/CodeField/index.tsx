@@ -1,5 +1,4 @@
 import TextField, { TextFieldProps as OriginalTextFieldProps } from '@material-ui/core/TextField'
-import classNames from 'classnames'
 import classnames from 'classnames'
 import hljs from 'highlight.js'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
@@ -48,7 +47,7 @@ const CodeField: React.FC<Props> = ({
   const [hlText, setHlText] = useState<string | null>(null)
   const { dark } = useContext(ThemeProviderContext)
   const containerClassName = useMemo(() => classnames(className, cssClasses.Container), [className])
-  const InputInputMultilineClassName = useMemo(() => classNames(cssClasses.TextArea, inputMultiline), [inputMultiline])
+  const InputInputMultilineClassName = useMemo(() => classnames(cssClasses.TextArea, inputMultiline), [inputMultiline])
   const preClassName = useMemo(() => classnames(cssClasses.Pre, preProps?.className), [preProps?.className])
   const input = useRef<HTMLTextAreaElement>(null)
 
