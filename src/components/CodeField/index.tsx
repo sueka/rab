@@ -1,10 +1,12 @@
 import TextField, { TextFieldProps as OriginalTextFieldProps } from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core/styles'
 import classnames from 'classnames'
 import hljs from 'highlight.js'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
 
 import ThemeProviderContext from '~/contexts/ThemeProviderContext'
+import useRefsMerged from '~/lib/hooks/useRefsMerged'
 import typed from '~/lib/typed'
 import cssClasses from './classes.css'
 
@@ -32,28 +34,77 @@ type Props =
   & TextFieldProps
   & OwnProps
 
+interface StyleProps {
+  startAdornmentWidth?: number
+  endAdornmentWidth?: number
+}
+
+const useStyles = makeStyles<never, StyleProps, 'Pre'>({
+  Pre: {
+    '&$Pre': {
+      marginInlineStart: ({ startAdornmentWidth }) => startAdornmentWidth,
+      marginInlineEnd: ({ endAdornmentWidth }) => endAdornmentWidth,
+    },
+  },
+})
+
+// TODO: remove?
+// TODO: null check を抽出する
+function getWidth(element: HTMLElement | null | undefined): number | null {
+  if (element == null) {
+    return null
+  }
+
+  const { marginInlineStart, marginInlineEnd } = globalThis.getComputedStyle(element)
+
+  return element.offsetWidth + parseFloat(marginInlineStart) + parseFloat(marginInlineEnd)
+}
+
 const CodeField: React.FC<Props> = ({
   lightTheme = 'atom-one-light',
   darkTheme = 'atom-one-dark',
   className,
-  InputProps: { classes: InputPropsClasses, ...rest_InputProps } = {},
-  inputProps: { spellCheck, ...restInputProps } = {},
+  InputProps: { classes: InputPropsClasses, ref: InputRefProp, ...RestInputProps } = {},
+  inputProps: { spellCheck, ref: inputRefProp, ...restInputProps } = {},
   preProps,
   value,
   onChange,
   ...restProps
 }) => {
   const { inputMultiline, ...InputPropsRestClasses } = InputPropsClasses ?? {}
-  const [hlText, setHlText] = useState<string | null>(null)
+
   const { dark } = useContext(ThemeProviderContext)
+
+  const [hlText, setHlText] = useState<string | null>(null)
+  const [startAdornmentWidth, setStartAdornmentWidth] = useState<number | null>(null)
+  const [endAdornmentWidth, setEndAdornmentWidth] = useState<number | null>(null)
+
+  const jssClasses = useStyles({
+    startAdornmentWidth: startAdornmentWidth ?? undefined,
+    endAdornmentWidth: endAdornmentWidth ?? undefined,
+  })
+
   const containerClassName = useMemo(() => classnames(className, cssClasses.Container), [className])
   const InputInputMultilineClassName = useMemo(() => classnames(cssClasses.TextArea, inputMultiline), [inputMultiline])
-  const preClassName = useMemo(() => classnames(cssClasses.Pre, preProps?.className), [preProps?.className])
-  const input = useRef<HTMLTextAreaElement>(null)
+  const preClassName = useMemo(() => classnames(jssClasses.Pre, cssClasses.Pre, preProps?.className), [jssClasses.Pre, preProps?.className])
+
+  const OwnInputRef = useRef<HTMLDivElement>(null)
+  const InputRef = useRefsMerged(InputRefProp ?? null, OwnInputRef)
+
+  const ownInputRef = useRef<HTMLTextAreaElement>(null)
+  const inputRef = useRefsMerged(inputRefProp ?? null, ownInputRef)
 
   useEffect(() => {
-    setHlText(hljs.highlightAuto(input.current?.value ?? '').value)
-  }, [input])
+    const startAdornment = OwnInputRef.current?.querySelector<HTMLElement>(':scope > .MuiInputAdornment-root.MuiInputAdornment-positionStart')
+    const endAdornment = OwnInputRef.current?.querySelector<HTMLElement>(':scope > .MuiInputAdornment-root.MuiInputAdornment-positionEnd')
+
+    setStartAdornmentWidth(getWidth(startAdornment))
+    setEndAdornmentWidth(getWidth(endAdornment))
+  }, [OwnInputRef])
+
+  useEffect(() => {
+    setHlText(hljs.highlightAuto(ownInputRef.current?.value ?? '').value)
+  }, [ownInputRef])
 
   const handleChange = useCallback<React.ChangeEventHandler<HTMLTextAreaElement>>((event) => {
     onChange?.(event)
@@ -80,7 +131,6 @@ const CodeField: React.FC<Props> = ({
       <TextField
         fullWidth // TODO: false でもうまく動くようにする
         multiline // TODO: false でもうまく動くようにする
-        inputRef={ input }
         value={ value }
         onChange={ handleChange }
         InputProps={ {
@@ -88,10 +138,12 @@ const CodeField: React.FC<Props> = ({
             inputMultiline: InputInputMultilineClassName,
             ...InputPropsRestClasses,
           },
-          ...rest_InputProps,
+          ref: InputRef,
+          ...RestInputProps,
         } }
         inputProps={ {
           spellCheck: spellCheck ?? false,
+          ref: inputRef,
           ...restInputProps,
         } }
         { ...restProps }

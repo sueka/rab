@@ -232,6 +232,8 @@ const FormControlsPage: React.FC = () => {
     setCode(event.target?.value)
   }, [])
 
+  const codeFieldInput = useRef<HTMLInputElement | HTMLTextAreaElement>(null)
+
   return (
     <>
       <Helmet title={ formatMessage(messages.formControls) } />
@@ -262,7 +264,20 @@ const FormControlsPage: React.FC = () => {
         </ListItem>
         <ListItem>
           <ListItemText>
-            <CodeField value={ code } onChange={ handleCodeFieldChange } />
+            <CodeField
+              value={ code }
+              onChange={ handleCodeFieldChange }
+              InputProps={ {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <CopyTextButton inputFor={ codeFieldInput } />
+                  </InputAdornment>
+                ),
+              } }
+              inputProps={ {
+                ref: codeFieldInput,
+              } }
+            />
           </ListItemText>
         </ListItem>
       </List>
