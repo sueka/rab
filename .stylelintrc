@@ -15,7 +15,7 @@
           "first-nested",
         ],
         "ignoreComments": [
-          "/\\S+\\s*:\\s*\\S+;?/", // ruleset; TODO: Make it more accurate
+          "/\\S+\\s*:\\s*\\S+/",
         ],
       },
     ],
