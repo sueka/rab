@@ -1,2 +1,0 @@
-(self.webpackChunkreact_app_prototype=self.webpackChunkreact_app_prototype||[]).push([[864],{74326:function(t,e,a){"use strict";a.r(e);var r,o=a(28655),p=a.n(o),n=a(72152),c=a(53331);e.default=(0,n.D)((function(t){var e=t.location.pathname;throw new Error((0,c.Z)(r||(r=p()(["No route matches ","."])),e))}))}}]);
-//# sourceMappingURL=noMatch.500d0319.js.map
