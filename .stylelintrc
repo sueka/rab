@@ -8,5 +8,16 @@
         "ignorePseudoClasses": ["global", "local"],
       },
     ],
+    "comment-empty-line-before": [
+      "always",
+      {
+        "except": [
+          "first-nested",
+        ],
+        "ignoreComments": [
+          "/\\S+\\s*:\\s*\\S+;?/", // ruleset; TODO: Make it more accurate
+        ],
+      },
+    ],
   },
 }

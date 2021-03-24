@@ -8,6 +8,7 @@ import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } 
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
 
+import CodeField from '~/components/CodeField'
 import { createPage } from '~/components/PageTemplate'
 import CopyTextButton from '~/lib/components/CopyTextButton'
 import FileUpload, { Props as FileUploadProps } from '~/lib/components/FileUpload'
@@ -225,6 +226,12 @@ const FormControlsPage: React.FC = () => {
     return Array.from(files).map((file, i) => <ImageFile key={ i } file={ file } />)
   }, [])
 
+  const [code, setCode] = useState('')
+
+  const handleCodeFieldChange = useCallback<React.ChangeEventHandler<HTMLTextAreaElement>>((event) => {
+    setCode(event.target?.value)
+  }, [])
+
   return (
     <>
       <Helmet title={ formatMessage(messages.formControls) } />
@@ -251,6 +258,11 @@ const FormControlsPage: React.FC = () => {
         <ListItem>
           <ListItemText>
             <MicIncludedCopiableTextField />
+          </ListItemText>
+        </ListItem>
+        <ListItem>
+          <ListItemText>
+            <CodeField value={ code } onChange={ handleCodeFieldChange } />
           </ListItemText>
         </ListItem>
       </List>

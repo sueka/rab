@@ -122,6 +122,11 @@ const config: Configuration = {
           to: '',
           context: path.resolve(__dirname, 'public'),
         },
+        {
+          from: 'highlight.js/styles/*.css',
+          to: 'assets/stylesheets',
+          context: path.resolve(__dirname, 'node_modules'),
+        },
       ],
     }),
   ],

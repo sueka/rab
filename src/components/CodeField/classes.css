@@ -1,0 +1,26 @@
+.Container {
+  position: relative;
+}
+
+.Pre {
+  /* font-family: monospace; */
+  font-size: 16px;
+  line-height: 1.1876em;
+  margin: 0;
+  padding: 18.5px 14px;
+  position: absolute;
+  white-space: pre-wrap;
+  /* width: 100%; */
+  word-break: break-word;
+}
+
+.TextArea {
+  font-family: monospace;
+  font-size: 16px;
+  /* line-height: 1.1876em; */
+  /* margin: 0; */
+  -webkit-text-fill-color: transparent;
+  white-space: pre-wrap;
+  /* width: 100%; */
+  /* word-break: break-word; */
+}
