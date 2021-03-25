@@ -16,5 +16,5 @@ export default function useRefsMerged<T>(...refs: React.Ref<T>[]): React.RefCall
         mutableRef.current = node // tslint:disable-line:no-object-mutation
       }
     }
-  }, refs)
+  }, [refs])
 }
