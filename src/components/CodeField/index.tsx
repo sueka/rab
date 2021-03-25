@@ -4,8 +4,11 @@ import classnames from 'classnames'
 import hljs from 'highlight.js'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
+import { useRecoilState } from 'recoil'
 
-import ThemeProviderContext from '~/contexts/ThemeProviderContext'
+import darkState from '~/atoms/darkState'
+import DefaultDarkContext from '~/contexts/DefaultDarkContext'
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import useRefsMerged from '~/lib/hooks/useRefsMerged'
 import typed from '~/lib/typed'
@@ -87,7 +90,8 @@ const CodeField: React.FC<Props> = ({
   const { inputMultiline, ...InputPropsRestClasses } = InputPropsClasses ?? {}
 
   const { dir } = useContext(IntlProviderContext)
-  const { dark } = useContext(ThemeProviderContext)
+  const [dark] = useRecoilState(darkState)
+  const { defaultDark } = useContext(DefaultDarkContext)
 
   const [hlText, setHlText] = useState<string | null>(null)
   const [startAdornmentWidth, setStartAdornmentWidth] = useState<number | null>(null)
@@ -130,16 +134,14 @@ const CodeField: React.FC<Props> = ({
     ).value)
   }, [value, onChange])
 
-  if (dark == null) {
-    return null
-  }
+  shouldBePresent(defaultDark)
 
   return (
     <div className={ containerClassName }>
       <Helmet>
         <link
           rel="stylesheet"
-          href={ typed<[string]>`/assets/stylesheets/highlight.js/styles/${ dark ? darkTheme : lightTheme }.css` }
+          href={ typed<[string]>`/assets/stylesheets/highlight.js/styles/${ (dark ?? defaultDark) ? darkTheme : lightTheme }.css` }
         />
       </Helmet>
       <pre className={ preClassName } dangerouslySetInnerHTML={ { __html: hlText ?? '' } } />

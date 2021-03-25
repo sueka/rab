@@ -6,6 +6,7 @@ import { DndProvider } from 'react-dnd'
 import { TestBackend } from 'react-dnd-test-backend'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
+import { RecoilRoot } from 'recoil'
 import createMockStore from 'redux-mock-store'
 
 import IntlProvider from '~/components/IntlProvider'
@@ -70,19 +71,21 @@ ${ '/nonexistent-path' }
     const context = {}
 
     const { container } = render(
-      <Provider store={ store }>
-        <IntlProvider availableLocales={ ['en', 'ja', 'he'] }>
-          <DndProvider backend={ TestBackend }>
-            <StaticRouter context={ context } location={ location }>
-              <SnackbarProvider>
-                <ThemeProvider defaultDark={ false }>
-                  <App />
-                </ThemeProvider>
-              </SnackbarProvider>
-            </StaticRouter>
-          </DndProvider>
-        </IntlProvider>
-      </Provider>
+      <RecoilRoot>
+        <Provider store={ store }>
+          <IntlProvider availableLocales={ ['en', 'ja', 'he'] }>
+            <DndProvider backend={ TestBackend }>
+              <StaticRouter context={ context } location={ location }>
+                <SnackbarProvider>
+                  <ThemeProvider defaultDark={ false }>
+                    <App />
+                  </ThemeProvider>
+                </SnackbarProvider>
+              </StaticRouter>
+            </DndProvider>
+          </IntlProvider>
+        </Provider>
+      </RecoilRoot>
     )
 
     await waitForDomChange({ container: container as HTMLElement }) // TODO

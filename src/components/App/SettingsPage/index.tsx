@@ -7,19 +7,21 @@ import Switch from '@material-ui/core/Switch'
 import React, { useCallback, useContext } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { useRecoilState } from 'recoil'
 
+import darkState from '~/atoms/darkState'
 import { createPage } from '~/components/PageTemplate'
-import ThemeProviderContext from '~/contexts/ThemeProviderContext'
+import DefaultDarkContext from '~/contexts/DefaultDarkContext'
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import messages from './messages'
 
 const SettingsPage: React.FC = () => {
   const { formatMessage } = useIntl()
 
-  const { dark, setDark } = useContext(ThemeProviderContext)
+  const [dark, setDark] = useRecoilState(darkState)
+  const { defaultDark } = useContext(DefaultDarkContext)
 
-  if (dark == null || setDark == null) {
-    throw new Error //
-  }
+  shouldBePresent(defaultDark)
 
   const handleChange = useCallback((_event, checked) => {
     setDark(checked)
@@ -33,7 +35,7 @@ const SettingsPage: React.FC = () => {
           <ListItem>
             <ListItemText primary={ <FormattedMessage { ...messages.darkTheme } /> } />
             <ListItemSecondaryAction>
-              <Switch checked={ dark } onChange={ handleChange } />
+              <Switch checked={ dark ?? defaultDark } onChange={ handleChange } />
             </ListItemSecondaryAction>
           </ListItem>
         </List>

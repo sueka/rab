@@ -4,17 +4,19 @@ import Brightness4Icon from '@material-ui/icons/Brightness4'
 import Brightness7Icon from '@material-ui/icons/Brightness7'
 import React, { useCallback, useContext } from 'react'
 import { FormattedMessage } from 'react-intl'
+import { useRecoilState } from 'recoil'
 
-import ThemeProviderContext from '~/contexts/ThemeProviderContext'
+import darkState from '~/atoms/darkState'
+import DefaultDarkContext from '~/contexts/DefaultDarkContext'
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import classes from './classes.css'
 import messages from './messages'
 
 const ToggleDarkButton = () => {
-  const { dark, setDark } = useContext(ThemeProviderContext)
+  const [dark, setDark] = useRecoilState(darkState)
+  const { defaultDark } = useContext(DefaultDarkContext)
 
-  if (dark == null || setDark == null) {
-    throw new Error //
-  }
+  shouldBePresent(defaultDark)
 
   const handleChange = useCallback((_event, checked) => {
     setDark(checked)
@@ -30,7 +32,7 @@ const ToggleDarkButton = () => {
           root: classes.Checkbox,
           checked: classes.Checked,
         } }
-        checked={ dark }
+        checked={ dark ?? defaultDark }
         onChange={ handleChange }
       />
     </Tooltip>

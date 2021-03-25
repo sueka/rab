@@ -19,6 +19,7 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import ReactDOM from 'react-dom'
 import Helmet from 'react-helmet'
+import { RecoilRoot } from 'recoil'
 import { Saga } from 'redux-saga'
 import 'reflect-metadata'
 
@@ -110,24 +111,26 @@ const Main: React.FC<Props> = ({ history, container }) => {
         titleTemplate="%s - react-app-prototype"
         defaultTitle="react-app-prototype"
       />
-      <Provider renderError={ renderError }>
-        <IntlProvider availableLocales={ ['en', 'ja', 'he'] }>
-          <DndProvider backend={ HTML5Backend }>
-            <ConnectedRouter history={ history }>
-              <ServiceProvider container={ container }>
-                <StylesProvider jss={ jss }>
-                  <ThemeProvider defaultDark={ dark }>
-                    <CssBaseline />
-                    <SnackbarProvider maxSnack={ 1 } hideIconVariant>
-                      <App />
-                    </SnackbarProvider>
-                  </ThemeProvider>
-                </StylesProvider>
-              </ServiceProvider>
-            </ConnectedRouter>
-          </DndProvider>
-        </IntlProvider>
-      </Provider>
+      <RecoilRoot>
+        <Provider renderError={ renderError }>
+          <IntlProvider availableLocales={ ['en', 'ja', 'he'] }>
+            <DndProvider backend={ HTML5Backend }>
+              <ConnectedRouter history={ history }>
+                <ServiceProvider container={ container }>
+                  <StylesProvider jss={ jss }>
+                    <ThemeProvider defaultDark={ dark }>
+                      <CssBaseline />
+                      <SnackbarProvider maxSnack={ 1 } hideIconVariant>
+                        <App />
+                      </SnackbarProvider>
+                    </ThemeProvider>
+                  </StylesProvider>
+                </ServiceProvider>
+              </ConnectedRouter>
+            </DndProvider>
+          </IntlProvider>
+        </Provider>
+      </RecoilRoot>
     </>
   )
 }
