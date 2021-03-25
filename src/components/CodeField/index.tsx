@@ -1,10 +1,11 @@
 import TextField, { TextFieldProps as OriginalTextFieldProps } from '@material-ui/core/TextField'
-import { makeStyles } from '@material-ui/core/styles'
+import { ThemeProvider, makeStyles } from '@material-ui/core/styles'
 import classnames from 'classnames'
 import hljs from 'highlight.js'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
 
+import configureTheme from '~/configureTheme'
 import ThemeProviderContext from '~/contexts/ThemeProviderContext'
 import useRefsMerged from '~/lib/hooks/useRefsMerged'
 import typed from '~/lib/typed'
@@ -74,6 +75,7 @@ const CodeField: React.FC<Props> = ({
   const { inputMultiline, ...InputPropsRestClasses } = InputPropsClasses ?? {}
 
   const { dark } = useContext(ThemeProviderContext)
+  const Theme = useMemo(() => dark != null ? configureTheme({ direction: 'ltr', dark }) : null, [dark])
 
   const [hlText, setHlText] = useState<string | null>(null)
   const [startAdornmentWidth, setStartAdornmentWidth] = useState<number | null>(null)
@@ -115,40 +117,42 @@ const CodeField: React.FC<Props> = ({
     ).value)
   }, [value, onChange])
 
-  if (dark == null) {
+  if (dark == null || Theme === null) {
     return null
   }
 
   return (
-    <div className={ containerClassName } dir="ltr">
-      <Helmet>
-        <link
-          rel="stylesheet"
-          href={ typed<[string]>`/assets/stylesheets/highlight.js/styles/${ dark ? darkTheme : lightTheme }.css` }
+    <ThemeProvider theme={ Theme }>
+      <div className={ containerClassName } dir="ltr">
+        <Helmet>
+          <link
+            rel="stylesheet"
+            href={ typed<[string]>`/assets/stylesheets/highlight.js/styles/${ dark ? darkTheme : lightTheme }.css` }
+          />
+        </Helmet>
+        <pre className={ preClassName } dangerouslySetInnerHTML={ { __html: hlText ?? '' } } />
+        <TextField
+          fullWidth // TODO: false でもうまく動くようにする
+          multiline // TODO: false でもうまく動くようにする
+          value={ value }
+          onChange={ handleChange }
+          InputProps={ {
+            classes: {
+              inputMultiline: InputInputMultilineClassName,
+              ...InputPropsRestClasses,
+            },
+            ref: InputRef,
+            ...RestInputProps,
+          } }
+          inputProps={ {
+            spellCheck: spellCheck ?? false,
+            ref: inputRef,
+            ...restInputProps,
+          } }
+          { ...restProps }
         />
-      </Helmet>
-      <pre className={ preClassName } dangerouslySetInnerHTML={ { __html: hlText ?? '' } } />
-      <TextField
-        fullWidth // TODO: false でもうまく動くようにする
-        multiline // TODO: false でもうまく動くようにする
-        value={ value }
-        onChange={ handleChange }
-        InputProps={ {
-          classes: {
-            inputMultiline: InputInputMultilineClassName,
-            ...InputPropsRestClasses,
-          },
-          ref: InputRef,
-          ...RestInputProps,
-        } }
-        inputProps={ {
-          spellCheck: spellCheck ?? false,
-          ref: inputRef,
-          ...restInputProps,
-        } }
-        { ...restProps }
-      />
-    </div>
+      </div>
+    </ThemeProvider>
   )
 }
 
