@@ -1,8 +1,10 @@
+import { makeStyles } from '@material-ui/core'
 import { Temporal } from  'proposal-temporal'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import zipWithIndexIterable from '~/lib/extensions/Iterable/zipWithIndexIterable'
+import useScreen from '~/lib/hooks/useScreen'
 import typed from '~/lib/typed'
 
 interface StoppedClockProps {
@@ -55,7 +57,7 @@ function drawClockHands(time: Temporal.TimeLike, radius: number, context: Canvas
   drawMinuteHand(time, radius, context)
   drawSecondHand(time, radius, context)
 
-  // TODO: draw a cap nut
+  // TODO: draw canvas cap nut
 }
 
 // TODO: remove
@@ -119,23 +121,48 @@ function drawSecondHand(time: Temporal.TimeLike, radius: number, context: Canvas
   context.stroke()
 }
 
+interface StyleProps {
+  width: number
+  height: number
+}
+
+const useStyles = makeStyles<never, StyleProps, 'Canvas'>({
+  Canvas: ({ width, height }) => ({
+    width,
+    height,
+  }),
+})
+
 const RADIUS = 200 // diameter = 2 radius - 2
 
 const StoppedClock: React.FC<StoppedClockProps> = ({ time }) => {
   const [context, setContext] = useState<CanvasRenderingContext2D | null>()
+  const { dpr } = useScreen()
 
-  const canvas = useCallback<React.RefCallback<HTMLCanvasElement>>((node) => {
-    setContext(node?.getContext('2d'))
-  }, [])
+  const canvas = useRef<HTMLCanvasElement>(null)
+
+  const jssClasses = useStyles({
+    width: 2 * RADIUS,
+    height: 2 * RADIUS,
+  })
 
   useEffect(() => {
-    if (context == null) {
+    setContext(canvas.current?.getContext('2d'))
+  }, [canvas])
+
+  useEffect(() => {
+    if (context == null || canvas.current === null || dpr === null) {
       return
     }
 
+    /* tslint:disable:no-object-mutation */
+    canvas.current.width = 2 * dpr * RADIUS
+    canvas.current.height = 2 * dpr * RADIUS
+    /* tslint:enable:no-object-mutation */
+
     // X 軸は右向き、 Y 軸は下向き、反転無し、原点は中央。
-    context.setTransform(1, 0, 0, 1, RADIUS, RADIUS)
-  }, [context])
+    context.setTransform(dpr, 0, 0, dpr, dpr * RADIUS, dpr * RADIUS)
+  }, [context, canvas, dpr])
 
   useEffect(() => {
     if (context == null) {
@@ -150,6 +177,7 @@ const StoppedClock: React.FC<StoppedClockProps> = ({ time }) => {
   return (
     <canvas
       ref={ canvas }
+      className={ jssClasses.Canvas }
       width={ 2 * RADIUS }
       height={ 2 * RADIUS }
     />
