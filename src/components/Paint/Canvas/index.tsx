@@ -32,7 +32,7 @@ const Canvas = forwardRef<HTMLCanvasElement, Props>(({ width, height, lineWidth,
   const [drawing, setDrawing] = useState(false)
   const [previousPoint, setPreviousPoint] = useState<Canvas.Point | null>(null)
 
-  const ownRef = useRef<HTMLCanvasElement | null>(null)
+  const ownRef = useRef<HTMLCanvasElement>(null)
   const ref = useRefsMerged(forwardedRef, ownRef)
 
   const jssClasses = useStyles({ width,  height })
