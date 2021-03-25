@@ -3,7 +3,7 @@ import teal from '@material-ui/core/colors/teal'
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 
 interface Props {
-  direction?: 'rtl' | 'ltr'
+  direction?: Direction
   dark: boolean
 }
 
