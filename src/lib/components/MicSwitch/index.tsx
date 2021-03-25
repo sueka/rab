@@ -44,6 +44,10 @@ const MicSwitch: React.FC<Props> = ({ inputFor: input, onResult, fallback }) => 
     onResult(event, Array.from(event.results).map(result => result[0].transcript).join('')) // TODO: result.isFinal な result をメモしてパフォーマンスを改善させる。
   }, [onResult])
 
+  useEffect(() => () => {
+    recognition?.stop()
+  }, [recognition])
+
   useEffect(() => {
     if (recognition === null) {
       return
@@ -61,8 +65,6 @@ const MicSwitch: React.FC<Props> = ({ inputFor: input, onResult, fallback }) => 
     recognition.addEventListener('result', handleRecognitionResult)
 
     return () => {
-      recognition.stop()
-
       recognition.removeEventListener('start', handleRecognitionStart)
       recognition.removeEventListener('end', handleRecognitionEnd)
       recognition.removeEventListener('error', handleRecognitionError)
