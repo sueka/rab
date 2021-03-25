@@ -9,6 +9,7 @@
   margin: 0;
   padding: 18.5px 14px;
   position: absolute;
+  text-align: left;
   white-space: pre-wrap;
   /* width: 100%; */
   word-break: break-word;
