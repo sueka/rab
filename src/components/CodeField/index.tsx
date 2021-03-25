@@ -1,12 +1,12 @@
 import TextField, { TextFieldProps as OriginalTextFieldProps } from '@material-ui/core/TextField'
-import { ThemeProvider, makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import classnames from 'classnames'
 import hljs from 'highlight.js'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
 
-import configureTheme from '~/configureTheme'
 import ThemeProviderContext from '~/contexts/ThemeProviderContext'
+import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import useRefsMerged from '~/lib/hooks/useRefsMerged'
 import typed from '~/lib/typed'
 import cssClasses from './classes.css'
@@ -36,17 +36,29 @@ type Props =
   & OwnProps
 
 interface StyleProps {
+  direction?: Direction
   startAdornmentWidth?: number
   endAdornmentWidth?: number
 }
 
-const useStyles = makeStyles<never, StyleProps, 'Pre'>({
+const useStyles = makeStyles<never, StyleProps, 'Pre' | 'TextArea'>({
   Pre: {
     '&$Pre': {
-      marginInlineStart: ({ startAdornmentWidth }) => startAdornmentWidth,
-      marginInlineEnd: ({ endAdornmentWidth }) => endAdornmentWidth,
+      direction: 'ltr',
+      width: ({ startAdornmentWidth, endAdornmentWidth }) => `calc(100% - ${ (startAdornmentWidth ?? 0) + (endAdornmentWidth ?? 0) }px)`,
+
+      // NOTE: ページの direction が "rtl" なら starAdornment は右側に配置されるが、この要素の direction は "ltr" に固定されるので、 marginInlineStart 等を使うことはできない。
+      marginLeft: ({ direction, startAdornmentWidth, endAdornmentWidth }) => direction === 'rtl' ? endAdornmentWidth : startAdornmentWidth,
+      marginRight: ({ direction, startAdornmentWidth, endAdornmentWidth }) => direction === 'rtl' ? startAdornmentWidth : endAdornmentWidth,
     },
   },
+  TextArea: {
+    '&$TextArea': {
+      direction: 'ltr',
+    },
+  },
+}, {
+  flip: false,
 })
 
 // TODO: remove?
@@ -74,20 +86,21 @@ const CodeField: React.FC<Props> = ({
 }) => {
   const { inputMultiline, ...InputPropsRestClasses } = InputPropsClasses ?? {}
 
+  const { dir } = useContext(IntlProviderContext)
   const { dark } = useContext(ThemeProviderContext)
-  const Theme = useMemo(() => dark != null ? configureTheme({ direction: 'ltr', dark }) : null, [dark])
 
   const [hlText, setHlText] = useState<string | null>(null)
   const [startAdornmentWidth, setStartAdornmentWidth] = useState<number | null>(null)
   const [endAdornmentWidth, setEndAdornmentWidth] = useState<number | null>(null)
 
   const jssClasses = useStyles({
+    direction: dir ?? undefined,
     startAdornmentWidth: startAdornmentWidth ?? undefined,
     endAdornmentWidth: endAdornmentWidth ?? undefined,
   })
 
   const containerClassName = useMemo(() => classnames(className, cssClasses.Container), [className])
-  const InputInputMultilineClassName = useMemo(() => classnames(cssClasses.TextArea, inputMultiline), [inputMultiline])
+  const InputInputMultilineClassName = useMemo(() => classnames(jssClasses.TextArea, cssClasses.TextArea, inputMultiline), [jssClasses.TextArea, inputMultiline])
   const preClassName = useMemo(() => classnames(jssClasses.Pre, cssClasses.Pre, preProps?.className), [jssClasses.Pre, preProps?.className])
 
   const OwnInputRef = useRef<HTMLDivElement>(null)
@@ -117,42 +130,40 @@ const CodeField: React.FC<Props> = ({
     ).value)
   }, [value, onChange])
 
-  if (dark == null || Theme === null) {
+  if (dark == null) {
     return null
   }
 
   return (
-    <ThemeProvider theme={ Theme }>
-      <div className={ containerClassName } dir="ltr">
-        <Helmet>
-          <link
-            rel="stylesheet"
-            href={ typed<[string]>`/assets/stylesheets/highlight.js/styles/${ dark ? darkTheme : lightTheme }.css` }
-          />
-        </Helmet>
-        <pre className={ preClassName } dangerouslySetInnerHTML={ { __html: hlText ?? '' } } />
-        <TextField
-          fullWidth // TODO: false でもうまく動くようにする
-          multiline // TODO: false でもうまく動くようにする
-          value={ value }
-          onChange={ handleChange }
-          InputProps={ {
-            classes: {
-              inputMultiline: InputInputMultilineClassName,
-              ...InputPropsRestClasses,
-            },
-            ref: InputRef,
-            ...RestInputProps,
-          } }
-          inputProps={ {
-            spellCheck: spellCheck ?? false,
-            ref: inputRef,
-            ...restInputProps,
-          } }
-          { ...restProps }
+    <div className={ containerClassName }>
+      <Helmet>
+        <link
+          rel="stylesheet"
+          href={ typed<[string]>`/assets/stylesheets/highlight.js/styles/${ dark ? darkTheme : lightTheme }.css` }
         />
-      </div>
-    </ThemeProvider>
+      </Helmet>
+      <pre className={ preClassName } dangerouslySetInnerHTML={ { __html: hlText ?? '' } } />
+      <TextField
+        fullWidth // TODO: false でもうまく動くようにする
+        multiline // TODO: false でもうまく動くようにする
+        value={ value }
+        onChange={ handleChange }
+        InputProps={ {
+          classes: {
+            inputMultiline: InputInputMultilineClassName,
+            ...InputPropsRestClasses,
+          },
+          ref: InputRef,
+          ...RestInputProps,
+        } }
+        inputProps={ {
+          spellCheck: spellCheck ?? false,
+          ref: inputRef,
+          ...restInputProps,
+        } }
+        { ...restProps }
+      />
+    </div>
   )
 }
 
