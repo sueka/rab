@@ -97,8 +97,8 @@ const CodeField: React.FC<Props> = ({
   const inputRef = useRefsMerged(inputRefProp ?? null, ownInputRef)
 
   useEffect(() => {
-    const startAdornment = OwnInputRef.current?.querySelector<HTMLElement>(':scope > .MuiInputAdornment-root.MuiInputAdornment-positionStart')
-    const endAdornment = OwnInputRef.current?.querySelector<HTMLElement>(':scope > .MuiInputAdornment-root.MuiInputAdornment-positionEnd')
+    const startAdornment = OwnInputRef.current?.querySelector<HTMLElement>(':scope > [class*="MuiInputAdornment-positionStart"]') // TODO
+    const endAdornment = OwnInputRef.current?.querySelector<HTMLElement>(':scope > [class*="MuiInputAdornment-positionEnd"]') // TODO
 
     setStartAdornmentWidth(getWidth(startAdornment))
     setEndAdornmentWidth(getWidth(endAdornment))
