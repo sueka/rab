@@ -161,7 +161,9 @@ const StoppedClock: React.FC<StoppedClockProps> = ({ time }) => {
     /* tslint:enable:no-object-mutation */
 
     // X 軸は右向き、 Y 軸は下向き、反転無し、原点は中央。
-    context.setTransform(dpr, 0, 0, dpr, dpr * RADIUS, dpr * RADIUS)
+    context.resetTransform()
+    context.scale(dpr, dpr)
+    context.translate(RADIUS, RADIUS)
   }, [context, canvas, dpr])
 
   useEffect(() => {
