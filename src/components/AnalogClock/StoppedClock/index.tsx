@@ -7,8 +7,9 @@ import zipWithIndexIterable from '~/lib/extensions/Iterable/zipWithIndexIterable
 import useScreen from '~/lib/hooks/useScreen'
 import typed from '~/lib/typed'
 
-interface StoppedClockProps {
+interface Props {
   time: Temporal.TimeLike
+  radius?: number
 }
 
 // TODO: remove
@@ -133,17 +134,18 @@ const useStyles = makeStyles<never, StyleProps, 'Canvas'>({
   }),
 })
 
-const RADIUS = 200 // diameter = 2 radius - 2
-
-const StoppedClock: React.FC<StoppedClockProps> = ({ time }) => {
+const StoppedClock: React.FC<Props> = ({
+  time,
+  radius = 200, // diameter = 2 radius - 2
+}) => {
   const [context, setContext] = useState<CanvasRenderingContext2D | null>()
   const { dpr } = useScreen()
 
   const canvas = useRef<HTMLCanvasElement>(null)
 
   const jssClasses = useStyles({
-    width: 2 * RADIUS,
-    height: 2 * RADIUS,
+    width: 2 * radius,
+    height: 2 * radius,
   })
 
   useEffect(() => {
@@ -156,32 +158,32 @@ const StoppedClock: React.FC<StoppedClockProps> = ({ time }) => {
     }
 
     /* tslint:disable:no-object-mutation */
-    canvas.current.width = 2 * dpr * RADIUS
-    canvas.current.height = 2 * dpr * RADIUS
+    canvas.current.width = 2 * dpr * radius
+    canvas.current.height = 2 * dpr * radius
     /* tslint:enable:no-object-mutation */
 
     // X 軸は右向き、 Y 軸は下向き、反転無し、原点は中央。
     context.resetTransform()
     context.scale(dpr, dpr)
-    context.translate(RADIUS, RADIUS)
-  }, [context, canvas, dpr])
+    context.translate(radius, radius)
+  }, [context, canvas, dpr, radius])
 
   useEffect(() => {
     if (context == null) {
       return
     }
 
-    drawClockFace(RADIUS, context)
-    drawClockHands(time, RADIUS, context)
+    drawClockFace(radius, context)
+    drawClockHands(time, radius, context)
     // TODO: draw cover
-  }, [context, time])
+  }, [context, time, radius])
 
   return (
     <canvas
       ref={ canvas }
       className={ jssClasses.Canvas }
-      width={ 2 * RADIUS }
-      height={ 2 * RADIUS }
+      width={ 2 * radius }
+      height={ 2 * radius }
     />
   )
 }
