@@ -146,7 +146,7 @@ export class IoService {
 
     // tslint:disable-next-line:no-loop-statement
     while (true) {
-      yield call(delay, 1000 - new Date().getMilliseconds())
+      yield call(delay, 1000 - (new Date().getMilliseconds() % 1000)) // NOTE: Edge では getMilliseconds が1000以上の値を返すことがある。
 
       yield put(updateNow())
     }

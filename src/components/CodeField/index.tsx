@@ -71,9 +71,9 @@ function getWidth(element: HTMLElement | null | undefined): number | null {
     return null
   }
 
-  const { marginInlineStart, marginInlineEnd } = globalThis.getComputedStyle(element)
+  const { marginLeft, marginRight } = globalThis.getComputedStyle(element)
 
-  return element.offsetWidth + parseFloat(marginInlineStart) + parseFloat(marginInlineEnd)
+  return element.offsetWidth + parseFloat(marginLeft) + parseFloat(marginRight)
 }
 
 const CodeField: React.FC<Props> = ({
