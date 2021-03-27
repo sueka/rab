@@ -1,6 +1,6 @@
 import JSBI from 'jsbi'
 
-export default function hashCode<T extends boolean | number | string>(xs: T[]) {
+export default function hashCode<T extends boolean | number | string>(xs: readonly T[]) {
   // tslint:disable-next-line:no-let
   let result = JSBI.BigInt(1)
 

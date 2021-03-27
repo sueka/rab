@@ -61,7 +61,7 @@ export default parallel(testWithoutCoverage, build)
 //                         _|
 //                         _|
 
-function npx(util: string, args: string[], env: NodeJS.ProcessEnv): ChildProcess {
+function npx(util: string, args: readonly string[], env: NodeJS.ProcessEnv): ChildProcess {
   return spawn(util, args, { stdio: 'inherit', env: { ...process.env, ...env } })
 }
 
@@ -73,7 +73,7 @@ declare global {
   }
 }
 
-function npxTask(util: string, args: string[] = [], env: NodeJS.ProcessEnv = {}): TaskFunction {
+function npxTask(util: string, args: readonly string[] = [], env: NodeJS.ProcessEnv = {}): TaskFunction {
   const task: TaskFunction = () => npx(util, args, env)
 
   task.displayName = `${ Object.entries(env).map(([name, value]) => `${ name }=${ value } `).join('') }${ util }${ args.map((arg) => /\s/.test(arg) ? ` '${ arg }'` : ` ${ arg }`).join('') }`
