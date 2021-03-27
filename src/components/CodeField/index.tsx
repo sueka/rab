@@ -24,9 +24,11 @@ type TextFieldProps =
       value?: string
     }
 
+type HighlightTheme = string // TODO
+
 interface OwnProps {
-  lightTheme?: string
-  darkTheme?: string
+  lightTheme?: HighlightTheme
+  darkTheme?: HighlightTheme
   className?: string
   preProps?: Alt.Omit<React.InputHTMLAttributes<HTMLPreElement>, 'dangerouslySetInnerHTML'>
 }
@@ -141,7 +143,7 @@ const CodeField: React.FC<Props> = ({
       <Helmet>
         <link
           rel="stylesheet"
-          href={ typed<[string]>`/assets/stylesheets/highlight.js/styles/${ (dark ?? defaultDark) ? darkTheme : lightTheme }.css` }
+          href={ typed<[HighlightTheme]>`/assets/stylesheets/highlight.js/styles/${ (dark ?? defaultDark) ? darkTheme : lightTheme }.css` }
         />
       </Helmet>
       <pre className={ preClassName } dangerouslySetInnerHTML={ { __html: hlText ?? '' } } />
