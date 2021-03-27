@@ -6,7 +6,7 @@ import typed from '~/lib/typed'
  *
  * @example
  * ``` ts
- * conj(', ', ' or ', ['A', 'B', 'C']) // 'A, B or C'
+ * conj(['A', 'B', 'C'], ', ', ' or ') // 'A, B or C'
  * ```
  */
 export default function conj(xs: string[], separator: string, lastSeparator: string): string {
