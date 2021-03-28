@@ -91,8 +91,8 @@ const config: Configuration = {
           },
           'postcss-loader',
         ],
-      }
-    ]
+      },
+    ],
   },
   optimization: {
     minimizer: [
