@@ -5,10 +5,10 @@ import 'jest-canvas-mock'
 import fetchMock from 'jest-fetch-mock'
 import 'reflect-metadata'
 
-import './lib/extensions/Array/Array.prototype.hashCode'
-import './lib/extensions/Boolean/Boolean.prototype.hashCode'
-import './lib/extensions/Number/Number.prototype.hashCode'
-import './lib/extensions/String/String.prototype.hashCode'
+import '~/lib/extensions/Array/Array.prototype.hashCode'
+import '~/lib/extensions/Boolean/Boolean.prototype.hashCode'
+import '~/lib/extensions/Number/Number.prototype.hashCode'
+import '~/lib/extensions/String/String.prototype.hashCode'
 
 jest.mock('uuid', () => ({
   v4() {
