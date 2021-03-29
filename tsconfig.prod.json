@@ -10,7 +10,7 @@
       "ES2018.RegExp"
     ],
     "skipLibCheck": true, // TODO: @types/dotenv-webpack が修正されたら削除する
-    "jsx": "React",
+    "jsx": "react",
 
     /* Strict Type-Checking Options */
     "strict": true,
@@ -23,13 +23,12 @@
 
     /* Module Resolution Options */
     "moduleResolution": "Node",
-    "baseUrl": "src",
     "paths": {
       "*": [
-        "../node_modules/@types/*"
+        "./src/@types/*"
       ],
       "~/*": [
-        "*"
+        "./src/*"
       ]
     },
     "resolveJsonModule": true,
