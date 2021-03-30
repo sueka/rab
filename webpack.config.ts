@@ -92,6 +92,10 @@ const config: Configuration = {
           'postcss-loader',
         ],
       },
+      {
+        test: /\.svg$/,
+        type: 'asset/resource',
+      },
     ],
   },
   optimization: {

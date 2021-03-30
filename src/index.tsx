@@ -8,13 +8,14 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { StylesProvider, jssPreset } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { ConnectedRouter } from 'connected-react-router'
+import FaviconNotification from 'favicon-notification'
 import { History, createBrowserHistory } from 'history'
 import { List, Map } from 'immutable'
 import { interfaces } from 'inversify'
 import { Provider as ServiceProvider } from 'inversify-react'
 import { create } from 'jss'
 import rtl from 'jss-rtl'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import ReactDOM from 'react-dom'
@@ -36,6 +37,7 @@ import typed from '~/lib/typed'
 import { asFormats } from '~/lib/validators/intlValidators'
 import Service, { Action, State, createReducer, invariant } from '~/redux'
 import './classes.css'
+import favicon from './favicon.svg'
 
 import formats from '../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../public/messages/en.json' // tslint:disable-line:no-relative-imports
@@ -104,6 +106,12 @@ const Main: React.FC<Props> = ({ history, container }) => {
   }, [Provider])
 
   const dark = useMediaQuery('(prefers-color-scheme: dark)')
+
+  useEffect(() => {
+    FaviconNotification.init({
+      url: favicon,
+    })
+  }, [])
 
   return (
     <>

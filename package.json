@@ -74,6 +74,7 @@
     "dotenv-webpack": "^6.0.4",
     "element-qsa-scope": "^1.1.0",
     "extract-react-intl-messages": "^4.1.1",
+    "favicon-notification": "^0.1.4",
     "fp-ts": "^2.9.5",
     "gulp": "^4.0.2",
     "highlight.js": "^10.6.0",
