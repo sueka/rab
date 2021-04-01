@@ -32,7 +32,6 @@ const HomePage: React.FC = () => {
       </Typography>
       <SetClockButton />
       <TextField
-        ref={ input }
         value={ text }
         onChange={ handleChange }
         InputProps={ {
@@ -41,6 +40,9 @@ const HomePage: React.FC = () => {
               <NotifyMeButton inputFor={ input } />
             </InputAdornment>
           ),
+        } }
+        inputProps= { {
+          ref: input,
         } }
       />
     </>
