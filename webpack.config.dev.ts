@@ -28,6 +28,7 @@ config.plugins.push(new BundleAnalyzerPlugin({
 
 config.devServer = {
   contentBase: path.join(__dirname, 'dist'),
+  https: true,
   host,
   disableHostCheck: true,
   port,
@@ -46,7 +47,7 @@ if (process.env.NODE_ENV === 'development') {
   }
 
   config.entry = [
-    `webpack-dev-server/client?http://${ host }:${ port }`,
+    `webpack-dev-server/client?https://${ host }:${ port }`,
     'webpack/hot/only-dev-server',
     config.entry,
   ]
