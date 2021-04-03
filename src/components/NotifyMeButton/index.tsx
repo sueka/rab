@@ -21,7 +21,7 @@ const NotifyMeButton: React.FC<Props> = ({ inputFor: ref }) => {
   const handleNotifyButtonClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(async () => {
     const input = ref.current
 
-    if (input === null || /^\p{White_Space}*$/u.test(input.value)) {
+    if (input === null) {
       return
     }
 
@@ -64,7 +64,10 @@ const NotifyMeButton: React.FC<Props> = ({ inputFor: ref }) => {
 
   return (
     <Tooltip title={ <FormattedMessage { ...messages.sendANotificationToYourBrowser } /> }>
-      <IconButton onClick={ handleNotifyButtonClick }>
+      <IconButton
+        onClick={ handleNotifyButtonClick }
+        disabled={ ref.current === null || /^\p{White_Space}*$/u.test(ref.current.value) }
+      >
         <SendIcon />
       </IconButton>
     </Tooltip>
