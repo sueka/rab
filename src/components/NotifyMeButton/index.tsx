@@ -18,7 +18,7 @@ const NotifyMeButton: React.FC<Props> = ({ inputFor: ref }) => {
   const handleNotifyButtonClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(async () => {
     const input = ref.current
 
-    if (input === null) {
+    if (input === null || /^\p{White_Space}*$/.test(input.value)) {
       return
     }
 
