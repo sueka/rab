@@ -16,6 +16,11 @@ jest.mock('uuid', () => ({
   },
 }))
 
+// Notification はウェブにしか無いので、適当にモックする。
+Object.defineProperty(globalThis, 'Notification', {
+  value: jest.fn(),
+})
+
 dotenv.config()
 
 fetchMock.enableMocks()

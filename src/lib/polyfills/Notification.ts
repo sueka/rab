@@ -1,4 +1,4 @@
-export default class Notification extends globalThis.Notification implements globalThis.Notification {
+export default class Notification extends globalThis.Notification {
   private _timestamp: number
 
   constructor(...args: ConstructorParameters<typeof globalThis.Notification>) {
