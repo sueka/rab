@@ -6,6 +6,7 @@ import { useRecoilState } from 'recoil'
 
 import notificationsState from '~/atoms/notificationsState'
 import useOnceForEachEffect from '~/lib/hooks/useOnceForEachEffect'
+import Notification from '~/lib/polyfills/Notification'
 
 interface Props {
   inputFor: React.RefObject<HTMLInputElement | HTMLTextAreaElement>
