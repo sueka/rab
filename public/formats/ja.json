@@ -15,7 +15,6 @@
   },
   "time": {
     "medium": {
-      "hour12": false,
       "year": "numeric",
       "month": "short",
       "day": "numeric",
