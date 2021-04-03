@@ -4,10 +4,12 @@ import Box from '@material-ui/core/Box'
 import IconButton from '@material-ui/core/IconButton'
 import Popover from '@material-ui/core/Popover'
 import Toolbar from '@material-ui/core/Toolbar'
+import Tooltip from '@material-ui/core/Tooltip'
 import { Theme, makeStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import React, { useCallback, useEffect, useState } from 'react'
+import { FormattedMessage } from 'react-intl'
 import { useRecoilState } from 'recoil'
 
 import notificationsState from '~/atoms/notificationsState'
@@ -17,6 +19,7 @@ import ToggleDarkButton from '~/components/ToggleDarkButton'
 import useRefsMerged from '~/lib/hooks/useRefsMerged'
 import useScreen from '~/lib/hooks/useScreen'
 import classes from './classes.css'
+import messages from './messages'
 
 interface Props {
   onMenuIconButtonClick: React.MouseEventHandler<HTMLButtonElement>
@@ -87,11 +90,13 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
           <Box mx={ 1 }>
             <ToggleDarkButton />
             { 'Notification' in globalThis && <>
-              <IconButton color="inherit" onClick={ handleNotificationsShow } ref={ anchor }>
-                <Badge color="secondary" badgeContent={ notifications.length }>
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
+              <Tooltip title={ <FormattedMessage { ...messages.showNotifications } /> }>
+                <IconButton color="inherit" onClick={ handleNotificationsShow } ref={ anchor } disabled={ notifications.length === 0 }>
+                  <Badge color="secondary" badgeContent={ notifications.length }>
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
+              </Tooltip>
               { notifications.length !== 0 && <Popover
                 open={ notificationsOpen }
                 onClose={ handleNotificationsClose }
