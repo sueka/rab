@@ -21,6 +21,7 @@
   "src.components.Info.fetchingFailed": "האחזור נכשל.",
   "src.components.Info.fetchingNotStarted": "האחזור לא התחיל.",
   "src.components.LocaleSelect.languages": "דף זה בשפות אחרות",
+  "src.components.NotifyMeButton.sendANotificationToYourBrowser": "שלח הודעה לדפדפן שלך",
   "src.components.PageTemplate.Nav.apps": "יישומים",
   "src.components.PageTemplate.Nav.chess": "שחמט",
   "src.components.PageTemplate.Nav.clock": "שעון",

@@ -1,12 +1,15 @@
 import IconButton from '@material-ui/core/IconButton'
-import AddAlertIcon from '@material-ui/icons/AddAlert'
+import Tooltip from '@material-ui/core/Tooltip'
+import SendIcon from '@material-ui/icons/Send'
 import FaviconNotification from 'favicon-notification'
 import React, { useCallback, useEffect } from 'react'
+import { FormattedMessage } from 'react-intl'
 import { useRecoilState } from 'recoil'
 
 import notificationsState from '~/atoms/notificationsState'
 import useOnceForEachEffect from '~/lib/hooks/useOnceForEachEffect'
 import Notification from '~/lib/polyfills/Notification'
+import messages from './messages'
 
 interface Props {
   inputFor: React.RefObject<HTMLInputElement | HTMLTextAreaElement>
@@ -60,9 +63,11 @@ const NotifyMeButton: React.FC<Props> = ({ inputFor: ref }) => {
   }
 
   return (
-    <IconButton onClick={ handleNotifyButtonClick }>
-      <AddAlertIcon />
-    </IconButton>
+    <Tooltip title={ <FormattedMessage { ...messages.sendANotificationToYourBrowser } /> }>
+      <IconButton onClick={ handleNotifyButtonClick }>
+        <SendIcon />
+      </IconButton>
+    </Tooltip>
   )
 }
 
