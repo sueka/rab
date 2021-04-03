@@ -21,6 +21,7 @@
   "src.components.Info.fetchingFailed": "Fetching failed.",
   "src.components.Info.fetchingNotStarted": "Fetching not started.",
   "src.components.LocaleSelect.languages": "Languages",
+  "src.components.NotifyMeButton.sendANotificationToYourBrowser": "Send a notification to your browser",
   "src.components.PageTemplate.Nav.apps": "Apps",
   "src.components.PageTemplate.Nav.chess": "Chess",
   "src.components.PageTemplate.Nav.clock": "Clock",
