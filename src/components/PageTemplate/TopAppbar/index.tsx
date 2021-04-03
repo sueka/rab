@@ -86,26 +86,28 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
           <div className={ classes.Spacer } />
           <Box mx={ 1 }>
             <ToggleDarkButton />
-            <IconButton color="inherit" onClick={ handleNotificationsShow } ref={ anchor }>
-              <Badge color="secondary" badgeContent={ notifications.length }>
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            { notifications.length !== 0 && <Popover
-              open={ notificationsOpen }
-              onClose={ handleNotificationsClose }
-              anchorEl={ anchor.current }
-              anchorOrigin={ {
-                horizontal: 'right',
-                vertical: 'bottom',
-              } }
-              transformOrigin={ {
-                horizontal: 'right',
-                vertical: 'top',
-              } }
-            >
-              <NotificationList />
-            </Popover> }
+            { 'Notification' in globalThis && <>
+              <IconButton color="inherit" onClick={ handleNotificationsShow } ref={ anchor }>
+                <Badge color="secondary" badgeContent={ notifications.length }>
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+              { notifications.length !== 0 && <Popover
+                open={ notificationsOpen }
+                onClose={ handleNotificationsClose }
+                anchorEl={ anchor.current }
+                anchorOrigin={ {
+                  horizontal: 'right',
+                  vertical: 'bottom',
+                } }
+                transformOrigin={ {
+                  horizontal: 'right',
+                  vertical: 'top',
+                } }
+              >
+                <NotificationList />
+              </Popover> }
+            </> }
           </Box>
           <LocaleSelect
             classes={ {

@@ -65,38 +65,6 @@ exports[`App at / 1`] = `
             class="MuiTouchRipple-root"
           />
         </span>
-        <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
-          tabindex="0"
-          type="button"
-        >
-          <span
-            class="MuiIconButton-label"
-          >
-            <span
-              class="MuiBadge-root"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"
-                />
-              </svg>
-              <span
-                class="MuiBadge-badge MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorSecondary MuiBadge-invisible"
-              >
-                0
-              </span>
-            </span>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
       </div>
       <div
         class="MuiFormControl-root"
@@ -216,38 +184,6 @@ exports[`App at /chess 1`] = `
             class="MuiTouchRipple-root"
           />
         </span>
-        <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
-          tabindex="0"
-          type="button"
-        >
-          <span
-            class="MuiIconButton-label"
-          >
-            <span
-              class="MuiBadge-root"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"
-                />
-              </svg>
-              <span
-                class="MuiBadge-badge MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorSecondary MuiBadge-invisible"
-              >
-                0
-              </span>
-            </span>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
       </div>
       <div
         class="MuiFormControl-root"
@@ -837,38 +773,6 @@ exports[`App at /clock 1`] = `
             class="MuiTouchRipple-root"
           />
         </span>
-        <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
-          tabindex="0"
-          type="button"
-        >
-          <span
-            class="MuiIconButton-label"
-          >
-            <span
-              class="MuiBadge-root"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"
-                />
-              </svg>
-              <span
-                class="MuiBadge-badge MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorSecondary MuiBadge-invisible"
-              >
-                0
-              </span>
-            </span>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
       </div>
       <div
         class="MuiFormControl-root"
@@ -992,38 +896,6 @@ exports[`App at /counter 1`] = `
             class="MuiTouchRipple-root"
           />
         </span>
-        <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
-          tabindex="0"
-          type="button"
-        >
-          <span
-            class="MuiIconButton-label"
-          >
-            <span
-              class="MuiBadge-root"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"
-                />
-              </svg>
-              <span
-                class="MuiBadge-badge MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorSecondary MuiBadge-invisible"
-              >
-                0
-              </span>
-            </span>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
       </div>
       <div
         class="MuiFormControl-root"
@@ -1236,38 +1108,6 @@ exports[`App at /form-controls 1`] = `
             class="MuiTouchRipple-root"
           />
         </span>
-        <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
-          tabindex="0"
-          type="button"
-        >
-          <span
-            class="MuiIconButton-label"
-          >
-            <span
-              class="MuiBadge-root"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"
-                />
-              </svg>
-              <span
-                class="MuiBadge-badge MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorSecondary MuiBadge-invisible"
-              >
-                0
-              </span>
-            </span>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
       </div>
       <div
         class="MuiFormControl-root"
@@ -1704,38 +1544,6 @@ exports[`App at /info 1`] = `
             class="MuiTouchRipple-root"
           />
         </span>
-        <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
-          tabindex="0"
-          type="button"
-        >
-          <span
-            class="MuiIconButton-label"
-          >
-            <span
-              class="MuiBadge-root"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"
-                />
-              </svg>
-              <span
-                class="MuiBadge-badge MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorSecondary MuiBadge-invisible"
-              >
-                0
-              </span>
-            </span>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
       </div>
       <div
         class="MuiFormControl-root"
@@ -1875,38 +1683,6 @@ exports[`App at /nonexistent-path 1`] = `
             class="MuiTouchRipple-root"
           />
         </span>
-        <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
-          tabindex="0"
-          type="button"
-        >
-          <span
-            class="MuiIconButton-label"
-          >
-            <span
-              class="MuiBadge-root"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"
-                />
-              </svg>
-              <span
-                class="MuiBadge-badge MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorSecondary MuiBadge-invisible"
-              >
-                0
-              </span>
-            </span>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
       </div>
       <div
         class="MuiFormControl-root"
@@ -2026,38 +1802,6 @@ exports[`App at /paint 1`] = `
             class="MuiTouchRipple-root"
           />
         </span>
-        <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
-          tabindex="0"
-          type="button"
-        >
-          <span
-            class="MuiIconButton-label"
-          >
-            <span
-              class="MuiBadge-root"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"
-                />
-              </svg>
-              <span
-                class="MuiBadge-badge MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorSecondary MuiBadge-invisible"
-              >
-                0
-              </span>
-            </span>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
       </div>
       <div
         class="MuiFormControl-root"
@@ -2475,38 +2219,6 @@ exports[`App at /reminder 1`] = `
             class="MuiTouchRipple-root"
           />
         </span>
-        <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
-          tabindex="0"
-          type="button"
-        >
-          <span
-            class="MuiIconButton-label"
-          >
-            <span
-              class="MuiBadge-root"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"
-                />
-              </svg>
-              <span
-                class="MuiBadge-badge MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorSecondary MuiBadge-invisible"
-              >
-                0
-              </span>
-            </span>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
       </div>
       <div
         class="MuiFormControl-root"

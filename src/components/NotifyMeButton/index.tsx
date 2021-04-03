@@ -55,6 +55,10 @@ const NotifyMeButton: React.FC<Props> = ({ inputFor: ref }) => {
     }
   }, [notifications, handleNotificationClose])
 
+  if (!('Notification' in globalThis)) {
+    return null
+  }
+
   return (
     <IconButton onClick={ handleNotifyButtonClick }>
       <AddAlertIcon />
