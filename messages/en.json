@@ -32,6 +32,7 @@
   "src.components.PageTemplate.Nav.paint": "Paint",
   "src.components.PageTemplate.Nav.reminder": "Reminder",
   "src.components.PageTemplate.Nav.settings": "Settings",
+  "src.components.PageTemplate.TopAppbar.showNotifications": "Show notifications",
   "src.components.Paint.brushSize": "Brush size",
   "src.components.Paint.clear": "Clear",
   "src.components.Reminder.AddTaskButton.add": "Add",
