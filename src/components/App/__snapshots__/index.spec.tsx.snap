@@ -39,12 +39,13 @@ exports[`App at / 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-4 MuiCheckbox-root Checkbox"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-4 MuiCheckbox-root Checkbox PrivateSwitchBase-checked-5 Mui-checked Checked"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
+              checked=""
               class="PrivateSwitchBase-input-7"
               data-indeterminate="false"
               type="checkbox"
@@ -57,7 +58,7 @@ exports[`App at / 1`] = `
               viewBox="0 0 24 24"
             >
               <path
-                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
             </svg>
           </span>
@@ -158,12 +159,13 @@ exports[`App at /chess 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-19 MuiCheckbox-root Checkbox"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-19 MuiCheckbox-root Checkbox PrivateSwitchBase-checked-20 Mui-checked Checked"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
+              checked=""
               class="PrivateSwitchBase-input-22"
               data-indeterminate="false"
               type="checkbox"
@@ -176,7 +178,7 @@ exports[`App at /chess 1`] = `
               viewBox="0 0 24 24"
             >
               <path
-                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
             </svg>
           </span>
@@ -747,12 +749,13 @@ exports[`App at /clock 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-32 MuiCheckbox-root Checkbox"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-32 MuiCheckbox-root Checkbox PrivateSwitchBase-checked-33 Mui-checked Checked"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
+              checked=""
               class="PrivateSwitchBase-input-35"
               data-indeterminate="false"
               type="checkbox"
@@ -765,7 +768,7 @@ exports[`App at /clock 1`] = `
               viewBox="0 0 24 24"
             >
               <path
-                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
             </svg>
           </span>
@@ -870,12 +873,13 @@ exports[`App at /counter 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-45 MuiCheckbox-root Checkbox"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-45 MuiCheckbox-root Checkbox PrivateSwitchBase-checked-46 Mui-checked Checked"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
+              checked=""
               class="PrivateSwitchBase-input-48"
               data-indeterminate="false"
               type="checkbox"
@@ -888,7 +892,7 @@ exports[`App at /counter 1`] = `
               viewBox="0 0 24 24"
             >
               <path
-                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
             </svg>
           </span>
@@ -1082,12 +1086,13 @@ exports[`App at /form-controls 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-56 MuiCheckbox-root Checkbox"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-56 MuiCheckbox-root Checkbox PrivateSwitchBase-checked-57 Mui-checked Checked"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
+              checked=""
               class="PrivateSwitchBase-input-59"
               data-indeterminate="false"
               type="checkbox"
@@ -1100,7 +1105,7 @@ exports[`App at /form-controls 1`] = `
               viewBox="0 0 24 24"
             >
               <path
-                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
             </svg>
           </span>
@@ -1518,12 +1523,13 @@ exports[`App at /info 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-74 MuiCheckbox-root Checkbox"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-74 MuiCheckbox-root Checkbox PrivateSwitchBase-checked-75 Mui-checked Checked"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
+              checked=""
               class="PrivateSwitchBase-input-77"
               data-indeterminate="false"
               type="checkbox"
@@ -1536,7 +1542,7 @@ exports[`App at /info 1`] = `
               viewBox="0 0 24 24"
             >
               <path
-                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
             </svg>
           </span>
@@ -1657,12 +1663,13 @@ exports[`App at /nonexistent-path 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-118 MuiCheckbox-root Checkbox"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-118 MuiCheckbox-root Checkbox PrivateSwitchBase-checked-119 Mui-checked Checked"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
+              checked=""
               class="PrivateSwitchBase-input-121"
               data-indeterminate="false"
               type="checkbox"
@@ -1675,7 +1682,7 @@ exports[`App at /nonexistent-path 1`] = `
               viewBox="0 0 24 24"
             >
               <path
-                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
             </svg>
           </span>
@@ -1776,12 +1783,13 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-85 MuiCheckbox-root Checkbox"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-85 MuiCheckbox-root Checkbox PrivateSwitchBase-checked-86 Mui-checked Checked"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
+              checked=""
               class="PrivateSwitchBase-input-88"
               data-indeterminate="false"
               type="checkbox"
@@ -1794,7 +1802,7 @@ exports[`App at /paint 1`] = `
               viewBox="0 0 24 24"
             >
               <path
-                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
             </svg>
           </span>
@@ -2193,12 +2201,13 @@ exports[`App at /reminder 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-107 MuiCheckbox-root Checkbox"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-107 MuiCheckbox-root Checkbox PrivateSwitchBase-checked-108 Mui-checked Checked"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
+              checked=""
               class="PrivateSwitchBase-input-110"
               data-indeterminate="false"
               type="checkbox"
@@ -2211,7 +2220,7 @@ exports[`App at /reminder 1`] = `
               viewBox="0 0 24 24"
             >
               <path
-                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
               />
             </svg>
           </span>
