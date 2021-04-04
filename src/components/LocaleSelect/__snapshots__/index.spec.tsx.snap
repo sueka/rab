@@ -10,7 +10,7 @@ exports[`LocaleSelect 1`] = `
     for="00000000-0000-4000-0000-000000000000"
   >
     <bdi>
-      Languages
+      Language
     </bdi>
   </label>
   <div

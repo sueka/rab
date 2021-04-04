@@ -75,7 +75,7 @@ exports[`App at / 1`] = `
           for="00000000-0000-4000-0000-000000000000"
         >
           <bdi>
-            Languages
+            Language
           </bdi>
         </label>
         <div
@@ -194,7 +194,7 @@ exports[`App at /chess 1`] = `
           for="00000000-0000-4000-0000-000000000000"
         >
           <bdi>
-            Languages
+            Language
           </bdi>
         </label>
         <div
@@ -783,7 +783,7 @@ exports[`App at /clock 1`] = `
           for="00000000-0000-4000-0000-000000000000"
         >
           <bdi>
-            Languages
+            Language
           </bdi>
         </label>
         <div
@@ -906,7 +906,7 @@ exports[`App at /counter 1`] = `
           for="00000000-0000-4000-0000-000000000000"
         >
           <bdi>
-            Languages
+            Language
           </bdi>
         </label>
         <div
@@ -1118,7 +1118,7 @@ exports[`App at /form-controls 1`] = `
           for="00000000-0000-4000-0000-000000000000"
         >
           <bdi>
-            Languages
+            Language
           </bdi>
         </label>
         <div
@@ -1554,7 +1554,7 @@ exports[`App at /info 1`] = `
           for="00000000-0000-4000-0000-000000000000"
         >
           <bdi>
-            Languages
+            Language
           </bdi>
         </label>
         <div
@@ -1693,7 +1693,7 @@ exports[`App at /nonexistent-path 1`] = `
           for="00000000-0000-4000-0000-000000000000"
         >
           <bdi>
-            Languages
+            Language
           </bdi>
         </label>
         <div
@@ -1812,7 +1812,7 @@ exports[`App at /paint 1`] = `
           for="00000000-0000-4000-0000-000000000000"
         >
           <bdi>
-            Languages
+            Language
           </bdi>
         </label>
         <div
@@ -2229,7 +2229,7 @@ exports[`App at /reminder 1`] = `
           for="00000000-0000-4000-0000-000000000000"
         >
           <bdi>
-            Languages
+            Language
           </bdi>
         </label>
         <div

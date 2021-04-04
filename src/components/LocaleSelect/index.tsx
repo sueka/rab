@@ -117,7 +117,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
       className={ rootClassName } // NOTE: Overrides FormControlProps.className
     >
       <InputLabel className={ labelClassName } ref={ inputLabel } htmlFor={ inputId }>
-        <FormattedMessage { ...messages.languages } />
+        <FormattedMessage { ...messages.language } />
       </InputLabel>
       <Select
         classes={ {
