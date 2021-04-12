@@ -16,9 +16,8 @@ describe('fetch', () => {
   })
 
   it('works', async () => {
-    const response = await fetch({
+    const response = await fetch('https://example.com/api/v1/login', {
       method: 'POST',
-      parameterizedEndpoint: 'https://example.com/api/v1/login',
     })
 
     expect(fetchMock).toBeCalledTimes(1)
@@ -27,7 +26,7 @@ describe('fetch', () => {
       method: 'POST',
     }))
 
-    expect(response.body).toMatchObject({
+    expect(response.json()).resolves.toMatchObject({
       accessToken: '+-./0123456789=ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~',
     })
   })

@@ -2,22 +2,9 @@
  * src/lib/fetch.ts
  */
 
-import * as pathToRegexp from 'path-to-regexp'
-
-import createUrlOrPathAbempty from './createUrlOrPathAbempty'
 import mapValues from './extensions/Record/mapValues'
 import fromEntries from './polyfills/Object.fromEntries'
 import typed from './typed'
-
-type Method = 'GET' | 'POST'
-
-interface RequestParams {
-  method: Method
-  parameterizedEndpoint: string
-  params?: Record<string, string>
-  headers?: Record<string, string>
-  query?: Query
-}
 
 type Query = Record<string, QueryValue>
 
@@ -32,11 +19,6 @@ type QueryValueObject = { [member in string]: QueryValue }
 type VQuery = Record<string, QueryValue>
 
 type QueryMap = Record<string, string>
-
-interface ResponseParams {
-  response: Response
-  body: Json
-}
 
 function isEmpty<T extends {}>(object: T): object is EmptyRecord<T> {
   return Object.keys(object).length === 0
@@ -132,54 +114,27 @@ export /* for testing */ function toQueryMap(query: Query): QueryMap {
   return go(query, {})
 }
 
-function buildRequestInfo({ method, parameterizedEndpoint, params = {}, query = {} }: RequestParams): RequestInfo {
-  const url = createUrlOrPathAbempty(parameterizedEndpoint)
-
-  // tslint:disable-next-line:no-object-mutation
-  url.pathname = isEmpty(params) ? url.pathname : pathToRegexp.compile(url.pathname)(params)
-
-  if (method === 'GET') {
-    const urlSearchParams = new URLSearchParams(url.search)
-
-    Object.entries(toQueryMap(query)).forEach(([key, value]) => {
-      urlSearchParams.append(key, value)
-    })
-
-    // tslint:disable-next-line:no-object-mutation
-    url.search = urlSearchParams.toString()
+export function buildBody<T extends { append(key: string, value: string): void }>(query: Query, bodyBuilder: T): T {
+  // tslint:disable-next-line:no-loop-statement
+  for (const [key, value] of Object.entries(toQueryMap(query))) {
+    bodyBuilder.append(key, value)
   }
 
-  return url.href
+  return bodyBuilder
 }
 
-function buildRequestInit({ method, headers = {}, query = {} }: RequestParams): RequestInit {
-  switch (method) {
-    case 'GET':
-      return {
-        method,
-        headers,
+class NoAnyResponse extends Response {
+  constructor(private response: Response) {
+    super()
       }
-    case 'POST':
-      const formData = new FormData
 
-      Object.entries(toQueryMap(query)).forEach(([key, value]) => {
-        formData.append(key, value)
-      })
-
-      return {
-        method,
-        body: formData,
-        headers,
-      }
+  public async json() {
+    return toJson(await this.response.json())
   }
 }
 
-export default async function fetch(request: RequestParams): Promise<ResponseParams> {
-  const requestInfo = buildRequestInfo(request)
-  const requestInit = buildRequestInit(request)
-  const response = await window.fetch(requestInfo, requestInit) // TODO: Use globalThis
+export default async function fetch(input: RequestInfo, init?: RequestInit): Promise<NoAnyResponse> {
+  const response = await window.fetch(input, init) // TODO: Use globalThis
 
-  const body = toJson(await response.json())
-
-  return { response, body }
+  return new NoAnyResponse(response)
 }

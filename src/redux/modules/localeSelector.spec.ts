@@ -74,22 +74,13 @@ describe('LocaleSelectorService', () => {
       throw new Error // FIXME: describe を落とすだけでいいかも
     }
 
-    expect(it.next().value).toEqual(call(fetch, {
-      method: 'GET',
-      parameterizedEndpoint: typed<[string]>`${ process.env.BASE_NAME }/formats/:locale.json`,
-      params: { locale: 'ja' },
-    }))
+    const formatsResponse = new Response
+    const messagesResponse = new Response
 
-    // TODO: yield の結果のテスト手法を再考する
-    expect(it.next({ body: { date: { short: { month: 'short', day: 'numeric' } } } }).value).toEqual(call(fetch, {
-      method: 'GET',
-      parameterizedEndpoint: typed<[string]>`${ process.env.BASE_NAME }/messages/:locale.json`,
-      params: { locale: 'ja' },
-    }))
-
-    expect(it.next({ body: { blue: '青' } }).value).toEqual(put(setFormats({ date: { short: { month: 'short', day: 'numeric' } } })))
-    expect(it.next().value).toEqual(put(setMessages({ blue: '青' })))
-    expect(it.next().value).toEqual(put(setLocale('ja')))
+    expect(it.next().value).toEqual(call(fetch, typed<[string]>`${ process.env.BASE_NAME }/formats/ja.json`))
+    expect(it.next(formatsResponse).value).toEqual(call([formatsResponse, formatsResponse.json]))
+    expect(it.next().value).toEqual(call(fetch, typed<[string]>`${ process.env.BASE_NAME }/messages/ja.json`))
+    expect(it.next(messagesResponse).value).toEqual(call([messagesResponse, messagesResponse.json]))
   })
 })
 

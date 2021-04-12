@@ -1,6 +1,7 @@
 import { List } from 'immutable'
 import { Formats } from 'intl-messageformat'
 import { inject, injectable } from 'inversify'
+import { generatePath } from 'react-router'
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
@@ -181,17 +182,11 @@ export default class LocaleSelectorService {
 
   public /* for testing */ *selectLocaleSaga({ payload: { locale } }: SelectLocaleAction): SagaIterator {
     try {
-      const { body: formats }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
-        method: 'GET',
-        parameterizedEndpoint: typed<[string]>`${ this.config.get('BASE_NAME') }/formats/:locale.json`,
-        params: { locale },
-      })
+      const formatsResponse: ResultType<ReturnType<typeof fetch>> = yield call(fetch, generatePath(typed<[string]>`${ this.config.get('BASE_NAME') }/formats/:locale.json`, { locale: 'ja' }))
+      const formats: ResultType<ReturnType<typeof formatsResponse.json>> = yield call([formatsResponse, formatsResponse.json])
 
-      const { body: messages }: ResultType<ReturnType<typeof fetch>> = yield call(fetch, {
-        method: 'GET',
-        parameterizedEndpoint: typed<[string]>`${ this.config.get('BASE_NAME') }/messages/:locale.json`,
-        params: { locale },
-      })
+      const messagesResponse: ResultType<ReturnType<typeof fetch>> = yield call(fetch, generatePath(typed<[string]>`${ this.config.get('BASE_NAME') }/messages/:locale.json`, { locale: 'ja' }))
+      const messages: ResultType<ReturnType<typeof messagesResponse.json>> = yield call([messagesResponse, messagesResponse.json])
 
       yield put(setFormats(asFormats(formats)))
       yield put(setMessages(recordOf(asString)(messages)))

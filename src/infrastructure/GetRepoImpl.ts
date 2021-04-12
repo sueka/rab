@@ -1,4 +1,5 @@
 import { inject, injectable } from 'inversify'
+import { generatePath } from 'react-router'
 
 import ConfigRegistry from '~/config/ConfigRegistry'
 import fetch from '~/lib/fetch'
@@ -15,29 +16,26 @@ export default class GetRepoImpl implements GetRepo {
   public async apply({ owner, repo }: GetRepoInput): Promise<GetRepoOutput> {
     const gitHubApiUrl = this.config.get('GITHUB_API_URL')
 
-    const { response: { status }, body } = await fetch({
-      method: 'GET',
-      parameterizedEndpoint: typed<[string]>`${ gitHubApiUrl }/repos/:owner/:repo`,
-      params: { owner, repo },
+    const response = await fetch(generatePath(typed<[string]>`${ gitHubApiUrl }/repos/:owner/:repo`, { owner, repo }), {
       headers: {
         Accept: 'application/vnd.github.v3+json',
       },
     })
 
-    if (status === 200) {
+    if (response.status === 200) {
       return {
         successful: true,
         response: {
-          status,
-          body: asGetRepoResponse(body),
+          status: response.status,
+          body: asGetRepoResponse(await response.json()),
         },
       }
     } else {
       return {
         successful: false,
         response: {
-          status,
-          body: asUnsuccessfulResponse(body),
+          status: response.status,
+          body: asUnsuccessfulResponse(await response.json()),
         },
       }
     }
