@@ -125,8 +125,8 @@ export function buildBody<T extends { append(key: string, value: string): void }
 
 class NoAnyResponse extends Response {
   constructor(private response: Response) {
-    super()
-      }
+    super(null, response)
+  }
 
   public async json() {
     return toJson(await this.response.json())
