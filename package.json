@@ -140,7 +140,7 @@
     "tslint-immutable": "^6.0.1",
     "tslint-microsoft-contrib": "^6.2.0",
     "tslint-react": "^5.0.0",
-    "typedoc": "^0.19.2",
+    "typedoc": "^0.20.35",
     "webpack-bundle-analyzer": "^4.4.0",
     "webpack-dev-server": "^3.11.2"
   },
