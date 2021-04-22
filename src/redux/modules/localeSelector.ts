@@ -182,10 +182,10 @@ export default class LocaleSelectorService {
 
   public /* for testing */ *selectLocaleSaga({ payload: { locale } }: SelectLocaleAction): SagaIterator {
     try {
-      const formatsResponse: ResultType<ReturnType<typeof fetch>> = yield call(fetch, generatePath(typed<[string]>`${ this.config.get('BASE_NAME') }/formats/:locale.json`, { locale: 'ja' }))
+      const formatsResponse: ResultType<ReturnType<typeof fetch>> = yield call(fetch, generatePath(typed<[string]>`${ this.config.get('BASE_NAME') }/formats/:locale.json`, { locale }))
       const formats: ResultType<ReturnType<typeof formatsResponse.json>> = yield call([formatsResponse, formatsResponse.json])
 
-      const messagesResponse: ResultType<ReturnType<typeof fetch>> = yield call(fetch, generatePath(typed<[string]>`${ this.config.get('BASE_NAME') }/messages/:locale.json`, { locale: 'ja' }))
+      const messagesResponse: ResultType<ReturnType<typeof fetch>> = yield call(fetch, generatePath(typed<[string]>`${ this.config.get('BASE_NAME') }/messages/:locale.json`, { locale }))
       const messages: ResultType<ReturnType<typeof messagesResponse.json>> = yield call([messagesResponse, messagesResponse.json])
 
       yield put(setFormats(asFormats(formats)))
