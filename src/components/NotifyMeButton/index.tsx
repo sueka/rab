@@ -1,8 +1,7 @@
 import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import SendIcon from '@material-ui/icons/Send'
-import FaviconNotification from 'favicon-notification'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilState } from 'recoil'
 
@@ -41,14 +40,6 @@ const NotifyMeButton: React.FC<Props> = ({ inputFor: ref }) => {
 
     setNotifications((ns) => ns.filter((n) => n !== notification))
   }, [])
-
-  useEffect(() => {
-    if (notifications.length !== 0) {
-      FaviconNotification.add()
-    } else {
-      FaviconNotification.remove()
-    }
-  }, [notifications])
 
   useOnceForEachEffect(notifications, undefined, (notification) => {
     notification.addEventListener('close', handleNotificationClose)
