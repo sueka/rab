@@ -88,7 +88,7 @@ ${ '/nonexistent-path' }
       </RecoilRoot>
     )
 
-    await waitForDomChange({ container: container as HTMLElement }) // TODO
+    await waitForDomChange({ container, timeout: 15000 })
 
     expect(container).toMatchSnapshot()
   })
