@@ -20,7 +20,7 @@
   "src.components.Info.fetchingDoneSuccessfully": "Fetching done successfully.",
   "src.components.Info.fetchingFailed": "Fetching failed.",
   "src.components.Info.fetchingNotStarted": "Fetching not started.",
-  "src.components.LocaleSelect.languages": "Languages",
+  "src.components.LocaleSelect.language": "Language",
   "src.components.NotifyMeButton.sendANotificationToYourBrowser": "Send a notification to your browser",
   "src.components.PageTemplate.Nav.apps": "Apps",
   "src.components.PageTemplate.Nav.chess": "Chess",
