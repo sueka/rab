@@ -41,11 +41,11 @@ export function counterInvariant(state: CounterState) {
 //                 _|  _|
 //             _|_|    _|
 
-export /* for testing */ const RESET = '@@react-app-prototype/counter/RESET'
-export /* for testing */ const INCREMENT_IF_ODD = '@@react-app-prototype/counter/INCREMENT_IF_ODD'
-export /* for testing */ const INCREMENT_ASYNC = '@@react-app-prototype/counter/INCREMENT_ASYNC'
-export /* for testing */ const INCREMENT = '@@react-app-prototype/counter/INCREMENT'
-export /* for testing */ const DECREMENT = '@@react-app-prototype/counter/DECREMENT'
+export /* for testing */ const RESET = '@@rap/counter/RESET'
+export /* for testing */ const INCREMENT_IF_ODD = '@@rap/counter/INCREMENT_IF_ODD'
+export /* for testing */ const INCREMENT_ASYNC = '@@rap/counter/INCREMENT_ASYNC'
+export /* for testing */ const INCREMENT = '@@rap/counter/INCREMENT'
+export /* for testing */ const DECREMENT = '@@rap/counter/DECREMENT'
 
 const counterActionTypes = [
   RESET,

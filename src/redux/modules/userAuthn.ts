@@ -35,7 +35,7 @@ export type UserAuthnState = {}
 //                 _|  _|
 //             _|_|    _|
 
-export /* for testing */ const REDIRECT_TO_GITHUB = '@@react-app-prototype/userAuthn/REDIRECT_TO_GITHUB'
+export /* for testing */ const REDIRECT_TO_GITHUB = '@@rap/userAuthn/REDIRECT_TO_GITHUB'
 
 const userAuthnActionTypes = [
   REDIRECT_TO_GITHUB,

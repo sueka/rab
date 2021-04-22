@@ -81,7 +81,7 @@ describe('reducer', () => {
 
   it('should pass assertReducerShape', () => {
     expect(ioReducer(undefined, {
-      type: typed<[string]>`@@react-app-prototype/io.spec/${ prsg() }`,
+      type: typed<[string]>`@@rap/io.spec/${ prsg() }`,
     })).toEqual(initialState)
   })
 

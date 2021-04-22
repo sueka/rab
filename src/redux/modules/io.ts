@@ -36,10 +36,10 @@ export interface IoState {
 //                 _|  _|
 //             _|_|    _|
 
-export /* for testing */ const UPDATE_NOW = '@@react-app-prototype/io/UPDATE_NOW' // TODO: Rename
-export /* for testing */ const START_CLOCK = '@@react-app-prototype/io/START_CLOCK'
-const STOP_CLOCK = '@@react-app-prototype/io/STOP_CLOCK'
-export /* for testing */ const SET_NOW = '@@react-app-prototype/io/SET_NOW'
+export /* for testing */ const UPDATE_NOW = '@@rap/io/UPDATE_NOW' // TODO: Rename
+export /* for testing */ const START_CLOCK = '@@rap/io/START_CLOCK'
+const STOP_CLOCK = '@@rap/io/STOP_CLOCK'
+export /* for testing */ const SET_NOW = '@@rap/io/SET_NOW'
 
 const ioActionTypes = [
   UPDATE_NOW,

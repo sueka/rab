@@ -47,11 +47,11 @@ export interface LocaleSelectorState {
 //                 _|  _|
 //             _|_|    _|
 
-export /* for testing */ const SELECT_LOCALE = '@@react-app-prototype/localeSelector/SELECT_LOCALE'
-export /* for testing */ const SET_LOCALE = '@@react-app-prototype/localeSelector/SET_LOCALE'
-export /* for testing */ const SET_FORMATS = '@@react-app-prototype/localeSelector/SET_FORMATS'
-export /* for testing */ const SET_MESSAGES = '@@react-app-prototype/localeSelector/SET_MESSAGES'
-export /* for testing */ const PUSH_ERROR = '@@react-app-prototype/localeSelector/PUSH_ERROR'
+export /* for testing */ const SELECT_LOCALE = '@@rap/localeSelector/SELECT_LOCALE'
+export /* for testing */ const SET_LOCALE = '@@rap/localeSelector/SET_LOCALE'
+export /* for testing */ const SET_FORMATS = '@@rap/localeSelector/SET_FORMATS'
+export /* for testing */ const SET_MESSAGES = '@@rap/localeSelector/SET_MESSAGES'
+export /* for testing */ const PUSH_ERROR = '@@rap/localeSelector/PUSH_ERROR'
 
 const localeSelectorActionTypes = [
   SELECT_LOCALE,

@@ -96,7 +96,7 @@ describe('reducer', () => {
 
   it('should pass assertReducerShape', () => {
     expect(localeSelectorReducer(undefined, {
-      type: typed<[string]>`@@react-app-prototype/localeSelector.spec/${ prsg() }`,
+      type: typed<[string]>`@@rap/localeSelector.spec/${ prsg() }`,
     })).toEqual(initialState)
   })
 

@@ -96,7 +96,7 @@ describe('reducer', () => {
 
   it('should pass assertReducerShape', () => {
     expect(counterReducer(undefined, {
-      type: typed<[string]>`@@react-app-prototype/counter.spec/${ prsg() }`,
+      type: typed<[string]>`@@rap/counter.spec/${ prsg() }`,
     })).toEqual(initialState)
   })
 

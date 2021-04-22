@@ -8,7 +8,7 @@ jobs:
     env:
       CI: true
       NODE_ENV: production
-      BASE_NAME: /react-app-prototype
+      BASE_NAME: /rap
       GITHUB_API_URL: https://api.github.com
       USER_SERVICE_URL: http://localhost:14566 # TODO: Deploy a User Service
     runs-on: ubuntu-latest

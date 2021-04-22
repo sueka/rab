@@ -1,9 +1,9 @@
 {
-  "name": "react-app-prototype",
+  "name": "rap",
   "description": "A baby template for my making a React app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sueka/react-app-prototype.git"
+    "url": "https://github.com/sueka/rap.git"
   },
   "license": "CC0-1.0",
   "scripts": {

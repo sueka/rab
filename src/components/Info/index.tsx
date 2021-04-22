@@ -32,7 +32,7 @@ class Info extends React.Component<Props, State> {
       fetching: true,
     })
 
-    this.getRepo.apply({ owner: 'sueka', repo: 'react-app-prototype' }).then(
+    this.getRepo.apply({ owner: 'sueka', repo: 'rap' }).then(
       (output) => {
         if (output.successful) {
           this.setState({

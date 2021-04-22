@@ -45,21 +45,21 @@ export interface ReminderState {
 //                 _|  _|
 //             _|_|    _|
 
-const GET_TASKS_ASYNC = '@@react-app-prototype/reminder/GET_TASKS_ASYNC'
-const SET_TASKS = '@@react-app-prototype/reminder/SET_TASKS'
-export /* for testing */ const ADD_TASK_ASYNC = '@@react-app-prototype/reminder/ADD_TASK_ASYNC'
-export /* for testing */ const CHANGE_TASK_CONTENT_ASYNC = '@@react-app-prototype/reminder/CHANGE_TASK_CONTENT_ASYNC'
-export /* for testing */ const MARK_TASK_AS_DONE_ASYNC = '@@react-app-prototype/reminder/MARK_TASK_AS_DONE_ASYNC'
-export /* for testing */ const MARK_TASK_AS_UNDONE_ASYNC = '@@react-app-prototype/reminder/MARK_TASK_AS_UNDONE_ASYNC'
-export /* for testing */ const DELETE_TASK_ASYNC = '@@react-app-prototype/reminder/DELETE_TASK_ASYNC'
-export /* for testing */ const MOVE_TASK = '@@react-app-prototype/reminder/MOVE_TASK' // TODO: Rename?
-export /* for testing */ const PUSH_TASK = '@@react-app-prototype/reminder/PUSH_TASK'
-export const MARK_TASK_AS_DONE = '@@react-app-prototype/reminder/MARK_TASK_AS_DONE'
-export const MARK_TASK_AS_UNDONE = '@@react-app-prototype/reminder/MARK_TASK_AS_UNDONE'
-export /* for testing */ const REMOVE_TASK = '@@react-app-prototype/reminder/REMOVE_TASK'
-export /* for testing */ const CHECK_TASK = '@@react-app-prototype/reminder/CHECK_TASK'
-export /* for testing */ const PUSH_ERROR = '@@react-app-prototype/reminder/PUSH_ERROR'
-const REMOVE_ERROR = '@@react-app-prototype/reminder/REMOVE_ERROR'
+const GET_TASKS_ASYNC = '@@rap/reminder/GET_TASKS_ASYNC'
+const SET_TASKS = '@@rap/reminder/SET_TASKS'
+export /* for testing */ const ADD_TASK_ASYNC = '@@rap/reminder/ADD_TASK_ASYNC'
+export /* for testing */ const CHANGE_TASK_CONTENT_ASYNC = '@@rap/reminder/CHANGE_TASK_CONTENT_ASYNC'
+export /* for testing */ const MARK_TASK_AS_DONE_ASYNC = '@@rap/reminder/MARK_TASK_AS_DONE_ASYNC'
+export /* for testing */ const MARK_TASK_AS_UNDONE_ASYNC = '@@rap/reminder/MARK_TASK_AS_UNDONE_ASYNC'
+export /* for testing */ const DELETE_TASK_ASYNC = '@@rap/reminder/DELETE_TASK_ASYNC'
+export /* for testing */ const MOVE_TASK = '@@rap/reminder/MOVE_TASK' // TODO: Rename?
+export /* for testing */ const PUSH_TASK = '@@rap/reminder/PUSH_TASK'
+export const MARK_TASK_AS_DONE = '@@rap/reminder/MARK_TASK_AS_DONE'
+export const MARK_TASK_AS_UNDONE = '@@rap/reminder/MARK_TASK_AS_UNDONE'
+export /* for testing */ const REMOVE_TASK = '@@rap/reminder/REMOVE_TASK'
+export /* for testing */ const CHECK_TASK = '@@rap/reminder/CHECK_TASK'
+export /* for testing */ const PUSH_ERROR = '@@rap/reminder/PUSH_ERROR'
+const REMOVE_ERROR = '@@rap/reminder/REMOVE_ERROR'
 
 const reminderActionTypes = [
   GET_TASKS_ASYNC,
