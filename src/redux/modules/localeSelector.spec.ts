@@ -1,5 +1,5 @@
 import { List } from 'immutable'
-import { call, put } from 'redux-saga/effects'
+import { call } from 'redux-saga/effects'
 
 import container from '~/container.dev'
 import fetch from '~/lib/fetch'
