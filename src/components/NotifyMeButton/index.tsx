@@ -52,10 +52,6 @@ const NotifyMeButton: React.FC<Props> = ({ inputFor: ref }) => {
 
   useOnceForEachEffect(notifications, undefined, (notification) => {
     notification.addEventListener('close', handleNotificationClose)
-
-    return () => {
-      notification.removeEventListener('close', handleNotificationClose)
-    }
   }, [notifications, handleNotificationClose])
 
   if (!('Notification' in globalThis)) {
