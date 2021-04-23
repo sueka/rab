@@ -1,7 +1,7 @@
 import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import SendIcon from '@material-ui/icons/Send'
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilState } from 'recoil'
 
@@ -16,6 +16,7 @@ interface Props {
 
 const NotifyMeButton: React.FC<Props> = ({ inputFor: ref }) => {
   const [notifications, setNotifications] = useRecoilState(notificationsState)
+  const disabled = useMemo(() => ref.current === null || /^\p{White_Space}*$/u.test(ref.current.value), [ref.current?.value])
 
   const handleNotifyButtonClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(async () => {
     const input = ref.current
@@ -50,13 +51,20 @@ const NotifyMeButton: React.FC<Props> = ({ inputFor: ref }) => {
   }
 
   return (
-    <Tooltip title={ <FormattedMessage { ...messages.sendANotificationToYourBrowser } /> }>
-      <IconButton
-        onClick={ handleNotifyButtonClick }
-        disabled={ ref.current === null || /^\p{White_Space}*$/u.test(ref.current.value) }
-      >
-        <SendIcon />
-      </IconButton>
+    <Tooltip
+      title={ <FormattedMessage { ...messages.sendANotificationToYourBrowser } /> }
+      disableFocusListener={ disabled }
+      disableHoverListener={ disabled }
+      disableTouchListener={ disabled }
+    >
+      <span>
+        <IconButton
+          onClick={ handleNotifyButtonClick }
+          disabled={ disabled }
+        >
+          <SendIcon />
+        </IconButton>
+      </span>
     </Tooltip>
   )
 }

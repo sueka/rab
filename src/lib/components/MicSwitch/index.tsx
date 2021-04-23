@@ -120,15 +120,22 @@ const MicSwitch: React.FC<Props> = ({ inputFor: input, onResult, fallback }) => 
   }
 
   return (
-    <Tooltip title={ tooltip }>
-      <Checkbox
-        disabled={ disabled }
-        color="default"
-        icon={ <MicNoneIcon /> }
-        checkedIcon={ <MicIcon /> }
-        checked={ listening }
-        onChange={ handleMicChange }
-      />
+    <Tooltip
+      title={ tooltip }
+      disableFocusListener={ disabled }
+      disableHoverListener={ disabled }
+      disableTouchListener={ disabled }
+    >
+      <span>
+        <Checkbox
+          disabled={ disabled }
+          color="default"
+          icon={ <MicNoneIcon /> }
+          checkedIcon={ <MicIcon /> }
+          checked={ listening }
+          onChange={ handleMicChange }
+        />
+      </span>
     </Tooltip>
   )
 }

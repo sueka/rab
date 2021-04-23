@@ -53,19 +53,18 @@ const CopyTextButton: React.FC<Props> = ({ inputFor: input }) => {
     setDisabled(input.current === null || input.current.value === '' || input.current.disabled)
   })
 
-  if (disabled) {
-    return (
-      <IconButton onClick={ handleClick } disabled>
-        <ContentCopyIcon />
-      </IconButton>
-    )
-  }
-
   return (
-    <Tooltip title={ formatMessage(messages.copyText) }>
-      <IconButton onClick={ handleClick }>
-        <ContentCopyIcon />
-      </IconButton>
+    <Tooltip
+      title={ formatMessage(messages.copyText) }
+      disableFocusListener={ disabled }
+      disableHoverListener={ disabled }
+      disableTouchListener={ disabled }
+    >
+      <span>
+        <IconButton onClick={ handleClick } disabled={ disabled }>
+          <ContentCopyIcon />
+        </IconButton>
+      </span>
     </Tooltip>
   )
 }

@@ -90,12 +90,19 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
           <Box mx={ 1 }>
             <ToggleDarkButton />
             { 'Notification' in globalThis && <>
-              <Tooltip title={ <FormattedMessage { ...messages.showNotifications } /> }>
-                <IconButton color="inherit" onClick={ handleNotificationsShow } ref={ anchor } disabled={ notifications.length === 0 }>
-                  <Badge color="secondary" badgeContent={ notifications.length }>
-                    <NotificationsIcon />
-                  </Badge>
-                </IconButton>
+              <Tooltip
+                title={ <FormattedMessage { ...messages.showNotifications } /> }
+                disableFocusListener={ notifications.length === 0 }
+                disableHoverListener={ notifications.length === 0 }
+                disableTouchListener={ notifications.length === 0 }
+              >
+                <span>
+                  <IconButton color="inherit" onClick={ handleNotificationsShow } ref={ anchor } disabled={ notifications.length === 0 }>
+                    <Badge color="secondary" badgeContent={ notifications.length }>
+                      <NotificationsIcon />
+                    </Badge>
+                  </IconButton>
+                </span>
               </Tooltip>
               { notifications.length !== 0 && <Popover
                 open={ notificationsOpen }
