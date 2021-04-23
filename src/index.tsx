@@ -116,8 +116,8 @@ const Main: React.FC<Props> = ({ history, container, baseUrl }) => {
   return (
     <>
       <Helmet
-        titleTemplate="%s - rap"
-        defaultTitle="rap"
+        titleTemplate="%s - Rap"
+        defaultTitle="Rap"
       />
       <RecoilRoot>
         <Provider renderError={ renderError }>
