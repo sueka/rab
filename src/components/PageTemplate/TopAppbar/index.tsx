@@ -96,7 +96,7 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
                 disableHoverListener={ notifications.length === 0 }
                 disableTouchListener={ notifications.length === 0 }
               >
-                <span>
+                <span className={ classes.TooltipWrapper }>
                   <IconButton color="inherit" onClick={ handleNotificationsShow } ref={ anchor } disabled={ notifications.length === 0 }>
                     <Badge color="secondary" badgeContent={ notifications.length }>
                       <NotificationsIcon />
