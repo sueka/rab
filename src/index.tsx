@@ -37,7 +37,6 @@ import typed from '~/lib/typed'
 import { asFormats } from '~/lib/validators/intlValidators'
 import Service, { Action, State, createReducer, invariant } from '~/redux'
 import './classes.css'
-import favicon from './favicon.svg'
 
 import formats from '../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../public/messages/en.json' // tslint:disable-line:no-relative-imports
@@ -72,6 +71,7 @@ const initialState: Alt.Omit<State, 'router'> = {
 interface Props {
   history: History
   container: interfaces.Container
+  baseUrl: string
 }
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
@@ -79,7 +79,7 @@ const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
 /**
  * The entry point component.
  */
-const Main: React.FC<Props> = ({ history, container }) => {
+const Main: React.FC<Props> = ({ history, container, baseUrl }) => {
   const reducer = useMemo(() => createReducer(history, initialState), [history])
 
   const rootSaga = useCallback<Saga>(() => {
@@ -109,9 +109,9 @@ const Main: React.FC<Props> = ({ history, container }) => {
 
   useEffect(() => {
     FaviconNotification.init({
-      url: favicon,
+      url: new URL('/favicon.svg', baseUrl).href,
     })
-  }, [])
+  }, [baseUrl])
 
   return (
     <>
@@ -154,5 +154,12 @@ containerImport.then(({ default: container }) => {
     basename: process.env.BASE_NAME,
   })
 
-  ReactDOM.render(<Main history={ history } container={ container } />, document.getElementById('root'))
+  ReactDOM.render(
+    <Main
+      history={ history }
+      container={ container }
+      baseUrl={ typed<[string, string]>`${ globalThis.location.origin }${ process.env.BASE_NAME }` }
+    />,
+    document.getElementById('root')
+  )
 })
