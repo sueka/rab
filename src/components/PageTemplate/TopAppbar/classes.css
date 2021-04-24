@@ -27,6 +27,7 @@
   }
 }
 
+/* TODO: Remove */
 /* NOTE: https://material-ui.com/components/tooltips/#disabled-elements のように <span> を差し込む場合、ツールチップの位置を <span> が無い場合と揃えるために <span> の高さを保持する。 */
 /* NOTE: <Tooltip> の親の内側のレイアウトが flex な場合も <span> の高さが保持されるので、 <InputAdornment> 等で使う場合はこのルールセットは不要。 */
 .TooltipWrapper {

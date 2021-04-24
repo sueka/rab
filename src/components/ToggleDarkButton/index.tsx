@@ -1,4 +1,4 @@
-import Checkbox from '@material-ui/core/Checkbox'
+import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
 import Brightness7Icon from '@material-ui/icons/Brightness7'
@@ -18,23 +18,27 @@ const ToggleDarkButton = () => {
 
   shouldBePresent(defaultDark)
 
-  const handleChange = useCallback((_event, checked) => {
-    setDark(checked)
-  }, [setDark])
+  const handleOn = useCallback(() => {
+    setDark(true)
+  }, [])
+
+  const handleOff = useCallback(() => {
+    setDark(false)
+  }, [])
 
   return (
     <Tooltip title={ <FormattedMessage { ...messages.toggleLightDarkTheme } /> }>
-      <Checkbox
-        icon={ <Brightness4Icon /> }
-        checkedIcon={ <Brightness7Icon /> }
-        color="default" // To change the focus ripple color
-        classes={ {
-          root: classes.Checkbox,
-          checked: classes.Checked,
-        } }
-        checked={ dark ?? defaultDark }
-        onChange={ handleChange }
-      />
+      <span className={ classes.TooltipWrapper }>
+        { dark ?? defaultDark ? (
+          <IconButton onClick={ handleOff }>
+            <Brightness7Icon />
+          </IconButton>
+        ) : (
+          <IconButton onClick={ handleOn } color="inherit">
+            <Brightness4Icon />
+          </IconButton>
+        ) }
+      </span>
     </Tooltip>
   )
 }
