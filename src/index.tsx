@@ -121,7 +121,7 @@ const Main: React.FC<Props> = ({ history, container, baseUrl }) => {
       />
       <RecoilRoot>
         <Provider renderError={ renderError }>
-          <IntlProvider availableLocales={ ['en', 'ja', 'he'] }>
+          <IntlProvider availableLocales={ ['en', 'he', 'ja'] }>
             <DndProvider backend={ HTML5Backend }>
               <ConnectedRouter history={ history }>
                 <ServiceProvider container={ container }>

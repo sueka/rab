@@ -73,7 +73,7 @@ ${ '/nonexistent-path' }
     const { container } = render(
       <RecoilRoot>
         <Provider store={ store }>
-          <IntlProvider availableLocales={ ['en', 'ja', 'he'] }>
+          <IntlProvider availableLocales={ ['en', 'he', 'ja'] }>
             <DndProvider backend={ TestBackend }>
               <StaticRouter context={ context } location={ location }>
                 <SnackbarProvider>
