@@ -32,6 +32,7 @@ export type Action =
   | ReminderAction
   | UserAuthnAction
 
+// NOTE: エントリーポイント (/src/index.tsx) は Service の実装を使い、 Service の実装は FooService (e.g. IoService) の実装を使い、 FooService の実装は外部 API 等（ Rap のモジュールも含む。）の実装や現実世界の状態などを使うので、これらの実装は全て同じレイヤー (Frameworks & Drivers, CA) に属するが、 Rap では、外部 API 等の実装等を DI していて、 FooService のインターフェイスをよりドメインに近いレイヤー (Application Business Rules, CA) に移動させることができるので、 Service と FooService も DI し、インターフェイス分離に備えている。
 @injectable()
 export default class Service {
   private chessService: ChessService
