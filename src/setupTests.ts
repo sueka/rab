@@ -10,6 +10,8 @@ import '~/lib/extensions/Boolean/Boolean.prototype.hashCode'
 import '~/lib/extensions/Number/Number.prototype.hashCode'
 import '~/lib/extensions/String/String.prototype.hashCode'
 
+jest.setTimeout(15000)
+
 jest.mock('uuid', () => ({
   v4() {
     return '00000000-0000-4000-0000-000000000000' // TODO
