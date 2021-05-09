@@ -145,9 +145,9 @@ const Main: React.FC<Props> = ({ history, container, baseUrl }) => {
 }
 
 containerImport.then(({ default: container }) => {
-  // TODO: DI BASE_NAME
+  // TODO: DI BASE_NAME & GTM_CONTAINER_ID
 
-  if (process.env.BASE_NAME === undefined) {
+  if (process.env.BASE_NAME === undefined || process.env.GTM_CONTAINER_ID === undefined) {
     throw new Error // TODO
   }
 
@@ -155,7 +155,7 @@ containerImport.then(({ default: container }) => {
     basename: process.env.BASE_NAME,
   })
 
-  if (process.env.GTM_CONTAINER_ID !== undefined && process.env.GTM_CONTAINER_ID !== '') {
+  if (process.env.GTM_CONTAINER_ID !== '') {
     TagManager.initialize({
       gtmId: process.env.GTM_CONTAINER_ID,
     })
