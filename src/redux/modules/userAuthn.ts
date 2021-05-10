@@ -1,9 +1,9 @@
-import { inject, injectable } from 'inversify'
+import { injectable } from 'inversify'
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call } from 'redux-saga/effects'
 
-import ConfigRegistry from '~/config/ConfigRegistry'
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
 import typed from '~/lib/typed'
 
@@ -101,14 +101,12 @@ export const createUserAuthnReducer: (initialState: UserAuthnState) => Reducer<U
 
 @injectable()
 export default class UserAuthnService {
-  constructor(
-    @inject('EnvVarConfig') private config: ConfigRegistry
-  ) {}
-
   public /* for testing */ *redirectToGitHub(): SagaIterator {
+    shouldBePresent(process.env.USER_SERVICE_URL)
+
     yield call( // NOTE: Supports IE 11. See also https://github.com/redux-saga/redux-saga/issues/2076
       (...args: Parameters<typeof globalThis.location.assign>) => globalThis.location.assign(...args),
-      typed<[string]>`${ this.config.get('USER_SERVICE_URL') }/redirect-to-github`
+      typed<[string]>`${ process.env.USER_SERVICE_URL }/redirect-to-github`
     )
   }
 

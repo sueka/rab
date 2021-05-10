@@ -29,6 +29,7 @@ import App from '~/components/App'
 import IntlProvider from '~/components/IntlProvider'
 import ThemeProvider from '~/components/ThemeProvider'
 import createProvider, { Props as ProviderProps } from '~/createProvider'
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import SnackbarProvider from '~/lib/components/SnackbarProvider'
 import '~/lib/extensions/Boolean/Boolean.prototype.hashCode'
 import '~/lib/extensions/Number/Number.prototype.hashCode'
@@ -72,7 +73,6 @@ const initialState: Alt.Omit<State, 'router'> = {
 interface Props {
   history: History
   container: interfaces.Container
-  baseUrl: string
 }
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
@@ -80,7 +80,7 @@ const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
 /**
  * The entry point component.
  */
-const Main: React.FC<Props> = ({ history, container, baseUrl }) => {
+const Main: React.FC<Props> = ({ history, container }) => {
   const reducer = useMemo(() => createReducer(history, initialState), [history])
 
   const rootSaga = useCallback<Saga>(() => {
@@ -109,10 +109,12 @@ const Main: React.FC<Props> = ({ history, container, baseUrl }) => {
   const dark = useMediaQuery('(prefers-color-scheme: dark)')
 
   useEffect(() => {
+    shouldBePresent(process.env.BASE_NAME)
+
     FaviconNotification.init({
-      url: new URL('/favicon.svg', baseUrl).href,
+      url: new URL('/favicon.svg', typed<[string, string]>`${ globalThis.location.origin }${ process.env.BASE_NAME }`).href,
     })
-  }, [baseUrl])
+  }, [])
 
   return (
     <>
@@ -145,8 +147,6 @@ const Main: React.FC<Props> = ({ history, container, baseUrl }) => {
 }
 
 containerImport.then(({ default: container }) => {
-  // TODO: DI BASE_NAME & GTM_CONTAINER_ID
-
   if (process.env.BASE_NAME === undefined || process.env.GTM_CONTAINER_ID === undefined) {
     throw new Error // TODO
   }
@@ -161,12 +161,5 @@ containerImport.then(({ default: container }) => {
     })
   }
 
-  ReactDOM.render(
-    <Main
-      history={ history }
-      container={ container }
-      baseUrl={ typed<[string, string]>`${ globalThis.location.origin }${ process.env.BASE_NAME }` }
-    />,
-    document.getElementById('root')
-  )
+  ReactDOM.render(<Main history={ history } container={ container } />, document.getElementById('root'))
 })
