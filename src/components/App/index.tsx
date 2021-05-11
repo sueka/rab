@@ -23,17 +23,15 @@ const MEETS_GDPR = false // TODO
 const App: React.FC = () => {
   const location = useLocation()
 
-  shouldBePresent(process.env.GTM_CONTAINER_ID)
-
-  if (!seemsLikeGtmContainerId(process.env.GTM_CONTAINER_ID)) {
-    throw new Error //
-  }
-
-  const { install } = useGtm(process.env.GTM_CONTAINER_ID)
+  const { install } = useGtm()
 
   useEffect(() => {
-    if (MEETS_GDPR) {
-      install()
+    if (
+      MEETS_GDPR &&
+      process.env.GTM_CONTAINER_ID !== undefined &&
+      seemsLikeGtmContainerId(process.env.GTM_CONTAINER_ID)
+    ) {
+      install(process.env.GTM_CONTAINER_ID)
     }
   }, [install])
 
