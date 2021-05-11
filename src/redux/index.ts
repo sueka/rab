@@ -69,7 +69,7 @@ export default class Service {
   }
 }
 
-export const createReducer = (history: History, initialState: Alt.Omit<State, 'router'>) => combineReducers<State, Action>({
+export const createReducer = (initialState: Alt.Omit<State, 'router'>, history: History) => combineReducers<State, Action>({
   router: connectRouter(history) as Reducer<RouterState, AnyAction>, // TODO
   chess: createChessReducer(initialState.chess),
   counter: createCounterReducer(initialState.counter),

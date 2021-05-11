@@ -80,7 +80,7 @@ const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
  * The entry point component.
  */
 const Main: React.FC<Props> = ({ history, container }) => {
-  const reducer = useMemo(() => createReducer(history, initialState), [history])
+  const reducer = useMemo(() => createReducer(initialState, history), [history])
 
   const rootSaga = useCallback<Saga>(() => {
     const service = container.resolve(Service) // TODO: DI
