@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { hot } from 'react-hot-loader/root'
 import { Redirect, Switch, useLocation } from 'react-router'
 
+import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import Route from '~/lib/components/Route'
+import { seemsLikeGtmContainerId } from '~/lib/guards/stringGuards'
+import useGtm from '~/lib/hooks/useGtm'
 
 export const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ './HomePage'))
 export const ChessPage = React.lazy(() => import(/* webpackChunkName: "chess" */ './ChessPage'))
@@ -15,8 +18,24 @@ export const ReminderPage = React.lazy(() => import(/* webpackChunkName: "remind
 export const SettingsPage = React.lazy(() => import(/* webpackChunkName: "settings" */ './SettingsPage'))
 export const NoMatch = React.lazy(() => import(/* webpackChunkName: "noMatch" */ './NoMatch'))
 
+const MEETS_GDPR = false // TODO
+
 const App: React.FC = () => {
   const location = useLocation()
+
+  shouldBePresent(process.env.GTM_CONTAINER_ID)
+
+  if (!seemsLikeGtmContainerId(process.env.GTM_CONTAINER_ID)) {
+    throw new Error //
+  }
+
+  const { install } = useGtm(process.env.GTM_CONTAINER_ID)
+
+  useEffect(() => {
+    if (MEETS_GDPR) {
+      install()
+    }
+  }, [install])
 
   if (location.pathname === '/' && location.hash !== '') {
     const pathname = /^#(.*)$/.exec(location.hash)?.[1]

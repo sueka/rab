@@ -19,7 +19,6 @@ import React, { useCallback, useEffect, useMemo } from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import ReactDOM from 'react-dom'
-import TagManager from 'react-gtm-module'
 import Helmet from 'react-helmet'
 import { RecoilRoot } from 'recoil'
 import { Saga } from 'redux-saga'
@@ -147,19 +146,13 @@ const Main: React.FC<Props> = ({ history, container }) => {
 }
 
 containerImport.then(({ default: container }) => {
-  if (process.env.BASE_NAME === undefined || process.env.GTM_CONTAINER_ID === undefined) {
+  if (process.env.BASE_NAME === undefined) {
     throw new Error // TODO
   }
 
   const history = createBrowserHistory({
     basename: process.env.BASE_NAME,
   })
-
-  if (process.env.GTM_CONTAINER_ID !== '') {
-    TagManager.initialize({
-      gtmId: process.env.GTM_CONTAINER_ID,
-    })
-  }
 
   ReactDOM.render(<Main history={ history } container={ container } />, document.getElementById('root'))
 })

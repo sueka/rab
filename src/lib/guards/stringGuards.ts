@@ -8,3 +8,7 @@ export function isUrl(input: string): input is string.Url {
     return false
   }
 }
+
+export function seemsLikeGtmContainerId(input: string): input is `GTM-${string}` {
+  return /^GTM-.*$/.test(input)
+}
