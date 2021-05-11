@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { hot } from 'react-hot-loader/root'
 import { Redirect, Switch, useLocation } from 'react-router'
 
-import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import Route from '~/lib/components/Route'
 import { seemsLikeGtmContainerId } from '~/lib/guards/stringGuards'
 import useGtm from '~/lib/hooks/useGtm'
