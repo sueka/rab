@@ -35,7 +35,7 @@ type Props =
 /**
  * @throws [[Error]] if {input} is nullish.
  */
-const validate = asObject('a Task for presentation', (input) => ({
+const validate = asObject((input) => ({
   content: leftOnly(asBoundedLengthString({ upperBound: 140 }))(input.content),
   done: leftOnly(asBoolean)(input.done),
 }))

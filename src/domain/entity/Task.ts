@@ -3,7 +3,7 @@ import yieldThis from '~/lib/extensions/Unknown/yieldThis'
 import { asBoolean, asObject, asString } from '~/lib/validators/commonValidators'
 import Entity from './Entity'
 
-export const asDomainObjectSerializedTask = asObject('an Id-serialized Task', (input) => ({
+export const asDomainObjectSerializedTask = asObject((input) => ({
   id: asString(input.id),
   content: asString(input.content),
   done: asBoolean(input.done),

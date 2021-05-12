@@ -6,7 +6,7 @@ import yieldThis from '~/lib/extensions/Unknown/yieldThis'
 import { asInstanceOf, asObject, asString, listOf } from '~/lib/validators/commonValidators'
 import Entity from './Entity'
 
-const asDomainObjectSerializedReminder = asObject('a Reminder', (input) => ({
+const asDomainObjectSerializedReminder = asObject((input) => ({
   id: asString(input.id),
   tasks: listOf(asString)(input.tasks),
 }))

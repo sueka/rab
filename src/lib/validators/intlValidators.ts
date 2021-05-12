@@ -2,13 +2,13 @@ import { Formats } from 'intl-messageformat'
 
 import { asBoolean, asObject, asString, asUnionOf, optional, recordOf, unionOf } from './commonValidators'
 
-export const asFormats = asObject<Partial<Formats>>('a Formats', (input) => ({ // TODO
+export const asFormats = asObject<Partial<Formats>>((input) => ({ // TODO
   number: optional(recordOf(asIntlNumberFormatOptions))(input.number),
   date: optional(recordOf(asIntlDateTimeFormatOptions))(input.date),
   time: optional(recordOf(asIntlDateTimeFormatOptions))(input.time),
 }))
 
-const asIntlNumberFormatOptions = asObject<Intl.NumberFormatOptions>('an Intl.NumberFormatOptions', (input) => ({
+const asIntlNumberFormatOptions = asObject<Intl.NumberFormatOptions>((input) => ({
   localeMatcher: optional(asUnionOf('lookup', 'best fit'))(input.localeMatcher),
   style: optional(asUnionOf('decimal', 'currency', 'percent'))(input.style),
   currency: optional(asString)(input.currency), // ISO 4217 currency code
@@ -21,7 +21,7 @@ const asIntlNumberFormatOptions = asObject<Intl.NumberFormatOptions>('an Intl.Nu
   maximumSignificantDigits: optional(asUnionOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21))(input.maximumSignificantDigits),
 }))
 
-const asIntlDateTimeFormatOptions = asObject<Intl.DateTimeFormatOptions>('an Intl.DateTimeFormatOptions', (input) => ({
+const asIntlDateTimeFormatOptions = asObject<Intl.DateTimeFormatOptions>((input) => ({
   localeMatcher: optional(asUnionOf('lookup', 'best fit'))(input.localeMatcher),
   weekday: optional(asUnionOf('narrow', 'short', 'long'))(input.weekday),
   era: optional(asUnionOf('narrow', 'short', 'long'))(input.era),

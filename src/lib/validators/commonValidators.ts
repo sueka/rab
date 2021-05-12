@@ -92,7 +92,7 @@ export const listOf = <A extends unknown, T extends A>(asT: (input: A) => T) => 
   return input.map(asT)
 }
 
-export const recordOf = <A extends unknown, T extends A>(asT: (input: A) => T) => asObject<Record<string, T>>('a Record', (input) => Object.entries<string, A>(input).map<[string, T]>(([key, value]) => [key, asT(value)]).reduce<Record<string, T>>((output, [key, value]) => ({ ...output, [key]: value }), {}))
+export const recordOf = <A extends unknown, T extends A>(asT: (input: A) => T) => asObject<Record<string, T>>((input) => Object.entries<string, A>(input).map<[string, T]>(([key, value]) => [key, asT(value)]).reduce<Record<string, T>>((output, [key, value]) => ({ ...output, [key]: value }), {}))
 
 export function asUnionOf<T extends readonly Json[]>(...options: T): (input: unknown) => T[number]
 export function asUnionOf<T extends readonly unknown[]>(...options: T): (input: unknown) => T[number]
@@ -117,7 +117,7 @@ export function asUnionOf<T extends readonly unknown[]>(...options: T) {
  * @param className name of {T} with indefinite article
  * @param asT [[ObjectTyper]]
  */
-export const asObject = <T>(className: string, asT: (input: any) => T) => (input: unknown): T => { // tslint:disable-line:no-any
+export const asObject = <T>(asT: (input: any) => T) => (input: unknown): T => { // tslint:disable-line:no-any
   if (input == null) {
     throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
   }
@@ -126,8 +126,8 @@ export const asObject = <T>(className: string, asT: (input: any) => T) => (input
     return asT(input)
   } catch (error: unknown) {
     if (error instanceof ValidationError) {
-      throw new ValidationError(trimEols(stripMargin(typed<[string, string, string]>`
-        |${ JSON.stringify(input) } is not ${ className }.
+      throw new ValidationError(trimEols(stripMargin(typed<[string, string]>`
+        |${ JSON.stringify(input) } is not the expected form of the object.
         |${ error.message }
         |`)))
     }
@@ -135,7 +135,7 @@ export const asObject = <T>(className: string, asT: (input: any) => T) => (input
     if (error instanceof Error) {
       console.error(error) // tslint:disable-line:no-console
 
-      throw new ValidationError(typed<[string, string]>`${ JSON.stringify(input) } is not ${ className }.`)
+      throw new ValidationError(typed<[string]>`${ JSON.stringify(input) } is not the expected form of the object.`)
     }
 
     throw new TypeError(typed<[string]>`${ String(error) } is not an error.`)
