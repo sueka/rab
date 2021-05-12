@@ -20,7 +20,7 @@ interface State {
 }
 
 class Info extends React.Component<Props, State> {
-  @resolve('GetRepo') private getRepo!: GetRepo
+  @resolve('GetRepo') private readonly getRepo!: GetRepo
 
   public state: Readonly<State> = {
     successful: true,
