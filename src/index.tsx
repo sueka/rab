@@ -9,7 +9,7 @@ import { StylesProvider, jssPreset } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { ConnectedRouter } from 'connected-react-router'
 import FaviconNotification from 'favicon-notification'
-import { History, createBrowserHistory } from 'history'
+import { createBrowserHistory } from 'history'
 import { List, Map } from 'immutable'
 import { interfaces } from 'inversify'
 import { Provider as ServiceProvider } from 'inversify-react'
@@ -44,6 +44,10 @@ import messages from '../public/messages/en.json' // tslint:disable-line:no-rela
 
 const containerImport = process.env.NODE_ENV === 'production' ? import('./container') : import('./container.dev')
 
+interface Props {
+  container: interfaces.Container
+}
+
 const initialState: Alt.Omit<State, 'router'> = {
   chess: {
     board: {
@@ -69,17 +73,18 @@ const initialState: Alt.Omit<State, 'router'> = {
   userAuthn: {},
 }
 
-interface Props {
-  history: History
-  container: interfaces.Container
-}
+shouldBePresent(process.env.BASE_NAME)
+
+const history = createBrowserHistory({
+  basename: process.env.BASE_NAME,
+})
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
 
 /**
  * The entry point component.
  */
-const Main: React.FC<Props> = ({ history, container }) => {
+const Main: React.FC<Props> = ({ container }) => {
   const reducer = useMemo(() => createReducer(initialState, history), [history])
 
   const rootSaga = useCallback<Saga>(() => {
@@ -146,13 +151,5 @@ const Main: React.FC<Props> = ({ history, container }) => {
 }
 
 containerImport.then(({ default: container }) => {
-  if (process.env.BASE_NAME === undefined) {
-    throw new Error // TODO
-  }
-
-  const history = createBrowserHistory({
-    basename: process.env.BASE_NAME,
-  })
-
-  ReactDOM.render(<Main history={ history } container={ container } />, document.getElementById('root'))
+  ReactDOM.render(<Main container={ container } />, document.getElementById('root'))
 })
