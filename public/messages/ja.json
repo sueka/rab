@@ -37,7 +37,7 @@
   "src.components.Paint.brushSize": "ブラシサイズ",
   "src.components.Paint.clear": "クリア",
   "src.components.Reminder.AddTaskButton.add": "追加",
-  "src.components.Reminder.TaskListItem.asBoundedLengthStringErrorMessage": "{ name } は 0-{ upperBound } 文字でなければなりません。",
+  "src.components.Reminder.TaskListItem.asBoundedLengthStringErrorMessage": "0-{ upperBound } 文字でなければなりません。",
   "src.components.Reminder.inputIsNotBetweenLowerBoundAndUpperBound": "{ input } は { lowerBound } と { upperBound } の間にありません。",
   "src.components.SetClockButton.setTheClock": "時計を合わせる",
   "src.components.ToggleDarkButton.toggleLightDarkTheme": "ライトテーマ/ダークテーマを切り替える",

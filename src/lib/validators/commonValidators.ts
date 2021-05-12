@@ -39,25 +39,6 @@ export const leftOnly = <A extends unknown, T extends A>(asT: (input: A) => T) =
   }
 }
 
-// TODO: Refactor
-export const named = <A extends unknown, T extends A>(name: string, asT: (input: A) => T) => (input: A): T => {
-  const t = failSafe(asT)(input)
-
-  if (isLeft(t)) {
-    if (t.left.values === undefined) {
-      throw t.left
-    }
-
-    if (t.left.key === undefined) {
-      throw new UnreachableError
-    }
-
-    throw new ValidationError(t.left.message, t.left.key, { name, ...t.left.values })
-  }
-
-  return t.right // TODO
-}
-
 export const optional = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: A | undefined): T | undefined => {
   if (input === undefined) {
     return

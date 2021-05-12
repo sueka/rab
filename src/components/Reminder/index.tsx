@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import Task, { TaskParams } from '~/domain/entity/Task'
 import TaskId from '~/domain/vo/TaskId'
 import curry from '~/lib/curry'
-import { asBoolean, asObject, leftOnly, named } from '~/lib/validators/commonValidators'
+import { asBoolean, asObject, leftOnly } from '~/lib/validators/commonValidators'
 import { asBoundedLengthString } from '~/lib/validators/stringValidators'
 import { State } from '~/redux'
 import { addTaskAsync, changeTaskContentAsync, deleteTaskAsync, getTasksAsync, markTaskAsDoneAsync, markTaskAsUndoneAsync, moveTask } from '~/redux/modules/reminder'
@@ -32,10 +32,11 @@ type Props =
   & StateProps
   & DispatchProps
 
+/**
+ * @throws [[Error]] if {input} is nullish.
+ */
 const validate = asObject('a Task for presentation', (input) => ({
-  content: leftOnly(named('content', asBoundedLengthString({
-    upperBound: 140,
-  })))(input.content),
+  content: leftOnly(asBoundedLengthString({ upperBound: 140 }))(input.content),
   done: leftOnly(asBoolean)(input.done),
 }))
 
