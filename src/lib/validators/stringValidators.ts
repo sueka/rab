@@ -2,7 +2,6 @@ import assert from 'assert'
 
 import { isUrl } from '~/lib/guards/stringGuards'
 import typed from '~/lib/typed'
-import ValidationError from './ValidationError'
 import { asString } from './commonValidators'
 
 export const asBoundedLengthString = ({
@@ -20,22 +19,14 @@ export const asBoundedLengthString = ({
     return inputAsString
   }
 
-  throw new ValidationError(
-    typed<[string, number, number]>`${ inputAsString } is not between ${ lowerBound } and ${ upperBound } characters.`,
-    'asBoundedLengthStringErrorMessage',
-    {
-      input: inputAsString.length,
-      lowerBound,
-      upperBound,
-    }
-  )
+  throw new Error(typed<[string, number, number]>`${ inputAsString } is not between ${ lowerBound } and ${ upperBound } characters.`)
 }
 
 export function asUrl(input: unknown): string.Url {
   const inputAsString = asString(input)
 
   if (!isUrl(inputAsString)) {
-    throw new ValidationError(typed<[string]>`${ inputAsString } is not a URL.`)
+    throw new Error(typed<[string]>`${ inputAsString } is not a URL.`)
   }
 
   return inputAsString

@@ -6,15 +6,12 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import TextField from '@material-ui/core/TextField'
 import DeleteIcon from '@material-ui/icons/Delete'
 import DragHandleIcon from '@material-ui/icons/DragHandle'
-import Case from 'case'
 import classnames from 'classnames'
 import React, { useCallback, useMemo } from 'react'
 import { DragObjectWithType, useDrag } from 'react-dnd'
 import { useIntl } from 'react-intl'
 
 import Task, { TaskParams } from '~/domain/entity/Task'
-import { isOneOf } from '~/lib/guards/commonGuards'
-import ValidationError from '~/lib/validators/ValidationError'
 import classes from './classes.css'
 import messages from './messages'
 
@@ -24,7 +21,7 @@ export interface Props {
 
   onChange(value: Partial<TaskParams>): void
   onDelete(): void
-  validate(input: Task): Partial<Record<keyof Task, ValidationError>>
+  validate(input: Task): Partial<Record<keyof Task, Error>>
 }
 
 interface CollectedProps {
@@ -69,7 +66,7 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
     })
   }, [onChange])
 
-  const { formatMessage, locale } = useIntl()
+  const { formatMessage } = useIntl()
 
   const errors = useMemo(() => validate(value), [value, validate])
   const hasError = useMemo(() => Object.values(errors).some((error) => error !== undefined), [errors])
@@ -79,19 +76,15 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
       return null
     }
 
-    if (isOneOf(...Object.keys(messages))(errors.content.key)) {
-      const text = formatMessage(messages[errors.content.key], errors.content.values)
+    // TODO: Support IE
+    const result = /.* is not between -Infinity and (?<upperBound>\d+) characters\./.exec(errors.content.message)
 
-      switch (locale) {
-        case 'en': return Case.sentence(text)
-        case 'he':
-        case 'ja': return text
-        default: throw new Error // TODO
-      }
+    if (result !== null && result.groups?.upperBound !== undefined) {
+      return formatMessage(messages.itMustBeZeroToUpperBoundCharacters, result.groups)
     }
 
     return null // TODO
-  }, [locale, formatMessage, errors.content])
+  }, [formatMessage, errors.content])
 
   return (
     <div ref={ preview }>

@@ -1,4 +1,3 @@
-import ValidationError from './ValidationError'
 import { asBoolean, asConstant, asNumber, asString, asUnionOf } from './commonValidators'
 
 describe('validators', () => {
@@ -11,10 +10,10 @@ describe('validators', () => {
       expect(asUnionOf(0, '')('')).toEqual('')
     })
 
-    it('should throw a ValidationError against a wrong argument', () => {
-      expect(() => asUnionOf(0, '')(null)).toThrowError(ValidationError)
-      expect(() => asUnionOf(0, '')(42)).toThrowError(ValidationError)
-      expect(() => asUnionOf(0, '')('foo')).toThrowError(ValidationError)
+    it('should throw an Error against a wrong argument', () => {
+      expect(() => asUnionOf(0, '')(null)).toThrowError()
+      expect(() => asUnionOf(0, '')(42)).toThrowError()
+      expect(() => asUnionOf(0, '')('foo')).toThrowError()
     })
   })
 })
@@ -44,21 +43,21 @@ describe('validators', () => {
       expect(asSimpleObject({ answer: 42 })).toEqual({ answer: 42 })
     })
 
-    it('should throw a ValidationError against a wrong argument', () => {
-      expect(() => asNull(false)).toThrowError(ValidationError)
-      expect(() => asFalse(null)).toThrowError(ValidationError)
-      expect(() => asZero(null)).toThrowError(ValidationError)
-      expect(() => asZero('0')).toThrowError(ValidationError)
-      expect(() => asEmptyString(null)).toThrowError(ValidationError)
-      expect(() => asEmptyString([])).toThrowError(ValidationError)
-      expect(() => asEmptyArray(null)).toThrowError(ValidationError)
-      expect(() => asEmptyArray('')).toThrowError(ValidationError)
-      expect(() => asCoins([6, 1, 2, 3])).toThrowError(ValidationError)
-      expect(() => asEmptyObject({ answer: 42 })).toThrowError(ValidationError)
-      expect(() => asSimpleObject({})).toThrowError(ValidationError)
-      expect(() => asSimpleObject({ answer: 0 })).toThrowError(ValidationError)
-      expect(() => asSimpleObject({ answerr: 42 })).toThrowError(ValidationError) // typo
-      expect(() => asSimpleObject({ answer: 42, question: 'What do you get if you multiply six by nine?' })).toThrowError(ValidationError)
+    it('should throw an Error against a wrong argument', () => {
+      expect(() => asNull(false)).toThrowError()
+      expect(() => asFalse(null)).toThrowError()
+      expect(() => asZero(null)).toThrowError()
+      expect(() => asZero('0')).toThrowError()
+      expect(() => asEmptyString(null)).toThrowError()
+      expect(() => asEmptyString([])).toThrowError()
+      expect(() => asEmptyArray(null)).toThrowError()
+      expect(() => asEmptyArray('')).toThrowError()
+      expect(() => asCoins([6, 1, 2, 3])).toThrowError()
+      expect(() => asEmptyObject({ answer: 42 })).toThrowError()
+      expect(() => asSimpleObject({})).toThrowError()
+      expect(() => asSimpleObject({ answer: 0 })).toThrowError()
+      expect(() => asSimpleObject({ answerr: 42 })).toThrowError() // typo
+      expect(() => asSimpleObject({ answer: 42, question: 'What do you get if you multiply six by nine?' })).toThrowError()
     })
   })
 })
@@ -70,14 +69,14 @@ describe('validators', () => {
       expect(asBoolean(true)).toEqual(true)
     })
 
-    it('should throw a ValidationError against a non-boolean', () => {
-      expect(() => asBoolean(null)).toThrowError(ValidationError)
-      expect(() => asBoolean(0)).toThrowError(ValidationError)
-      expect(() => asBoolean(NaN)).toThrowError(ValidationError)
-      expect(() => asBoolean('')).toThrowError(ValidationError)
-      expect(() => asBoolean([])).toThrowError(ValidationError)
-      expect(() => asBoolean([false])).toThrowError(ValidationError)
-      expect(() => asBoolean({})).toThrowError(ValidationError)
+    it('should throw an Error against a non-boolean', () => {
+      expect(() => asBoolean(null)).toThrowError()
+      expect(() => asBoolean(0)).toThrowError()
+      expect(() => asBoolean(NaN)).toThrowError()
+      expect(() => asBoolean('')).toThrowError()
+      expect(() => asBoolean([])).toThrowError()
+      expect(() => asBoolean([false])).toThrowError()
+      expect(() => asBoolean({})).toThrowError()
     })
   })
 })
@@ -93,13 +92,13 @@ describe('validators', () => {
       expect(asNumber(Infinity)).toEqual(Infinity)
     })
 
-    it('should throw a ValidationError against a non-number', () => {
-      expect(() => asNumber(null)).toThrowError(ValidationError)
-      expect(() => asNumber(false)).toThrowError(ValidationError)
-      expect(() => asNumber('')).toThrowError(ValidationError)
-      expect(() => asNumber([])).toThrowError(ValidationError)
-      expect(() => asNumber([0])).toThrowError(ValidationError)
-      expect(() => asNumber({})).toThrowError(ValidationError)
+    it('should throw an Error against a non-number', () => {
+      expect(() => asNumber(null)).toThrowError()
+      expect(() => asNumber(false)).toThrowError()
+      expect(() => asNumber('')).toThrowError()
+      expect(() => asNumber([])).toThrowError()
+      expect(() => asNumber([0])).toThrowError()
+      expect(() => asNumber({})).toThrowError()
     })
   })
 })
@@ -112,13 +111,13 @@ describe('validators', () => {
       expect(asString('foobar')).toEqual('foobar')
     })
 
-    it('should throw a ValidationError against a non-string', () => {
-      expect(() => asString(null)).toThrowError(ValidationError)
-      expect(() => asString(false)).toThrowError(ValidationError)
-      expect(() => asString(0)).toThrowError(ValidationError)
-      expect(() => asString([])).toThrowError(ValidationError)
-      expect(() => asString([''])).toThrowError(ValidationError)
-      expect(() => asString({})).toThrowError(ValidationError)
+    it('should throw an Error against a non-string', () => {
+      expect(() => asString(null)).toThrowError()
+      expect(() => asString(false)).toThrowError()
+      expect(() => asString(0)).toThrowError()
+      expect(() => asString([])).toThrowError()
+      expect(() => asString([''])).toThrowError()
+      expect(() => asString({})).toThrowError()
     })
   })
 })

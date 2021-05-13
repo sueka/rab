@@ -1,7 +1,6 @@
 import assert from 'assert'
 
 import typed from '~/lib/typed'
-import ValidationError from './ValidationError'
 import { asNumber } from './commonValidators'
 
 export const asBoundedNumber = ({
@@ -19,13 +18,5 @@ export const asBoundedNumber = ({
     return inputAsNumber
   }
 
-  throw new ValidationError(
-    typed<[number, number, number]>`${ inputAsNumber } is not between ${ lowerBound } and ${ upperBound }.`,
-    'asBoundedNumberErrorMessage',
-    {
-      input: inputAsNumber,
-      lowerBound,
-      upperBound,
-    }
-  )
+  throw new Error(typed<[number, number, number]>`${ inputAsNumber } is not between ${ lowerBound } and ${ upperBound }.`)
 }
