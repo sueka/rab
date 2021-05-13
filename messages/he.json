@@ -37,7 +37,7 @@
   "src.components.Paint.brushSize": "גודל המברשת",
   "src.components.Paint.clear": "נקה",
   "src.components.Reminder.AddTaskButton.add": "להוסיף",
-  "src.components.Reminder.TaskListItem.asBoundedLengthStringErrorMessage": "{ name } לכלול לא יותר מ-{ upperBound } תווים.",
+  "src.components.Reminder.TaskListItem.itMustBeZeroToUpperBoundCharacters": "הוא חייב להכיל לא יותר מ-{ upperBound } תווים.",
   "src.components.Reminder.inputIsNotBetweenLowerBoundAndUpperBound": "{ input } לא בין { lowerBound } ל { upperBound }.",
   "src.components.SetClockButton.setTheClock": "כוון את השעון",
   "src.components.ToggleDarkButton.toggleLightDarkTheme": "החלף נושא בהיר/כהה",
