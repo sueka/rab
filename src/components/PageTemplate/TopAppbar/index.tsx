@@ -8,7 +8,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import { Theme, makeStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import NotificationsIcon from '@material-ui/icons/Notifications'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilState } from 'recoil'
 
@@ -16,6 +16,7 @@ import notificationsState from '~/atoms/notificationsState'
 import LocaleSelect from '~/components/LocaleSelect' // TODO
 import NotificationList from '~/components/NotificationList'
 import ToggleDarkButton from '~/components/ToggleDarkButton'
+import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import useRefsMerged from '~/lib/hooks/useRefsMerged'
 import useScreen from '~/lib/hooks/useScreen'
 import classes from './classes.css'
@@ -37,6 +38,7 @@ const useStyles = makeStyles<Theme, StyleProps, 'Offset'>({
 
 const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonClick }, forwardedRef) => {
   const { width: screenWidth } = useScreen()
+  const { dir } = useContext(IntlProviderContext)
   const [height, setHeight] = useState<number | null>(null)
 
   const ownRef = useCallback<React.RefCallback<HTMLDivElement>>((node) => {
@@ -109,11 +111,11 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
                 onClose={ handleNotificationsClose }
                 anchorEl={ anchor.current }
                 anchorOrigin={ {
-                  horizontal: 'right',
+                  horizontal: dir === 'ltr' ? 'right' : 'left',
                   vertical: 'bottom',
                 } }
                 transformOrigin={ {
-                  horizontal: 'right',
+                  horizontal: dir === 'ltr' ? 'right' : 'left',
                   vertical: 'top',
                 } }
               >
