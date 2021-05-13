@@ -13,6 +13,13 @@ type Method<T extends (that: never, ...args: never[]) => unknown> = T extends (t
 
 type Direction = 'ltr' | 'rtl' // FIXME: 'auto' が要りそう
 
+type SortOrder = 'ascending' | 'descending'
+
+interface Sort<T> {
+  by: keyof T
+  in: SortOrder
+}
+
 declare namespace Alt {
   type Extract<T, U extends T> = T extends U ? T : never
   type Exclude<T, U extends T> = T extends U ? never : T

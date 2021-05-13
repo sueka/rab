@@ -1,12 +1,12 @@
 import List from '@material-ui/core/List'
 import React from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
 
-import notificationsState from '~/atoms/notificationsState'
+import sortedNotificationsState from '~/selectors/sortedNotificationsState'
 import NotificationListItem from './NotificationListItem'
 
 const NotificationList: React.FC = () => {
-  const [notifications] = useRecoilState(notificationsState)
+  const notifications = useRecoilValue(sortedNotificationsState)
 
   return (
     <List>
