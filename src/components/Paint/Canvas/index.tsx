@@ -2,7 +2,7 @@ import { Theme, makeStyles } from '@material-ui/core/styles'
 import classnames from 'classnames'
 import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-import { shouldBeNullable, shouldBePresent } from '~/lib/asserters/commonAsserters'
+import { shouldBeNullish, shouldBePresent } from '~/lib/asserters/commonAsserters'
 import useRefsMerged from '~/lib/hooks/useRefsMerged'
 import useScreen from '~/lib/hooks/useScreen'
 import floodFill from '~/utils/canvas/floodFill'
@@ -59,7 +59,7 @@ const Canvas = forwardRef<HTMLCanvasElement, Props>(({ width, height, lineWidth,
       return
     }
 
-    shouldBeNullable(previousPoint)
+    shouldBeNullish(previousPoint)
 
     setDrawing(true)
 

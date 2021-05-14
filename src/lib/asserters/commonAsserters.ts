@@ -4,8 +4,8 @@ export function shouldBePresent<T>(it: T | null | undefined): asserts it is T {
   }
 }
 
-export function shouldBeNullable<T>(it: T | null | undefined): asserts it is null | undefined {
+export function shouldBeNullish<T>(it: T | null | undefined): asserts it is null | undefined {
   if (it != null) {
-    throw new Error('It should be nullable.')
+    throw new Error('It should be nullish.')
   }
 }
