@@ -33,7 +33,10 @@ export /* for testing */ const IntlProvider: React.FC<Props> = ({ availableLocal
   // NOTE: <bdi> は Internet Explorer で動作しないが、翻訳はフォールバックされることがあるので、翻訳の書字方向をロケールから計算することはできない。
   return (
     <>
-      <Helmet htmlAttributes={ { dir } } />
+      <Helmet htmlAttributes={ {
+        lang: props.locale,
+        dir,
+      } } />
       <IntlProviderContext.Provider value={ { availableLocales, dir } }>
         <OriginalIntlProvider textComponent={ Bdi } { ...props } />
       </IntlProviderContext.Provider>
