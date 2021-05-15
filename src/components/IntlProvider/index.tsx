@@ -21,6 +21,12 @@ type Props =
   & OwnProps
   & StateProps
 
+// TODO: Delete
+// NOTE: Google Chrome 90 で、 <bdi> と <bdi dir="auto"> で振る舞いが異なることがある。たとえば、 <bdi>שלום.</bdi> の `.` は右に表示され、 <bdi dir="auto">שלום.</bdi> の `.` は左に表示される。 cf. https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element
+const Bdi: React.FC = ({ children }) => (
+  <bdi dir="auto">{ children }</bdi>
+)
+
 export /* for testing */ const IntlProvider: React.FC<Props> = ({ availableLocales, ...props }) => {
   const dir = useMemo(() => props.locale === 'he' ? 'rtl' : 'ltr', [props.locale]) // TODO: RtL の判定方法を修正する
 
@@ -29,7 +35,7 @@ export /* for testing */ const IntlProvider: React.FC<Props> = ({ availableLocal
     <>
       <Helmet htmlAttributes={ { dir } } />
       <IntlProviderContext.Provider value={ { availableLocales, dir } }>
-        <OriginalIntlProvider textComponent="bdi" { ...props } />
+        <OriginalIntlProvider textComponent={ Bdi } { ...props } />
       </IntlProviderContext.Provider>
     </>
   )
