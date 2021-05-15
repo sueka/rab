@@ -37,7 +37,7 @@
   "src.components.Paint.brushSize": "Brush size",
   "src.components.Paint.clear": "Clear",
   "src.components.Reminder.AddTaskButton.add": "Add",
-  "src.components.Reminder.TaskListItem.itMustBeZeroToUpperBoundCharacters": "It must be 0-{ upperBound } characters.",
+  "src.components.Reminder.TaskListItem.enterInUpperBoundCharactersOrLess": "Enter in { upperBound } characters or less.",
   "src.components.Reminder.inputIsNotBetweenLowerBoundAndUpperBound": "{ input } is not between { lowerBound } and { upperBound }.",
   "src.components.SetClockButton.setTheClock": "Set the clock",
   "src.components.ToggleDarkButton.toggleLightDarkTheme": "Toggle light/dark theme",

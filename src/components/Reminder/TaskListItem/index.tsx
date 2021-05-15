@@ -80,7 +80,7 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
     const result = /.* is not between -Infinity and (?<upperBound>\d+) characters\./.exec(errors.content.message)
 
     if (result !== null && result.groups?.upperBound !== undefined) {
-      return formatMessage(messages.itMustBeZeroToUpperBoundCharacters, result.groups)
+      return formatMessage(messages.enterInUpperBoundCharactersOrLess, result.groups)
     }
 
     return null // TODO
