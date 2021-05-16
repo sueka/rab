@@ -19,7 +19,9 @@ exports[`Counter works 1`] = `
       <span
         class="MuiButton-label"
       >
-        <bdi>
+        <bdi
+          dir="auto"
+        >
           Reset
         </bdi>
       </span>
@@ -35,7 +37,9 @@ exports[`Counter works 1`] = `
       <span
         class="MuiButton-label"
       >
-        <bdi>
+        <bdi
+          dir="auto"
+        >
           +
         </bdi>
       </span>
@@ -51,7 +55,9 @@ exports[`Counter works 1`] = `
       <span
         class="MuiButton-label"
       >
-        <bdi>
+        <bdi
+          dir="auto"
+        >
           -
         </bdi>
       </span>
@@ -68,7 +74,9 @@ exports[`Counter works 1`] = `
       <span
         class="MuiButton-label"
       >
-        <bdi>
+        <bdi
+          dir="auto"
+        >
           + if odd
         </bdi>
       </span>
@@ -85,7 +93,9 @@ exports[`Counter works 1`] = `
       <span
         class="MuiButton-label"
       >
-        <bdi>
+        <bdi
+          dir="auto"
+        >
           + in 1 second
         </bdi>
       </span>
