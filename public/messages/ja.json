@@ -21,7 +21,7 @@
   "src.components.Info.fetchingFailed": "読み込みに失敗しました。",
   "src.components.Info.fetchingNotStarted": "読み込みは開始していません。",
   "src.components.LocaleSelect.language": "言語",
-  "src.components.NotifyMeButton.sendANotificationToYourBrowser": "ブラウザに通知を送信",
+  "src.components.NotifyMeButton.sendPushNotification": "プッシュ通知を送信",
   "src.components.PageTemplate.Nav.apps": "アプリ",
   "src.components.PageTemplate.Nav.chess": "チェス",
   "src.components.PageTemplate.Nav.clock": "時計",

@@ -52,7 +52,7 @@ const NotifyMeButton: React.FC<Props> = ({ inputFor: ref }) => {
 
   return (
     <Tooltip
-      title={ <FormattedMessage { ...messages.sendANotificationToYourBrowser } /> }
+      title={ <FormattedMessage { ...messages.sendPushNotification } /> }
       disableFocusListener={ disabled }
       disableHoverListener={ disabled }
       disableTouchListener={ disabled }
