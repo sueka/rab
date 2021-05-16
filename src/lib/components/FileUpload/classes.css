@@ -4,6 +4,10 @@
   cursor: pointer;
 }
 
+.FileUpload.Safari:focus {
+  outline: none;
+}
+
 .Button.Button {
   text-transform: none;
   cursor: unset;

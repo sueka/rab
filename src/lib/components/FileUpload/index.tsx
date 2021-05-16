@@ -1,5 +1,6 @@
 import Button, { ButtonProps } from '@material-ui/core/Button'
 import FormLabel from '@material-ui/core/FormLabel'
+import Bowser from 'bowser'
 import classnames from 'classnames'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
@@ -24,6 +25,11 @@ export interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputEleme
    */
   ButtonProps?: Alt.Omit<ButtonProps, 'disabled' | 'onClick'>
 }
+
+// TODO: Remove?
+const browser = Bowser.getParser(navigator.userAgent)
+
+const isSafari = browser.is('Safari')
 
 const FileUpload: React.FC<Props> = ({
   className,
@@ -51,7 +57,9 @@ const FileUpload: React.FC<Props> = ({
 }: Props) => {
   const [files, setFiles] = useState<File[] | null>(null) // NOTE: (event: ChangeEvent).target.files をそのまま使うと参照が変わらないので re-render されない。
 
-  const rootClassName = useMemo(() => classnames(className, propClasses?.root, cssClasses.FileUpload), [className, propClasses?.root])
+  const rootClassName = useMemo(() => classnames(className, propClasses?.root, cssClasses.FileUpload, {
+    [cssClasses.Safari]: isSafari,
+  }), [className, propClasses?.root])
   const buttonClassName = useMemo(() => classnames(propClasses?.button, cssClasses.Button, ButtonProps?.className), [propClasses?.button, ButtonProps?.className])
 
   const resultMessage = useMemo(() => renderResultMessage(files), [renderResultMessage, files])
@@ -78,7 +86,7 @@ const FileUpload: React.FC<Props> = ({
   }, [onClick, fireInputClick])
 
   return (
-    <Component className={ rootClassName } tabIndex={ 0 }>
+    <Component className={ rootClassName } tabIndex={ isSafari ? -1 : 0 }>
       <Button
         disabled={ disabled }
         onClick={ handleButtonClick }
