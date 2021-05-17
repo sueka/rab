@@ -150,16 +150,10 @@ const Main: React.FC<Props> = ({ container, baseUrl }) => {
 }
 
 containerImport.then(({ default: container }) => {
-  // TODO: DI BASE_NAME
-
-  if (process.env.BASE_NAME === undefined) {
-    throw new Error // TODO
-  }
-
   ReactDOM.render(
     <Main
       container={ container }
-      baseUrl={ typed<[string, string]>`${ globalThis.location.origin }${ process.env.BASE_NAME }` }
+      baseUrl={ typed<[string, string]>`${ globalThis.location.origin }${ process.env.BASE_NAME ?? '' }` }
     />,
     document.getElementById('root')
   )
