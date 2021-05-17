@@ -1258,8 +1258,8 @@ exports[`App at /form-controls 1`] = `
           class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
         >
           <label
-            class="MuiFormLabel-root FileUpload"
-            tabindex="0"
+            class="MuiFormLabel-root FileUpload Safari"
+            tabindex="-1"
           >
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-outlined Button"
