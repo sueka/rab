@@ -1,7 +1,7 @@
-import { injectable } from 'inversify'
+import { inject, injectable } from 'inversify'
 import { generatePath } from 'react-router'
 
-import { shouldBePresent } from '~/lib/asserters/commonAsserters'
+import ConfigRegistry from '~/config/ConfigRegistry'
 import fetch from '~/lib/fetch'
 import typed from '~/lib/typed'
 import { asGetRepoResponse, asUnsuccessfulResponse } from '~/lib/validators/gitHubApiResourceValidators'
@@ -9,10 +9,14 @@ import GetRepo, { GetRepoInput, GetRepoOutput } from '~/useCase/GetRepo'
 
 @injectable()
 export default class GetRepoImpl implements GetRepo {
-  public async apply({ owner, repo }: GetRepoInput): Promise<GetRepoOutput> {
-    shouldBePresent(process.env.GITHUB_API_URL)
+  constructor(
+    @inject('EnvVarConfig') private config: ConfigRegistry
+  ) {}
 
-    const response = await fetch(generatePath(typed<[string]>`${ process.env.GITHUB_API_URL }/repos/:owner/:repo`, { owner, repo }), {
+  public async apply({ owner, repo }: GetRepoInput): Promise<GetRepoOutput> {
+    const gitHubApiUrl = this.config.get('GITHUB_API_URL')
+
+    const response = await fetch(generatePath(typed<[string]>`${ gitHubApiUrl }/repos/:owner/:repo`, { owner, repo }), {
       headers: {
         Accept: 'application/vnd.github.v3+json',
       },

@@ -1,12 +1,12 @@
 import { List } from 'immutable'
 import { Formats } from 'intl-messageformat'
-import { injectable } from 'inversify'
+import { inject, injectable } from 'inversify'
 import { generatePath } from 'react-router'
 import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
 
-import { shouldBePresent } from '~/lib/asserters/commonAsserters'
+import ConfigRegistry from '~/config/ConfigRegistry'
 import { takeEvery } from '~/lib/boni/redux-saga/effects'
 import fetch from '~/lib/fetch'
 import { Tag } from '~/lib/languageNameSolver'
@@ -176,14 +176,16 @@ export const createLocaleSelectorReducer: (initialState: LocaleSelectorState) =>
 
 @injectable()
 export default class LocaleSelectorService {
-  public /* for testing */ *selectLocaleSaga({ payload: { locale } }: SelectLocaleAction): SagaIterator {
-    shouldBePresent(process.env.BASE_NAME)
+  constructor(
+    @inject('EnvVarConfig') private config: ConfigRegistry
+  ) {}
 
+  public /* for testing */ *selectLocaleSaga({ payload: { locale } }: SelectLocaleAction): SagaIterator {
     try {
-      const formatsResponse: ResultType<ReturnType<typeof fetch>> = yield call(fetch, generatePath(typed<[string]>`${ process.env.BASE_NAME }/formats/:locale.json`, { locale }))
+      const formatsResponse: ResultType<ReturnType<typeof fetch>> = yield call(fetch, generatePath(typed<[string]>`${ this.config.get('BASE_NAME') }/formats/:locale.json`, { locale }))
       const formats: ResultType<ReturnType<typeof formatsResponse.json>> = yield call([formatsResponse, formatsResponse.json])
 
-      const messagesResponse: ResultType<ReturnType<typeof fetch>> = yield call(fetch, generatePath(typed<[string]>`${ process.env.BASE_NAME }/messages/:locale.json`, { locale }))
+      const messagesResponse: ResultType<ReturnType<typeof fetch>> = yield call(fetch, generatePath(typed<[string]>`${ this.config.get('BASE_NAME') }/messages/:locale.json`, { locale }))
       const messages: ResultType<ReturnType<typeof messagesResponse.json>> = yield call([messagesResponse, messagesResponse.json])
 
       yield put(setFormats(asFormats(formats)))

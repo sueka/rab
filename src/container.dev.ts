@@ -1,6 +1,8 @@
 import { Container } from 'inversify'
 
+import ConfigRegistry from '~/config/ConfigRegistry'
 import TaskRepository from '~/domain/repository/TaskRepository'
+import EnvVarConfigRegistry from '~/infrastructure/EnvVarConfigRegistry'
 import GetRepoStubImpl from '~/infrastructure/double/GetRepoStubImpl'
 import TaskRepositoryFakeImpl from '~/infrastructure/persistence/double/TaskRepositoryFakeImpl'
 import Service from '~/redux'
@@ -14,6 +16,7 @@ import GetRepo from '~/useCase/GetRepo'
 
 const container = new Container
 
+container.bind<ConfigRegistry>('EnvVarConfig').to(EnvVarConfigRegistry)
 container.bind<GetRepo>('GetRepo').to(GetRepoStubImpl)
 container.bind<TaskRepository>('TaskRepository').to(TaskRepositoryFakeImpl)
 container.bind(Service).toSelf()

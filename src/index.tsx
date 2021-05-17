@@ -46,6 +46,7 @@ const containerImport = process.env.NODE_ENV === 'production' ? import('./contai
 
 interface Props {
   container: interfaces.Container
+  baseUrl: string
 }
 
 const initialState: Alt.Omit<State, 'router'> = {
@@ -84,7 +85,7 @@ const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
 /**
  * The entry point component.
  */
-const Main: React.FC<Props> = ({ container }) => {
+const Main: React.FC<Props> = ({ container, baseUrl }) => {
   const reducer = useMemo(() => createReducer(initialState, history), [history])
 
   const rootSaga = useCallback<Saga>(() => {
@@ -113,12 +114,10 @@ const Main: React.FC<Props> = ({ container }) => {
   const dark = useMediaQuery('(prefers-color-scheme: dark)')
 
   useEffect(() => {
-    shouldBePresent(process.env.BASE_NAME)
-
     FaviconNotification.init({
-      url: new URL('/favicon.svg', typed<[string, string]>`${ globalThis.location.origin }${ process.env.BASE_NAME }`).href,
+      url: new URL('/favicon.svg', baseUrl).href,
     })
-  }, [])
+  }, [baseUrl])
 
   return (
     <>
@@ -151,5 +150,17 @@ const Main: React.FC<Props> = ({ container }) => {
 }
 
 containerImport.then(({ default: container }) => {
-  ReactDOM.render(<Main container={ container } />, document.getElementById('root'))
+  // TODO: DI BASE_NAME
+
+  if (process.env.BASE_NAME === undefined) {
+    throw new Error // TODO
+  }
+
+  ReactDOM.render(
+    <Main
+      container={ container }
+      baseUrl={ typed<[string, string]>`${ globalThis.location.origin }${ process.env.BASE_NAME }` }
+    />,
+    document.getElementById('root')
+  )
 })
