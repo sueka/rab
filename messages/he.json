@@ -11,7 +11,7 @@
   "src.components.App.SettingsPage.settings": "הגדרות",
   "src.components.Counter.decrement": "-",
   "src.components.Counter.increment": "+",
-  "src.components.Counter.incrementIfOdd": "+ אם זה מספר אי זוגי",
+  "src.components.Counter.incrementIfOdd": "+ אם זה אי־זוגי",
   "src.components.Counter.reset": "לאתחל",
   "src.components.Counter.willIncrementInOneSecond": "+ בשנייה אחת",
   "src.components.GitHubAuthnButton.authenticateAUserWithGitHub": "לאמת משתמש באמצעות GitHub",
