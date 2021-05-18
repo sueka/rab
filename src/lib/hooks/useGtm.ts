@@ -41,6 +41,7 @@ function createNoScriptSnippet(containerId: `GTM-${string}`) {
 
 // TODO: Support Data Layer
 export default function useGtm() {
+  // TODO: Make it idempotent for each `containerId`
   const install = useCallback((containerId: `GTM-${string}`) => {
     const scriptSnippet = createScriptSnippet(containerId)
     const noScriptSnippet = createNoScriptSnippet(containerId)
