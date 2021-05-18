@@ -46,6 +46,12 @@ export const optional = <A extends unknown, T extends A>(asT: (input: A) => T) =
   return asT(input)
 }
 
+export const ignore = <A>(asX: (input: A) => unknown) => (input: A): undefined => {
+  asX(input)
+
+  return
+}
+
 export const required = <A extends unknown, T extends A>(asT: (input: A | undefined) => T | undefined) => (input: A | undefined): T => {
   const inputAsT = asT(input)
 

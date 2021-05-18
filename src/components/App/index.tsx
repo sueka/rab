@@ -1,9 +1,10 @@
+import { useInjection } from 'inversify-react'
 import React, { useEffect } from 'react'
 import { hot } from 'react-hot-loader/root'
 import { Redirect, Switch, useLocation } from 'react-router'
 
+import ConfigRegistry from '~/config/ConfigRegistry'
 import Route from '~/lib/components/Route'
-import { seemsLikeGtmContainerId } from '~/lib/guards/stringGuards'
 import useGtm from '~/lib/hooks/useGtm'
 
 export const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ './HomePage'))
@@ -20,19 +21,16 @@ export const NoMatch = React.lazy(() => import(/* webpackChunkName: "noMatch" */
 const MEETS_GDPR = false // TODO
 
 const App: React.FC = () => {
+  const config = useInjection<ConfigRegistry>('EnvVarConfig')
+  const gtmContainerId = config.get('GTM_CONTAINER_ID')
   const location = useLocation()
-
-  const { install } = useGtm()
+  const gtm = useGtm()
 
   useEffect(() => {
-    if (
-      MEETS_GDPR &&
-      process.env.GTM_CONTAINER_ID !== undefined &&
-      seemsLikeGtmContainerId(process.env.GTM_CONTAINER_ID)
-    ) {
-      install(process.env.GTM_CONTAINER_ID)
+    if (MEETS_GDPR && gtmContainerId !== undefined) {
+      gtm.install(gtmContainerId)
     }
-  }, [install])
+  }, [gtm, gtmContainerId])
 
   if (location.pathname === '/' && location.hash !== '') {
     const pathname = /^#(.*)$/.exec(location.hash)?.[1]

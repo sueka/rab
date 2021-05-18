@@ -2,10 +2,12 @@
 // NOTE: useRecoilState をモックせずに RecoilRoot を使うと、 Recoil state の初期化、更新によって re-render が発生し、 <Redirect> が2回以上 render される。これを回避するために useRecoilState をモックし、 Recoil の state が使われないようにしている。別の解決策として、 Redirect のモック実装で useLocation のモック実装を変更する方法がある。
 
 import { render } from '@testing-library/react'
+import { Provider as ServiceProvider } from 'inversify-react'
 import React from 'react'
 import reactRouter, { Redirect } from 'react-router'
 import { useRecoilState } from 'recoil'
 
+import inversifyContainer from '~/container.dev'
 import App from '.'
 
 jest.mock('react-router', () => ({
@@ -31,7 +33,9 @@ describe('App', () => {
       mockedReactRouter.useLocation.mockImplementationOnce(() => ({ pathname: '/', hash: '#/foo', search: '', state: undefined }))
 
       const { container } = render(
-        <App />
+        <ServiceProvider container={ inversifyContainer }>
+          <App />
+        </ServiceProvider>
       )
 
       expect(container).toMatchSnapshot()

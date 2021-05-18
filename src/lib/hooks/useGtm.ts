@@ -1,7 +1,5 @@
 import { useCallback } from 'react'
-import { useRecoilState } from 'recoil'
 
-import installedGtmContainerIdsState from '~/lib/atoms/installedGtmContainerIdsState'
 import stripMargin from '~/lib/extensions/String/stripMargin'
 import typed from '~/lib/typed'
 
@@ -43,20 +41,12 @@ function createNoScriptSnippet(containerId: `GTM-${string}`) {
 
 // TODO: Support Data Layer
 export default function useGtm() {
-  const [installedIds, setInstalledIds] = useRecoilState(installedGtmContainerIdsState)
-
   const install = useCallback((containerId: `GTM-${string}`) => {
-    if (installedIds.includes(containerId)) {
-      throw new Error // TODO
-    }
-
     const scriptSnippet = createScriptSnippet(containerId)
     const noScriptSnippet = createNoScriptSnippet(containerId)
 
     document.head.insertBefore(scriptSnippet, document.head.firstChild)
     document.body.insertBefore(noScriptSnippet, document.body.firstChild)
-
-    setInstalledIds(ids => [...ids, containerId])
   }, [])
 
   return { install }

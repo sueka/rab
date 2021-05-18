@@ -1,6 +1,6 @@
 import assert from 'assert'
 
-import { isUrl } from '~/lib/guards/stringGuards'
+import { isUrl, seemsLikeGtmContainerId } from '~/lib/guards/stringGuards'
 import typed from '~/lib/typed'
 import { asString } from './commonValidators'
 
@@ -27,6 +27,16 @@ export function asUrl(input: unknown): string.Url {
 
   if (!isUrl(inputAsString)) {
     throw new Error(typed<[string]>`${ inputAsString } is not a URL.`)
+  }
+
+  return inputAsString
+}
+
+export function asGtmContainerIdLike(input: unknown): `GTM-${string}` {
+  const inputAsString = asString(input)
+
+  if (!seemsLikeGtmContainerId(inputAsString)) {
+    throw new Error('It does not seem like a GTM container ID.')
   }
 
   return inputAsString

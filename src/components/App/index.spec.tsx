@@ -1,5 +1,6 @@
 import { render, waitForDomChange } from '@testing-library/react'
 import { List, Map } from 'immutable'
+import { Provider as ServiceProvider } from 'inversify-react'
 import { SnackbarProvider } from 'notistack'
 import React from 'react'
 import { DndProvider } from 'react-dnd'
@@ -11,6 +12,7 @@ import createMockStore from 'redux-mock-store'
 
 import IntlProvider from '~/components/IntlProvider'
 import ThemeProvider from '~/components/ThemeProvider'
+import inversifyContainer from '~/container.dev'
 import useScreen from '~/lib/hooks/useScreen'
 import typed from '~/lib/typed'
 import { asFormats } from '~/lib/validators/intlValidators'
@@ -76,11 +78,13 @@ ${ '/nonexistent-path' }
           <IntlProvider availableLocales={ ['en', 'he', 'ja'] }>
             <DndProvider backend={ TestBackend }>
               <StaticRouter context={ context } location={ location }>
-                <SnackbarProvider>
-                  <ThemeProvider defaultDark={ false }>
-                    <App />
-                  </ThemeProvider>
-                </SnackbarProvider>
+                <ServiceProvider container={ inversifyContainer }>
+                  <SnackbarProvider>
+                    <ThemeProvider defaultDark={ false }>
+                      <App />
+                    </ThemeProvider>
+                  </SnackbarProvider>
+                </ServiceProvider>
               </StaticRouter>
             </DndProvider>
           </IntlProvider>

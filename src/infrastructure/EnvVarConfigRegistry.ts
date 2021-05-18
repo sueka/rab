@@ -1,16 +1,18 @@
 import { injectable } from 'inversify'
 
 import ConfigRegistry, { ConfigKey, ConfigKeyValueMap } from '~/config/ConfigRegistry'
-import { isOneOf, optional } from '~/lib/guards/commonGuards'
-import { asRequired } from '~/lib/validators/commonValidators'
+import { isOneOf, optional as guardOptional } from '~/lib/guards/commonGuards'
+import { asConstant, asRequired, ignore, optional as validatorOptional, unionOf } from '~/lib/validators/commonValidators'
+import { asGtmContainerIdLike } from '~/lib/validators/stringValidators'
 
 @injectable()
 export default class EnvVarConfigRegistry implements ConfigRegistry {
   private configMap: ConfigKeyValueMap = {
-    DEBUG: optional(isOneOf('1', 'TRUE', 'True', 'true'))(process.env.DEBUG) ?? false,
+    DEBUG: guardOptional(isOneOf('1', 'TRUE', 'True', 'true'))(process.env.DEBUG) ?? false,
     BASE_NAME: asRequired(process.env.BASE_NAME),
     GITHUB_API_URL: asRequired(process.env.GITHUB_API_URL),
     USER_SERVICE_URL: asRequired(process.env.USER_SERVICE_URL),
+    GTM_CONTAINER_ID: validatorOptional(unionOf(asGtmContainerIdLike, ignore(asConstant(''))))(process.env.GTM_CONTAINER_ID),
   }
 
   /**
