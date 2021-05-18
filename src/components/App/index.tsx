@@ -28,7 +28,10 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (MEETS_GDPR && gtmContainerId !== undefined) {
-      gtm.install(gtmContainerId)
+      // tslint:disable-next-line:semicolon
+      ;(async () => {
+        await gtm.install(gtmContainerId)
+      })()
     }
   }, [gtm, gtmContainerId])
 

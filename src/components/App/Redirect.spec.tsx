@@ -5,7 +5,7 @@ import { render } from '@testing-library/react'
 import { Provider as ServiceProvider } from 'inversify-react'
 import React from 'react'
 import reactRouter, { Redirect } from 'react-router'
-import { useRecoilState } from 'recoil'
+import { useRecoilCallback, useRecoilState } from 'recoil'
 
 import inversifyContainer from '~/container.dev'
 import App from '.'
@@ -19,6 +19,7 @@ jest.mock('react-router', () => ({
 jest.mock('recoil', () => ({
   ...(jest.requireActual('recoil') as any), // tslint:disable-line:no-any
   useRecoilState: jest.fn(),
+  useRecoilCallback: jest.fn(),
 }))
 
 const mockedReactRouter = reactRouter as jest.Mocked<typeof reactRouter>
@@ -26,7 +27,9 @@ const mockedReactRouter = reactRouter as jest.Mocked<typeof reactRouter>
 describe('App', () => {
   describe('with #fragment', () => {
     beforeAll(() => {
-      (useRecoilState as jest.MockedFunction<typeof useRecoilState>).mockImplementation(() => [[], jest.fn()])
+      // tslint:disable-next-line:semicolon
+      ;(useRecoilState as jest.MockedFunction<typeof useRecoilState>).mockImplementationOnce(() => [[], jest.fn()])
+      ;(useRecoilCallback as jest.MockedFunction<typeof useRecoilCallback>).mockImplementationOnce(() => jest.fn())
     })
 
     it('should redirect to the page whose path-abempty is the fragment when the path-abempty is "/" and the fragment exists', () => {
