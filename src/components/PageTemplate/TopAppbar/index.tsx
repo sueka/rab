@@ -16,6 +16,7 @@ import notificationsState from '~/atoms/notificationsState'
 import LocaleSelect from '~/components/LocaleSelect' // TODO
 import NotificationList from '~/components/NotificationList'
 import ToggleDarkButton from '~/components/ToggleDarkButton'
+import Spacer from '~/lib/components/Spacer'
 import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
 import useRefsMerged from '~/lib/hooks/useRefsMerged'
 import useScreen from '~/lib/hooks/useScreen'
@@ -88,7 +89,7 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
           <IconButton edge="start" color="inherit" onClick={ onMenuIconButtonClick }>
             <MenuIcon />
           </IconButton>
-          <div className={ classes.Spacer } />
+          <Spacer />
           <Box mx={ 1 }>
             <ToggleDarkButton />
             { 'Notification' in globalThis && <>
