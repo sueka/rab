@@ -175,11 +175,11 @@ exports[`App at / 1`] = `
       />
       <fieldset
         aria-hidden="true"
-        class="PrivateNotchedOutline-root-8 MuiOutlinedInput-notchedOutline"
+        class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
         style="padding-left: 8px;"
       >
         <legend
-          class="PrivateNotchedOutline-legend-9"
+          class="PrivateNotchedOutline-legend-11"
           style="width: 0.01px;"
         >
           <span>
@@ -189,6 +189,24 @@ exports[`App at / 1`] = `
       </fieldset>
     </div>
   </div>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      <bdi
+        dir="auto"
+      >
+        Consent to use cookies…
+      </bdi>
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
 </div>
 `;
 
@@ -227,7 +245,7 @@ exports[`App at /chess 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-14"
+        class="MuiBox-root MuiBox-root-16"
       >
         <span
           class="TooltipWrapper"
@@ -277,7 +295,7 @@ exports[`App at /chess 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-15 makeStyles-Select-16 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-17 makeStyles-Select-18 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -306,7 +324,7 @@ exports[`App at /chess 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-12 makeStyles-Offset-13"
+    class="makeStyles-Offset-14 makeStyles-Offset-15"
   />
   <table
     class="ChessboardTable"
@@ -318,114 +336,56 @@ exports[`App at /chess 1`] = `
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-      </tr>
-      <tr>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square White"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square White"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square White"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
       </tr>
@@ -434,114 +394,56 @@ exports[`App at /chess 1`] = `
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-      </tr>
-      <tr>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square White"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square White"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square White"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
       </tr>
@@ -550,114 +452,56 @@ exports[`App at /chess 1`] = `
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-      </tr>
-      <tr>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square White"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square White"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square White"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square Black"
-          />
-        </td>
-        <td
-          class="ChessboardTd"
-        >
-          <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
       </tr>
@@ -666,56 +510,56 @@ exports[`App at /chess 1`] = `
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
       </tr>
@@ -724,56 +568,230 @@ exports[`App at /chess 1`] = `
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square Black"
+            class="makeStyles-Square-23 Square White"
           />
         </td>
         <td
           class="ChessboardTd"
         >
           <div
-            class="makeStyles-Square-19 Square White"
+            class="makeStyles-Square-23 Square Black"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square Black"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square White"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square Black"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square White"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square Black"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square White"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square Black"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square White"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square White"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square Black"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square White"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square Black"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square White"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square Black"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square White"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square Black"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square Black"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square White"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square Black"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square White"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square Black"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square White"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square Black"
+          />
+        </td>
+        <td
+          class="ChessboardTd"
+        >
+          <div
+            class="makeStyles-Square-23 Square White"
           />
         </td>
       </tr>
@@ -817,7 +835,7 @@ exports[`App at /clock 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-23"
+        class="MuiBox-root MuiBox-root-27"
       >
         <span
           class="TooltipWrapper"
@@ -867,7 +885,7 @@ exports[`App at /clock 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-24 makeStyles-Select-25 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-28 makeStyles-Select-29 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -896,10 +914,10 @@ exports[`App at /clock 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-21 makeStyles-Offset-22"
+    class="makeStyles-Offset-25 makeStyles-Offset-26"
   />
   <canvas
-    class="makeStyles-Canvas-28 makeStyles-Canvas-29"
+    class="makeStyles-Canvas-34 makeStyles-Canvas-35"
     height="400"
     width="400"
   />
@@ -941,7 +959,7 @@ exports[`App at /counter 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-32"
+        class="MuiBox-root MuiBox-root-38"
       >
         <span
           class="TooltipWrapper"
@@ -991,7 +1009,7 @@ exports[`App at /counter 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-33 makeStyles-Select-34 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-39 makeStyles-Select-40 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1020,7 +1038,7 @@ exports[`App at /counter 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-30 makeStyles-Offset-31"
+    class="makeStyles-Offset-36 makeStyles-Offset-37"
   />
   <div>
     <span
@@ -1164,7 +1182,7 @@ exports[`App at /form-controls 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-39"
+        class="MuiBox-root MuiBox-root-47"
       >
         <span
           class="TooltipWrapper"
@@ -1214,7 +1232,7 @@ exports[`App at /form-controls 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-40 makeStyles-Select-41 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-48 makeStyles-Select-49 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1243,7 +1261,7 @@ exports[`App at /form-controls 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-37 makeStyles-Offset-38"
+    class="makeStyles-Offset-45 makeStyles-Offset-46"
   />
   <ul
     class="MuiList-root MuiList-padding"
@@ -1353,10 +1371,10 @@ exports[`App at /form-controls 1`] = `
               </div>
               <fieldset
                 aria-hidden="true"
-                class="PrivateNotchedOutline-root-44 MuiOutlinedInput-notchedOutline"
+                class="PrivateNotchedOutline-root-54 MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  class="PrivateNotchedOutline-legendLabelled-46"
+                  class="PrivateNotchedOutline-legendLabelled-56"
                 >
                   <span>
                     label
@@ -1400,10 +1418,10 @@ exports[`App at /form-controls 1`] = `
               />
               <fieldset
                 aria-hidden="true"
-                class="PrivateNotchedOutline-root-44 MuiOutlinedInput-notchedOutline"
+                class="PrivateNotchedOutline-root-54 MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  class="PrivateNotchedOutline-legendLabelled-46"
+                  class="PrivateNotchedOutline-legendLabelled-56"
                 >
                   <span>
                     label
@@ -1474,10 +1492,10 @@ exports[`App at /form-controls 1`] = `
               </div>
               <fieldset
                 aria-hidden="true"
-                class="PrivateNotchedOutline-root-44 MuiOutlinedInput-notchedOutline"
+                class="PrivateNotchedOutline-root-54 MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  class="PrivateNotchedOutline-legendLabelled-46"
+                  class="PrivateNotchedOutline-legendLabelled-56"
                 >
                   <span>
                     label
@@ -1502,7 +1520,7 @@ exports[`App at /form-controls 1`] = `
             class="Container"
           >
             <pre
-              class="makeStyles-Pre-48 makeStyles-Pre-50 Pre"
+              class="makeStyles-Pre-58 makeStyles-Pre-60 Pre"
             />
             <div
               class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -1518,14 +1536,14 @@ exports[`App at /form-controls 1`] = `
               >
                 <textarea
                   aria-invalid="false"
-                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline makeStyles-TextArea-49 TextArea MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline makeStyles-TextArea-59 TextArea MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
                   rows="1"
                   spellcheck="false"
                   style="height: 0px; overflow: hidden;"
                 />
                 <textarea
                   aria-hidden="true"
-                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline makeStyles-TextArea-49 TextArea MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline makeStyles-TextArea-59 TextArea MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
                   readonly=""
                   style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); width: 100%;"
                   tabindex="-1"
@@ -1562,10 +1580,10 @@ exports[`App at /form-controls 1`] = `
                 </div>
                 <fieldset
                   aria-hidden="true"
-                  class="PrivateNotchedOutline-root-44 MuiOutlinedInput-notchedOutline"
+                  class="PrivateNotchedOutline-root-54 MuiOutlinedInput-notchedOutline"
                 >
                   <legend
-                    class="PrivateNotchedOutline-legendLabelled-46"
+                    class="PrivateNotchedOutline-legendLabelled-56"
                   >
                     <span>
                       code
@@ -1617,7 +1635,7 @@ exports[`App at /info 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-53"
+        class="MuiBox-root MuiBox-root-63"
       >
         <span
           class="TooltipWrapper"
@@ -1667,7 +1685,7 @@ exports[`App at /info 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-54 makeStyles-Select-55 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-64 makeStyles-Select-65 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1696,7 +1714,7 @@ exports[`App at /info 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-51 makeStyles-Offset-52"
+    class="makeStyles-Offset-61 makeStyles-Offset-62"
   />
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
@@ -1759,7 +1777,7 @@ exports[`App at /nonexistent-path 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-89"
+        class="MuiBox-root MuiBox-root-105"
       >
         <span
           class="TooltipWrapper"
@@ -1809,7 +1827,7 @@ exports[`App at /nonexistent-path 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-90 makeStyles-Select-91 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-106 makeStyles-Select-107 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1838,7 +1856,7 @@ exports[`App at /nonexistent-path 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-87 makeStyles-Offset-88"
+    class="makeStyles-Offset-103 makeStyles-Offset-104"
   />
   Error: No route matches /nonexistent-path.
 </div>
@@ -1879,7 +1897,7 @@ exports[`App at /paint 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-60"
+        class="MuiBox-root MuiBox-root-72"
       >
         <span
           class="TooltipWrapper"
@@ -1929,7 +1947,7 @@ exports[`App at /paint 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-61 makeStyles-Select-62 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-73 makeStyles-Select-74 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1958,10 +1976,10 @@ exports[`App at /paint 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-58 makeStyles-Offset-59"
+    class="makeStyles-Offset-70 makeStyles-Offset-71"
   />
   <canvas
-    class="makeStyles-Canvas-65 makeStyles-Canvas-66 Canvas"
+    class="makeStyles-Canvas-79 makeStyles-Canvas-80 Canvas"
     height="320"
     width="320"
   />
@@ -2057,19 +2075,19 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-67 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-81 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-70"
+              class="PrivateSwitchBase-input-84"
               name="lineCap"
               type="radio"
               value="butt"
             />
             <div
-              class="PrivateRadioButtonIcon-root-71"
+              class="PrivateRadioButtonIcon-root-85"
             >
               <svg
                 aria-hidden="true"
@@ -2083,7 +2101,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-72"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-86"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -2108,20 +2126,20 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-67 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-68 Mui-checked MuiIconButton-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-81 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-82 Mui-checked MuiIconButton-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
               checked=""
-              class="PrivateSwitchBase-input-70"
+              class="PrivateSwitchBase-input-84"
               name="lineCap"
               type="radio"
               value="round"
             />
             <div
-              class="PrivateRadioButtonIcon-root-71 PrivateRadioButtonIcon-checked-73"
+              class="PrivateRadioButtonIcon-root-85 PrivateRadioButtonIcon-checked-87"
             >
               <svg
                 aria-hidden="true"
@@ -2135,7 +2153,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-72"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-86"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -2160,19 +2178,19 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-67 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-81 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-70"
+              class="PrivateSwitchBase-input-84"
               name="lineCap"
               type="radio"
               value="square"
             />
             <div
-              class="PrivateRadioButtonIcon-root-71"
+              class="PrivateRadioButtonIcon-root-85"
             >
               <svg
                 aria-hidden="true"
@@ -2186,7 +2204,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-72"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-86"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -2209,7 +2227,7 @@ exports[`App at /paint 1`] = `
     </div>
   </div>
   <div
-    class="MuiBox-root MuiBox-root-74"
+    class="MuiBox-root MuiBox-root-88"
   >
     <ul
       class="MuiList-root MuiList-padding"
@@ -2301,7 +2319,7 @@ exports[`App at /reminder 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-82"
+        class="MuiBox-root MuiBox-root-96"
       >
         <span
           class="TooltipWrapper"
@@ -2351,7 +2369,7 @@ exports[`App at /reminder 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-83 makeStyles-Select-84 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-97 makeStyles-Select-98 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -2380,7 +2398,7 @@ exports[`App at /reminder 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-80 makeStyles-Offset-81"
+    class="makeStyles-Offset-94 makeStyles-Offset-95"
   />
   <ul
     class="MuiList-root MuiList-padding"

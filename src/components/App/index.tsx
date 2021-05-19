@@ -2,7 +2,9 @@ import { useInjection } from 'inversify-react'
 import React, { useEffect } from 'react'
 import { hot } from 'react-hot-loader/root'
 import { Redirect, Switch, useLocation } from 'react-router'
+import { useRecoilState } from 'recoil'
 
+import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import Route from '~/lib/components/Route'
 import useGtm from '~/lib/hooks/useGtm'
@@ -18,22 +20,21 @@ export const ReminderPage = React.lazy(() => import(/* webpackChunkName: "remind
 export const SettingsPage = React.lazy(() => import(/* webpackChunkName: "settings" */ './SettingsPage'))
 export const NoMatch = React.lazy(() => import(/* webpackChunkName: "noMatch" */ './NoMatch'))
 
-const MEETS_GDPR = false // TODO
-
 const App: React.FC = () => {
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
+  const [cookieConsentObtained] = useRecoilState(cookieConsentObtainedState)
   const location = useLocation()
   const gtm = useGtm()
 
   useEffect(() => {
-    if (MEETS_GDPR && gtmContainerId !== undefined) {
+    if (cookieConsentObtained && gtmContainerId !== undefined) {
       // tslint:disable-next-line:semicolon
       ;(async () => {
         await gtm.install(gtmContainerId)
       })()
     }
-  }, [gtm, gtmContainerId])
+  }, [cookieConsentObtained, gtm, gtmContainerId])
 
   if (location.pathname === '/' && location.hash !== '') {
     const pathname = /^#(.*)$/.exec(location.hash)?.[1]
