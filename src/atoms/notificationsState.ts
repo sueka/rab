@@ -6,7 +6,7 @@ const notificationsState = atom<Notification[]>({
   default: [],
   effects_UNSTABLE: [
     ({ onSet }) => {
-      onSet(newNotifications => {
+      onSet((newNotifications) => {
         if (!Array.isArray(newNotifications)) {
           throw new Error
         }
