@@ -1,6 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
+import BannerContainer from '~/lib/components/BannerContainer'
 import ErrorBoundary from '~/lib/components/ErrorBoundary'
 import useScreen from '~/lib/hooks/useScreen'
 import typed from '~/lib/typed'
@@ -57,6 +58,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
   return (
     <>
       <TopAppbar ref={ topAppbarRef } onMenuIconButtonClick={ openDrawer } />
+      <BannerContainer />
       <Nav
         ref={ drawerRef }
         open={ drawerOpen }
