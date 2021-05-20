@@ -18,6 +18,7 @@ const ObtainCookieConsentButton: React.FC = () => {
   }, [])
 
   const handleDismiss = useCallback(() => {
+    setCookieConsentObtained(false)
     setBanner(null)
   }, [])
 
