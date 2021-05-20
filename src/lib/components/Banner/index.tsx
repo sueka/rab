@@ -19,44 +19,58 @@ const browser = Bowser.getParser(navigator.userAgent)
 
 const isMobile = browser.is('Mobile')
 
+/**
+ * An implementation of https://material.io/components/banners.
+ *
+ * NOTE: Not support the no leading, mobile, one-line version.
+ */
 const Banner: React.FC<Props> = ({ leading, text, actions }) => (
   <Paper square elevation={ 0 }>
     <Box
       display="flex"
-      alignItems="center"
-      flexWrap="wrap"
-      gridColumnGap={ (isMobile ? 36 : 90) - (isMobile ? 10 : 8) }
-      gridRowGap={ (leading !== undefined ? 20 : 12) - (isMobile ? 10 : 8) }
+      flexWrap="nowrap"
+      alignItems={ isMobile ? 'flex-start' : 'center' }
     >
-      <Box
-        my={ isMobile ? 3 : 2 }
-        ml={ leading !== undefined ? 2 : undefined }
-        display="flex"
-        alignItems={ isMobile ? 'flex-start' : 'center' }
-      >
-        { leading }
+      { leading !== undefined && (
         <Box
-          mx={ isMobile ? 2 : 3 } // TODO: Set 2 if not mobile & text has no line-breaks
+          my={ isMobile ? 3 : 2 }
+          ml={ 2 }
+        >
+          { leading }
+        </Box>
+      ) }
+      <Box
+        alignSelf="stretch"
+        display="flex"
+        flexGrow={ 1 }
+        alignItems={ isMobile ? 'flex-start' : 'center' }
+        flexWrap={ isMobile ? 'wrap' : undefined }
+        gridColumnGap={ (isMobile ? 36 : 90) - 16 }
+        gridRowGap={ isMobile ? (leading !== undefined ? 20 : 12) - 10 : undefined }
+      >
+        <Box
+          mt={ isMobile ? 3 : 2 }
+          mb={ isMobile ? undefined : 2 }
+          ml={ isMobile ? 2 : 3 }
+          mr={ 1 }
         >
           <Typography variant="body2">{ text }</Typography>{ /* TODO: Align to baseline */ }
         </Box>
-      </Box>
-      <Box
-        alignSelf="flex-end"
-        display="flex"
-        flexGrow={ 1 }
-      >
-        <Spacer />
         <Box
-          mt={ isMobile ? 1.25 : 1 }
-          mx={ 1 }
-          mb={ 1 }
+          alignSelf="flex-end"
           display="flex"
-          alignItems="flex-end"
-          justifyContent="flex-end"
-          gridColumnGap={ 8 }
+          flexGrow={ 1 }
         >
-          { actions }
+          <Spacer />
+          <Box
+            mt={ isMobile ? 1.25 : 1 }
+            mx={ 1 }
+            mb={ 1 }
+            display="flex"
+            gridColumnGap={ 8 }
+          >
+            { actions }
+          </Box>
         </Box>
       </Box>
     </Box>
