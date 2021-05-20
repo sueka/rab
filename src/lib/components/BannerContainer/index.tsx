@@ -6,6 +6,7 @@ import { useRecoilState } from 'recoil'
 
 import bannerState from '~/atoms/bannerState'
 import useScreen from '~/lib/hooks/useScreen'
+import classes from './classes.css'
 
 interface StyleProps {
   bannerHeight?: number // including <Divider>
@@ -44,7 +45,7 @@ const BannerContainer: React.FC = () => {
 
   return (
     <>
-      <Box position="fixed" width="100%">
+      <Box position="fixed" width="100%" className={ classes.BannerContainer }>
         <div ref={ ref }>
           { banner }
           <Divider />

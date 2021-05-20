@@ -1,0 +1,3 @@
+.BannerContainer {
+  z-index: 1075; /* NOTE: Behind an app bar, ahead speed dials; cf. https://material-ui.com/customization/z-index/ */
+}
