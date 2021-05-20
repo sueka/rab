@@ -5,6 +5,7 @@ import React, { useCallback, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 import bannerState from '~/atoms/bannerState'
+import useScreen from '~/lib/hooks/useScreen'
 
 interface StyleProps {
   bannerHeight?: number // including <Divider>
@@ -17,11 +18,17 @@ const useStyles = makeStyles<Theme, StyleProps, 'Offset'>({
 })
 
 const BannerContainer: React.FC = () => {
+  const { width: screenWidth } = useScreen()
   const [banner] = useRecoilState(bannerState)
   const [height, setHeight] = useState<number | null>(null)
   const jssClasses = useStyles({ bannerHeight: height ?? undefined })
 
   const ref = useCallback<React.RefCallback<HTMLDivElement>>((node) => {
+    // To silence the ESLint rule react-hooks/exhaustive-deps
+    if (screenWidth === null) {
+      return
+    }
+
     const rect = node?.getBoundingClientRect()
 
     if (rect === undefined) {
@@ -29,7 +36,7 @@ const BannerContainer: React.FC = () => {
     }
 
     setHeight(rect.height)
-  }, [])
+  }, [screenWidth])
 
   if (banner === null) {
     return null
