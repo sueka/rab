@@ -18,6 +18,7 @@ const useStyles = makeStyles<Theme, StyleProps, 'Offset'>({
   },
 })
 
+// TODO: Animate; See https://material.io/components/banners#behavior
 const BannerContainer: React.FC = () => {
   const { width: screenWidth } = useScreen()
   const [banner] = useRecoilState(bannerState)
