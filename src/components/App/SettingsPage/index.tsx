@@ -17,6 +17,7 @@ import { useRecoilCallback, useRecoilState, useSetRecoilState } from 'recoil'
 import bannerState from '~/atoms/bannerState'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
 import darkState from '~/atoms/darkState'
+import obtainedCookieConsentBannerMessages from '~/components/ObtainCookieConsentBanner/messages' // TODO: Move
 import { createPage } from '~/components/PageTemplate'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
@@ -112,7 +113,10 @@ const SettingsPage: React.FC = () => {
             </ListSubheader> }
           >
             <ListItem>
-              <ListItemText primary={ <FormattedMessage { ...messages.acceptCookies } /> } />
+              <ListItemText
+                primary={ <FormattedMessage { ...messages.acceptCookies } /> }
+                secondary={ <FormattedMessage { ...obtainedCookieConsentBannerMessages.weUseCookiesToAnalyzeOurTraffic } /> }
+              />
               <ListItemSecondaryAction>
                 <Switch checked={ cookieConsentObtained } onChange={ handleAcceptCookiesChange } disabled={ gtmContainerId === undefined } />
               </ListItemSecondaryAction>
