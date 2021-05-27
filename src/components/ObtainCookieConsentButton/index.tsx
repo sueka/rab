@@ -22,17 +22,16 @@ const ObtainCookieConsentButton: React.FC = () => {
     setBanner(null)
   }, [])
 
-  const handleDismiss = useCallback(() => {
-    setCookieConsentObtained(false)
+  const handleCancel = useCallback(() => {
     setBanner(null)
   }, [])
 
   const handleClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(() => {
     setBanner(<ObtainCookieConsentBanner
       onAgree={ handleAgree }
-      onDismiss={ handleDismiss }
+      onCancel={ handleCancel }
     />)
-  }, [setBanner, handleAgree, handleDismiss])
+  }, [setBanner, handleAgree, handleCancel])
 
   return (
     <Button onClick={ handleClick }>

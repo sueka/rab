@@ -23,7 +23,7 @@
   "src.components.LocaleSelect.language": "Language",
   "src.components.NotifyMeButton.sendPushNotification": "Send push notification",
   "src.components.ObtainCookieConsentBanner.agree": "Agree",
-  "src.components.ObtainCookieConsentBanner.dismiss": "Dismiss",
+  "src.components.ObtainCookieConsentBanner.cancel": "Cancel",
   "src.components.ObtainCookieConsentBanner.weUseCookiesToAnalyzeOurTraffic": "We use cookies to analyze our traffic.",
   "src.components.ObtainCookieConsentButton.consentToUseCookies": "Consent to use cookies…",
   "src.components.PageTemplate.Nav.apps": "Apps",

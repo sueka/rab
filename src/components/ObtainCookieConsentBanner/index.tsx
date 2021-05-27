@@ -9,10 +9,10 @@ import messages from './messages'
 
 interface Props {
   onAgree?(): void
-  onDismiss?(): void
+  onCancel?(): void
 }
 
-const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onDismiss }) => (
+const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onCancel }) => (
   <Banner
     leading={ <Avatar>
       <SecurityIcon />
@@ -22,8 +22,8 @@ const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onDismiss }) => (
       <Button variant="text" color="primary" onClick={ onAgree }>
         <FormattedMessage { ...messages.agree } />
       </Button>
-      <Button variant="text" color="primary" onClick={ onDismiss }>
-        <FormattedMessage { ...messages.dismiss } />
+      <Button variant="text" color="primary" onClick={ onCancel }>
+        <FormattedMessage { ...messages.cancel } />
       </Button>
     </> }
   />

@@ -23,7 +23,7 @@
   "src.components.LocaleSelect.language": "言語",
   "src.components.NotifyMeButton.sendPushNotification": "プッシュ通知を送信",
   "src.components.ObtainCookieConsentBanner.agree": "同意",
-  "src.components.ObtainCookieConsentBanner.dismiss": "却下",
+  "src.components.ObtainCookieConsentBanner.cancel": "キャンセル",
   "src.components.ObtainCookieConsentBanner.weUseCookiesToAnalyzeOurTraffic": "クッキーを使ってトラフィックを分析します。",
   "src.components.ObtainCookieConsentButton.consentToUseCookies": "クッキーの使用に同意…",
   "src.components.PageTemplate.Nav.apps": "アプリ",
