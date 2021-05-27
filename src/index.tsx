@@ -86,7 +86,7 @@ const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
  * The entry point component.
  */
 const Main: React.FC<Props> = ({ container, baseUrl }) => {
-  const reducer = useMemo(() => createReducer(initialState, history), [history])
+  const reducer = useMemo(() => createReducer(initialState, history), [])
 
   const rootSaga = useCallback<Saga>(() => {
     const service = container.resolve(Service) // TODO: DI
@@ -94,7 +94,7 @@ const Main: React.FC<Props> = ({ container, baseUrl }) => {
     return service.rootSaga.call(service)
   }, [container])
 
-  const Provider = useMemo(() => createProvider(history, reducer, invariant, rootSaga), [history, reducer, rootSaga])
+  const Provider = useMemo(() => createProvider(history, reducer, invariant, rootSaga), [reducer, rootSaga])
 
   const renderError: ProviderProps<State, Action>['renderError'] = useCallback((error: unknown) => {
     if (error instanceof Error) {
