@@ -14,6 +14,7 @@ import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { useRecoilCallback, useRecoilState, useSetRecoilState } from 'recoil'
 
+import bannerOpenState from '~/atoms/bannerOpenState'
 import bannerState from '~/atoms/bannerState'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
 import darkState from '~/atoms/darkState'
@@ -32,6 +33,7 @@ const SettingsPage: React.FC = () => {
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
   const gtm = useGtm()
   const setBanner = useSetRecoilState(bannerState)
+  const setBannerOpen = useSetRecoilState(bannerOpenState)
 
   const [dark, setDark] = useRecoilState(darkState)
   const [cookieConsentObtained, setCookieConsentObtained] = useRecoilState(cookieConsentObtainedState)
@@ -58,11 +60,11 @@ const SettingsPage: React.FC = () => {
   const handleReload = useRecoilCallback(({ set }) => () => {
     location.reload()
 
-    set(bannerState, null) // NOTE: Almost unreachable
+    set(bannerOpenState, false) // NOTE: Almost unreachable
   }, [])
 
   const handleDontReload = useRecoilCallback(({ set }) => () => {
-    set(bannerState, null)
+    set(bannerOpenState, false)
   }, [])
 
   useEffect(() => {
@@ -82,11 +84,12 @@ const SettingsPage: React.FC = () => {
             </Button>
           </> }
         />)
+        setBannerOpen(true)
       } else {
-        setBanner(null)
+        setBannerOpen(false)
       }
     }
-  }, [cookieConsentChanged, cookieConsentObtained])
+  }, [cookieConsentChanged, cookieConsentObtained, handleReload, handleDontReload])
 
   return (
     <>

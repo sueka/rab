@@ -58,7 +58,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
   return (
     <>
       <TopAppbar ref={ topAppbarRef } onMenuIconButtonClick={ openDrawer } />
-      <BannerContainer />
+      <BannerContainer topAppbarHeight={ topAppbarHeight ?? undefined } />
       <Nav
         ref={ drawerRef }
         open={ drawerOpen }

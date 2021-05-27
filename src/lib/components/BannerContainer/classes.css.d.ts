@@ -1,5 +1,5 @@
 declare const styles: {
-  readonly "BannerContainer": string;
+  readonly "CollapseContainer": string;
 };
 export = styles;
 

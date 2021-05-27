@@ -4,6 +4,7 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilCallback } from 'recoil'
 
+import bannerOpenState from '~/atoms/bannerOpenState'
 import bannerState from '~/atoms/bannerState'
 import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
 import ConfigRegistry from '~/config/ConfigRegistry'
@@ -24,13 +25,13 @@ const ObtainCookieConsentButton: React.FC = () => {
   const handleAgree = useRecoilCallback(({ set }) => () => {
     shouldBePresent(gtmContainerId)
 
-    set(bannerState, null)
+    set(bannerOpenState, false)
 
     gtm.install(gtmContainerId)
   }, [gtm, gtmContainerId])
 
   const handleCancel = useRecoilCallback(({ set }) => () => {
-    set(bannerState, null)
+    set(bannerOpenState, false)
   }, [])
 
   const handleClick = useRecoilCallback<
@@ -41,6 +42,7 @@ const ObtainCookieConsentButton: React.FC = () => {
       onAgree={ handleAgree }
       onCancel={ handleCancel }
     />)
+    set(bannerOpenState, true)
   }, [handleAgree, handleCancel])
 
   return (
