@@ -1,4 +1,4 @@
-import { useRecoilCallback, useRecoilState } from 'recoil'
+import { useRecoilCallback } from 'recoil'
 
 import installedGtmContainerIdsState from '~/lib/atoms/installedGtmContainerIdsState'
 import stripMargin from '~/lib/extensions/String/stripMargin'
@@ -42,9 +42,7 @@ function createNoScriptSnippet(containerId: `GTM-${string}`) {
 
 // TODO: Support Data Layer
 export default function useGtm() {
-  const [, setInstalledIds] = useRecoilState(installedGtmContainerIdsState)
-
-  const install = useRecoilCallback(({ snapshot }) => async (containerId: `GTM-${string}`) => {
+  const install = useRecoilCallback(({ snapshot, set }) => async (containerId: `GTM-${string}`) => {
     const installedIds = await snapshot.getPromise(installedGtmContainerIdsState)
 
     if (installedIds.includes(containerId)) {
@@ -57,7 +55,7 @@ export default function useGtm() {
     document.head.insertBefore(scriptSnippet, document.head.firstChild)
     document.body.insertBefore(noScriptSnippet, document.body.firstChild)
 
-    setInstalledIds(ids => [...ids, containerId])
+    set(installedGtmContainerIdsState, ids => [...ids, containerId])
   }, [])
 
   return { install }
