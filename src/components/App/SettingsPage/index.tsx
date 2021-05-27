@@ -25,7 +25,7 @@ const SettingsPage: React.FC = () => {
 
   const handleChange = useCallback((_event, checked) => {
     setDark(checked)
-  }, [setDark])
+  }, [])
 
   return (
     <>

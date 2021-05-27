@@ -31,7 +31,7 @@ const ObtainCookieConsentButton: React.FC = () => {
       onAgree={ handleAgree }
       onCancel={ handleCancel }
     />)
-  }, [setBanner, handleAgree, handleCancel])
+  }, [handleAgree, handleCancel])
 
   return (
     <Button onClick={ handleClick }>
