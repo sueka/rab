@@ -2,7 +2,7 @@ import { useInjection } from 'inversify-react'
 import React, { useEffect } from 'react'
 import { hot } from 'react-hot-loader/root'
 import { Redirect, Switch, useLocation } from 'react-router'
-import { useRecoilState } from 'recoil'
+import { useRecoilCallback } from 'recoil'
 
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
 import ConfigRegistry from '~/config/ConfigRegistry'
@@ -23,18 +23,20 @@ export const NoMatch = React.lazy(() => import(/* webpackChunkName: "noMatch" */
 const App: React.FC = () => {
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
-  const [cookieConsentObtained] = useRecoilState(cookieConsentObtainedState)
   const location = useLocation()
   const gtm = useGtm()
 
-  useEffect(() => {
+  const installGtmLegally = useRecoilCallback(({ snapshot }) => async () => {
+    const cookieConsentObtained = await snapshot.getPromise(cookieConsentObtainedState)
+
     if (cookieConsentObtained && gtmContainerId !== undefined) {
-      // tslint:disable-next-line:semicolon
-      ;(async () => {
-        await gtm.install(gtmContainerId)
-      })()
+      await gtm.install(gtmContainerId)
     }
-  }, [cookieConsentObtained, gtm, gtmContainerId])
+  }, [gtm, gtmContainerId])
+
+  useEffect(() => {
+    installGtmLegally()
+  }, [installGtmLegally])
 
   if (location.pathname === '/' && location.hash !== '') {
     const pathname = /^#(.*)$/.exec(location.hash)?.[1]

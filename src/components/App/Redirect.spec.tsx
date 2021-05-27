@@ -29,7 +29,7 @@ describe('App', () => {
     beforeAll(() => {
       // tslint:disable-next-line:semicolon
       ;(useRecoilState as jest.MockedFunction<typeof useRecoilState>).mockImplementationOnce(() => [[], jest.fn()])
-      ;(useRecoilState as jest.MockedFunction<typeof useRecoilState>).mockImplementationOnce(() => [[], jest.fn()])
+      ;(useRecoilCallback as jest.MockedFunction<typeof useRecoilCallback>).mockImplementationOnce(() => jest.fn())
       ;(useRecoilCallback as jest.MockedFunction<typeof useRecoilCallback>).mockImplementationOnce(() => jest.fn())
     })
 
