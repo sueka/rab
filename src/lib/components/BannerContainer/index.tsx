@@ -1,5 +1,5 @@
-import Box from '@material-ui/core/Box'
 import Collapse from '@material-ui/core/Collapse'
+import Divider from '@material-ui/core/Divider'
 import { Theme, makeStyles } from '@material-ui/core/styles'
 import classNames from 'classnames'
 import React, { useMemo } from 'react'
@@ -38,9 +38,10 @@ const BannerContainer: React.FC<Props> = ({ topAppbarHeight }) => {
         container: collapseContainerClassName,
       } }
     >
-      <Box component="div" boxShadow={ 3 }>
+      <div>
         { banner }
-      </Box>
+        <Divider />
+      </div>
     </Collapse>
   )
 }
