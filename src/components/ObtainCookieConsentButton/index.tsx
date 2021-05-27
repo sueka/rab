@@ -18,7 +18,6 @@ const ObtainCookieConsentButton: React.FC = () => {
   const [, setCookieConsentObtained] = useRecoilState(cookieConsentObtainedState)
 
   const handleAgree = useCallback(() => {
-    setCookieConsentObtained(true)
     setBanner(null)
   }, [])
 
