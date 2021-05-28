@@ -1,13 +1,11 @@
 import Button from '@material-ui/core/Button'
 import { useInjection } from 'inversify-react'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
-import { useRecoilCallback } from 'recoil'
 
-import bannerOpenState from '~/atoms/bannerOpenState'
-import bannerState from '~/atoms/bannerState'
 import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
 import ConfigRegistry from '~/config/ConfigRegistry'
+import useBanner from '~/hooks/useBanner'
 import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import useGtm from '~/lib/hooks/useGtm'
 import messages from './messages'
@@ -21,29 +19,26 @@ const ObtainCookieConsentButton: React.FC = () => {
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
   const gtm = useGtm()
+  const banner = useBanner()
 
-  const handleAgree = useRecoilCallback(({ set }) => () => {
+  const handleAgree = useCallback(() => {
     shouldBePresent(gtmContainerId)
 
-    set(bannerOpenState, false)
+    banner.hide()
 
     gtm.install(gtmContainerId)
-  }, [gtm, gtmContainerId])
+  }, [banner, gtm, gtmContainerId])
 
-  const handleCancel = useRecoilCallback(({ set }) => () => {
-    set(bannerOpenState, false)
-  }, [])
+  const handleCancel = useCallback(() => {
+    banner.hide()
+  }, [banner])
 
-  const handleClick = useRecoilCallback<
-    Parameters<React.MouseEventHandler<HTMLButtonElement>>,
-    ReturnType<React.MouseEventHandler<HTMLButtonElement>>
-  >(({ set }) => () => {
-    set(bannerState, <ObtainCookieConsentBanner
+  const handleClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(() => {
+    banner.show(<ObtainCookieConsentBanner
       onAgree={ handleAgree }
       onCancel={ handleCancel }
     />)
-    set(bannerOpenState, true)
-  }, [handleAgree, handleCancel])
+  }, [banner, handleAgree, handleCancel])
 
   return (
     <Button onClick={ handleClick }>

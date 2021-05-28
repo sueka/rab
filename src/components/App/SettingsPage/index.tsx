@@ -12,16 +12,15 @@ import { useInjection } from 'inversify-react'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { useRecoilCallback, useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 
-import bannerOpenState from '~/atoms/bannerOpenState'
-import bannerState from '~/atoms/bannerState'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
 import darkState from '~/atoms/darkState'
 import obtainedCookieConsentBannerMessages from '~/components/ObtainCookieConsentBanner/messages' // TODO: Move
 import { createPage } from '~/components/PageTemplate'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
+import useBanner from '~/hooks/useBanner'
 import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import Banner from '~/lib/components/Banner'
 import useGtm from '~/lib/hooks/useGtm'
@@ -32,8 +31,7 @@ const SettingsPage: React.FC = () => {
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
   const gtm = useGtm()
-  const setBanner = useSetRecoilState(bannerState)
-  const setBannerOpen = useSetRecoilState(bannerOpenState)
+  const banner = useBanner()
 
   const [dark, setDark] = useRecoilState(darkState)
   const [cookieConsentObtained, setCookieConsentObtained] = useRecoilState(cookieConsentObtainedState)
@@ -57,20 +55,20 @@ const SettingsPage: React.FC = () => {
     }
   }, [gtm, gtmContainerId])
 
-  const handleReload = useRecoilCallback(({ set }) => () => {
+  const handleReload = useCallback(() => {
     location.reload()
 
-    set(bannerOpenState, false) // NOTE: Almost unreachable
-  }, [])
+    banner.hide() // NOTE: Almost unreachable
+  }, [banner])
 
-  const handleDontReload = useRecoilCallback(({ set }) => () => {
-    set(bannerOpenState, false)
-  }, [])
+  const handleDontReload = useCallback(() => {
+    banner.hide()
+  }, [banner])
 
   useEffect(() => {
     if (cookieConsentChanged) {
       if (!cookieConsentObtained) {
-        setBanner(<Banner
+        banner.show(<Banner
           leading={ <Avatar>
             <SecurityIcon />
           </Avatar> }
@@ -84,12 +82,11 @@ const SettingsPage: React.FC = () => {
             </Button>
           </> }
         />)
-        setBannerOpen(true)
       } else {
-        setBannerOpen(false)
+        banner.hide()
       }
     }
-  }, [cookieConsentChanged, cookieConsentObtained, handleReload, handleDontReload])
+  }, [cookieConsentChanged, cookieConsentObtained, banner, handleReload, handleDontReload])
 
   return (
     <>
