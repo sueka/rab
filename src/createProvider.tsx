@@ -5,8 +5,8 @@ import { Action, Reducer, Store } from 'redux'
 import { Saga } from 'redux-saga'
 
 import configureStore from '~/configureStore'
-import UnreachableError from '~/lib/errors/UnreachableError'
-import { Invariant } from '~/lib/middleware/invariantMiddleware/createInvariantMiddleware'
+import UnreachableError from '~/errors/UnreachableError'
+import { Invariant } from '~/middleware/invariantMiddleware/createInvariantMiddleware'
 
 type ErrorCause = 'component' | 'reducer' | 'saga' | 'rootSaga'
 

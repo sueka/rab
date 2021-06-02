@@ -5,9 +5,9 @@ import { Redirect, Switch, useLocation } from 'react-router'
 import { useRecoilCallback } from 'recoil'
 
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
+import Route from '~/components/Route'
 import ConfigRegistry from '~/config/ConfigRegistry'
-import Route from '~/lib/components/Route'
-import useGtm from '~/lib/hooks/useGtm'
+import useGtm from '~/hooks/useGtm'
 
 export const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ './HomePage'))
 export const ChessPage = React.lazy(() => import(/* webpackChunkName: "chess" */ './ChessPage'))

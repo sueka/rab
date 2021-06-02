@@ -2,9 +2,9 @@ import { Theme, makeStyles } from '@material-ui/core/styles'
 import classnames from 'classnames'
 import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-import { shouldBeNullish, shouldBePresent } from '~/lib/asserters/commonAsserters'
-import useRefsMerged from '~/lib/hooks/useRefsMerged'
-import useScreen from '~/lib/hooks/useScreen'
+import { shouldBeNullish, shouldBePresent } from '~/asserters/commonAsserters'
+import useRefsMerged from '~/hooks/useRefsMerged'
+import useScreen from '~/hooks/useScreen'
 import floodFill from '~/utils/canvas/floodFill'
 import classes from './classes.css'
 

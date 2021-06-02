@@ -6,9 +6,9 @@ import React, { useCallback, useContext } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilState } from 'recoil'
 
+import { shouldBePresent } from '~/asserters/commonAsserters'
 import darkState from '~/atoms/darkState'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
-import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 import classes from './classes.css'
 import messages from './messages'
 

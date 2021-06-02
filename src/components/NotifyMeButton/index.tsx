@@ -6,8 +6,8 @@ import { FormattedMessage } from 'react-intl'
 import { useRecoilState } from 'recoil'
 
 import notificationsState from '~/atoms/notificationsState'
-import useOnceForEachEffect from '~/lib/hooks/useOnceForEachEffect'
-import Notification from '~/lib/polyfills/Notification'
+import useOnceForEachEffect from '~/hooks/useOnceForEachEffect'
+import Notification from '~/polyfills/Notification'
 import messages from './messages'
 
 interface Props {

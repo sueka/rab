@@ -2,7 +2,7 @@ import React from 'react'
 import { RouteComponentProps } from 'react-router'
 
 import { createPage } from '~/components/PageTemplate'
-import typed from '~/lib/typed'
+import typed from '~/typed'
 
 type Props =
   & RouteComponentProps

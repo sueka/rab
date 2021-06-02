@@ -3,9 +3,9 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call } from 'redux-saga/effects'
 
+import { takeEvery } from '~/boni/redux-saga/effects'
 import ConfigRegistry from '~/config/ConfigRegistry'
-import { takeEvery } from '~/lib/boni/redux-saga/effects'
-import typed from '~/lib/typed'
+import typed from '~/typed'
 
 //
 //             _|                  _|

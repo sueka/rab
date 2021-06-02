@@ -1,4 +1,4 @@
-import HashableEq from '~/lib/trait/HashableEq'
+import HashableEq from '~/trait/HashableEq'
 
 /**
  * A primitive ValueObject

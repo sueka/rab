@@ -1,10 +1,10 @@
 import { List } from 'immutable'
 import { injectable } from 'inversify'
 
+import { shouldBePresent } from '~/asserters/commonAsserters'
 import Task from '~/domain/entity/Task'
 import TaskRepository from '~/domain/repository/TaskRepository'
 import TaskId from '~/domain/vo/TaskId'
-import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 
 // TODO: Create namespace in localStorage
 @injectable()

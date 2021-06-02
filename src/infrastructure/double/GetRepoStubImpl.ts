@@ -1,7 +1,7 @@
 import { injectable } from 'inversify'
 
-import { asUrl } from '~/lib/validators/stringValidators'
 import GetRepo, { GetRepoOutput } from '~/useCase/GetRepo'
+import { asUrl } from '~/validators/stringValidators'
 
 @injectable()
 export default class GetRepoStubImpl implements GetRepo {

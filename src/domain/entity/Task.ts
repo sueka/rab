@@ -1,6 +1,6 @@
 import TaskId from '~/domain/vo/TaskId'
-import yieldThis from '~/lib/extensions/Unknown/yieldThis'
-import { asBoolean, asObject, asString } from '~/lib/validators/commonValidators'
+import yieldThis from '~/extensions/Unknown/yieldThis'
+import { asBoolean, asObject, asString } from '~/validators/commonValidators'
 import Entity from './Entity'
 
 export const asDomainObjectSerializedTask = asObject((input) => ({

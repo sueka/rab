@@ -14,16 +14,16 @@ import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { useRecoilState } from 'recoil'
 
+import { shouldBePresent } from '~/asserters/commonAsserters'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
 import darkState from '~/atoms/darkState'
+import Banner from '~/components/Banner'
 import obtainedCookieConsentBannerMessages from '~/components/ObtainCookieConsentBanner/messages' // TODO: Move
 import { createPage } from '~/components/PageTemplate'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
 import useBanner from '~/hooks/useBanner'
-import { shouldBePresent } from '~/lib/asserters/commonAsserters'
-import Banner from '~/lib/components/Banner'
-import useGtm from '~/lib/hooks/useGtm'
+import useGtm from '~/hooks/useGtm'
 import messages from './messages'
 
 const SettingsPage: React.FC = () => {

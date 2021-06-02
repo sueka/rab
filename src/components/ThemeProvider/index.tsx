@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil'
 import darkState from '~/atoms/darkState'
 import configureTheme from '~/configureTheme'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
-import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
+import IntlProviderContext from '~/contexts/IntlProviderContext'
 
 interface ThemeProviderProps {
   defaultDark: boolean

@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import { useDrop } from 'react-dnd'
 
+import { shouldBePresent } from '~/asserters/commonAsserters'
 import { DragObject, Props as TaskListItemProps } from '~/components/Reminder/TaskListItem'
-import { shouldBePresent } from '~/lib/asserters/commonAsserters'
 
 export interface Props {
   children?: React.ReactElement<TaskListItemProps, React.ComponentType<TaskListItemProps>>

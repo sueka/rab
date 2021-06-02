@@ -1,6 +1,6 @@
 import Id from '~/domain/vo/Id'
-import Eq from '~/lib/trait/Eq'
-import HashableEq from '~/lib/trait/HashableEq'
+import Eq from '~/trait/Eq'
+import HashableEq from '~/trait/HashableEq'
 
 // TODO: Move?
 interface Identifiable {

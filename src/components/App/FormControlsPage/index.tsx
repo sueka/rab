@@ -9,13 +9,13 @@ import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
 
 import CodeField from '~/components/CodeField'
+import CopyTextButton from '~/components/CopyTextButton'
+import FileUpload, { Props as FileUploadProps } from '~/components/FileUpload'
+import fileUploadMessages from '~/components/FileUpload/messages' // TODO
+import MicSwitch, { Props as MicSwitchProps } from '~/components/MicSwitch'
 import { createPage } from '~/components/PageTemplate'
-import CopyTextButton from '~/lib/components/CopyTextButton'
-import FileUpload, { Props as FileUploadProps } from '~/lib/components/FileUpload'
-import fileUploadMessages from '~/lib/components/FileUpload/messages'
-import MicSwitch, { Props as MicSwitchProps } from '~/lib/components/MicSwitch'
-import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
-import useScreen from '~/lib/hooks/useScreen'
+import IntlProviderContext from '~/contexts/IntlProviderContext'
+import useScreen from '~/hooks/useScreen'
 import messages from './messages'
 
 const CopiableTextField: React.FC = () => {

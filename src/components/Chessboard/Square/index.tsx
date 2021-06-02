@@ -5,7 +5,7 @@ import { DragObjectWithType, useDrop } from 'react-dnd'
 
 import { Props as ChessmanProps } from '~/components/Chessboard/Chessman'
 import ChessContext from '~/contexts/ChessContext'
-import equalsChessCoordinates from '~/lib/extensions/Eq/equalsChessCoordinates'
+import equalsChessCoordinates from '~/extensions/Eq/equalsChessCoordinates'
 import getColorFromCoordinates from '~/utils/chess/getColorFromCoordinates'
 import classes from './classes.css'
 

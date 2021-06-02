@@ -4,7 +4,7 @@ import { Action, Reducer, Store, applyMiddleware, compose, createStore } from 'r
 import { createLogger } from 'redux-logger'
 import createSagaMiddleware, { SagaMiddleware, SagaMiddlewareOptions } from 'redux-saga'
 
-import createInvariantMiddleware, { Invariant } from '~/lib/middleware/invariantMiddleware/createInvariantMiddleware'
+import createInvariantMiddleware, { Invariant } from '~/middleware/invariantMiddleware/createInvariantMiddleware'
 
 const logger = createLogger({
   diff: true,

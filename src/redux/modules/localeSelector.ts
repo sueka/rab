@@ -6,13 +6,13 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
 
+import { takeEvery } from '~/boni/redux-saga/effects'
 import ConfigRegistry from '~/config/ConfigRegistry'
-import { takeEvery } from '~/lib/boni/redux-saga/effects'
-import fetch from '~/lib/fetch'
-import { Tag } from '~/lib/languageNameSolver'
-import typed from '~/lib/typed'
-import { asString, recordOf } from '~/lib/validators/commonValidators'
-import { asFormats } from '~/lib/validators/intlValidators'
+import fetch from '~/fetch'
+import { Tag } from '~/languageNameSolver'
+import typed from '~/typed'
+import { asString, recordOf } from '~/validators/commonValidators'
+import { asFormats } from '~/validators/intlValidators'
 
 //
 //             _|                  _|

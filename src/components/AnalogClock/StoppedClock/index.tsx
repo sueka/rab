@@ -2,10 +2,10 @@ import { makeStyles } from '@material-ui/core'
 import { Temporal } from  'proposal-temporal'
 import React, { useEffect, useRef, useState } from 'react'
 
-import { shouldBePresent } from '~/lib/asserters/commonAsserters'
-import zipWithIndexIterable from '~/lib/extensions/Iterable/zipWithIndexIterable'
-import useScreen from '~/lib/hooks/useScreen'
-import typed from '~/lib/typed'
+import { shouldBePresent } from '~/asserters/commonAsserters'
+import zipWithIndexIterable from '~/extensions/Iterable/zipWithIndexIterable'
+import useScreen from '~/hooks/useScreen'
+import typed from '~/typed'
 
 interface Props {
   time: Temporal.TimeLike

@@ -2,8 +2,8 @@ import { List } from 'immutable'
 
 import Task from '~/domain/entity/Task'
 import ReminderId from '~/domain/vo/ReminderId'
-import yieldThis from '~/lib/extensions/Unknown/yieldThis'
-import { asInstanceOf, asObject, asString, listOf } from '~/lib/validators/commonValidators'
+import yieldThis from '~/extensions/Unknown/yieldThis'
+import { asInstanceOf, asObject, asString, listOf } from '~/validators/commonValidators'
 import Entity from './Entity'
 
 const asDomainObjectSerializedReminder = asObject((input) => ({

@@ -1,9 +1,9 @@
 import { call, put, select } from 'redux-saga/effects'
 
 import container from '~/container.dev'
-import delay from '~/lib/delay'
-import prsg from '~/lib/prsg'
-import typed from '~/lib/typed'
+import delay from '~/delay'
+import prsg from '~/prsg'
+import typed from '~/typed'
 import { CounterService, CounterState, DECREMENT, INCREMENT, INCREMENT_ASYNC, INCREMENT_IF_ODD, RESET, createCounterReducer, decrement, increment, incrementAsync, incrementIfOdd, reset } from './counter'
 
 describe('action creators', () => {

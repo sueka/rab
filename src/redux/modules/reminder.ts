@@ -6,13 +6,13 @@ import { SagaIterator } from 'redux-saga'
 import { call, put, select } from 'redux-saga/effects'
 import { v4 } from 'uuid'
 
+import { takeEvery } from '~/boni/redux-saga/effects'
 import Task from '~/domain/entity/Task'
 import TaskRepository from '~/domain/repository/TaskRepository'
 import TaskId from '~/domain/vo/TaskId'
-import { takeEvery } from '~/lib/boni/redux-saga/effects'
-import LogicError from '~/lib/errors/LogicError'
-import typed from '~/lib/typed'
+import LogicError from '~/errors/LogicError'
 import { State } from '~/redux'
+import typed from '~/typed'
 
 //
 //             _|                  _|

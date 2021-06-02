@@ -4,9 +4,9 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator } from 'redux-saga'
 import { put, select } from 'redux-saga/effects'
 
+import { takeEvery } from '~/boni/redux-saga/effects'
 import Coordinates from '~/domain/vo/Coordinates'
-import { takeEvery } from '~/lib/boni/redux-saga/effects'
-import equalsChessmen from '~/lib/extensions/Eq/equalsChessmen'
+import equalsChessmen from '~/extensions/Eq/equalsChessmen'
 import { State } from '~/redux'
 import getCoordinatesAttackedBy from '~/utils/chess/getCoordinatesAttackedBy'
 

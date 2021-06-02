@@ -3,8 +3,8 @@ import { Action, Reducer } from 'redux'
 import { SagaIterator, Task } from 'redux-saga'
 import { call, cancel, put } from 'redux-saga/effects'
 
-import { takeEvery } from '~/lib/boni/redux-saga/effects'
-import delay from '~/lib/delay'
+import { takeEvery } from '~/boni/redux-saga/effects'
+import delay from '~/delay'
 
 //
 //             _|                  _|

@@ -1,10 +1,10 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
-import BannerContainer from '~/lib/components/BannerContainer'
-import ErrorBoundary from '~/lib/components/ErrorBoundary'
-import useScreen from '~/lib/hooks/useScreen'
-import typed from '~/lib/typed'
+import BannerContainer from '~/components/BannerContainer'
+import ErrorBoundary from '~/components/ErrorBoundary'
+import useScreen from '~/hooks/useScreen'
+import typed from '~/typed'
 import Nav from './Nav'
 import TopAppbar from './TopAppbar'
 

@@ -3,8 +3,8 @@ import Helmet from 'react-helmet'
 import { IntlConfig, IntlProvider as OriginalIntlProvider } from 'react-intl'
 import { connect } from 'react-redux'
 
-import IntlProviderContext from '~/lib/contexts/IntlProviderContext'
-import { Tag } from '~/lib/languageNameSolver'
+import IntlProviderContext from '~/contexts/IntlProviderContext'
+import { Tag } from '~/languageNameSolver'
 import { State } from '~/redux'
 
 type DefaultIntlConfig = Pick<IntlConfig, 'formats' | 'messages' | 'timeZone' | 'textComponent' | 'defaultLocale' | 'defaultFormats' | 'onError'>

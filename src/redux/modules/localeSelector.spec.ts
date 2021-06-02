@@ -2,9 +2,9 @@ import { List } from 'immutable'
 import { call } from 'redux-saga/effects'
 
 import container from '~/container.dev'
-import fetch from '~/lib/fetch'
-import prsg from '~/lib/prsg'
-import typed from '~/lib/typed'
+import fetch from '~/fetch'
+import prsg from '~/prsg'
+import typed from '~/typed'
 import LocaleSelectorService, { LocaleSelectorState, PUSH_ERROR, SELECT_LOCALE, SET_FORMATS, SET_LOCALE, SET_MESSAGES, createLocaleSelectorReducer, pushError, selectLocale, setFormats, setLocale, setMessages } from './localeSelector'
 
 describe('action creators', () => {

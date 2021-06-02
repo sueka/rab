@@ -3,11 +3,11 @@ import { useInjection } from 'inversify-react'
 import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
 
+import { shouldBePresent } from '~/asserters/commonAsserters'
 import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import useBanner from '~/hooks/useBanner'
-import { shouldBePresent } from '~/lib/asserters/commonAsserters'
-import useGtm from '~/lib/hooks/useGtm'
+import useGtm from '~/hooks/useGtm'
 import messages from './messages'
 
 /**

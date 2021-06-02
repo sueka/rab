@@ -1,6 +1,6 @@
 import { atom } from 'recoil'
 
-import UnreachableError from '~/lib/errors/UnreachableError'
+import UnreachableError from '~/errors/UnreachableError'
 
 const KEY = 'cookieConsentObtained'
 

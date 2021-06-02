@@ -2,10 +2,10 @@ import { inject, injectable } from 'inversify'
 import { generatePath } from 'react-router'
 
 import ConfigRegistry from '~/config/ConfigRegistry'
-import fetch from '~/lib/fetch'
-import typed from '~/lib/typed'
-import { asGetRepoResponse, asUnsuccessfulResponse } from '~/lib/validators/gitHubApiResourceValidators'
+import fetch from '~/fetch'
+import typed from '~/typed'
 import GetRepo, { GetRepoInput, GetRepoOutput } from '~/useCase/GetRepo'
+import { asGetRepoResponse, asUnsuccessfulResponse } from '~/validators/gitHubApiResourceValidators'
 
 @injectable()
 export default class GetRepoImpl implements GetRepo {

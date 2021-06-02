@@ -2,7 +2,7 @@ import { useRecoilCallback } from 'recoil'
 
 import bannerOpenState from '~/atoms/bannerOpenState'
 import bannerState from '~/atoms/bannerState'
-import { Props as BannerProps } from '~/lib/components/Banner'
+import { Props as BannerProps } from '~/components/Banner'
 
 type Banner = React.ReactElement<BannerProps, React.ComponentType<BannerProps>>
 

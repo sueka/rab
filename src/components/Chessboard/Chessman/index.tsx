@@ -4,8 +4,8 @@ import React, { useCallback, useContext, useMemo } from 'react'
 import { DragObjectWithType, useDrag } from 'react-dnd'
 
 import ChessContext from '~/contexts/ChessContext'
-import equalsChessCoordinates from '~/lib/extensions/Eq/equalsChessCoordinates'
-import equalsChessmen from '~/lib/extensions/Eq/equalsChessmen'
+import equalsChessCoordinates from '~/extensions/Eq/equalsChessCoordinates'
+import equalsChessmen from '~/extensions/Eq/equalsChessmen'
 import classes from './classes.css'
 
 export interface Props {

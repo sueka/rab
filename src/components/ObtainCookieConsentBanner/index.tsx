@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl'
 import { useRecoilCallback } from 'recoil'
 
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
-import Banner from '~/lib/components/Banner'
+import Banner from '~/components/Banner'
 import messages from './messages'
 
 interface Props {

@@ -1,6 +1,6 @@
+import { shouldBePresent } from '~/asserters/commonAsserters'
+import delay from '~/delay'
 import Color from '~/domain/vo/Color'
-import { shouldBePresent } from '~/lib/asserters/commonAsserters'
-import delay from '~/lib/delay'
 
 export /* for testing */ function getColor({ x, y }: Canvas.Point, context: CanvasRenderingContext2D): Color {
   const { data: [red, green, blue, alpha] } = context.getImageData(x, y, 1, 1)

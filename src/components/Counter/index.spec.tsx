@@ -3,7 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { IntlProvider } from '~/components/IntlProvider'
-import identity from '~/lib/identity'
+import identity from '~/identity'
 import { incrementAsync, incrementIfOdd, selectCount } from '~/redux/modules/counter'
 import Counter from '.'
 

@@ -13,16 +13,16 @@ import createMockStore from 'redux-mock-store'
 import IntlProvider from '~/components/IntlProvider'
 import ThemeProvider from '~/components/ThemeProvider'
 import inversifyContainer from '~/container.dev'
-import useScreen from '~/lib/hooks/useScreen'
-import typed from '~/lib/typed'
-import { asFormats } from '~/lib/validators/intlValidators'
+import useScreen from '~/hooks/useScreen'
 import { State } from '~/redux'
+import typed from '~/typed'
+import { asFormats } from '~/validators/intlValidators'
 import App from '.'
 
 import formats from '../../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../../../public/messages/en.json' // tslint:disable-line:no-relative-imports
 
-jest.mock('~/lib/hooks/useScreen', () => jest.fn())
+jest.mock('~/hooks/useScreen', () => jest.fn())
 
 const useScreenMocked = useScreen as jest.MockedFunction<typeof useScreen>
 

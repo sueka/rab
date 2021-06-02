@@ -1,9 +1,9 @@
 import { injectable } from 'inversify'
 
 import ConfigRegistry, { ConfigKey, ConfigKeyValueMap } from '~/config/ConfigRegistry'
-import { isOneOf, optional as guardOptional } from '~/lib/guards/commonGuards'
-import { asConstant, asRequired, ignore, optional as validatorOptional, unionOf } from '~/lib/validators/commonValidators'
-import { asGtmContainerIdLike } from '~/lib/validators/stringValidators'
+import { isOneOf, optional as guardOptional } from '~/guards/commonGuards'
+import { asConstant, asRequired, ignore, optional as validatorOptional, unionOf } from '~/validators/commonValidators'
+import { asGtmContainerIdLike } from '~/validators/stringValidators'
 
 @injectable()
 export default class EnvVarConfigRegistry implements ConfigRegistry {

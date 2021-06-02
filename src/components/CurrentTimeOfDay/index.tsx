@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import FormattedTimeOfDay from '~/lib/components/FormattedTimeOfDay'
+import FormattedTimeOfDay from '~/components/FormattedTimeOfDay'
 import { State } from '~/redux'
 
 interface StateProps {
