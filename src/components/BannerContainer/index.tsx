@@ -6,7 +6,7 @@ import React, { useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
 
 import bannerOpenState from '~/atoms/bannerOpenState'
-import bannerState from '~/atoms/bannerState'
+import currentBannerState from '~/selectors/currentBannerState'
 import classes from './classes.css'
 
 interface Props {
@@ -24,7 +24,7 @@ const useStyles = makeStyles<Theme, StyleProps, 'CollapseContainer'>({
 })
 
 const BannerContainer: React.FC<Props> = ({ topAppbarHeight }) => {
-  const banner = useRecoilValue(bannerState)
+  const currentBanner = useRecoilValue(currentBannerState)
   const open = useRecoilValue(bannerOpenState)
   const jssClasses = useStyles({ topAppbarHeight })
   const collapseContainerClassName = useMemo(() => classNames(jssClasses.CollapseContainer, classes.CollapseContainer), [jssClasses])
@@ -39,7 +39,7 @@ const BannerContainer: React.FC<Props> = ({ topAppbarHeight }) => {
       } }
     >
       <div>
-        { banner }
+        { currentBanner?.banner }
         <Divider />
       </div>
     </Collapse>

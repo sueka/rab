@@ -1,15 +1,16 @@
 import { useRecoilCallback } from 'recoil'
 
 import bannerOpenState from '~/atoms/bannerOpenState'
-import bannerState from '~/atoms/bannerState'
+import bannersState from '~/atoms/bannersState'
 import { Props as BannerProps } from '~/components/Banner'
 
-type Banner = React.ReactElement<BannerProps, React.ComponentType<BannerProps>>
+type BannerElement = React.ReactElement<BannerProps, React.ComponentType<BannerProps>>
 
 const useBanner = () => {
-  const show = useRecoilCallback(({ set }) => (banner: Banner) => {
-
-    set(bannerState, banner)
+  const show = useRecoilCallback(({ set }) => (banner: BannerElement) => {
+    set(bannersState, [{
+      banner,
+    }])
 
     set(bannerOpenState, true)
   }, [])
