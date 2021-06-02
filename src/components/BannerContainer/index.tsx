@@ -7,7 +7,6 @@ import { useRecoilValue } from 'recoil'
 
 import bannerOpenState from '~/atoms/bannerOpenState'
 import bannerState from '~/atoms/bannerState'
-
 import classes from './classes.css'
 
 interface Props {
