@@ -45,9 +45,7 @@ const SettingsPage: React.FC = () => {
 
   const handleReload = useCallback(() => {
     location.reload()
-
-    banner.hide() // NOTE: Almost unreachable
-  }, [banner])
+  }, [])
 
   const handleDontReload = useCallback(() => {
     banner.hide()
