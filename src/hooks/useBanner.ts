@@ -1,6 +1,5 @@
 import { useRecoilCallback } from 'recoil'
 
-import bannerOpenState from '~/atoms/bannerOpenState'
 import { Props as BannerProps } from '~/components/Banner'
 import currentBannerState from '~/selectors/currentBannerState'
 
@@ -11,12 +10,10 @@ const useBanner = () => {
     set(currentBannerState, {
       banner,
     })
-
-    set(bannerOpenState, true)
   }, [])
 
   const hide = useRecoilCallback(({ set }) => () => {
-    set(bannerOpenState, false)
+    set(currentBannerState, null)
   }, [])
 
   return { show, hide }

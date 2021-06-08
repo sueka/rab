@@ -2,7 +2,7 @@ import { atom } from 'recoil'
 
 import { Props as BannerProps } from '~/components/Banner'
 
-type BannerElement = React.ReactElement<BannerProps, React.ComponentType<BannerProps>>
+export type BannerElement = React.ReactElement<BannerProps, React.ComponentType<BannerProps>>
 
 export interface Banner {
   banner: BannerElement

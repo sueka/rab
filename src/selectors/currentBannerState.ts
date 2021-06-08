@@ -18,11 +18,13 @@ const currentBannerState = selector<Banner | null>({
       throw new Error('DefaultValue not supported.')
     }
 
-    set(bannersState, (_banners) => {
+    set(bannersState, (banners) => {
       if (newCurrentBanner === null) {
-        return []
+        const [_firstBanner, ...restBanners] = banners
+
+        return restBanners
       } else {
-        return [newCurrentBanner]
+        return [newCurrentBanner, ...banners]
       }
     })
   }
