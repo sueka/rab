@@ -1,8 +1,8 @@
-import { selector } from 'recoil'
+import { DefaultValue, selector } from 'recoil'
 
-import bannersState from '~/atoms/bannersState'
+import bannersState, { Banner } from '~/atoms/bannersState'
 
-const currentBannerState = selector({
+const currentBannerState = selector<Banner | null>({
   key: 'currentBannerState',
   get({ get }) {
     const banners = get(bannersState)
@@ -10,9 +10,22 @@ const currentBannerState = selector({
     if (banners.length >= 1) {
       return banners[0]
     } else {
-      return
+      return null
     }
   },
+  set({ set }, newCurrentBanner) {
+    if (newCurrentBanner instanceof DefaultValue) {
+      throw new Error('DefaultValue not supported.')
+    }
+
+    set(bannersState, (_banners) => {
+      if (newCurrentBanner === null) {
+        return []
+      } else {
+        return [newCurrentBanner]
+      }
+    })
+  }
 })
 
 export default currentBannerState

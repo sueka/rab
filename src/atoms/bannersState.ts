@@ -4,7 +4,7 @@ import { Props as BannerProps } from '~/components/Banner'
 
 type BannerElement = React.ReactElement<BannerProps, React.ComponentType<BannerProps>>
 
-interface Banner {
+export interface Banner {
   banner: BannerElement
 }
 
