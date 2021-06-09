@@ -30,13 +30,13 @@ const currentBannerState = selector<Banner | null>({
         // TODO: Use `do` expression: https://github.com/tc39/proposal-do-expressions
         const bannersWOCurrentReplaceable = (() => {
           if (oldCurrentBanner !== null && oldCurrentBanner.replaceable) {
-            const i = banners.findIndex((banner) => banner.key === oldCurrentBanner.key)
+            const j = banners.findIndex((banner) => banner.key === oldCurrentBanner.key)
 
-            assert(i === 0)
+            assert(j === 0)
 
             return [
-              ...banners.slice(0, i),
-              ...banners.slice(i + 1),
+              ...banners.slice(0, j),
+              ...banners.slice(j + 1),
             ]
           } else {
             return banners
@@ -56,7 +56,7 @@ const currentBannerState = selector<Banner | null>({
         }
       }
     })
-  }
+  },
 })
 
 export default currentBannerState
