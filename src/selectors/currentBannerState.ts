@@ -24,7 +24,17 @@ const currentBannerState = selector<Banner | null>({
 
         return restBanners
       } else {
-        return [newCurrentBanner, ...banners]
+        const i = banners.findIndex((banner) => banner.key === newCurrentBanner.key)
+
+        if (i !== -1) {
+          return [
+            newCurrentBanner,
+            ...banners.slice(0, i),
+            ...banners.slice(i + 1),
+          ]
+        } else {
+          return [newCurrentBanner, ...banners]
+        }
       }
     })
   }

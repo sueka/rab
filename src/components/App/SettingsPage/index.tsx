@@ -13,6 +13,7 @@ import React, { useCallback, useContext } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { useRecoilState } from 'recoil'
+import { v4 } from 'uuid'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
@@ -26,6 +27,9 @@ import useBanner from '~/hooks/useBanner'
 import useGtm from '~/hooks/useGtm'
 import messages from './messages'
 
+const reloadBannerKey = v4()
+
+// NOTE: このコンポーネントがアンマウント、再マウントされても dismiss がうまく動くように、 `reloadBannerKey` をレンダリング間で共有している。
 const SettingsPage: React.FC = () => {
   const { formatMessage } = useIntl()
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
@@ -48,7 +52,7 @@ const SettingsPage: React.FC = () => {
   }, [])
 
   const handleDontReload = useCallback(() => {
-    banner.hide()
+    banner.hide({ key: reloadBannerKey })
   }, [banner])
 
   const handleAcceptCookiesChange = useCallback((_event, checked) => {
@@ -59,7 +63,10 @@ const SettingsPage: React.FC = () => {
         gtm.install(gtmContainerId)
       }
 
-      banner.hide()
+      banner.hide({
+        key: reloadBannerKey,
+        safe: true,
+      })
     } else {
       banner.show(<Banner
         leading={ <Avatar>
@@ -74,7 +81,9 @@ const SettingsPage: React.FC = () => {
             <FormattedMessage { ...messages.dontReload } />
           </Button>
         </> }
-      />)
+      />, {
+        key: reloadBannerKey,
+      })
     }
   }, [gtm, gtmContainerId, handleReload, handleDontReload])
 
