@@ -1,12 +1,13 @@
 import Collapse from '@material-ui/core/Collapse'
 import Divider from '@material-ui/core/Divider'
-import { Theme, makeStyles } from '@material-ui/core/styles'
+import { Theme, makeStyles, useTheme } from '@material-ui/core/styles'
 import classNames from 'classnames'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { useRecoilValue } from 'recoil'
+import React, { useEffect, useMemo, useState } from 'react'
+import { useRecoilState, useRecoilValue } from 'recoil'
 
-import { shouldBeNullish } from '~/asserters/commonAsserters'
-import { BannerElement } from '~/atoms/bannersState'
+import bannerOpenState from '~/atoms/bannerOpenState'
+import { Banner } from '~/atoms/bannersState'
+import delay from '~/delay'
 import currentBannerState from '~/selectors/currentBannerState'
 import classes from './classes.css'
 
@@ -26,36 +27,43 @@ const useStyles = makeStyles<Theme, StyleProps, 'CollapseContainer'>({
 
 const BannerContainer: React.FC<Props> = ({ topAppbarHeight }) => {
   const currentBanner = useRecoilValue(currentBannerState)
-  // const open = useRecoilValue(bannerOpenState)
+  const [open, setOpen] = useRecoilState(bannerOpenState)
   const jssClasses = useStyles({ topAppbarHeight })
   const collapseContainerClassName = useMemo(() => classNames(jssClasses.CollapseContainer, classes.CollapseContainer), [jssClasses])
-  const [bannerToShow, setBannerToShow] = useState<BannerElement | null>(null)
-
-  const handleExited = useCallback(() => {
-    shouldBeNullish(currentBanner)
-
-    setBannerToShow(null)
-  }, [currentBanner])
+  const [bannerToShow, setBannerToShow] = useState<Banner | null>(null)
+  const theme = useTheme()
 
   useEffect(() => {
-    // currentBanner が null になったときは、 <Collapse in> が変更され、 onExited で setBannerToShow(null) が実行される。
-    if (currentBanner !== null) {
-      setBannerToShow(currentBanner.banner)
-    }
-  }, [currentBanner])
+    (async () => {
+      if (currentBanner !== null) {
+
+        // すでにバナーが表示されていて、別のバナーを表示しようとするときは、バナーを閉じる。
+        if (bannerToShow !== null && currentBanner.key !== bannerToShow.key) {
+          setOpen(false)
+          await delay(theme.transitions.duration.standard) // TODO: Wait the transition well
+        }
+
+        setBannerToShow(currentBanner)
+        setOpen(true)
+      } else {
+        setOpen(false)
+        await delay(theme.transitions.duration.standard) // TODO: Wait the transition
+        setBannerToShow(null)
+      }
+    })()
+  }, [currentBanner, bannerToShow, theme])
 
   return (
     <Collapse
-      in={ currentBanner !== null }
+      in={ open }
       mountOnEnter
       unmountOnExit
-      onExited={ handleExited }
       classes={ {
         container: collapseContainerClassName,
       } }
     >
       <div>
-        { bannerToShow }
+        { bannerToShow?.banner }
         <Divider />
       </div>
     </Collapse>
