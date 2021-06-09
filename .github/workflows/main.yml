@@ -11,7 +11,8 @@ jobs:
       BASE_NAME: /rap
       GITHUB_API_URL: https://api.github.com
       USER_SERVICE_URL: http://localhost:14566 # TODO: Deploy a User Service
-      GTM_CONTAINER_ID: ''
+      GTM_URL: https://example.com
+      GTM_CONTAINER_ID: GTM-0000000
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -45,7 +46,9 @@ jobs:
       TZ: Asia/Tokyo # for snapshots
       BASE_NAME: ''
       GITHUB_API_URL: https://api.github.com
-      USER_SERVICE_URL: http://localhost:14566
+      USER_SERVICE_URL: http://example.com
+      GTM_URL: https://example.com
+      GTM_CONTAINER_ID: GTM-0000000
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
