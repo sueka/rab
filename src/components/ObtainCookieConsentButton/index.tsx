@@ -2,9 +2,11 @@ import Button from '@material-ui/core/Button'
 import { useInjection } from 'inversify-react'
 import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
+import { useRecoilValue } from 'recoil'
 import { v4 } from 'uuid'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
+import reloadNotToAcceptCookiesBannerKeyState from '~/atoms/reloadNotToAcceptCookiesBannerKeyState'
 import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import useBanner from '~/hooks/useBanner'
@@ -24,14 +26,18 @@ const ObtainCookieConsentButton: React.FC = () => {
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
   const gtm = useGtm()
   const banner = useBanner()
+  const reloadNotToAcceptCookiesBannerKey = useRecoilValue(reloadNotToAcceptCookiesBannerKeyState)
 
   const handleAgree = useCallback(() => {
     shouldBePresent(gtmContainerId)
 
+    // NOTE: 画面のちらつきを減らすために、裏にある方を先に隠す。
+    banner.hide({ key: reloadNotToAcceptCookiesBannerKey })
+
     banner.hide({ key: cookieDialogKey })
 
     gtm.install(gtmContainerId)
-  }, [banner, gtm, gtmContainerId])
+  }, [banner, reloadNotToAcceptCookiesBannerKey, gtm, gtmContainerId])
 
   const handleCancel = useCallback(() => {
     banner.hide({ key: cookieDialogKey })

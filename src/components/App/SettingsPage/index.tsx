@@ -12,12 +12,12 @@ import { useInjection } from 'inversify-react'
 import React, { useCallback, useContext } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { useRecoilState } from 'recoil'
-import { v4 } from 'uuid'
+import { useRecoilState, useRecoilValue } from 'recoil'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
 import darkState from '~/atoms/darkState'
+import reloadNotToAcceptCookiesBannerKeyState from '~/atoms/reloadNotToAcceptCookiesBannerKeyState'
 import Banner from '~/components/Banner'
 import obtainedCookieConsentBannerMessages from '~/components/ObtainCookieConsentBanner/messages' // TODO: Move
 import { createPage } from '~/components/PageTemplate'
@@ -27,15 +27,13 @@ import useBanner from '~/hooks/useBanner'
 import useGtm from '~/hooks/useGtm'
 import messages from './messages'
 
-const reloadBannerKey = v4()
-
-// NOTE: このコンポーネントがアンマウント、再マウントされても dismiss がうまく動くように、 `reloadBannerKey` をレンダリング間で共有している。
 const SettingsPage: React.FC = () => {
   const { formatMessage } = useIntl()
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
   const gtm = useGtm()
   const banner = useBanner()
+  const reloadNotToAcceptCookiesBannerKey = useRecoilValue(reloadNotToAcceptCookiesBannerKeyState)
 
   const [dark, setDark] = useRecoilState(darkState)
   const [cookieConsentObtained, setCookieConsentObtained] = useRecoilState(cookieConsentObtainedState)
@@ -52,8 +50,8 @@ const SettingsPage: React.FC = () => {
   }, [])
 
   const handleDontReload = useCallback(() => {
-    banner.hide({ key: reloadBannerKey })
-  }, [banner])
+    banner.hide({ key: reloadNotToAcceptCookiesBannerKey })
+  }, [banner, reloadNotToAcceptCookiesBannerKey])
 
   const handleAcceptCookiesChange = useCallback((_event, checked) => {
     setCookieConsentObtained(checked)
@@ -64,7 +62,7 @@ const SettingsPage: React.FC = () => {
       }
 
       banner.hide({
-        key: reloadBannerKey,
+        key: reloadNotToAcceptCookiesBannerKey,
         safe: true,
       })
     } else {
@@ -82,10 +80,10 @@ const SettingsPage: React.FC = () => {
           </Button>
         </> }
       />, {
-        key: reloadBannerKey,
+        key: reloadNotToAcceptCookiesBannerKey,
       })
     }
-  }, [gtm, gtmContainerId, banner, handleReload, handleDontReload])
+  }, [gtm, gtmContainerId, banner, handleReload, handleDontReload, reloadNotToAcceptCookiesBannerKey])
 
   return (
     <>
