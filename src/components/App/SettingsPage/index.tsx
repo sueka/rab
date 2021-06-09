@@ -85,7 +85,7 @@ const SettingsPage: React.FC = () => {
         key: reloadBannerKey,
       })
     }
-  }, [gtm, gtmContainerId, handleReload, handleDontReload])
+  }, [gtm, gtmContainerId, banner, handleReload, handleDontReload])
 
   return (
     <>
