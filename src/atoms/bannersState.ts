@@ -7,6 +7,7 @@ export type BannerElement = React.ReactElement<BannerProps, React.ComponentType<
 export interface Banner {
   banner: BannerElement
   key: string
+  replaceable: boolean
 }
 
 const bannersState = atom<Banner[]>({

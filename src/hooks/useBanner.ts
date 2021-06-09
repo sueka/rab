@@ -9,6 +9,7 @@ type BannerElement = React.ReactElement<BannerProps, React.ComponentType<BannerP
 
 interface ShowOptions {
   key?: string
+  replaceable?: boolean
 }
 
 interface HideOptions {
@@ -19,10 +20,12 @@ interface HideOptions {
 const useBanner = () => {
   const show = useRecoilCallback(({ set }) => (banner: BannerElement, options?: ShowOptions) => {
     const key = options?.key ?? v4()
+    const replaceable = options?.replaceable ?? false
 
     set(currentBannerState, {
       banner,
       key,
+      replaceable,
     })
 
     return key

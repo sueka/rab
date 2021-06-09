@@ -44,6 +44,7 @@ const ObtainCookieConsentButton: React.FC = () => {
       onCancel={ handleCancel }
     />, {
       key: cookieDialogKey,
+      replaceable: true,
     })
   }, [banner, handleAgree, handleCancel])
 
