@@ -7,7 +7,7 @@
   "src.components.App.InfoPage.info": "情報",
   "src.components.App.PaintPage.paint": "ペイント",
   "src.components.App.ReminderPage.reminder": "リマインダー",
-  "src.components.App.SettingsPage.aPageReloadIsRequiredForTheConfigurationChangesToTakeEffectDoYouWantToReloadThePageNow": "設定の変更を有効にするにはページをリロードする必要があります。ページをリロードしますか？",
+  "src.components.App.SettingsPage.aPageReloadIsRequiredForTheConfigurationChangesToTakeEffect": "設定の変更を有効にするにはページをリロードする必要があります。",
   "src.components.App.SettingsPage.acceptCookies": "クッキーを受け入れる",
   "src.components.App.SettingsPage.appearance": "外観",
   "src.components.App.SettingsPage.darkTheme": "ダークテーマ",

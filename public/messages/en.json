@@ -7,7 +7,7 @@
   "src.components.App.InfoPage.info": "Info",
   "src.components.App.PaintPage.paint": "Paint",
   "src.components.App.ReminderPage.reminder": "Reminder",
-  "src.components.App.SettingsPage.aPageReloadIsRequiredForTheConfigurationChangesToTakeEffectDoYouWantToReloadThePageNow": "A page reload is required for the configuration changes to take effect. Do you want to reload the page now?",
+  "src.components.App.SettingsPage.aPageReloadIsRequiredForTheConfigurationChangesToTakeEffect": "A page reload is required for the configuration changes to take effect.",
   "src.components.App.SettingsPage.acceptCookies": "Accept cookies",
   "src.components.App.SettingsPage.appearance": "Appearance",
   "src.components.App.SettingsPage.darkTheme": "Dark theme",

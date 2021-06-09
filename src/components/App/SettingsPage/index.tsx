@@ -72,7 +72,7 @@ const SettingsPage: React.FC = () => {
         leading={ <Avatar>
           <SecurityIcon />
         </Avatar> }
-        text={ <FormattedMessage { ...messages.aPageReloadIsRequiredForTheConfigurationChangesToTakeEffectDoYouWantToReloadThePageNow } /> }
+        text={ <FormattedMessage { ...messages.aPageReloadIsRequiredForTheConfigurationChangesToTakeEffect } /> }
         actions={ <>
           <Button variant="text" color="primary" onClick={ handleReload }>
             <FormattedMessage { ...messages.reload } />

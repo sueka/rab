@@ -7,7 +7,7 @@
   "src.components.App.InfoPage.info": "מידע",
   "src.components.App.PaintPage.paint": "צייר",
   "src.components.App.ReminderPage.reminder": "תזכורת",
-  "src.components.App.SettingsPage.aPageReloadIsRequiredForTheConfigurationChangesToTakeEffectDoYouWantToReloadThePageNow": "עליך לטעון מחדש את הדף כדי ששינויי התצורה ייכנסו לתוקף. האם אתה/את רוצה לטעון מחדש את הדף עכשיו?",
+  "src.components.App.SettingsPage.aPageReloadIsRequiredForTheConfigurationChangesToTakeEffect": "עליך לטעון מחדש את הדף כדי ששינויי התצורה ייכנסו לתוקף.",
   "src.components.App.SettingsPage.acceptCookies": "לקבל בעוגיות",
   "src.components.App.SettingsPage.appearance": "מראה",
   "src.components.App.SettingsPage.darkTheme": "נושא כהה",

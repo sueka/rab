@@ -6,7 +6,7 @@ export default defineMessages({
   darkTheme: 'Dark theme',
   securityAndPrivacy: 'Security and privacy',
   acceptCookies: 'Accept cookies',
-  aPageReloadIsRequiredForTheConfigurationChangesToTakeEffectDoYouWantToReloadThePageNow: 'A page reload is required for the configuration changes to take effect. Do you want to reload the page now?',
+  aPageReloadIsRequiredForTheConfigurationChangesToTakeEffect: 'A page reload is required for the configuration changes to take effect.',
   reload: 'Reload',
   dontReload: 'Don\'t reload',
 })
