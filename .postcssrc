@@ -1,7 +1,6 @@
 {
   "modules": true,
   "plugins": {
-    "autoprefixer": true,
     "postcss-css-variables": {
       "preserve": true
     },
@@ -9,7 +8,8 @@
       "stage": 4,
       "features": {
         "nesting-rules": true
-      }
+      },
+      "autoprefixer": {}
     }
   }
 }
