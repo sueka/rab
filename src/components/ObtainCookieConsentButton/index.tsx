@@ -4,10 +4,10 @@ import { useSnackbar } from 'notistack'
 import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilValue } from 'recoil'
-import { v4 } from 'uuid'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
+import cookieDialogKeyState from '~/atoms/cookieDialogKeyState'
 import reloadNotToAcceptCookiesBannerKeyState from '~/atoms/reloadNotToAcceptCookiesBannerKeyState'
 import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
 import ConfigRegistry from '~/config/ConfigRegistry'
@@ -15,9 +15,7 @@ import useBanner from '~/hooks/useBanner'
 import useGtm from '~/hooks/useGtm'
 import messages from './messages'
 
-const cookieDialogKey = v4()
-
-// NOTE: このコンポーネントがアンマウント、再マウントされても dismiss がうまく動くように、 `cookieDialogKey` をレンダリング間で共有している。これを解消するには `cookieDialogKey` を prop にする。
+// NOTE: このコンポーネントがアンマウント、再マウントされても dismiss がうまく動くように、 `cookieDialogKey` を Recoil 経由で共有している。これを解消するには、 `cookieDialogKey` を prop にするか、 <RecoilRoot> を分割する。
 /**
  * クッキーダイアログを表示するボタンを表現する.
  *
@@ -30,6 +28,7 @@ const ObtainCookieConsentButton: React.FC = () => {
   const banner = useBanner()
   const { enqueueSnackbar } = useSnackbar()
   const cookieConsentObtained = useRecoilValue(cookieConsentObtainedState)
+  const cookieDialogKey = useRecoilValue(cookieDialogKeyState)
   const reloadNotToAcceptCookiesBannerKey = useRecoilValue(reloadNotToAcceptCookiesBannerKeyState)
 
   const handleAgree = useCallback(() => {
@@ -44,11 +43,11 @@ const ObtainCookieConsentButton: React.FC = () => {
     banner.hide({ key: cookieDialogKey })
 
     gtm.install(gtmContainerId)
-  }, [banner, reloadNotToAcceptCookiesBannerKey, gtm, gtmContainerId])
+  }, [banner, reloadNotToAcceptCookiesBannerKey, cookieDialogKey, gtm, gtmContainerId])
 
   const handleCancel = useCallback(() => {
     banner.hide({ key: cookieDialogKey })
-  }, [banner])
+  }, [banner, cookieDialogKey])
 
   // NOTE: すでに表示されているバナーに `handleAgree` や `handleCancel` の変更を反映させるには、 useEffect 等を使って、 `handleAgree` や `handleCancel` が変更されるたびに、現在のバナーの `key` が `cookieDialogKey` と一致するかどうかを調べ、一致する場合は同じ `key` を使って `banner.show()` する。
   const handleClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(() => {
@@ -63,7 +62,7 @@ const ObtainCookieConsentButton: React.FC = () => {
     } else {
       enqueueSnackbar(<FormattedMessage { ...messages.youHaveAlreadyConsentedToUseCookies } />)
     }
-  }, [cookieConsentObtained, banner, handleAgree, handleCancel])
+  }, [cookieConsentObtained, banner, handleAgree, handleCancel, cookieDialogKey, enqueueSnackbar])
 
   return (
     <Button onClick={ handleClick }>

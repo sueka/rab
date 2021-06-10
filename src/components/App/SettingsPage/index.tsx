@@ -16,6 +16,7 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
+import cookieDialogKeyState from '~/atoms/cookieDialogKeyState'
 import darkState from '~/atoms/darkState'
 import reloadNotToAcceptCookiesBannerKeyState from '~/atoms/reloadNotToAcceptCookiesBannerKeyState'
 import Banner from '~/components/Banner'
@@ -33,6 +34,7 @@ const SettingsPage: React.FC = () => {
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
   const gtm = useGtm()
   const banner = useBanner()
+  const cookieDialogKey = useRecoilValue(cookieDialogKeyState)
   const reloadNotToAcceptCookiesBannerKey = useRecoilValue(reloadNotToAcceptCookiesBannerKeyState)
 
   const [dark, setDark] = useRecoilState(darkState)
@@ -62,6 +64,11 @@ const SettingsPage: React.FC = () => {
       }
 
       banner.hide({
+        key: cookieDialogKey,
+        safe: true,
+      })
+
+      banner.hide({
         key: reloadNotToAcceptCookiesBannerKey,
         safe: true,
       })
@@ -83,7 +90,7 @@ const SettingsPage: React.FC = () => {
         key: reloadNotToAcceptCookiesBannerKey,
       })
     }
-  }, [gtm, gtmContainerId, banner, handleReload, handleDontReload, reloadNotToAcceptCookiesBannerKey])
+  }, [gtm, gtmContainerId, banner, cookieDialogKey, reloadNotToAcceptCookiesBannerKey, handleReload, handleDontReload])
 
   return (
     <>
