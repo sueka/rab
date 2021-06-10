@@ -32,7 +32,10 @@ const ObtainCookieConsentButton: React.FC = () => {
     shouldBePresent(gtmContainerId)
 
     // NOTE: 画面のちらつきを減らすために、裏にある方を先に隠す。
-    banner.hide({ key: reloadNotToAcceptCookiesBannerKey })
+    banner.hide({
+      key: reloadNotToAcceptCookiesBannerKey,
+      safe: true,
+    })
 
     banner.hide({ key: cookieDialogKey })
 
