@@ -1,11 +1,13 @@
 import Button from '@material-ui/core/Button'
 import { useInjection } from 'inversify-react'
+import { useSnackbar } from 'notistack'
 import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilValue } from 'recoil'
 import { v4 } from 'uuid'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
+import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
 import reloadNotToAcceptCookiesBannerKeyState from '~/atoms/reloadNotToAcceptCookiesBannerKeyState'
 import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
 import ConfigRegistry from '~/config/ConfigRegistry'
@@ -26,6 +28,8 @@ const ObtainCookieConsentButton: React.FC = () => {
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
   const gtm = useGtm()
   const banner = useBanner()
+  const { enqueueSnackbar } = useSnackbar()
+  const cookieConsentObtained = useRecoilValue(cookieConsentObtainedState)
   const reloadNotToAcceptCookiesBannerKey = useRecoilValue(reloadNotToAcceptCookiesBannerKeyState)
 
   const handleAgree = useCallback(() => {
@@ -48,14 +52,18 @@ const ObtainCookieConsentButton: React.FC = () => {
 
   // NOTE: すでに表示されているバナーに `handleAgree` や `handleCancel` の変更を反映させるには、 useEffect 等を使って、 `handleAgree` や `handleCancel` が変更されるたびに、現在のバナーの `key` が `cookieDialogKey` と一致するかどうかを調べ、一致する場合は同じ `key` を使って `banner.show()` する。
   const handleClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(() => {
-    banner.show(<ObtainCookieConsentBanner
-      onAgree={ handleAgree }
-      onCancel={ handleCancel }
-    />, {
-      key: cookieDialogKey,
-      replaceable: true,
-    })
-  }, [banner, handleAgree, handleCancel])
+    if (!cookieConsentObtained) {
+      banner.show(<ObtainCookieConsentBanner
+        onAgree={ handleAgree }
+        onCancel={ handleCancel }
+      />, {
+        key: cookieDialogKey,
+        replaceable: true,
+      })
+    } else {
+      enqueueSnackbar(<FormattedMessage { ...messages.youHaveAlreadyConsentedToUseCookies } />)
+    }
+  }, [cookieConsentObtained, banner, handleAgree, handleCancel])
 
   return (
     <Button onClick={ handleClick }>

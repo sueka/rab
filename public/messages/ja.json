@@ -40,6 +40,7 @@
   "src.components.ObtainCookieConsentBanner.cancel": "キャンセル",
   "src.components.ObtainCookieConsentBanner.weUseCookiesToAnalyzeOurTraffic": "クッキーを使ってトラフィックを分析します。",
   "src.components.ObtainCookieConsentButton.consentToUseCookies": "クッキーの使用に同意…",
+  "src.components.ObtainCookieConsentButton.youHaveAlreadyConsentedToUseCookies": "すでにクッキーの使用に同意されています。",
   "src.components.PageTemplate.Nav.apps": "アプリ",
   "src.components.PageTemplate.Nav.chess": "チェス",
   "src.components.PageTemplate.Nav.clock": "時計",

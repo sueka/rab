@@ -40,6 +40,7 @@
   "src.components.ObtainCookieConsentBanner.cancel": "לבטל",
   "src.components.ObtainCookieConsentBanner.weUseCookiesToAnalyzeOurTraffic": "אנו משתמשים בעוגיות לניתוח התעבורה שלנו.",
   "src.components.ObtainCookieConsentButton.consentToUseCookies": "להסכים להשתמש בעוגיות…",
+  "src.components.ObtainCookieConsentButton.youHaveAlreadyConsentedToUseCookies": "הסכמת כבר להשתמש בעוגיות.",
   "src.components.PageTemplate.Nav.apps": "יישומים",
   "src.components.PageTemplate.Nav.chess": "שחמט",
   "src.components.PageTemplate.Nav.clock": "שעון",

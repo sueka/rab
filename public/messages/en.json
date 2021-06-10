@@ -40,6 +40,7 @@
   "src.components.ObtainCookieConsentBanner.cancel": "Cancel",
   "src.components.ObtainCookieConsentBanner.weUseCookiesToAnalyzeOurTraffic": "We use cookies to analyze our traffic.",
   "src.components.ObtainCookieConsentButton.consentToUseCookies": "Consent to use cookies…",
+  "src.components.ObtainCookieConsentButton.youHaveAlreadyConsentedToUseCookies": "You have already consented to use cookies.",
   "src.components.PageTemplate.Nav.apps": "Apps",
   "src.components.PageTemplate.Nav.chess": "Chess",
   "src.components.PageTemplate.Nav.clock": "Clock",
