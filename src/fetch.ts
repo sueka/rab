@@ -1,5 +1,5 @@
 /**
- * src/lib/fetch.ts
+ * src/fetch.ts
  */
 
 import mapValues from './extensions/Record/mapValues'
