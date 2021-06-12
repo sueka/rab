@@ -1,5 +1,5 @@
 module.exports = {
-  moduleFileExtensions: ['ts', 'tsx', 'js'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'wasm'],
   moduleNameMapper: {
     '\\.css$': 'identity-obj-proxy',
     '^~/(.*)': '<rootDir>/src/$1',
@@ -11,6 +11,9 @@ module.exports = {
     '^react-dnd-touch-backend$': 'react-dnd-touch-backend/dist/cjs',
     '^react-dnd-test-backend$': 'react-dnd-test-backend/dist/cjs',
     '^react-dnd-test-utils$': 'react-dnd-test-utils/dist/cjs',
+
+    // wasm-pack
+    '^(.*)/(.*)\\.wasm$': '$1/../__mocks__/$2_mock.ts',
   },
   modulePathIgnorePatterns: [
     '^<rootDir>/src/.*\\.css\\.d\\.ts$',

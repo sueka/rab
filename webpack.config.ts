@@ -1,3 +1,4 @@
+import WasmPackPlugin from '@wasm-tool/wasm-pack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import * as dotenv from 'dotenv'
 import DotEnvPlugin from 'dotenv-webpack'
@@ -107,11 +108,18 @@ const config: Configuration = {
       maxSize: 1048576,
     },
   },
+  experiments: {
+    asyncWebAssembly: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html'),
       base: `${ process.env.BASE_NAME }/`,
       inject: 'head',
+    }),
+    new WasmPackPlugin({
+      crateDirectory: path.join(__dirname, 'src/crate'),
+      forceMode: env,
     }),
     new DotEnvPlugin({
       path: path.resolve(__dirname, '.env'),

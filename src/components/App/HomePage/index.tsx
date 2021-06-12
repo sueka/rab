@@ -2,7 +2,7 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 import { useInjection } from 'inversify-react'
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedNumber, useIntl } from 'react-intl'
 
@@ -15,6 +15,8 @@ import Today from '~/components/Today'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import messages from './messages'
 
+const crateImport = import('~/crate/pkg')
+
 const HomePage: React.FC = () => {
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
@@ -24,6 +26,15 @@ const HomePage: React.FC = () => {
 
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     setText(event.target.value)
+  }, [])
+
+  useEffect(() => {
+    // tslint:disable-next-line:semicolon
+    ;(async () => {
+      const { add } = await crateImport
+
+      console.log(add(1, 1)) // tslint:disable-line:no-console
+    })()
   }, [])
 
   return (

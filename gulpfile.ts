@@ -2,7 +2,7 @@ import { ChildProcess, spawn } from 'child_process'
 import del from 'del'
 import { TaskFunction, Globs, parallel, series, watch } from 'gulp'
 
-const ignored = ['.cache', 'coverage', 'dist', 'doc', '**/*.js{,x}', '!babel.config.js', '!jest.config.js', '!typedoc.js']
+const ignored = ['.cache', 'coverage', 'dist', 'doc', 'src/crate/{pkg,target}', '**/*.js{,x}', '!babel.config.js', '!jest.config.js', '!typedoc.js']
 
 //
 //   _|                          _|
