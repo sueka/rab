@@ -2,7 +2,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   moduleNameMapper: {
     '\\.css$': 'identity-obj-proxy',
-    '~/(.*)': '<rootDir>/src/$1',
+    '^~/(.*)': '<rootDir>/src/$1',
 
     // cf. http://react-dnd.github.io/react-dnd/docs/testing#setup
     '^dnd-core$': 'dnd-core/dist/cjs',
