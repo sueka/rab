@@ -26,6 +26,7 @@ import ConfigRegistry from '~/config/ConfigRegistry'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
 import useBanner from '~/hooks/useBanner'
 import useGtm from '~/hooks/useGtm'
+import classes from './classes.css'
 import messages from './messages'
 
 const SettingsPage: React.FC = () => {
@@ -102,7 +103,11 @@ const SettingsPage: React.FC = () => {
               <FormattedMessage { ...messages.appearance } />
             </ListSubheader> }
           >
-            <ListItem>
+            <ListItem
+              classes={ {
+                secondaryAction: classes.ListItemSecondaryActionIsSwitch,
+              } }
+            >
               <ListItemText primary={ <FormattedMessage { ...messages.darkTheme } /> } />
               <ListItemSecondaryAction>
                 <Switch checked={ dark ?? defaultDark } onChange={ handleDarkThemeChange } />
@@ -116,7 +121,11 @@ const SettingsPage: React.FC = () => {
               <FormattedMessage { ...messages.securityAndPrivacy } />
             </ListSubheader> }
           >
-            <ListItem>
+            <ListItem
+              classes={ {
+                secondaryAction: classes.ListItemSecondaryActionIsSwitch,
+              } }
+            >
               <ListItemText
                 primary={ <FormattedMessage { ...messages.acceptCookies } /> }
                 secondary={ <FormattedMessage { ...obtainedCookieConsentBannerMessages.weUseCookiesToAnalyzeOurTraffic } /> }

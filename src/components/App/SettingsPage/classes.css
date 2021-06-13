@@ -1,0 +1,3 @@
+.ListItemSecondaryActionIsSwitch {
+  padding-right: 64px; /* 元々の値 (48px) + Switch の幅 (58px) - Checkbox の幅 (42px) */
+}
