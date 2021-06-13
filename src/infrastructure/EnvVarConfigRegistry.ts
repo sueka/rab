@@ -17,7 +17,7 @@ export default class EnvVarConfigRegistry implements ConfigRegistry {
   }
 
   /**
-   * @throws [[Error]] if not found.
+   * @throws `Error` if not found.
    */
   public get<T extends ConfigKey>(name: T) {
     return this.configMap[name]

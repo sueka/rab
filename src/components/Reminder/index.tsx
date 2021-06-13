@@ -33,7 +33,7 @@ type Props =
   & DispatchProps
 
 /**
- * @throws [[Error]] if {input} is nullish.
+ * @throws `Error` if {input} is nullish.
  */
 const validate = asObject((input) => ({
   content: leftOnly(asBoundedLengthString({ upperBound: 140 }))(input.content),

@@ -2,7 +2,7 @@ import UnreachableError from '~/errors/UnreachableError'
 import typed from '~/typed'
 
 /**
- * @throws [[TypeError]] if the size of `xs` is less than two.
+ * @throws `TypeError` if the size of `xs` is less than two.
  *
  * @example
  * ``` ts

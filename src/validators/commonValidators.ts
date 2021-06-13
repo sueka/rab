@@ -9,11 +9,11 @@ import typed from '~/typed'
 
 /**
  * @callback Validator
- * @throws [[Error]] if the validation fails.
+ * @throws `Error` if the validation fails.
  */
 
 /**
- * @param asT [[Validator]]
+ * @param asT {Validator}
  * @nothrow
  */
 export const failSafe = <A extends unknown, T extends A>(asT: (input: A) => T) => (input: A): Either<Error, T> => {
@@ -115,12 +115,12 @@ export function asUnionOf<T extends readonly unknown[]>(...options: T) {
  * Ascribe the given JSON object to a specific type.
  *
  * @callback ObjectTyper
- * @throws [[Error]] if `input` is invalid as `T`.
+ * @throws `Error` if `input` is invalid as `T`.
  */
 
 /**
  * @param className name of {T} with indefinite article
- * @param asT [[ObjectTyper]]
+ * @param asT {ObjectTyper}
  */
 export const asObject = <T>(asT: (input: any) => T) => (input: unknown): T => { // tslint:disable-line:no-any
   if (input == null) {
