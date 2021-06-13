@@ -1,4 +1,4 @@
-import indexBg from '../pkg/index_bg.wasm'
+import indexBg from '../pkg/index_bg.wasm' // tslint:disable-line:no-relative-imports
 
 const indexBgMock: typeof indexBg = {
   add: jest.fn(),

@@ -1,3 +1,4 @@
+import WasmPackPlugin from '@wasm-tool/wasm-pack-plugin'
 import * as path from 'path'
 import { HotModuleReplacementPlugin } from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
@@ -12,11 +13,11 @@ declare global {
   }
 }
 
-if (process.env.NODE_ENV === 'test') {
+const env = process.env.NODE_ENV
+
+if (env === 'test') {
   throw new Error //
 }
-
-config.mode = process.env.NODE_ENV ?? config.mode
 
 const host = '0.0.0.0'
 const port = 1234
@@ -52,7 +53,13 @@ if (process.env.NODE_ENV === 'development') {
     config.entry,
   ]
 
-  config.plugins.push(new HotModuleReplacementPlugin())
+  config.plugins.push(
+    new HotModuleReplacementPlugin(),
+    new WasmPackPlugin({
+      crateDirectory: path.join(__dirname, 'src/crate'),
+      forceMode: env,
+    })
+  )
 
   config.devServer.hotOnly = true
 }

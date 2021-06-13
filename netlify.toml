@@ -1,5 +1,9 @@
 [build]
-  command = "npm run build"
+  command = """\
+  curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh && \
+  wasm-pack build src/crate && \
+  npm run build \
+  """
   publish = "dist/"
 
 [build.environment]
