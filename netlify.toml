@@ -2,7 +2,7 @@
   command = """\
   rustup toolchain install stable && \
   curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh && \
-  wasm-pack build src/crate && \
+  wasm-pack build --out-name index src/crate && \
   npm run build \
   """
   publish = "dist/"
