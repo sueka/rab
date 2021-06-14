@@ -93,7 +93,7 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
             <FormattedMessage { ...messages.home } />
           </ListItemText>
         </ListItemLink>
-        <ListSubheader>
+        <ListSubheader disableSticky>
           <FormattedMessage { ...messages.components } />
         </ListSubheader>
         <ListItemLink to="/form-controls" onClick={ onClose }>
@@ -104,7 +104,7 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
             <FormattedMessage { ...messages.formControls } />
           </ListItemText>
         </ListItemLink>
-        <ListSubheader>
+        <ListSubheader disableSticky>
           <FormattedMessage { ...messages.apps } />
         </ListSubheader>
         <ListItemLink to="/chess" onClick={ onClose }>
