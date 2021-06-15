@@ -33,7 +33,7 @@ export default function createProvider<S, A extends Action>(history: History, re
     private store: Store<S, A>
 
     // NOTE: https://github.com/DefinitelyTyped/DefinitelyTyped/blob/826ce0f1ce1d1887d199986283630d6f63075ad5/types/react/index.d.ts#L419 にも関わらず、初期化されていない state は null であるため、初期化を強制するためにプロパティ宣言を行う。
-    public state: Readonly<State> = {
+    public override state: Readonly<State> = {
       hasError: false,
     }
 
@@ -77,7 +77,7 @@ export default function createProvider<S, A extends Action>(history: History, re
       })
     }
 
-    public render() {
+    public override render() {
       const { renderError, children } = this.props
       const { hasError, error, cause } = this.state
 

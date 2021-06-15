@@ -1,5 +1,5 @@
 export default abstract class AbstractError extends Error {
-  constructor(public message = '') {
+  constructor(public override message = '') {
     super(message)
 
     this.name = new.target.name

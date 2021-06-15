@@ -128,7 +128,7 @@ class NoAnyResponse extends Response {
     super(null, response)
   }
 
-  public async json() {
+  public override async json() {
     return toJson(await this.response.json())
   }
 }

@@ -10,7 +10,7 @@ export default class Notification
     this._timestamp = new Date().getTime()
   }
 
-  public get timestamp() {
+  public override get timestamp() {
     return this._timestamp
   }
 }

@@ -17,7 +17,7 @@ const RouterLinkWithRef = React.forwardRef<HTMLAnchorElement, RouterLinkProps>((
 ))
 
 export default class Link extends React.Component<Props> {
-  public render() {
+  public override render() {
     const { color, ...restProps } = this.props
 
     if (!isTypographyColor(color)) {

@@ -22,7 +22,7 @@ interface State {
 class Info extends React.Component<Props, State> {
   @resolve('GetRepo') private readonly getRepo!: GetRepo
 
-  public state: Readonly<State> = {
+  public override state: Readonly<State> = {
     successful: true,
     fetching: false,
   }
@@ -97,7 +97,7 @@ class Info extends React.Component<Props, State> {
     return <Link href={ repo.right.html_url }>{ repo.right.full_name }</Link>
   }
 
-  public render() {
+  public override render() {
     return (
       <>
         <Button onClick={ this.handleClick } disabled={ this.state.fetching } variant="contained" color="secondary">

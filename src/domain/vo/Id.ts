@@ -14,7 +14,7 @@ export default class Id extends ValueObject<string> {
     return this.value
   }
 
-  protected checkInvariant() {
+  protected override checkInvariant() {
     return seemsLikeUuid(this.value)
   }
 

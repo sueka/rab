@@ -19,14 +19,14 @@ class SmellPoint extends Point {}
 // tslint:disable-next-line:max-classes-per-file
 class ColoredPoint extends Point {
   constructor(
-    public x: number,
-    public y: number,
+    public override x: number,
+    public override y: number,
     public color: Color
   ) {
     super(x, y)
   }
 
-  public hashCode() {
+  public override hashCode() {
     return [this.x, this.y, this.color].hashCode()
   }
 }
