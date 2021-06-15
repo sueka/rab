@@ -13,6 +13,7 @@ import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import useBanner from '~/hooks/useBanner'
 import useGtm from '~/hooks/useGtm'
+import currentBannerState from '~/selectors/currentBannerState'
 import messages from './messages'
 
 // NOTE: このコンポーネントがアンマウント、再マウントされても dismiss がうまく動くように、 `cookieDialogKey` を Recoil 経由で共有している。これを解消するには、 `cookieDialogKey` を prop にするか、 <RecoilRoot> を分割する。
@@ -29,6 +30,7 @@ const ObtainCookieConsentButton: React.FC = () => {
   const { enqueueSnackbar } = useSnackbar()
   const cookieConsentObtained = useRecoilValue(cookieConsentObtainedState)
   const cookieDialogKey = useRecoilValue(cookieDialogKeyState)
+  const currentBanner = useRecoilValue(currentBannerState)
   const reloadNotToAcceptCookiesBannerKey = useRecoilValue(reloadNotToAcceptCookiesBannerKeyState)
 
   const handleAgree = useCallback(() => {
@@ -65,7 +67,7 @@ const ObtainCookieConsentButton: React.FC = () => {
   }, [cookieConsentObtained, banner, handleAgree, handleCancel, cookieDialogKey, enqueueSnackbar])
 
   return (
-    <Button onClick={ handleClick }>
+    <Button onClick={ handleClick } disabled={ currentBanner?.key === cookieDialogKey }>
       <FormattedMessage { ...messages.consentToUseCookies } />
     </Button>
   )
