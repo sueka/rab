@@ -69,7 +69,7 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
   const { formatMessage } = useIntl()
 
   const errors = useMemo(() => validate(value), [value, validate])
-  const hasError = useMemo(() => Object.values(errors).some((error) => error !== undefined), [errors])
+  const hasError = useMemo(() => Object.values<Error | undefined>(errors).some((error) => error !== undefined), [errors]) // TODO: Remove the type annotation
 
   const helperText = useMemo(() => {
     if (errors.content === undefined) {
