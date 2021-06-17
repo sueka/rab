@@ -104,7 +104,7 @@ const config: Configuration = {
     ],
     splitChunks: {
       chunks: 'all',
-      maxSize: 1048576,
+      maxSize: 249856,
     },
   },
   experiments: {
