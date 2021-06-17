@@ -57,6 +57,7 @@ if (process.env.NODE_ENV === 'development') {
     new HotModuleReplacementPlugin(),
     new WasmPackPlugin({
       crateDirectory: path.join(__dirname, 'src/crate'),
+      outDir: path.join(__dirname, 'src/crate'),
       forceMode: env,
     })
   )
