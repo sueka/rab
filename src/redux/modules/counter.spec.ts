@@ -54,7 +54,7 @@ describe('action creators', () => {
 describe('CounterService', () => {
   const counterService = container.resolve(CounterService)
 
-  test('incrementIfOddSaga', () => {
+  describe('incrementIfOddSaga', () => {
     describe('with odd value', () => {
       const it = counterService.incrementIfOddSaga()
 

@@ -30,4 +30,5 @@ module.exports = {
     '!<rootDir>/src/components/**/messages.ts',
     '!<rootDir>/src/components/**/messages.ts',
   ],
+  testEnvironment: 'jsdom',
 }
