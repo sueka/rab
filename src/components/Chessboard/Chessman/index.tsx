@@ -1,7 +1,7 @@
 import { Theme, makeStyles } from '@material-ui/core/styles'
 import classnames from 'classnames'
 import React, { useCallback, useContext, useMemo } from 'react'
-import { DragObjectWithType, useDrag } from 'react-dnd'
+import { useDrag } from 'react-dnd'
 
 import ChessContext from '~/contexts/ChessContext'
 import equalsChessCoordinates from '~/extensions/Eq/equalsChessCoordinates'
@@ -37,15 +37,15 @@ const Chessman: React.FC<Props> = ({ chessman, coord }) => {
   const { picking, pickChessman } = useContext(ChessContext)
   const jssClasses = useStyles()
 
-  const [{ dragging }, drag, preview] = useDrag<DragObjectWithType, unknown, CollectedProps>({
-    item: {
-      type: 'Chessman',
-    },
+  const [{ dragging }, drag, preview] = useDrag<{}, unknown, CollectedProps>({
+    type: 'Chessman',
     collect: (monitor) => ({
       dragging: monitor.isDragging(),
     }),
-    begin() {
+    item() {
       pickChessman?.(chessman, coord)
+
+      return {} // NOTE: return 無しだと drag がキャンセルされる。
     },
   })
 

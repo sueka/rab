@@ -8,7 +8,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import DragHandleIcon from '@material-ui/icons/DragHandle'
 import classnames from 'classnames'
 import React, { useCallback, useMemo } from 'react'
-import { DragObjectWithType, useDrag } from 'react-dnd'
+import { useDrag } from 'react-dnd'
 import { useIntl } from 'react-intl'
 
 import Task, { TaskParams } from '~/domain/entity/Task'
@@ -28,15 +28,15 @@ interface CollectedProps {
   dragging: boolean
 }
 
-export interface DragObject extends DragObjectWithType {
+export interface DragObject {
   value: Task
   index: number
 }
 
 const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, validate }) => {
   const [{ dragging }, drag, preview] = useDrag<DragObject, unknown, CollectedProps>({
+    type: 'TaskListItem',
     item: {
-      type: 'TaskListItem',
       value,
       index,
     },

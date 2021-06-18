@@ -1,7 +1,7 @@
 import { Theme, makeStyles } from '@material-ui/core/styles'
 import classnames from 'classnames'
 import React, { useCallback, useContext, useMemo } from 'react'
-import { DragObjectWithType, useDrop } from 'react-dnd'
+import { useDrop } from 'react-dnd'
 
 import { Props as ChessmanProps } from '~/components/Chessboard/Chessman'
 import ChessContext from '~/contexts/ChessContext'
@@ -35,7 +35,7 @@ const Square: React.FC<Props> = ({ children, coord }: Props) => {
 
   const attacked = useMemo(() => targets?.some((target) => equalsChessCoordinates(coord, target)) ?? false, [coord, targets])
 
-  const [, drop] = useDrop<DragObjectWithType, unknown, unknown>({
+  const [, drop] = useDrop<{}, unknown, unknown>({
     accept: 'Chessman',
     drop() {
       if (picking != null) {
