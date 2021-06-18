@@ -106,10 +106,7 @@ export default class UserAuthnService {
   ) {}
 
   public /* for testing */ *redirectToGitHub(): SagaIterator {
-    yield call( // NOTE: Supports IE 11. See also https://github.com/redux-saga/redux-saga/issues/2076
-      (...args: Parameters<typeof globalThis.location.assign>) => globalThis.location.assign(...args),
-      typed<[string]>`${ this.config.get('USER_SERVICE_URL') }/redirect-to-github`
-    )
+    yield call(globalThis.location.assign, typed<[string]>`${ this.config.get('USER_SERVICE_URL') }/redirect-to-github`)
   }
 
   public *rootSaga(): SagaIterator {

@@ -23,6 +23,12 @@ module.exports = (api) => {
           loose: true,
         },
       ],
+      // [
+      //   '@babel/plugin-proposal-private-methods',
+      //   {
+      //     loose: true,
+      //   },
+      // ],
       '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-proposal-nullish-coalescing-operator',
       'react-intl-auto',

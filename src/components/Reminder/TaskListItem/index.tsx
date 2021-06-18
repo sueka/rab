@@ -76,7 +76,6 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
       return null
     }
 
-    // TODO: Support IE
     const result = /.* is not between -Infinity and (?<upperBound>\d+) characters\./.exec(errors.content.message)
 
     if (result !== null && result.groups?.upperBound !== undefined) {

@@ -30,7 +30,6 @@
       "@material-ui/icons",
       "@material-ui/lab",
       "fp-ts/lib/Either",
-      "react-app-polyfill/ie11",
       "react-app-polyfill/stable",
       "react-hot-loader/root",
       "redux-saga/effects",

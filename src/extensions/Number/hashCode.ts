@@ -10,7 +10,7 @@ export default function hashCode(x: number) {
 function doubleToLongBits(value: number): JSBI {
   const ab = new ArrayBuffer(8)
   const doubleContainer = new Float64Array(ab, 0, 1)
-  const uintContainer = new Uint32Array(ab, 0, 2) // NOTE: IE does not support BigUint64Array
+  const uintContainer = new Uint32Array(ab, 0, 2)
 
   doubleContainer[0] = value // tslint:disable-line:no-object-mutation
 
