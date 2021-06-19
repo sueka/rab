@@ -12,18 +12,18 @@ import { useInjection } from 'inversify-react'
 import React, { useCallback, useContext } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
-import cookieDialogKeyState from '~/atoms/cookieDialogKeyState'
 import darkState from '~/atoms/darkState'
-import reloadNotToAcceptCookiesBannerKeyState from '~/atoms/reloadNotToAcceptCookiesBannerKeyState'
 import Banner from '~/components/Banner'
 import obtainedCookieConsentBannerMessages from '~/components/ObtainCookieConsentBanner/messages' // TODO: Move
 import { createPage } from '~/components/PageTemplate'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
+import cookieDialogKey from '~/globalVariables/cookieDialogKey'
+import reloadNotToAcceptCookiesBannerKey from '~/globalVariables/reloadNotToAcceptCookiesBannerKey'
 import useBanner from '~/hooks/useBanner'
 import useGtm from '~/hooks/useGtm'
 import classes from './classes.css'
@@ -35,8 +35,6 @@ const SettingsPage: React.FC = () => {
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
   const gtm = useGtm()
   const banner = useBanner()
-  const cookieDialogKey = useRecoilValue(cookieDialogKeyState)
-  const reloadNotToAcceptCookiesBannerKey = useRecoilValue(reloadNotToAcceptCookiesBannerKeyState)
 
   const [dark, setDark] = useRecoilState(darkState)
   const [cookieConsentObtained, setCookieConsentObtained] = useRecoilState(cookieConsentObtainedState)
@@ -54,7 +52,7 @@ const SettingsPage: React.FC = () => {
 
   const handleDontReload = useCallback(() => {
     banner.hide({ key: reloadNotToAcceptCookiesBannerKey })
-  }, [banner, reloadNotToAcceptCookiesBannerKey])
+  }, [banner])
 
   const handleAcceptCookiesChange = useCallback((_event, checked) => {
     setCookieConsentObtained(checked)
@@ -91,7 +89,7 @@ const SettingsPage: React.FC = () => {
         key: reloadNotToAcceptCookiesBannerKey,
       })
     }
-  }, [gtm, gtmContainerId, banner, cookieDialogKey, reloadNotToAcceptCookiesBannerKey, handleReload, handleDontReload])
+  }, [gtm, gtmContainerId, banner, handleReload, handleDontReload])
 
   return (
     <>
