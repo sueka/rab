@@ -2,8 +2,27 @@ import { ChildProcess, spawn } from 'child_process'
 import del from 'del'
 import { TaskFunction, Globs, parallel, series, watch } from 'gulp'
 
-const ignored = ['.cache', 'coverage', 'dist', 'doc', 'src/crate/{pkg,target}', '**/*.js{,x}', '!babel.config.js', '!jest.config.js', '!typedoc.js']
-const ghPagesIgnored = ['dist', '**/*.js{,x}'].map((path) => `gh-pages/${ path }`)
+// .gitignore
+const ignored = [
+  'node_modules/',
+  'dist/',
+  '.env',
+  '**/*.js{,x}',
+  '!babel.config.js',
+  'coverage/',
+  '!jest.config.js',
+  'doc/',
+  '!typedoc.js',
+  'src/crate/pkg/',
+  'src/crate/target/',
+  '.cache/',
+]
+
+// gh-pages/.gitignore
+const ghPagesIgnored = [
+  'dist/',
+  '**/*.js{,x}',
+].map((path) => `gh-pages/${ path }`)
 
 //
 //   _|                          _|
