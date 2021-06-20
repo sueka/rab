@@ -3,6 +3,7 @@ import del from 'del'
 import { TaskFunction, Globs, parallel, series, watch } from 'gulp'
 
 const ignored = ['.cache', 'coverage', 'dist', 'doc', 'src/crate/{pkg,target}', '**/*.js{,x}', '!babel.config.js', '!jest.config.js', '!typedoc.js']
+const ghPagesIgnored = ['dist', '**/*.js{,x}'].map((path) => `gh-pages/${ path }`)
 
 //
 //   _|                          _|
@@ -15,7 +16,7 @@ const ignored = ['.cache', 'coverage', 'dist', 'doc', 'src/crate/{pkg,target}', 
 
 export const clean: TaskFunction = describedTask(
   'Remove all files that neither are tracked by Git, are in node_modules/ nor are .env`',
-  () => del([...ignored, '!node_modules/**', '!.env'])
+  () => del([...ignored, ...ghPagesIgnored, '!node_modules/**', '!.env'])
 )
 
 export const extractMessages = npxTask('extract-messages', ['--flat', '--default-locale=en', '--locales=en,he,ja', '--output=public/messages', 'src/**/messages.ts'])
