@@ -152,7 +152,7 @@ containerImport.then(({ default: container }) => {
   ReactDOM.render(
     <Main
       container={ container }
-      baseUrl={ typed<[string, string]>`${ globalThis.location.origin }${ typed<[string]>`${ process.env.BASE_NAME }/` ?? '' }` }
+      baseUrl={ typed<[string, string]>`${ globalThis.location.origin }${ process.env.BASE_NAME !== undefined ? typed<[string]>`${ process.env.BASE_NAME }/` : '' }` }
     />,
     document.getElementById('root')
   )
