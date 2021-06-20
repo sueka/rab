@@ -1,5 +1,8 @@
 [build]
-  command = "npm run build"
+  command = """\
+  rustup toolchain install stable && \
+  npm run build \
+  """
   publish = "dist/"
 
 [build.environment]
