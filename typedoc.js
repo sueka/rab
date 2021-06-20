@@ -6,7 +6,7 @@ module.exports = {
   listInvalidSymbolLinks: true,
   excludeExternals: true,
   exclude: [
-    '**/{*.,}{test,spec}.ts{x,}',
+    '**/{*.,}{test,spec}.ts{,x}',
     '**/__mocks__/**/*',
     'src/components/**/messages.ts',
   ],

@@ -28,7 +28,7 @@ module.exports = {
   ],
   testRegex: 'src/.*\\b(?:test|spec)\\.tsx?$',
   collectCoverageFrom: [
-    '<rootDir>/src/**/*.ts{x,}',
+    '<rootDir>/src/**/*.ts{,x}',
     '!<rootDir>/src/components/**/messages.ts',
     '!<rootDir>/src/components/**/messages.ts',
   ],
