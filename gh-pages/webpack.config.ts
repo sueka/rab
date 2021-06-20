@@ -34,6 +34,7 @@ const config: Configuration = {
     }),
     new DotEnvPlugin({
       path: path.resolve(__dirname, '../.env'),
+      allowEmptyValues: true,
       safe: true,
       systemvars: true,
     }),
