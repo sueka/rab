@@ -38,6 +38,7 @@ export const clean: TaskFunction = describedTask(
   () => del([...ignored, ...ghPagesIgnored, '!node_modules/**', '!.env'])
 )
 
+const wasmPack = npxTask('wasm-pack', ['build', '--out-name', 'index', 'src/crate']) // TODO
 export const extractMessages = npxTask('extract-messages', ['--flat', '--default-locale=en', '--locales=en,he,ja', '--output=public/messages', 'src/**/messages.ts'])
 export const tcm = series(npxTask('tcm', ['src', '-s']), () => del('src/classes.css.d.ts'))
 const typeCheck = npxTask('tsc', ['--noEmit', '-p', './tsconfig.prod.json'])
@@ -46,23 +47,26 @@ const eslint = npxTask('eslint', ['--ext', '.ts, .tsx', 'src'])
 const tslint = npxTask('tslint', ['-p', '.'])
 const stylelint = npxTask('stylelint', ['src/**/*.css'])
 export const lint = parallel(eslint, tslint, stylelint)
-const testWithoutCoverage = parallel(typeCheckForDevelopment, npxTask('jest'))
-const testWithCoverage = parallel(typeCheckForDevelopment, npxTask('jest', ['--coverage']))
+const testWithoutCoverage = series(wasmPack, parallel(typeCheckForDevelopment, npxTask('jest')))
+const testWithCoverage = series(wasmPack, parallel(typeCheckForDevelopment, npxTask('jest', ['--coverage'])))
 
 export const testInWatchMode = series(
   parallel(extractMessages, tcm), // TODO: interrupt に差し込む
   npxTask('jest', ['--onlyChanged', '--watch'])
 )
 
-export const updateSnapshots = parallel(typeCheckForDevelopment, npxTask('jest', ['--updateSnapshot']))
+export const updateSnapshots = series(wasmPack, parallel(typeCheckForDevelopment, npxTask('jest', ['--updateSnapshot'])))
 export const test = testWithCoverage
-export const build = parallel(typeCheck, series(() => del(['dist/**/*']), npxTask('webpack', ['--config', 'webpack.config.ts'])))
+export const build = series(wasmPack, parallel(typeCheck, series(() => del(['dist/**/*']), npxTask('webpack', ['--config', 'webpack.config.ts']))))
 
 export const buildGhPagesCustom404Page = parallel(typeCheck, series(() => del(['gh-pages/dist/**/*']), npxTask('webpack', ['--config', 'gh-pages/webpack.config.ts'])))
-export const document = npxTask('typedoc')
+export const document = series(wasmPack, npxTask('typedoc'))
 
 export const develop = series(
-  parallel(extractMessages, tcm), // TODO: interrupt に差し込む
+  parallel(
+    extractMessages, tcm, // TODO: interrupt に差し込む
+    wasmPack
+  ),
   parallel(
     continuousTask('src', typeCheck),
     continuousTask('src', lint),
