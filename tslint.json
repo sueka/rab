@@ -72,7 +72,8 @@
         "named-imports-order": "lowercase-last",
         "grouped-imports": true,
         "groups": [
-          "^(?:element-qsa-scope$|react-app-polyfill\/)", // polyfill imports
+          "^(?:element-qsa-scope|react-app-polyfill/.+)$", // third-party polyfill imports
+          "^~/polyfills/SpeechRecognition(?:\\.ts)?$", // first-party polyfill imports
           "^(?!\\.|~)", // third-party
           "^(?!\\.\\.)" // first-party w/o ancestor imports
           // ancestor imports

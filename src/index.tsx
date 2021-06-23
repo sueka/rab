@@ -3,6 +3,8 @@
 import 'element-qsa-scope'
 import 'react-app-polyfill/stable'
 
+import '~/polyfills/SpeechRecognition.ts'
+
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { StylesProvider, jssPreset } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -32,7 +34,6 @@ import createProvider, { Props as ProviderProps } from '~/createProvider'
 import '~/extensions/Boolean/Boolean.prototype.hashCode'
 import '~/extensions/Number/Number.prototype.hashCode'
 import '~/extensions/String/String.prototype.hashCode'
-import '~/polyfills/SpeechRecognition'
 import Service, { Action, State, createReducer, invariant } from '~/redux'
 import typed from '~/typed'
 import { asFormats } from '~/validators/intlValidators'
