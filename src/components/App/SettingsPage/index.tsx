@@ -17,6 +17,7 @@ import { useRecoilState } from 'recoil'
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
 import darkState from '~/atoms/darkState'
+import fullScreenState from '~/atoms/fullScreenState'
 import Banner from '~/components/Banner'
 import obtainedCookieConsentBannerMessages from '~/components/ObtainCookieConsentBanner/messages' // TODO: Move
 import { createPage } from '~/components/PageTemplate'
@@ -37,6 +38,7 @@ const SettingsPage: React.FC = () => {
   const banner = useBanner()
 
   const [dark, setDark] = useRecoilState(darkState)
+  const [fullScreen, setFullScreen] = useRecoilState(fullScreenState)
   const [cookieConsentObtained, setCookieConsentObtained] = useRecoilState(cookieConsentObtainedState)
   const { defaultDark } = useContext(DefaultDarkContext)
 
@@ -44,6 +46,10 @@ const SettingsPage: React.FC = () => {
 
   const handleDarkThemeChange = useCallback((_event, checked) => {
     setDark(checked)
+  }, [])
+
+  const handleFullScreenChange = useCallback((_event, checked) => {
+    setFullScreen(checked)
   }, [])
 
   const handleReload = useCallback(() => {
@@ -109,6 +115,16 @@ const SettingsPage: React.FC = () => {
               <ListItemText primary={ <FormattedMessage { ...messages.darkTheme } /> } />
               <ListItemSecondaryAction>
                 <Switch checked={ dark ?? defaultDark } onChange={ handleDarkThemeChange } />
+              </ListItemSecondaryAction>
+            </ListItem>
+            <ListItem
+              classes={ {
+                secondaryAction: classes.ListItemSecondaryActionIsSwitch,
+              } }
+            >
+              <ListItemText primary={ <FormattedMessage { ...messages.fullScreen } /> } />
+              <ListItemSecondaryAction>
+                <Switch checked={ fullScreen } onChange={ handleFullScreenChange } />
               </ListItemSecondaryAction>
             </ListItem>
           </List>
