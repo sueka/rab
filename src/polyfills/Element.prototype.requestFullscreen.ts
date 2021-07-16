@@ -2,18 +2,19 @@ export {}
 
 declare global {
   interface Element {
+    // requestFullscreen?: Element['requestFullscreen']
     webkitRequestFullscreen?: Element['requestFullscreen']
   }
 }
 
-const requestFullscreen: Element['requestFullscreen'] = async function (this: Element, options) {
-  if ('webkitRequestFullscreen' in this && this.webkitRequestFullscreen !== undefined) {
-    this.webkitRequestFullscreen(options)
-  } else {
-    this.requestFullscreen(options)
+if (!('requestFullscreen' in Element.prototype)) {
+  const requestFullscreen: Element['requestFullscreen'] = async function (this: Element, options) {
+    if ('webkitRequestFullscreen' in this) {
+      this.webkitRequestFullscreen?.(options)
+    }
   }
-}
 
-Object.defineProperty(Element.prototype, 'requestFullscreen', {
-  value: requestFullscreen,
-})
+  Object.defineProperty(Element.prototype, 'requestFullscreen', {
+    value: requestFullscreen,
+  })
+}
