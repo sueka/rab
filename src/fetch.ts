@@ -3,7 +3,6 @@
  */
 
 import mapValues from './extensions/Record/mapValues'
-import fromEntries from './polyfills/Object.fromEntries'
 import typed from './typed'
 
 type Query = Record<string, QueryValue>
@@ -84,7 +83,7 @@ export /* for testing */ function toQueryMap(query: Query): QueryMap {
 
     const [[member, head], ...tailEntries] = Object.entries(value)
 
-    return goWithObject(key, fromEntries(tailEntries), {
+    return goWithObject(key, Object.fromEntries(tailEntries), {
       ...result,
       [typed<[string, string]>`${ key }[${ member }]`]: head,
     })
@@ -98,17 +97,17 @@ export /* for testing */ function toQueryMap(query: Query): QueryMap {
     const [[key, value], ...tail] = Object.entries(q)
 
     if (typeof value === 'string') {
-      return go(fromEntries(tail), {
+      return go(Object.fromEntries(tail), {
         ...result,
         [key]: value,
       })
     }
 
     if (Array.isArray(value)) {
-      return go(goWithArray(key, value, 0, fromEntries(tail)), result)
+      return go(goWithArray(key, value, 0, Object.fromEntries(tail)), result)
     }
 
-    return go(goWithObject(key, value, fromEntries(tail)), result)
+    return go(goWithObject(key, value, Object.fromEntries(tail)), result)
   }
 
   return go(query, {})

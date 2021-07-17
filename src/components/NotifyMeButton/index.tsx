@@ -7,7 +7,6 @@ import { useRecoilState } from 'recoil'
 
 import notificationsState from '~/atoms/notificationsState'
 import useOnceForEachEffect from '~/hooks/useOnceForEachEffect'
-import Notification from '~/polyfills/Notification'
 import messages from './messages'
 
 interface Props {

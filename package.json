@@ -16,7 +16,7 @@
   "sideEffects": [
     "**/*.prototype.*.ts",
     "./src/classes.css",
-    "./src/polyfills/SpeechRecognition.ts"
+    "./src/polyfills/apps/**/*.ts"
   ],
   "engines": {
     "node": "^14.15.4"
