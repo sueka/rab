@@ -1,4 +1,7 @@
-class TimestampableNotification extends Notification {
+// NOTE: undefined を継承すると super に失敗するため、 class {} にフォールバックする。
+class TimestampableNotification
+  extends (globalThis.Notification ?? class {}) // tslint:disable-line:max-classes-per-file
+{
   private _timestamp: number
 
   constructor(...args: ConstructorParameters<typeof Notification>) {
@@ -12,7 +15,6 @@ class TimestampableNotification extends Notification {
   }
 }
 
-// NOTE: undefined を継承すると super() が失敗する
 export default ('Notification' in globalThis && !('timestamp' in Notification.prototype))
   ? TimestampableNotification
   : undefined
