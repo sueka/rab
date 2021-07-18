@@ -63,6 +63,7 @@ ${ '/form-controls' }
 ${ '/info' }
 ${ '/paint' }
 ${ '/reminder' }
+${ '/settings' }
 ${ '/nonexistent-path' }
 `('App', ({ location }: { location: string }) => {
   beforeAll(() => {

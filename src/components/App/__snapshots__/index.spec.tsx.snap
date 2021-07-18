@@ -1777,7 +1777,7 @@ exports[`App at /nonexistent-path 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-105"
+        class="MuiBox-root MuiBox-root-118"
       >
         <span
           class="TooltipWrapper"
@@ -1827,7 +1827,7 @@ exports[`App at /nonexistent-path 1`] = `
           <div
             aria-haspopup="listbox"
             aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-106 makeStyles-Select-107 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-119 makeStyles-Select-120 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             id="00000000-0000-4000-0000-000000000000"
             role="button"
             tabindex="0"
@@ -1856,7 +1856,7 @@ exports[`App at /nonexistent-path 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-103 makeStyles-Offset-104"
+    class="makeStyles-Offset-116 makeStyles-Offset-117"
   />
   Error: No route matches /nonexistent-path.
 </div>
@@ -2421,5 +2421,380 @@ exports[`App at /reminder 1`] = `
       class="MuiTouchRipple-root"
     />
   </button>
+</div>
+`;
+
+exports[`App at /settings 1`] = `
+<div>
+  <header
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+      <div
+        class="Spacer"
+      />
+      <div
+        class="MuiBox-root MuiBox-root-105"
+      >
+        <span
+          class="TooltipWrapper"
+        >
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </span>
+      </div>
+      <div
+        class="MuiFormControl-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel InputLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+          data-shrink="true"
+          for="00000000-0000-4000-0000-000000000000"
+        >
+          <bdi
+            dir="auto"
+          >
+            Language
+          </bdi>
+        </label>
+        <div
+          class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
+        >
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="00000000-0000-4000-0000-000000000000"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-106 makeStyles-Select-107 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            id="00000000-0000-4000-0000-000000000000"
+            role="button"
+            tabindex="0"
+          >
+            English
+          </div>
+          <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            data-testid="localeSelect"
+            tabindex="-1"
+            value="en"
+          />
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div
+    class="makeStyles-Offset-103 makeStyles-Offset-104"
+  />
+  <div
+    class="MuiGrid-root MuiGrid-container"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4 MuiGrid-grid-lg-3 MuiGrid-grid-xl-2"
+    >
+      <ul
+        class="MuiList-root MuiList-padding MuiList-subheader"
+      >
+        <li
+          class="MuiListSubheader-root MuiListSubheader-sticky MuiListSubheader-gutters"
+        >
+          <bdi
+            dir="auto"
+          >
+            Appearance
+          </bdi>
+        </li>
+        <li
+          class="MuiListItem-container"
+        >
+          <div
+            class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction ListItemSecondaryActionIsToggleButtonGroup3"
+          >
+            <div
+              class="MuiListItemText-root"
+            >
+              <span
+                class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              >
+                <bdi
+                  dir="auto"
+                >
+                  Theme
+                </bdi>
+              </span>
+            </div>
+          </div>
+          <div
+            class="MuiListItemSecondaryAction-root"
+          >
+            <div
+              class="MuiToggleButtonGroup-root"
+              role="group"
+            >
+              <button
+                aria-pressed="false"
+                class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal"
+                tabindex="0"
+                type="button"
+                value="light"
+              >
+                <span
+                  class="MuiToggleButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                aria-pressed="false"
+                class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal"
+                tabindex="0"
+                type="button"
+                value="dark"
+              >
+                <span
+                  class="MuiToggleButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                aria-pressed="true"
+                class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal Mui-selected"
+                tabindex="0"
+                type="button"
+                value="auto"
+              >
+                <span
+                  class="MuiToggleButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M10.85 12.65h2.3L12 9l-1.15 3.65zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM14.3 16l-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
+        </li>
+        <li
+          class="MuiListItem-container"
+        >
+          <div
+            class="MuiListItem-root MuiListItem-gutters Mui-disabled MuiListItem-secondaryAction ListItemSecondaryActionIsSwitch"
+            disabled=""
+          >
+            <div
+              class="MuiListItemText-root"
+            >
+              <span
+                class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              >
+                <bdi
+                  dir="auto"
+                >
+                  Full screen
+                </bdi>
+              </span>
+            </div>
+          </div>
+          <div
+            class="MuiListItemSecondaryAction-root"
+          >
+            <span
+              class="MuiSwitch-root"
+            >
+              <span
+                aria-disabled="true"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-112 MuiSwitch-switchBase MuiSwitch-colorSecondary PrivateSwitchBase-disabled-114 Mui-disabled Mui-disabled Mui-disabled"
+                tabindex="-1"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <input
+                    class="PrivateSwitchBase-input-115 MuiSwitch-input"
+                    disabled=""
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    class="MuiSwitch-thumb"
+                  />
+                </span>
+              </span>
+              <span
+                class="MuiSwitch-track"
+              />
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4 MuiGrid-grid-lg-3 MuiGrid-grid-xl-2"
+    >
+      <ul
+        class="MuiList-root MuiList-padding MuiList-subheader"
+      >
+        <li
+          class="MuiListSubheader-root MuiListSubheader-sticky MuiListSubheader-gutters"
+        >
+          <bdi
+            dir="auto"
+          >
+            Security and privacy
+          </bdi>
+        </li>
+        <li
+          class="MuiListItem-container"
+        >
+          <div
+            class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction ListItemSecondaryActionIsSwitch"
+          >
+            <div
+              class="MuiListItemText-root MuiListItemText-multiline"
+            >
+              <span
+                class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              >
+                <bdi
+                  dir="auto"
+                >
+                  Accept cookies
+                </bdi>
+              </span>
+              <p
+                class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              >
+                <bdi
+                  dir="auto"
+                >
+                  We use cookies to analyze our traffic.
+                </bdi>
+              </p>
+            </div>
+          </div>
+          <div
+            class="MuiListItemSecondaryAction-root"
+          >
+            <span
+              class="MuiSwitch-root"
+            >
+              <span
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-112 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <input
+                    class="PrivateSwitchBase-input-115 MuiSwitch-input"
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    class="MuiSwitch-thumb"
+                  />
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track"
+              />
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 `;
