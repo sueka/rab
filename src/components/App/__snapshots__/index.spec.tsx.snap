@@ -2566,6 +2566,7 @@ exports[`App at /settings 1`] = `
           >
             <div
               class="MuiListItemText-root"
+              id="00000000-0000-4000-0000-000000000000"
             >
               <span
                 class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
@@ -2582,10 +2583,12 @@ exports[`App at /settings 1`] = `
             class="MuiListItemSecondaryAction-root"
           >
             <div
+              aria-labelledby="00000000-0000-4000-0000-000000000000"
               class="MuiToggleButtonGroup-root"
               role="group"
             >
               <button
+                aria-label="light"
                 aria-pressed="false"
                 class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal"
                 tabindex="0"
@@ -2611,6 +2614,7 @@ exports[`App at /settings 1`] = `
                 />
               </button>
               <button
+                aria-label="dark"
                 aria-pressed="false"
                 class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal"
                 tabindex="0"
@@ -2636,6 +2640,7 @@ exports[`App at /settings 1`] = `
                 />
               </button>
               <button
+                aria-label="auto"
                 aria-pressed="true"
                 class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal Mui-selected"
                 tabindex="0"
@@ -2672,6 +2677,7 @@ exports[`App at /settings 1`] = `
           >
             <div
               class="MuiListItemText-root"
+              id="00000000-0000-4000-0000-000000000000"
             >
               <span
                 class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
@@ -2692,6 +2698,7 @@ exports[`App at /settings 1`] = `
             >
               <span
                 aria-disabled="true"
+                aria-labelledby="00000000-0000-4000-0000-000000000000"
                 class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-112 MuiSwitch-switchBase MuiSwitch-colorSecondary PrivateSwitchBase-disabled-114 Mui-disabled Mui-disabled Mui-disabled"
                 tabindex="-1"
               >
@@ -2740,6 +2747,7 @@ exports[`App at /settings 1`] = `
           >
             <div
               class="MuiListItemText-root MuiListItemText-multiline"
+              id="00000000-0000-4000-0000-000000000000"
             >
               <span
                 class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
@@ -2769,6 +2777,7 @@ exports[`App at /settings 1`] = `
             >
               <span
                 aria-disabled="false"
+                aria-labelledby="00000000-0000-4000-0000-000000000000"
                 class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-112 MuiSwitch-switchBase MuiSwitch-colorSecondary"
               >
                 <span

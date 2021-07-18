@@ -18,6 +18,7 @@ import React, { useCallback, useContext } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { useRecoilState } from 'recoil'
+import { v4 } from 'uuid'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import appearanceThemeState from '~/atoms/appearanceThemeState'
@@ -34,6 +35,10 @@ import useBanner from '~/hooks/useBanner'
 import useGtm from '~/hooks/useGtm'
 import classes from './classes.css'
 import messages from './messages'
+
+const themeSettingId = v4()
+const fullscreenSettingId = v4()
+const acceptCookiesSettingId = v4()
 
 const SettingsPage: React.FC = () => {
   const { formatMessage } = useIntl()
@@ -117,20 +122,24 @@ const SettingsPage: React.FC = () => {
                 secondaryAction: classes.ListItemSecondaryActionIsToggleButtonGroup3,
               } }
             >
-              <ListItemText primary={ <FormattedMessage { ...messages.theme } /> } />
+              <ListItemText
+                primary={ <FormattedMessage { ...messages.theme } /> }
+                id={ themeSettingId }
+              />
               <ListItemSecondaryAction>
                 <ToggleButtonGroup
                   exclusive
                   value={ appearanceTheme }
                   onChange={ handleAppearanceThemeChange }
+                  aria-labelledby={ themeSettingId }
                 >
-                  <ToggleButton value="light">
+                  <ToggleButton value="light" aria-label="light">
                     <Brightness7Icon />
                   </ToggleButton>
-                  <ToggleButton value="dark">
+                  <ToggleButton value="dark" aria-label="dark">
                     <Brightness4Icon />
                   </ToggleButton>
-                  <ToggleButton value="auto">
+                  <ToggleButton value="auto" aria-label="auto">
                     <BrightnessAutoIcon />
                   </ToggleButton>
                 </ToggleButtonGroup>
@@ -142,12 +151,16 @@ const SettingsPage: React.FC = () => {
                 secondaryAction: classes.ListItemSecondaryActionIsSwitch,
               } }
             >
-              <ListItemText primary={ <FormattedMessage { ...messages.fullScreen } /> } />
+              <ListItemText
+                primary={ <FormattedMessage { ...messages.fullScreen } /> }
+                id={ fullscreenSettingId }
+              />
               <ListItemSecondaryAction>
                 <Switch
                   checked={ fullScreen }
                   onChange={ handleFullScreenChange }
                   disabled={ !document.fullscreenEnabled }
+                  aria-labelledby={ fullscreenSettingId }
                 />
               </ListItemSecondaryAction>
             </ListItem>
@@ -167,9 +180,15 @@ const SettingsPage: React.FC = () => {
               <ListItemText
                 primary={ <FormattedMessage { ...messages.acceptCookies } /> }
                 secondary={ <FormattedMessage { ...obtainedCookieConsentBannerMessages.weUseCookiesToAnalyzeOurTraffic } /> }
+                id={ acceptCookiesSettingId }
               />
               <ListItemSecondaryAction>
-                <Switch checked={ cookieConsentObtained } onChange={ handleAcceptCookiesChange } disabled={ gtmContainerId === undefined } />
+                <Switch
+                  checked={ cookieConsentObtained }
+                  onChange={ handleAcceptCookiesChange }
+                  disabled={ gtmContainerId === undefined }
+                  aria-labelledby={ acceptCookiesSettingId }
+                />
               </ListItemSecondaryAction>
             </ListItem>
           </List>
