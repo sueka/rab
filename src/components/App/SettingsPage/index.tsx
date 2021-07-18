@@ -118,13 +118,18 @@ const SettingsPage: React.FC = () => {
               </ListItemSecondaryAction>
             </ListItem>
             <ListItem
+              disabled={ !document.fullscreenEnabled }
               classes={ {
                 secondaryAction: classes.ListItemSecondaryActionIsSwitch,
               } }
             >
               <ListItemText primary={ <FormattedMessage { ...messages.fullScreen } /> } />
               <ListItemSecondaryAction>
-                <Switch checked={ fullScreen } onChange={ handleFullScreenChange } />
+                <Switch
+                  checked={ fullScreen }
+                  onChange={ handleFullScreenChange }
+                  disabled={ !document.fullscreenEnabled }
+                />
               </ListItemSecondaryAction>
             </ListItem>
           </List>
