@@ -54,7 +54,11 @@ const SettingsPage: React.FC = () => {
 
   shouldBePresent(defaultDark)
 
-  const handleAppearanceThemeChange = useCallback((_event, theme: AppearanceTheme) => {
+  const handleAppearanceThemeChange = useCallback((_event, theme: AppearanceTheme | null) => {
+    if (theme === null) { // when toggle off
+      return
+    }
+
     setAppearanceTheme(theme)
   }, [])
 
