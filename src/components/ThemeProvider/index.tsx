@@ -2,10 +2,10 @@ import { ThemeProvider as OriginalThemeProvider } from '@material-ui/core/styles
 import React, { useContext, useMemo } from 'react'
 import { useRecoilState } from 'recoil'
 
-import darkState from '~/atoms/darkState'
 import configureTheme from '~/configureTheme'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
 import IntlProviderContext from '~/contexts/IntlProviderContext'
+import darkState from '~/selectors/darkState'
 
 interface ThemeProviderProps {
   defaultDark: boolean

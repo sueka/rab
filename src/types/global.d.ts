@@ -15,6 +15,11 @@ type Direction = 'ltr' | 'rtl' // FIXME: 'auto' が要りそう
 
 type SortOrder = 'ascending' | 'descending'
 
+type AppearanceTheme =
+  | 'light'
+  | 'dark'
+  | 'auto'
+
 interface Sort<T> {
   by: keyof T
   in: SortOrder

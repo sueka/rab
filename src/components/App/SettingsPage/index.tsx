@@ -7,7 +7,12 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListSubheader from '@material-ui/core/ListSubheader'
 import Switch from '@material-ui/core/Switch'
+import Brightness4Icon from '@material-ui/icons/Brightness4'
+import Brightness7Icon from '@material-ui/icons/Brightness7'
+import BrightnessAutoIcon from '@material-ui/icons/BrightnessAuto'
 import SecurityIcon from '@material-ui/icons/Security'
+import ToggleButton from '@material-ui/lab/ToggleButton'
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup'
 import { useInjection } from 'inversify-react'
 import React, { useCallback, useContext } from 'react'
 import Helmet from 'react-helmet'
@@ -15,8 +20,8 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import { useRecoilState } from 'recoil'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
+import appearanceThemeState from '~/atoms/appearanceThemeState'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
-import darkState from '~/atoms/darkState'
 import fullScreenState from '~/atoms/fullScreenState'
 import Banner from '~/components/Banner'
 import obtainedCookieConsentBannerMessages from '~/components/ObtainCookieConsentBanner/messages' // TODO: Move
@@ -37,15 +42,15 @@ const SettingsPage: React.FC = () => {
   const gtm = useGtm()
   const banner = useBanner()
 
-  const [dark, setDark] = useRecoilState(darkState)
+  const [appearanceTheme, setAppearanceTheme] = useRecoilState(appearanceThemeState)
   const [fullScreen, setFullScreen] = useRecoilState(fullScreenState)
   const [cookieConsentObtained, setCookieConsentObtained] = useRecoilState(cookieConsentObtainedState)
   const { defaultDark } = useContext(DefaultDarkContext)
 
   shouldBePresent(defaultDark)
 
-  const handleDarkThemeChange = useCallback((_event, checked) => {
-    setDark(checked)
+  const handleAppearanceThemeChange = useCallback((_event, theme: AppearanceTheme) => {
+    setAppearanceTheme(theme)
   }, [])
 
   const handleFullScreenChange = useCallback((_event, checked) => {
@@ -109,12 +114,26 @@ const SettingsPage: React.FC = () => {
           >
             <ListItem
               classes={ {
-                secondaryAction: classes.ListItemSecondaryActionIsSwitch,
+                secondaryAction: classes.ListItemSecondaryActionIsToggleButtonGroup3,
               } }
             >
-              <ListItemText primary={ <FormattedMessage { ...messages.darkTheme } /> } />
+              <ListItemText primary={ <FormattedMessage { ...messages.theme } /> } />
               <ListItemSecondaryAction>
-                <Switch checked={ dark ?? defaultDark } onChange={ handleDarkThemeChange } />
+                <ToggleButtonGroup
+                  exclusive
+                  value={ appearanceTheme }
+                  onChange={ handleAppearanceThemeChange }
+                >
+                  <ToggleButton value="light">
+                    <Brightness7Icon />
+                  </ToggleButton>
+                  <ToggleButton value="dark">
+                    <Brightness4Icon />
+                  </ToggleButton>
+                  <ToggleButton value="auto">
+                    <BrightnessAutoIcon />
+                  </ToggleButton>
+                </ToggleButtonGroup>
               </ListItemSecondaryAction>
             </ListItem>
             <ListItem

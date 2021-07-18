@@ -7,8 +7,8 @@ import { FormattedMessage } from 'react-intl'
 import { useRecoilState } from 'recoil'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
-import darkState from '~/atoms/darkState'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
+import darkState from '~/selectors/darkState'
 import classes from './classes.css'
 import messages from './messages'
 

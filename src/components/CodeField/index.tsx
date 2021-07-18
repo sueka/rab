@@ -7,10 +7,10 @@ import { Helmet } from 'react-helmet'
 import { useRecoilState } from 'recoil'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
-import darkState from '~/atoms/darkState'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
 import IntlProviderContext from '~/contexts/IntlProviderContext'
 import useRefsMerged from '~/hooks/useRefsMerged'
+import darkState from '~/selectors/darkState'
 import typed from '~/typed'
 import cssClasses from './classes.css'
 
