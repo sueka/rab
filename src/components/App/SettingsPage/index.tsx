@@ -167,21 +167,21 @@ const SettingsPage: React.FC = () => {
                   onChange={ handleAppearanceThemeChange }
                   aria-labelledby={ themeSettingId }
                 >
-                  <Tooltip title={ <FormattedMessage { ...messages.useLightTheme } /> }>
+                  <Tooltip arrow title={ <FormattedMessage { ...messages.useLightTheme } /> }>
                     <Radio
                       icon={ <Brightness7Icon /> }
                       checkedIcon={ <Brightness7Icon /> }
                       value="light"
                     />
                   </Tooltip>
-                  <Tooltip title={ <FormattedMessage { ...messages.useDarkTheme } /> }>
+                  <Tooltip arrow title={ <FormattedMessage { ...messages.useDarkTheme } /> }>
                     <Radio
                       icon={ <Brightness4Icon /> }
                       checkedIcon={ <Brightness4Icon /> }
                       value="dark"
                     />
                   </Tooltip>
-                  <Tooltip title={ <FormattedMessage { ...messages.useDeviceTheme } /> }>
+                  <Tooltip arrow title={ <FormattedMessage { ...messages.useDeviceTheme } /> }>
                     <Radio
                       icon={ <BrightnessAutoIcon /> }
                       checkedIcon={ <BrightnessAutoIcon /> }
