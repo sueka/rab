@@ -12,6 +12,8 @@
   "src.components.App.SettingsPage.appearance": "外観",
   "src.components.App.SettingsPage.dontReload": "リロードしない",
   "src.components.App.SettingsPage.fullScreen": "全画面表示",
+  "src.components.App.SettingsPage.general": "一般",
+  "src.components.App.SettingsPage.language": "言語",
   "src.components.App.SettingsPage.reload": "リロード",
   "src.components.App.SettingsPage.securityAndPrivacy": "セキュリティとプライバシー",
   "src.components.App.SettingsPage.settings": "設定",

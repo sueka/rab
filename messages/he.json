@@ -12,6 +12,8 @@
   "src.components.App.SettingsPage.appearance": "מראה",
   "src.components.App.SettingsPage.dontReload": "לא לטעון מחדש",
   "src.components.App.SettingsPage.fullScreen": "מסך מלא",
+  "src.components.App.SettingsPage.general": "כללי",
+  "src.components.App.SettingsPage.language": "שפה",
   "src.components.App.SettingsPage.reload": "לטעון מחדש",
   "src.components.App.SettingsPage.securityAndPrivacy": "אבטחה ופרטיות",
   "src.components.App.SettingsPage.settings": "הגדרות",
