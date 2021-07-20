@@ -1,6 +1,5 @@
 declare const styles: {
+  readonly "ListItemSecondaryActionIsRadioGroup3": string;
   readonly "ListItemSecondaryActionIsSwitch": string;
-  readonly "ListItemSecondaryActionIsToggleButtonGroup3": string;
 };
 export = styles;
-

@@ -2562,7 +2562,7 @@ exports[`App at /settings 1`] = `
           class="MuiListItem-container"
         >
           <div
-            class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction ListItemSecondaryActionIsToggleButtonGroup3"
+            class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction ListItemSecondaryActionIsRadioGroup3"
           >
             <div
               class="MuiListItemText-root"
@@ -2584,20 +2584,23 @@ exports[`App at /settings 1`] = `
           >
             <div
               aria-labelledby="00000000-0000-4000-0000-000000000000"
-              class="MuiToggleButtonGroup-root"
-              role="group"
+              class="MuiFormGroup-root MuiFormGroup-row"
+              role="radiogroup"
             >
-              <button
+              <span
+                aria-disabled="false"
                 aria-label="light"
-                aria-pressed="false"
-                class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal"
-                tabindex="0"
-                type="button"
-                value="light"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-112 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
               >
                 <span
-                  class="MuiToggleButton-label"
+                  class="MuiIconButton-label"
                 >
+                  <input
+                    class="PrivateSwitchBase-input-115"
+                    name="mui-87840"
+                    type="radio"
+                    value="light"
+                  />
                   <svg
                     aria-hidden="true"
                     class="MuiSvgIcon-root"
@@ -2612,18 +2615,21 @@ exports[`App at /settings 1`] = `
                 <span
                   class="MuiTouchRipple-root"
                 />
-              </button>
-              <button
+              </span>
+              <span
+                aria-disabled="false"
                 aria-label="dark"
-                aria-pressed="false"
-                class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal"
-                tabindex="0"
-                type="button"
-                value="dark"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-112 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
               >
                 <span
-                  class="MuiToggleButton-label"
+                  class="MuiIconButton-label"
                 >
+                  <input
+                    class="PrivateSwitchBase-input-115"
+                    name="mui-87840"
+                    type="radio"
+                    value="dark"
+                  />
                   <svg
                     aria-hidden="true"
                     class="MuiSvgIcon-root"
@@ -2638,18 +2644,22 @@ exports[`App at /settings 1`] = `
                 <span
                   class="MuiTouchRipple-root"
                 />
-              </button>
-              <button
+              </span>
+              <span
+                aria-disabled="false"
                 aria-label="auto"
-                aria-pressed="true"
-                class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal Mui-selected"
-                tabindex="0"
-                type="button"
-                value="auto"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-112 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-113 Mui-checked MuiIconButton-colorSecondary"
               >
                 <span
-                  class="MuiToggleButton-label"
+                  class="MuiIconButton-label"
                 >
+                  <input
+                    checked=""
+                    class="PrivateSwitchBase-input-115"
+                    name="mui-87840"
+                    type="radio"
+                    value="auto"
+                  />
                   <svg
                     aria-hidden="true"
                     class="MuiSvgIcon-root"
@@ -2664,7 +2674,7 @@ exports[`App at /settings 1`] = `
                 <span
                   class="MuiTouchRipple-root"
                 />
-              </button>
+              </span>
             </div>
           </div>
         </li>

@@ -6,13 +6,13 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListSubheader from '@material-ui/core/ListSubheader'
+import Radio from '@material-ui/core/Radio'
+import RadioGroup from '@material-ui/core/RadioGroup'
 import Switch from '@material-ui/core/Switch'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
 import Brightness7Icon from '@material-ui/icons/Brightness7'
 import BrightnessAutoIcon from '@material-ui/icons/BrightnessAuto'
 import SecurityIcon from '@material-ui/icons/Security'
-import ToggleButton from '@material-ui/lab/ToggleButton'
-import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup'
 import { useInjection } from 'inversify-react'
 import React, { useCallback, useContext } from 'react'
 import Helmet from 'react-helmet'
@@ -54,12 +54,10 @@ const SettingsPage: React.FC = () => {
 
   shouldBePresent(defaultDark)
 
-  const handleAppearanceThemeChange = useCallback((_event, theme: AppearanceTheme | null) => {
-    if (theme === null) { // when toggle off
-      return
+  const handleAppearanceThemeChange = useCallback((_event, theme: string) => {
+    if (theme === 'light' || theme === 'dark' || theme === 'auto') {
+      setAppearanceTheme(theme)
     }
-
-    setAppearanceTheme(theme)
   }, [])
 
   const handleFullScreenChange = useCallback((_event, checked) => {
@@ -123,7 +121,7 @@ const SettingsPage: React.FC = () => {
           >
             <ListItem
               classes={ {
-                secondaryAction: classes.ListItemSecondaryActionIsToggleButtonGroup3,
+                secondaryAction: classes.ListItemSecondaryActionIsRadioGroup3,
               } }
             >
               <ListItemText
@@ -131,22 +129,31 @@ const SettingsPage: React.FC = () => {
                 id={ themeSettingId }
               />
               <ListItemSecondaryAction>
-                <ToggleButtonGroup
-                  exclusive
+                <RadioGroup
+                  row
                   value={ appearanceTheme }
                   onChange={ handleAppearanceThemeChange }
                   aria-labelledby={ themeSettingId }
                 >
-                  <ToggleButton value="light" aria-label="light">
-                    <Brightness7Icon />
-                  </ToggleButton>
-                  <ToggleButton value="dark" aria-label="dark">
-                    <Brightness4Icon />
-                  </ToggleButton>
-                  <ToggleButton value="auto" aria-label="auto">
-                    <BrightnessAutoIcon />
-                  </ToggleButton>
-                </ToggleButtonGroup>
+                  <Radio
+                    icon={ <Brightness7Icon /> }
+                    checkedIcon={ <Brightness7Icon /> }
+                    value="light"
+                    aria-label="light"
+                  />
+                  <Radio
+                    icon={ <Brightness4Icon /> }
+                    checkedIcon={ <Brightness4Icon /> }
+                    value="dark"
+                    aria-label="dark"
+                  />
+                  <Radio
+                    icon={ <BrightnessAutoIcon /> }
+                    checkedIcon={ <BrightnessAutoIcon /> }
+                    value="auto"
+                    aria-label="auto"
+                  />
+                </RadioGroup>
               </ListItemSecondaryAction>
             </ListItem>
             <ListItem

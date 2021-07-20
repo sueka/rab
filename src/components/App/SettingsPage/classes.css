@@ -1,7 +1,7 @@
-.ListItemSecondaryActionIsSwitch {
-  padding-inline-end: 64px; /* 元々の値 (48px) + Switch の幅 (58px) - Checkbox の幅 (42px) */
+.ListItemSecondaryActionIsRadioGroup3 {
+  padding-inline-end: 132px; /* 元々の値 (48px) + RadioGroup>Radio*3 の幅 (126px) - Checkbox の幅 (42px) */
 }
 
-.ListItemSecondaryActionIsToggleButtonGroup3 {
-  padding-inline-end: 148px; /* 元々の値 (48px) + ToggleButtonGroup>ToggleButton*3 の幅 (142px) - Checkbox の幅 (42px) */
+.ListItemSecondaryActionIsSwitch {
+  padding-inline-end: 64px; /* 元々の値 (48px) + Switch の幅 (58px) - Checkbox の幅 (42px) */
 }
