@@ -9,6 +9,7 @@ import ListSubheader from '@material-ui/core/ListSubheader'
 import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
 import Switch from '@material-ui/core/Switch'
+import Tooltip from '@material-ui/core/Tooltip'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
 import Brightness7Icon from '@material-ui/icons/Brightness7'
 import BrightnessAutoIcon from '@material-ui/icons/BrightnessAuto'
@@ -166,24 +167,27 @@ const SettingsPage: React.FC = () => {
                   onChange={ handleAppearanceThemeChange }
                   aria-labelledby={ themeSettingId }
                 >
-                  <Radio
-                    icon={ <Brightness7Icon /> }
-                    checkedIcon={ <Brightness7Icon /> }
-                    value="light"
-                    aria-label="light"
-                  />
-                  <Radio
-                    icon={ <Brightness4Icon /> }
-                    checkedIcon={ <Brightness4Icon /> }
-                    value="dark"
-                    aria-label="dark"
-                  />
-                  <Radio
-                    icon={ <BrightnessAutoIcon /> }
-                    checkedIcon={ <BrightnessAutoIcon /> }
-                    value="device"
-                    aria-label="device"
-                  />
+                  <Tooltip title={ <FormattedMessage { ...messages.useLightTheme } /> }>
+                    <Radio
+                      icon={ <Brightness7Icon /> }
+                      checkedIcon={ <Brightness7Icon /> }
+                      value="light"
+                    />
+                  </Tooltip>
+                  <Tooltip title={ <FormattedMessage { ...messages.useDarkTheme } /> }>
+                    <Radio
+                      icon={ <Brightness4Icon /> }
+                      checkedIcon={ <Brightness4Icon /> }
+                      value="dark"
+                    />
+                  </Tooltip>
+                  <Tooltip title={ <FormattedMessage { ...messages.useDeviceTheme } /> }>
+                    <Radio
+                      icon={ <BrightnessAutoIcon /> }
+                      checkedIcon={ <BrightnessAutoIcon /> }
+                      value="device"
+                    />
+                  </Tooltip>
                 </RadioGroup>
               </ListItemSecondaryAction>
             </ListItem>
