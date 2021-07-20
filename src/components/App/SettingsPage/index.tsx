@@ -161,6 +161,7 @@ const SettingsPage: React.FC = () => {
               <ListItemSecondaryAction>
                 <RadioGroup
                   row
+                  name="theme"
                   value={ appearanceTheme }
                   onChange={ handleAppearanceThemeChange }
                   aria-labelledby={ themeSettingId }

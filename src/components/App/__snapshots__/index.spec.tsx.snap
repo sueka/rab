@@ -2676,7 +2676,7 @@ exports[`App at /settings 1`] = `
                 >
                   <input
                     class="PrivateSwitchBase-input-116"
-                    name="mui-29182"
+                    name="theme"
                     type="radio"
                     value="light"
                   />
@@ -2705,7 +2705,7 @@ exports[`App at /settings 1`] = `
                 >
                   <input
                     class="PrivateSwitchBase-input-116"
-                    name="mui-29182"
+                    name="theme"
                     type="radio"
                     value="dark"
                   />
@@ -2735,7 +2735,7 @@ exports[`App at /settings 1`] = `
                   <input
                     checked=""
                     class="PrivateSwitchBase-input-116"
-                    name="mui-29182"
+                    name="theme"
                     type="radio"
                     value="auto"
                   />
