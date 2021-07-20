@@ -2,6 +2,8 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   settings: 'Settings',
+  general: 'General',
+  language: 'Language',
   appearance: 'Appearance',
   theme: 'Theme',
   fullScreen: 'Full screen',

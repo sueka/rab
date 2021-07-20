@@ -12,6 +12,8 @@
   "src.components.App.SettingsPage.appearance": "Appearance",
   "src.components.App.SettingsPage.dontReload": "Don't reload",
   "src.components.App.SettingsPage.fullScreen": "Full screen",
+  "src.components.App.SettingsPage.general": "General",
+  "src.components.App.SettingsPage.language": "Language",
   "src.components.App.SettingsPage.reload": "Reload",
   "src.components.App.SettingsPage.securityAndPrivacy": "Security and privacy",
   "src.components.App.SettingsPage.settings": "Settings",

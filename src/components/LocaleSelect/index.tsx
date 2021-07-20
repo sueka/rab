@@ -20,6 +20,7 @@ import cssClasses from './classes.css'
 import messages from './messages'
 
 interface OwnProps {
+  hiddenLabel?: boolean
   classes?: {
     root?: string
     label?: string
@@ -53,7 +54,7 @@ const useStyles = makeStyles<Theme, StyleProps, 'Select'>({
   },
 })
 
-export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propClasses, FormControlProps, locale, selectLocale }) => {
+export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = false, classes: propClasses, FormControlProps, locale, selectLocale }) => {
   const [labelWidth, setLabelWidth] = useState<number | null>(null)
   const [selectMinWidth, setSelectMinWidth] = useState<number | null>(null)
   const inputId = useMemo(v4, [])
@@ -114,18 +115,21 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ classes: propC
   return (
     <FormControl
       { ...FormControlProps }
+      hiddenLabel={ hiddenLabel }
       className={ rootClassName } // NOTE: Overrides FormControlProps.className
     >
-      <InputLabel className={ labelClassName } ref={ inputLabel } htmlFor={ inputId }>
-        <FormattedMessage { ...messages.language } />
-      </InputLabel>
+      { !hiddenLabel && (
+        <InputLabel className={ labelClassName } ref={ inputLabel } htmlFor={ inputId }>
+          <FormattedMessage { ...messages.language } />
+        </InputLabel>
+      ) }
       <Select
         classes={ {
           select: selectSelectClassName,
           icon: selectIconClassName,
         } }
         ref={ select }
-        labelWidth={ labelWidth ?? undefined }
+        labelWidth={ !hiddenLabel ? labelWidth ?? undefined : undefined }
         value={ locale }
         onChange={ handleChange }
         id={ inputId }

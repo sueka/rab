@@ -25,6 +25,7 @@ import appearanceThemeState from '~/atoms/appearanceThemeState'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
 import fullScreenState from '~/atoms/fullScreenState'
 import Banner from '~/components/Banner'
+import LocaleSelect from '~/components/LocaleSelect'
 import obtainedCookieConsentBannerMessages from '~/components/ObtainCookieConsentBanner/messages' // TODO: Move
 import { createPage } from '~/components/PageTemplate'
 import ConfigRegistry from '~/config/ConfigRegistry'
@@ -36,6 +37,7 @@ import useGtm from '~/hooks/useGtm'
 import classes from './classes.css'
 import messages from './messages'
 
+const languageSettingId = v4()
 const themeSettingId = v4()
 const fullscreenSettingId = v4()
 const acceptCookiesSettingId = v4()
@@ -113,6 +115,34 @@ const SettingsPage: React.FC = () => {
     <>
       <Helmet title={ formatMessage(messages.settings) } />
       <Grid container>
+        <Grid item xs={ 12 } sm={ 6 } md={ 4 } lg={ 3 } xl={ 2 }>
+          <List
+            subheader={ <ListSubheader>
+              <FormattedMessage { ...messages.general } />
+            </ListSubheader> }
+          >
+            <ListItem
+              classes={ {
+                secondaryAction: classes.ListItemSecondaryActionIsLocaleSelect,
+              } }
+            >
+              <ListItemText
+                primary={ <FormattedMessage { ...messages.language } /> }
+                id={ languageSettingId }
+              />
+              <ListItemSecondaryAction>
+                <LocaleSelect
+                  hiddenLabel
+                  FormControlProps={ {
+                    variant: 'standard',
+                    color: 'secondary',
+                    'aria-labelledby': languageSettingId,
+                  } }
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+          </List>
+        </Grid>
         <Grid item xs={ 12 } sm={ 6 } md={ 4 } lg={ 3 } xl={ 2 }>
           <List
             subheader={ <ListSubheader>

@@ -1,3 +1,7 @@
+.ListItemSecondaryActionIsLocaleSelect {
+  padding-inline-end: 104.46666667px; /* 元々の値 (48px) + LocaleSelect の最大幅 (locale: English) (98.46666667px) - Checkbox の幅 (42px) */
+}
+
 .ListItemSecondaryActionIsRadioGroup3 {
   padding-inline-end: 132px; /* 元々の値 (48px) + RadioGroup>Radio*3 の幅 (126px) - Checkbox の幅 (42px) */
 }
