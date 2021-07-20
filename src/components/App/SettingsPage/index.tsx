@@ -57,7 +57,7 @@ const SettingsPage: React.FC = () => {
   shouldBePresent(defaultDark)
 
   const handleAppearanceThemeChange = useCallback((_event, theme: string) => {
-    if (theme === 'light' || theme === 'dark' || theme === 'auto') {
+    if (theme === 'light' || theme === 'dark' || theme === 'device') {
       setAppearanceTheme(theme)
     }
   }, [])
@@ -181,8 +181,8 @@ const SettingsPage: React.FC = () => {
                   <Radio
                     icon={ <BrightnessAutoIcon /> }
                     checkedIcon={ <BrightnessAutoIcon /> }
-                    value="auto"
-                    aria-label="auto"
+                    value="device"
+                    aria-label="device"
                   />
                 </RadioGroup>
               </ListItemSecondaryAction>

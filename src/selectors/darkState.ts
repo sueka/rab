@@ -10,7 +10,7 @@ const darkState = selector<boolean | null>({
     switch (appearanceTheme) {
       case 'light': return false
       case 'dark': return true
-      case 'auto': return null
+      case 'device': return null
     }
   },
   set({ set }, newDark) {
@@ -19,7 +19,7 @@ const darkState = selector<boolean | null>({
     }
 
     if (newDark === null) {
-      set(appearanceThemeState, 'auto')
+      set(appearanceThemeState, 'device')
     } else {
       set(appearanceThemeState, newDark ? 'dark' : 'light')
     }

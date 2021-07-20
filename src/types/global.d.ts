@@ -18,7 +18,7 @@ type SortOrder = 'ascending' | 'descending'
 type AppearanceTheme =
   | 'light'
   | 'dark'
-  | 'auto'
+  | 'device'
 
 interface Sort<T> {
   by: keyof T

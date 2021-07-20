@@ -2726,7 +2726,7 @@ exports[`App at /settings 1`] = `
               </span>
               <span
                 aria-disabled="false"
-                aria-label="auto"
+                aria-label="device"
                 class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-113 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-114 Mui-checked MuiIconButton-colorSecondary"
               >
                 <span
@@ -2737,7 +2737,7 @@ exports[`App at /settings 1`] = `
                     class="PrivateSwitchBase-input-116"
                     name="theme"
                     type="radio"
-                    value="auto"
+                    value="device"
                   />
                   <svg
                     aria-hidden="true"
