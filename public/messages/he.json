@@ -17,7 +17,7 @@
   "src.components.App.SettingsPage.reload": "לטעון מחדש",
   "src.components.App.SettingsPage.securityAndPrivacy": "אבטחה ופרטיות",
   "src.components.App.SettingsPage.settings": "הגדרות",
-  "src.components.App.SettingsPage.theme": "נושא",
+  "src.components.App.SettingsPage.theme": "עיצוב",
   "src.components.CopyTextButton.copyText": "העתקת הטקסט",
   "src.components.CopyTextButton.textCopied": "הטקסט הועתק.",
   "src.components.Counter.decrement": "-",
@@ -62,5 +62,5 @@
   "src.components.Reminder.TaskListItem.enterInUpperBoundCharactersOrLess": "הזן/הזיני ב־{ upperBound } תווים או פחות.",
   "src.components.Reminder.inputIsNotBetweenLowerBoundAndUpperBound": "{ input } לא בין { lowerBound } ל { upperBound }.",
   "src.components.SetClockButton.setTheClock": "כוון את השעון",
-  "src.components.ToggleDarkButton.toggleLightDarkTheme": "החלף נושא בהיר/כהה"
+  "src.components.ToggleDarkButton.toggleLightDarkTheme": "החלף עיצוב בהיר/כהה"
 }
