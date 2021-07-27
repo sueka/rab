@@ -56,10 +56,11 @@ const store = createMockStore<Alt.Omit<State, 'router'>>()({
 describe.each`
 location
 ${ '/' }
+${ '/form-controls' }
+${ '/table' }
 ${ '/chess' }
 ${ '/clock' }
 ${ '/counter' }
-${ '/form-controls' }
 ${ '/info' }
 ${ '/paint' }
 ${ '/reminder' }
@@ -68,6 +69,18 @@ ${ '/nonexistent-path' }
 `('App', ({ location }: { location: string }) => {
   beforeAll(() => {
     useScreenMocked.mockImplementation(() => ({ width: 1366, height: 768, dpr: 1 }))
+  })
+
+  beforeAll(() => {
+    fetchMock.resetMocks()
+
+    fetchMock.doMock(async () => JSON.stringify({
+      range: 'Sheet1!A1:Z1000',
+      majorDimension: 'ROWS',
+      values: [
+        ['6 * 9', 42],
+      ],
+    }))
   })
 
   test(typed<[string]>`at ${ location }`, async () => {

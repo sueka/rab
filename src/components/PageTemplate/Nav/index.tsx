@@ -1,6 +1,7 @@
 import chessPawn from '@iconify/icons-mdi/chess-pawn'
 import clock from '@iconify/icons-mdi/clock'
 import counter from '@iconify/icons-mdi/counter'
+import table from '@iconify/icons-mdi/table'
 import { Icon } from '@iconify/react'
 import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
@@ -102,6 +103,14 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
           </ListItemIcon>
           <ListItemText>
             <FormattedMessage { ...messages.formControls } />
+          </ListItemText>
+        </ListItemLink>
+        <ListItemLink to="/table" onClick={ onClose }>
+          <ListItemIcon>
+            <Icon icon={ table } width="24" height="24" />
+          </ListItemIcon>
+          <ListItemText>
+            <FormattedMessage { ...messages.table } />
           </ListItemText>
         </ListItemLink>
         <ListSubheader disableSticky>

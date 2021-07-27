@@ -4,6 +4,7 @@ export default defineMessages({
   home: 'Home',
   components: 'Components',
   formControls: 'Form controls',
+  table: 'Table',
   apps: 'Apps',
   chess: 'Chess',
   clock: 'Clock',
