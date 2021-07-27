@@ -12,6 +12,9 @@ npm run build
   USER_SERVICE_URL = "http://localhost:14566" # TODO: Deploy a User Service
   GTM_URL = "https://www.googletagmanager.com"
   GTM_CONTAINER_ID = "GTM-NNPT3D7"
+  SHEETS_API_URL = "https://sheets.googleapis.com/v4"
+  GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID = "1o0SaDmkwl0kNS1EUz01lzWcq9KoOG22bS_qvu0jjPCA"
+  GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME = "シート1"
 
 [[redirects]]
   from = "/*"

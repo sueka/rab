@@ -13,6 +13,10 @@ jobs:
       USER_SERVICE_URL: http://localhost:14566 # TODO: Deploy a User Service
       GTM_URL: https://example.com
       GTM_CONTAINER_ID: GTM-0000000
+      SHEETS_API_URL: https://example.com # NOTE: Use the real API only on Netlify.
+      GOOGLE_CLOUD_APIS_GOOGLE_SHEETS_API_KEY: 'api-key'
+      GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID: 'sheet-id'
+      GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME: 'Sheet1'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -49,6 +53,10 @@ jobs:
       USER_SERVICE_URL: http://example.com
       GTM_URL: https://example.com
       GTM_CONTAINER_ID: GTM-0000000
+      SHEETS_API_URL: https://example.com
+      GOOGLE_CLOUD_APIS_GOOGLE_SHEETS_API_KEY: 'api-key'
+      GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID: 'sheet-id'
+      GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME: 'Sheet1'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
