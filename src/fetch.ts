@@ -122,7 +122,7 @@ export function buildBody<T extends { append(key: string, value: string): void }
   return bodyBuilder
 }
 
-class NoAnyResponse extends Response {
+export class NoAnyResponse extends Response {
   constructor(private response: Response) {
     super(null, response)
   }
