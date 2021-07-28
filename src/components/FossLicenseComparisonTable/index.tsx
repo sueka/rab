@@ -10,7 +10,10 @@ import typed from '~/typed'
 import { asValueRange } from '~/validators/googleSheetsApiResourceValidators'
 
 // TODO: remove
-function isStringOrNumber(input: unknown): input is string | number {
+type CellValue = string | number
+
+// TODO: remove
+function isCellValue(input: unknown): input is CellValue {
   switch (typeof input) {
     case 'string':
     case 'number': return true
@@ -47,18 +50,20 @@ const FossLicenseComparisonTable: React.FC = () => {
         throw new Error('Less than 2 dimensions found.')
       }
 
-      if (!sheets.values.every((row): row is (string | number)[] => row.every(isStringOrNumber))) {
+      if (!sheets.values.every((row): row is CellValue[] => row.every(isCellValue))) {
         throw new Error('Neither string nor number value found.')
       }
 
-      const [firstRowValues, ...rowValues] = sheets.values
+      const [firstRowValues, ...restRowsValues] = sheets.values
 
-      const columnValues = firstRowValues.map((cell) => ({
-        field: cell, // TODO: unique
-      }))
+      const fields = firstRowValues.map((cellValue, i) => typed<[CellValue, number]>`${ cellValue }_${ i }`)
 
-      setColumns(columnValues)
-      setRows(rowValues.map((row) => Object.fromEntries(zipIterables(firstRowValues, row))))
+      setColumns(Array.from(zipIterables(fields, firstRowValues)).map(([field, cellValue]) => ({
+        field,
+        label: cellValue,
+      })))
+
+      setRows(restRowsValues.map((rowValues) => Object.fromEntries(zipIterables(fields, rowValues))))
     })()
   }, [response])
 

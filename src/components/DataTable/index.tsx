@@ -14,7 +14,7 @@ interface Props {
 
 export interface Column {
   field: Field
-  label?: string
+  label?: React.ReactNode
 }
 
 export type Row = {
@@ -28,8 +28,8 @@ const DataTable: React.FC<Props> = ({ columns, rows }) => (
     <Table>
       <TableHead>
         <TableRow>
-          { columns.map((column, i) => (
-            <TableCell key={ i }>
+          { columns.map((column) => (
+            <TableCell key={ column.field }>
               { column.label ?? column.field }
             </TableCell>
           )) }
@@ -38,8 +38,9 @@ const DataTable: React.FC<Props> = ({ columns, rows }) => (
       <TableBody>
         { rows.map((row, i) => (
           <TableRow hover key={ i }>
-            { Object.entries(row).map(([_field, value], j) => (
-              <TableCell key={ j }>
+            { Object.entries(row).map(([field, value]) => (
+              // TODO: Check field
+              <TableCell key={ field }>
                 { value }
               </TableCell>
             )) }
