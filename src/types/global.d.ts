@@ -13,7 +13,7 @@ type Method<T extends (that: never, ...args: never[]) => unknown> = T extends (t
 
 type Direction = 'ltr' | 'rtl' // FIXME: 'auto' が要りそう
 
-type SortOrder = 'ascending' | 'descending'
+type SortOrder = 'asc' | 'desc'
 
 type AppearanceTheme =
   | 'light'

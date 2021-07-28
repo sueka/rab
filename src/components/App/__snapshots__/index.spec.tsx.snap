@@ -3026,13 +3026,47 @@ exports[`App at /table 1`] = `
             class="MuiTableCell-root MuiTableCell-head"
             scope="col"
           >
-            42
+            <span
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiTableSortLabel-root"
+              role="button"
+              tabindex="0"
+            >
+              42
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                />
+              </svg>
+            </span>
           </th>
           <th
             class="MuiTableCell-root MuiTableCell-head"
             scope="col"
           >
-            6 * 9
+            <span
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiTableSortLabel-root"
+              role="button"
+              tabindex="0"
+            >
+              6 * 9
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                />
+              </svg>
+            </span>
           </th>
         </tr>
       </thead>

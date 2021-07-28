@@ -6,7 +6,7 @@ const notificationsSortState = atom<NotificationsSort>({
   key: 'notificationsSortState',
   default: {
     by: 'timestamp',
-    in: 'descending',
+    in: 'desc',
   },
 })
 
