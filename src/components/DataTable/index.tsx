@@ -30,7 +30,7 @@ const DataTable: React.FC<Props> = ({ columns, rows }) => (
       <TableHead>
         <TableRow>
           { columns.map((column) => (
-            <TableCell key={ column.field }>
+            <TableCell variant="head" key={ column.field }>
               { column.label ?? column.field }
             </TableCell>
           )) }
