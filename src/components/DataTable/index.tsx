@@ -5,6 +5,7 @@ import TableCell from '@material-ui/core/TableCell'
 import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import { OrderedMap } from 'immutable'
 import React from 'react'
 
 interface Props {
@@ -38,12 +39,11 @@ const DataTable: React.FC<Props> = ({ columns, rows }) => (
       <TableBody>
         { rows.map((row, i) => (
           <TableRow hover key={ i }>
-            { Object.entries(row).map(([field, value]) => (
-              // TODO: Check field
+            { OrderedMap(Object.entries(row)).sortBy((_value, field) => columns.findIndex((column) => column.field === field), (a, b) => a - b).map((value, field) => (
               <TableCell key={ field }>
                 { value }
               </TableCell>
-            )) }
+            )).valueSeq().toArray() }
           </TableRow>
         )) }
       </TableBody>

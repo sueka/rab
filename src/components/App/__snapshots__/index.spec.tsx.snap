@@ -3026,13 +3026,13 @@ exports[`App at /table 1`] = `
             class="MuiTableCell-root MuiTableCell-head"
             scope="col"
           >
-            6 * 9
+            42
           </th>
           <th
             class="MuiTableCell-root MuiTableCell-head"
             scope="col"
           >
-            42
+            6 * 9
           </th>
         </tr>
       </thead>

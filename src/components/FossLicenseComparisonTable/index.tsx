@@ -1,3 +1,4 @@
+import { List } from 'immutable'
 import { useInjection } from 'inversify-react'
 import React, { useEffect, useState } from 'react'
 import { generatePath } from 'react-router'
@@ -73,7 +74,11 @@ const FossLicenseComparisonTable: React.FC = () => {
 
   return (
     <DataTable
-      columns={ columns }
+      columns={ List(columns).sortBy((column) => column.field, (a, b) => {
+        if (a < b) return -1
+        else if (a > b) return 1
+        else return 0
+      }).toArray() }
       rows={ rows }
     />
   )
