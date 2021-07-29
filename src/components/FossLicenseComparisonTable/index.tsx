@@ -37,17 +37,17 @@ const FossLicenseComparisonTable: React.FC = () => {
   useEffect(() => {
     // tslint:disable-next-line:semicolon
     ;(async () => {
-      const sheets = asValueRange(await response?.json())
-
-      if (sheets === undefined) {
+      if (response === null) {
         return
       }
 
-      if (sheets?.majorDimension !== 'ROWS') {
+      const sheets = asValueRange(await response.json())
+
+      if (sheets.majorDimension !== 'ROWS') {
         throw new Error('Dimension unsupported.')
       }
 
-      if (!sheets.values.every<JsonArray>(Array.isArray)) {
+      if (sheets.values === undefined || !sheets.values.every<JsonArray>(Array.isArray)) {
         throw new Error('Less than 2 dimensions found.')
       }
 

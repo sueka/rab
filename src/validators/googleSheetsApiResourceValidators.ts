@@ -3,8 +3,8 @@ import { asListValue } from './protocolBuffersWellKnownTypesValidators'
 
 const asDimension = asUnionOf('DIMENSION_UNSPECIFIED', 'COLUMNS', 'ROWS')
 
-export const asValueRange = optional(asObject<GoogleSheetsApi.ValueRange>((input) => ({
-  range: asString(input.range),
-  majorDimension: asDimension(input.majorDimension),
-  values: asListValue(input.values),
-})))
+export const asValueRange = asObject<GoogleSheetsApi.ValueRange>((input) => ({
+  range: optional(asString)(input.range),
+  majorDimension: optional(asDimension)(input.majorDimension),
+  values: optional(asListValue)(input.values),
+}))
