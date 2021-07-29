@@ -6,6 +6,7 @@ import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
+import Bowser from 'bowser'
 import { List, OrderedMap } from 'immutable'
 import React, { useCallback, useMemo, useState } from 'react'
 
@@ -32,6 +33,12 @@ function compareStrings(a: string, b: string): number {
   else if (a > b) return 1
   else return 0
 }
+
+// TODO: Remove
+// TODO: Detect UA changes?
+const browser = Bowser.getParser(navigator.userAgent)
+
+const isMobile = browser.is('Mobile')
 
 const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc' }) => {
   const [sorts, setSorts] = useState<Sort<Row>[]>([])
@@ -85,7 +92,7 @@ const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc' })
 
   return (
     <TableContainer component={ Paper }>
-      <Table>
+      <Table size={ isMobile ? 'small' : 'medium' }>
         <TableHead>
           <TableRow>
             { columns.map((column) => (
