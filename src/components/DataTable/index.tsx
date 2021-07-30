@@ -82,15 +82,12 @@ const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc' })
     }
   }, [defaultSortOrder, sorts, primarySort])
 
-  const sortedRows = useMemo(() => sorts.reduceRight((result, sort) => result.sortBy(
-    (row) => String(row[sort.by]),
-    (a, b) => {
-      switch (sort.in) {
-        case 'asc': return compareStrings(a, b)
-        case 'desc': return -compareStrings(a, b)
-      }
+  const sortedRows = useMemo(() => sorts.reduceRight((result, sort) => {
+    switch (sort.in) {
+      case 'asc': return result.sortBy((row) => String(row[sort.by]), compareStrings)
+      case 'desc': return result.sortBy((row) => String(row[sort.by]), (a, b) => -compareStrings(a, b))
     }
-  ), List(rows)).toArray(), [sorts, rows])
+  }, List(rows)).toArray(), [sorts, rows])
 
   const theme = useTheme()
 
