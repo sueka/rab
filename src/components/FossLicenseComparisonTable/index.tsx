@@ -8,7 +8,7 @@ import ConfigRegistry from '~/config/ConfigRegistry'
 import zipIterables from '~/extensions/Iterable/zipIterables'
 import useFetch from '~/hooks/useFetch'
 import typed from '~/typed'
-import { asValueRange } from '~/validators/googleSheetsApiResourceValidators'
+import { asSpreadsheet, asValueRange } from '~/validators/googleSheetsApiResourceValidators'
 
 // TODO: remove
 type CellValue = string | number
@@ -25,7 +25,15 @@ function isCellValue(input: unknown): input is CellValue {
 const FossLicenseComparisonTable: React.FC = () => {
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
 
-  const response = useFetch(generatePath(typed<[string]>`${ config.get('SHEETS_API_URL') }/spreadsheets/:spreadsheetId/values/:sheetName\\?key=:apiKey`, {
+  const columnMetadataResponse = useFetch(generatePath(typed<[string]>`${ config.get('SHEETS_API_URL') }/spreadsheets/:spreadsheetId\\?ranges=:sheetName&includeGridData=:includeGridData&fields=:fields&key=:apiKey`, {
+    spreadsheetId: config.get('GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID'),
+    sheetName: config.get('GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME'),
+    includeGridData: true,
+    fields: 'sheets.data.columnMetadata',
+    apiKey: config.get('GOOGLE_CLOUD_APIS_GOOGLE_SHEETS_API_KEY'),
+  }))
+
+  const valuesResponse = useFetch(generatePath(typed<[string]>`${ config.get('SHEETS_API_URL') }/spreadsheets/:spreadsheetId/values/:sheetName\\?key=:apiKey`, {
     spreadsheetId: config.get('GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID'),
     sheetName: config.get('GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME'),
     apiKey: config.get('GOOGLE_CLOUD_APIS_GOOGLE_SHEETS_API_KEY'),
@@ -37,13 +45,18 @@ const FossLicenseComparisonTable: React.FC = () => {
   useEffect(() => {
     // tslint:disable-next-line:semicolon
     ;(async () => {
-      if (response === null) {
+      if (columnMetadataResponse === null || valuesResponse === null) {
         return
       }
 
-      const sheets = asValueRange(await response.json())
+      const columnMetadata = asSpreadsheet(await columnMetadataResponse.json()).sheets?.[0].data?.[0].columnMetadata
+      const sheets = asValueRange(await valuesResponse.json())
 
-      if (sheets.majorDimension !== 'ROWS') {
+      if (columnMetadata === undefined) {
+        throw new Error('No columnMetadata found.')
+      }
+
+      if (sheets?.majorDimension !== 'ROWS') {
         throw new Error('Dimension unsupported.')
       }
 
@@ -59,14 +72,15 @@ const FossLicenseComparisonTable: React.FC = () => {
 
       const fields = firstRowValues.map((cellValue, i) => typed<[CellValue, number]>`${ cellValue }_${ i }`)
 
-      setColumns(Array.from(zipIterables(fields, firstRowValues)).map(([field, cellValue]) => ({
+      setColumns(Array.from(zipIterables(fields, zipIterables(firstRowValues, columnMetadata))).map(([field, [cellValue, { pixelSize }]]) => ({
         field,
         label: cellValue,
+        width: pixelSize,
       })))
 
       setRows(restRowsValues.map((rowValues) => Object.fromEntries(zipIterables(fields, rowValues))))
     })()
-  }, [response])
+  }, [columnMetadataResponse, valuesResponse])
 
   if (columns === null || rows === null) {
     return null

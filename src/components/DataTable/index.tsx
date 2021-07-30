@@ -1,3 +1,4 @@
+import { useTheme } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -19,6 +20,7 @@ interface Props {
 export interface Column {
   field: Field
   label?: React.ReactNode
+  width?: number // in pixels
 }
 
 export type Row = {
@@ -90,13 +92,20 @@ const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc' })
     }
   ), List(rows)).toArray(), [sorts, rows])
 
+  const theme = useTheme()
+
   return (
     <TableContainer component={ Paper }>
       <Table size={ isMobile ? 'small' : 'medium' }>
         <TableHead>
           <TableRow>
             { columns.map((column) => (
-              <TableCell variant="head" key={ column.field }>
+              <TableCell
+                variant="head"
+                sortDirection={ sorts.find((sort) => sort.by === column.field)?.in }
+                style={ { minWidth: column.width !== undefined ? column.width + 2 * theme.spacing(2) : undefined } }
+                key={ column.field }
+              >
                 <TableSortLabel
                   active={ primarySort?.by === column.field }
                   direction={ sorts.find((sort) => sort.by === column.field)?.in ?? defaultSortOrder }

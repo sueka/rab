@@ -10,6 +10,7 @@ import { StaticRouter } from 'react-router'
 import { RecoilRoot } from 'recoil'
 import createMockStore from 'redux-mock-store'
 
+import { shouldBePresent } from '~/asserters/commonAsserters'
 import IntlProvider from '~/components/IntlProvider'
 import ThemeProvider from '~/components/ThemeProvider'
 import inversifyContainer from '~/container.dev'
@@ -72,15 +73,45 @@ ${ '/nonexistent-path' }
   })
 
   beforeAll(() => {
+    shouldBePresent(process.env.SHEETS_API_URL)
+    shouldBePresent(process.env.GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID)
+    shouldBePresent(process.env.GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME)
+
+    const getSpreadsheetUrl = `${ process.env.SHEETS_API_URL }/spreadsheets/${ process.env.GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID }`
+    const getSpreadsheetValuesUrl = `${ process.env.SHEETS_API_URL }/spreadsheets/${ process.env.GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID }/values/${ encodeURIComponent(process.env.GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME) }`
+
     fetchMock.resetMocks()
 
-    fetchMock.doMock(async () => JSON.stringify({
-      range: 'Sheet1!A1:Z1000',
-      majorDimension: 'ROWS',
-      values: [
-        ['6 * 9', 42],
-      ],
-    }))
+    fetchMock.doMock(async (request) => {
+      if (request.url.startsWith(`${ getSpreadsheetUrl }?`)) {
+        return JSON.stringify({
+          sheets: [{
+            data: [{
+              columnMetadata: [
+                {
+                  pixelSize: 100,
+                },
+                {
+                  pixelSize: 100,
+                },
+              ],
+            }],
+          }],
+        })
+      }
+
+      if (request.url.startsWith(`${ getSpreadsheetValuesUrl }?`)) {
+        return JSON.stringify({
+          range: 'Sheet1!A1:Z1000',
+          majorDimension: 'ROWS',
+          values: [
+            ['6 * 9', 42],
+          ],
+        })
+      }
+
+      throw new Error
+    })
   })
 
   test(typed<[string]>`at ${ location }`, async () => {

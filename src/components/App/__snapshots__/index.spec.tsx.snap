@@ -3025,6 +3025,7 @@ exports[`App at /table 1`] = `
           <th
             class="MuiTableCell-root MuiTableCell-head"
             scope="col"
+            style="min-width: 132px;"
           >
             <span
               aria-disabled="false"
@@ -3048,6 +3049,7 @@ exports[`App at /table 1`] = `
           <th
             class="MuiTableCell-root MuiTableCell-head"
             scope="col"
+            style="min-width: 132px;"
           >
             <span
               aria-disabled="false"
