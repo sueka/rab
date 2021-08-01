@@ -10,7 +10,12 @@ export const asValueRange = asObject<GoogleSheetsApi.ValueRange>((input) => ({
 }))
 
 export const asSpreadsheet = asObject<GoogleSheetsApi.Spreadsheet>((input) => ({
+  properties: optional(asSpreadsheetProperties)(input.properties),
   sheets: optional(listOf(asSheet))(input.sheets),
+}))
+
+export const asSpreadsheetProperties = asObject<GoogleSheetsApi.SpreadsheetProperties>((input) => ({
+  locale: optional(asString)(input.locale),
 }))
 
 export const asSheet = asObject<GoogleSheetsApi.Sheet>((input) => ({

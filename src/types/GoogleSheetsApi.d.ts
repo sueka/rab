@@ -13,7 +13,13 @@ declare namespace GoogleSheetsApi {
     | 'COLUMNS'
 
   interface Spreadsheet {
+    properties?: SpreadsheetProperties
     sheets?: Sheet[]
+    // TODO: more
+  }
+
+  interface SpreadsheetProperties {
+    locale?: string
     // TODO: more
   }
 

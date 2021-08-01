@@ -23,6 +23,9 @@ module.exports = {
     '^<rootDir>/src/.*\\.css\\.d\\.ts$',
     '^<rootDir>/src/.*\\.wasm\\.d\\.ts$',
   ],
+  transformIgnorePatterns: [
+    '<roodDir>/node_modules/bcp-47',
+  ],
   setupFiles: [
     '<rootDir>/src/setupTests.ts',
   ],

@@ -1,3 +1,4 @@
+import { stringify } from 'bcp-47'
 import { List } from 'immutable'
 import { useInjection } from 'inversify-react'
 import React, { useEffect, useState } from 'react'
@@ -8,6 +9,7 @@ import ConfigRegistry from '~/config/ConfigRegistry'
 import zipIterables from '~/extensions/Iterable/zipIterables'
 import useFetch from '~/hooks/useFetch'
 import typed from '~/typed'
+import parseSpreadsheetLocale from '~/utils/parseSpreadsheetLocale'
 import { asSpreadsheet, asValueRange } from '~/validators/googleSheetsApiResourceValidators'
 
 // TODO: remove
@@ -29,7 +31,7 @@ const FossLicenseComparisonTable: React.FC = () => {
     spreadsheetId: config.get('GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID'),
     sheetName: config.get('GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME'),
     includeGridData: true,
-    fields: 'sheets.data.columnMetadata',
+    fields: 'properties.locale,sheets.data.columnMetadata',
     apiKey: config.get('GOOGLE_CLOUD_APIS_GOOGLE_SHEETS_API_KEY'),
   }))
 
@@ -41,6 +43,7 @@ const FossLicenseComparisonTable: React.FC = () => {
 
   const [columns, setColumns] = useState<Column[] | null>(null)
   const [rows, setRows] = useState<Row[] | null>(null)
+  const [locale, setLocale] = useState<string | null>(null)
 
   useEffect(() => {
     // tslint:disable-next-line:semicolon
@@ -49,26 +52,30 @@ const FossLicenseComparisonTable: React.FC = () => {
         return
       }
 
-      const columnMetadata = asSpreadsheet(await getSpreadsheetResponse.json()).sheets?.[0].data?.[0].columnMetadata
-      const sheets = asValueRange(await getSpreadsheetValuesResponse.json())
+      const spreadsheet = asSpreadsheet(await getSpreadsheetResponse.json())
+      const spreadsheetLocale = spreadsheet.properties?.locale
+      const columnMetadata = spreadsheet.sheets?.[0].data?.[0].columnMetadata
+      const valueRange = asValueRange(await getSpreadsheetValuesResponse.json())
 
-      if (columnMetadata === undefined) {
-        throw new Error('No columnMetadata found.')
+      if (spreadsheetLocale === undefined || columnMetadata === undefined) {
+        throw new Error('No both locale and columnMetadata found.')
       }
 
-      if (sheets?.majorDimension !== 'ROWS') {
+      if (valueRange?.majorDimension !== 'ROWS') {
         throw new Error('Dimension unsupported.')
       }
 
-      if (sheets.values === undefined || !sheets.values.every<JsonArray>(Array.isArray)) {
+      if (valueRange.values === undefined || !valueRange.values.every<JsonArray>(Array.isArray)) {
         throw new Error('Less than 2 dimensions found.')
       }
 
-      if (!sheets.values.every((row): row is CellValue[] => row.every(isCellValue))) {
+      if (!valueRange.values.every((row): row is CellValue[] => row.every(isCellValue))) {
         throw new Error('Neither string nor number value found.')
       }
 
-      const [firstRowValues, ...restRowsValues] = sheets.values
+      setLocale(stringify(parseSpreadsheetLocale(spreadsheetLocale)))
+
+      const [firstRowValues, ...restRowsValues] = valueRange.values
 
       const fields = firstRowValues.map((cellValue, i) => typed<[CellValue, number]>`${ cellValue }_${ i }`)
 
@@ -94,6 +101,7 @@ const FossLicenseComparisonTable: React.FC = () => {
         else return 0
       }).toArray() }
       rows={ rows }
+      locale={ locale ?? undefined }
     />
   )
 }

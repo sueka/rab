@@ -1,4 +1,4 @@
-import { useTheme } from '@material-ui/core'
+import { makeStyles, useTheme } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -15,6 +15,7 @@ interface Props {
   columns: Column[]
   rows: Row[]
   defaultSortOrder?: SortOrder
+  locale?: string // BCP 47 Language Tag
 }
 
 export interface Column {
@@ -29,6 +30,10 @@ export type Row = {
 
 type Field = string | number
 
+interface StyleProps {
+  direction: Direction | undefined
+}
+
 // TODO: remove
 function compareStrings(a: string, b: string): number {
   if (a < b) return -1
@@ -42,7 +47,22 @@ const browser = Bowser.getParser(navigator.userAgent)
 
 const isMobile = browser.is('Mobile')
 
-const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc' }) => {
+const useStyles = makeStyles({
+  LocalizedTableCell: {
+    textAlign: ({ direction }: StyleProps) => {
+      if (direction === undefined) return undefined
+
+      switch (direction) {
+        case 'ltr': return 'left'
+        case 'rtl': return 'right'
+      }
+    },
+  },
+}, {
+  flip: false,
+})
+
+const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc', locale }) => {
   const [sorts, setSorts] = useState<Sort<Row>[]>([])
 
   // NOTE: TypeScript のメンバーアクセス演算は部分関数ではない (cf. https://github.com/microsoft/TypeScript/issues/13778)
@@ -91,25 +111,36 @@ const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc' })
 
   const theme = useTheme()
 
+  const direction = useMemo(() => {
+    if (locale === undefined) return undefined
+
+    return /^(?:he|iw)\b/.test(locale) ? 'rtl' : 'ltr' // TODO: RtL の判定方法を修正する
+  }, [locale])
+
+  const jssClasses = useStyles({ direction })
+
   return (
     <TableContainer component={ Paper }>
-      <Table size={ isMobile ? 'small' : 'medium' }>
+      <Table size={ isMobile ? 'small' : 'medium' } lang={ locale }>
         <TableHead>
           <TableRow>
             { columns.map((column) => (
               <TableCell
                 variant="head"
                 sortDirection={ sorts.find((sort) => sort.by === column.field)?.in }
+                className={ jssClasses.LocalizedTableCell }
                 style={ { minWidth: column.width !== undefined ? column.width + 2 * theme.spacing(2) : undefined } }
                 key={ column.field }
               >
-                <TableSortLabel
-                  active={ primarySort?.by === column.field }
-                  direction={ sorts.find((sort) => sort.by === column.field)?.in ?? defaultSortOrder }
-                  onClick={ createSortLabelClickHandler(column.field) }
-                >
-                  { column.label ?? column.field }
-                </TableSortLabel>
+                <bdi>
+                  <TableSortLabel
+                    active={ primarySort?.by === column.field }
+                    direction={ sorts.find((sort) => sort.by === column.field)?.in ?? defaultSortOrder }
+                    onClick={ createSortLabelClickHandler(column.field) }
+                  >
+                    { column.label ?? column.field }
+                  </TableSortLabel>
+                </bdi>
               </TableCell>
             )) }
           </TableRow>
@@ -118,8 +149,13 @@ const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc' })
           { sortedRows.map((row, i) => (
             <TableRow hover key={ i }>
               { OrderedMap(Object.entries(row)).sortBy((_value, field) => columns.findIndex((column) => column.field === field), (a, b) => a - b).map((value, field) => (
-                <TableCell key={ field }>
-                  { value }
+                <TableCell
+                  className={ jssClasses.LocalizedTableCell }
+                  key={ field }
+                >
+                  <bdi>
+                    { value }
+                  </bdi>
                 </TableCell>
               )).valueSeq().toArray() }
             </TableRow>

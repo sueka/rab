@@ -85,6 +85,9 @@ ${ '/nonexistent-path' }
     fetchMock.doMock(async (request) => {
       if (request.url.startsWith(`${ getSpreadsheetUrl }?`)) {
         return JSON.stringify({
+          properties: {
+            locale: 'en_US',
+          },
           sheets: [{
             data: [{
               columnMetadata: [

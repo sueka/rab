@@ -29,6 +29,7 @@
       "@material-ui/core",
       "@material-ui/icons",
       "@material-ui/lab",
+      "bcp-47/lib",
       "fp-ts/lib/Either",
       "react-app-polyfill/stable",
       "react-hot-loader/root",
