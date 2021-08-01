@@ -28,9 +28,7 @@ function stripMargin2(that: string, marginChar: string) {
 
   // tslint:disable-next-line:no-loop-statement
   for (const line of generateLineWithEolIterator(that)) {
-    const matches = new RegExp(typed<[string, string]>`^(?:[\\t ]*(?<marginChar>.))?(?<stripped>(?:.|${ eolCharPattern.source })*${ eolPattern.source }?)$`, 'u').exec(line)
-
-    const groups = matches?.groups // TODO
+    const groups = new RegExp(typed<[string, string]>`^(?:[\\t ]*(?<marginChar>.))?(?<stripped>(?:.|${ eolCharPattern.source })*${ eolPattern.source }?)$`, 'u').exec(line)?.groups
 
     if (groups === undefined) {
       throw new Error // TODO
