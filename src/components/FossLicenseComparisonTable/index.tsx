@@ -25,7 +25,7 @@ function isCellValue(input: unknown): input is CellValue {
 const FossLicenseComparisonTable: React.FC = () => {
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
 
-  const columnMetadataResponse = useFetch(generatePath(typed<[string]>`${ config.get('SHEETS_API_URL') }/spreadsheets/:spreadsheetId\\?ranges=:sheetName&includeGridData=:includeGridData&fields=:fields&key=:apiKey`, {
+  const getSpreadsheetResponse = useFetch(generatePath(typed<[string]>`${ config.get('SHEETS_API_URL') }/spreadsheets/:spreadsheetId\\?ranges=:sheetName&includeGridData=:includeGridData&fields=:fields&key=:apiKey`, {
     spreadsheetId: config.get('GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID'),
     sheetName: config.get('GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME'),
     includeGridData: true,
@@ -33,7 +33,7 @@ const FossLicenseComparisonTable: React.FC = () => {
     apiKey: config.get('GOOGLE_CLOUD_APIS_GOOGLE_SHEETS_API_KEY'),
   }))
 
-  const valuesResponse = useFetch(generatePath(typed<[string]>`${ config.get('SHEETS_API_URL') }/spreadsheets/:spreadsheetId/values/:sheetName\\?key=:apiKey`, {
+  const getSpreadsheetValuesResponse = useFetch(generatePath(typed<[string]>`${ config.get('SHEETS_API_URL') }/spreadsheets/:spreadsheetId/values/:sheetName\\?key=:apiKey`, {
     spreadsheetId: config.get('GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID'),
     sheetName: config.get('GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME'),
     apiKey: config.get('GOOGLE_CLOUD_APIS_GOOGLE_SHEETS_API_KEY'),
@@ -45,12 +45,12 @@ const FossLicenseComparisonTable: React.FC = () => {
   useEffect(() => {
     // tslint:disable-next-line:semicolon
     ;(async () => {
-      if (columnMetadataResponse === null || valuesResponse === null) {
+      if (getSpreadsheetResponse === null || getSpreadsheetValuesResponse === null) {
         return
       }
 
-      const columnMetadata = asSpreadsheet(await columnMetadataResponse.json()).sheets?.[0].data?.[0].columnMetadata
-      const sheets = asValueRange(await valuesResponse.json())
+      const columnMetadata = asSpreadsheet(await getSpreadsheetResponse.json()).sheets?.[0].data?.[0].columnMetadata
+      const sheets = asValueRange(await getSpreadsheetValuesResponse.json())
 
       if (columnMetadata === undefined) {
         throw new Error('No columnMetadata found.')
@@ -80,7 +80,7 @@ const FossLicenseComparisonTable: React.FC = () => {
 
       setRows(restRowsValues.map((rowValues) => Object.fromEntries(zipIterables(fields, rowValues))))
     })()
-  }, [columnMetadataResponse, valuesResponse])
+  }, [getSpreadsheetResponse, getSpreadsheetValuesResponse])
 
   if (columns === null || rows === null) {
     return null
