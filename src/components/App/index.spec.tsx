@@ -1,4 +1,6 @@
 import { render, waitForDomChange } from '@testing-library/react'
+import { stringify } from 'bcp-47'
+import { Schema } from 'bcp-47/lib/stringify'
 import { List, Map } from 'immutable'
 import { Provider as ServiceProvider } from 'inversify-react'
 import { SnackbarProvider } from 'notistack'
@@ -23,8 +25,10 @@ import App from '.'
 import formats from '../../../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../../../public/messages/en.json' // tslint:disable-line:no-relative-imports
 
+jest.mock('bcp-47', () => ({ stringify: jest.fn() })) // FIXME: Delete the mock
 jest.mock('~/hooks/useScreen', () => jest.fn())
 
+const stringifyMocked = stringify as jest.MockedFunction<typeof stringify>
 const useScreenMocked = useScreen as jest.MockedFunction<typeof useScreen>
 
 // TODO: remove?
@@ -69,6 +73,7 @@ ${ '/settings' }
 ${ '/nonexistent-path' }
 `('App', ({ location }: { location: string }) => {
   beforeAll(() => {
+    stringifyMocked.mockImplementation((schema?: Schema) => `${ schema?.language }-${ schema?.region }`)
     useScreenMocked.mockImplementation(() => ({ width: 1366, height: 768, dpr: 1 }))
   })
 
