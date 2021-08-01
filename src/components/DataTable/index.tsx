@@ -127,7 +127,7 @@ const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc', l
             { columns.map((column) => (
               <TableCell
                 variant="head"
-                sortDirection={ sorts.find((sort) => sort.by === column.field)?.in }
+                sortDirection={ primarySort?.by === column.field ? primarySort.in : undefined }
                 className={ jssClasses.LocalizedTableCell }
                 style={ { minWidth: column.width !== undefined ? column.width + 2 * theme.spacing(2) : undefined } }
                 key={ column.field }
