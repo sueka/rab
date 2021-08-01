@@ -34,7 +34,7 @@ const ghPagesIgnored = [
 //
 
 export const clean: TaskFunction = describedTask(
-  'Remove all files that neither are tracked by Git, are in node_modules/ nor are .env`',
+  'Remove all files that neither are tracked by Git except files in node_modules/ and .env',
   () => del([...ignored, ...ghPagesIgnored, '!node_modules/**', '!.env'])
 )
 
