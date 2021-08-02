@@ -8,8 +8,11 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
 import Bowser from 'bowser'
+import classnames from 'classnames'
 import { List, OrderedMap } from 'immutable'
 import React, { useCallback, useMemo, useState } from 'react'
+
+import classes from './classes.css'
 
 interface Props {
   columns: Column[]
@@ -41,6 +44,11 @@ function compareStrings(a: string, b: string): number {
   else return 0
 }
 
+// TODO: remove
+function isNumberLikeString(it: string) {
+  return !Number.isNaN(Number(it)) && !Number.isNaN(parseFloat(it))
+}
+
 // TODO: Remove
 // TODO: Detect UA changes?
 const browser = Bowser.getParser(navigator.userAgent)
@@ -48,7 +56,7 @@ const browser = Bowser.getParser(navigator.userAgent)
 const isMobile = browser.is('Mobile')
 
 const useStyles = makeStyles({
-  LocalizedTableCell: {
+  LocalizedCell: {
     textAlign: ({ direction }: StyleProps) => {
       if (direction === undefined) return undefined
 
@@ -118,6 +126,7 @@ const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc', l
   }, [locale])
 
   const jssClasses = useStyles({ direction })
+  const numericCellClassName = useMemo(() => classnames(jssClasses.LocalizedCell, classes.NumericCell), [jssClasses.LocalizedCell])
 
   return (
     <TableContainer component={ Paper }>
@@ -128,7 +137,7 @@ const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc', l
               <TableCell
                 variant="head"
                 sortDirection={ primarySort?.by === column.field ? primarySort.in : undefined }
-                className={ jssClasses.LocalizedTableCell }
+                className={ jssClasses.LocalizedCell }
                 style={ { minWidth: column.width !== undefined ? column.width + 2 * theme.spacing(2) : undefined } }
                 key={ column.field }
               >
@@ -150,7 +159,7 @@ const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc', l
             <TableRow hover key={ i }>
               { OrderedMap(Object.entries(row)).sortBy((_value, field) => columns.findIndex((column) => column.field === field), (a, b) => a - b).map((value, field) => (
                 <TableCell
-                  className={ jssClasses.LocalizedTableCell }
+                  className={ isNumberLikeString(String(value)) ? numericCellClassName : jssClasses.LocalizedCell }
                   key={ field }
                 >
                   <bdi>

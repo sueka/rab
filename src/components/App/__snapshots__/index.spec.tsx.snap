@@ -3024,7 +3024,7 @@ exports[`App at /table 1`] = `
           class="MuiTableRow-root MuiTableRow-head"
         >
           <th
-            class="MuiTableCell-root MuiTableCell-head makeStyles-LocalizedTableCell-39 makeStyles-LocalizedTableCell-40"
+            class="MuiTableCell-root MuiTableCell-head makeStyles-LocalizedCell-39 makeStyles-LocalizedCell-40"
             scope="col"
             style="min-width: 132px;"
           >
@@ -3050,7 +3050,7 @@ exports[`App at /table 1`] = `
             </bdi>
           </th>
           <th
-            class="MuiTableCell-root MuiTableCell-head makeStyles-LocalizedTableCell-39 makeStyles-LocalizedTableCell-40"
+            class="MuiTableCell-root MuiTableCell-head makeStyles-LocalizedCell-39 makeStyles-LocalizedCell-40"
             scope="col"
             style="min-width: 132px;"
           >

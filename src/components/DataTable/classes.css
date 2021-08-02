@@ -1,0 +1,3 @@
+.NumericCell {
+  text-align: right; /* NOTE: アラビア数字は RtL 言語でも右寄せする。 <q cite="https://material.io/components/data-tables#behavior">Align numbers to the right for improved scannability.</q> */
+}
