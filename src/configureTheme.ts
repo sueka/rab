@@ -1,13 +1,13 @@
 import indigo from '@material-ui/core/colors/indigo'
 import teal from '@material-ui/core/colors/teal'
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
+import createTheme from '@material-ui/core/styles/createTheme'
 
 interface Props {
   direction?: Direction
   dark: boolean
 }
 
-const configureTheme = ({ direction, dark }: Props) => createMuiTheme({
+const configureTheme = ({ direction, dark }: Props) => createTheme({
   direction,
   typography: {
     fontFamily: 'sans-serif',

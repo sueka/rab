@@ -6,6 +6,7 @@ import { SagaIterator } from 'redux-saga'
 import { call, put, select } from 'redux-saga/effects'
 import { v4 } from 'uuid'
 
+import { shouldBePresent } from '~/asserters/commonAsserters'
 import { takeEvery } from '~/boni/redux-saga/effects'
 import Task from '~/domain/entity/Task'
 import TaskRepository from '~/domain/repository/TaskRepository'
@@ -268,7 +269,11 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         ...state,
-        tasks: state.tasks.update(i, (task) => task.with({ content: action.payload.content })),
+        tasks: state.tasks.update(i, (task) => {
+          shouldBePresent(task)
+
+          return task.with({ content: action.payload.content })
+        }),
       }
     }
     case MARK_TASK_AS_DONE_ASYNC: return state
@@ -299,7 +304,11 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         ...state,
-        tasks: state.tasks.update(i, (task) => task.with({ done: true })),
+        tasks: state.tasks.update(i, (task) => {
+          shouldBePresent(task)
+
+          return task.with({ done: true })
+        }),
       }
     }
     case MARK_TASK_AS_UNDONE: {
@@ -311,7 +320,11 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         ...state,
-        tasks: state.tasks.update(i, (task) => task.with({ done: false })),
+        tasks: state.tasks.update(i, (task) => {
+          shouldBePresent(task)
+
+          return task.with({ done: false })
+        }),
       }
     }
     case REMOVE_TASK: {

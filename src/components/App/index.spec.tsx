@@ -36,7 +36,7 @@ const useScreenMocked = useScreen as jest.MockedFunction<typeof useScreen>
 const store = createMockStore<Alt.Omit<State, 'router'>>()({
   chess: {
     board: {
-      chessmen: Map(),
+      chessmen: Map<Class.ValueObject<Chess.Coordinates>, Chess.Chessman>(),
     },
   },
   counter: {
@@ -53,7 +53,7 @@ const store = createMockStore<Alt.Omit<State, 'router'>>()({
   },
   reminder: {
     tasks: List(),
-    errors: Map(),
+    errors: Map<string, Error>(),
   },
   userAuthn: {},
 })
