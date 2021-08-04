@@ -23,6 +23,10 @@
         "esSpecCompliant": true
       }
     ],
+    "no-empty": [
+      true,
+      "allow-empty-functions"
+    ],
     "no-submodule-imports": [
       true,
       "@iconify/icons-mdi",
