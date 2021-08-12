@@ -1,12 +1,13 @@
 import Button from '@material-ui/core/Button'
 import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
-import { Either, isLeft, isRight, left, right } from 'fp-ts/lib/Either'
+import { Octokit } from '@octokit/core'
+import { Either, isLeft, right } from 'fp-ts/lib/Either'
 import { resolve } from 'inversify-react'
 import React from 'react'
 import { FormattedMessage, WrappedComponentProps, injectIntl } from 'react-intl'
 
-import GetRepo from '~/useCase/GetRepo'
+import { asGetRepoResponse } from '~/validators/gitHubApiResourceValidators'
 import messages from './messages'
 
 type Props =
@@ -19,7 +20,7 @@ interface State {
 }
 
 class Info extends React.Component<Props, State> {
-  @resolve('GetRepo') private readonly getRepo!: GetRepo
+  @resolve('Octokit') private readonly octokit!: Octokit
 
   public override state: Readonly<State> = {
     successful: true,
@@ -31,21 +32,13 @@ class Info extends React.Component<Props, State> {
       fetching: true,
     })
 
-    this.getRepo.apply({ owner: 'sueka', repo: 'rap' }).then(
+    this.octokit.request('GET /repos/{owner}/{repo}', { owner: 'sueka', repo: 'rap' }).then(
       (output) => {
-        if (output.successful) {
-          this.setState({
-            successful: true,
-            fetching: false,
-            repo: right(output.response.body),
-          })
-        } else {
-          this.setState({
-            successful: false,
-            fetching: false,
-            repo: left(new Error(output.response.body.message)),
-          })
-        }
+        this.setState({
+          successful: true,
+          fetching: false,
+          repo: right(asGetRepoResponse(output.data)),
+        })
       },
       (reason: unknown) => {
         console.error(reason) // tslint:disable-line:no-console
