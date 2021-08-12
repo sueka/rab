@@ -1,7 +1,6 @@
 import Button from '@material-ui/core/Button'
 import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
-import assert from 'assert'
 import { Either, isLeft, isRight, left, right } from 'fp-ts/lib/Either'
 import { resolve } from 'inversify-react'
 import React from 'react'
@@ -66,20 +65,12 @@ class Info extends React.Component<Props, State> {
 
     if (fetching) {
       return formatMessage(messages.fetching)
+    } else if (!successful) {
+      return formatMessage(messages.fetchingFailed)
+    } else if (repo == null) {
+      return formatMessage(messages.fetchingNotStarted)
     } else {
-      if (repo == null) {
-        return formatMessage(messages.fetchingNotStarted)
-      } else {
-        if (isRight(repo)) {
-          assert(successful)
-
-          return formatMessage(messages.fetchingDoneSuccessfully)
-        } else {
-          assert(!successful)
-
-          return formatMessage(messages.fetchingFailed)
-        }
-      }
+      return formatMessage(messages.fetchingDoneSuccessfully)
     }
   }
 
