@@ -1,5 +1,7 @@
 const fetchStub: typeof fetch = async (input, init?) => {
-  if (init?.method === 'GET' && input === 'https://api.github.com/repos/sueka/rap') {
+  const url = typeof input !== 'string' ? input.url : input
+
+  if (init?.method === 'GET' && /^https:\/\/api\.github\.com\/repos\/(?<owner>.*)\/(?<repo>.*)$/.test(url)) {
     return new Response(new Blob([JSON.stringify({
       full_name: 'anonymous/foobar',
       html_url: 'https://github.com/anonymous/foobar',
