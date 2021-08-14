@@ -60,7 +60,7 @@ const BannerContainer: React.FC<Props> = ({ topAppbarHeight }) => {
       mountOnEnter
       unmountOnExit
       classes={ {
-        root: collapseContainerClassName,
+        container: collapseContainerClassName,
       } }
     >
       <div>

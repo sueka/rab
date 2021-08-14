@@ -57,7 +57,7 @@ interface Props {
 const initialState: Alt.Omit<State, 'router'> = {
   chess: {
     board: {
-      chessmen: Map<Class.ValueObject<Chess.Coordinates>, Chess.Chessman>(),
+      chessmen: Map(),
     },
   },
   counter: {
@@ -74,7 +74,7 @@ const initialState: Alt.Omit<State, 'router'> = {
   },
   reminder: {
     tasks: List(),
-    errors: Map<string, Error>(),
+    errors: Map(),
   },
   userAuthn: {},
 }
