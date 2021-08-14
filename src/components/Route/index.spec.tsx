@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react'
+import { render, waitForDomChange } from '@testing-library/react'
 import React from 'react'
 import { MemoryRouter } from 'react-router'
 
@@ -37,7 +37,7 @@ describe('Route', () => {
 
     expect(container.firstChild).toMatchSnapshot()
 
-    await waitFor(() => {}, { container })
+    await waitForDomChange({ container/* : container as HTMLElement */ })
 
     expect(container.firstChild).toMatchSnapshot()
   })

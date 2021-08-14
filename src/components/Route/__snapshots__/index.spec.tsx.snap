@@ -22,27 +22,7 @@ exports[`Route with a lazy component 1`] = `
 </div>
 `;
 
-exports[`Route with a lazy component 2`] = `
-<div
-  class="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
-  role="progressbar"
-  style="width: 40px; height: 40px;"
->
-  <svg
-    class="MuiCircularProgress-svg"
-    viewBox="22 22 44 44"
-  >
-    <circle
-      class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
-      cx="44"
-      cy="44"
-      fill="none"
-      r="20.2"
-      stroke-width="3.6"
-    />
-  </svg>
-</div>
-`;
+exports[`Route with a lazy component 2`] = `lazy`;
 
 exports[`Route with a non-lazy component 1`] = `non-lazy`;
 

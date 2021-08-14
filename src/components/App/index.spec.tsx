@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react'
+import { render, waitForDomChange } from '@testing-library/react'
 import { stringify } from 'bcp-47'
 import { Schema } from 'bcp-47/lib/stringify'
 import { List, Map } from 'immutable'
@@ -145,7 +145,7 @@ ${ '/nonexistent-path' }
       </RecoilRoot>
     )
 
-    await waitFor(() => {}, { container, timeout: 15000 })
+    await waitForDomChange({ container, timeout: 15000 })
 
     expect(container).toMatchSnapshot()
   })
