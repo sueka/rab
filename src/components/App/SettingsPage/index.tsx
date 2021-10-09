@@ -15,7 +15,7 @@ import Brightness7Icon from '@material-ui/icons/Brightness7'
 import BrightnessAutoIcon from '@material-ui/icons/BrightnessAuto'
 import SecurityIcon from '@material-ui/icons/Security'
 import { useInjection } from 'inversify-react'
-import React, { useCallback, useContext } from 'react'
+import React, { useCallback, useContext, useEffect } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { useRecoilState } from 'recoil'
@@ -56,6 +56,18 @@ const SettingsPage: React.FC = () => {
   const { defaultDark } = useContext(DefaultDarkContext)
 
   shouldBePresent(defaultDark)
+
+  const handleFullscreenchange = useCallback(() => {
+    setFullScreen(document.fullscreenElement !== null)
+  }, [])
+
+  useEffect(() => {
+    document.addEventListener('fullscreenchange', handleFullscreenchange)
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenchange)
+    }
+  }, [handleFullscreenchange])
 
   const handleAppearanceThemeChange = useCallback((_event, theme: string) => {
     if (theme === 'light' || theme === 'dark' || theme === 'device') {
