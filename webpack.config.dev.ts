@@ -28,10 +28,12 @@ config.plugins.push(new BundleAnalyzerPlugin({
 }))
 
 config.devServer = {
-  contentBase: path.join(__dirname, 'dist'),
+  static: {
+    directory: path.resolve(__dirname, 'dist'),
+  },
   https: true,
   host,
-  disableHostCheck: true,
+  allowedHosts: 'all',
   port,
   historyApiFallback: true,
 }
