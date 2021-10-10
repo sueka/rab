@@ -62,9 +62,11 @@ const SettingsPage: React.FC = () => {
   }, [])
 
   useEffect(() => {
+    document.addEventListener('webkitfullscreenchange', handleFullscreenchange)
     document.addEventListener('fullscreenchange', handleFullscreenchange)
 
     return () => {
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenchange)
       document.removeEventListener('fullscreenchange', handleFullscreenchange)
     }
   }, [handleFullscreenchange])
