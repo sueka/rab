@@ -2,7 +2,7 @@ import { DefaultValue, atom } from 'recoil'
 
 const fullScreenState = atom({
   key: 'fullScreenState',
-  default: false,
+  default: document.fullscreenElement !== null,
   effects_UNSTABLE: [
     ({ onSet }) => {
       onSet((newFullScreen) => {
