@@ -19,5 +19,9 @@
         ],
       },
     ],
+    "alpha-value-notation": "number",
+    "max-line-length": 1000,
+    "number-max-precision": 20,
+    "selector-class-pattern": "[A-Z][0-9A-Za-z]*([A-Z][0-9A-Za-z]*)*",
   },
 }
