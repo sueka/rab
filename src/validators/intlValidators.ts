@@ -1,14 +1,15 @@
+import { NumberFormatOptions } from '@formatjs/ecma402-abstract'
 import { Formats } from 'intl-messageformat'
 
 import { asBoolean, asObject, asString, asUnionOf, optional, recordOf, unionOf } from './commonValidators'
 
 export const asFormats = asObject<Partial<Formats>>((input) => ({ // TODO
-  number: optional(recordOf(asIntlNumberFormatOptions))(input.number),
+  number: optional(recordOf(asNumberFormatOptions))(input.number),
   date: optional(recordOf(asIntlDateTimeFormatOptions))(input.date),
   time: optional(recordOf(asIntlDateTimeFormatOptions))(input.time),
 }))
 
-const asIntlNumberFormatOptions = asObject<Intl.NumberFormatOptions>((input) => ({
+const asNumberFormatOptions = asObject<NumberFormatOptions>((input) => ({
   localeMatcher: optional(asUnionOf('lookup', 'best fit'))(input.localeMatcher),
   style: optional(asUnionOf('decimal', 'currency', 'percent'))(input.style),
   currency: optional(asString)(input.currency), // ISO 4217 currency code

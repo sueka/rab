@@ -2785,13 +2785,14 @@ exports[`App at /settings 1`] = `
               <span
                 aria-disabled="true"
                 aria-labelledby="00000000-0000-4000-0000-000000000000"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-124 MuiSwitch-switchBase MuiSwitch-colorSecondary PrivateSwitchBase-disabled-126 Mui-disabled Mui-disabled Mui-disabled"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-124 MuiSwitch-switchBase MuiSwitch-colorSecondary PrivateSwitchBase-checked-125 Mui-checked PrivateSwitchBase-disabled-126 Mui-disabled Mui-disabled Mui-disabled"
                 tabindex="-1"
               >
                 <span
                   class="MuiIconButton-label"
                 >
                   <input
+                    checked=""
                     class="PrivateSwitchBase-input-127 MuiSwitch-input"
                     disabled=""
                     type="checkbox"

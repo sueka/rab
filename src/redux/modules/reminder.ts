@@ -268,7 +268,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         ...state,
-        tasks: state.tasks.update(i, (task) => task.with({ content: action.payload.content })),
+        tasks: state.tasks.update(i, (task) => task!.with({ content: action.payload.content })), // tslint:disable-line:no-non-null-assertion
       }
     }
     case MARK_TASK_AS_DONE_ASYNC: return state
@@ -299,7 +299,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         ...state,
-        tasks: state.tasks.update(i, (task) => task.with({ done: true })),
+        tasks: state.tasks.update(i, (task) => task!.with({ done: true })), // tslint:disable-line:no-non-null-assertion
       }
     }
     case MARK_TASK_AS_UNDONE: {
@@ -311,7 +311,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         ...state,
-        tasks: state.tasks.update(i, (task) => task.with({ done: false })),
+        tasks: state.tasks.update(i, (task) => task!.with({ done: false })), // tslint:disable-line:no-non-null-assertion
       }
     }
     case REMOVE_TASK: {

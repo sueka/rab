@@ -19,8 +19,8 @@ interface StyleProps {
   topAppbarHeight?: number
 }
 
-const useStyles = makeStyles<Theme, StyleProps, 'CollapseContainer'>({
-  CollapseContainer: {
+const useStyles = makeStyles<Theme, StyleProps, 'Collapse'>({
+  Collapse: {
     top: ({ topAppbarHeight }) => topAppbarHeight,
   },
 })
@@ -29,7 +29,7 @@ const BannerContainer: React.FC<Props> = ({ topAppbarHeight }) => {
   const currentBanner = useRecoilValue(currentBannerState)
   const [open, setOpen] = useRecoilState(bannerOpenState)
   const jssClasses = useStyles({ topAppbarHeight })
-  const collapseContainerClassName = useMemo(() => classNames(jssClasses.CollapseContainer, classes.CollapseContainer), [jssClasses])
+  const collapseClassName = useMemo(() => classNames(jssClasses.Collapse, classes.Collapse), [jssClasses])
   const [bannerToShow, setBannerToShow] = useState<Banner | null>(null)
   const theme = useTheme()
 
@@ -60,7 +60,7 @@ const BannerContainer: React.FC<Props> = ({ topAppbarHeight }) => {
       mountOnEnter
       unmountOnExit
       classes={ {
-        container: collapseContainerClassName,
+        root: collapseClassName,
       } }
     >
       <div>
