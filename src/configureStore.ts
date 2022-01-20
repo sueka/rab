@@ -12,7 +12,7 @@ const logger = createLogger({
 })
 
 const composeEnhancers =
-  process.env.NODE_ENV === 'development'
+  process.env['NODE_ENV'] === 'development'
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?? compose // TODO: Use globalThis
     : compose
 
@@ -29,7 +29,7 @@ export default function configureStore<S, A extends Action>(history: History, re
     applyMiddleware(routerMiddleware(history)),
   ]
 
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env['NODE_ENV'] === 'development') {
     storeEnhancers.push(applyMiddleware(logger)) // tslint:disable-line:no-array-mutation
   }
 

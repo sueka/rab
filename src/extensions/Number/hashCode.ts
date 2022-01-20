@@ -14,5 +14,5 @@ function doubleToLongBits(value: number): JSBI {
 
   doubleContainer[0] = value // tslint:disable-line:no-object-mutation
 
-  return JSBI.add((JSBI.leftShift(JSBI.BigInt(uintContainer[1]), JSBI.BigInt(32))), JSBI.BigInt(uintContainer[0]))
+  return JSBI.add((JSBI.leftShift(JSBI.BigInt(uintContainer[1]!), JSBI.BigInt(32))), JSBI.BigInt(uintContainer[0]!))
 }

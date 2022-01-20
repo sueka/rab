@@ -54,7 +54,7 @@ const FossLicenseComparisonTable: React.FC = () => {
 
       const spreadsheet = asSpreadsheet(await getSpreadsheetResponse.json())
       const spreadsheetLocale = spreadsheet.properties?.locale
-      const columnMetadata = spreadsheet.sheets?.[0].data?.[0].columnMetadata
+      const columnMetadata = spreadsheet.sheets?.[0]?.data?.[0]?.columnMetadata
       const valueRange = asValueRange(await getSpreadsheetValuesResponse.json())
 
       if (spreadsheetLocale === undefined || columnMetadata === undefined) {
@@ -76,6 +76,10 @@ const FossLicenseComparisonTable: React.FC = () => {
       setLocale(stringify(parseSpreadsheetLocale(spreadsheetLocale)))
 
       const [firstRowValues, ...restRowsValues] = valueRange.values
+
+      if (firstRowValues === undefined) {
+        throw new Error('No rows found.')
+      }
 
       const fields = firstRowValues.map((cellValue, i) => typed<[CellValue, number]>`${ cellValue }_${ i }`)
 

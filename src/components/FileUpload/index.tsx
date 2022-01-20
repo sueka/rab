@@ -45,7 +45,7 @@ const FileUpload: React.FC<Props> = ({
 
     switch (fs.length) {
       case 1:
-        return fs[0].name
+        return fs[0]!.name
       default:
         return <FormattedMessage { ...messages.nFilesSelected } values={ { n: fs.length } } />
     }

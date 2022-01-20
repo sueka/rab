@@ -5,6 +5,12 @@ import Color from '~/domain/vo/Color'
 export /* for testing */ function getColor({ x, y }: Canvas.Point, context: CanvasRenderingContext2D): Color {
   const { data: [red, green, blue, alpha] } = context.getImageData(x, y, 1, 1)
 
+  // NOTE: getImageData の仕様上必ず存在する。 cf. https://html.spec.whatwg.org/multipage/canvas.html#dom-context-2d-getimagedata and https://html.spec.whatwg.org/multipage/canvas.html#initialize-an-imagedata-object
+  shouldBePresent(red)
+  shouldBePresent(green)
+  shouldBePresent(blue)
+  shouldBePresent(alpha)
+
   return new Color({
     red,
     green,

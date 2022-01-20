@@ -73,15 +73,15 @@ const useStyles = makeStyles({
 const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc', locale }) => {
   const [sorts, setSorts] = useState<Sort<Row>[]>([])
 
-  // NOTE: TypeScript のメンバーアクセス演算は部分関数ではない (cf. https://github.com/microsoft/TypeScript/issues/13778)
-  const primarySort = useMemo<Sort<Row> | undefined>(() => sorts[0], [sorts])
+  const primarySort = useMemo(() => sorts[0], [sorts])
 
   const createSortLabelClickHandler = useCallback((field: Field) => () => {
     if (field === primarySort?.by) {
+      // oldPrimarySort === primarySort なので primarySort が存在するならば oldPrimarySort も存在する。
       setSorts(([oldPrimarySort, ...oldRestSorts]) => [
         {
-          by: oldPrimarySort.by,
-          in: oldPrimarySort.in === 'asc' ? 'desc' : 'asc',
+          by: oldPrimarySort!.by,
+          in: oldPrimarySort!.in === 'asc' ? 'desc' : 'asc',
         },
         ...oldRestSorts,
       ])
@@ -101,7 +101,7 @@ const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc', l
           // const oldFieldSortIndex = oldSorts.findIndex((oldSort) => oldSort.by === field)
 
           return [
-            oldSorts[fieldSortIndex],
+            oldSorts[fieldSortIndex]!, // oldSorts === sorts かつ fieldSortIndex !== -1 なので、存在する。
             ...oldSorts.slice(0, fieldSortIndex),
             ...oldSorts.slice(fieldSortIndex + 1),
           ]

@@ -10,7 +10,7 @@ function dropDummyOrigin(x: string): string {
     throw new Error
   }
 
-  return result[1]
+  return result[1]!
 }
 
 /**

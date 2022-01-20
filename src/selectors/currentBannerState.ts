@@ -9,7 +9,7 @@ const currentBannerState = selector<Banner | null>({
     const banners = get(bannersState)
 
     if (banners.length >= 1) {
-      return banners[0]
+      return banners[0]!
     } else {
       return null
     }

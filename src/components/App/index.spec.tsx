@@ -78,12 +78,12 @@ ${ '/nonexistent-path' }
   })
 
   beforeAll(() => {
-    shouldBePresent(process.env.SHEETS_API_URL)
-    shouldBePresent(process.env.GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID)
-    shouldBePresent(process.env.GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME)
+    shouldBePresent(process.env['SHEETS_API_URL'])
+    shouldBePresent(process.env['GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID'])
+    shouldBePresent(process.env['GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME'])
 
-    const getSpreadsheetUrl = `${ process.env.SHEETS_API_URL }/spreadsheets/${ process.env.GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID }`
-    const getSpreadsheetValuesUrl = `${ process.env.SHEETS_API_URL }/spreadsheets/${ process.env.GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID }/values/${ encodeURIComponent(process.env.GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME) }`
+    const getSpreadsheetUrl = `${ process.env['SHEETS_API_URL'] }/spreadsheets/${ process.env['GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID'] }`
+    const getSpreadsheetValuesUrl = `${ process.env['SHEETS_API_URL'] }/spreadsheets/${ process.env['GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID'] }/values/${ encodeURIComponent(process.env['GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME']) }`
 
     fetchMock.resetMocks()
 

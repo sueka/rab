@@ -70,16 +70,16 @@ describe('LocaleSelectorService', () => {
   describe('selectLocaleSaga', () => {
     const it = localeSelectorService.selectLocaleSaga(selectLocale('ja'))
 
-    if (process.env.BASE_NAME === undefined) {
+    if (process.env['BASE_NAME'] === undefined) {
       throw new Error // FIXME: describe を落とすだけでいいかも
     }
 
     const formatsResponse = new Response
     const messagesResponse = new Response
 
-    expect(it.next().value).toEqual(call(fetch, typed<[string]>`${ process.env.BASE_NAME }/formats/ja.json`))
+    expect(it.next().value).toEqual(call(fetch, typed<[string]>`${ process.env['BASE_NAME'] }/formats/ja.json`))
     expect(it.next(formatsResponse).value).toEqual(call([formatsResponse, formatsResponse.json]))
-    expect(it.next().value).toEqual(call(fetch, typed<[string]>`${ process.env.BASE_NAME }/messages/ja.json`))
+    expect(it.next().value).toEqual(call(fetch, typed<[string]>`${ process.env['BASE_NAME'] }/messages/ja.json`))
     expect(it.next(messagesResponse).value).toEqual(call([messagesResponse, messagesResponse.json]))
   })
 })

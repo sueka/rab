@@ -59,8 +59,8 @@ function equalsJsonObjects(iXMap: JsonObject, jYMap: JsonObject): boolean {
       return false
     }
 
-    const x = iXMap[i]
-    const y = jYMap[j]
+    const x = iXMap[i]! // i は元々 iXMap の key なので、存在する。
+    const y = jYMap[j]! // 同上
 
     if (!equalsJsons(x, y)) {
       return false

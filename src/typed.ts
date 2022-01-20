@@ -7,7 +7,7 @@ import zipIterables from './extensions/Iterable/zipIterables'
  */
 export default function typed<T extends unknown[]>(template: TemplateStringsArray, ...substitutions: T): string {
   // tslint:disable-next-line:no-let
-  let result = template[0]
+  let result = template[0]!
 
   // tslint:disable-next-line:no-loop-statement
   for (const [substitution, segment] of zipIterables(substitutions, template.slice(1))) {

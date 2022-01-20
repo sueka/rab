@@ -48,7 +48,7 @@ import './classes.css'
 import formats from '../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../public/messages/en.json' // tslint:disable-line:no-relative-imports
 
-const containerImport = process.env.NODE_ENV === 'production' ? import('./container') : import('./container.dev')
+const containerImport = process.env['NODE_ENV'] === 'production' ? import('./container') : import('./container.dev')
 
 interface Props {
   container: interfaces.Container
@@ -80,10 +80,10 @@ const initialState: Alt.Omit<State, 'router'> = {
   userAuthn: {},
 }
 
-shouldBePresent(process.env.BASE_NAME)
+shouldBePresent(process.env['BASE_NAME'])
 
 const history = createBrowserHistory({
-  basename: process.env.BASE_NAME,
+  basename: process.env['BASE_NAME'],
 })
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
@@ -159,7 +159,7 @@ containerImport.then(({ default: container }) => {
   ReactDOM.render(
     <Main
       container={ container }
-      baseUrl={ typed<[string, string]>`${ globalThis.location.origin }${ process.env.BASE_NAME !== undefined ? typed<[string]>`${ process.env.BASE_NAME }/` : '' }` }
+      baseUrl={ typed<[string, string]>`${ globalThis.location.origin }${ process.env['BASE_NAME'] !== undefined ? typed<[string]>`${ process.env['BASE_NAME'] }/` : '' }` }
     />,
     document.getElementById('root')
   )

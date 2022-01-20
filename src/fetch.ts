@@ -23,7 +23,7 @@ function isEmpty<T extends {}>(object: T): object is EmptyRecord<T> {
   return Object.keys(object).length === 0
 }
 
-// NOTE: メンバー代入を使わない場合、メンバーアクセスは部分関数なので、オブジェクトのキーの型を縮小することができる。ただし、 TypeScript のメンバーアクセス演算は部分関数ではない (cf. https://github.com/microsoft/TypeScript/issues/13778)
+// NOTE: メンバー代入を使わない場合、メンバーアクセスは部分関数なので、オブジェクトのキーの型を縮小することができる。
 function asStringVObject<V>(input: Record<never, V>): Record<string, V> {
   return input
 }
@@ -69,7 +69,7 @@ export /* for testing */ function toQueryMap(query: Query): QueryMap {
 
     return goWithArray(key, tail, index + 1, {
       ...result,
-      [typed<[string, number]>`${ key }[${ index }]`]: head,
+      [typed<[string, number]>`${ key }[${ index }]`]: head!,
     })
   }
 
@@ -81,7 +81,8 @@ export /* for testing */ function toQueryMap(query: Query): QueryMap {
       return result
     }
 
-    const [[member, head], ...tailEntries] = Object.entries(value)
+    const [headEntry, ...tailEntries] = Object.entries(value)
+    const [member, head] = headEntry!
 
     return goWithObject(key, Object.fromEntries(tailEntries), {
       ...result,
@@ -94,7 +95,8 @@ export /* for testing */ function toQueryMap(query: Query): QueryMap {
       return result
     }
 
-    const [[key, value], ...tail] = Object.entries(q)
+    const [head, ...tail] = Object.entries(q)
+    const [key, value] = head!
 
     if (typeof value === 'string') {
       return go(Object.fromEntries(tail), {

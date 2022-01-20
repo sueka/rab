@@ -41,7 +41,14 @@ const MicSwitch: React.FC<Props> = ({ inputFor: input, onResult, fallback }) => 
   }, [enqueueSnackbar])
 
   const handleRecognitionResult = useCallback<NonNullable<SpeechRecognition['onresult']>>((event) => {
-    onResult(event, Array.from(event.results).map(result => result[0].transcript).join('')) // TODO: result.isFinal な result をメモしてパフォーマンスを改善させる。
+    // TODO: result.isFinal な result をメモしてパフォーマンスを改善させる。
+    onResult(event, Array.from(event.results).map(result => {
+      if (result[0] === undefined) { // TODO: Replace the condition w/ `result.length === 0`
+        throw new Error('No speech recognition result alternatives found.')
+      }
+
+      return result[0].transcript
+    }).join(''))
   }, [onResult])
 
   useEffect(() => () => {
