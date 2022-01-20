@@ -3,7 +3,7 @@ import JSBI from 'jsbi'
 export default function hashCode(x: number) {
   const v = doubleToLongBits(x)
 
-  return Number(JSBI.bitwiseAnd(v, JSBI.BigInt(0xFFFFFFFF))) ^ Number(JSBI.signedRightShift(v, JSBI.BigInt(32)))
+  return JSBI.toNumber(JSBI.bitwiseAnd(v, JSBI.BigInt(0xFFFFFFFF))) ^ JSBI.toNumber(JSBI.signedRightShift(v, JSBI.BigInt(32)))
 }
 
 // TODO: Remove
