@@ -2,6 +2,7 @@ import WasmPackPlugin from '@wasm-tool/wasm-pack-plugin'
 import * as path from 'path'
 import { HotModuleReplacementPlugin } from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import 'webpack-dev-server'
 
 import config from './webpack.config'
 
@@ -65,7 +66,7 @@ if (process.env.NODE_ENV === 'development') {
     })
   )
 
-  config.devServer.hotOnly = true
+  config.devServer.hot = 'only'
 }
 
 export default config
