@@ -2,7 +2,6 @@ import FilledInput from '@material-ui/core/FilledInput'
 import FormControl, { FormControlProps } from '@material-ui/core/FormControl'
 import Input from '@material-ui/core/Input'
 import InputLabel from '@material-ui/core/InputLabel'
-import MenuItem from '@material-ui/core/MenuItem'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Select, { SelectProps } from '@material-ui/core/Select'
 import { Theme, makeStyles, useTheme } from '@material-ui/core/styles'
@@ -124,6 +123,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
         </InputLabel>
       ) }
       <Select
+        native
         classes={ {
           select: selectSelectClassName,
           icon: selectIconClassName,
@@ -148,7 +148,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
         }[variant] }
       >
         { availableLocales?.map((availableLocale, i) => (
-          <MenuItem key={ i } value={ availableLocale }>{ getNativeNameByTag(availableLocale) }</MenuItem>
+          <option key={ i } value={ availableLocale }>{ getNativeNameByTag(availableLocale) }</option>
         )) }
       </Select>
     </FormControl>
