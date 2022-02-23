@@ -82,23 +82,28 @@ exports[`App at / 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-4 makeStyles-Select-5 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            id="00000000-0000-4000-0000-000000000000"
-            role="button"
-            tabindex="0"
-          >
-            English
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-4 makeStyles-Select-5 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
-            tabindex="-1"
-            value="en"
-          />
+            id="00000000-0000-4000-0000-000000000000"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="he"
+            >
+              עברית
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -292,23 +297,28 @@ exports[`App at /chess 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-44 makeStyles-Select-45 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            id="00000000-0000-4000-0000-000000000000"
-            role="button"
-            tabindex="0"
-          >
-            English
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-44 makeStyles-Select-45 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
-            tabindex="-1"
-            value="en"
-          />
+            id="00000000-0000-4000-0000-000000000000"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="he"
+            >
+              עברית
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -882,23 +892,28 @@ exports[`App at /clock 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-55 makeStyles-Select-56 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            id="00000000-0000-4000-0000-000000000000"
-            role="button"
-            tabindex="0"
-          >
-            English
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-55 makeStyles-Select-56 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
-            tabindex="-1"
-            value="en"
-          />
+            id="00000000-0000-4000-0000-000000000000"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="he"
+            >
+              עברית
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -1006,23 +1021,28 @@ exports[`App at /counter 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-66 makeStyles-Select-67 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            id="00000000-0000-4000-0000-000000000000"
-            role="button"
-            tabindex="0"
-          >
-            English
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-66 makeStyles-Select-67 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
-            tabindex="-1"
-            value="en"
-          />
+            id="00000000-0000-4000-0000-000000000000"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="he"
+            >
+              עברית
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -1229,23 +1249,28 @@ exports[`App at /form-controls 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-17 makeStyles-Select-18 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            id="00000000-0000-4000-0000-000000000000"
-            role="button"
-            tabindex="0"
-          >
-            English
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-17 makeStyles-Select-18 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
-            tabindex="-1"
-            value="en"
-          />
+            id="00000000-0000-4000-0000-000000000000"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="he"
+            >
+              עברית
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -1682,23 +1707,28 @@ exports[`App at /info 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-75 makeStyles-Select-76 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            id="00000000-0000-4000-0000-000000000000"
-            role="button"
-            tabindex="0"
-          >
-            English
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-75 makeStyles-Select-76 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
-            tabindex="-1"
-            value="en"
-          />
+            id="00000000-0000-4000-0000-000000000000"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="he"
+            >
+              עברית
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -1824,23 +1854,28 @@ exports[`App at /nonexistent-path 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-131 makeStyles-Select-132 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            id="00000000-0000-4000-0000-000000000000"
-            role="button"
-            tabindex="0"
-          >
-            English
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-131 makeStyles-Select-132 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
-            tabindex="-1"
-            value="en"
-          />
+            id="00000000-0000-4000-0000-000000000000"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="he"
+            >
+              עברית
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -1944,23 +1979,28 @@ exports[`App at /paint 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-84 makeStyles-Select-85 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            id="00000000-0000-4000-0000-000000000000"
-            role="button"
-            tabindex="0"
-          >
-            English
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-84 makeStyles-Select-85 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
-            tabindex="-1"
-            value="en"
-          />
+            id="00000000-0000-4000-0000-000000000000"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="he"
+            >
+              עברית
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -2366,23 +2406,28 @@ exports[`App at /reminder 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-108 makeStyles-Select-109 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            id="00000000-0000-4000-0000-000000000000"
-            role="button"
-            tabindex="0"
-          >
-            English
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-108 makeStyles-Select-109 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
-            tabindex="-1"
-            value="en"
-          />
+            id="00000000-0000-4000-0000-000000000000"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="he"
+            >
+              עברית
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -2506,23 +2551,28 @@ exports[`App at /settings 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-117 makeStyles-Select-118 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            id="00000000-0000-4000-0000-000000000000"
-            role="button"
-            tabindex="0"
-          >
-            English
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-117 makeStyles-Select-118 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
-            tabindex="-1"
-            value="en"
-          />
+            id="00000000-0000-4000-0000-000000000000"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="he"
+            >
+              עברית
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
@@ -2589,23 +2639,28 @@ exports[`App at /settings 1`] = `
               <div
                 class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorSecondary MuiInput-colorSecondary MuiInputBase-formControl MuiInput-formControl"
               >
-                <div
-                  aria-haspopup="listbox"
-                  aria-labelledby="00000000-0000-4000-0000-000000000000"
-                  class="MuiSelect-root MuiSelect-select makeStyles-Select-117 makeStyles-Select-123 Select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputHiddenLabel"
-                  id="00000000-0000-4000-0000-000000000000"
-                  role="button"
-                  tabindex="0"
-                >
-                  English
-                </div>
-                <input
-                  aria-hidden="true"
-                  class="MuiSelect-nativeInput"
+                <select
+                  aria-invalid="false"
+                  class="MuiSelect-root MuiSelect-select makeStyles-Select-117 makeStyles-Select-123 Select MuiInputBase-input MuiInput-input MuiInputBase-inputHiddenLabel"
                   data-testid="localeSelect"
-                  tabindex="-1"
-                  value="en"
-                />
+                  id="00000000-0000-4000-0000-000000000000"
+                >
+                  <option
+                    value="en"
+                  >
+                    English
+                  </option>
+                  <option
+                    value="he"
+                  >
+                    עברית
+                  </option>
+                  <option
+                    value="ja"
+                  >
+                    日本語
+                  </option>
+                </select>
                 <svg
                   aria-hidden="true"
                   class="MuiSvgIcon-root MuiSelect-icon"
@@ -2785,14 +2840,13 @@ exports[`App at /settings 1`] = `
               <span
                 aria-disabled="true"
                 aria-labelledby="00000000-0000-4000-0000-000000000000"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-124 MuiSwitch-switchBase MuiSwitch-colorSecondary PrivateSwitchBase-checked-125 Mui-checked PrivateSwitchBase-disabled-126 Mui-disabled Mui-disabled Mui-disabled"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-124 MuiSwitch-switchBase MuiSwitch-colorSecondary PrivateSwitchBase-disabled-126 Mui-disabled Mui-disabled Mui-disabled"
                 tabindex="-1"
               >
                 <span
                   class="MuiIconButton-label"
                 >
                   <input
-                    checked=""
                     class="PrivateSwitchBase-input-127 MuiSwitch-input"
                     disabled=""
                     type="checkbox"
@@ -2977,23 +3031,28 @@ exports[`App at /table 1`] = `
         <div
           class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
         >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="00000000-0000-4000-0000-000000000000"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-33 makeStyles-Select-34 Select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
-            id="00000000-0000-4000-0000-000000000000"
-            role="button"
-            tabindex="0"
-          >
-            English
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-33 makeStyles-Select-34 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
-            tabindex="-1"
-            value="en"
-          />
+            id="00000000-0000-4000-0000-000000000000"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="he"
+            >
+              עברית
+            </option>
+            <option
+              value="ja"
+            >
+              日本語
+            </option>
+          </select>
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
