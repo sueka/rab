@@ -2,7 +2,9 @@ import { atom } from 'recoil'
 
 const fullScreenState = atom({
   key: 'fullScreenState',
-  default: document.fullscreenElement !== null,
+  // full screen 状態でない場合は null、Fullscreen API をサポートしていない場合は undefined
+  // tslint:disable-next-line:strict-type-predicates
+  default: document.fullscreenElement != null,
   effects_UNSTABLE: [
     ({ onSet }) => {
       onSet((newFullScreen) => {
