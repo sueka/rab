@@ -47,7 +47,7 @@ export const testInWatchMode = series(
 
 export const updateSnapshots = series(wasmPack, parallel(typeCheckForDevelopment, npxTask('jest', ['--updateSnapshot'])))
 export const test = testWithCoverage
-export const build = shell.task('make')
+const build = shell.task('make')
 
 export const buildGhPagesCustom404Page = parallel(typeCheck, series(() => del(['gh-pages/dist/**/*']), npxTask('webpack', ['--config', 'gh-pages/webpack.config.ts'])))
 export const document = series(wasmPack, npxTask('typedoc'))
