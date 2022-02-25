@@ -33,10 +33,7 @@ export const extractMessages = npxTask('extract-messages', ['--flat', '--default
 export const tcm = series(npxTask('tcm', ['src', '-s']), () => del('src/classes.css.d.ts'))
 const typeCheck = shell.task('make type-check')
 const typeCheckForDevelopment = npxTask('tsc', ['--noEmit', '-p', '.'])
-const eslint = npxTask('eslint', ['--ext', '.ts, .tsx', 'src'])
-const tslint = npxTask('tslint', ['-p', '.'])
-const stylelint = npxTask('stylelint', ['src/**/*.css'])
-export const lint = parallel(eslint, tslint, stylelint)
+const lint = shell.task('make lint')
 const testWithoutCoverage = series(wasmPack, parallel(typeCheckForDevelopment, npxTask('jest')))
 const testWithCoverage = series(wasmPack, parallel(typeCheckForDevelopment, npxTask('jest', ['--coverage'])))
 

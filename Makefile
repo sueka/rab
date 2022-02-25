@@ -4,10 +4,11 @@ NPX := npx
 
 src = $(shell find src -type f)
 crate-src = $(shell find src/crate -type f ! -path "src/crate/pkg/*" ! -path "src/crate/target/*")
+css-src = $(shell find src -name "*.css" -type f)
 
 .DEFAULT_GOAL = build
 
-.PHONY : build wasm-pack type-check clean clobber
+.PHONY : build wasm-pack check lint eslint tslint stylelint type-check clean clobber
 
 build : dist
 dist : webpack.config.ts $(src) wasm-pack
@@ -17,6 +18,19 @@ dist : webpack.config.ts $(src) wasm-pack
 wasm-pack : src/crate/pkg
 src/crate/pkg : $(crate-src)
 	$(NPX) wasm-pack build --out-name index src/crate
+
+check : lint type-check
+
+lint : eslint tslint stylelint
+
+eslint : .eslintrc.json $(src)
+	$(NPX) eslint --ext ".ts, .tsx" src
+
+tslint : tsconfig.json tsconfig.json $(src)
+	$(NPX) tslint --project .
+
+stylelint : .stylelintrc $(css-src)
+	$(NPX) stylelint src/**/*.css
 
 type-check : tsconfig.prod.json $(src) wasm-pack
 	$(NPX) tsc --noEmit -p ./tsconfig.prod.json

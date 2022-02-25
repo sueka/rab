@@ -2,7 +2,7 @@
   command = """\
 rustup toolchain install stable
 npm ci # NOTE: rustup toolchain install してから npm i しないと wasm-pack がうまく動かないことがある。 FIXME: Installing dependencies の前に rustup toolchain install できれば [build.command] を削除できる。
-make type-check
+make check
 make
 """
   publish = "dist/"
