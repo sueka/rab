@@ -1,6 +1,7 @@
 import { ChildProcess, spawn } from 'child_process'
 import del from 'del'
 import { TaskFunction, Globs, parallel, series, watch } from 'gulp'
+import shell from 'gulp-shell'
 
 // .gitignore
 const ignored = [
@@ -18,12 +19,6 @@ const ignored = [
   '.cache/',
 ]
 
-// gh-pages/.gitignore
-const ghPagesIgnored = [
-  'dist/',
-  '**/*.js{,x}',
-].map((path) => `gh-pages/${ path }`)
-
 //
 //   _|                          _|
 // _|_|_|_|    _|_|_|    _|_|_|  _|  _|      _|_|_|
@@ -33,15 +28,10 @@ const ghPagesIgnored = [
 //
 //
 
-export const clean: TaskFunction = describedTask(
-  'Remove all files that neither are tracked by Git except files in node_modules/ and .env',
-  () => del([...ignored, ...ghPagesIgnored, '!node_modules/**', '!.env'])
-)
-
-const wasmPack = npxTask('wasm-pack', ['build', '--out-name', 'index', 'src/crate']) // TODO
+const wasmPack = shell.task('make wasm-pack')
 export const extractMessages = npxTask('extract-messages', ['--flat', '--default-locale=en', '--locales=en,he,ja', '--output=public/messages', 'src/**/messages.ts'])
 export const tcm = series(npxTask('tcm', ['src', '-s']), () => del('src/classes.css.d.ts'))
-const typeCheck = npxTask('tsc', ['--noEmit', '-p', './tsconfig.prod.json'])
+const typeCheck = shell.task('make type-check')
 const typeCheckForDevelopment = npxTask('tsc', ['--noEmit', '-p', '.'])
 const eslint = npxTask('eslint', ['--ext', '.ts, .tsx', 'src'])
 const tslint = npxTask('tslint', ['-p', '.'])
@@ -57,7 +47,7 @@ export const testInWatchMode = series(
 
 export const updateSnapshots = series(wasmPack, parallel(typeCheckForDevelopment, npxTask('jest', ['--updateSnapshot'])))
 export const test = testWithCoverage
-export const build = series(wasmPack, parallel(typeCheck, series(() => del(['dist/**/*']), npxTask('webpack', ['--config', 'webpack.config.ts']))))
+export const build = shell.task('make')
 
 export const buildGhPagesCustom404Page = parallel(typeCheck, series(() => del(['gh-pages/dist/**/*']), npxTask('webpack', ['--config', 'gh-pages/webpack.config.ts'])))
 export const document = series(wasmPack, npxTask('typedoc'))

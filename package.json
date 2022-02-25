@@ -9,8 +9,6 @@
   "scripts": {
     "start": "gulp --silent develop",
     "test": "gulp --silent test",
-    "build": "gulp --silent build",
-    "clean": "gulp --silent clean",
     "gulp": "gulp"
   },
   "sideEffects": [
@@ -80,6 +78,7 @@
     "favicon-notification": "^0.1.4",
     "fp-ts": "^2.11.8",
     "gulp": "^4.0.2",
+    "gulp-shell": "^0.8.0",
     "highlight.js": "^11.4.0",
     "history": "^4.10.1",
     "html-webpack-plugin": "^5.5.0",
