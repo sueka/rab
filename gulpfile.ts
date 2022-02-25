@@ -102,9 +102,3 @@ function continuousTask(globs: Globs, watchedTask: TaskFunction): TaskFunction {
 
   return task
 }
-
-function describedTask(description: string, task: TaskFunction): TaskFunction {
-  task.description = description
-
-  return task
-}
