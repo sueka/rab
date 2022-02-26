@@ -33,18 +33,18 @@ jobs:
           # npm ci
           make gh-pages-custom-404-page
           cp -r gh-pages/dist/* dist/
-        if: matrix.node-version == 14
+        if: matrix.node-version == 16
       - name: Upload build artifact
         uses: actions/upload-artifact@v2
         with:
           name: dist
           path: dist
-        if: matrix.node-version == 14
+        if: matrix.node-version == 16
     strategy:
       matrix:
         node-version:
-          - 12
-          - 14
+          - 16
+          - 17
   test:
     env:
       NODE_ENV: test
@@ -71,10 +71,12 @@ jobs:
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-        if: matrix.node-version == 14
+        if: matrix.node-version == 16
     strategy:
       matrix:
-        node-version: [12, 14]
+        node-version:
+          - 16
+          - 17
   deploy:
     runs-on: ubuntu-latest
     steps:
