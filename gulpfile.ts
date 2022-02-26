@@ -29,8 +29,8 @@ const ignored = [
 //
 
 const wasmPack = shell.task('make wasm-pack')
-export const extractMessages = npxTask('extract-messages', ['--flat', '--default-locale=en', '--locales=en,he,ja', '--output=public/messages', 'src/**/messages.ts'])
-export const tcm = series(npxTask('tcm', ['src', '-s']), () => del('src/classes.css.d.ts'))
+const extractMessages = shell.task('make extract-messages')
+const tcm = shell.task('make tcm')
 const typeCheck = shell.task('make type-check')
 const typeCheckForDevelopment = npxTask('tsc', ['--noEmit', '-p', '.'])
 const lint = shell.task('make lint')

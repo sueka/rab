@@ -2,18 +2,31 @@
 
 NPX := npx
 
-src = $(shell find src -type f)
-crate-src = $(shell find src/crate -type f ! -path "src/crate/pkg/*" ! -path "src/crate/target/*")
-css-src = $(shell find src -name "*.css" -type f)
+src := $(shell find src ! -name "*.css.d.ts" ! -path "src/crate/pkg/*" -type f)
+messages-src := $(shell find src -name messages.ts -type f)
+messages := public/messages/en.json public/messages/he.json public/messages/ja.json
+crate-src := $(shell find src/crate -type f ! -path "src/crate/pkg/*" ! -path "src/crate/target/*")
+css-src := $(shell find src -name "*.css" -type f)
+css-src := $(filter-out src/classes.css, $(css-src))
+css-d := $(patsubst %.css, %.css.d.ts, $(css-src))
 
-.DEFAULT_GOAL = build
+.DEFAULT_GOAL := build
 
-.PHONY : build wasm-pack check lint eslint tslint stylelint type-check clean clobber
+.PHONY : build extract-messages tcm wasm-pack check lint eslint tslint stylelint type-check clean clobber
 
 build : dist
-dist : webpack.config.ts $(src) wasm-pack
-	rm -rf $@/
+dist : webpack.config.ts $(src) $(messages) src/crate/pkg
+	-rm -r $@/
 	$(NPX) webpack --config webpack.config.ts
+
+extract-messages : $(messages)
+$(messages) : $(messages-src)
+	$(NPX) extract-messages --flat --default-locale=en --locales=en,he,ja --output=public/messages src/**/messages.ts
+
+tcm : $(css-d)
+$(css-d) : $(css-src)
+	$(NPX) tcm --pattern "src/components/**/*.css"
+	@touch $(css-d)
 
 wasm-pack : src/crate/pkg
 src/crate/pkg : $(crate-src)
@@ -32,8 +45,8 @@ tslint : tsconfig.json tsconfig.json $(src)
 stylelint : .stylelintrc $(css-src)
 	$(NPX) stylelint src/**/*.css
 
-type-check : tsconfig.prod.json $(src) wasm-pack
-	$(NPX) tsc --noEmit -p ./tsconfig.prod.json
+type-check : tsconfig.prod.json $(src) $(messages) $(css-d) src/crate/pkg
+	$(NPX) tsc --noEmit --project ./tsconfig.prod.json
 
 # Keep comparing with .gitignore...
 ### Remove all files that neither are tracked by Git except files in node_modules/ and .env.
