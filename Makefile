@@ -2,7 +2,7 @@
 
 NPX := npx
 
-src := $(shell find src ! -name "*.css.d.ts" ! -path "src/crate/pkg/*" -type f)
+src := $(shell find src ! -name "*.css.d.ts" ! -path "src/crate/pkg/*" ! -path "src/crate/target/*" -type f)
 messages-src := $(shell find src -name messages.ts -type f)
 messages := public/messages/en.json public/messages/he.json public/messages/ja.json
 crate-src := $(shell find src/crate -type f ! -path "src/crate/pkg/*" ! -path "src/crate/target/*")
