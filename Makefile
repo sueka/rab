@@ -15,12 +15,18 @@ type-deps := $(src) $(messages) $(css-d) src/crate/pkg
 
 .DEFAULT_GOAL := build
 
-.PHONY : build extract-messages tcm wasm-pack check lint eslint tslint stylelint type-check clean clobber
+.PHONY : build develop extract-messages tcm wasm-pack check lint eslint tslint stylelint type-check clean clobber
 
 build : dist
 dist : webpack.config.ts $(value-deps)
 	-rm -r $@/
 	$(NPX) webpack --config webpack.config.ts
+
+# TODO: Prefer heredoc/herestring to echo.
+develop : webpack.config.dev.ts $(value-deps)
+	@echo $(src) | tr " " '\n' | entr -r make lint &
+	@echo $(type-deps) | tr " " '\n' | entr -r make type-check &
+	$(NPX) webpack serve --config webpack.config.dev.ts
 
 extract-messages : $(messages)
 $(messages) : $(messages-src)

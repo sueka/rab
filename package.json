@@ -7,7 +7,7 @@
   },
   "license": "CC0-1.0",
   "scripts": {
-    "start": "gulp --silent develop",
+    "start": "make develop",
     "gulp": "gulp"
   },
   "sideEffects": [
