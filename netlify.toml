@@ -9,6 +9,7 @@
   publish = "dist/"
 
 [build.environment]
+  TZ = "Asia/Tokyo" # for snapshots
   BASE_NAME = ""
   GITHUB_API_URL = "https://api.github.com"
   USER_SERVICE_URL = "http://localhost:14566" # TODO: Deploy a User Service
