@@ -26,7 +26,7 @@ jobs:
       - name: Build
         run: |
           npm ci
-          make check
+          make type-check
           make
       - name: Build GitHub Pages Custom 404 Page
         run: |
@@ -67,8 +67,7 @@ jobs:
       - name: Lint & Test
         run: |
           npm ci
-          make lint
-          make test
+          make check
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

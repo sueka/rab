@@ -35,7 +35,7 @@ wasm-pack : src/crate/pkg
 src/crate/pkg : $(crate-src)
 	$(NPX) wasm-pack build --out-name index src/crate
 
-check : lint type-check
+check : lint type-check test
 
 lint : eslint tslint stylelint
 
