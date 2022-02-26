@@ -20,21 +20,24 @@ exports[`LocaleSelect 1`] = `
   >
     <select
       aria-invalid="false"
-      class="MuiSelect-root MuiSelect-select makeStyles-Select-1 makeStyles-Select-2 Select MuiInputBase-input MuiInput-input"
+      class="MuiSelect-root MuiSelect-select makeStyles-Select-1 makeStyles-Select-3 Select MuiInputBase-input MuiInput-input"
       data-testid="localeSelect"
       id="00000000-0000-4000-0000-000000000000"
     >
       <option
+        class="makeStyles-Option-2"
         value="en"
       >
         English
       </option>
       <option
+        class="makeStyles-Option-2"
         value="he"
       >
         עברית
       </option>
       <option
+        class="makeStyles-Option-2"
         value="ja"
       >
         日本語

@@ -47,11 +47,15 @@ interface StyleProps {
   selectMinWidth?: number
 }
 
-const useStyles = makeStyles<Theme, StyleProps, 'Select'>({
+const useStyles = makeStyles<Theme, StyleProps, 'Select' | 'Option'>((theme) => ({
   Select: {
     minWidth: ({ selectMinWidth }) => selectMinWidth,
   },
-})
+  Option: {
+    // backgroundColor: theme.palette.background.paper,
+    color: theme.palette.text.primary,
+  },
+}))
 
 export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = false, classes: propClasses, FormControlProps, locale, selectLocale }) => {
   const [labelWidth, setLabelWidth] = useState<number | null>(null)
@@ -148,7 +152,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
         }[variant] }
       >
         { availableLocales?.map((availableLocale, i) => (
-          <option key={ i } value={ availableLocale }>{ getNativeNameByTag(availableLocale) }</option>
+          <option key={ i } className={ jssClasses.Option }value={ availableLocale }>{ getNativeNameByTag(availableLocale) }</option>
         )) }
       </Select>
     </FormControl>
