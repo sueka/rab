@@ -33,7 +33,7 @@ jobs:
           # npm ci
           make gh-pages-custom-404-page
           cp -r gh-pages/dist/* dist/
-        if: matrix.node-version == 10
+        if: matrix.node-version == 14
       - name: Upload build artifact
         uses: actions/upload-artifact@v2
         with:
