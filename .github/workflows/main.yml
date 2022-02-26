@@ -68,7 +68,7 @@ jobs:
         run: |
           npm ci
           make lint
-          npm test
+          make test
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

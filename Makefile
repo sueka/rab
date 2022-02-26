@@ -10,12 +10,15 @@ css-src := $(shell find src -name "*.css" -type f)
 css-src := $(filter-out src/classes.css, $(css-src))
 css-d := $(patsubst %.css, %.css.d.ts, $(css-src))
 
+value-deps := $(src) $(messages) src/crate/pkg
+type-deps := $(src) $(messages) $(css-d) src/crate/pkg
+
 .DEFAULT_GOAL := build
 
 .PHONY : build extract-messages tcm wasm-pack check lint eslint tslint stylelint type-check clean clobber
 
 build : dist
-dist : webpack.config.ts $(src) $(messages) src/crate/pkg
+dist : webpack.config.ts $(value-deps)
 	-rm -r $@/
 	$(NPX) webpack --config webpack.config.ts
 
@@ -45,8 +48,24 @@ tslint : tsconfig.json tsconfig.json $(src)
 stylelint : .stylelintrc $(css-src)
 	$(NPX) stylelint src/**/*.css
 
-type-check : tsconfig.prod.json $(src) $(messages) $(css-d) src/crate/pkg
+type-check : tsconfig.prod.json $(type-deps)
 	$(NPX) tsc --noEmit --project ./tsconfig.prod.json
+
+type-check-for-dev : tsconfig.json $(type-deps)
+	$(NPX) tsc --noEmit --project .
+
+test : jest.config.js $(value-deps)
+	$(NPX) jest --coverage
+
+test-w-o-cov : jest.config.js $(value-deps)
+	$(NPX) jest
+
+# TODO: $(value-deps) を interrupt に更新する。
+test-in-watch-mode : jest.config.js $(value-deps)
+	$(NPX) jest --onlyChanged --watch
+
+update-snapshots : jest.config.js $(value-deps)
+	$(NPX) jest --updateSnapshot
 
 # Keep comparing with .gitignore...
 ### Remove all files that neither are tracked by Git except files in node_modules/ and .env.

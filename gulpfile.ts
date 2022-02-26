@@ -32,18 +32,8 @@ const wasmPack = shell.task('make wasm-pack')
 const extractMessages = shell.task('make extract-messages')
 const tcm = shell.task('make tcm')
 const typeCheck = shell.task('make type-check')
-const typeCheckForDevelopment = npxTask('tsc', ['--noEmit', '-p', '.'])
 const lint = shell.task('make lint')
-const testWithoutCoverage = series(wasmPack, parallel(typeCheckForDevelopment, npxTask('jest')))
-const testWithCoverage = series(wasmPack, parallel(typeCheckForDevelopment, npxTask('jest', ['--coverage'])))
-
-export const testInWatchMode = series(
-  parallel(extractMessages, tcm), // TODO: interrupt に差し込む
-  npxTask('jest', ['--onlyChanged', '--watch'])
-)
-
-export const updateSnapshots = series(wasmPack, parallel(typeCheckForDevelopment, npxTask('jest', ['--updateSnapshot'])))
-export const test = testWithCoverage
+const testWithoutCoverage = shell.task('make test-w-o-cov')
 const build = shell.task('make')
 
 export const buildGhPagesCustom404Page = parallel(typeCheck, series(() => del(['gh-pages/dist/**/*']), npxTask('webpack', ['--config', 'gh-pages/webpack.config.ts'])))

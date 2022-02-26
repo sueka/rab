@@ -8,7 +8,6 @@
   "license": "CC0-1.0",
   "scripts": {
     "start": "gulp --silent develop",
-    "test": "gulp --silent test",
     "gulp": "gulp"
   },
   "sideEffects": [
