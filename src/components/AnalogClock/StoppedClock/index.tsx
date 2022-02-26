@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core'
-import { Temporal } from  'proposal-temporal'
 import React, { useEffect, useRef, useState } from 'react'
+import { TimeLike } from  'temporal-polyfill'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import zipWithIndexIterable from '~/extensions/Iterable/zipWithIndexIterable'
@@ -8,7 +8,7 @@ import useScreen from '~/hooks/useScreen'
 import typed from '~/typed'
 
 interface Props {
-  time: Temporal.TimeLike
+  time: TimeLike
   radius?: number
 }
 
@@ -53,7 +53,7 @@ function drawClockFace(radius: number, context: CanvasRenderingContext2D) {
 }
 
 // TODO: remove
-function drawClockHands(time: Temporal.TimeLike, radius: number, context: CanvasRenderingContext2D) {
+function drawClockHands(time: TimeLike, radius: number, context: CanvasRenderingContext2D) {
   drawHourHand(time, radius, context)
   drawMinuteHand(time, radius, context)
   drawSecondHand(time, radius, context)
@@ -62,7 +62,7 @@ function drawClockHands(time: Temporal.TimeLike, radius: number, context: Canvas
 }
 
 // TODO: remove
-function drawHourHand(time: Temporal.TimeLike, radius: number, context: CanvasRenderingContext2D) {
+function drawHourHand(time: TimeLike, radius: number, context: CanvasRenderingContext2D) {
   shouldBePresent(time.hour)
   shouldBePresent(time.minute)
   shouldBePresent(time.second)
@@ -83,7 +83,7 @@ function drawHourHand(time: Temporal.TimeLike, radius: number, context: CanvasRe
 }
 
 // TODO: remove
-function drawMinuteHand(time: Temporal.TimeLike, radius: number, context: CanvasRenderingContext2D) {
+function drawMinuteHand(time: TimeLike, radius: number, context: CanvasRenderingContext2D) {
   shouldBePresent(time.minute)
   shouldBePresent(time.second)
 
@@ -103,7 +103,7 @@ function drawMinuteHand(time: Temporal.TimeLike, radius: number, context: Canvas
 }
 
 // TODO: remove
-function drawSecondHand(time: Temporal.TimeLike, radius: number, context: CanvasRenderingContext2D) {
+function drawSecondHand(time: TimeLike, radius: number, context: CanvasRenderingContext2D) {
   shouldBePresent(time.second)
 
   // 12時の方向が0、時計回り。

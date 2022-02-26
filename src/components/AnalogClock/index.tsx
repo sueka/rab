@@ -1,6 +1,6 @@
-import { Temporal } from 'proposal-temporal'
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { PlainTime } from 'temporal-polyfill'
 
 import { State } from '~/redux'
 import { startClock, stopClock } from '~/redux/modules/io'
@@ -32,7 +32,7 @@ const AnalogClock: React.FC<Props> = ({ now, startClock, stopClock }) => {
     <StoppedClock
       time={
         // NOTE: locale は時刻の書式が hh:mm:ss なロケールなら何でもよいが、 Firefox 85 では new Date(0).toLocaleString('ja', { hour: '2-digit', minute: '2-digit' }) が "9:00" となる。
-        Temporal.PlainTime.from(now.toLocaleTimeString('en', {
+        PlainTime.from(now.toLocaleTimeString('en', {
           calendar: 'gregory',
           numberingSystem: 'latn',
           timeZone,
