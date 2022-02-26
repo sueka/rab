@@ -9,13 +9,14 @@ crate-src := $(shell find src/crate -type f ! -path "src/crate/pkg/*" ! -path "s
 css-src := $(shell find src -name "*.css" -type f)
 css-src := $(filter-out src/classes.css, $(css-src))
 css-d := $(patsubst %.css, %.css.d.ts, $(css-src))
+gh-pages-src := $(wildcard gh-pages/*)
 
 value-deps := $(src) $(messages) src/crate/pkg
 type-deps := $(src) $(messages) $(css-d) src/crate/pkg
 
 .DEFAULT_GOAL := build
 
-.PHONY : build develop extract-messages tcm wasm-pack check lint eslint tslint stylelint type-check clean clobber
+.PHONY : build develop gh-pages-custom-404-page extract-messages tcm wasm-pack check lint eslint tslint stylelint type-check clean clobber
 
 build : dist
 dist : webpack.config.ts $(value-deps)
@@ -27,6 +28,12 @@ develop : webpack.config.dev.ts $(value-deps)
 	@echo $(src) | tr " " '\n' | entr -r make lint &
 	@echo $(type-deps) | tr " " '\n' | entr -r make type-check &
 	$(NPX) webpack serve --config $<
+
+# TODO: Type-check?
+gh-pages-custom-404-page : gh-pages/dist
+gh-pages/dist : gh-pages/webpack.config.ts $(gh-pages-src)
+	-rm -r $@/
+	$(NPX) webpack --config $<
 
 extract-messages : $(messages)
 $(messages) : $(messages-src)
@@ -74,6 +81,9 @@ test-in-watch-mode : jest.config.js $(value-deps)
 
 update-snapshots : jest.config.js $(value-deps)
 	$(NPX) jest --updateSnapshot
+
+doc : $(type-deps)
+	$(NPX) typedoc
 
 # Keep comparing with .gitignore...
 ### Remove all files that neither are tracked by Git except files in node_modules/ and .env.

@@ -7,8 +7,7 @@
   },
   "license": "CC0-1.0",
   "scripts": {
-    "start": "make develop",
-    "gulp": "gulp"
+    "start": "make develop"
   },
   "sideEffects": [
     "**/*.prototype.*.ts",
@@ -42,7 +41,6 @@
     "@types/del": "^4.0.0",
     "@types/dotenv": "^8.2.0",
     "@types/dotenv-webpack": "^7.0.3",
-    "@types/gulp": "^4.0.9",
     "@types/highlight.js": "^10.1.0",
     "@types/history": "^4.7.11",
     "@types/node": "^16.11.25",
@@ -76,8 +74,6 @@
     "extract-react-intl-messages": "^4.1.1",
     "favicon-notification": "^0.1.4",
     "fp-ts": "^2.11.8",
-    "gulp": "^4.0.2",
-    "gulp-shell": "^0.8.0",
     "highlight.js": "^11.4.0",
     "history": "^4.10.1",
     "html-webpack-plugin": "^5.5.0",
