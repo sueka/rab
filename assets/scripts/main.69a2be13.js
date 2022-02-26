@@ -1,0 +1,1 @@
+!function(){if(!globalThis.location.pathname.startsWith("/rap"))throw new Error;const a=new URL(`${globalThis.location.origin}/rap`);a.hash=globalThis.location.pathname.slice("/rap".length),globalThis.location.replace(a.href)}();
