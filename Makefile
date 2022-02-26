@@ -20,13 +20,13 @@ type-deps := $(src) $(messages) $(css-d) src/crate/pkg
 build : dist
 dist : webpack.config.ts $(value-deps)
 	-rm -r $@/
-	$(NPX) webpack --config webpack.config.ts
+	$(NPX) webpack --config $<
 
 # TODO: Prefer heredoc/herestring to echo.
 develop : webpack.config.dev.ts $(value-deps)
 	@echo $(src) | tr " " '\n' | entr -r make lint &
 	@echo $(type-deps) | tr " " '\n' | entr -r make type-check &
-	$(NPX) webpack serve --config webpack.config.dev.ts
+	$(NPX) webpack serve --config $<
 
 extract-messages : $(messages)
 $(messages) : $(messages-src)
@@ -57,7 +57,7 @@ stylelint : .stylelintrc $(css-src)
 	$(NPX) stylelint src/**/*.css
 
 type-check : tsconfig.prod.json $(type-deps)
-	$(NPX) tsc --noEmit --project ./tsconfig.prod.json
+	$(NPX) tsc --noEmit --project ./$<
 
 type-check-for-dev : tsconfig.json $(type-deps)
 	$(NPX) tsc --noEmit --project .
