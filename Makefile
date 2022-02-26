@@ -36,10 +36,10 @@ src/crate/pkg : $(crate-src)
 	$(NPX) wasm-pack build --out-name index src/crate
 
 check :
-	make lint type-check test
+	@make lint type-check test
 
 lint :
-	make eslint tslint stylelint
+	@make eslint tslint stylelint
 
 eslint : .eslintrc.json $(src)
 	$(NPX) eslint --ext ".ts, .tsx" src
@@ -89,6 +89,6 @@ clean :
 	-rm -r gh-pages/dist/
 
 clobber :
-	make clean
+	@make clean
 	-rm -r node_modules/
 	-rm .env
