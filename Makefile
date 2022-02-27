@@ -9,7 +9,7 @@ crate-src := $(shell find src/crate -type f ! -path "src/crate/pkg/*" ! -path "s
 css-src := $(shell find src -name "*.css" -type f)
 css-src := $(filter-out src/classes.css, $(css-src))
 css-d := $(patsubst %.css, %.css.d.ts, $(css-src))
-gh-pages-src := $(wildcard gh-pages/*)
+gh-pages-src := $(wildcard gh-pages/src/*)
 
 value-deps := $(src) $(messages) src/crate/pkg
 type-deps := $(src) $(messages) $(css-d) src/crate/pkg
