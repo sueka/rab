@@ -31,7 +31,7 @@ jobs:
       - name: Build GitHub Pages Custom 404 Page
         run: |
           # npm ci
-          make gh-pages-custom-404-page
+          make gh-pages/dist
           cp -r gh-pages/dist/* dist/
         if: matrix.node-version == 16
       - name: Upload build artifact

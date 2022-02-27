@@ -16,7 +16,7 @@ type-deps := $(src) $(messages) $(css-d) src/crate/pkg
 
 .DEFAULT_GOAL := build
 
-.PHONY : build develop gh-pages-custom-404-page extract-messages tcm wasm-pack check lint eslint tslint stylelint type-check clean clobber
+.PHONY : build develop extract-messages tcm check lint eslint tslint stylelint type-check clean clobber
 
 build : dist
 dist : webpack.config.ts $(value-deps)
@@ -30,7 +30,6 @@ develop : webpack.config.dev.ts $(value-deps)
 	$(NPX) webpack serve --config $<
 
 # TODO: Type-check?
-gh-pages-custom-404-page : gh-pages/dist
 gh-pages/dist : gh-pages/webpack.config.ts $(gh-pages-src)
 	-rm -r $@/
 	$(NPX) webpack --config $<
@@ -44,7 +43,6 @@ $(css-d) : $(css-src)
 	$(NPX) tcm --pattern "src/components/**/*.css"
 	@touch $(css-d)
 
-wasm-pack : src/crate/pkg
 src/crate/pkg : $(crate-src)
 	$(NPX) wasm-pack build --out-name index src/crate
 
