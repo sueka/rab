@@ -17,18 +17,18 @@ type-deps := $(src) $(messages) $(css-d) src/crate/pkg
 
 .DEFAULT_GOAL := build
 
-.PHONY : build develop extract-messages tcm check lint eslint tslint stylelint type-check clean clobber
+.PHONY : build served messages cssd crate-pkg check linted eslinted tslinted stylelinted typed tested test-job up-to-date-snapshots doc clean clobber
 
 build : dist
 dist : webpack.config.ts $(value-deps)
 	-rm -r $@/
 	$(NPX) webpack --config $<
 
-# FIXME: Measure it and do `@echo $(value-deps) | tr " " '\n' | entr -r make extract-messages tcm src/crate/pkg` as a substitute if needed.
+# FIXME: Measure it and do `@echo $(value-deps) | tr " " '\n' | entr -r make messages cssd src/crate/pkg` as a substitute if needed.
 # TODO: Prefer heredoc/herestring to echo.
-develop : webpack.config.dev.ts $(value-deps)
-	@echo $(messages-src) | tr " " '\n' | entr -r make extract-messages &
-	@echo $(css-src) | tr " " '\n' | entr -r make tcm &
+served : webpack.config.dev.ts $(value-deps)
+	@echo $(messages-src) | tr " " '\n' | entr -r make messages &
+	@echo $(css-src) | tr " " '\n' | entr -r make cssd &
 	@echo $(crate-src) | tr " " '\n' | entr -r make src/crate/pkg &
 	$(NPX) webpack serve --config $<
 
@@ -37,50 +37,45 @@ gh-pages/dist : gh-pages/webpack.config.ts $(gh-pages-src)
 	-rm -r $@/
 	$(NPX) webpack --config $<
 
-extract-messages : $(messages)
+messages : $(messages)
 $(messages) : $(messages-src)
 	$(NPX) extract-messages --flat --default-locale=en --locales=en,he,ja --output=public/messages src/**/messages.ts
 
-tcm : $(css-d)
+cssd : $(css-d)
 $(css-d) : $(css-src)
 	$(NPX) tcm --pattern "src/components/**/*.css"
 	@touch $(css-d)
 
+crate-pkg : src/crate/pkg
 src/crate/pkg : $(crate-src)
 	$(NPX) wasm-pack build --out-name index src/crate
 
 check :
-	@make lint type-check test
+	@make linted typed tested
 
-lint :
-	@make eslint tslint stylelint
+linted :
+	@make eslinted tslinted stylelinted
 
-eslint : .eslintrc.json $(src)
+eslinted : .eslintrc.json $(src)
 	$(NPX) eslint --ext ".ts, .tsx" src
 
-tslint : tsconfig.json tsconfig.json $(src)
+tslinted : tsconfig.json tslint.json $(src)
 	$(NPX) tslint --project .
 
-stylelint : .stylelintrc $(css-src)
+stylelinted : .stylelintrc $(css-src)
 	$(NPX) stylelint src/**/*.css
 
-type-check : tsconfig.prod.json $(type-deps)
+typed : tsconfig.prod.json $(type-deps)
 	$(NPX) tsc --noEmit --project ./$<
 
-type-check-for-dev : tsconfig.json $(type-deps)
-	$(NPX) tsc --noEmit --project .
-
-test : jest.config.js $(value-deps)
+tested : jest.config.js $(value-deps)
 	$(NPX) jest --coverage
 
-test-w-o-cov : jest.config.js $(value-deps)
-	$(NPX) jest
-
 # TODO: $(value-deps) を interrupt に更新する。
-test-in-watch-mode : jest.config.js $(value-deps)
+test-job : jest.config.js $(value-deps)
 	$(NPX) jest --onlyChanged --watch
 
-update-snapshots : jest.config.js $(value-deps)
+up-to-date-snapshots : jest.config.js $(value-deps)
 	$(NPX) jest --updateSnapshot
 
 doc : $(type-deps)

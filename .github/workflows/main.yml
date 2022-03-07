@@ -26,7 +26,7 @@ jobs:
       - name: Build
         run: |
           npm ci
-          make type-check
+          make typed
           make
       - name: Build GitHub Pages Custom 404 Page
         run: |
