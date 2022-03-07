@@ -24,10 +24,12 @@ dist : webpack.config.ts $(value-deps)
 	-rm -r $@/
 	$(NPX) webpack --config $<
 
+# FIXME: Measure it and do `@echo $(value-deps) | tr " " '\n' | entr -r make extract-messages tcm src/crate/pkg` as a substitute if needed.
 # TODO: Prefer heredoc/herestring to echo.
 develop : webpack.config.dev.ts $(value-deps)
-	@echo $(src) | tr " " '\n' | entr -r make lint &
-	@echo $(type-deps) | tr " " '\n' | entr -r make type-check &
+	@echo $(messages-src) | tr " " '\n' | entr -r make extract-messages &
+	@echo $(css-src) | tr " " '\n' | entr -r make tcm &
+	@echo $(crate-src) | tr " " '\n' | entr -r make src/crate/pkg &
 	$(NPX) webpack serve --config $<
 
 # TODO: Type-check?
