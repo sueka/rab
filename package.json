@@ -11,7 +11,7 @@
   },
   "sideEffects": [
     "**/*.prototype.*.ts",
-    "./src/classes.css",
+    "./src/global.css",
     "./src/polyfills/apps/**/*.ts"
   ],
   "engines": {

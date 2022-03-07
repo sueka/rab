@@ -79,7 +79,7 @@ const config: Configuration = {
                 mode(resourcePath: string) {
                   const relativeResourcePath = path.relative(__dirname, resourcePath)
 
-                  if (relativeResourcePath === 'src/classes.css') {
+                  if (relativeResourcePath === 'src/global.css') {
                     return 'global'
                   }
 
