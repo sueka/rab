@@ -6,6 +6,8 @@
  * NOTE: color が設定されていない要素 E の子孫に color が設定されている要素 F があるとき、F だけでなく E にも `transition: color ..` を設定すると、F の遷移が完了してから F の遷移が発生する。このため、継承されうるプロパティは、丁度設定されている要素でしか transition を設定しないようにする。
  */
 
+/* stylelint-disable selector-class-pattern */
+
 body {
   transition:
     background-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
@@ -19,7 +21,7 @@ body {
     color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-:global .MuiInputBase-root.MuiFilledInput-root.MuiFilledInput-underline:before,
+:global .MuiInputBase-root.MuiFilledInput-root.MuiFilledInput-underline::before,
 :global .MuiToggleButton-root.Mui-selected {
   transition:
     border-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
@@ -38,8 +40,7 @@ body {
 }
 
 :global .MuiDivider-root {
-  transition:
-    background-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 :global .MuiFormLabel-root.MuiFormLabel-root,
@@ -55,7 +56,6 @@ body {
 :global .hljs-attribute,
 :global .hljs-built_in,
 :global .hljs-bullet,
-:global .hljs-class .hljs-title,
 :global .hljs-comment,
 :global .hljs-deletion,
 :global .hljs-doctag,
@@ -64,7 +64,6 @@ body {
 :global .hljs-link,
 :global .hljs-literal,
 :global .hljs-meta,
-:global .hljs-meta .hljs-string,
 :global .hljs-name,
 :global .hljs-number,
 :global .hljs-quote,
@@ -76,15 +75,16 @@ body {
 :global .hljs-selector-pseudo,
 :global .hljs-selector-tag,
 :global .hljs-string,
+:global .hljs-meta .hljs-string,
 :global .hljs-subst,
 :global .hljs-symbol,
 :global .hljs-template-variable,
 :global .hljs-title,
+:global .hljs-class .hljs-title,
 :global .hljs-title.class_,
 :global .hljs-type,
 :global .hljs-variable {
-  transition:
-    color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 :global .MuiButton-root.MuiButton-root {
@@ -95,12 +95,11 @@ body {
     color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-:global .MuiFilledInput-underline:before,
-:global .MuiInput-underline.MuiInput-underline:before,
+:global .MuiFilledInput-underline::before,
+:global .MuiInput-underline.MuiInput-underline::before,
 :global .MuiOutlinedInput-notchedOutline,
 :global .MuiTableCell-root {
-  transition:
-    border-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: border-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 :global .MuiTableCell-root.MuiTableCell-body,
@@ -124,6 +123,7 @@ body {
 }
 
 :global .MuiSvgIcon-root.MuiSvgIcon-root {
-  transition:
-    fill 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
+
+/* stylelint-enable selector-class-pattern */
