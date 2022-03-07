@@ -44,6 +44,7 @@ import Service, { Action, State, createReducer, invariant } from '~/redux'
 import typed from '~/typed'
 import { asFormats } from '~/validators/intlValidators'
 import './global.css'
+import './transition.css'
 
 import formats from '../public/formats/en.json' // tslint:disable-line:no-relative-imports
 import messages from '../public/messages/en.json' // tslint:disable-line:no-relative-imports

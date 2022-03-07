@@ -79,7 +79,10 @@ const config: Configuration = {
                 mode(resourcePath: string) {
                   const relativeResourcePath = path.relative(__dirname, resourcePath)
 
-                  if (relativeResourcePath === 'src/global.css') {
+                  if (
+                    relativeResourcePath === 'src/global.css' ||
+                    relativeResourcePath === 'src/transition.css'
+                  ) {
                     return 'global'
                   }
 

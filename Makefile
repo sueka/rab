@@ -8,6 +8,7 @@ messages := public/messages/en.json public/messages/he.json public/messages/ja.j
 crate-src := $(shell find src/crate -type f ! -path "src/crate/pkg/*" ! -path "src/crate/target/*")
 css-src := $(shell find src -name "*.css" -type f)
 css-src := $(filter-out src/global.css, $(css-src))
+css-src := $(filter-out src/transition.css, $(css-src))
 css-d := $(patsubst %.css, %.css.d.ts, $(css-src))
 gh-pages-src := $(wildcard gh-pages/src/*)
 

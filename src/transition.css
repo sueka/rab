@@ -1,0 +1,129 @@
+/** transition.css
+ *
+ * ライトテーマ/ダークテーマを切り替える時、背景色を時間を掛けて切り替えることで、光過敏性発作が起こりにくくし、
+ * 背景色だけがそうでは見栄えが悪いので、前景色、影の色、境界線の色なども同様にする。
+ *
+ * NOTE: color が設定されていない要素 E の子孫に color が設定されている要素 F があるとき、F だけでなく E にも `transition: color ..` を設定すると、F の遷移が完了してから F の遷移が発生する。このため、継承されうるプロパティは、丁度設定されている要素でしか transition を設定しないようにする。
+ */
+
+body {
+  transition:
+    background-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+:global .MuiPaper-root.MuiPaper-root {
+  transition:
+    box-shadow 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    background-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+:global .MuiInputBase-root.MuiFilledInput-root.MuiFilledInput-underline:before,
+:global .MuiToggleButton-root.Mui-selected {
+  transition:
+    border-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    background-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+:global .MuiAvatar-colorDefault,
+:global .MuiIconButton-root.MuiIconButton-root,
+:global .MuiInputBase-root.MuiFilledInput-root,
+:global .MuiToggleButton-root,
+:global .hljs {
+  transition:
+    background-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+:global .MuiDivider-root {
+  transition:
+    background-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+:global .MuiFormLabel-root.MuiFormLabel-root,
+:global .MuiInputBase-root,
+:global .MuiListItemIcon-root,
+:global .MuiListSubheader-root,
+:global .MuiSelect-icon,
+:global .MuiTableCell-body,
+:global .MuiTableSortLabel-root,
+:global .MuiTypography-colorTextSecondary.MuiTypography-colorTextSecondary,
+:global .hljs-addition,
+:global .hljs-attr,
+:global .hljs-attribute,
+:global .hljs-built_in,
+:global .hljs-bullet,
+:global .hljs-class .hljs-title,
+:global .hljs-comment,
+:global .hljs-deletion,
+:global .hljs-doctag,
+:global .hljs-formula,
+:global .hljs-keyword,
+:global .hljs-link,
+:global .hljs-literal,
+:global .hljs-meta,
+:global .hljs-meta .hljs-string,
+:global .hljs-name,
+:global .hljs-number,
+:global .hljs-quote,
+:global .hljs-regexp,
+:global .hljs-section,
+:global .hljs-selector-attr,
+:global .hljs-selector-class,
+:global .hljs-selector-id,
+:global .hljs-selector-pseudo,
+:global .hljs-selector-tag,
+:global .hljs-string,
+:global .hljs-subst,
+:global .hljs-symbol,
+:global .hljs-template-variable,
+:global .hljs-title,
+:global .hljs-title.class_,
+:global .hljs-type,
+:global .hljs-variable {
+  transition:
+    color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+:global .MuiButton-root.MuiButton-root {
+  transition:
+    box-shadow 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    background-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+:global .MuiFilledInput-underline:before,
+:global .MuiInput-underline.MuiInput-underline:before,
+:global .MuiOutlinedInput-notchedOutline,
+:global .MuiTableCell-root {
+  transition:
+    border-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+:global .MuiTableCell-root.MuiTableCell-body,
+:global .MuiToggleButton-root {
+  transition:
+    color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+/* TODO: BUGFIX */
+:global .MuiSelect-icon.MuiSvgIcon-root.MuiSvgIcon-root {
+  transition:
+    color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    fill 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+:global .MuiSwitch-track.MuiSwitch-track {
+  transition:
+    opacity 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    background-color 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+:global .MuiSvgIcon-root.MuiSvgIcon-root {
+  transition:
+    fill 266.667ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
