@@ -37,7 +37,7 @@
   "src.components.Info.fetching": "מאוחזר…",
   "src.components.Info.fetchingDoneSuccessfully": "האחזור הצליח.",
   "src.components.Info.fetchingFailed": "האחזור נכשל.",
-  "src.components.Info.fetchingNotStarted": "האחזור לא התחיל.",
+  "src.components.Info.fetchingHasNotStarted": "האחזור עדיין לא התחיל.",
   "src.components.LocaleSelect.language": "שפה",
   "src.components.MicSwitch.speechRecognitionErrorOccurred": "שגיאת זיהוי דיבור מתרחשת: { error }",
   "src.components.MicSwitch.stop": "להפסיק",

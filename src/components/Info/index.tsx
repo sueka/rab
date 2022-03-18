@@ -61,7 +61,7 @@ class Info extends React.Component<Props, State> {
     } else if (!successful) {
       return formatMessage(messages.fetchingFailed)
     } else if (repo == null) {
-      return formatMessage(messages.fetchingNotStarted)
+      return formatMessage(messages.fetchingHasNotStarted)
     } else {
       return formatMessage(messages.fetchingDoneSuccessfully)
     }

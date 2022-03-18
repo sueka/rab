@@ -37,7 +37,7 @@
   "src.components.Info.fetching": "読み込み中…",
   "src.components.Info.fetchingDoneSuccessfully": "読み込みに成功しました。",
   "src.components.Info.fetchingFailed": "読み込みに失敗しました。",
-  "src.components.Info.fetchingNotStarted": "読み込みは開始していません。",
+  "src.components.Info.fetchingHasNotStarted": "読み込みは開始していません。",
   "src.components.LocaleSelect.language": "言語",
   "src.components.MicSwitch.speechRecognitionErrorOccurred": "音声認識エラーが発生しました: { error }",
   "src.components.MicSwitch.stop": "停止",
