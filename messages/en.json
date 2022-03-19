@@ -37,7 +37,7 @@
   "src.components.Info.fetching": "Fetching…",
   "src.components.Info.fetchingDoneSuccessfully": "Fetching done successfully.",
   "src.components.Info.fetchingFailed": "Fetching failed.",
-  "src.components.Info.fetchingNotStarted": "Fetching not started.",
+  "src.components.Info.fetchingHasNotStarted": "Fetching has not started.",
   "src.components.LocaleSelect.language": "Language",
   "src.components.MicSwitch.speechRecognitionErrorOccurred": "Speech recognition error occurred: { error }",
   "src.components.MicSwitch.stop": "Stop",
