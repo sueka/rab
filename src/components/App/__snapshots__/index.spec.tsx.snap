@@ -1785,7 +1785,7 @@ exports[`App at /info 1`] = `
   <p
     class="MuiTypography-root MuiTypography-body1"
   >
-    Fetching not started.
+    Fetching has not started.
   </p>
 </div>
 `;
