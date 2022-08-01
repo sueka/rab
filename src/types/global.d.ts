@@ -40,3 +40,7 @@ declare namespace string {
 declare namespace React {
   type PropsOf<T> = T extends React.ComponentType<infer P> ? P : never
 }
+
+interface Notification {
+  timestamp: number
+}

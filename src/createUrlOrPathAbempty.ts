@@ -20,7 +20,7 @@ class PathAbempty {
   private readonly _url: URL
 
   constructor(...[pathAbempty, ...restArgs]: ConstructorParameters<typeof URL>) {
-    this._url = new URL(typed<[string, string]>`${ DUMMY_ORIGIN }${ pathAbempty }`, ...restArgs)
+    this._url = new URL(typed<[string, string | URL]>`${ DUMMY_ORIGIN }${ pathAbempty }`, ...restArgs)
   }
 
   get hash(): string {
@@ -65,7 +65,7 @@ class PathAbempty {
 export default function createUrlOrPathAbempty(...args: ConstructorParameters<typeof URL>): URL | PathAbempty {
   const [urlOrPathAbempty] = args
 
-  if (isUrl(urlOrPathAbempty)) {
+  if (urlOrPathAbempty instanceof URL || isUrl(urlOrPathAbempty)) {
     return new URL(...args)
   } else {
     return new PathAbempty(...args)

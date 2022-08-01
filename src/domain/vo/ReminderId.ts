@@ -1,7 +1,8 @@
 import Id from './Id'
 
-declare const brand: unique symbol
+export default interface ReminderId {
+  __brand: never
+}
 
 export default class ReminderId extends Id {
-  protected [brand]: never
 }
