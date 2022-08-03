@@ -22,8 +22,8 @@ import typed from '~/typed'
 import { asFormats } from '~/validators/intlValidators'
 import App from '.'
 
-import formats from '../../../public/formats/en.json' // tslint:disable-line:no-relative-imports
-import messages from '../../../public/messages/en.json' // tslint:disable-line:no-relative-imports
+import formats from '../../../public/formats/en.json'
+import messages from '../../../public/messages/en.json'
 
 jest.mock('bcp-47', () => ({ stringify: jest.fn() })) // FIXME: Delete the mock
 jest.mock('~/hooks/useScreen', () => jest.fn())

@@ -14,7 +14,7 @@ describe('Object.fromEntries', () => {
   it('should work with a circularly referenced object ', () => {
     const object: Record<Index, unknown> = { a: 0 }
 
-    object['self'] = object // tslint:disable-line:no-object-mutation
+    object['self'] = object
 
     expect(fromEntries(Object.entries(object))).toEqual(object)
   })

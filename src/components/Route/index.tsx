@@ -14,7 +14,6 @@ interface Props extends Alt.Omit<RouteProps, 'render' | 'component' | 'children'
 }
 
 // FIXME: React の実装 (https://github.com/facebook/react/blob/v17.0.1/packages/react/src/ReactLazy.js, https://github.com/facebook/react/blob/v17.0.1/packages/shared/ReactSymbols.js) に依存しないようにする。
-// tslint:disable-next-line:no-any
 function isLazyExoticComponent<T extends React.ComponentType<any>>(component: T | React.LazyExoticComponent<T>): component is React.LazyExoticComponent<T> {
   return '$$typeof' in component && component.$$typeof === Symbol.for('react.lazy')
 }

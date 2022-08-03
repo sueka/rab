@@ -7,7 +7,7 @@ import ErrorBoundary from '.'
 const NoErrorThrowing: React.FC = () => <>no error throwing</>
 const ErrorThrowing: React.FC = () => { throw new Error('error throwing') }
 const NonErrorThrowing: React.FC = () => {
-  throw 'non-error throwing' // tslint:disable-line:no-string-throw
+  throw 'non-error throwing'
 }
 
 describe('ErrorBoundary', () => {

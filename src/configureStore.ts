@@ -30,7 +30,7 @@ export default function configureStore<S, A extends Action>(history: History, re
   ]
 
   if (process.env['NODE_ENV'] === 'development') {
-    storeEnhancers.push(applyMiddleware(logger)) // tslint:disable-line:no-array-mutation
+    storeEnhancers.push(applyMiddleware(logger))
   }
 
   const store = createStore(

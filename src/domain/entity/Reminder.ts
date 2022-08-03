@@ -45,7 +45,6 @@ export default class Reminder extends Entity {
   }
 
   public hashCode() {
-    // tslint:disable-next-line:no-let
     let result = 17
 
     result = 31 * result + this.id.hashCode()
@@ -65,6 +64,6 @@ export default class Reminder extends Entity {
   }
 
   set tasks(value) {
-    this._tasks = value // tslint:disable-line:no-object-mutation
+    this._tasks = value
   }
 }

@@ -13,11 +13,11 @@ const sortedNotificationsState = selector({
       notification,
       by: notification[sort.by],
     }))
-    .sort(({ by: a }, { by: b }) => a - b) // tslint:disable-line:no-array-mutation
+    .sort(({ by: a }, { by: b }) => a - b)
     .map(({ notification }) => notification)
 
     if (sort.in === 'desc') {
-      sorted.reverse() // tslint:disable-line:no-array-mutation
+      sorted.reverse()
     }
 
     return sorted

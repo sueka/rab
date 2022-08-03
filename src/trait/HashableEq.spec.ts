@@ -13,10 +13,8 @@ class Point extends HashableEq {
   }
 }
 
-// tslint:disable-next-line:max-classes-per-file
 class SmellPoint extends Point {}
 
-// tslint:disable-next-line:max-classes-per-file
 class ColoredPoint extends Point {
   constructor(
     public override x: number,

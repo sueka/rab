@@ -7,7 +7,7 @@ type Json = JsonPrimitive | JsonArray | JsonObject
 
 type EmptyRecord<T> = Record<keyof T, never>
 
-type Index = keyof any // tslint:disable-line:no-any
+type Index = keyof any
 
 type Method<T extends (that: never, ...args: never[]) => unknown> = T extends (that: infer U, ...args: infer V) => infer W ? (this: U, ...args: V) => W : never
 

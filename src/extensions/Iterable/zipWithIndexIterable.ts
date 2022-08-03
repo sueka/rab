@@ -1,9 +1,8 @@
 import zipIterables from './zipIterables'
 
 function* genIndex() {
-  let index = 0 // tslint:disable-line:no-let
+  let index = 0
 
-  // tslint:disable-next-line:no-loop-statement
   while (true) {
     yield index++
   }

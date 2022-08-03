@@ -46,7 +46,6 @@ const FossLicenseComparisonTable: React.FC = () => {
   const [locale, setLocale] = useState<string | null>(null)
 
   useEffect(() => {
-    // tslint:disable-next-line:semicolon
     ;(async () => {
       if (getSpreadsheetResponse === null || getSpreadsheetValuesResponse === null) {
         return

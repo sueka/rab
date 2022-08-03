@@ -1,5 +1,3 @@
-/* tslint:disable:no-import-side-effect */
-
 import * as dotenv from 'dotenv'
 import 'jest-canvas-mock'
 import fetchMock from 'jest-fetch-mock'

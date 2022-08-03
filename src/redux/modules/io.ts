@@ -144,7 +144,6 @@ export class IoService {
   public /* for testing */ *startClockSaga(): SagaIterator {
     yield put(updateNow())
 
-    // tslint:disable-next-line:no-loop-statement
     while (true) {
       yield call(delay, 1000 - (new Date().getMilliseconds() % 1000)) // NOTE: Edge では getMilliseconds が1000以上の値を返すことがある。
 
@@ -157,14 +156,12 @@ export class IoService {
       yield cancel(this.startClockTask)
 
       // Resume the cancelled task
-      // tslint:disable-next-line:no-object-mutation
       this.startClockTask = yield takeEvery(START_CLOCK, [this, this.startClockSaga])
     }
   }
 
   public *rootSaga(): SagaIterator {
     yield takeEvery(UPDATE_NOW, [this, this.updateNowSaga])
-    // tslint:disable-next-line:no-object-mutation
     this.startClockTask = yield takeEvery(START_CLOCK, [this, this.startClockSaga])
     yield takeEvery(STOP_CLOCK, [this, this.stopClockSaga])
   }

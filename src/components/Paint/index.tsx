@@ -72,7 +72,6 @@ const Paint: React.FC = () => {
       return
     }
 
-    // tslint:disable-next-line:no-object-mutation
     context.lineCap = lineCap
   }, [context, lineCap])
 

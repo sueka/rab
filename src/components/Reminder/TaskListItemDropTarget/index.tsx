@@ -43,7 +43,6 @@ const TaskListItemDropTarget: React.FC<Props> = ({ children, index, moveTask }) 
 
       moveTask(item.index, index)
 
-      // tslint:disable-next-line:no-object-mutation
       item.index = index
     },
   })

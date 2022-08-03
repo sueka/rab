@@ -40,7 +40,6 @@ class PathAbempty {
   }
 
   set pathname(value: string) {
-    // tslint:disable-next-line:no-object-mutation
     this._url.pathname = value
   }
 
@@ -49,7 +48,6 @@ class PathAbempty {
   }
 
   set search(value: string) {
-    // tslint:disable-next-line:no-object-mutation
     this._url.search = value
   }
 

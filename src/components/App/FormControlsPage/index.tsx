@@ -59,7 +59,6 @@ const MicIncludedTextField: React.FC = () => {
 
     setText(value)
 
-    /* tslint:disable:no-object-mutation */
     input.current.scrollTop = input.current.scrollHeight - input.current.offsetHeight
 
     switch (dir) {
@@ -69,7 +68,6 @@ const MicIncludedTextField: React.FC = () => {
       case 'rtl':
         input.current.scrollLeft = -(input.current.scrollWidth - input.current.offsetWidth)
     }
-    /* tslint:enable:no-object-mutation */
   }, [
     dir,
     input,
@@ -117,7 +115,6 @@ const MicIncludedCopiableTextField: React.FC = () => {
 
     setText(value)
 
-    /* tslint:disable:no-object-mutation */
     input.current.scrollTop = input.current.scrollHeight - input.current.offsetHeight
 
     switch (dir) {
@@ -127,7 +124,6 @@ const MicIncludedCopiableTextField: React.FC = () => {
       case 'rtl':
         input.current.scrollLeft = -(input.current.scrollWidth - input.current.offsetWidth)
     }
-    /* tslint:enable:no-object-mutation */
   }, [
     dir,
     input,

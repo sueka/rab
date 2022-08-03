@@ -19,7 +19,6 @@ export default class Id extends ValueObject<string> {
   }
 
   public hashCode() {
-    // tslint:disable-next-line:no-let
     let result = 17
 
     result = 31 * result + this.value.hashCode()

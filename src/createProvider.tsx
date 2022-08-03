@@ -27,7 +27,7 @@ interface State {
 const MAXIMUM_RECURSION_DEPTH = 100
 
 export default function createProvider<S, A extends Action>(history: History, reducer: Reducer<S, A>, invariant: Invariant<S>, saga: Saga) {
-  let recursionDepth = 0 // tslint:disable-line:no-let
+  let recursionDepth = 0
 
   return class Provider extends React.Component<Props<S, A>, State> {
     private store: Store<S, A>

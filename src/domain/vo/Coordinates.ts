@@ -1,6 +1,6 @@
 import HashableEq from '~/trait/HashableEq'
 
-export default interface Coordinates extends Chess.Coordinates {} // tslint:disable-line:no-empty-interface
+export default interface Coordinates extends Chess.Coordinates {}
 
 export default class Coordinates extends HashableEq implements Class.ValueObject<Chess.Coordinates> {
   constructor({ file, rank }: Chess.Coordinates) {
@@ -11,7 +11,6 @@ export default class Coordinates extends HashableEq implements Class.ValueObject
   }
 
   public hashCode() {
-    // tslint:disable-next-line:no-let
     let result = 0
 
     result = 31 * result + this.file.hashCode()

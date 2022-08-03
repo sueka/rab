@@ -103,7 +103,6 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
     const paddingInlineStart = parseFloat(dir === 'ltr' ? style.paddingLeft : style.paddingRight)
     const paddingInlineEnd = parseFloat(dir === 'ltr' ? style.paddingRight : style.paddingLeft)
 
-    // tslint:disable-next-line:no-object-mutation
     setSelectMinWidth(rect.width + paddingInlineStart - paddingInlineEnd)
   }, [locale, dir])
 

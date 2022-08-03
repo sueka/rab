@@ -12,7 +12,6 @@ import typed from '~/typed'
 function createScriptSnippet(gtmUrl: string, containerId: `GTM-${string}`) {
   const script = document.createElement('script')
 
-  // tslint:disable-next-line:no-object-mutation
   script.textContent = stripMargin(typed<[string, `GTM-${string}`]>`
     |(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     |new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -32,13 +31,11 @@ function createNoScriptSnippet(gtmUrl: string, containerId: `GTM-${string}`) {
 
   noScript.appendChild(iFrame)
 
-  /* tslint:disable:no-object-mutation */
   iFrame.src = typed<[string, `GTM-${string}`]>`${ gtmUrl }/ns.html?id=${ containerId }`
   iFrame.height = '0'
   iFrame.width = '0'
   iFrame.style.display = 'none'
   iFrame.style.visibility = 'hidden'
-  /* tslint:enable:no-object-mutation */
 
   return noScript
 }

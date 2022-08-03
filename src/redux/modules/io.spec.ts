@@ -61,7 +61,6 @@ describe('IoService', () => {
     const it = ioService.stopClockSaga()
     const rootIt = ioService.rootSaga()
 
-    // tslint:disable-next-line:no-loop-statement
     while (rootIt.next().done === false) {
       // Silence is golden.
     }

@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import useOnceForEachEffect from './useOnceForEachEffect'
 
 jest.mock('react', () => ({
-  ...(jest.requireActual('react') as any), // tslint:disable-line:no-any
+  ...(jest.requireActual('react') as any),
   useEffect: jest.fn(jest.requireActual('react').useEffect),
 }))
 

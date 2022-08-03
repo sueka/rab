@@ -11,13 +11,13 @@ import inversifyContainer from '~/container.dev'
 import App from '.'
 
 jest.mock('react-router', () => ({
-  ...(jest.requireActual('react-router') as any), // tslint:disable-line:no-any
+  ...(jest.requireActual('react-router') as any),
   Redirect: jest.fn(() => null),
   useLocation: jest.fn(),
 }))
 
 jest.mock('recoil', () => ({
-  ...(jest.requireActual('recoil') as any), // tslint:disable-line:no-any
+  ...(jest.requireActual('recoil') as any),
   useRecoilState: jest.fn(),
   useRecoilCallback: jest.fn(),
 }))
@@ -27,7 +27,6 @@ const mockedReactRouter = reactRouter as jest.Mocked<typeof reactRouter>
 describe('App', () => {
   describe('with #fragment', () => {
     beforeAll(() => {
-      // tslint:disable-next-line:semicolon
       ;(useRecoilState as jest.MockedFunction<typeof useRecoilState>).mockImplementationOnce(() => [[], jest.fn()])
       ;(useRecoilCallback as jest.MockedFunction<typeof useRecoilCallback>).mockImplementationOnce(() => jest.fn())
       ;(useRecoilCallback as jest.MockedFunction<typeof useRecoilCallback>).mockImplementationOnce(() => jest.fn())

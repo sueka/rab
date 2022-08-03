@@ -8,7 +8,7 @@ import { incrementAsync, incrementIfOdd, selectCount } from '~/redux/modules/cou
 import Counter from '.'
 
 jest.mock('react-redux', () => ({
-  ...(jest.requireActual('react-redux') as any), // tslint:disable-line:no-any
+  ...(jest.requireActual('react-redux') as any),
   useDispatch: jest.fn(),
   useSelector: jest.fn(),
 }))

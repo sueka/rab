@@ -17,7 +17,7 @@ function drawClockFace(radius: number, context: CanvasRenderingContext2D) {
   // face
   context.beginPath()
   context.arc(0, 0, 0.95 * radius, 0, 2 * Math.PI)
-  context.fillStyle = 'white' // tslint:disable-line:no-object-mutation
+  context.fillStyle = 'white'
   context.fill()
 
   // frame
@@ -29,19 +29,19 @@ function drawClockFace(radius: number, context: CanvasRenderingContext2D) {
 
   // context.beginPath()
   // context.arc(0, 0, 0.95 * radius, 0, 2 * Math.PI)
-  context.lineWidth = 0.1 * radius // tslint:disable-line:no-object-mutation
-  context.strokeStyle = gradient // tslint:disable-line:no-object-mutation
+  context.lineWidth = 0.1 * radius
+  context.strokeStyle = gradient
   context.stroke()
 
   // indices
   const INDICES = ['XII', 'I', 'II', 'III', 'IIII', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI']
 
-  context.fillStyle = 'black' // tslint:disable-line:no-object-mutation
-  context.font = typed<[number]>`${ 0.105 * radius }pt serif` // tslint:disable-line:no-object-mutation
-  context.textAlign = 'center' // tslint:disable-line:no-object-mutation
-  context.textBaseline = 'middle' // tslint:disable-line:no-object-mutation
+  context.fillStyle = 'black'
+  context.font = typed<[number]>`${ 0.105 * radius }pt serif`
+  context.textAlign = 'center'
+  context.textBaseline = 'middle'
 
-  // tslint:disable-next-line:no-loop-statement
+
   for (const [INDEX, i] of zipWithIndexIterable(INDICES)) {
     // 12時の方向が0、時計回り。
     const angle = i / 6 * Math.PI
@@ -70,9 +70,9 @@ function drawHourHand(time: TimeLike, radius: number, context: CanvasRenderingCo
   // 12時の方向が0、時計回り。
   const hourHandAngle = ((time.hour % 12) + (time.minute / 60) + (time.second / 3600)) / 6 * Math.PI
 
-  context.lineCap = 'round' // tslint:disable-line:no-object-mutation
-  context.lineWidth = 0.06 * radius // tslint:disable-line:no-object-mutation
-  context.strokeStyle = 'black' // tslint:disable-line:no-object-mutation
+  context.lineCap = 'round'
+  context.lineWidth = 0.06 * radius
+  context.strokeStyle = 'black'
 
   context.beginPath()
   context.moveTo(0, 0)
@@ -90,9 +90,9 @@ function drawMinuteHand(time: TimeLike, radius: number, context: CanvasRendering
   // 12時の方向が0、時計回り。
   const minuteHandAngle = (time.minute + (time.second / 60)) / 30 * Math.PI
 
-  context.lineCap = 'round' // tslint:disable-line:no-object-mutation
-  context.lineWidth = 0.04 * radius // tslint:disable-line:no-object-mutation
-  context.strokeStyle = 'black' // tslint:disable-line:no-object-mutation
+  context.lineCap = 'round'
+  context.lineWidth = 0.04 * radius
+  context.strokeStyle = 'black'
 
   context.beginPath()
   context.moveTo(0, 0)
@@ -109,9 +109,9 @@ function drawSecondHand(time: TimeLike, radius: number, context: CanvasRendering
   // 12時の方向が0、時計回り。
   const secondHandAngle = time.second / 30 * Math.PI
 
-  context.lineCap = 'round' // tslint:disable-line:no-object-mutation
-  context.lineWidth = 0.01 * radius // tslint:disable-line:no-object-mutation
-  context.strokeStyle = 'red' // tslint:disable-line:no-object-mutation
+  context.lineCap = 'round'
+  context.lineWidth = 0.01 * radius
+  context.strokeStyle = 'red'
 
   context.beginPath()
   context.moveTo(0, 0)
@@ -157,10 +157,8 @@ const StoppedClock: React.FC<Props> = ({
       return
     }
 
-    /* tslint:disable:no-object-mutation */
     canvas.current.width = 2 * dpr * radius
     canvas.current.height = 2 * dpr * radius
-    /* tslint:enable:no-object-mutation */
 
     // X 軸は右向き、 Y 軸は下向き、反転無し、原点は中央。
     context.resetTransform()

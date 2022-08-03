@@ -12,7 +12,6 @@ export default class TaskRepositoryFakeImpl implements TaskRepository {
   public async list() {
     const tasks = []
 
-    // tslint:disable-next-line:no-loop-statement no-let
     for (let i = 0; i < localStorage.length; ++i) {
       const key = localStorage.key(i)
 
@@ -22,7 +21,6 @@ export default class TaskRepositoryFakeImpl implements TaskRepository {
 
       shouldBePresent(seriarized)
 
-      // tslint:disable-next-line:no-let
       let task: Task
 
       try {
@@ -31,7 +29,6 @@ export default class TaskRepositoryFakeImpl implements TaskRepository {
         continue
       }
 
-      // tslint:disable-next-line:no-array-mutation
       tasks.push(task)
     }
 

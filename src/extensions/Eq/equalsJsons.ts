@@ -32,7 +32,6 @@ function equalsJsonArrays(xs: JsonArray, ys: JsonArray): boolean {
     return false
   }
 
-  // tslint:disable-next-line:no-loop-statement
   for (const [x, y] of zipIterables(xs, ys)) {
     if (!equalsJsons(x, y)) {
       return false
@@ -50,10 +49,9 @@ function equalsJsonObjects(iXMap: JsonObject, jYMap: JsonObject): boolean {
     return false
   }
 
-  is.sort() // tslint:disable-line:no-array-mutation
-  js.sort() // tslint:disable-line:no-array-mutation
+  is.sort()
+  js.sort()
 
-  // tslint:disable-next-line:no-loop-statement
   for (const [i, j] of zipIterables(is, js)) {
     if (i !== j) {
       return false

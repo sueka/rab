@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 
 export default function useRefsMerged<T>(...refs: React.Ref<T>[]): React.RefCallback<T> {
   return useCallback((node) => {
-    for (const ref of refs) { // tslint:disable-line:no-loop-statement
+    for (const ref of refs) {
       if (ref === null) {
         continue
       }
@@ -13,7 +13,7 @@ export default function useRefsMerged<T>(...refs: React.Ref<T>[]): React.RefCall
       } else {
         const mutableRef: React.MutableRefObject<T | null> = ref // FIXME
 
-        mutableRef.current = node // tslint:disable-line:no-object-mutation
+        mutableRef.current = node
       }
     }
   }, [refs])

@@ -12,7 +12,7 @@ function doubleToLongBits(value: number): JSBI {
   const doubleContainer = new Float64Array(ab, 0, 1)
   const uintContainer = new Uint32Array(ab, 0, 2)
 
-  doubleContainer[0] = value // tslint:disable-line:no-object-mutation
+  doubleContainer[0] = value
 
   return JSBI.add((JSBI.leftShift(JSBI.BigInt(uintContainer[1]!), JSBI.BigInt(32))), JSBI.BigInt(uintContainer[0]!))
 }

@@ -49,7 +49,6 @@ export default class Task extends Entity {
   }
 
   public hashCode() {
-    // tslint:disable-next-line:no-let
     let result = 17
 
     result = 31 * result + this.id.hashCode()
@@ -71,7 +70,7 @@ export default class Task extends Entity {
   }
 
   set content(value) {
-    this._content = value // tslint:disable-line:no-object-mutation
+    this._content = value
   }
 
   get done() {
@@ -79,6 +78,6 @@ export default class Task extends Entity {
   }
 
   set done(value) {
-    this._done = value // tslint:disable-line:no-object-mutation
+    this._done = value
   }
 }

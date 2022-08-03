@@ -122,7 +122,7 @@ export function asUnionOf<T extends readonly unknown[]>(...options: T) {
  * @param className name of {T} with indefinite article
  * @param asT {ObjectTyper}
  */
-export const asObject = <T>(asT: (input: any) => T) => (input: unknown): T => { // tslint:disable-line:no-any
+export const asObject = <T>(asT: (input: any) => T) => (input: unknown): T => {
   if (input == null) {
     throw new Error(typed<[string]>`${ JSON.stringify(input) } is not an object.`)
   }
@@ -130,7 +130,7 @@ export const asObject = <T>(asT: (input: any) => T) => (input: unknown): T => { 
   return asT(input)
 }
 
-export const asInstanceOf = <T>(Class: new (...args: any[]) => T) => (input: unknown): T => { // tslint:disable-line:no-any
+export const asInstanceOf = <T>(Class: new (...args: any[]) => T) => (input: unknown): T => {
   if (input instanceof Class) {
     return input
   } else {
@@ -201,7 +201,7 @@ export function asJson(input: unknown): Json {
     }
 
     if (error instanceof Error) {
-      console.error(error) // tslint:disable-line:no-console
+      console.error(error)
 
       throw new Error(typed<[string]>`${ JSON.stringify(input) } is not a Json.`)
     }

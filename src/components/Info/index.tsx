@@ -41,7 +41,7 @@ class Info extends React.Component<Props, State> {
         })
       },
       (reason: unknown) => {
-        console.error(reason) // tslint:disable-line:no-console
+        console.error(reason)
 
         this.setState({
           successful: false,
@@ -90,7 +90,7 @@ class Info extends React.Component<Props, State> {
         <Typography>
           { this.statusText }
         </Typography>
-        { this.info != null && ( // tslint:disable-line:strict-boolean-expressions
+        { this.info != null && (
           <Typography component="span">{ this.info }</Typography>
         ) }
       </>

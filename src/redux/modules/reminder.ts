@@ -268,7 +268,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         ...state,
-        tasks: state.tasks.update(i, (task) => task!.with({ content: action.payload.content })), // tslint:disable-line:no-non-null-assertion
+        tasks: state.tasks.update(i, (task) => task!.with({ content: action.payload.content })),
       }
     }
     case MARK_TASK_AS_DONE_ASYNC: return state
@@ -299,7 +299,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         ...state,
-        tasks: state.tasks.update(i, (task) => task!.with({ done: true })), // tslint:disable-line:no-non-null-assertion
+        tasks: state.tasks.update(i, (task) => task!.with({ done: true })),
       }
     }
     case MARK_TASK_AS_UNDONE: {
@@ -311,7 +311,7 @@ export const createReminderReducer: (initialState: ReminderState) => Reducer<Rem
 
       return {
         ...state,
-        tasks: state.tasks.update(i, (task) => task!.with({ done: false })), // tslint:disable-line:no-non-null-assertion
+        tasks: state.tasks.update(i, (task) => task!.with({ done: false })),
       }
     }
     case REMOVE_TASK: {
@@ -384,7 +384,7 @@ export default class ReminderService {
     const task: ResultType<ReturnType<this['taskRepository']['findById']>> = yield call(this.taskRepository.findById, taskId)
 
     try {
-      task.content = content // tslint:disable-line:no-object-mutation
+      task.content = content
     } catch (error: unknown) {
       if (error instanceof Error) {
         yield put(pushError(v4(), error)) // TODO:
@@ -402,7 +402,7 @@ export default class ReminderService {
   private *markTaskAsDoneAsyncSaga({ payload: { taskId } }: MarkTaskAsDoneAsyncAction): SagaIterator {
     const task: ResultType<ReturnType<this['taskRepository']['findById']>> = yield call(this.taskRepository.findById, taskId)
 
-    task.done = true // tslint:disable-line:no-object-mutation
+    task.done = true
 
     yield call(this.taskRepository.store, task)
     yield put(markTaskAsDone(taskId))
@@ -411,7 +411,7 @@ export default class ReminderService {
   private *markTaskAsUndoneAsyncSaga({ payload: { taskId } }: MarkTaskAsUndoneAsyncAction): SagaIterator {
     const task: ResultType<ReturnType<this['taskRepository']['findById']>> = yield call(this.taskRepository.findById, taskId)
 
-    task.done = false // tslint:disable-line:no-object-mutation
+    task.done = false
 
     yield call(this.taskRepository.store, task)
     yield put(markTaskAsUndone(taskId))

@@ -21,7 +21,7 @@ export default class Link extends React.Component<Props> {
     const { color, ...restProps } = this.props
 
     if (!isTypographyColor(color)) {
-      console.warn(typed<[string]>`${ color } is not a Material-UI Typography color.`) // tslint:disable-line:no-console
+      console.warn(typed<[string]>`${ color } is not a Material-UI Typography color.`)
 
       return (
         <MuiLink component={ RouterLinkWithRef } { ...restProps } />

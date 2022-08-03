@@ -45,10 +45,8 @@ const Canvas = forwardRef<HTMLCanvasElement, Props>(({ width, height, lineWidth,
       return
     }
 
-    /* tslint:disable:no-object-mutation */
     ownRef.current.width = dpr * width
     ownRef.current.height = dpr * height
-    /* tslint:enable:no-object-mutation */
 
     context.resetTransform()
     context.scale(dpr, dpr)
@@ -77,10 +75,8 @@ const Canvas = forwardRef<HTMLCanvasElement, Props>(({ width, height, lineWidth,
     shouldBePresent(context)
     shouldBePresent(previousPoint)
 
-    /* tslint:disable:no-object-mutation */
     context.lineWidth = lineWidth * (event.pressure !== 0 ? event.pressure : 1)
     context.lineJoin = 'round'
-    /* tslint:enable:no-object-mutation */
 
     context.beginPath()
     context.moveTo(previousPoint.x, previousPoint.y)

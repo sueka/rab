@@ -8,7 +8,7 @@ interface RgbaColor {
   alpha: number
 }
 
-export default interface Color extends RgbaColor {} // tslint:disable-line:no-empty-interface
+export default interface Color extends RgbaColor {}
 
 export default class Color extends HashableEq implements Class.ValueObject<RgbaColor> {
   constructor({ red, green, blue, alpha }: RgbaColor) {
@@ -21,7 +21,6 @@ export default class Color extends HashableEq implements Class.ValueObject<RgbaC
   }
 
   public hashCode() {
-    // tslint:disable-next-line:no-let
     let result = 0
 
     result = 31 * result + this.red.hashCode()

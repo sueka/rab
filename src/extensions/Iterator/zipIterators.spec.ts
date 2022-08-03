@@ -5,9 +5,9 @@ describe('zipIterators', () => {
 
   it('should terminate with an infinite iterator', () => {
     function* genXs() {
-      let i = 1 // tslint:disable-line:no-let
+      let i = 1
 
-      while (true) { // tslint:disable-line:no-loop-statement
+      while (true) {
         yield i++
       }
     }

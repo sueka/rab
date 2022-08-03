@@ -60,11 +60,9 @@ const MicSwitch: React.FC<Props> = ({ inputFor: input, onResult, fallback }) => 
       return
     }
 
-    /* tslint:disable:no-object-mutation */
     recognition.continuous = true
     recognition.interimResults = true
     recognition.maxAlternatives = 1
-    /* tslint:enable:no-object-mutation */
 
     recognition.addEventListener('start', handleRecognitionStart)
     recognition.addEventListener('end', handleRecognitionEnd)
@@ -87,7 +85,7 @@ const MicSwitch: React.FC<Props> = ({ inputFor: input, onResult, fallback }) => 
 
     recognition.stop() // NOTE: recognition の言語を途中で変更することはできないので、 locale が変更されたら停止する。
 
-    recognition.lang = locale // tslint:disable-line:no-object-mutation
+    recognition.lang = locale
   }, [recognition, locale])
 
   const handleMicChange = useCallback<NonNullable<CheckboxProps['onChange']>>((_event, checked) => {

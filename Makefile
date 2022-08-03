@@ -17,7 +17,7 @@ type-deps := $(src) $(messages) $(css-d) src/crate/pkg
 
 .DEFAULT_GOAL := build
 
-.PHONY : build served messages cssd crate-pkg check linted eslinted tslinted stylelinted typed tested test-job up-to-date-snapshots doc clean clobber
+.PHONY : build served messages cssd crate-pkg check linted eslinted stylelinted typed tested test-job up-to-date-snapshots doc clean clobber
 
 build : dist
 dist : webpack.config.ts $(value-deps)
@@ -54,13 +54,10 @@ check :
 	@make linted typed tested
 
 linted :
-	@make eslinted tslinted stylelinted
+	@make eslinted stylelinted
 
 eslinted : .eslintrc.json $(src)
 	$(NPX) eslint --ext ".ts, .tsx" src
-
-tslinted : tsconfig.json tslint.json $(src)
-	$(NPX) tslint --project .
 
 stylelinted : .stylelintrc $(css-src)
 	$(NPX) stylelint src/**/*.css

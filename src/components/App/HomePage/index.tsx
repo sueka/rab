@@ -29,11 +29,10 @@ const HomePage: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    // tslint:disable-next-line:semicolon
     ;(async () => {
       const { add } = await crateImport
 
-      console.log(add(1, 1)) // tslint:disable-line:no-console
+      console.log(add(1, 1))
     })()
   }, [])
 

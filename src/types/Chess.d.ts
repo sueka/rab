@@ -28,11 +28,11 @@ declare namespace Chess {
   type Chessman = Piece | Pawn
 
   interface Piece {
-    symbol: Alt.Exclude<Symbol, '♙' | '♟' > // tslint:disable-line:ban-types
+    symbol: Alt.Exclude<Symbol, '♙' | '♟' >
   }
 
   interface Pawn {
-    symbol: Alt.Extract<Symbol, '♙' | '♟'> // tslint:disable-line:ban-types
+    symbol: Alt.Extract<Symbol, '♙' | '♟'>
     hasAdvancedTwoSquares: boolean
   }
 

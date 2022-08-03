@@ -116,7 +116,6 @@ export /* for testing */ function toQueryMap(query: Query): QueryMap {
 }
 
 export function buildBody<T extends { append(key: string, value: string): void }>(query: Query, bodyBuilder: T): T {
-  // tslint:disable-next-line:no-loop-statement
   for (const [key, value] of Object.entries(toQueryMap(query))) {
     bodyBuilder.append(key, value)
   }

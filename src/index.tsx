@@ -1,5 +1,3 @@
-/* tslint:disable:no-import-side-effect */
-
 import 'element-qsa-scope'
 import 'react-app-polyfill/stable'
 
@@ -46,8 +44,8 @@ import { asFormats } from '~/validators/intlValidators'
 import './global.css'
 import './transition.css'
 
-import formats from '../public/formats/en.json' // tslint:disable-line:no-relative-imports
-import messages from '../public/messages/en.json' // tslint:disable-line:no-relative-imports
+import formats from '../public/formats/en.json'
+import messages from '../public/messages/en.json'
 
 const containerImport = process.env['NODE_ENV'] === 'production' ? import('./container') : import('./container.dev')
 

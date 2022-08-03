@@ -34,7 +34,6 @@ const BannerContainer: React.FC<Props> = ({ topAppbarHeight }) => {
   const theme = useTheme()
 
   useEffect(() => {
-    // tslint:disable-next-line:semicolon
     ;(async () => {
       if (currentBanner !== null) {
 
