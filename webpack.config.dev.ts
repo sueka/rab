@@ -14,6 +14,13 @@ declare global {
   }
 }
 
+// same as in src/asserters/commonAsserters
+function shouldBePresent<T>(it: T | null | undefined): asserts it is T {
+  if (it == null) {
+    throw new Error('It should be present.')
+  }
+}
+
 const env = process.env.NODE_ENV
 
 if (env === 'test') {
@@ -22,6 +29,9 @@ if (env === 'test') {
 
 const host = '0.0.0.0'
 const port = 1234
+
+shouldBePresent(config.resolve)
+shouldBePresent(config.plugins)
 
 config.plugins.push(new BundleAnalyzerPlugin({
   analyzerPort: 10122,

@@ -1,6 +1,7 @@
+import { configureStore as createStore } from '@reduxjs/toolkit'
 import { routerMiddleware } from 'connected-react-router'
 import { History } from 'history'
-import { Action, Reducer, Store, applyMiddleware, compose, createStore } from 'redux'
+import { Action, Reducer, Store, StoreEnhancer, applyMiddleware } from 'redux'
 import { createLogger } from 'redux-logger'
 import createSagaMiddleware, { SagaMiddleware, SagaMiddlewareOptions } from 'redux-saga'
 
@@ -11,11 +12,6 @@ const logger = createLogger({
   collapsed: true,
 })
 
-const composeEnhancers =
-  process.env['NODE_ENV'] === 'development'
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?? compose // TODO: Use globalThis
-    : compose
-
 export default function configureStore<S, A extends Action>(history: History, reducer: Reducer<S, A>, invariant: Invariant<S>, sagaMiddlewareOptions: SagaMiddlewareOptions): {
   store: Store<S, A>
   sagaMiddleware: SagaMiddleware
@@ -23,20 +19,24 @@ export default function configureStore<S, A extends Action>(history: History, re
   const sagaMiddleware = createSagaMiddleware(sagaMiddlewareOptions)
   const invariantMiddleware = createInvariantMiddleware(reducer, invariant)
 
-  const storeEnhancers = [
+  const enhancers: StoreEnhancer<{}, {}>[] = [
     applyMiddleware(sagaMiddleware),
     applyMiddleware(invariantMiddleware),
     applyMiddleware(routerMiddleware(history)),
   ]
 
   if (process.env['NODE_ENV'] === 'development') {
-    storeEnhancers.push(applyMiddleware(logger))
+    if (window.__REDUX_DEVTOOLS_EXTENSION__ != null) {
+      enhancers.unshift(window.__REDUX_DEVTOOLS_EXTENSION__)
+    }
+
+    enhancers.push(applyMiddleware(logger))
   }
 
-  const store = createStore(
+  const store = createStore({
     reducer,
-    composeEnhancers(...storeEnhancers)
-  )
+    enhancers,
+  })
 
   return {
     store,
