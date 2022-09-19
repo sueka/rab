@@ -25,3 +25,7 @@
 # cargo
 # /src/crate/pkg/
 /src/crate/target/
+
+# openapi-generator
+/src/lusp-client/
+/openapitools.json

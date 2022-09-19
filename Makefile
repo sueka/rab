@@ -2,6 +2,8 @@
 
 NPX := npx
 
+LUSP-OPENAPI-SPEC := https://raw.githubusercontent.com/sueka/lusp/master/lusp.openapi3.yml
+
 src := $(shell find src ! -name "*.css.d.ts" ! -path "src/crate/*" -type f)
 messages-src := $(shell find src -name messages.ts -type f)
 messages := public/messages/en.json public/messages/he.json public/messages/ja.json
@@ -12,12 +14,14 @@ css-src := $(filter-out src/transition.css, $(css-src))
 css-d := $(patsubst %.css, %.css.d.ts, $(css-src))
 gh-pages-src := $(wildcard gh-pages/src/*)
 
-value-deps := $(src) $(messages) src/crate/pkg
-type-deps := $(src) $(messages) $(css-d) src/crate/pkg
+value-deps := $(src) $(messages) src/lusp-client src/crate/pkg
+type-deps := $(src) $(messages) $(css-d) src/lusp-client src/crate/pkg
 
 .DEFAULT_GOAL := build
 
-.PHONY : build served messages cssd crate-pkg check linted eslinted stylelinted typed tested test-job up-to-date-snapshots doc clean clobber
+.PHONY : FORCE build served messages cssd lusp-client crate-pkg check linted eslinted stylelinted typed tested test-job up-to-date-snapshots doc clean clobber
+
+# FORCE :
 
 build : dist
 dist : webpack.config.ts $(value-deps)
@@ -45,6 +49,13 @@ cssd : $(css-d)
 $(css-d) : $(css-src)
 	$(NPX) tcm --pattern "src/components/**/*.css"
 	@touch $(css-d)
+
+lusp-client : src/lusp-client
+src/lusp-client : FORCE
+	$(NPX) @openapitools/openapi-generator-cli generate \
+	--input-spec $(LUSP-OPENAPI-SPEC) \
+	--generator-name typescript-fetch \
+	--output $@
 
 crate-pkg : src/crate/pkg
 src/crate/pkg : $(crate-src)
@@ -81,7 +92,7 @@ doc : $(type-deps)
 # Keep comparing with .gitignore...
 ### Remove all files that neither are tracked by Git except files in node_modules/ and .env.
 clean :
-	-rm -r .cache/ coverage/ dist/ doc/ src/crate/pkg/ src/crate/target/
+	-rm -r .cache/ coverage/ dist/ doc/ src/crate/pkg/ src/crate/target/ src/lusp-client openapitools.json
 	find . \
 		-name "*.js" \
 		! -path ./babel.config.js \
