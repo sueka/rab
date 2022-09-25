@@ -4,14 +4,15 @@ NPX := npx
 
 LUSP-OPENAPI-SPEC := https://raw.githubusercontent.com/sueka/lusp/master/lusp.openapi3.yml
 
-src := $(shell find src ! -name "*.css.d.ts" ! -path "src/crate/*" -type f)
+src := $(shell find src -name "*.ts" ! -name "*.css.d.ts" ! -path "src/crate/*" -type f)
 messages-src := $(shell find src -name messages.ts -type f)
 messages := public/messages/en.json public/messages/he.json public/messages/ja.json
 crate-src := $(shell find src/crate -type f ! -path "src/crate/pkg/*" ! -path "src/crate/target/*")
 css-src := $(shell find src -name "*.css" -type f)
-css-src := $(filter-out src/global.css, $(css-src))
-css-src := $(filter-out src/transition.css, $(css-src))
-css-d := $(patsubst %.css, %.css.d.ts, $(css-src))
+css-d-src := $(css-src)
+css-d-src := $(filter-out src/global.css, $(css-d-src))
+css-d-src := $(filter-out src/transition.css, $(css-d-src))
+css-d := $(patsubst %.css, %.css.d.ts, $(css-d-src))
 gh-pages-src := $(wildcard gh-pages/src/*)
 
 value-deps := $(src) $(messages) src/lusp-client src/crate/pkg
@@ -32,7 +33,7 @@ dist : webpack.config.ts $(value-deps)
 # TODO: Prefer heredoc/herestring to echo.
 served : webpack.config.dev.ts $(value-deps)
 	@echo $(messages-src) | tr " " '\n' | entr -r make messages &
-	@echo $(css-src) | tr " " '\n' | entr -r make cssd &
+	@echo $(css-d-src) | tr " " '\n' | entr -r make cssd &
 	@echo $(crate-src) | tr " " '\n' | entr -r make src/crate/pkg &
 	$(NPX) webpack serve --config $<
 
@@ -46,7 +47,7 @@ $(messages) : $(messages-src)
 	$(NPX) extract-messages --flat --default-locale=en --locales=en,he,ja --output=public/messages src/**/messages.ts
 
 cssd : $(css-d)
-$(css-d) : $(css-src)
+$(css-d) : $(css-d-src)
 	$(NPX) tcm --pattern "src/components/**/*.css"
 	@touch $(css-d)
 
