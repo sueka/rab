@@ -29,12 +29,12 @@ dist : webpack.config.ts $(value-deps)
 	-rm -r $@/
 	$(NPX) webpack --config $<
 
-# FIXME: Measure it and do `@echo $(value-deps) | tr " " '\n' | entr -r make messages cssd src/crate/pkg` as a substitute if needed.
+# FIXME: Measure it and do `@echo $(value-deps) | tr " " '\n' | entr -r $(MAKE) messages cssd src/crate/pkg` as a substitute if needed.
 # TODO: Prefer heredoc/herestring to echo.
 served : webpack.config.dev.ts $(value-deps)
-	@echo $(messages-src) | tr " " '\n' | entr -r make messages &
-	@echo $(css-d-src) | tr " " '\n' | entr -r make cssd &
-	@echo $(crate-src) | tr " " '\n' | entr -r make src/crate/pkg &
+	@echo $(messages-src) | tr " " '\n' | entr -r $(MAKE) messages &
+	@echo $(css-d-src) | tr " " '\n' | entr -r $(MAKE) cssd &
+	@echo $(crate-src) | tr " " '\n' | entr -r $(MAKE) src/crate/pkg &
 	$(NPX) webpack serve --config $<
 
 # TODO: Type-check?
@@ -53,7 +53,7 @@ $(css-d) : $(css-d-src)
 
 lusp-client : src/lusp-client
 src/lusp-client : FORCE
-	$(NPX) @openapitools/openapi-generator-cli generate \
+	$(NPX) openapi-generator-cli generate \
 	--input-spec $(LUSP-OPENAPI-SPEC) \
 	--generator-name typescript-fetch \
 	--output $@
@@ -63,10 +63,10 @@ src/crate/pkg : $(crate-src)
 	$(NPX) wasm-pack build --out-name index src/crate
 
 check :
-	@make linted typed tested
+	@$(MAKE) linted typed tested
 
 linted :
-	@make eslinted stylelinted
+	@$(MAKE) eslinted stylelinted
 
 eslinted : .eslintrc.json $(src)
 	$(NPX) eslint --ext ".ts, .tsx" src
@@ -110,6 +110,6 @@ clean :
 	-rm -r gh-pages/dist/
 
 clobber :
-	@make clean
+	@$(MAKE) clean
 	-rm -r node_modules/
 	-rm .env
