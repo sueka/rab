@@ -110,6 +110,18 @@ clean :
 	-rm -r gh-pages/dist/
 
 clobber :
+	$(confirm)
 	@$(MAKE) clean
 	-rm -r node_modules/
 	-rm .env
+
+define confirm
+@while : ; do \
+	printf %s "Do you want to continue? (y/n) [n]: " && \
+	read -r && \
+	case $$REPLY in \
+		(Y|y) exit 0 ;; \
+		(''|N|n) exit 1 ; \
+	esac \
+done
+endef
