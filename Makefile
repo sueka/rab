@@ -29,8 +29,7 @@ dist : webpack.config.ts $(value-deps)
 	-rm -r $@/
 	$(NPX) webpack --config $<
 
-# FIXME: Measure it and do `@echo $(value-deps) | tr " " '\n' | entr -r $(MAKE) messages cssd src/crate/pkg` as a substitute if needed.
-# TODO: Prefer heredoc/herestring to echo.
+# FIXME: 計測して、必要なら一連の `@echo` を `@echo $(value-deps) | tr " " '\n' | entr -r $(MAKE) messages cssd src/crate/pkg` に置き換える。
 served : webpack.config.dev.ts $(value-deps)
 	@echo $(messages-src) | tr " " '\n' | entr -r $(MAKE) messages &
 	@echo $(css-d-src) | tr " " '\n' | entr -r $(MAKE) cssd &
