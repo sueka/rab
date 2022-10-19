@@ -5,6 +5,7 @@ import React, { useCallback, useEffect, useRef } from 'react'
 
 type QrCodeEncoderProps = Pick<TextFieldProps, 'defaultValue'>
 
+// TODO: Follow Material Design
 const QrCodeEncoder: React.FC<QrCodeEncoderProps> = ({ ...textFieldProps }) => {
   const input = useRef<HTMLInputElement>(null)
   const canvas = useRef<HTMLCanvasElement>(null)
