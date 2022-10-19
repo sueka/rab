@@ -11,6 +11,7 @@ export default defineMessages({
   counter: 'Counter',
   info: 'Info',
   paint: 'Paint',
+  qrCodeTools: 'QR code tools',
   reminder: 'Reminder',
   settings: 'Settings',
 })

@@ -60,6 +60,7 @@
   "src.components.PageTemplate.Nav.home": "ホーム",
   "src.components.PageTemplate.Nav.info": "情報",
   "src.components.PageTemplate.Nav.paint": "ペイント",
+  "src.components.PageTemplate.Nav.qrCodeTools": "QR コードツール",
   "src.components.PageTemplate.Nav.reminder": "リマインダー",
   "src.components.PageTemplate.Nav.settings": "設定",
   "src.components.PageTemplate.Nav.table": "表",

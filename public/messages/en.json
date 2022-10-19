@@ -60,6 +60,7 @@
   "src.components.PageTemplate.Nav.home": "Home",
   "src.components.PageTemplate.Nav.info": "Info",
   "src.components.PageTemplate.Nav.paint": "Paint",
+  "src.components.PageTemplate.Nav.qrCodeTools": "QR code tools",
   "src.components.PageTemplate.Nav.reminder": "Reminder",
   "src.components.PageTemplate.Nav.settings": "Settings",
   "src.components.PageTemplate.Nav.table": "Table",

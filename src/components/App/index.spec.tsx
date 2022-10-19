@@ -68,6 +68,7 @@ ${ '/clock' }
 ${ '/counter' }
 ${ '/info' }
 ${ '/paint' }
+${ '/qr-code-tools' }
 ${ '/reminder' }
 ${ '/settings' }
 ${ '/nonexistent-path' }

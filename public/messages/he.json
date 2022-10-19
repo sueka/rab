@@ -60,6 +60,7 @@
   "src.components.PageTemplate.Nav.home": "בית",
   "src.components.PageTemplate.Nav.info": "מידע",
   "src.components.PageTemplate.Nav.paint": "צייר",
+  "src.components.PageTemplate.Nav.qrCodeTools": "כלי קוד־QR",
   "src.components.PageTemplate.Nav.reminder": "תזכורת",
   "src.components.PageTemplate.Nav.settings": "הגדרות",
   "src.components.PageTemplate.Nav.table": "טבלה",

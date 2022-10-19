@@ -1,6 +1,7 @@
 import chessPawn from '@iconify/icons-mdi/chess-pawn'
 import clock from '@iconify/icons-mdi/clock'
 import counter from '@iconify/icons-mdi/counter'
+import qrcode from '@iconify/icons-mdi/qrcode'
 import table from '@iconify/icons-mdi/table'
 import { Icon } from '@iconify/react'
 import Divider from '@material-ui/core/Divider'
@@ -159,6 +160,14 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
           </ListItemIcon>
           <ListItemText>
             <FormattedMessage { ...messages.paint } />
+          </ListItemText>
+        </ListItemLink>
+        <ListItemLink to="/qr-code-tools" onClick={ onClose }>
+          <ListItemIcon>
+            <Icon icon={ qrcode } width="24" height="24" />
+          </ListItemIcon>
+          <ListItemText>
+            <FormattedMessage { ...messages.qrCodeTools } />
           </ListItemText>
         </ListItemLink>
         <ListItemLink to="/reminder" onClick={ onClose }>
