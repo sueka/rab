@@ -17,6 +17,7 @@ export const ClockPage = React.lazy(() => import(/* webpackChunkName: "clock" */
 export const CounterPage = React.lazy(() => import(/* webpackChunkName: "counter" */ './CounterPage'))
 export const InfoPage = React.lazy(() => import(/* webpackChunkName: "info" */ './InfoPage'))
 export const PaintPage = React.lazy(() => import(/* webpackChunkName: "paint" */ './PaintPage'))
+export const QrCodeToolsPage = React.lazy(() => import(/* webpackChunkName: "qrCodeTools" */ './QrCodeToolsPage'))
 export const ReminderPage = React.lazy(() => import(/* webpackChunkName: "reminder" */ './ReminderPage'))
 export const SettingsPage = React.lazy(() => import(/* webpackChunkName: "settings" */ './SettingsPage'))
 export const NoMatch = React.lazy(() => import(/* webpackChunkName: "noMatch" */ './NoMatch'))
@@ -57,6 +58,7 @@ const App: React.FC = () => {
       <Route exact strict sensitive path="/counter" component={ CounterPage } />
       <Route exact strict sensitive path="/info" component={ InfoPage } />
       <Route exact strict sensitive path="/paint" component={ PaintPage } />
+      <Route exact strict sensitive path="/qr-code-tools" component={ QrCodeToolsPage } />
       <Route exact strict sensitive path="/reminder" component={ ReminderPage } />
       <Route exact strict sensitive path="/settings" component={ SettingsPage } />
       <Route path="*" component={ NoMatch } />
