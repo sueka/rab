@@ -2484,15 +2484,15 @@ exports[`App at /qr-code-tools 1`] = `
         <div
           class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
         >
-          <h2
-            class="MuiTypography-root MuiTypography-h2"
+          <h3
+            class="MuiTypography-root MuiTypography-h3"
           >
             <bdi
               dir="auto"
             >
               Encoder
             </bdi>
-          </h2>
+          </h3>
         </div>
         <div
           class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
@@ -2554,15 +2554,15 @@ exports[`App at /qr-code-tools 1`] = `
         <div
           class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
         >
-          <h2
-            class="MuiTypography-root MuiTypography-h2"
+          <h3
+            class="MuiTypography-root MuiTypography-h3"
           >
             <bdi
               dir="auto"
             >
               Decoder
             </bdi>
-          </h2>
+          </h3>
         </div>
         <div
           class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
