@@ -63,6 +63,7 @@
   "src.components.PageTemplate.TopAppbar.showNotifications": "Show notifications",
   "src.components.Paint.brushSize": "Brush size",
   "src.components.Paint.clear": "Clear",
+  "src.components.QrCodeDecoder.noFileSelected": "No file selected.",
   "src.components.Reminder.AddTaskButton.add": "Add",
   "src.components.Reminder.TaskListItem.enterInUpperBoundCharactersOrLess": "Enter in { upperBound } characters or less.",
   "src.components.Reminder.inputIsNotBetweenLowerBoundAndUpperBound": "{ input } is not between { lowerBound } and { upperBound }.",

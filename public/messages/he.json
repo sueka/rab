@@ -63,6 +63,7 @@
   "src.components.PageTemplate.TopAppbar.showNotifications": "הצג הודעות",
   "src.components.Paint.brushSize": "גודל המברשת",
   "src.components.Paint.clear": "נקה",
+  "src.components.QrCodeDecoder.noFileSelected": "לא נבחר קובץ.",
   "src.components.Reminder.AddTaskButton.add": "להוסיף",
   "src.components.Reminder.TaskListItem.enterInUpperBoundCharactersOrLess": "הזן/הזיני ב־{ upperBound } תווים או פחות.",
   "src.components.Reminder.inputIsNotBetweenLowerBoundAndUpperBound": "{ input } לא בין { lowerBound } ל { upperBound }.",

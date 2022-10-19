@@ -63,6 +63,7 @@
   "src.components.PageTemplate.TopAppbar.showNotifications": "通知を表示",
   "src.components.Paint.brushSize": "ブラシサイズ",
   "src.components.Paint.clear": "クリア",
+  "src.components.QrCodeDecoder.noFileSelected": "ファイルが選択されていません。",
   "src.components.Reminder.AddTaskButton.add": "追加",
   "src.components.Reminder.TaskListItem.enterInUpperBoundCharactersOrLess": "{ upperBound }文字以内で入力してください。",
   "src.components.Reminder.inputIsNotBetweenLowerBoundAndUpperBound": "{ input } は { lowerBound } と { upperBound } の間にありません。",
