@@ -20,7 +20,7 @@ const QrCodeToolsPage: React.FC = () => {
         <Box padding={ 2 }>
           <Grid container spacing={ 2 }>
             <Grid item xs={ 12 }>
-              <Typography variant="h2">
+              <Typography variant="h3">
                 <FormattedMessage {...messages.encoder} />
               </Typography>
             </Grid>
@@ -32,7 +32,7 @@ const QrCodeToolsPage: React.FC = () => {
         <Box padding={ 2 }>
           <Grid container spacing={ 2 }>
             <Grid item xs={ 12 }>
-              <Typography variant="h2">
+              <Typography variant="h3">
                 <FormattedMessage { ...messages.decoder } />
               </Typography>
             </Grid>
