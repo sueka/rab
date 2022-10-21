@@ -10,7 +10,7 @@ import { FormattedMessage, useIntl } from 'react-intl'
 
 import CodeField from '~/components/CodeField'
 import CopyTextButton from '~/components/CopyTextButton'
-import FileUpload, { Props as FileUploadProps } from '~/components/FileUpload'
+import FileUpload from '~/components/FileUpload'
 import fileUploadMessages from '~/components/FileUpload/messages' // TODO
 import MicSwitch, { Props as MicSwitchProps } from '~/components/MicSwitch'
 import { createPage } from '~/components/PageTemplate'
@@ -213,14 +213,19 @@ const ImageFile: React.FC<ImageFileProps> = ({ file }) => {
 
 const FormControlsPage: React.FC = () => {
   const { formatMessage } = useIntl()
+  const [files, setFiles] = useState<File[] | null>(null)
 
-  const renderResult = useCallback<Required<FileUploadProps>['renderResultMessage']>((files) => {
+  const handleFileUploadChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
+    setFiles(event.target.files !== null ? Array.from(event.target.files) : event.target.files)
+  }, [])
+
+  const resultMessage = useMemo(() => {
     if (files === null || files.length === 0) {
       return <FormattedMessage { ...fileUploadMessages.noFileSelected } />
     }
 
     return Array.from(files).map((file, i) => <ImageFile key={ i } file={ file } />)
-  }, [])
+  }, [files])
 
   const [code, setCode] = useState('')
 
@@ -239,7 +244,8 @@ const FormControlsPage: React.FC = () => {
             <FileUpload
               accept="image/*"
               multiple
-              renderResultMessage={ renderResult }
+              resultMessage={ resultMessage }
+              onChange={ handleFileUploadChange }
             />
           </ListItemText>
         </ListItem>

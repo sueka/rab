@@ -2,7 +2,7 @@ import Button, { ButtonProps } from '@material-ui/core/Button'
 import FormLabel from '@material-ui/core/FormLabel'
 import Bowser from 'bowser'
 import classnames from 'classnames'
-import React, { useCallback, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useMemo, useRef } from 'react'
 import { FormattedMessage } from 'react-intl'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
@@ -13,7 +13,7 @@ export interface Props extends Alt.Omit<React.InputHTMLAttributes<HTMLInputEleme
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   buttonLabel?: React.ReactNode
-  renderResultMessage?(files: File[] | null): React.ReactNode
+  resultMessage?: React.ReactNode
   classes?: {
     root?: string
     button?: string
@@ -38,38 +38,35 @@ const FileUpload: React.FC<Props> = ({
   onClick,
   onChange,
   buttonLabel = <FormattedMessage { ...messages.browse } />,
-  renderResultMessage = (fs) => {
-    if (fs === null || fs.length === 0) {
-      return <FormattedMessage { ...messages.noFileSelected } />
-    }
-
-    switch (fs.length) {
-      case 1:
-        return fs[0]!.name
-      default:
-        return <FormattedMessage { ...messages.nFilesSelected } values={ { n: fs.length } } />
-    }
-  },
+  resultMessage,
   classes: propClasses,
   component: Component = FormLabel,
   ButtonProps,
   ...restInputProps
 }: Props) => {
-  const [files, setFiles] = useState<File[] | null>(null) // NOTE: (event: ChangeEvent).target.files をそのまま使うと参照が変わらないので re-render されない。
-
   const rootClassName = useMemo(() => classnames(className, propClasses?.root, cssClasses.FileUpload, {
     [cssClasses.Safari]: isSafari,
   }), [className, propClasses?.root])
   const buttonClassName = useMemo(() => classnames(propClasses?.button, cssClasses.Button, ButtonProps?.className), [propClasses?.button, ButtonProps?.className])
 
-  const resultMessage = useMemo(() => renderResultMessage(files), [renderResultMessage, files])
-
   const input = useRef<HTMLInputElement>(null)
 
-  const handleInputChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
-    onChange?.(event)
-    setFiles(event.target.files !== null ? Array.from(event.target.files) : event.target.files)
-  }, [onChange])
+  const defaultResultMessage = useMemo(() => {
+    if (resultMessage != null) {
+      return // nothing
+    }
+
+    if (input.current?.files == null || input.current?.files.length === 0) {
+      return <FormattedMessage { ...messages.noFileSelected } />
+    }
+
+    switch (input.current?.files.length) {
+      case 1:
+        return input.current?.files[0]!.name
+      default:
+        return <FormattedMessage { ...messages.nFilesSelected } values={ { n: input.current?.files.length } } />
+    }
+  }, [resultMessage, input.current?.files ?? null])
 
   const fireInputClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(() => {
     shouldBePresent(input.current)
@@ -96,13 +93,13 @@ const FileUpload: React.FC<Props> = ({
       >
         { buttonLabel }
       </Button>
-      { resultMessage }
+      { resultMessage ?? defaultResultMessage }
       <input
         className={ cssClasses.Input }
         type="file"
         disabled={ disabled }
         multiple={ multiple }
-        onChange={ handleInputChange }
+        onChange={ onChange }
         ref={ input }
         { ...restInputProps }
       />

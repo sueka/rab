@@ -3,14 +3,16 @@ import React, { useCallback, useMemo, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
-import FileUpload, { Props as FileUploadProps } from '~/components/FileUpload'
+import FileUpload from '~/components/FileUpload'
 import messages from './messages'
 
 const QrCodeDecoder: React.FC = () => {
   const canvas = useMemo(() => document.createElement('canvas'), [])
   const context = useMemo(() => canvas.getContext('2d'), [canvas])
+  const [files, setFiles] = useState<FileList>()
   const [decoded, setDecoded] = useState<string>()
 
+  /// files[0] を src に持つImage を ImageData に変換し、QR コードを生成する
   const load = useCallback(({ currentTarget: image }) => {
     shouldBePresent(context)
 
@@ -32,15 +34,16 @@ const QrCodeDecoder: React.FC = () => {
   }, [canvas, context])
 
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
-    const { files } = event.currentTarget
+    setFiles(event.target.files ?? undefined)
 
-    if (files === null || files.length === 0) {
+    /// files[0] を Image に変換する
+    if (event.target.files === null || event.target.files.length === 0) {
       return // do nothing
     }
 
-    shouldBePresent(files[0])
+    shouldBePresent(event.target.files[0])
 
-    const file = files[0]
+    const file = event.target.files[0]
     const url = URL.createObjectURL(file)
     const image = new Image
 
@@ -50,19 +53,23 @@ const QrCodeDecoder: React.FC = () => {
     URL.revokeObjectURL(url)
   }, [load])
 
-  const render = useCallback<Required<FileUploadProps>['renderResultMessage']>((fs) => {
-    if (fs === null || fs.length === 0) {
+  const resultMessage = useMemo(() => {
+    if (files === undefined || files.length === 0) {
       return <FormattedMessage { ...messages.noFileSelected } />
     }
 
+    if (decoded === undefined) {
+      return <FormattedMessage { ...messages.decodingFailed } />
+    }
+
     return decoded
-  }, [decoded])
+  }, [files, decoded])
 
   return (
     <FileUpload
-      onChange={ handleChange }
-      renderResultMessage={ render }
       accept="image/*"
+      resultMessage={ resultMessage }
+      onChange={ handleChange }
     />
   )
 }
