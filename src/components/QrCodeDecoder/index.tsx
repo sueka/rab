@@ -35,7 +35,7 @@ const QrCodeDecoder: React.FC = () => {
     const { files } = event.currentTarget
 
     if (files === null || files.length === 0) {
-      return
+      return // do nothing
     }
 
     shouldBePresent(files[0])
