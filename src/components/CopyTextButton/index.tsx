@@ -51,7 +51,7 @@ const CopyTextButton: React.FC<Props> = ({ inputFor: input }) => {
 
   useEffect(() => {
     setDisabled(input.current === null || input.current.value === '' || input.current.disabled)
-  })
+  }, [input, setDisabled])
 
   return (
     <Tooltip

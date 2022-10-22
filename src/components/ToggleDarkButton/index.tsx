@@ -20,11 +20,11 @@ const ToggleDarkButton = () => {
 
   const handleOn = useCallback(() => {
     setDark(true)
-  }, [])
+  }, [setDark])
 
   const handleOff = useCallback(() => {
     setDark(false)
-  }, [])
+  }, [setDark])
 
   return (
     <Tooltip title={ <FormattedMessage { ...messages.toggleLightDarkTheme } /> }>

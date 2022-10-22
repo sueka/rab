@@ -4,6 +4,7 @@ import SendIcon from '@material-ui/icons/Send'
 import React, { useCallback, useMemo } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilState } from 'recoil'
+import { shouldBePresent } from '~/asserters/commonAsserters'
 
 import notificationsState from '~/atoms/notificationsState'
 import useOnceForEachEffect from '~/hooks/useOnceForEachEffect'
@@ -15,21 +16,22 @@ interface Props {
 
 const NotifyMeButton: React.FC<Props> = ({ inputFor: ref }) => {
   const [notifications, setNotifications] = useRecoilState(notificationsState)
-  const disabled = useMemo(() => ref.current === null || /^\p{White_Space}*$/u.test(ref.current.value), [ref.current?.value])
+  const value = ref.current?.value
+  const disabled = useMemo(() => value === undefined || /^\p{White_Space}*$/u.test(value), [value])
 
   const handleNotifyButtonClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(async () => {
-    const input = ref.current
-
-    if (input === null) {
+    if (ref.current === null) {
       return
     }
+
+    shouldBePresent(value)
 
     const permission = await Notification.requestPermission()
 
     if (permission === 'granted') {
-      setNotifications((ns) => [...ns, new Notification(input.value)])
+      setNotifications((ns) => [...ns, new Notification(value)])
     }
-  }, [ref])
+  }, [ref, value, setNotifications])
 
   const handleNotificationClose = useCallback<NonNullable<Notification['onclose']>>((event) => {
     const notification = event.target
@@ -39,7 +41,7 @@ const NotifyMeButton: React.FC<Props> = ({ inputFor: ref }) => {
     }
 
     setNotifications((ns) => ns.filter((n) => n !== notification))
-  }, [])
+  }, [setNotifications])
 
   useOnceForEachEffect(notifications, undefined, (notification) => {
     notification.addEventListener('close', handleNotificationClose)

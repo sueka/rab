@@ -51,7 +51,7 @@ const BannerContainer: React.FC<Props> = ({ topAppbarHeight }) => {
         setBannerToShow(null)
       }
     })()
-  }, [currentBanner, bannerToShow, theme])
+  }, [currentBanner, bannerToShow, theme, setOpen])
 
   return (
     <Collapse

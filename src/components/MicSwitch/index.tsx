@@ -106,9 +106,9 @@ const MicSwitch: React.FC<Props> = ({ inputFor: input, onResult, fallback }) => 
   const [disabled, setDisabled] = useState(true)
 
   useEffect(() => {
-    // NOTE: `input.current === null` のときに not disabled だと、レンダリングの途中でクリックすることで、本来は disabled な <input> で onChange が発生させることができる。
+    // NOTE: `input.current === null` のときに not disabled だと、レンダリングの途中でクリックすることで、本来は disabled な <input> で onChange を発生させることができる。
     setDisabled(input.current === null || input.current.disabled)
-  })
+  }, [input, setDisabled])
 
   useEffect(() => {
     if (recognition === null) {

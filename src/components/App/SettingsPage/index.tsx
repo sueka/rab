@@ -59,7 +59,7 @@ const SettingsPage: React.FC = () => {
 
   const handleFullscreenchange = useCallback(() => {
     setFullScreen(document.fullscreenElement !== null)
-  }, [])
+  }, [setFullScreen])
 
   useEffect(() => {
     document.addEventListener('webkitfullscreenchange', handleFullscreenchange)
@@ -75,11 +75,11 @@ const SettingsPage: React.FC = () => {
     if (theme === 'light' || theme === 'dark' || theme === 'device') {
       setAppearanceTheme(theme)
     }
-  }, [])
+  }, [setAppearanceTheme])
 
   const handleFullScreenChange = useCallback((_event, checked) => {
     setFullScreen(checked)
-  }, [])
+  }, [setFullScreen])
 
   const handleReload = useCallback(() => {
     location.reload()
@@ -124,7 +124,7 @@ const SettingsPage: React.FC = () => {
         key: reloadNotToAcceptCookiesBannerKey,
       })
     }
-  }, [gtm, gtmContainerId, banner, handleReload, handleDontReload])
+  }, [gtm, gtmContainerId, banner, handleReload, handleDontReload, setCookieConsentObtained])
 
   return (
     <>

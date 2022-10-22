@@ -17,6 +17,7 @@ import { createPage } from '~/components/PageTemplate'
 import IntlProviderContext from '~/contexts/IntlProviderContext'
 import useScreen from '~/hooks/useScreen'
 import messages from './messages'
+import { shouldBePresent } from '~/asserters/commonAsserters'
 
 const CopiableTextField: React.FC = () => {
   const [text, setText] = useState('')
@@ -47,6 +48,10 @@ const MicIncludedTextField: React.FC = () => {
   const { dir } = useContext(IntlProviderContext)
   const [text, setText] = useState('')
   const input = useRef<HTMLInputElement>(null)
+  const scrollWidth = input.current?.scrollWidth
+  const scrollHeight = input.current?.scrollHeight
+  const offsetWidth = input.current?.offsetWidth
+  const offsetHeight = input.current?.offsetHeight
 
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     setText(event.target.value)
@@ -59,23 +64,28 @@ const MicIncludedTextField: React.FC = () => {
 
     setText(value)
 
-    input.current.scrollTop = input.current.scrollHeight - input.current.offsetHeight
+    shouldBePresent(scrollWidth)
+    shouldBePresent(scrollHeight)
+    shouldBePresent(offsetWidth)
+    shouldBePresent(offsetHeight)
+
+    input.current.scrollTop = scrollHeight - offsetHeight
 
     switch (dir) {
       case 'ltr':
-        input.current.scrollLeft = input.current.scrollWidth - input.current.offsetWidth
+        input.current.scrollLeft = scrollWidth - offsetWidth
         break
       case 'rtl':
-        input.current.scrollLeft = -(input.current.scrollWidth - input.current.offsetWidth)
+        input.current.scrollLeft = -(scrollWidth - offsetWidth)
     }
   }, [
     dir,
     input,
     // To handle resizing, DOM updates, etc:
-    input.current?.scrollWidth,
-    input.current?.scrollHeight,
-    input.current?.offsetWidth,
-    input.current?.offsetHeight,
+    scrollWidth,
+    scrollHeight,
+    offsetWidth,
+    offsetHeight,
   ])
 
   return (
@@ -103,6 +113,10 @@ const MicIncludedCopiableTextField: React.FC = () => {
   const { dir } = useContext(IntlProviderContext)
   const [text, setText] = useState('')
   const input = useRef<HTMLInputElement>(null)
+  const scrollWidth = input.current?.scrollWidth
+  const scrollHeight = input.current?.scrollHeight
+  const offsetWidth = input.current?.offsetWidth
+  const offsetHeight = input.current?.offsetHeight
 
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     setText(event.target.value)
@@ -115,23 +129,28 @@ const MicIncludedCopiableTextField: React.FC = () => {
 
     setText(value)
 
-    input.current.scrollTop = input.current.scrollHeight - input.current.offsetHeight
+    shouldBePresent(scrollWidth)
+    shouldBePresent(scrollHeight)
+    shouldBePresent(offsetWidth)
+    shouldBePresent(offsetHeight)
+
+    input.current.scrollTop = scrollHeight - offsetHeight
 
     switch (dir) {
       case 'ltr':
-        input.current.scrollLeft = input.current.scrollWidth - input.current.offsetWidth
+        input.current.scrollLeft = scrollWidth - offsetWidth
         break
       case 'rtl':
-        input.current.scrollLeft = -(input.current.scrollWidth - input.current.offsetWidth)
+        input.current.scrollLeft = -(scrollWidth - offsetWidth)
     }
   }, [
     dir,
     input,
     // To handle resizing, DOM updates, etc:
-    input.current?.scrollWidth,
-    input.current?.scrollHeight,
-    input.current?.offsetWidth,
-    input.current?.offsetHeight,
+    scrollWidth,
+    scrollHeight,
+    offsetWidth,
+    offsetHeight,
   ])
 
   return (

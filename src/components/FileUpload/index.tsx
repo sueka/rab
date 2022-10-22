@@ -50,23 +50,24 @@ const FileUpload: React.FC<Props> = ({
   const buttonClassName = useMemo(() => classnames(propClasses?.button, cssClasses.Button, ButtonProps?.className), [propClasses?.button, ButtonProps?.className])
 
   const input = useRef<HTMLInputElement>(null)
+  const files = input.current?.files ?? null
 
   const defaultResultMessage = useMemo(() => {
     if (resultMessage != null) {
       return // nothing
     }
 
-    if (input.current?.files == null || input.current?.files.length === 0) {
+    if (files === null || files.length === 0) {
       return <FormattedMessage { ...messages.noFileSelected } />
     }
 
-    switch (input.current?.files.length) {
+    switch (files.length) {
       case 1:
-        return input.current?.files[0]!.name
+        return files[0]!.name
       default:
-        return <FormattedMessage { ...messages.nFilesSelected } values={ { n: input.current?.files.length } } />
+        return <FormattedMessage { ...messages.nFilesSelected } values={ { n: files.length } } />
     }
-  }, [resultMessage, input.current?.files ?? null])
+  }, [resultMessage, files])
 
   const fireInputClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(() => {
     shouldBePresent(input.current)
