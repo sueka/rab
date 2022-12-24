@@ -34,13 +34,13 @@ exports[`LocaleSelect 1`] = `
         class="makeStyles-Option-2"
         value="he"
       >
-        עברית
+        Hebrew - עברית
       </option>
       <option
         class="makeStyles-Option-2"
         value="ja"
       >
-        日本語
+        Japanese - 日本語
       </option>
     </select>
     <svg

@@ -98,13 +98,13 @@ exports[`App at / 1`] = `
               class="makeStyles-Option-5"
               value="he"
             >
-              עברית
+              Hebrew - עברית
             </option>
             <option
               class="makeStyles-Option-5"
               value="ja"
             >
-              日本語
+              Japanese - 日本語
             </option>
           </select>
           <svg
@@ -316,13 +316,13 @@ exports[`App at /chess 1`] = `
               class="makeStyles-Option-48"
               value="he"
             >
-              עברית
+              Hebrew - עברית
             </option>
             <option
               class="makeStyles-Option-48"
               value="ja"
             >
-              日本語
+              Japanese - 日本語
             </option>
           </select>
           <svg
@@ -914,13 +914,13 @@ exports[`App at /clock 1`] = `
               class="makeStyles-Option-60"
               value="he"
             >
-              עברית
+              Hebrew - עברית
             </option>
             <option
               class="makeStyles-Option-60"
               value="ja"
             >
-              日本語
+              Japanese - 日本語
             </option>
           </select>
           <svg
@@ -1046,13 +1046,13 @@ exports[`App at /counter 1`] = `
               class="makeStyles-Option-72"
               value="he"
             >
-              עברית
+              Hebrew - עברית
             </option>
             <option
               class="makeStyles-Option-72"
               value="ja"
             >
-              日本語
+              Japanese - 日本語
             </option>
           </select>
           <svg
@@ -1277,13 +1277,13 @@ exports[`App at /form-controls 1`] = `
               class="makeStyles-Option-19"
               value="he"
             >
-              עברית
+              Hebrew - עברית
             </option>
             <option
               class="makeStyles-Option-19"
               value="ja"
             >
-              日本語
+              Japanese - 日本語
             </option>
           </select>
           <svg
@@ -1738,13 +1738,13 @@ exports[`App at /info 1`] = `
               class="makeStyles-Option-82"
               value="he"
             >
-              עברית
+              Hebrew - עברית
             </option>
             <option
               class="makeStyles-Option-82"
               value="ja"
             >
-              日本語
+              Japanese - 日本語
             </option>
           </select>
           <svg
@@ -1888,13 +1888,13 @@ exports[`App at /nonexistent-path 1`] = `
               class="makeStyles-Option-159"
               value="he"
             >
-              עברית
+              Hebrew - עברית
             </option>
             <option
               class="makeStyles-Option-159"
               value="ja"
             >
-              日本語
+              Japanese - 日本語
             </option>
           </select>
           <svg
@@ -2016,13 +2016,13 @@ exports[`App at /paint 1`] = `
               class="makeStyles-Option-92"
               value="he"
             >
-              עברית
+              Hebrew - עברית
             </option>
             <option
               class="makeStyles-Option-92"
               value="ja"
             >
-              日本語
+              Japanese - 日本語
             </option>
           </select>
           <svg
@@ -2446,13 +2446,13 @@ exports[`App at /qr-code-tools 1`] = `
               class="makeStyles-Option-117"
               value="he"
             >
-              עברית
+              Hebrew - עברית
             </option>
             <option
               class="makeStyles-Option-117"
               value="ja"
             >
-              日本語
+              Japanese - 日本語
             </option>
           </select>
           <svg
@@ -2513,7 +2513,7 @@ exports[`App at /qr-code-tools 1`] = `
                     aria-invalid="false"
                     class="MuiInputBase-input MuiOutlinedInput-input"
                     type="text"
-                    value="https://sueka.me"
+                    value="WIFI:S:tristis-5cd092;T:WPA;P:8l43rz3dRc5ccxT0D6X42Z5mdEExf8;;"
                   />
                   <fieldset
                     aria-hidden="true"
@@ -2536,9 +2536,9 @@ exports[`App at /qr-code-tools 1`] = `
               class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7"
             >
               <canvas
-                height="132"
-                style="height: 132px; width: 132px;"
-                width="132"
+                height="164"
+                style="height: 164px; width: 164px;"
+                width="164"
               />
             </div>
           </div>
@@ -2705,13 +2705,13 @@ exports[`App at /reminder 1`] = `
               class="makeStyles-Option-134"
               value="he"
             >
-              עברית
+              Hebrew - עברית
             </option>
             <option
               class="makeStyles-Option-134"
               value="ja"
             >
-              日本語
+              Japanese - 日本語
             </option>
           </select>
           <svg
@@ -2853,13 +2853,13 @@ exports[`App at /settings 1`] = `
               class="makeStyles-Option-144"
               value="he"
             >
-              עברית
+              Hebrew - עברית
             </option>
             <option
               class="makeStyles-Option-144"
               value="ja"
             >
-              日本語
+              Japanese - 日本語
             </option>
           </select>
           <svg
@@ -2944,13 +2944,13 @@ exports[`App at /settings 1`] = `
                     class="makeStyles-Option-144"
                     value="he"
                   >
-                    עברית
+                    Hebrew - עברית
                   </option>
                   <option
                     class="makeStyles-Option-144"
                     value="ja"
                   >
-                    日本語
+                    Japanese - 日本語
                   </option>
                 </select>
                 <svg
@@ -3339,13 +3339,13 @@ exports[`App at /table 1`] = `
               class="makeStyles-Option-36"
               value="he"
             >
-              עברית
+              Hebrew - עברית
             </option>
             <option
               class="makeStyles-Option-36"
               value="ja"
             >
-              日本語
+              Japanese - 日本語
             </option>
           </select>
           <svg

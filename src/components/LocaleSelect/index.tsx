@@ -6,8 +6,9 @@ import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Select, { SelectProps } from '@material-ui/core/Select'
 import { Theme, makeStyles, useTheme } from '@material-ui/core/styles'
 import classnames from 'classnames'
+import { OrderedSet } from 'immutable'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { connect } from 'react-redux'
 import { v4 } from 'uuid'
 
@@ -58,6 +59,7 @@ const useStyles = makeStyles<Theme, StyleProps, 'Select' | 'Option'>((theme) => 
 }))
 
 export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = false, classes: propClasses, FormControlProps, locale, selectLocale }) => {
+  const { formatMessage } = useIntl()
   const [labelWidth, setLabelWidth] = useState<number | null>(null)
   const [selectMinWidth, setSelectMinWidth] = useState<number | null>(null)
   const inputId = useMemo(v4, [])
@@ -150,9 +152,16 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
           filled: <FilledInput className={ inputClassName } />,
         }[variant] }
       >
-        { availableLocales?.map((availableLocale, i) => (
-          <option key={ i } className={ jssClasses.Option }value={ availableLocale }>{ getNativeNameByTag(availableLocale) }</option>
-        )) }
+        { availableLocales?.map((availableLocale, i) => {
+          const label = OrderedSet([
+            formatMessage(messages[availableLocale]), // exonym
+            getNativeNameByTag(availableLocale), // endonym
+          ]).join(' - ')
+
+          return (
+            <option key={ i } className={ jssClasses.Option }value={ availableLocale }>{ label }</option>
+          )
+        }) }
       </Select>
     </FormControl>
   )
