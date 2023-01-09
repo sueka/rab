@@ -2513,7 +2513,7 @@ exports[`App at /qr-code-tools 1`] = `
                     aria-invalid="false"
                     class="MuiInputBase-input MuiOutlinedInput-input"
                     type="text"
-                    value="WIFI:S:tristis-5cd092;T:WPA;P:8l43rz3dRc5ccxT0D6X42Z5mdEExf8;;"
+                    value="https://sueka.me"
                   />
                   <fieldset
                     aria-hidden="true"
@@ -2536,9 +2536,9 @@ exports[`App at /qr-code-tools 1`] = `
               class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7"
             >
               <canvas
-                height="164"
-                style="height: 164px; width: 164px;"
-                width="164"
+                height="132"
+                style="height: 132px; width: 132px;"
+                width="132"
               />
             </div>
           </div>
