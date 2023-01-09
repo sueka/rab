@@ -53,6 +53,7 @@ $(css-d) : $(css-d-src)
 lusp-client : src/lusp-client
 src/lusp-client : FORCE
 	$(NPX) @openapitools/openapi-generator-cli generate \
+	--skip-validate-spec \
 	--input-spec $(LUSP-OPENAPI-SPEC) \
 	--generator-name typescript-fetch \
 	--output $@
