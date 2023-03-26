@@ -66,6 +66,7 @@ ${ '/table' }
 ${ '/chess' }
 ${ '/clock' }
 ${ '/counter' }
+${ '/image-data-url-en-decoder' }
 ${ '/info' }
 ${ '/paint' }
 ${ '/qr-code-tools' }

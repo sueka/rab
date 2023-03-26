@@ -1640,7 +1640,7 @@ exports[`App at /form-controls 1`] = `
 </div>
 `;
 
-exports[`App at /info 1`] = `
+exports[`App at /image-data-url-en-decoder 1`] = `
 <div>
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
@@ -1764,6 +1764,346 @@ exports[`App at /info 1`] = `
   <div
     class="makeStyles-Offset-78 makeStyles-Offset-79"
   />
+  <div
+    class="MuiBox-root MuiBox-root-88"
+  >
+    <div
+      class="MuiBox-root MuiBox-root-89"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+        >
+          <h3
+            class="MuiTypography-root MuiTypography-h3"
+          >
+            <bdi
+              dir="auto"
+            >
+              Encoder
+            </bdi>
+          </h3>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
+            >
+              <label
+                class="MuiFormLabel-root FileUpload Safari"
+                tabindex="-1"
+              >
+                <button
+                  class="MuiButtonBase-root MuiButton-root MuiButton-outlined Button"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    <bdi
+                      dir="auto"
+                    >
+                      Browse…
+                    </bdi>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+                <bdi
+                  dir="auto"
+                >
+                  No file selected.
+                </bdi>
+                <input
+                  accept="image/*"
+                  class="Input"
+                  type="file"
+                />
+              </label>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
+            >
+              <div
+                class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+              >
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+                >
+                  <textarea
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                    rows="1"
+                    style="height: 0px; overflow: hidden;"
+                  />
+                  <textarea
+                    aria-hidden="true"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                    readonly=""
+                    style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); width: 100%;"
+                    tabindex="-1"
+                  />
+                  <div
+                    class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
+                  >
+                    <span
+                      class=""
+                    >
+                      <button
+                        class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                        disabled=""
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="MuiSvgIcon-root"
+                            focusable="false"
+                            style="transform: scaleY(-1);"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M3 5H1v16c0 1.1.9 2 2 2h16v-2H3V5zm18-4H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 16H7V3h14v14z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </span>
+                  </div>
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-90 MuiOutlinedInput-notchedOutline"
+                    style="padding-left: 8px;"
+                  >
+                    <legend
+                      class="PrivateNotchedOutline-legend-91"
+                      style="width: 0.01px;"
+                    >
+                      <span>
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-94"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+        >
+          <h3
+            class="MuiTypography-root MuiTypography-h3"
+          >
+            <bdi
+              dir="auto"
+            >
+              Decoder
+            </bdi>
+          </h3>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
+            >
+              <div
+                class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+              >
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+                >
+                  <textarea
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                    placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAADUlEQVQIHQECAP3/AP8BAQEA02HOTAAAAABJRU5ErkJggg=="
+                    rows="1"
+                    style="height: 0px; overflow: hidden;"
+                  />
+                  <textarea
+                    aria-hidden="true"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                    readonly=""
+                    style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); width: 100%;"
+                    tabindex="-1"
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-90 MuiOutlinedInput-notchedOutline"
+                    style="padding-left: 8px;"
+                  >
+                    <legend
+                      class="PrivateNotchedOutline-legend-91"
+                      style="width: 0.01px;"
+                    >
+                      <span>
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
+            >
+              <img />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App at /info 1`] = `
+<div>
+  <header
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+      <div
+        class="Spacer"
+      />
+      <div
+        class="MuiBox-root MuiBox-root-97"
+      >
+        <span
+          class="TooltipWrapper"
+        >
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </span>
+      </div>
+      <div
+        class="MuiFormControl-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root LocaleSelectLabel InputLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+          data-shrink="true"
+          for="00000000-0000-4000-0000-000000000000"
+        >
+          <bdi
+            dir="auto"
+          >
+            Language
+          </bdi>
+        </label>
+        <div
+          class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline LocaleSelectInput MuiInputBase-formControl"
+        >
+          <select
+            aria-invalid="false"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-98 makeStyles-Select-100 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            data-testid="localeSelect"
+            id="00000000-0000-4000-0000-000000000000"
+          >
+            <option
+              class="makeStyles-Option-99"
+              value="en"
+            >
+              English
+            </option>
+            <option
+              class="makeStyles-Option-99"
+              value="he"
+            >
+              Hebrew - עברית
+            </option>
+            <option
+              class="makeStyles-Option-99"
+              value="ja"
+            >
+              Japanese - 日本語
+            </option>
+          </select>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon LocaleSelectSelectIcon MuiSelect-iconFilled"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div
+    class="makeStyles-Offset-95 makeStyles-Offset-96"
+  />
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
     tabindex="0"
@@ -1825,7 +2165,7 @@ exports[`App at /nonexistent-path 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-157"
+        class="MuiBox-root MuiBox-root-174"
       >
         <span
           class="TooltipWrapper"
@@ -1874,24 +2214,24 @@ exports[`App at /nonexistent-path 1`] = `
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-158 makeStyles-Select-160 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-175 makeStyles-Select-177 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
             id="00000000-0000-4000-0000-000000000000"
           >
             <option
-              class="makeStyles-Option-159"
+              class="makeStyles-Option-176"
               value="en"
             >
               English
             </option>
             <option
-              class="makeStyles-Option-159"
+              class="makeStyles-Option-176"
               value="he"
             >
               Hebrew - עברית
             </option>
             <option
-              class="makeStyles-Option-159"
+              class="makeStyles-Option-176"
               value="ja"
             >
               Japanese - 日本語
@@ -1912,7 +2252,7 @@ exports[`App at /nonexistent-path 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-155 makeStyles-Offset-156"
+    class="makeStyles-Offset-172 makeStyles-Offset-173"
   />
   Error: No route matches /nonexistent-path.
 </div>
@@ -1953,7 +2293,7 @@ exports[`App at /paint 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-90"
+        class="MuiBox-root MuiBox-root-107"
       >
         <span
           class="TooltipWrapper"
@@ -2002,24 +2342,24 @@ exports[`App at /paint 1`] = `
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-91 makeStyles-Select-93 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-108 makeStyles-Select-110 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
             id="00000000-0000-4000-0000-000000000000"
           >
             <option
-              class="makeStyles-Option-92"
+              class="makeStyles-Option-109"
               value="en"
             >
               English
             </option>
             <option
-              class="makeStyles-Option-92"
+              class="makeStyles-Option-109"
               value="he"
             >
               Hebrew - עברית
             </option>
             <option
-              class="makeStyles-Option-92"
+              class="makeStyles-Option-109"
               value="ja"
             >
               Japanese - 日本語
@@ -2040,10 +2380,10 @@ exports[`App at /paint 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-88 makeStyles-Offset-89"
+    class="makeStyles-Offset-105 makeStyles-Offset-106"
   />
   <canvas
-    class="makeStyles-Canvas-98 makeStyles-Canvas-99 Canvas"
+    class="makeStyles-Canvas-115 makeStyles-Canvas-116 Canvas"
     height="320"
     width="320"
   />
@@ -2139,19 +2479,19 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-100 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-117 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-103"
+              class="PrivateSwitchBase-input-120"
               name="lineCap"
               type="radio"
               value="butt"
             />
             <div
-              class="PrivateRadioButtonIcon-root-104"
+              class="PrivateRadioButtonIcon-root-121"
             >
               <svg
                 aria-hidden="true"
@@ -2165,7 +2505,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-105"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-122"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -2190,20 +2530,20 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-100 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-101 Mui-checked MuiIconButton-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-117 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-118 Mui-checked MuiIconButton-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
               checked=""
-              class="PrivateSwitchBase-input-103"
+              class="PrivateSwitchBase-input-120"
               name="lineCap"
               type="radio"
               value="round"
             />
             <div
-              class="PrivateRadioButtonIcon-root-104 PrivateRadioButtonIcon-checked-106"
+              class="PrivateRadioButtonIcon-root-121 PrivateRadioButtonIcon-checked-123"
             >
               <svg
                 aria-hidden="true"
@@ -2217,7 +2557,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-105"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-122"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -2242,19 +2582,19 @@ exports[`App at /paint 1`] = `
       >
         <span
           aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-100 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-117 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
         >
           <span
             class="MuiIconButton-label"
           >
             <input
-              class="PrivateSwitchBase-input-103"
+              class="PrivateSwitchBase-input-120"
               name="lineCap"
               type="radio"
               value="square"
             />
             <div
-              class="PrivateRadioButtonIcon-root-104"
+              class="PrivateRadioButtonIcon-root-121"
             >
               <svg
                 aria-hidden="true"
@@ -2268,7 +2608,7 @@ exports[`App at /paint 1`] = `
               </svg>
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-105"
+                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-122"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -2291,7 +2631,7 @@ exports[`App at /paint 1`] = `
     </div>
   </div>
   <div
-    class="MuiBox-root MuiBox-root-107"
+    class="MuiBox-root MuiBox-root-124"
   >
     <ul
       class="MuiList-root MuiList-padding"
@@ -2383,7 +2723,7 @@ exports[`App at /qr-code-tools 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-115"
+        class="MuiBox-root MuiBox-root-132"
       >
         <span
           class="TooltipWrapper"
@@ -2432,24 +2772,24 @@ exports[`App at /qr-code-tools 1`] = `
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-116 makeStyles-Select-118 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-133 makeStyles-Select-135 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
             id="00000000-0000-4000-0000-000000000000"
           >
             <option
-              class="makeStyles-Option-117"
+              class="makeStyles-Option-134"
               value="en"
             >
               English
             </option>
             <option
-              class="makeStyles-Option-117"
+              class="makeStyles-Option-134"
               value="he"
             >
               Hebrew - עברית
             </option>
             <option
-              class="makeStyles-Option-117"
+              class="makeStyles-Option-134"
               value="ja"
             >
               Japanese - 日本語
@@ -2470,13 +2810,13 @@ exports[`App at /qr-code-tools 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-113 makeStyles-Offset-114"
+    class="makeStyles-Offset-130 makeStyles-Offset-131"
   />
   <div
-    class="MuiBox-root MuiBox-root-123"
+    class="MuiBox-root MuiBox-root-140"
   >
     <div
-      class="MuiBox-root MuiBox-root-124"
+      class="MuiBox-root MuiBox-root-141"
     >
       <div
         class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
@@ -2526,11 +2866,11 @@ exports[`App at /qr-code-tools 1`] = `
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="PrivateNotchedOutline-root-125 MuiOutlinedInput-notchedOutline"
+                    class="PrivateNotchedOutline-root-142 MuiOutlinedInput-notchedOutline"
                     style="padding-left: 8px;"
                   >
                     <legend
-                      class="PrivateNotchedOutline-legend-126"
+                      class="PrivateNotchedOutline-legend-143"
                       style="width: 0.01px;"
                     >
                       <span>
@@ -2691,7 +3031,7 @@ exports[`App at /qr-code-tools 1`] = `
       </div>
     </div>
     <div
-      class="MuiBox-root MuiBox-root-129"
+      class="MuiBox-root MuiBox-root-146"
     >
       <div
         class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
@@ -2787,7 +3127,7 @@ exports[`App at /reminder 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-132"
+        class="MuiBox-root MuiBox-root-149"
       >
         <span
           class="TooltipWrapper"
@@ -2836,24 +3176,24 @@ exports[`App at /reminder 1`] = `
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-133 makeStyles-Select-135 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-150 makeStyles-Select-152 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
             id="00000000-0000-4000-0000-000000000000"
           >
             <option
-              class="makeStyles-Option-134"
+              class="makeStyles-Option-151"
               value="en"
             >
               English
             </option>
             <option
-              class="makeStyles-Option-134"
+              class="makeStyles-Option-151"
               value="he"
             >
               Hebrew - עברית
             </option>
             <option
-              class="makeStyles-Option-134"
+              class="makeStyles-Option-151"
               value="ja"
             >
               Japanese - 日本語
@@ -2874,7 +3214,7 @@ exports[`App at /reminder 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-130 makeStyles-Offset-131"
+    class="makeStyles-Offset-147 makeStyles-Offset-148"
   />
   <ul
     class="MuiList-root MuiList-padding"
@@ -2935,7 +3275,7 @@ exports[`App at /settings 1`] = `
         class="Spacer"
       />
       <div
-        class="MuiBox-root MuiBox-root-142"
+        class="MuiBox-root MuiBox-root-159"
       >
         <span
           class="TooltipWrapper"
@@ -2984,24 +3324,24 @@ exports[`App at /settings 1`] = `
         >
           <select
             aria-invalid="false"
-            class="MuiSelect-root MuiSelect-select makeStyles-Select-143 makeStyles-Select-145 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+            class="MuiSelect-root MuiSelect-select makeStyles-Select-160 makeStyles-Select-162 Select MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
             data-testid="localeSelect"
             id="00000000-0000-4000-0000-000000000000"
           >
             <option
-              class="makeStyles-Option-144"
+              class="makeStyles-Option-161"
               value="en"
             >
               English
             </option>
             <option
-              class="makeStyles-Option-144"
+              class="makeStyles-Option-161"
               value="he"
             >
               Hebrew - עברית
             </option>
             <option
-              class="makeStyles-Option-144"
+              class="makeStyles-Option-161"
               value="ja"
             >
               Japanese - 日本語
@@ -3022,7 +3362,7 @@ exports[`App at /settings 1`] = `
     </div>
   </header>
   <div
-    class="makeStyles-Offset-140 makeStyles-Offset-141"
+    class="makeStyles-Offset-157 makeStyles-Offset-158"
   />
   <div
     class="MuiGrid-root MuiGrid-container"
@@ -3075,24 +3415,24 @@ exports[`App at /settings 1`] = `
               >
                 <select
                   aria-invalid="false"
-                  class="MuiSelect-root MuiSelect-select makeStyles-Select-143 makeStyles-Select-150 Select MuiInputBase-input MuiInput-input MuiInputBase-inputHiddenLabel"
+                  class="MuiSelect-root MuiSelect-select makeStyles-Select-160 makeStyles-Select-167 Select MuiInputBase-input MuiInput-input MuiInputBase-inputHiddenLabel"
                   data-testid="localeSelect"
                   id="00000000-0000-4000-0000-000000000000"
                 >
                   <option
-                    class="makeStyles-Option-144"
+                    class="makeStyles-Option-161"
                     value="en"
                   >
                     English
                   </option>
                   <option
-                    class="makeStyles-Option-144"
+                    class="makeStyles-Option-161"
                     value="he"
                   >
                     Hebrew - עברית
                   </option>
                   <option
-                    class="makeStyles-Option-144"
+                    class="makeStyles-Option-161"
                     value="ja"
                   >
                     Japanese - 日本語
@@ -3160,13 +3500,13 @@ exports[`App at /settings 1`] = `
             >
               <span
                 aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-151 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-168 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
               >
                 <span
                   class="MuiIconButton-label"
                 >
                   <input
-                    class="PrivateSwitchBase-input-154"
+                    class="PrivateSwitchBase-input-171"
                     name="theme"
                     type="radio"
                     value="light"
@@ -3188,13 +3528,13 @@ exports[`App at /settings 1`] = `
               </span>
               <span
                 aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-151 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-168 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
               >
                 <span
                   class="MuiIconButton-label"
                 >
                   <input
-                    class="PrivateSwitchBase-input-154"
+                    class="PrivateSwitchBase-input-171"
                     name="theme"
                     type="radio"
                     value="dark"
@@ -3216,14 +3556,14 @@ exports[`App at /settings 1`] = `
               </span>
               <span
                 aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-151 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-152 Mui-checked MuiIconButton-colorSecondary"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-168 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-169 Mui-checked MuiIconButton-colorSecondary"
               >
                 <span
                   class="MuiIconButton-label"
                 >
                   <input
                     checked=""
-                    class="PrivateSwitchBase-input-154"
+                    class="PrivateSwitchBase-input-171"
                     name="theme"
                     type="radio"
                     value="device"
@@ -3277,14 +3617,14 @@ exports[`App at /settings 1`] = `
               <span
                 aria-disabled="true"
                 aria-labelledby="00000000-0000-4000-0000-000000000000"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-151 MuiSwitch-switchBase MuiSwitch-colorSecondary PrivateSwitchBase-disabled-153 Mui-disabled Mui-disabled Mui-disabled"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-168 MuiSwitch-switchBase MuiSwitch-colorSecondary PrivateSwitchBase-disabled-170 Mui-disabled Mui-disabled Mui-disabled"
                 tabindex="-1"
               >
                 <span
                   class="MuiIconButton-label"
                 >
                   <input
-                    class="PrivateSwitchBase-input-154 MuiSwitch-input"
+                    class="PrivateSwitchBase-input-171 MuiSwitch-input"
                     disabled=""
                     type="checkbox"
                     value=""
@@ -3356,13 +3696,13 @@ exports[`App at /settings 1`] = `
               <span
                 aria-disabled="false"
                 aria-labelledby="00000000-0000-4000-0000-000000000000"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-151 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-168 MuiSwitch-switchBase MuiSwitch-colorSecondary"
               >
                 <span
                   class="MuiIconButton-label"
                 >
                   <input
-                    class="PrivateSwitchBase-input-154 MuiSwitch-input"
+                    class="PrivateSwitchBase-input-171 MuiSwitch-input"
                     type="checkbox"
                     value=""
                   />
