@@ -159,7 +159,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
           ]).join(' - ')
 
           return (
-            <option key={ i } className={ jssClasses.Option }value={ availableLocale }>{ label }</option>
+            <option key={ i } className={ jssClasses.Option } value={ availableLocale }>{ label }</option>
           )
         }) }
       </Select>
