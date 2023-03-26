@@ -2504,16 +2504,25 @@ exports[`App at /qr-code-tools 1`] = `
               class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5"
             >
               <div
-                class="MuiFormControl-root MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
               >
                 <div
-                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
                 >
-                  <input
+                  <textarea
                     aria-invalid="false"
-                    class="MuiInputBase-input MuiOutlinedInput-input"
-                    type="text"
-                    value="https://sueka.me"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                    rows="1"
+                    style="height: 0px; overflow: hidden;"
+                  >
+                    https://sueka.me
+                  </textarea>
+                  <textarea
+                    aria-hidden="true"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                    readonly=""
+                    style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); width: 100%;"
+                    tabindex="-1"
                   />
                   <fieldset
                     aria-hidden="true"
@@ -2540,6 +2549,142 @@ exports[`App at /qr-code-tools 1`] = `
                 style="height: 132px; width: 132px;"
                 width="132"
               />
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-3"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+                for="00000000-0000-4000-0000-000000000000"
+              >
+                <bdi
+                  dir="auto"
+                >
+                  Error correction level
+                </bdi>
+              </label>
+              <div
+                class="MuiInputBase-root MuiInput-root MuiInput-underline"
+              >
+                <select
+                  class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+                  id="00000000-0000-4000-0000-000000000000"
+                >
+                  <option
+                    value="default"
+                  >
+                    Default
+                  </option>
+                  <option
+                    value="L"
+                  >
+                    L
+                  </option>
+                  <option
+                    value="M"
+                  >
+                    M
+                  </option>
+                  <option
+                    value="Q"
+                  >
+                    Q
+                  </option>
+                  <option
+                    value="H"
+                  >
+                    H
+                  </option>
+                </select>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSelect-icon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-3"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+                for="00000000-0000-4000-0000-000000000000"
+              >
+                <bdi
+                  dir="auto"
+                >
+                  Mask pattern
+                </bdi>
+              </label>
+              <div
+                class="MuiInputBase-root MuiInput-root MuiInput-underline"
+              >
+                <select
+                  class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+                  id="00000000-0000-4000-0000-000000000000"
+                >
+                  <option
+                    value="default"
+                  >
+                    Default
+                  </option>
+                  <option
+                    value="0"
+                  >
+                    0
+                  </option>
+                  <option
+                    value="1"
+                  >
+                    1
+                  </option>
+                  <option
+                    value="2"
+                  >
+                    2
+                  </option>
+                  <option
+                    value="3"
+                  >
+                    3
+                  </option>
+                  <option
+                    value="4"
+                  >
+                    4
+                  </option>
+                  <option
+                    value="5"
+                  >
+                    5
+                  </option>
+                  <option
+                    value="6"
+                  >
+                    6
+                  </option>
+                  <option
+                    value="7"
+                  >
+                    7
+                  </option>
+                </select>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSelect-icon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
