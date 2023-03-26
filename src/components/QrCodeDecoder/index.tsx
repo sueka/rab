@@ -12,7 +12,7 @@ const QrCodeDecoder: React.FC = () => {
   const [files, setFiles] = useState<FileList>()
   const [decoded, setDecoded] = useState<string>()
 
-  /// files[0] を src に持つImage を ImageData に変換し、QR コードを生成する
+  /// files[0] を src に持つ Image を ImageData に変換し、QR コードを生成する
   const load = useCallback(({ currentTarget: image }) => {
     shouldBePresent(context)
 
