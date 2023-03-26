@@ -15,6 +15,7 @@ export const TablePage = React.lazy(() => import(/* webpackChunkName: "table" */
 export const ChessPage = React.lazy(() => import(/* webpackChunkName: "chess" */ './ChessPage'))
 export const ClockPage = React.lazy(() => import(/* webpackChunkName: "clock" */ './ClockPage'))
 export const CounterPage = React.lazy(() => import(/* webpackChunkName: "counter" */ './CounterPage'))
+export const ImageDataUrlEnDecoderPage = React.lazy(() => import(/* webpackChunkName: "imageDataUrlEnDecoder" */ './ImageDataUrlEnDecoderPage'))
 export const InfoPage = React.lazy(() => import(/* webpackChunkName: "info" */ './InfoPage'))
 export const PaintPage = React.lazy(() => import(/* webpackChunkName: "paint" */ './PaintPage'))
 export const QrCodeToolsPage = React.lazy(() => import(/* webpackChunkName: "qrCodeTools" */ './QrCodeToolsPage'))
@@ -56,6 +57,7 @@ const App: React.FC = () => {
       <Route exact strict sensitive path="/chess" component={ ChessPage } />
       <Route exact strict sensitive path="/clock" component={ ClockPage } />
       <Route exact strict sensitive path="/counter" component={ CounterPage } />
+      <Route exact strict sensitive path="/image-data-url-en-decoder" component={ ImageDataUrlEnDecoderPage } />
       <Route exact strict sensitive path="/info" component={ InfoPage } />
       <Route exact strict sensitive path="/paint" component={ PaintPage } />
       <Route exact strict sensitive path="/qr-code-tools" component={ QrCodeToolsPage } />
