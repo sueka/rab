@@ -5,6 +5,8 @@ type JsonArray = readonly Json[]
 type JsonObject = { [member in string]: Json }
 type Json = JsonPrimitive | JsonArray | JsonObject
 
+type NumberFrom<T extends `${ number }`> = T extends `${ infer U extends number }` ? U : never
+
 type EmptyRecord<T> = Record<keyof T, never>
 
 type Index = keyof any

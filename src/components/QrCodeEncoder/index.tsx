@@ -1,20 +1,75 @@
 import Grid from '@material-ui/core/Grid'
+import InputLabel from '@material-ui/core/InputLabel'
+import Select, { SelectProps } from '@material-ui/core/Select'
 import TextField, { TextFieldProps } from '@material-ui/core/TextField'
-import QRCode from 'qrcode'
-import React, { useCallback, useEffect, useRef } from 'react'
+import QRCode, { QRCodeErrorCorrectionLevel, QRCodeMaskPattern } from 'qrcode'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { FormattedMessage, useIntl } from 'react-intl'
+import { v4 } from 'uuid'
+
+import { shouldBePresent } from '~/asserters/commonAsserters'
+import { isOneOf } from '~/guards/commonGuards'
+import messages from './messages'
 
 type QrCodeEncoderProps = Pick<TextFieldProps, 'defaultValue'>
+
+const errorCorrectionLevels: QRCodeErrorCorrectionLevel[] = ['L', 'M', 'Q', 'H']
+const maskPatterns: QRCodeMaskPattern[] = [0, 1, 2, 3, 4, 5, 6, 7]
 
 // TODO: Follow Material Design
 const QrCodeEncoder: React.FC<QrCodeEncoderProps> = ({ ...textFieldProps }) => {
   const input = useRef<HTMLInputElement>(null)
   const canvas = useRef<HTMLCanvasElement>(null)
+  const errorCorrectionLevelSelectId = useMemo(v4, [])
+  const maskPatternSelectId = useMemo(v4, [])
+  const inputLabel = useRef<HTMLLabelElement>(null)
+  const { formatMessage } = useIntl()
+
+  const [errorCorrectionLevel, setErrorCorrectionLevel] = useState<QRCodeErrorCorrectionLevel | undefined>()
+  const [maskPattern, setMaskPattern] = useState<QRCodeMaskPattern | undefined>()
 
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     if (event.currentTarget.value !== '') {
-      QRCode.toCanvas(canvas.current, event.currentTarget.value)
+      QRCode.toCanvas(canvas.current, event.currentTarget.value, {
+        errorCorrectionLevel,
+        maskPattern,
+      })
     }
-  }, [canvas])
+  }, [canvas, errorCorrectionLevel, maskPattern])
+
+  const handleErrorCorrectionLevelChange = useCallback<NonNullable<SelectProps['onChange']>>((event) => {
+    if (!isOneOf<(QRCodeErrorCorrectionLevel | 'default')[]>(...errorCorrectionLevels, 'default')(event.target.value)) {
+      throw new Error //
+    }
+
+    const errorCorrectionLevel = event.target.value !== 'default' ? event.target.value : undefined
+
+    setErrorCorrectionLevel(errorCorrectionLevel)
+
+    shouldBePresent(input.current?.value)
+
+    QRCode.toCanvas(canvas.current, input.current?.value, {
+      errorCorrectionLevel,
+      maskPattern,
+    })
+  }, [maskPattern])
+
+  const handleMaskPatternChange = useCallback<NonNullable<SelectProps['onChange']>>((event) => {
+    if (!isOneOf<(`${ QRCodeMaskPattern }` | 'default')[]>(...maskPatterns.map<`${ QRCodeMaskPattern }`>((n) => `${ n }`), 'default')(event.target.value)) {
+      throw new Error //
+    }
+
+    const maskPattern = event.target.value !== 'default' ? Number(event.target.value) : undefined
+
+    setMaskPattern(maskPattern)
+
+    shouldBePresent(input.current?.value)
+
+    QRCode.toCanvas(canvas.current, input.current?.value, {
+      errorCorrectionLevel,
+      maskPattern,
+    })
+  }, [errorCorrectionLevel])
 
   useEffect(() => {
     if (input.current?.value) {
@@ -29,6 +84,36 @@ const QrCodeEncoder: React.FC<QrCodeEncoderProps> = ({ ...textFieldProps }) => {
       </Grid>
       <Grid item xs={ 12 } sm={ 7 }>
         <canvas ref={ canvas } />
+      </Grid>
+      <Grid item xs={ 6 } sm={ 3 }>
+        <InputLabel ref={ inputLabel } htmlFor={ errorCorrectionLevelSelectId }>
+          <FormattedMessage { ...messages.errorCorrectionLevel } />
+        </InputLabel>
+        <Select
+          native
+          onChange={ handleErrorCorrectionLevelChange }
+          id={ errorCorrectionLevelSelectId }
+        >
+          <option value="default">{ formatMessage(messages.default) }</option>
+          { errorCorrectionLevels.map((level, i) =>
+            <option key={ i } value={ level }>{ level }</option>
+          ) }
+        </Select>
+      </Grid>
+      <Grid item xs={ 6 } sm={ 3 }>
+        <InputLabel ref={ inputLabel } htmlFor={ maskPatternSelectId }>
+          <FormattedMessage { ...messages.maskPattern } />
+        </InputLabel>
+        <Select
+          native
+          onChange={ handleMaskPatternChange }
+          id={ maskPatternSelectId }
+        >
+          <option value="default">{ formatMessage(messages.default) }</option>
+          { maskPatterns.map((pattern, i) =>
+            <option key={ i } value={ pattern }>{ pattern }</option>
+          ) }
+        </Select>
       </Grid>
     </Grid>
   )
