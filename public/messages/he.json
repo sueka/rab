@@ -67,6 +67,7 @@
   "src.components.PageTemplate.Nav.counter": "מונה",
   "src.components.PageTemplate.Nav.formControls": "פקדי טופס",
   "src.components.PageTemplate.Nav.home": "בית",
+  "src.components.PageTemplate.Nav.imageDataUrlEnDecoder": "תמונה־כתובת אתר עם נתונים מקודד / מפענח",
   "src.components.PageTemplate.Nav.info": "מידע",
   "src.components.PageTemplate.Nav.paint": "צייר",
   "src.components.PageTemplate.Nav.qrCodeTools": "כלי קוד־QR",

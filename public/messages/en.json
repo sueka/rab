@@ -67,6 +67,7 @@
   "src.components.PageTemplate.Nav.counter": "Counter",
   "src.components.PageTemplate.Nav.formControls": "Form controls",
   "src.components.PageTemplate.Nav.home": "Home",
+  "src.components.PageTemplate.Nav.imageDataUrlEnDecoder": "Image–data URL en-/decoder",
   "src.components.PageTemplate.Nav.info": "Info",
   "src.components.PageTemplate.Nav.paint": "Paint",
   "src.components.PageTemplate.Nav.qrCodeTools": "QR code tools",

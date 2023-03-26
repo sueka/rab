@@ -14,6 +14,7 @@ import ListSubheader from '@material-ui/core/ListSubheader'
 import { Theme, makeStyles } from '@material-ui/core/styles'
 import BrushIcon from '@material-ui/icons/Brush'
 import HomeIcon from '@material-ui/icons/Home'
+import ImageIcon from '@material-ui/icons/Image'
 import InfoIcon from '@material-ui/icons/Info'
 import ListIcon from '@material-ui/icons/List'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -144,6 +145,14 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
           </ListItemIcon>
           <ListItemText>
             <FormattedMessage { ...messages.counter } />
+          </ListItemText>
+        </ListItemLink>
+        <ListItemLink to="/image-data-url-en-decoder" onClick={ onClose }>
+          <ListItemIcon>
+            <ImageIcon />
+          </ListItemIcon>
+          <ListItemText>
+            <FormattedMessage { ...messages.imageDataUrlEnDecoder } />
           </ListItemText>
         </ListItemLink>
         <ListItemLink to="/info" onClick={ onClose }>

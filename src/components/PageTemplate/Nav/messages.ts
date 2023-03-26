@@ -9,6 +9,7 @@ export default defineMessages({
   chess: 'Chess',
   clock: 'Clock',
   counter: 'Counter',
+  imageDataUrlEnDecoder: 'Image–data URL en-/decoder',
   info: 'Info',
   paint: 'Paint',
   qrCodeTools: 'QR code tools',

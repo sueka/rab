@@ -67,6 +67,7 @@
   "src.components.PageTemplate.Nav.counter": "カウンター",
   "src.components.PageTemplate.Nav.formControls": "フォームコントロール",
   "src.components.PageTemplate.Nav.home": "ホーム",
+  "src.components.PageTemplate.Nav.imageDataUrlEnDecoder": "画像—データ URL エンコーダー/デコーダー",
   "src.components.PageTemplate.Nav.info": "情報",
   "src.components.PageTemplate.Nav.paint": "ペイント",
   "src.components.PageTemplate.Nav.qrCodeTools": "QR コードツール",
