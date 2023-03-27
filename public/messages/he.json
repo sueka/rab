@@ -40,7 +40,7 @@
   "src.components.FileUpload.noFileSelected": "לא נבחר קובץ.",
   "src.components.GitHubAuthnButton.authenticateAUserWithGitHub": "לאמת משתמש באמצעות GitHub",
   "src.components.ImageDataUrlEncoder.encodedSuccessfully": "מקודד בהצלחה.",
-  "src.components.ImageDataUrlEncoder.encoding": "מקודד עכשיו...",
+  "src.components.ImageDataUrlEncoder.encoding": "מקודד עכשיו…",
   "src.components.ImageDataUrlEncoder.noFileSelected": "לא נבחר קובץ.",
   "src.components.Info.fetchData": "אחזר נתונים",
   "src.components.Info.fetching": "מאוחזר…",

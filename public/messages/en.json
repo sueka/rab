@@ -40,7 +40,7 @@
   "src.components.FileUpload.noFileSelected": "No file selected.",
   "src.components.GitHubAuthnButton.authenticateAUserWithGitHub": "Authenticate a user with GitHub",
   "src.components.ImageDataUrlEncoder.encodedSuccessfully": "Encoded successfully.",
-  "src.components.ImageDataUrlEncoder.encoding": "Encoding...",
+  "src.components.ImageDataUrlEncoder.encoding": "Encoding…",
   "src.components.ImageDataUrlEncoder.noFileSelected": "No file selected.",
   "src.components.Info.fetchData": "Fetch data",
   "src.components.Info.fetching": "Fetching…",
