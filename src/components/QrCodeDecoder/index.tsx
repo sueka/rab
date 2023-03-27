@@ -1,10 +1,35 @@
+import Grid from '@material-ui/core/Grid'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import TextField, { TextFieldProps } from '@material-ui/core/TextField'
 import jsQR from 'jsqr'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import FileUpload from '~/components/FileUpload'
+import CopyTextButton from '~/components/CopyTextButton'
 import messages from './messages'
+
+type CopiableTextFieldProps = TextFieldProps
+
+const CopiableTextField: React.FC<CopiableTextFieldProps> = ({ value, ...restProps }) => {
+  const input = useRef<HTMLInputElement>(null)
+
+  return (
+    <TextField
+      value={ value }
+      inputRef={ input }
+      InputProps={ {
+        endAdornment: (
+          <InputAdornment position="end">
+            <CopyTextButton inputFor={ input } />
+          </InputAdornment>
+        ),
+      } }
+      { ...restProps }
+    />
+  )
+}
 
 const QrCodeDecoder: React.FC = () => {
   const canvas = useMemo(() => document.createElement('canvas'), [])
@@ -59,18 +84,30 @@ const QrCodeDecoder: React.FC = () => {
     }
 
     if (decoded === undefined) {
-      return <FormattedMessage { ...messages.decodingFailed } />
+      return <FormattedMessage { ...messages.decoding } />
     }
 
-    return decoded
+    return <FormattedMessage { ...messages.decodedSuccessfully } />
   }, [files, decoded])
 
   return (
-    <FileUpload
-      accept="image/*"
-      resultMessage={ resultMessage }
-      onChange={ handleChange }
-    />
+    <Grid container spacing={ 2 }>
+      <Grid item xs={ 12 } sm={ 6 }>
+        <FileUpload
+          accept="image/*"
+          resultMessage={ resultMessage }
+          onChange={ handleChange }
+        />
+      </Grid>
+      <Grid item xs={ 12 } sm={ 6 }>
+        <CopiableTextField
+          multiline
+          fullWidth
+          maxRows={ 10 }
+          value={ decoded }
+        />
+      </Grid>
+    </Grid>
   )
 }
 
