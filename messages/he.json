@@ -39,6 +39,7 @@
   "src.components.FileUpload.nFilesSelected": "נבחרו { n } קבצים.",
   "src.components.FileUpload.noFileSelected": "לא נבחר קובץ.",
   "src.components.GitHubAuthnButton.authenticateAUserWithGitHub": "לאמת משתמש באמצעות GitHub",
+  "src.components.ImageDataUrlEncoder.charsCharacters": "{ chars } תווים",
   "src.components.ImageDataUrlEncoder.encodedSuccessfully": "מקודד בהצלחה.",
   "src.components.ImageDataUrlEncoder.encoding": "מקודד עכשיו…",
   "src.components.ImageDataUrlEncoder.noFileSelected": "לא נבחר קובץ.",

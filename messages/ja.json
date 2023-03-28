@@ -39,6 +39,7 @@
   "src.components.FileUpload.nFilesSelected": "{ n } 個のファイルを選択しました。",
   "src.components.FileUpload.noFileSelected": "ファイルが選択されていません。",
   "src.components.GitHubAuthnButton.authenticateAUserWithGitHub": "GitHub でユーザーを認証",
+  "src.components.ImageDataUrlEncoder.charsCharacters": "{ chars }文字",
   "src.components.ImageDataUrlEncoder.encodedSuccessfully": "エンコードに成功しました。",
   "src.components.ImageDataUrlEncoder.encoding": "エンコード中…",
   "src.components.ImageDataUrlEncoder.noFileSelected": "ファイルが選択されていません。",
