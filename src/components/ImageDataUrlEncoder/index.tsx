@@ -96,7 +96,7 @@ const ImageDataUrlEncoder: React.FC = () => {
     })
 
     const kilobytes = chars / 1024
-    const kilobytesHelper = `${ Math.round(10 * kilobytes) / 10 } kB`
+    const kilobytesHelper = `${ Math.round(10 * kilobytes) / 10 } KiB`
 
     return `${ charsHelper } (≈ ${ kilobytesHelper })`
   }, [decoded, formatMessage])
