@@ -4,4 +4,5 @@ export default defineMessages({
   noFileSelected: 'No file selected.',
   encoding: 'Encoding…',
   encodedSuccessfully: 'Encoded successfully.',
+  charsCharacters: '{ chars } characters',
 })

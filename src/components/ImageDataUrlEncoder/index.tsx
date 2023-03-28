@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import FileUpload from '~/components/FileUpload'
@@ -82,6 +82,25 @@ const ImageDataUrlEncoder: React.FC = () => {
     return <FormattedMessage { ...messages.encodedSuccessfully } />
   }, [files, decoded])
 
+  const { formatMessage } = useIntl()
+
+  const resultHelperText = useMemo(() => {
+    if (decoded === undefined) {
+      return undefined
+    }
+
+    const chars = decoded.length
+
+    const charsHelper = formatMessage(messages.charsCharacters, {
+      chars,
+    })
+
+    const kilobytes = chars / 1024
+    const kilobytesHelper = `${ Math.round(10 * kilobytes) / 10 } kB`
+
+    return `${ charsHelper } (≈ ${ kilobytesHelper })`
+  }, [decoded, formatMessage])
+
   return (
     <Grid container spacing={ 2 }>
       <Grid item xs={ 12 } sm={ 6 }>
@@ -97,6 +116,7 @@ const ImageDataUrlEncoder: React.FC = () => {
           fullWidth
           maxRows={ 10 }
           value={ decoded ?? '' }
+          helperText={ resultHelperText }
         />
       </Grid>
     </Grid>
