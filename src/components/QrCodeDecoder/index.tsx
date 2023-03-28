@@ -104,7 +104,7 @@ const QrCodeDecoder: React.FC = () => {
           multiline
           fullWidth
           maxRows={ 10 }
-          value={ decoded }
+          value={ decoded ?? '' }
         />
       </Grid>
     </Grid>
