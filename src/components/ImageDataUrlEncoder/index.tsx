@@ -117,6 +117,7 @@ const ImageDataUrlEncoder: React.FC = () => {
           maxRows={ 10 }
           value={ decoded ?? '' }
           helperText={ resultHelperText }
+          inputProps={ { dir: 'ltr' } }
         />
       </Grid>
     </Grid>

@@ -18,6 +18,8 @@ const ImageDataUrlDecoder: React.FC = () => {
           maxRows={ 10 }
           onChange={ handleChange }
           placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAADUlEQVQIHQECAP3/AP8BAQEA02HOTAAAAABJRU5ErkJggg=="
+          dir="ltr"
+          // inputProps={ { dir: 'ltr' } }
         />
       </Grid>
       <Grid item xs={ 12 } sm={ 6 }>

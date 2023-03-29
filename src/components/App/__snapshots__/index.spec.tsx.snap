@@ -1841,6 +1841,7 @@ exports[`App at /image-data-url-en-decoder 1`] = `
                   <textarea
                     aria-invalid="false"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                    dir="ltr"
                     rows="1"
                     style="height: 0px; overflow: hidden;"
                   />
@@ -1932,6 +1933,7 @@ exports[`App at /image-data-url-en-decoder 1`] = `
             >
               <div
                 class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                dir="ltr"
               >
                 <div
                   class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
