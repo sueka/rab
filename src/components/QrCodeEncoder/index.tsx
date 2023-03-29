@@ -78,43 +78,45 @@ const QrCodeEncoder: React.FC<QrCodeEncoderProps> = ({ ...textFieldProps }) => {
   }, [input, canvas])
 
   return (
-    <Grid container spacing={ 2 }>
-      <Grid item xs={ 12 } sm={ 6 }>
-        <TextField fullWidth multiline inputRef={ input } onChange={ handleChange } { ...textFieldProps } />
+    <Grid container spacing={ 2 } direction="row">
+      <Grid item xs={ 12 } sm={ 6 } container spacing={ 2 } alignContent="flex-start">
+        <Grid item xs={ 12 }>
+          <TextField fullWidth multiline inputRef={ input } onChange={ handleChange } { ...textFieldProps } />
+        </Grid>
+        <Grid item xs={ 6 }>
+          <InputLabel ref={ inputLabel } htmlFor={ errorCorrectionLevelSelectId }>
+            <FormattedMessage { ...messages.errorCorrectionLevel } />
+          </InputLabel>
+          <Select
+            native
+            onChange={ handleErrorCorrectionLevelChange }
+            id={ errorCorrectionLevelSelectId }
+            value={ errorCorrectionLevel }
+          >
+            { errorCorrectionLevels.map((level, i) =>
+              <option key={ i } value={ level }>{ level }</option>
+            ) }
+          </Select>
+        </Grid>
+        <Grid item xs={ 6 }>
+          <InputLabel ref={ inputLabel } htmlFor={ maskPatternSelectId }>
+            <FormattedMessage { ...messages.maskPattern } />
+          </InputLabel>
+          <Select
+            native
+            onChange={ handleMaskPatternChange }
+            id={ maskPatternSelectId }
+            value={ maskPattern ?? 'default' }
+          >
+            <option value="default">{ formatMessage(messages.default) }</option>
+            { maskPatterns.map((pattern, i) =>
+              <option key={ i } value={ pattern }>{ pattern }</option>
+            ) }
+          </Select>
+        </Grid>
       </Grid>
       <Grid item xs={ 12 } sm={ 6 }>
         <canvas ref={ canvas } />
-      </Grid>
-      <Grid item xs={ 6 } sm={ 3 }>
-        <InputLabel ref={ inputLabel } htmlFor={ errorCorrectionLevelSelectId }>
-          <FormattedMessage { ...messages.errorCorrectionLevel } />
-        </InputLabel>
-        <Select
-          native
-          onChange={ handleErrorCorrectionLevelChange }
-          id={ errorCorrectionLevelSelectId }
-          value={ errorCorrectionLevel }
-        >
-          { errorCorrectionLevels.map((level, i) =>
-            <option key={ i } value={ level }>{ level }</option>
-          ) }
-        </Select>
-      </Grid>
-      <Grid item xs={ 6 } sm={ 3 }>
-        <InputLabel ref={ inputLabel } htmlFor={ maskPatternSelectId }>
-          <FormattedMessage { ...messages.maskPattern } />
-        </InputLabel>
-        <Select
-          native
-          onChange={ handleMaskPatternChange }
-          id={ maskPatternSelectId }
-          value={ maskPattern ?? 'default' }
-        >
-          <option value="default">{ formatMessage(messages.default) }</option>
-          { maskPatterns.map((pattern, i) =>
-            <option key={ i } value={ pattern }>{ pattern }</option>
-          ) }
-        </Select>
       </Grid>
     </Grid>
   )
