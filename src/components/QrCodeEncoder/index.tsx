@@ -25,7 +25,7 @@ const QrCodeEncoder: React.FC<QrCodeEncoderProps> = ({ ...textFieldProps }) => {
   const inputLabel = useRef<HTMLLabelElement>(null)
   const { formatMessage } = useIntl()
 
-  const [errorCorrectionLevel, setErrorCorrectionLevel] = useState<QRCodeErrorCorrectionLevel | undefined>()
+  const [errorCorrectionLevel, setErrorCorrectionLevel] = useState<QRCodeErrorCorrectionLevel>('M') //
   const [maskPattern, setMaskPattern] = useState<QRCodeMaskPattern | undefined>()
 
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
@@ -38,11 +38,11 @@ const QrCodeEncoder: React.FC<QrCodeEncoderProps> = ({ ...textFieldProps }) => {
   }, [canvas, errorCorrectionLevel, maskPattern])
 
   const handleErrorCorrectionLevelChange = useCallback<NonNullable<SelectProps['onChange']>>((event) => {
-    if (!isOneOf<(QRCodeErrorCorrectionLevel | 'default')[]>(...errorCorrectionLevels, 'default')(event.target.value)) {
+    if (!isOneOf<(QRCodeErrorCorrectionLevel)[]>(...errorCorrectionLevels)(event.target.value)) {
       throw new Error //
     }
 
-    const errorCorrectionLevel = event.target.value !== 'default' ? event.target.value : undefined
+    const errorCorrectionLevel = event.target.value
 
     setErrorCorrectionLevel(errorCorrectionLevel)
 
@@ -93,8 +93,8 @@ const QrCodeEncoder: React.FC<QrCodeEncoderProps> = ({ ...textFieldProps }) => {
           native
           onChange={ handleErrorCorrectionLevelChange }
           id={ errorCorrectionLevelSelectId }
+          value={ errorCorrectionLevel }
         >
-          <option value="default">{ formatMessage(messages.default) }</option>
           { errorCorrectionLevels.map((level, i) =>
             <option key={ i } value={ level }>{ level }</option>
           ) }
@@ -108,6 +108,7 @@ const QrCodeEncoder: React.FC<QrCodeEncoderProps> = ({ ...textFieldProps }) => {
           native
           onChange={ handleMaskPatternChange }
           id={ maskPatternSelectId }
+          value={ maskPattern ?? 'default' }
         >
           <option value="default">{ formatMessage(messages.default) }</option>
           { maskPatterns.map((pattern, i) =>

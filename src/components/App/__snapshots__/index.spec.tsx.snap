@@ -2913,11 +2913,6 @@ exports[`App at /qr-code-tools 1`] = `
                   id="00000000-0000-4000-0000-000000000000"
                 >
                   <option
-                    value="default"
-                  >
-                    Default
-                  </option>
-                  <option
                     value="L"
                   >
                     L
