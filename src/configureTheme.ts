@@ -31,7 +31,7 @@ const configureTheme = ({ direction, dark }: Props) => createTheme(adaptV4Theme(
   palette: {
     primary: teal,
     secondary: indigo,
-    type: dark ? 'dark' : 'light',
+    mode: dark ? 'dark' : 'light',
   },
 }))
 
