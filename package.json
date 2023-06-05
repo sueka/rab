@@ -78,7 +78,6 @@
     "immutable": "^4.0.0",
     "inversify": "^6.0.1",
     "inversify-react": "^1.0.1",
-    "jsbi": "^4.1.0",
     "jsqr": "^1.4.0",
     "jss-rtl": "^0.3.0",
     "notistack": "^1.0.10",
