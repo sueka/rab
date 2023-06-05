@@ -3,104 +3,84 @@
 exports[`Counter works 1`] = `
 <div>
   <span
-    class="MuiTypography-root MuiTypography-body1"
+    class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
   >
     0
   </span>
   <div
-    class="MuiButtonGroup-root"
+    class="MuiButtonGroup-root MuiButtonGroup-outlined css-iajp3t-MuiButtonGroup-root"
     role="group"
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
       tabindex="0"
       type="button"
     >
-      <span
-        class="MuiButton-label"
+      <bdi
+        dir="auto"
       >
-        <bdi
-          dir="auto"
-        >
-          Reset
-        </bdi>
-      </span>
+        Reset
+      </bdi>
       <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
       tabindex="0"
       type="button"
     >
-      <span
-        class="MuiButton-label"
+      <bdi
+        dir="auto"
       >
-        <bdi
-          dir="auto"
-        >
-          +
-        </bdi>
-      </span>
+        +
+      </bdi>
       <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
       tabindex="0"
       type="button"
     >
-      <span
-        class="MuiButton-label"
+      <bdi
+        dir="auto"
       >
-        <bdi
-          dir="auto"
-        >
-          -
-        </bdi>
-      </span>
+        -
+      </bdi>
       <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
       data-testid="incrementIfOddButton"
       tabindex="0"
       type="button"
     >
-      <span
-        class="MuiButton-label"
+      <bdi
+        dir="auto"
       >
-        <bdi
-          dir="auto"
-        >
-          + if odd
-        </bdi>
-      </span>
+        + if odd
+      </bdi>
       <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlined"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
       data-testid="incrementAsyncButton"
       tabindex="0"
       type="button"
     >
-      <span
-        class="MuiButton-label"
+      <bdi
+        dir="auto"
       >
-        <bdi
-          dir="auto"
-        >
-          + in 1 second
-        </bdi>
-      </span>
+        + in 1 second
+      </bdi>
       <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
   </div>
