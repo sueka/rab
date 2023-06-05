@@ -11,7 +11,6 @@ import List from '@mui/material/List'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import ListSubheader from '@mui/material/ListSubheader'
-import { Theme, makeStyles } from '@mui/material/styles'
 import BrushIcon from '@mui/icons-material/Brush'
 import HomeIcon from '@mui/icons-material/Home'
 import ImageIcon from '@mui/icons-material/Image'
@@ -22,6 +21,7 @@ import SettingsIcon from '@mui/icons-material/Settings'
 import TextFieldsIcon from '@mui/icons-material/TextFields'
 import React, { useContext, useMemo } from 'react'
 import { FormattedMessage } from 'react-intl'
+import { makeStyles } from 'tss-react/mui'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import ListItemLink from '~/components/ListItemLink'
@@ -40,20 +40,24 @@ interface StyleProps {
   topAppbarHeight?: number
 }
 
-const useStyles = makeStyles<Theme, StyleProps, 'DrawerHeader'>((theme) => ({
-  DrawerHeader: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
-      paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(3),
+const useStyles = makeStyles<StyleProps>()<'DrawerHeader'>((theme, { topAppbarHeight }) => {
+  const height = topAppbarHeight !== undefined ? typed<[number]>`${ topAppbarHeight }px` : undefined
+
+  return {
+    DrawerHeader: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      [theme.breakpoints.up('sm')]: {
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3),
+      },
+      height,
+      display: 'grid',
+      alignItems: 'center',
+      justifyContent: 'start',
     },
-    height: ({ topAppbarHeight }) => topAppbarHeight !== undefined ? typed<[number]>`${ topAppbarHeight }px` : undefined,
-    display: 'grid',
-    alignItems: 'center',
-    justifyContent: 'start',
-  },
-}), { name: 'Nav' })
+  }
+}/* , { name: 'Nav' } */)
 
 const FlippedListIcon: React.FC<React.PropsOf<typeof ListIcon>> = ({ style, ...restProps }) => {
   if (style === undefined) {
@@ -81,7 +85,7 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
     }
   }, [dir])
 
-  const jssClasses = useStyles({ topAppbarHeight })
+  const { classes: jssClasses } = useStyles({ topAppbarHeight })
 
   // NOTE: anchor はページが RtL であることを検出すると水平反転するので、 dir から計算する必要は無い。
   return (

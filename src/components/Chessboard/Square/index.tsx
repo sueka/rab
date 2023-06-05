@@ -1,7 +1,8 @@
-import { Theme, makeStyles } from '@mui/material/styles'
+import { Theme } from '@mui/material/styles'
 import classnames from 'classnames'
 import React, { useCallback, useContext, useMemo } from 'react'
 import { useDrop } from 'react-dnd'
+import { makeStyles } from 'tss-react/mui'
 
 import { Props as ChessmanProps } from '~/components/Chessboard/Chessman'
 import ChessContext from '~/contexts/ChessContext'
@@ -20,7 +21,7 @@ declare module '@mui/material/styles/createPalette' {
   }
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()((theme: Theme) => ({
   Square: {
     '&$Square$Target': { // NOTE: 詳細度を CSS の .White.Square より大きくするためにセレクターを冗長にしている。
       backgroundColor: theme.palette.primary['100'],
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Square: React.FC<Props> = ({ children, coord }: Props) => {
   const { picking, targets, halfMove, releaseChessman } = useContext(ChessContext)
-  const jssClasses = useStyles()
+  const { classes: jssClasses } = useStyles()
 
   const attacked = useMemo(() => targets?.some((target) => equalsChessCoordinates(coord, target)) ?? false, [coord, targets])
 

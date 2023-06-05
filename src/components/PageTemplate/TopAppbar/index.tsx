@@ -5,12 +5,12 @@ import IconButton from '@mui/material/IconButton'
 import Popover from '@mui/material/Popover'
 import Toolbar from '@mui/material/Toolbar'
 import Tooltip from '@mui/material/Tooltip'
-import { Theme, makeStyles } from '@mui/material/styles'
 import MenuIcon from '@mui/icons-material/Menu'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilState } from 'recoil'
+import { makeStyles } from 'tss-react/mui'
 
 import notificationsState from '~/atoms/notificationsState'
 import LocaleSelect from '~/components/LocaleSelect' // TODO
@@ -31,11 +31,11 @@ interface StyleProps {
   topAppbarHeight?: number
 }
 
-const useStyles = makeStyles<Theme, StyleProps, 'Offset'>({
+const useStyles = makeStyles<StyleProps>()<'Offset'>((_theme, { topAppbarHeight }) => ({
   Offset: {
-    height: ({ topAppbarHeight }) => topAppbarHeight,
+    height: topAppbarHeight,
   },
-})
+}))
 
 const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonClick }, forwardedRef) => {
   const { width: screenWidth } = useScreen()
@@ -59,7 +59,7 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
 
   const ref = useRefsMerged(forwardedRef, ownRef)
 
-  const jssClasses = useStyles({ topAppbarHeight: height ?? undefined })
+  const { classes: jssClasses } = useStyles({ topAppbarHeight: height ?? undefined })
 
   const [notifications] = useRecoilState(notificationsState)
   const [notificationsOpen, setNotificationsOpen] = useState(false)

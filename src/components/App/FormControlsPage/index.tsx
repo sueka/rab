@@ -3,10 +3,10 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import TextField from '@mui/material/TextField'
-import { Theme, makeStyles } from '@mui/material/styles'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { makeStyles } from 'tss-react/mui'
 
 import CodeField from '~/components/CodeField'
 import CopyTextButton from '~/components/CopyTextButton'
@@ -187,18 +187,18 @@ interface StyleProps {
   height: number | null
 }
 
-const useStyles = makeStyles<Theme, StyleProps, 'Image'>({
+const useStyles = makeStyles<StyleProps>()<'Image'>((_theme, { width, height }) => ({
   Image: {
-    maxWidth: ({ width }) => width !== null ? width / 2 : undefined,
-    maxHeight: ({ height }) => height !== null ? height / 2 : undefined,
+    maxWidth: width !== null ? width / 2 : undefined,
+    maxHeight: height !== null ? height / 2 : undefined,
   },
-})
+}))
 
 const ImageFile: React.FC<ImageFileProps> = ({ file }) => {
   const [src, setSrc] = useState<string | null>(null)
   const reader = useMemo(() => new FileReader, [])
   const { width, height } = useScreen()
-  const jssClasses = useStyles({ width, height })
+  const { classes: jssClasses } = useStyles({ width, height })
 
   const handleReaderLoad = useCallback<NonNullable<FileReader['onload']>>((event) => {
     if (event.target?.result == null) {

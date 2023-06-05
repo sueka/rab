@@ -2,10 +2,10 @@
 
 exports[`LocaleSelect 1`] = `
 <div
-  class="MuiFormControl-root"
+  class="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
 >
   <label
-    class="MuiFormLabel-root MuiInputLabel-root InputLabel MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard InputLabel css-1c2i806-MuiFormLabel-root-MuiInputLabel-root"
     data-shrink="true"
     for="00000000-0000-4000-0000-000000000000"
   >
@@ -16,28 +16,29 @@ exports[`LocaleSelect 1`] = `
     </bdi>
   </label>
   <div
-    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
+    labelwidth="0"
   >
     <select
       aria-invalid="false"
-      class="MuiSelect-root MuiSelect-select makeStyles-Select-1 makeStyles-Select-3 Select MuiInputBase-input MuiInput-input"
+      class="MuiNativeSelect-select Select MuiNativeSelect-standard MuiInputBase-input MuiInput-input css-1r38e9g-MuiNativeSelect-select-Select-MuiInputBase-input-MuiInput-input"
       data-testid="localeSelect"
       id="00000000-0000-4000-0000-000000000000"
     >
       <option
-        class="makeStyles-Option-2"
+        class="css-4kgze8-Option"
         value="en"
       >
         English
       </option>
       <option
-        class="makeStyles-Option-2"
+        class="css-4kgze8-Option"
         value="he"
       >
         Hebrew - עברית
       </option>
       <option
-        class="makeStyles-Option-2"
+        class="css-4kgze8-Option"
         value="ja"
       >
         Japanese - 日本語
@@ -45,7 +46,8 @@ exports[`LocaleSelect 1`] = `
     </select>
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSelect-icon"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiNativeSelect-icon MuiNativeSelect-iconStandard css-10bey84-MuiSvgIcon-root-MuiNativeSelect-icon"
+      data-testid="ArrowDropDownIcon"
       focusable="false"
       viewBox="0 0 24 24"
     >

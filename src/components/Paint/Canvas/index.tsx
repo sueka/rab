@@ -1,6 +1,6 @@
-import { Theme, makeStyles } from '@mui/material/styles'
 import classnames from 'classnames'
 import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { makeStyles } from 'tss-react/mui'
 
 import { shouldBeNullish, shouldBePresent } from '~/asserters/commonAsserters'
 import useRefsMerged from '~/hooks/useRefsMerged'
@@ -21,12 +21,12 @@ interface StyleProps {
   height: number
 }
 
-const useStyles = makeStyles<Theme, StyleProps, 'Canvas'>({
-  Canvas: ({ width, height }) => ({
+const useStyles = makeStyles<StyleProps>()<'Canvas'>((_theme, { width, height }) => ({
+  Canvas: {
     width,
     height,
-  }),
-})
+  },
+}))
 
 const Canvas = forwardRef<HTMLCanvasElement, Props>(({ width, height, lineWidth, context, tool }, forwardedRef) => {
   const [drawing, setDrawing] = useState(false)
@@ -35,7 +35,7 @@ const Canvas = forwardRef<HTMLCanvasElement, Props>(({ width, height, lineWidth,
   const ownRef = useRef<HTMLCanvasElement>(null)
   const ref = useRefsMerged(forwardedRef, ownRef)
 
-  const jssClasses = useStyles({ width,  height })
+  const { classes: jssClasses } = useStyles({ width,  height })
   const canvasClassName = useMemo(() => classnames(jssClasses.Canvas, classes.Canvas), [jssClasses.Canvas])
 
   const { dpr } = useScreen()

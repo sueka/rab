@@ -1,6 +1,6 @@
-import { makeStyles } from '@mui/material'
 import React, { useEffect, useRef, useState } from 'react'
 import { TimeLike } from  'temporal-polyfill'
+import { makeStyles } from 'tss-react/mui'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import zipWithIndexIterable from '~/extensions/Iterable/zipWithIndexIterable'
@@ -127,12 +127,12 @@ interface StyleProps {
   height: number
 }
 
-const useStyles = makeStyles<never, StyleProps, 'Canvas'>({
-  Canvas: ({ width, height }) => ({
+const useStyles = makeStyles<StyleProps>()<'Canvas'>((_theme, { width, height }) => ({
+  Canvas: {
     width,
     height,
-  }),
-})
+  },
+}))
 
 const StoppedClock: React.FC<Props> = ({
   time,
@@ -143,7 +143,7 @@ const StoppedClock: React.FC<Props> = ({
 
   const canvas = useRef<HTMLCanvasElement>(null)
 
-  const jssClasses = useStyles({
+  const { classes: jssClasses } = useStyles({
     width: 2 * radius,
     height: 2 * radius,
   })

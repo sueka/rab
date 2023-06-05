@@ -1,9 +1,10 @@
 import Collapse from '@mui/material/Collapse'
 import Divider from '@mui/material/Divider'
-import { Theme, makeStyles, useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 import classNames from 'classnames'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
+import { makeStyles } from 'tss-react/mui'
 
 import bannerOpenState from '~/atoms/bannerOpenState'
 import { Banner } from '~/atoms/bannersState'
@@ -19,16 +20,16 @@ interface StyleProps {
   topAppbarHeight?: number
 }
 
-const useStyles = makeStyles<Theme, StyleProps, 'Collapse'>({
+const useStyles = makeStyles<StyleProps>()<'Collapse'>((_theme, { topAppbarHeight }) => ({
   Collapse: {
-    top: ({ topAppbarHeight }) => topAppbarHeight,
+    top: topAppbarHeight,
   },
-})
+}))
 
 const BannerContainer: React.FC<Props> = ({ topAppbarHeight }) => {
   const currentBanner = useRecoilValue(currentBannerState)
   const [open, setOpen] = useRecoilState(bannerOpenState)
-  const jssClasses = useStyles({ topAppbarHeight })
+  const { classes: jssClasses } = useStyles({ topAppbarHeight })
   const collapseClassName = useMemo(() => classNames(jssClasses.Collapse, classes.Collapse), [jssClasses])
   const [bannerToShow, setBannerToShow] = useState<Banner | null>(null)
   const theme = useTheme()

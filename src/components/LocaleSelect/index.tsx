@@ -4,12 +4,13 @@ import Input from '@mui/material/Input'
 import InputLabel from '@mui/material/InputLabel'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import Select, { SelectProps } from '@mui/material/Select'
-import { Theme, makeStyles, useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 import classnames from 'classnames'
 import { OrderedSet } from 'immutable'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { connect } from 'react-redux'
+import { makeStyles } from 'tss-react/mui'
 import { v4 } from 'uuid'
 
 import IntlProviderContext from '~/contexts/IntlProviderContext'
@@ -48,9 +49,9 @@ interface StyleProps {
   selectMinWidth?: number
 }
 
-const useStyles = makeStyles<Theme, StyleProps, 'Select' | 'Option'>((theme) => ({
+const useStyles = makeStyles<StyleProps>()<'Select' | 'Option'>((theme, { selectMinWidth }) => ({
   Select: {
-    minWidth: ({ selectMinWidth }) => selectMinWidth,
+    minWidth: selectMinWidth,
   },
   Option: {
     // backgroundColor: theme.palette.background.paper,
@@ -65,7 +66,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
   const inputId = useMemo(v4, [])
   const theme = useTheme()
   const { dir } = useContext(IntlProviderContext)
-  const jssClasses = useStyles({ selectMinWidth: selectMinWidth ?? undefined })
+  const { classes: jssClasses } = useStyles({ selectMinWidth: selectMinWidth ?? undefined })
 
   // NOTE: Fortunately, FormControl is nothing but FormControl.
   const variant = useMemo(() => FormControlProps?.variant ?? theme?.props?.MuiFormControl?.variant ?? 'standard', [FormControlProps?.variant, theme?.props?.MuiFormControl?.variant])
