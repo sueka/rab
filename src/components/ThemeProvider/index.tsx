@@ -8,13 +8,11 @@ import IntlProviderContext from '~/contexts/IntlProviderContext'
 import darkState from '~/selectors/darkState'
 
 declare module '@mui/styles/defaultTheme' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
 }
 
 // TODO: Delete
 declare module '@mui/styles/defaultTheme' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
 }
 
