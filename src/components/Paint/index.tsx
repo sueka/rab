@@ -82,7 +82,7 @@ const Paint: React.FC = () => {
         <FormattedMessage { ...messages.clear } />
       </Button>
       <Toolbox value={ tool } onChange={ handleToolChange } />
-      <FormControl disabled={ tool !== 'pen' }>
+      <FormControl variant="standard" disabled={ tool !== 'pen' }>
         <FormLabel>line cap</FormLabel>
         <RadioGroup name="lineCap" value={ lineCap } onChange={ handlePenCapRadioChange }>
           <FormControlLabel value="butt" label="butt" control={ <Radio /> } />

@@ -118,6 +118,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
 
   return (
     <FormControl
+      variant="standard"
       { ...FormControlProps }
       hiddenLabel={ hiddenLabel }
       className={ rootClassName } // NOTE: Overrides FormControlProps.className
@@ -128,6 +129,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
         </InputLabel>
       ) }
       <Select
+        variant="standard"
         native
         classes={ {
           select: selectSelectClassName,

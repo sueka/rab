@@ -13,6 +13,7 @@ const ImageDataUrlDecoder: React.FC = () => {
     <Grid container spacing={ 2 }>
       <Grid item xs={ 12 } sm={ 6 }>
         <TextField
+          variant="standard"
           fullWidth
           multiline
           maxRows={ 10 }

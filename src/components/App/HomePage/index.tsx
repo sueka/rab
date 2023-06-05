@@ -47,6 +47,7 @@ const HomePage: React.FC = () => {
       </Typography>
       <SetClockButton />
       <TextField
+        variant="standard"
         value={ text }
         onChange={ handleChange }
         InputProps={ {

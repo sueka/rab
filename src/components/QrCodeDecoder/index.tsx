@@ -17,6 +17,7 @@ const CopiableTextField: React.FC<CopiableTextFieldProps> = ({ value, ...restPro
 
   return (
     <TextField
+      variant="standard"
       value={ value }
       inputRef={ input }
       InputProps={ {

@@ -148,6 +148,7 @@ const CodeField: React.FC<Props> = ({
       </Helmet>
       <pre className={ preClassName } dangerouslySetInnerHTML={ { __html: hlText ?? '' } } />
       <TextField
+        variant="standard"
         fullWidth // TODO: false でもうまく動くようにする
         multiline // TODO: false でもうまく動くようにする
         value={ value }

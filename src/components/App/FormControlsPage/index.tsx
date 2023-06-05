@@ -29,6 +29,7 @@ const CopiableTextField: React.FC = () => {
 
   return (
     <TextField
+      variant="standard"
       label="label"
       value={ text }
       onChange={ handleChange }
@@ -90,6 +91,7 @@ const MicIncludedTextField: React.FC = () => {
 
   return (
     <TextField
+      variant="standard"
       label="label"
       value={ text }
       onChange={ handleChange }
@@ -155,6 +157,7 @@ const MicIncludedCopiableTextField: React.FC = () => {
 
   return (
     <TextField
+      variant="standard"
       label="label"
       value={ text }
       onChange={ handleChange }

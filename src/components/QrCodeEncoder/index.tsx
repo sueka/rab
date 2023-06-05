@@ -81,13 +81,14 @@ const QrCodeEncoder: React.FC<QrCodeEncoderProps> = ({ ...textFieldProps }) => {
     <Grid container spacing={ 2 } direction="row">
       <Grid item xs={ 12 } sm={ 6 } container spacing={ 2 } alignContent="flex-start">
         <Grid item xs={ 12 }>
-          <TextField fullWidth multiline inputRef={ input } onChange={ handleChange } { ...textFieldProps } />
+          <TextField variant="standard" fullWidth multiline inputRef={ input } onChange={ handleChange } { ...textFieldProps } />
         </Grid>
         <Grid item xs={ 6 }>
           <InputLabel ref={ inputLabel } htmlFor={ errorCorrectionLevelSelectId }>
             <FormattedMessage { ...messages.errorCorrectionLevel } />
           </InputLabel>
           <Select
+            variant="standard"
             native
             onChange={ handleErrorCorrectionLevelChange }
             id={ errorCorrectionLevelSelectId }
@@ -103,6 +104,7 @@ const QrCodeEncoder: React.FC<QrCodeEncoderProps> = ({ ...textFieldProps }) => {
             <FormattedMessage { ...messages.maskPattern } />
           </InputLabel>
           <Select
+            variant="standard"
             native
             onChange={ handleMaskPatternChange }
             id={ maskPatternSelectId }
