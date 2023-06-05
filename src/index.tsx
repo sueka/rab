@@ -11,6 +11,7 @@ import '~/polyfills/apps/globalThis.SpeechRecognition'
 
 import CssBaseline from '@mui/material/CssBaseline'
 import { StylesProvider, jssPreset } from '@mui/styles'
+import { StyledEngineProvider } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { ConnectedRouter } from 'connected-react-router'
 import FaviconNotification from 'favicon-notification'

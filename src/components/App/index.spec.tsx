@@ -1,3 +1,4 @@
+import { StyledEngineProvider } from '@mui/material/styles'
 import { render, waitForDomChange } from '@testing-library/react'
 import { stringify } from 'bcp-47'
 import { Schema } from 'bcp-47/lib/stringify'
