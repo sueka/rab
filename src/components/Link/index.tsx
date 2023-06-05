@@ -24,12 +24,12 @@ export default class Link extends React.Component<Props> {
       console.warn(typed<[string]>`${ color } is not a Material-UI Typography color.`)
 
       return (
-        <MuiLink component={ RouterLinkWithRef } { ...restProps } />
+        <MuiLink component={ RouterLinkWithRef } { ...restProps } underline="hover" />
       )
     }
 
     return (
-      <MuiLink component={ RouterLinkWithRef } color={ color } { ...restProps } />
+      <MuiLink component={ RouterLinkWithRef } color={ color } { ...restProps } underline="hover" />
     )
   }
 }

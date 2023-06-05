@@ -78,7 +78,7 @@ class Info extends React.Component<Props, State> {
       return repo.toString()
     }
 
-    return <Link href={ repo.right.html_url }>{ repo.right.full_name }</Link>
+    return <Link href={ repo.right.html_url } underline="hover">{ repo.right.full_name }</Link>
   }
 
   public override render() {
