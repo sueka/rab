@@ -1,5 +1,4 @@
-import indigo from '@mui/material/colors/indigo'
-import teal from '@mui/material/colors/teal'
+import { indigo, teal } from '@mui/material/colors'
 import { createTheme, adaptV4Theme } from '@mui/material/styles';
 
 interface Props {
