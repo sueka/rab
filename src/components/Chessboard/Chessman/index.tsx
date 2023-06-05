@@ -1,4 +1,4 @@
-import { Theme, makeStyles } from '@material-ui/core/styles'
+import { Theme, makeStyles } from '@mui/material/styles'
 import classnames from 'classnames'
 import React, { useCallback, useContext, useMemo } from 'react'
 import { useDrag } from 'react-dnd'
@@ -17,7 +17,7 @@ interface CollectedProps {
   dragging: boolean
 }
 
-declare module '@material-ui/core/styles/createPalette' {
+declare module '@mui/material/styles/createPalette' {
   interface PaletteColor {
     A700: string
   }

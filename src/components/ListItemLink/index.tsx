@@ -1,4 +1,4 @@
-import ListItem, { ListItemProps } from '@material-ui/core/ListItem'
+import ListItem, { ListItemProps } from '@mui/material/ListItem'
 import * as React from 'react'
 
 import Link, { Props as LinkProps } from '~/components/Link'

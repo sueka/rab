@@ -1,4 +1,4 @@
-import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link'
+import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link'
 import React from 'react'
 import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom'
 

@@ -1,6 +1,6 @@
-import indigo from '@material-ui/core/colors/indigo'
-import teal from '@material-ui/core/colors/teal'
-import { createTheme } from '@material-ui/core/styles'
+import indigo from '@mui/material/colors/indigo'
+import teal from '@mui/material/colors/teal'
+import { createTheme } from '@mui/material/styles'
 
 interface Props {
   direction?: Direction

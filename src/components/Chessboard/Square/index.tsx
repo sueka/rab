@@ -1,4 +1,4 @@
-import { Theme, makeStyles } from '@material-ui/core/styles'
+import { Theme, makeStyles } from '@mui/material/styles'
 import classnames from 'classnames'
 import React, { useCallback, useContext, useMemo } from 'react'
 import { useDrop } from 'react-dnd'
@@ -14,7 +14,7 @@ interface Props extends React.PropsWithChildren<{}> {
   coord: Chess.Coordinates
 }
 
-declare module '@material-ui/core/styles/createPalette' {
+declare module '@mui/material/styles/createPalette' {
   interface PaletteColor {
     '100': string
   }

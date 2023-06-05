@@ -1,5 +1,5 @@
-import Button, { ButtonProps } from '@material-ui/core/Button'
-import FormLabel from '@material-ui/core/FormLabel'
+import Button, { ButtonProps } from '@mui/material/Button'
+import FormLabel from '@mui/material/FormLabel'
 import Bowser from 'bowser'
 import classnames from 'classnames'
 import React, { useCallback, useMemo, useRef } from 'react'

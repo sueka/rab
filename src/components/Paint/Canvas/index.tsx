@@ -1,4 +1,4 @@
-import { Theme, makeStyles } from '@material-ui/core/styles'
+import { Theme, makeStyles } from '@mui/material/styles'
 import classnames from 'classnames'
 import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 

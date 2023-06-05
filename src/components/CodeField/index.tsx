@@ -1,5 +1,5 @@
-import TextField, { TextFieldProps as OriginalTextFieldProps } from '@material-ui/core/TextField'
-import { makeStyles } from '@material-ui/core/styles'
+import TextField, { TextFieldProps as OriginalTextFieldProps } from '@mui/material/TextField'
+import { makeStyles } from '@mui/material/styles'
 import classnames from 'classnames'
 import hljs from 'highlight.js'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'

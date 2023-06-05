@@ -1,4 +1,4 @@
-import { ThemeProvider as OriginalThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider as OriginalThemeProvider } from '@mui/material/styles'
 import React, { useContext, useMemo } from 'react'
 import { useRecoilState } from 'recoil'
 
