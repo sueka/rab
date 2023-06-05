@@ -61,7 +61,6 @@ const useStyles = makeStyles<StyleProps>()<'Select' | 'Option'>((theme, { select
 
 export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = false, classes: propClasses, FormControlProps, locale, selectLocale }) => {
   const { formatMessage } = useIntl()
-  const [labelWidth, setLabelWidth] = useState<number | null>(null)
   const [selectMinWidth, setSelectMinWidth] = useState<number | null>(null)
   const inputId = useMemo(v4, [])
   const theme = useTheme()
@@ -69,7 +68,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
   const { classes: jssClasses } = useStyles({ selectMinWidth: selectMinWidth ?? undefined })
 
   // NOTE: Fortunately, FormControl is nothing but FormControl.
-  const variant = useMemo(() => FormControlProps?.variant ?? theme?.props?.MuiFormControl?.variant ?? 'standard', [FormControlProps?.variant, theme?.props?.MuiFormControl?.variant])
+  const variant = useMemo(() => FormControlProps?.variant ?? theme?.components?.MuiFormControl?.defaultProps?.variant ?? 'standard', [FormControlProps?.variant, theme?.components?.MuiFormControl?.defaultProps?.variant])
 
   const rootClassName = useMemo(() => classnames(propClasses?.root, FormControlProps?.className), [propClasses?.root, FormControlProps?.className])
   const labelClassName = useMemo(() => classnames(propClasses?.label, cssClasses.InputLabel), [propClasses?.label])
@@ -85,8 +84,6 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
     if (inputLabel.current === null) {
       return
     }
-
-    setLabelWidth(inputLabel.current.offsetWidth)
 
     if (select.current === null) {
       return
@@ -137,7 +134,6 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
           icon: selectIconClassName,
         } }
         ref={ select }
-        labelWidth={ !hiddenLabel ? labelWidth ?? undefined : undefined }
         value={ locale }
         onChange={ handleChange }
         id={ inputId }
@@ -151,7 +147,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
               } }
             />
           ),
-          outlined: <OutlinedInput className={ inputClassName } labelWidth={ labelWidth ?? undefined } />,
+          outlined: <OutlinedInput className={ inputClassName } />,
           filled: <FilledInput className={ inputClassName } />,
         }[variant] }
       >

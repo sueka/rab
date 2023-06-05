@@ -17,7 +17,6 @@ exports[`LocaleSelect 1`] = `
   </label>
   <div
     class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
-    labelwidth="0"
   >
     <select
       aria-invalid="false"
