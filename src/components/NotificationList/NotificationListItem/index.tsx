@@ -22,7 +22,7 @@ const NotificationListItem: React.FC<Props> = ({ notification }) => {
         secondary={ <FormattedTime value={ notification.timestamp } format="medium" /> }
       />
       <ListItemSecondaryAction>
-        <IconButton edge="end" onClick={ handleDeleteButtonClick }>
+        <IconButton edge="end" onClick={ handleDeleteButtonClick } size="large">
           <DeleteIcon />
         </IconButton>
       </ListItemSecondaryAction>

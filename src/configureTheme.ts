@@ -1,13 +1,13 @@
 import indigo from '@mui/material/colors/indigo'
 import teal from '@mui/material/colors/teal'
-import { createTheme } from '@mui/material/styles'
+import { createTheme, adaptV4Theme } from '@mui/material/styles';
 
 interface Props {
   direction?: Direction
   dark: boolean
 }
 
-const configureTheme = ({ direction, dark }: Props) => createTheme({
+const configureTheme = ({ direction, dark }: Props) => createTheme(adaptV4Theme({
   direction,
   typography: {
     fontFamily: 'sans-serif',
@@ -34,6 +34,6 @@ const configureTheme = ({ direction, dark }: Props) => createTheme({
     secondary: indigo,
     type: dark ? 'dark' : 'light',
   },
-})
+}))
 
 export default configureTheme

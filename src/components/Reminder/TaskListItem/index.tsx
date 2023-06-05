@@ -114,7 +114,7 @@ const TaskListItem: React.FC<Props> = ({ value, index, onChange, onDelete, valid
           helperText={ helperText }
         />
         <ListItemSecondaryAction>
-          <IconButton onClick={ onDelete } edge="end">
+          <IconButton onClick={ onDelete } edge="end" size="large">
             <DeleteIcon />
           </IconButton>
         </ListItemSecondaryAction>

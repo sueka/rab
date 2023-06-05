@@ -86,7 +86,7 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
     <>
       <AppBar position="fixed" ref={ ref }>
         <Toolbar>
-          <IconButton edge="start" color="inherit" onClick={ onMenuIconButtonClick }>
+          <IconButton edge="start" color="inherit" onClick={ onMenuIconButtonClick } size="large">
             <MenuIcon />
           </IconButton>
           <Spacer />
@@ -100,7 +100,7 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
                 disableTouchListener={ notifications.length === 0 }
               >
                 <span className={ classes.TooltipWrapper }>
-                  <IconButton color="inherit" onClick={ handleNotificationsShow } ref={ anchor } disabled={ notifications.length === 0 }>
+                  <IconButton color="inherit" onClick={ handleNotificationsShow } ref={ anchor } disabled={ notifications.length === 0 } size="large">
                     <Badge color="secondary" badgeContent={ notifications.length }>
                       <NotificationsIcon />
                     </Badge>

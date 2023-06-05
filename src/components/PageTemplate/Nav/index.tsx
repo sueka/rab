@@ -87,7 +87,7 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
   return (
     <Drawer anchor="left" open={ open } onClose={ onClose } PaperProps={ { ref } }>
       <div className={ jssClasses.DrawerHeader }>
-        <IconButton edge="start" color="inherit" onClick={ onClose }>
+        <IconButton edge="start" color="inherit" onClick={ onClose } size="large">
           <MenuIcon />
         </IconButton>
       </div>
@@ -197,7 +197,7 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
         </ListItemLink>
       </List>
     </Drawer>
-  )
+  );
 })
 
 export default Nav

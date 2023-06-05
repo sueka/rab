@@ -137,12 +137,14 @@ const Main: React.FC<Props> = ({ container, baseUrl }) => {
               <ConnectedRouter history={ history }>
                 <ServiceProvider container={ container }>
                   <StylesProvider jss={ jss }>
-                    <ThemeProvider defaultDark={ dark }>
-                      <CssBaseline />
-                      <SnackbarProvider maxSnack={ 1 } hideIconVariant>
-                        <App />
-                      </SnackbarProvider>
-                    </ThemeProvider>
+                    <StyledEngineProvider injectFirst>
+                      <ThemeProvider defaultDark={ dark }>
+                        <CssBaseline />
+                        <SnackbarProvider maxSnack={ 1 } hideIconVariant>
+                          <App />
+                        </SnackbarProvider>
+                      </ThemeProvider>
+                    </StyledEngineProvider>
                   </StylesProvider>
                 </ServiceProvider>
               </ConnectedRouter>

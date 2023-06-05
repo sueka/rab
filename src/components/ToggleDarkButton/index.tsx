@@ -30,11 +30,11 @@ const ToggleDarkButton = () => {
     <Tooltip title={ <FormattedMessage { ...messages.toggleLightDarkTheme } /> }>
       <span className={ classes.TooltipWrapper }>
         { dark ?? defaultDark ? (
-          <IconButton onClick={ handleOff }>
+          <IconButton onClick={ handleOff } size="large">
             <Brightness7Icon />
           </IconButton>
         ) : (
-          <IconButton onClick={ handleOn } color="inherit">
+          <IconButton onClick={ handleOn } color="inherit" size="large">
             <Brightness4Icon />
           </IconButton>
         ) }

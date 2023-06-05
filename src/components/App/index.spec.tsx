@@ -135,9 +135,11 @@ ${ '/nonexistent-path' }
               <StaticRouter context={ context } location={ location }>
                 <ServiceProvider container={ inversifyContainer }>
                   <SnackbarProvider>
-                    <ThemeProvider defaultDark={ false }>
-                      <App />
-                    </ThemeProvider>
+                    <StyledEngineProvider injectFirst>
+                      <ThemeProvider defaultDark={ false }>
+                        <App />
+                      </ThemeProvider>
+                    </StyledEngineProvider>
                   </SnackbarProvider>
                 </ServiceProvider>
               </StaticRouter>

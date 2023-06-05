@@ -1,4 +1,4 @@
-import { ThemeProvider as OriginalThemeProvider } from '@mui/material/styles'
+import { ThemeProvider as OriginalThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
 import React, { useContext, useMemo } from 'react'
 import { useRecoilState } from 'recoil'
 
@@ -6,6 +6,17 @@ import configureTheme from '~/configureTheme'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
 import IntlProviderContext from '~/contexts/IntlProviderContext'
 import darkState from '~/selectors/darkState'
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
+// TODO: Delete
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
 
 interface ThemeProviderProps {
   defaultDark: boolean

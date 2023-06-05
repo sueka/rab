@@ -61,7 +61,7 @@ const CopyTextButton: React.FC<Props> = ({ inputFor: input }) => {
       disableTouchListener={ disabled }
     >
       <span>
-        <IconButton onClick={ handleClick } disabled={ disabled }>
+        <IconButton onClick={ handleClick } disabled={ disabled } size="large">
           <ContentCopyIcon />
         </IconButton>
       </span>

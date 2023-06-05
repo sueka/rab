@@ -62,6 +62,7 @@ const NotifyMeButton: React.FC<Props> = ({ inputFor: ref }) => {
         <IconButton
           onClick={ handleNotifyButtonClick }
           disabled={ disabled }
+          size="large"
         >
           <SendIcon />
         </IconButton>
