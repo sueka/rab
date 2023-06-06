@@ -1,6 +1,10 @@
-declare const styles: {
-  readonly "ChessboardTable": string;
-  readonly "ChessboardTd": string;
-};
-export = styles;
+declare namespace ClassesCssNamespace {
+  export interface IClassesCss {
+    ChessboardTable: string;
+    ChessboardTd: string;
+  }
+}
 
+declare const ClassesCssModule: ClassesCssNamespace.IClassesCss;
+
+export = ClassesCssModule;
