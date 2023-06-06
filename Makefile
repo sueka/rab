@@ -15,12 +15,12 @@ css-d-src := $(filter-out src/transition.css, $(css-d-src))
 css-d := $(patsubst %.css, %.css.d.ts, $(css-d-src))
 gh-pages-src := $(wildcard gh-pages/src/*)
 
-value-deps := $(src) $(messages) src/lusp-client src/crate/pkg
+value-deps := $(src) $(messages) $(css-d-src) src/lusp-client src/crate/pkg
 type-deps := $(src) $(messages) $(css-d) src/lusp-client src/crate/pkg
 
 .DEFAULT_GOAL := build
 
-.PHONY : FORCE build served messages cssd lusp-client crate-pkg check linted eslinted stylelinted typed tested test-job up-to-date-snapshots doc clean clobber
+.PHONY : FORCE build served messages lusp-client crate-pkg check linted eslinted stylelinted typed tested test-job up-to-date-snapshots doc clean clobber
 
 # FORCE :
 
@@ -29,10 +29,9 @@ dist : webpack.config.ts $(value-deps)
 	-rm -r $@/
 	$(NPX) webpack --config $<
 
-# FIXME: 計測して、必要なら一連の `@echo` を `@echo $(value-deps) | tr " " '\n' | entr -r $(MAKE) messages cssd src/crate/pkg` に置き換える。
+# FIXME: 計測して、必要なら一連の `@echo` を `@echo $(value-deps) | tr " " '\n' | entr -r $(MAKE) messages src/crate/pkg` に置き換える。
 served : webpack.config.dev.ts $(value-deps)
 	@echo $(messages-src) | tr " " '\n' | entr -r $(MAKE) messages &
-	@echo $(css-d-src) | tr " " '\n' | entr -r $(MAKE) cssd &
 	@echo $(crate-src) | tr " " '\n' | entr -r $(MAKE) src/crate/pkg &
 	$(NPX) webpack serve --config $<
 
@@ -44,11 +43,6 @@ gh-pages/dist : gh-pages/webpack.config.ts $(gh-pages-src)
 messages : $(messages)
 $(messages) : $(messages-src)
 	$(NPX) extract-messages --flat --default-locale=en --locales=en,he,ja --output=public/messages src/**/messages.ts
-
-cssd : $(css-d)
-$(css-d) : $(css-d-src)
-	$(NPX) tcm --pattern "src/components/**/*.css"
-	@touch $(css-d)
 
 lusp-client : src/lusp-client
 src/lusp-client : FORCE
