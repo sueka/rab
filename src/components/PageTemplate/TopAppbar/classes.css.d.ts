@@ -1,9 +1,13 @@
-declare const styles: {
-  readonly "LocaleSelectLabel": string;
-  readonly "LocaleSelectInput": string;
-  readonly "LocaleSelectSelectIcon": string;
-  readonly "LocaleSelectInputUnderline": string;
-  readonly "TooltipWrapper": string;
-};
-export = styles;
+declare namespace ClassesCssNamespace {
+  export interface IClassesCss {
+    LocaleSelectInput: string;
+    LocaleSelectInputUnderline: string;
+    LocaleSelectLabel: string;
+    LocaleSelectSelectIcon: string;
+    TooltipWrapper: string;
+  }
+}
 
+declare const ClassesCssModule: ClassesCssNamespace.IClassesCss;
+
+export = ClassesCssModule;

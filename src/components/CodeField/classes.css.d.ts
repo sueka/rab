@@ -1,7 +1,11 @@
-declare const styles: {
-  readonly "Container": string;
-  readonly "Pre": string;
-  readonly "TextArea": string;
-};
-export = styles;
+declare namespace ClassesCssNamespace {
+  export interface IClassesCss {
+    Container: string;
+    Pre: string;
+    TextArea: string;
+  }
+}
 
+declare const ClassesCssModule: ClassesCssNamespace.IClassesCss;
+
+export = ClassesCssModule;

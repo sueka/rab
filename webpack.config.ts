@@ -72,6 +72,12 @@ const config: Configuration = {
         use: [
           'style-loader',
           {
+            loader: '@teamsupercell/typings-for-css-modules-loader',
+            options: {
+              disableLocalsExport: true,
+            }
+          },
+          {
             loader: 'css-loader',
             options: {
               importLoaders: 1,

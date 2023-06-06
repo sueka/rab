@@ -38,6 +38,7 @@
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@octokit/rest": "^18.12.0",
     "@reduxjs/toolkit": "^1.8.5",
+    "@teamsupercell/typings-for-css-modules-loader": "^2.5.2",
     "@types/dom-speech-recognition": "^0.0.1",
     "@types/dotenv-webpack": "^7.0.3",
     "@types/history": "^4.7.11",

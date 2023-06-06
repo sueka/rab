@@ -1,7 +1,11 @@
-declare const styles: {
-  readonly "Square": string;
-  readonly "White": string;
-  readonly "Black": string;
-};
-export = styles;
+declare namespace ClassesCssNamespace {
+  export interface IClassesCss {
+    Black: string;
+    Square: string;
+    White: string;
+  }
+}
 
+declare const ClassesCssModule: ClassesCssNamespace.IClassesCss;
+
+export = ClassesCssModule;
