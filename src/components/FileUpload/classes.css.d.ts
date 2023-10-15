@@ -1,12 +1,8 @@
-declare namespace ClassesCssNamespace {
-  export interface IClassesCss {
-    Button: string;
-    FileUpload: string;
-    Input: string;
-    Safari: string;
-  }
-}
+declare const styles: {
+  readonly "FileUpload": string;
+  readonly "Safari": string;
+  readonly "Button": string;
+  readonly "Input": string;
+};
+export = styles;
 
-declare const ClassesCssModule: ClassesCssNamespace.IClassesCss;
-
-export = ClassesCssModule;

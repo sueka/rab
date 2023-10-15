@@ -1,9 +1,5 @@
-declare namespace ClassesCssNamespace {
-  export interface IClassesCss {
-    List: string;
-  }
-}
+declare const styles: {
+  readonly "List": string;
+};
+export = styles;
 
-declare const ClassesCssModule: ClassesCssNamespace.IClassesCss;
-
-export = ClassesCssModule;

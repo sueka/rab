@@ -1,9 +1,5 @@
-declare namespace ClassesCssNamespace {
-  export interface IClassesCss {
-    TooltipWrapper: string;
-  }
-}
+declare const styles: {
+  readonly "TooltipWrapper": string;
+};
+export = styles;
 
-declare const ClassesCssModule: ClassesCssNamespace.IClassesCss;
-
-export = ClassesCssModule;

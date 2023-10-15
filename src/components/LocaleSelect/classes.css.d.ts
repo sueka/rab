@@ -1,10 +1,6 @@
-declare namespace ClassesCssNamespace {
-  export interface IClassesCss {
-    InputLabel: string;
-    Select: string;
-  }
-}
+declare const styles: {
+  readonly "InputLabel": string;
+  readonly "Select": string;
+};
+export = styles;
 
-declare const ClassesCssModule: ClassesCssNamespace.IClassesCss;
-
-export = ClassesCssModule;
