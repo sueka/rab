@@ -1,7 +1,7 @@
 declare const styles: {
+  readonly "Black": string;
   readonly "Square": string;
   readonly "White": string;
-  readonly "Black": string;
 };
 export = styles;
 

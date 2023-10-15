@@ -1,6 +1,6 @@
 declare const styles: {
-  readonly "TaskListItemContainer": string;
   readonly "Dragging": string;
+  readonly "TaskListItemContainer": string;
 };
 export = styles;
 

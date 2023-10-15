@@ -1,8 +1,8 @@
 declare const styles: {
-  readonly "FileUpload": string;
-  readonly "Safari": string;
   readonly "Button": string;
+  readonly "FileUpload": string;
   readonly "Input": string;
+  readonly "Safari": string;
 };
 export = styles;
 
