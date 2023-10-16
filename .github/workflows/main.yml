@@ -98,3 +98,4 @@ jobs:
     needs:
       - build
       - test
+    if: github.ref == 'refs/heads/master'
