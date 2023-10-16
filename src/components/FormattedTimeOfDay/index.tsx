@@ -6,6 +6,7 @@ type Props =
   & CustomFormatConfig
   & {
       value: string | number | Date | undefined
+      children?(formattedTime: string): React.ReactElement | null
     }
 
 const FormattedTimeOfDay: React.FC<Props> = (props) => (

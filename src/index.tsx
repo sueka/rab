@@ -1,11 +1,8 @@
 import 'element-qsa-scope'
 import 'react-app-polyfill/stable'
 
-import '~/polyfills/apps/Document.prototype.exitFullscreen'
 import '~/polyfills/apps/Document.prototype.fullscreenElement'
 import '~/polyfills/apps/Document.prototype.fullscreenEnabled'
-import '~/polyfills/apps/Element.prototype.requestFullscreen'
-import '~/polyfills/apps/Object.fromEntries'
 import '~/polyfills/apps/globalThis.Notification'
 import '~/polyfills/apps/globalThis.SpeechRecognition'
 
