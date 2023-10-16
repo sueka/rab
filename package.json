@@ -17,7 +17,7 @@
     "./src/polyfills/apps/**/*.ts"
   ],
   "engines": {
-    "node": "^16.14.0"
+    "node": "^18.18.1"
   },
   "dependencies": {
     "@babel/core": "^7.16.10",
@@ -41,7 +41,7 @@
     "@types/dom-speech-recognition": "^0.0.1",
     "@types/dotenv-webpack": "^7.0.3",
     "@types/history": "^4.7.11",
-    "@types/node": "^16.11.25",
+    "@types/node": "^18",
     "@types/qrcode": "^1.5.0",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
