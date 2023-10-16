@@ -46,7 +46,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 16
+          - 18
   test:
     env:
       NODE_ENV: test
@@ -77,7 +77,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 16
+          - 18
   deploy:
     runs-on: ubuntu-latest
     steps:

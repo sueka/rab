@@ -31,7 +31,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 17
+          - 20
   test:
     env:
       NODE_ENV: test
@@ -58,4 +58,4 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 17
+          - 20
