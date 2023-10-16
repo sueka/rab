@@ -2,9 +2,6 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    branches:
-      - master
 
 jobs:
   build:
@@ -31,24 +28,9 @@ jobs:
           npm ci
           make typed
           make
-      - name: Build GitHub Pages Custom 404 Page
-        run: |
-          # npm ci
-          make gh-pages/dist
-          cp -r gh-pages/dist/* dist/
-        if: matrix.node-version == 16
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: dist
-          path: dist
-        if: >-
-          matrix.node-version == 16
-          && github.event_name == 'push'
     strategy:
       matrix:
         node-version:
-          - 16
           - 17
   test:
     env:
@@ -73,28 +55,7 @@ jobs:
         run: |
           npm ci
           make check
-      - uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-        if: matrix.node-version == 16
     strategy:
       matrix:
         node-version:
-          - 16
           - 17
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: dist
-          path: dist
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./dist
-    needs:
-      - build
-      - test
-    if: github.ref == 'refs/heads/master'
