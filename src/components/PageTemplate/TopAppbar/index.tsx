@@ -1,16 +1,16 @@
-import AppBar from '@material-ui/core/AppBar'
-import Badge from '@material-ui/core/Badge'
-import Box from '@material-ui/core/Box'
-import IconButton from '@material-ui/core/IconButton'
-import Popover from '@material-ui/core/Popover'
-import Toolbar from '@material-ui/core/Toolbar'
-import Tooltip from '@material-ui/core/Tooltip'
-import { Theme, makeStyles } from '@material-ui/core/styles'
-import MenuIcon from '@material-ui/icons/Menu'
-import NotificationsIcon from '@material-ui/icons/Notifications'
+import AppBar from '@mui/material/AppBar'
+import Badge from '@mui/material/Badge'
+import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
+import Popover from '@mui/material/Popover'
+import Toolbar from '@mui/material/Toolbar'
+import Tooltip from '@mui/material/Tooltip'
+import MenuIcon from '@mui/icons-material/Menu'
+import NotificationsIcon from '@mui/icons-material/Notifications'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilState } from 'recoil'
+import { makeStyles } from 'tss-react/mui'
 
 import notificationsState from '~/atoms/notificationsState'
 import LocaleSelect from '~/components/LocaleSelect' // TODO
@@ -31,11 +31,11 @@ interface StyleProps {
   topAppbarHeight?: number
 }
 
-const useStyles = makeStyles<Theme, StyleProps, 'Offset'>({
+const useStyles = makeStyles<StyleProps>()<'Offset'>((_theme, { topAppbarHeight }) => ({
   Offset: {
-    height: ({ topAppbarHeight }) => topAppbarHeight,
+    height: topAppbarHeight,
   },
-})
+}))
 
 const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonClick }, forwardedRef) => {
   const { width: screenWidth } = useScreen()
@@ -59,7 +59,7 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
 
   const ref = useRefsMerged(forwardedRef, ownRef)
 
-  const jssClasses = useStyles({ topAppbarHeight: height ?? undefined })
+  const { classes: jssClasses } = useStyles({ topAppbarHeight: height ?? undefined })
 
   const [notifications] = useRecoilState(notificationsState)
   const [notificationsOpen, setNotificationsOpen] = useState(false)
@@ -86,7 +86,7 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
     <>
       <AppBar position="fixed" ref={ ref }>
         <Toolbar>
-          <IconButton edge="start" color="inherit" onClick={ onMenuIconButtonClick }>
+          <IconButton edge="start" color="inherit" onClick={ onMenuIconButtonClick } size="large">
             <MenuIcon />
           </IconButton>
           <Spacer />
@@ -100,7 +100,7 @@ const TopAppbar = React.forwardRef<HTMLDivElement, Props>(({ onMenuIconButtonCli
                 disableTouchListener={ notifications.length === 0 }
               >
                 <span className={ classes.TooltipWrapper }>
-                  <IconButton color="inherit" onClick={ handleNotificationsShow } ref={ anchor } disabled={ notifications.length === 0 }>
+                  <IconButton color="inherit" onClick={ handleNotificationsShow } ref={ anchor } disabled={ notifications.length === 0 } size="large">
                     <Badge color="secondary" badgeContent={ notifications.length }>
                       <NotificationsIcon />
                     </Badge>

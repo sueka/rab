@@ -1,4 +1,4 @@
-import Slide, { SlideProps } from '@material-ui/core/Slide'
+import Slide, { SlideProps } from '@mui/material/Slide'
 import { SnackbarProvider as OriginalSnackbarProvider, SnackbarProviderProps } from 'notistack'
 import React, { useContext, useMemo } from 'react'
 

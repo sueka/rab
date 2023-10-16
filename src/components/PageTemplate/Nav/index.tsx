@@ -4,24 +4,24 @@ import counter from '@iconify/icons-mdi/counter'
 import qrcode from '@iconify/icons-mdi/qrcode'
 import table from '@iconify/icons-mdi/table'
 import { Icon } from '@iconify/react'
-import Divider from '@material-ui/core/Divider'
-import Drawer from '@material-ui/core/Drawer'
-import IconButton from '@material-ui/core/IconButton'
-import List from '@material-ui/core/List'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import ListSubheader from '@material-ui/core/ListSubheader'
-import { Theme, makeStyles } from '@material-ui/core/styles'
-import BrushIcon from '@material-ui/icons/Brush'
-import HomeIcon from '@material-ui/icons/Home'
-import ImageIcon from '@material-ui/icons/Image'
-import InfoIcon from '@material-ui/icons/Info'
-import ListIcon from '@material-ui/icons/List'
-import MenuIcon from '@material-ui/icons/Menu'
-import SettingsIcon from '@material-ui/icons/Settings'
-import TextFieldsIcon from '@material-ui/icons/TextFields'
+import Divider from '@mui/material/Divider'
+import Drawer from '@mui/material/Drawer'
+import IconButton from '@mui/material/IconButton'
+import List from '@mui/material/List'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import ListSubheader from '@mui/material/ListSubheader'
+import BrushIcon from '@mui/icons-material/Brush'
+import HomeIcon from '@mui/icons-material/Home'
+import ImageIcon from '@mui/icons-material/Image'
+import InfoIcon from '@mui/icons-material/Info'
+import ListIcon from '@mui/icons-material/List'
+import MenuIcon from '@mui/icons-material/Menu'
+import SettingsIcon from '@mui/icons-material/Settings'
+import TextFieldsIcon from '@mui/icons-material/TextFields'
 import React, { useContext, useMemo } from 'react'
 import { FormattedMessage } from 'react-intl'
+import { makeStyles } from 'tss-react/mui'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import ListItemLink from '~/components/ListItemLink'
@@ -40,20 +40,24 @@ interface StyleProps {
   topAppbarHeight?: number
 }
 
-const useStyles = makeStyles<Theme, StyleProps, 'DrawerHeader'>((theme) => ({
-  DrawerHeader: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
-      paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(3),
+const useStyles = makeStyles<StyleProps>()<'DrawerHeader'>((theme, { topAppbarHeight }) => {
+  const height = topAppbarHeight !== undefined ? typed<[number]>`${ topAppbarHeight }px` : undefined
+
+  return {
+    DrawerHeader: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      [theme.breakpoints.up('sm')]: {
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3),
+      },
+      height,
+      display: 'grid',
+      alignItems: 'center',
+      justifyContent: 'start',
     },
-    height: ({ topAppbarHeight }) => topAppbarHeight !== undefined ? typed<[number]>`${ topAppbarHeight }px` : undefined,
-    display: 'grid',
-    alignItems: 'center',
-    justifyContent: 'start',
-  },
-}), { name: 'Nav' })
+  }
+}/* , { name: 'Nav' } */)
 
 const FlippedListIcon: React.FC<React.PropsOf<typeof ListIcon>> = ({ style, ...restProps }) => {
   if (style === undefined) {
@@ -81,13 +85,13 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
     }
   }, [dir])
 
-  const jssClasses = useStyles({ topAppbarHeight })
+  const { classes: jssClasses } = useStyles({ topAppbarHeight })
 
   // NOTE: anchor はページが RtL であることを検出すると水平反転するので、 dir から計算する必要は無い。
   return (
     <Drawer anchor="left" open={ open } onClose={ onClose } PaperProps={ { ref } }>
       <div className={ jssClasses.DrawerHeader }>
-        <IconButton edge="start" color="inherit" onClick={ onClose }>
+        <IconButton edge="start" color="inherit" onClick={ onClose } size="large">
           <MenuIcon />
         </IconButton>
       </div>
@@ -197,7 +201,7 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
         </ListItemLink>
       </List>
     </Drawer>
-  )
+  );
 })
 
 export default Nav

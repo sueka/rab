@@ -1,6 +1,6 @@
-import Grid from '@material-ui/core/Grid'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import TextField, { TextFieldProps } from '@material-ui/core/TextField'
+import Grid from '@mui/material/Grid'
+import InputAdornment from '@mui/material/InputAdornment'
+import TextField, { TextFieldProps } from '@mui/material/TextField'
 import jsQR from 'jsqr'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
@@ -17,6 +17,7 @@ const CopiableTextField: React.FC<CopiableTextFieldProps> = ({ value, ...restPro
 
   return (
     <TextField
+      variant="standard"
       value={ value }
       inputRef={ input }
       InputProps={ {

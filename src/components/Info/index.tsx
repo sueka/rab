@@ -1,6 +1,6 @@
-import Button from '@material-ui/core/Button'
-import Link from '@material-ui/core/Link'
-import Typography from '@material-ui/core/Typography'
+import Button from '@mui/material/Button'
+import Link from '@mui/material/Link'
+import Typography from '@mui/material/Typography'
 import { Octokit } from '@octokit/core'
 import { Either, isLeft, right } from 'fp-ts/lib/Either'
 import { resolve } from 'inversify-react'
@@ -78,7 +78,7 @@ class Info extends React.Component<Props, State> {
       return repo.toString()
     }
 
-    return <Link href={ repo.right.html_url }>{ repo.right.full_name }</Link>
+    return <Link href={ repo.right.html_url } underline="hover">{ repo.right.full_name }</Link>
   }
 
   public override render() {

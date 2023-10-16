@@ -1,5 +1,5 @@
-import Grid from '@material-ui/core/Grid'
-import TextField from '@material-ui/core/TextField'
+import Grid from '@mui/material/Grid'
+import TextField from '@mui/material/TextField'
 import React, { useCallback, useState } from 'react'
 
 const ImageDataUrlDecoder: React.FC = () => {
@@ -13,6 +13,7 @@ const ImageDataUrlDecoder: React.FC = () => {
     <Grid container spacing={ 2 }>
       <Grid item xs={ 12 } sm={ 6 }>
         <TextField
+          variant="standard"
           fullWidth
           multiline
           maxRows={ 10 }

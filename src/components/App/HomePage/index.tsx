@@ -1,6 +1,6 @@
-import InputAdornment from '@material-ui/core/InputAdornment'
-import TextField from '@material-ui/core/TextField'
-import Typography from '@material-ui/core/Typography'
+import InputAdornment from '@mui/material/InputAdornment'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
 import { useInjection } from 'inversify-react'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Helmet from 'react-helmet'
@@ -47,6 +47,7 @@ const HomePage: React.FC = () => {
       </Typography>
       <SetClockButton />
       <TextField
+        variant="standard"
         value={ text }
         onChange={ handleChange }
         InputProps={ {

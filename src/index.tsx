@@ -6,9 +6,10 @@ import '~/polyfills/apps/Document.prototype.fullscreenEnabled'
 import '~/polyfills/apps/globalThis.Notification'
 import '~/polyfills/apps/globalThis.SpeechRecognition'
 
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { StylesProvider, jssPreset } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import CssBaseline from '@mui/material/CssBaseline'
+import { StylesProvider, jssPreset } from '@mui/styles'
+import { StyledEngineProvider } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery'
 import { ConnectedRouter } from 'connected-react-router'
 import FaviconNotification from 'favicon-notification'
 import { createBrowserHistory } from 'history'
@@ -134,12 +135,14 @@ const Main: React.FC<Props> = ({ container, baseUrl }) => {
               <ConnectedRouter history={ history }>
                 <ServiceProvider container={ container }>
                   <StylesProvider jss={ jss }>
-                    <ThemeProvider defaultDark={ dark }>
-                      <CssBaseline />
-                      <SnackbarProvider maxSnack={ 1 } hideIconVariant>
-                        <App />
-                      </SnackbarProvider>
-                    </ThemeProvider>
+                    <StyledEngineProvider injectFirst>
+                      <ThemeProvider defaultDark={ dark }>
+                        <CssBaseline />
+                        <SnackbarProvider maxSnack={ 1 } hideIconVariant>
+                          <App />
+                        </SnackbarProvider>
+                      </ThemeProvider>
+                    </StyledEngineProvider>
                   </StylesProvider>
                 </ServiceProvider>
               </ConnectedRouter>

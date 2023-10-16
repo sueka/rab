@@ -1,12 +1,12 @@
-import InputAdornment from '@material-ui/core/InputAdornment'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import TextField from '@material-ui/core/TextField'
-import { Theme, makeStyles } from '@material-ui/core/styles'
+import InputAdornment from '@mui/material/InputAdornment'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemText from '@mui/material/ListItemText'
+import TextField from '@mui/material/TextField'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { makeStyles } from 'tss-react/mui'
 
 import CodeField from '~/components/CodeField'
 import CopyTextButton from '~/components/CopyTextButton'
@@ -29,6 +29,7 @@ const CopiableTextField: React.FC = () => {
 
   return (
     <TextField
+      variant="standard"
       label="label"
       value={ text }
       onChange={ handleChange }
@@ -90,6 +91,7 @@ const MicIncludedTextField: React.FC = () => {
 
   return (
     <TextField
+      variant="standard"
       label="label"
       value={ text }
       onChange={ handleChange }
@@ -155,6 +157,7 @@ const MicIncludedCopiableTextField: React.FC = () => {
 
   return (
     <TextField
+      variant="standard"
       label="label"
       value={ text }
       onChange={ handleChange }
@@ -184,18 +187,18 @@ interface StyleProps {
   height: number | null
 }
 
-const useStyles = makeStyles<Theme, StyleProps, 'Image'>({
+const useStyles = makeStyles<StyleProps>()<'Image'>((_theme, { width, height }) => ({
   Image: {
-    maxWidth: ({ width }) => width !== null ? width / 2 : undefined,
-    maxHeight: ({ height }) => height !== null ? height / 2 : undefined,
+    maxWidth: width !== null ? width / 2 : undefined,
+    maxHeight: height !== null ? height / 2 : undefined,
   },
-})
+}))
 
 const ImageFile: React.FC<ImageFileProps> = ({ file }) => {
   const [src, setSrc] = useState<string | null>(null)
   const reader = useMemo(() => new FileReader, [])
   const { width, height } = useScreen()
-  const jssClasses = useStyles({ width, height })
+  const { classes: jssClasses } = useStyles({ width, height })
 
   const handleReaderLoad = useCallback<NonNullable<FileReader['onload']>>((event) => {
     if (event.target?.result == null) {

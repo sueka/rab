@@ -1,6 +1,6 @@
-import IconButton from '@material-ui/core/IconButton'
-import Tooltip from '@material-ui/core/Tooltip'
-import FilterNoneIcon from '@material-ui/icons/FilterNone'
+import IconButton from '@mui/material/IconButton'
+import Tooltip from '@mui/material/Tooltip'
+import FilterNoneIcon from '@mui/icons-material/FilterNone'
 import copy from 'copy-to-clipboard'
 import { useSnackbar } from 'notistack'
 import React, { useCallback, useEffect, useState } from 'react'
@@ -13,7 +13,7 @@ interface Props {
   inputFor: React.RefObject<HTMLInputElement | HTMLTextAreaElement>
 }
 
-// TODO: @material-ui/icons/ContentCopy が実装されたら削除する
+// TODO: @mui/icons-material/ContentCopy が実装されたら削除する
 const ContentCopyIcon: React.FC<React.PropsOf<typeof FilterNoneIcon>> = ({ style, ...restProps }) => {
   if (style === undefined) {
     return <FilterNoneIcon style={ { transform: 'scaleY(-1)' } } { ...restProps } />
@@ -61,7 +61,7 @@ const CopyTextButton: React.FC<Props> = ({ inputFor: input }) => {
       disableTouchListener={ disabled }
     >
       <span>
-        <IconButton onClick={ handleClick } disabled={ disabled }>
+        <IconButton onClick={ handleClick } disabled={ disabled } size="large">
           <ContentCopyIcon />
         </IconButton>
       </span>

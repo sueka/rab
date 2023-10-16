@@ -1,7 +1,7 @@
-import Grid from '@material-ui/core/Grid'
-import InputLabel from '@material-ui/core/InputLabel'
-import Select, { SelectProps } from '@material-ui/core/Select'
-import TextField, { TextFieldProps } from '@material-ui/core/TextField'
+import Grid from '@mui/material/Grid'
+import InputLabel from '@mui/material/InputLabel'
+import Select, { SelectProps } from '@mui/material/Select'
+import TextField, { TextFieldProps } from '@mui/material/TextField'
 import QRCode, { QRCodeErrorCorrectionLevel, QRCodeMaskPattern } from 'qrcode'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
@@ -81,13 +81,14 @@ const QrCodeEncoder: React.FC<QrCodeEncoderProps> = ({ ...textFieldProps }) => {
     <Grid container spacing={ 2 } direction="row">
       <Grid item xs={ 12 } sm={ 6 } container spacing={ 2 } alignContent="flex-start">
         <Grid item xs={ 12 }>
-          <TextField fullWidth multiline inputRef={ input } onChange={ handleChange } { ...textFieldProps } />
+          <TextField variant="standard" fullWidth multiline inputRef={ input } onChange={ handleChange } { ...textFieldProps } />
         </Grid>
         <Grid item xs={ 6 }>
           <InputLabel ref={ inputLabel } htmlFor={ errorCorrectionLevelSelectId }>
             <FormattedMessage { ...messages.errorCorrectionLevel } />
           </InputLabel>
           <Select
+            variant="standard"
             native
             onChange={ handleErrorCorrectionLevelChange }
             id={ errorCorrectionLevelSelectId }
@@ -103,6 +104,7 @@ const QrCodeEncoder: React.FC<QrCodeEncoderProps> = ({ ...textFieldProps }) => {
             <FormattedMessage { ...messages.maskPattern } />
           </InputLabel>
           <Select
+            variant="standard"
             native
             onChange={ handleMaskPatternChange }
             id={ maskPatternSelectId }

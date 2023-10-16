@@ -1,4 +1,4 @@
-import Button from '@material-ui/core/Button'
+import Button from '@mui/material/Button'
 import { useInjection } from 'inversify-react'
 import { useSnackbar } from 'notistack'
 import React, { useCallback } from 'react'

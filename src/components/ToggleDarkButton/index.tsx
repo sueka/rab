@@ -1,7 +1,7 @@
-import IconButton from '@material-ui/core/IconButton'
-import Tooltip from '@material-ui/core/Tooltip'
-import Brightness4Icon from '@material-ui/icons/Brightness4'
-import Brightness7Icon from '@material-ui/icons/Brightness7'
+import IconButton from '@mui/material/IconButton'
+import Tooltip from '@mui/material/Tooltip'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
 import React, { useCallback, useContext } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilState } from 'recoil'
@@ -30,11 +30,11 @@ const ToggleDarkButton = () => {
     <Tooltip title={ <FormattedMessage { ...messages.toggleLightDarkTheme } /> }>
       <span className={ classes.TooltipWrapper }>
         { dark ?? defaultDark ? (
-          <IconButton onClick={ handleOff }>
+          <IconButton onClick={ handleOff } size="large">
             <Brightness7Icon />
           </IconButton>
         ) : (
-          <IconButton onClick={ handleOn } color="inherit">
+          <IconButton onClick={ handleOn } color="inherit" size="large">
             <Brightness4Icon />
           </IconButton>
         ) }

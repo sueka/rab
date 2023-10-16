@@ -1,7 +1,7 @@
-import CreateIcon from '@material-ui/icons/Create'
-import FormatColorFillIcon from '@material-ui/icons/FormatColorFill'
-import ToggleButton from '@material-ui/lab/ToggleButton'
-import ToggleButtonGroup, { ToggleButtonGroupProps } from '@material-ui/lab/ToggleButtonGroup'
+import CreateIcon from '@mui/icons-material/Create'
+import FormatColorFillIcon from '@mui/icons-material/FormatColorFill'
+import ToggleButton from '@mui/lab/ToggleButton'
+import ToggleButtonGroup, { ToggleButtonGroupProps } from '@mui/lab/ToggleButtonGroup'
 import React from 'react'
 
 // TODO: Remove

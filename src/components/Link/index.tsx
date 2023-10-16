@@ -1,4 +1,4 @@
-import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link'
+import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link'
 import React from 'react'
 import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom'
 
@@ -24,12 +24,12 @@ export default class Link extends React.Component<Props> {
       console.warn(typed<[string]>`${ color } is not a Material-UI Typography color.`)
 
       return (
-        <MuiLink component={ RouterLinkWithRef } { ...restProps } />
+        <MuiLink component={ RouterLinkWithRef } { ...restProps } underline="hover" />
       )
     }
 
     return (
-      <MuiLink component={ RouterLinkWithRef } color={ color } { ...restProps } />
+      <MuiLink component={ RouterLinkWithRef } color={ color } { ...restProps } underline="hover" />
     )
   }
 }

@@ -1,7 +1,8 @@
-import { Theme, makeStyles } from '@material-ui/core/styles'
+import { Theme } from '@mui/material/styles'
 import classnames from 'classnames'
 import React, { useCallback, useContext, useMemo } from 'react'
 import { useDrag } from 'react-dnd'
+import { makeStyles } from 'tss-react/mui'
 
 import ChessContext from '~/contexts/ChessContext'
 import equalsChessCoordinates from '~/extensions/Eq/equalsChessCoordinates'
@@ -17,13 +18,13 @@ interface CollectedProps {
   dragging: boolean
 }
 
-declare module '@material-ui/core/styles/createPalette' {
+declare module '@mui/material/styles/createPalette' {
   interface PaletteColor {
     A700: string
   }
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()((theme: Theme) => ({
   Chessman: {
     '&$Picking:not($Dragging)': {
       color: theme.palette.primary.A700,
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Chessman: React.FC<Props> = ({ chessman, coord }) => {
   const { picking, pickChessman } = useContext(ChessContext)
-  const jssClasses = useStyles()
+  const { classes: jssClasses } = useStyles()
 
   const [{ dragging }, drag, preview] = useDrag<{}, unknown, CollectedProps>({
     type: 'Chessman',

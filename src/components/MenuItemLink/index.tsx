@@ -1,4 +1,4 @@
-import MenuItem, { MenuItemProps } from '@material-ui/core/MenuItem'
+import MenuItem, { MenuItemProps } from '@mui/material/MenuItem'
 import * as React from 'react'
 
 import Link, { Props as LinkProps } from '~/components/Link'

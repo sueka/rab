@@ -1,3 +1,4 @@
+import { StyledEngineProvider } from '@mui/material/styles'
 import { render, waitForDomChange } from '@testing-library/react'
 import { stringify } from 'bcp-47'
 import { Schema } from 'bcp-47/lib/stringify'
@@ -135,9 +136,11 @@ ${ '/nonexistent-path' }
               <StaticRouter context={ context } location={ location }>
                 <ServiceProvider container={ inversifyContainer }>
                   <SnackbarProvider>
-                    <ThemeProvider defaultDark={ false }>
-                      <App />
-                    </ThemeProvider>
+                    <StyledEngineProvider injectFirst>
+                      <ThemeProvider defaultDark={ false }>
+                        <App />
+                      </ThemeProvider>
+                    </StyledEngineProvider>
                   </SnackbarProvider>
                 </ServiceProvider>
               </StaticRouter>

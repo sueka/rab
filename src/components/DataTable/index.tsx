@@ -1,16 +1,18 @@
-import { makeStyles, useTheme } from '@material-ui/core'
-import Paper from '@material-ui/core/Paper'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableContainer from '@material-ui/core/TableContainer'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
-import TableSortLabel from '@material-ui/core/TableSortLabel'
+import { useTheme } from '@mui/material'
+import Paper from '@mui/material/Paper'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import TableSortLabel from '@mui/material/TableSortLabel'
 import Bowser from 'bowser'
 import classnames from 'classnames'
 import { List, OrderedMap } from 'immutable'
 import React, { useCallback, useMemo, useState } from 'react'
+import { makeStyles } from 'tss-react/mui'
+import { TextAlignProperty } from 'csstype'
 
 import classes from './classes.css'
 
@@ -55,19 +57,22 @@ const browser = Bowser.getParser(navigator.userAgent)
 
 const isMobile = browser.is('Mobile')
 
-const useStyles = makeStyles({
-  LocalizedCell: {
-    textAlign: ({ direction }: StyleProps) => {
-      if (direction === undefined) return undefined
+const useStyles = makeStyles<StyleProps>()((_theme, { direction }) => {
+  let textAlign: TextAlignProperty | undefined
 
-      switch (direction) {
-        case 'ltr': return 'left'
-        case 'rtl': return 'right'
-      }
-    },
-  },
-}, {
-  flip: false,
+  if (direction === undefined) textAlign = undefined
+
+  switch (direction) {
+    case 'ltr': textAlign = 'left'; break
+    case 'rtl': textAlign = 'right'
+  }
+
+  return {
+    LocalizedCell: {
+      textAlign,
+      flip: false,
+    }
+  }
 })
 
 const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc', locale }) => {
@@ -125,7 +130,7 @@ const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc', l
     return /^(?:he|iw)\b/.test(locale) ? 'rtl' : 'ltr' // TODO: RtL の判定方法を修正する
   }, [locale])
 
-  const jssClasses = useStyles({ direction })
+  const { classes: jssClasses } = useStyles({ direction })
   const numericCellClassName = useMemo(() => classnames(jssClasses.LocalizedCell, classes.NumericCell), [jssClasses.LocalizedCell])
 
   return (
@@ -138,7 +143,7 @@ const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc', l
                 variant="head"
                 sortDirection={ primarySort?.by === column.field ? primarySort.in : undefined }
                 className={ jssClasses.LocalizedCell }
-                style={ { minWidth: column.width !== undefined ? column.width + 2 * theme.spacing(2) : undefined } }
+                style={ { minWidth: column.width !== undefined ? column.width + 2 * Number(/* TODO */ theme.spacing(2)) : undefined } }
                 key={ column.field }
               >
                 <bdi>

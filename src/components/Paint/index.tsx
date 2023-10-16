@@ -1,15 +1,15 @@
-import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button'
-import FormControl from '@material-ui/core/FormControl'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormLabel from '@material-ui/core/FormLabel'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import Radio from '@material-ui/core/Radio'
-import RadioGroup from '@material-ui/core/RadioGroup'
-import Slider from '@material-ui/core/Slider'
-import Typography from '@material-ui/core/Typography'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import FormControl from '@mui/material/FormControl'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormLabel from '@mui/material/FormLabel'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemText from '@mui/material/ListItemText'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import Slider from '@mui/material/Slider'
+import Typography from '@mui/material/Typography'
 import React, { useCallback, useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 
@@ -82,7 +82,7 @@ const Paint: React.FC = () => {
         <FormattedMessage { ...messages.clear } />
       </Button>
       <Toolbox value={ tool } onChange={ handleToolChange } />
-      <FormControl disabled={ tool !== 'pen' }>
+      <FormControl variant="standard" disabled={ tool !== 'pen' }>
         <FormLabel>line cap</FormLabel>
         <RadioGroup name="lineCap" value={ lineCap } onChange={ handlePenCapRadioChange }>
           <FormControlLabel value="butt" label="butt" control={ <Radio /> } />

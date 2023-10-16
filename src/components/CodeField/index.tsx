@@ -1,10 +1,10 @@
-import TextField, { TextFieldProps as OriginalTextFieldProps } from '@material-ui/core/TextField'
-import { makeStyles } from '@material-ui/core/styles'
+import TextField, { TextFieldProps as OriginalTextFieldProps } from '@mui/material/TextField'
 import classnames from 'classnames'
 import hljs from 'highlight.js'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { useRecoilState } from 'recoil'
+import { makeStyles } from 'tss-react/mui'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
@@ -46,25 +46,25 @@ interface StyleProps {
   endAdornmentWidth?: number
 }
 
-const useStyles = makeStyles<never, StyleProps, 'Pre' | 'TextArea'>({
+const useStyles = makeStyles<StyleProps>()<'Pre' | 'TextArea'>((_theme, { direction, startAdornmentWidth, endAdornmentWidth }) => ({
   Pre: {
     '&$Pre': {
       direction: 'ltr',
-      width: ({ startAdornmentWidth, endAdornmentWidth }) => `calc(100% - ${ (startAdornmentWidth ?? 0) + (endAdornmentWidth ?? 0) }px)`,
+      width: `calc(100% - ${ (startAdornmentWidth ?? 0) + (endAdornmentWidth ?? 0) }px)`,
 
       // NOTE: ページの direction が "rtl" なら starAdornment は右側に配置されるが、この要素の direction は "ltr" に固定されるので、 marginInlineStart 等を使うことはできない。
-      marginLeft: ({ direction, startAdornmentWidth, endAdornmentWidth }) => direction === 'rtl' ? endAdornmentWidth : startAdornmentWidth,
-      marginRight: ({ direction, startAdornmentWidth, endAdornmentWidth }) => direction === 'rtl' ? startAdornmentWidth : endAdornmentWidth,
+      marginLeft: direction === 'rtl' ? endAdornmentWidth : startAdornmentWidth,
+      marginRight: direction === 'rtl' ? startAdornmentWidth : endAdornmentWidth,
     },
+    flip: false,
   },
   TextArea: {
     '&$TextArea': {
       direction: 'ltr',
     },
+    flip: false,
   },
-}, {
-  flip: false,
-})
+}))
 
 // TODO: remove?
 // TODO: null check を抽出する
@@ -99,7 +99,7 @@ const CodeField: React.FC<Props> = ({
   const [startAdornmentWidth, setStartAdornmentWidth] = useState<number | null>(null)
   const [endAdornmentWidth, setEndAdornmentWidth] = useState<number | null>(null)
 
-  const jssClasses = useStyles({
+  const { classes: jssClasses } = useStyles({
     direction: dir ?? undefined,
     startAdornmentWidth: startAdornmentWidth ?? undefined,
     endAdornmentWidth: endAdornmentWidth ?? undefined,
@@ -148,6 +148,7 @@ const CodeField: React.FC<Props> = ({
       </Helmet>
       <pre className={ preClassName } dangerouslySetInnerHTML={ { __html: hlText ?? '' } } />
       <TextField
+        variant="standard"
         fullWidth // TODO: false でもうまく動くようにする
         multiline // TODO: false でもうまく動くようにする
         value={ value }

@@ -1,15 +1,16 @@
-import FilledInput from '@material-ui/core/FilledInput'
-import FormControl, { FormControlProps } from '@material-ui/core/FormControl'
-import Input from '@material-ui/core/Input'
-import InputLabel from '@material-ui/core/InputLabel'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
-import Select, { SelectProps } from '@material-ui/core/Select'
-import { Theme, makeStyles, useTheme } from '@material-ui/core/styles'
+import FilledInput from '@mui/material/FilledInput'
+import FormControl, { FormControlProps } from '@mui/material/FormControl'
+import Input from '@mui/material/Input'
+import InputLabel from '@mui/material/InputLabel'
+import OutlinedInput from '@mui/material/OutlinedInput'
+import Select, { SelectProps } from '@mui/material/Select'
+import { useTheme } from '@mui/material/styles'
 import classnames from 'classnames'
 import { OrderedSet } from 'immutable'
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { connect } from 'react-redux'
+import { makeStyles } from 'tss-react/mui'
 import { v4 } from 'uuid'
 
 import IntlProviderContext from '~/contexts/IntlProviderContext'
@@ -48,9 +49,9 @@ interface StyleProps {
   selectMinWidth?: number
 }
 
-const useStyles = makeStyles<Theme, StyleProps, 'Select' | 'Option'>((theme) => ({
+const useStyles = makeStyles<StyleProps>()<'Select' | 'Option'>((theme, { selectMinWidth }) => ({
   Select: {
-    minWidth: ({ selectMinWidth }) => selectMinWidth,
+    minWidth: selectMinWidth,
   },
   Option: {
     // backgroundColor: theme.palette.background.paper,
@@ -60,15 +61,14 @@ const useStyles = makeStyles<Theme, StyleProps, 'Select' | 'Option'>((theme) => 
 
 export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = false, classes: propClasses, FormControlProps, locale, selectLocale }) => {
   const { formatMessage } = useIntl()
-  const [labelWidth, setLabelWidth] = useState<number | null>(null)
   const [selectMinWidth, setSelectMinWidth] = useState<number | null>(null)
   const inputId = useMemo(v4, [])
   const theme = useTheme()
   const { dir } = useContext(IntlProviderContext)
-  const jssClasses = useStyles({ selectMinWidth: selectMinWidth ?? undefined })
+  const { classes: jssClasses } = useStyles({ selectMinWidth: selectMinWidth ?? undefined })
 
   // NOTE: Fortunately, FormControl is nothing but FormControl.
-  const variant = useMemo(() => FormControlProps?.variant ?? theme?.props?.MuiFormControl?.variant ?? 'standard', [FormControlProps?.variant, theme?.props?.MuiFormControl?.variant])
+  const variant = useMemo(() => FormControlProps?.variant ?? theme?.components?.MuiFormControl?.defaultProps?.variant ?? 'standard', [FormControlProps?.variant, theme?.components?.MuiFormControl?.defaultProps?.variant])
 
   const rootClassName = useMemo(() => classnames(propClasses?.root, FormControlProps?.className), [propClasses?.root, FormControlProps?.className])
   const labelClassName = useMemo(() => classnames(propClasses?.label, cssClasses.InputLabel), [propClasses?.label])
@@ -84,8 +84,6 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
     if (inputLabel.current === null) {
       return
     }
-
-    setLabelWidth(inputLabel.current.offsetWidth)
 
     if (select.current === null) {
       return
@@ -118,6 +116,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
 
   return (
     <FormControl
+      variant="standard"
       { ...FormControlProps }
       hiddenLabel={ hiddenLabel }
       className={ rootClassName } // NOTE: Overrides FormControlProps.className
@@ -128,13 +127,13 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
         </InputLabel>
       ) }
       <Select
+        variant="standard"
         native
         classes={ {
           select: selectSelectClassName,
           icon: selectIconClassName,
         } }
         ref={ select }
-        labelWidth={ !hiddenLabel ? labelWidth ?? undefined : undefined }
         value={ locale }
         onChange={ handleChange }
         id={ inputId }
@@ -148,7 +147,7 @@ export /* for testing */ const LocaleSelect: React.FC<Props> = ({ hiddenLabel = 
               } }
             />
           ),
-          outlined: <OutlinedInput className={ inputClassName } labelWidth={ labelWidth ?? undefined } />,
+          outlined: <OutlinedInput className={ inputClassName } />,
           filled: <FilledInput className={ inputClassName } />,
         }[variant] }
       >

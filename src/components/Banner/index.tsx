@@ -1,7 +1,7 @@
-import { AvatarProps } from '@material-ui/core/Avatar'
-import Box from '@material-ui/core/Box'
-import Paper from '@material-ui/core/Paper'
-import Typography from '@material-ui/core/Typography'
+import { AvatarProps } from '@mui/material/Avatar'
+import Box from '@mui/material/Box'
+import Paper from '@mui/material/Paper'
+import Typography from '@mui/material/Typography'
 import Bowser from 'bowser'
 import React from 'react'
 
@@ -45,8 +45,8 @@ const Banner: React.FC<Props> = ({ leading, text, actions }) => (
         flexGrow={ 1 }
         alignItems={ isMobile ? 'flex-start' : 'center' }
         flexWrap={ isMobile ? 'wrap' : undefined }
-        gridColumnGap={ (isMobile ? 36 : 90) - 16 }
-        gridRowGap={ isMobile ? (leading !== undefined ? 20 : 12) - 10 : undefined }
+        columnGap={ (isMobile ? 36 : 90) - 16 }
+        rowGap={ isMobile ? (leading !== undefined ? 20 : 12) - 10 : undefined }
       >
         <Box
           mt={ isMobile ? 3 : 2 }
@@ -67,7 +67,7 @@ const Banner: React.FC<Props> = ({ leading, text, actions }) => (
             mx={ 1 }
             mb={ 1 }
             display="flex"
-            gridColumnGap={ 8 }
+            columnGap={ 8 }
           >
             { actions }
           </Box>
