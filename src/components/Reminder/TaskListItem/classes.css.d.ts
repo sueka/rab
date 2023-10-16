@@ -1,10 +1,6 @@
-declare namespace ClassesCssNamespace {
-  export interface IClassesCss {
-    Dragging: string;
-    TaskListItemContainer: string;
-  }
-}
+declare const styles: {
+  readonly "Dragging": string;
+  readonly "TaskListItemContainer": string;
+};
+export = styles;
 
-declare const ClassesCssModule: ClassesCssNamespace.IClassesCss;
-
-export = ClassesCssModule;

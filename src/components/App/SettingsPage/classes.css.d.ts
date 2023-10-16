@@ -1,11 +1,7 @@
-declare namespace ClassesCssNamespace {
-  export interface IClassesCss {
-    ListItemSecondaryActionIsLocaleSelect: string;
-    ListItemSecondaryActionIsRadioGroup3: string;
-    ListItemSecondaryActionIsSwitch: string;
-  }
-}
+declare const styles: {
+  readonly "ListItemSecondaryActionIsLocaleSelect": string;
+  readonly "ListItemSecondaryActionIsRadioGroup3": string;
+  readonly "ListItemSecondaryActionIsSwitch": string;
+};
+export = styles;
 
-declare const ClassesCssModule: ClassesCssNamespace.IClassesCss;
-
-export = ClassesCssModule;
