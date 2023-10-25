@@ -14,7 +14,8 @@
     "**/*.prototype.*.ts",
     "./src/global.css",
     "./src/transition.css",
-    "./src/polyfills/apps/**/*.ts"
+    "./src/polyfills/apps/**/*.ts",
+    "./src/ascertainers/**/*.ts"
   ],
   "engines": {
     "node": "^18.18.1"
