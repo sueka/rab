@@ -3,10 +3,11 @@ import { useInjection } from 'inversify-react'
 import { useSnackbar } from 'notistack'
 import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
+import gtmConsentsState from '~/atoms/gtmConsentsState'
 import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import cookieDialogKey from '~/globalVariables/cookieDialogKey'
@@ -30,9 +31,14 @@ const ObtainCookieConsentButton: React.FC = () => {
   const { enqueueSnackbar } = useSnackbar()
   const cookieConsentObtained = useRecoilValue(cookieConsentObtainedState)
   const currentBanner = useRecoilValue(currentBannerState)
+  const setGtmConsents = useSetRecoilState(gtmConsentsState)
 
   const handleAgree = useCallback(() => {
     shouldBePresent(gtmContainerId)
+
+    setGtmConsents({
+      analytics_storage: 'granted',
+    })
 
     // NOTE: 画面のちらつきを減らすために、裏にある方を先に隠す。
     banner.hide({
@@ -43,7 +49,7 @@ const ObtainCookieConsentButton: React.FC = () => {
     banner.hide({ key: cookieDialogKey })
 
     gtm.install(gtmContainerId)
-  }, [banner, gtm, gtmContainerId])
+  }, [banner, gtm, gtmContainerId, setGtmConsents])
 
   const handleCancel = useCallback(() => {
     banner.hide({ key: cookieDialogKey })

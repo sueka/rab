@@ -18,7 +18,7 @@ import { useInjection } from 'inversify-react'
 import React, { useCallback, useContext, useEffect, useMemo } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { v4 } from 'uuid'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
@@ -26,6 +26,7 @@ import appearanceThemeState from '~/atoms/appearanceThemeState'
 import bannersState from '~/atoms/bannersState'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
 import fullScreenState from '~/atoms/fullScreenState'
+import gtmConsentsState from '~/atoms/gtmConsentsState'
 import Banner from '~/components/Banner'
 import LocaleSelect from '~/components/LocaleSelect'
 import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
@@ -56,6 +57,7 @@ const SettingsPage: React.FC = () => {
   const [fullScreen, setFullScreen] = useRecoilState(fullScreenState)
   const banners = useRecoilValue(bannersState)
   const [cookieConsentObtained, setCookieConsentObtained] = useRecoilState(cookieConsentObtainedState)
+  const setGtmConsents = useSetRecoilState(gtmConsentsState)
   const { defaultDark } = useContext(DefaultDarkContext)
 
   shouldBePresent(defaultDark)
@@ -91,6 +93,10 @@ const SettingsPage: React.FC = () => {
   const handleAgree = useCallback(() => {
     shouldBePresent(gtmContainerId)
 
+    setGtmConsents({
+      analytics_storage: 'granted',
+    })
+
     // NOTE: 画面のちらつきを減らすために、裏にある方を先に隠す。
     banner.hide({
       key: reloadNotToAcceptCookiesBannerKey,
@@ -100,7 +106,7 @@ const SettingsPage: React.FC = () => {
     banner.hide({ key: cookieDialogKey })
 
     gtm.install(gtmContainerId)
-  }, [banner, gtm, gtmContainerId])
+  }, [banner, gtm, gtmContainerId, setGtmConsents])
 
   const handleCancel = useCallback(() => {
     banner.hide({ key: cookieDialogKey })
