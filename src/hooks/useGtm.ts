@@ -1,11 +1,17 @@
 import { useInjection } from 'inversify-react'
 import { useRecoilCallback } from 'recoil'
 
+import '~/ascertainers/dataLayer'
+
 import { shouldBePresent } from '~/asserters/commonAsserters'
+import gtmConsentsState from '~/atoms/gtmConsentsState'
 import installedGtmContainerIdsState from '~/atoms/installedGtmContainerIdsState'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import stripMargin from '~/extensions/String/stripMargin'
+import gtag from '~/helpers/google/gtag'
 import typed from '~/typed'
+
+declare const globalThis: Window
 
 // TODO: remove
 // cf. https://developers.google.com/tag-manager/quickstart
@@ -47,6 +53,11 @@ export default function useGtm() {
 
   const install = useRecoilCallback(({ snapshot, set }) => async (containerId: `GTM-${string}`) => {
     shouldBePresent(gtmUrl)
+
+    const consents = await snapshot.getPromise(gtmConsentsState)
+
+    gtag('consent', 'default', consents)
+    globalThis.dataLayer.push({ event: 'default_consent' })
 
     const installedIds = await snapshot.getPromise(installedGtmContainerIdsState)
 

@@ -15,18 +15,20 @@ import Brightness7Icon from '@material-ui/icons/Brightness7'
 import BrightnessAutoIcon from '@material-ui/icons/BrightnessAuto'
 import SecurityIcon from '@material-ui/icons/Security'
 import { useInjection } from 'inversify-react'
-import React, { useCallback, useContext, useEffect } from 'react'
+import React, { useCallback, useContext, useEffect, useMemo } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { v4 } from 'uuid'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import appearanceThemeState from '~/atoms/appearanceThemeState'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
 import fullScreenState from '~/atoms/fullScreenState'
+import gtmConsentsState from '~/atoms/gtmConsentsState'
 import Banner from '~/components/Banner'
 import LocaleSelect from '~/components/LocaleSelect'
+import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
 import obtainedCookieConsentBannerMessages from '~/components/ObtainCookieConsentBanner/messages' // TODO: Move
 import { createPage } from '~/components/PageTemplate'
 import ConfigRegistry from '~/config/ConfigRegistry'
@@ -35,6 +37,7 @@ import cookieDialogKey from '~/globalVariables/cookieDialogKey'
 import reloadNotToAcceptCookiesBannerKey from '~/globalVariables/reloadNotToAcceptCookiesBannerKey'
 import useBanner from '~/hooks/useBanner'
 import useGtm from '~/hooks/useGtm'
+import currentBannerState from '~/selectors/currentBannerState'
 import classes from './classes.css'
 import messages from './messages'
 
@@ -52,7 +55,9 @@ const SettingsPage: React.FC = () => {
 
   const [appearanceTheme, setAppearanceTheme] = useRecoilState(appearanceThemeState)
   const [fullScreen, setFullScreen] = useRecoilState(fullScreenState)
+  const currentBanner = useRecoilValue(currentBannerState)
   const [cookieConsentObtained, setCookieConsentObtained] = useRecoilState(cookieConsentObtainedState)
+  const setGtmConsents = useSetRecoilState(gtmConsentsState)
   const { defaultDark } = useContext(DefaultDarkContext)
 
   shouldBePresent(defaultDark)
@@ -81,6 +86,32 @@ const SettingsPage: React.FC = () => {
     setFullScreen(checked)
   }, [setFullScreen])
 
+  const whileConsentObtained = useMemo(() => {
+    return currentBanner?.key === cookieDialogKey
+  }, [currentBanner])
+
+  const handleAgree = useCallback(() => {
+    shouldBePresent(gtmContainerId)
+
+    setGtmConsents({
+      analytics_storage: 'granted',
+    })
+
+    // NOTE: 画面のちらつきを減らすために、裏にある方を先に隠す。
+    banner.hide({
+      key: reloadNotToAcceptCookiesBannerKey,
+      safe: true,
+    })
+
+    banner.hide({ key: cookieDialogKey })
+
+    gtm.install(gtmContainerId)
+  }, [banner, gtm, gtmContainerId, setGtmConsents])
+
+  const handleCancel = useCallback(() => {
+    banner.hide({ key: cookieDialogKey })
+  }, [banner])
+
   const handleReload = useCallback(() => {
     location.reload()
   }, [])
@@ -90,23 +121,19 @@ const SettingsPage: React.FC = () => {
   }, [banner])
 
   const handleAcceptCookiesChange = useCallback((_event, checked) => {
-    setCookieConsentObtained(checked)
-
     if (checked) {
-      if (gtmContainerId !== undefined) {
-        gtm.install(gtmContainerId)
-      }
+      // NOTE: Switch の切り替えはせず（保留し）、<ObtainCookieConsentBanner> の onAgree で切り替える。
 
-      banner.hide({
+      banner.show(<ObtainCookieConsentBanner
+        onAgree={ handleAgree }
+        onCancel={ handleCancel }
+      />, {
         key: cookieDialogKey,
-        safe: true,
-      })
-
-      banner.hide({
-        key: reloadNotToAcceptCookiesBannerKey,
-        safe: true,
+        replaceable: true,
       })
     } else {
+      setCookieConsentObtained(false)
+
       banner.show(<Banner
         leading={ <Avatar>
           <SecurityIcon />
@@ -124,7 +151,7 @@ const SettingsPage: React.FC = () => {
         key: reloadNotToAcceptCookiesBannerKey,
       })
     }
-  }, [gtm, gtmContainerId, banner, handleReload, handleDontReload, setCookieConsentObtained])
+  }, [banner, handleAgree, handleCancel, handleReload, handleDontReload, setCookieConsentObtained])
 
   return (
     <>
@@ -246,7 +273,7 @@ const SettingsPage: React.FC = () => {
                 <Switch
                   checked={ cookieConsentObtained }
                   onChange={ handleAcceptCookiesChange }
-                  disabled={ gtmContainerId === undefined }
+                  disabled={ gtmContainerId === undefined || whileConsentObtained }
                   aria-labelledby={ acceptCookiesSettingId }
                 />
               </ListItemSecondaryAction>
