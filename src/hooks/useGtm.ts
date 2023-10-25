@@ -11,6 +11,8 @@ import stripMargin from '~/extensions/String/stripMargin'
 import gtag from '~/helpers/google/gtag'
 import typed from '~/typed'
 
+declare const globalThis: Window
+
 // TODO: remove
 // cf. https://developers.google.com/tag-manager/quickstart
 function createScriptSnippet(gtmUrl: string, containerId: `GTM-${string}`) {
@@ -55,7 +57,7 @@ export default function useGtm() {
     const consents = await snapshot.getPromise(gtmConsentsState)
 
     gtag('consent', 'default', consents)
-    window.dataLayer.push({ event: 'default_consent' })
+    globalThis.dataLayer.push({ event: 'default_consent' })
 
     const installedIds = await snapshot.getPromise(installedGtmContainerIdsState)
 
