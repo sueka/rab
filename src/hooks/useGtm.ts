@@ -1,10 +1,14 @@
 import { useInjection } from 'inversify-react'
 import { useRecoilCallback } from 'recoil'
 
+import '~/ascertainers/dataLayer'
+
 import { shouldBePresent } from '~/asserters/commonAsserters'
+import gtmConsentsState from '~/atoms/gtmConsentsState'
 import installedGtmContainerIdsState from '~/atoms/installedGtmContainerIdsState'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import stripMargin from '~/extensions/String/stripMargin'
+import gtag from '~/helpers/google/gtag'
 import typed from '~/typed'
 
 // TODO: remove
@@ -47,6 +51,11 @@ export default function useGtm() {
 
   const install = useRecoilCallback(({ snapshot, set }) => async (containerId: `GTM-${string}`) => {
     shouldBePresent(gtmUrl)
+
+    const consents = await snapshot.getPromise(gtmConsentsState)
+
+    gtag('consent', 'default', consents)
+    window.dataLayer.push({ event: 'default_consent' })
 
     const installedIds = await snapshot.getPromise(installedGtmContainerIdsState)
 
