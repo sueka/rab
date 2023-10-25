@@ -1,7 +1,7 @@
 import Button from '@material-ui/core/Button'
 import { useInjection } from 'inversify-react'
 import { useSnackbar } from 'notistack'
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
@@ -32,6 +32,10 @@ const ObtainCookieConsentButton: React.FC = () => {
   const cookieConsentObtained = useRecoilValue(cookieConsentObtainedState)
   const currentBanner = useRecoilValue(currentBannerState)
   const setGtmConsents = useSetRecoilState(gtmConsentsState)
+
+  const whileConsentObtained = useMemo(() => {
+    return currentBanner?.key === cookieDialogKey
+  }, [currentBanner])
 
   const handleAgree = useCallback(() => {
     shouldBePresent(gtmContainerId)
@@ -71,7 +75,7 @@ const ObtainCookieConsentButton: React.FC = () => {
   }, [cookieConsentObtained, banner, handleAgree, handleCancel, enqueueSnackbar])
 
   return (
-    <Button onClick={ handleClick } disabled={ currentBanner?.key === cookieDialogKey }>
+    <Button onClick={ handleClick } disabled={ whileConsentObtained }>
       <FormattedMessage { ...messages.consentToUseCookies } />
     </Button>
   )

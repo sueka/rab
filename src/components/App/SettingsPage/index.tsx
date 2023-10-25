@@ -23,7 +23,6 @@ import { v4 } from 'uuid'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import appearanceThemeState from '~/atoms/appearanceThemeState'
-import bannersState from '~/atoms/bannersState'
 import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
 import fullScreenState from '~/atoms/fullScreenState'
 import gtmConsentsState from '~/atoms/gtmConsentsState'
@@ -38,6 +37,7 @@ import cookieDialogKey from '~/globalVariables/cookieDialogKey'
 import reloadNotToAcceptCookiesBannerKey from '~/globalVariables/reloadNotToAcceptCookiesBannerKey'
 import useBanner from '~/hooks/useBanner'
 import useGtm from '~/hooks/useGtm'
+import currentBannerState from '~/selectors/currentBannerState'
 import classes from './classes.css'
 import messages from './messages'
 
@@ -55,7 +55,7 @@ const SettingsPage: React.FC = () => {
 
   const [appearanceTheme, setAppearanceTheme] = useRecoilState(appearanceThemeState)
   const [fullScreen, setFullScreen] = useRecoilState(fullScreenState)
-  const banners = useRecoilValue(bannersState)
+  const currentBanner = useRecoilValue(currentBannerState)
   const [cookieConsentObtained, setCookieConsentObtained] = useRecoilState(cookieConsentObtainedState)
   const setGtmConsents = useSetRecoilState(gtmConsentsState)
   const { defaultDark } = useContext(DefaultDarkContext)
@@ -76,10 +76,6 @@ const SettingsPage: React.FC = () => {
     }
   }, [handleFullscreenchange])
 
-  const whileConsentObtained = useMemo(() => {
-    return banners?.[0]?.key === cookieDialogKey
-  }, [banners])
-
   const handleAppearanceThemeChange = useCallback((_event, theme: string) => {
     if (theme === 'light' || theme === 'dark' || theme === 'device') {
       setAppearanceTheme(theme)
@@ -89,6 +85,10 @@ const SettingsPage: React.FC = () => {
   const handleFullScreenChange = useCallback((_event, checked) => {
     setFullScreen(checked)
   }, [setFullScreen])
+
+  const whileConsentObtained = useMemo(() => {
+    return currentBanner?.key === cookieDialogKey
+  }, [currentBanner])
 
   const handleAgree = useCallback(() => {
     shouldBePresent(gtmContainerId)
