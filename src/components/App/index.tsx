@@ -29,6 +29,7 @@ const App: React.FC = () => {
   const location = useLocation()
   const gtm = useGtm()
 
+  // TODO: Remove
   const installGtmLegally = useRecoilCallback(({ snapshot }) => async () => {
     const cookieConsentObtained = await snapshot.getPromise(cookieConsentObtainedState)
 

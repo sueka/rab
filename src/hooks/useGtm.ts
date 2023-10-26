@@ -61,6 +61,10 @@ export default function useGtm() {
     })
     globalThis.dataLayer.push({ event: 'default_consent' })
 
+    if (Object.keys(consents).length !== 0) {
+      gtag('consent', 'update', consents)
+    }
+
     const installedIds = await snapshot.getPromise(installedGtmContainerIdsState)
 
     if (installedIds.includes(containerId)) {
