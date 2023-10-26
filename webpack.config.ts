@@ -110,9 +110,6 @@ const config: Configuration = {
       maxSize: 249856,
     },
   },
-  experiments: {
-    asyncWebAssembly: true,
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html'),
