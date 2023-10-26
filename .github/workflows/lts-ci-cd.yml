@@ -66,6 +66,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - uses: mxschmitt/action-tmate@v3.17
       - name: Lint & Test
         run: |
           npm ci
