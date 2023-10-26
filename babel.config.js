@@ -16,13 +16,13 @@ module.exports = (api) => {
           legacy: true,
         },
       ],
+      'babel-plugin-parameter-decorator',
       [
         '@babel/plugin-proposal-class-properties',
         {
           loose: true,
         },
       ],
-      'babel-plugin-parameter-decorator',
       [
         '@babel/plugin-proposal-private-methods',
         {
