@@ -13,10 +13,7 @@ const { persistAtom } = recoilPersist()
 // TODO: Support region
 const gtmConsentsState = atom<GtmConsents>({
   key: 'gtmConsentsState',
-  default: {
-    ad_storage: 'denied',
-    analytics_storage: 'denied',
-  },
+  default: {},
   effects_UNSTABLE: [
     ({ onSet }) => {
       onSet((newGtmConsents) => {

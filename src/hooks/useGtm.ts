@@ -55,7 +55,10 @@ export default function useGtm() {
 
     const consents = await snapshot.getPromise(gtmConsentsState)
 
-    gtag('consent', 'default', consents)
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+    })
     globalThis.dataLayer.push({ event: 'default_consent' })
 
     const installedIds = await snapshot.getPromise(installedGtmContainerIdsState)
