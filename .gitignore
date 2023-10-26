@@ -21,7 +21,3 @@
 # typedoc
 /doc/
 !/typedoc.js
-
-# cargo
-# /src/crate/pkg/
-/src/crate/target/

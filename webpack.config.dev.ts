@@ -1,4 +1,3 @@
-import WasmPackPlugin from '@wasm-tool/wasm-pack-plugin'
 import * as path from 'path'
 import { HotModuleReplacementPlugin } from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
@@ -67,13 +66,7 @@ if (process.env.NODE_ENV === 'development') {
   ]
 
   config.plugins.push(
-    new HotModuleReplacementPlugin(),
-    new WasmPackPlugin({
-      crateDirectory: path.join(__dirname, 'src/crate'),
-      outDir: path.join(__dirname, 'src/crate/pkg'),
-      outName: 'index',
-      forceMode: env,
-    })
+    new HotModuleReplacementPlugin()
   )
 
   config.devServer.hot = 'only'

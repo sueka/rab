@@ -1,7 +1,5 @@
 [build]
-  # NOTE: rustup toolchain install してから npm i しないと wasm-pack がうまく動かないことがある。
   command = """
-  rustup toolchain install stable && \
   npm ci && \
   make check && \
   make
