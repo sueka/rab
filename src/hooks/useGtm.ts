@@ -46,7 +46,6 @@ function createNoScriptSnippet(gtmUrl: string, containerId: `GTM-${string}`) {
   return noScript
 }
 
-// TODO: Support Data Layer
 export default function useGtm() {
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
   const gtmUrl = config.get('GTM_URL')
