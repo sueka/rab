@@ -98,7 +98,7 @@ const SettingsPage: React.FC = () => {
 
   const handleAcceptCookiesChange = useCallback((_event, checked) => {
     if (checked) {
-      // NOTE: Switch の切り替えはせず（保留し）、<ObtainCookieConsentBanner> の onAgree で切り替える。
+      // NOTE: Switch の切り替えはせず（保留し）、<ObtainCookieConsentBanner> の handleAgree で、canGtmInstalledState 経由で切り替える。
 
       banner.show(<ObtainCookieConsentBanner />, {
         key: cookieDialogKey,
