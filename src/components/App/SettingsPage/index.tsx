@@ -23,7 +23,7 @@ import { v4 } from 'uuid'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import appearanceThemeState from '~/atoms/appearanceThemeState'
-import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
+import canGtmInstalledState from '~/atoms/canGtmInstalledState'
 import fullScreenState from '~/atoms/fullScreenState'
 import gtmConsentsState from '~/atoms/gtmConsentsState'
 import Banner from '~/components/Banner'
@@ -54,7 +54,7 @@ const SettingsPage: React.FC = () => {
   const [appearanceTheme, setAppearanceTheme] = useRecoilState(appearanceThemeState)
   const [fullScreen, setFullScreen] = useRecoilState(fullScreenState)
   const currentBanner = useRecoilValue(currentBannerState)
-  const [cookieConsentObtained, setCookieConsentObtained] = useRecoilState(cookieConsentObtainedState)
+  const [canGtmInstalled, setCanGtmInstalled] = useRecoilState(canGtmInstalledState)
   const setGtmConsents = useSetRecoilState(gtmConsentsState)
   const { defaultDark } = useContext(DefaultDarkContext)
 
@@ -105,7 +105,7 @@ const SettingsPage: React.FC = () => {
         replaceable: true,
       })
     } else {
-      setCookieConsentObtained(false)
+      setCanGtmInstalled(false)
       setGtmConsents({
         analytics_storage: 'denied',
       })
@@ -127,7 +127,7 @@ const SettingsPage: React.FC = () => {
         key: reloadNotToAcceptCookiesBannerKey,
       })
     }
-  }, [banner, handleReload, handleDontReload, setCookieConsentObtained, setGtmConsents])
+  }, [banner, handleReload, handleDontReload, setCanGtmInstalled, setGtmConsents])
 
   return (
     <>
@@ -247,7 +247,7 @@ const SettingsPage: React.FC = () => {
               />
               <ListItemSecondaryAction>
                 <Switch
-                  checked={ cookieConsentObtained }
+                  checked={ canGtmInstalled }
                   onChange={ handleAcceptCookiesChange }
                   disabled={ gtmContainerId === undefined || whileConsentObtained }
                   aria-labelledby={ acceptCookiesSettingId }

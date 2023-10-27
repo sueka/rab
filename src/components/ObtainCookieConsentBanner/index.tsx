@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl'
 import { useRecoilCallback } from 'recoil'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
-import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
+import canGtmInstalledState from '~/atoms/canGtmInstalledState'
 import gtmConsentsState from '~/atoms/gtmConsentsState'
 import Banner from '~/components/Banner'
 import ConfigRegistry from '~/config/ConfigRegistry'
@@ -29,7 +29,7 @@ const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onCancel }) => {
   const banner = useBanner()
 
   const handleAgree = useRecoilCallback(({ set, snapshot }) => async () => {
-    set(cookieConsentObtainedState, true)
+    set(canGtmInstalledState, true)
 
     shouldBePresent(gtmContainerId)
 

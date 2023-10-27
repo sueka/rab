@@ -4,7 +4,7 @@ import { hot } from 'react-hot-loader/root'
 import { Redirect, Switch, useLocation } from 'react-router'
 import { useRecoilCallback } from 'recoil'
 
-import cookieConsentObtainedState from '~/atoms/cookieConsentObtainedState'
+import canGtmInstalledState from '~/atoms/canGtmInstalledState'
 import Route from '~/components/Route'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import useGtm from '~/hooks/useGtm'
@@ -31,9 +31,9 @@ const App: React.FC = () => {
 
   // TODO: Remove
   const installGtmLegally = useRecoilCallback(({ snapshot }) => async () => {
-    const cookieConsentObtained = await snapshot.getPromise(cookieConsentObtainedState)
+    const canGtmInstalled = await snapshot.getPromise(canGtmInstalledState)
 
-    if (cookieConsentObtained && gtmContainerId !== undefined) {
+    if (canGtmInstalled && gtmContainerId !== undefined) {
       await gtm.install(gtmContainerId)
     }
   }, [gtm, gtmContainerId])

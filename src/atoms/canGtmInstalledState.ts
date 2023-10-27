@@ -2,10 +2,10 @@ import { atom } from 'recoil'
 
 import UnreachableError from '~/errors/UnreachableError'
 
-const KEY = 'cookieConsentObtained'
+const KEY = 'canGtmInstalled'
 
-const cookieConsentObtainedState = atom({
-  key: 'cookieConsentObtainedState',
+const canGtmInstalledState = atom({
+  key: 'canGtmInstalledState',
   default: false,
   effects_UNSTABLE: [
     ({ trigger, setSelf }) => {
@@ -23,11 +23,11 @@ const cookieConsentObtainedState = atom({
       }
     },
     ({ onSet }) => {
-      onSet((cookieConsentObtained) => {
-        localStorage.setItem(KEY, cookieConsentObtained ? '0' : '1')
+      onSet((canGtmInstalled) => {
+        localStorage.setItem(KEY, canGtmInstalled ? '0' : '1')
       })
     },
   ],
 })
 
-export default cookieConsentObtainedState
+export default canGtmInstalledState
