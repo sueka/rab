@@ -88,9 +88,20 @@ const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
 
 function restorePersistentAtoms({ set }: MutableSnapshot): void {
   const store = localStorage.getItem(recoilAtomsKey)
-  const deserialized: SerializableObject = store !== null ? JSON.parse(store) : {}
 
-  set(gtmConsentsState, deserialized[gtmConsentsState.key] as GtmConsents)
+  if (store === null) {
+    return
+  }
+
+  const deserialized: SerializableObject = JSON.parse(store)
+
+  const persistedValue = deserialized[gtmConsentsState.key] as GtmConsents | undefined
+
+  if (persistedValue === undefined) {
+    return
+  }
+
+  set(gtmConsentsState, persistedValue)
 }
 
 function initializeState(mutableSnapshot: MutableSnapshot): void {
