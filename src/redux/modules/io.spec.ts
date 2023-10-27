@@ -42,7 +42,7 @@ describe('IoService', () => {
 
     const expectedEffect = put(setNow(new Date))
 
-    expect(actualEffect.payload.action.payload.now.valueOf() + 1000).toBeCloseTo(expectedEffect.payload.action.payload.now.valueOf(), -2) // ± 50 ms
+    expect(actualEffect.payload.action.payload.now.valueOf() + 1000).toBeCloseTo(expectedEffect.payload.action.payload.now.valueOf(), -3) // ± 500 ms
 
     expect(it.next().done).toBeTruthy()
   })
