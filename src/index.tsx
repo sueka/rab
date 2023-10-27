@@ -22,11 +22,12 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import ReactDOM from 'react-dom'
 import Helmet from 'react-helmet'
-import { RecoilRoot } from 'recoil'
+import { MutableSnapshot, RecoilRoot } from 'recoil'
 import { Saga } from 'redux-saga'
 import 'reflect-metadata'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
+import gtmConsentsState, { GtmConsents } from '~/atoms/gtmConsentsState'
 import App from '~/components/App'
 import IntlProvider from '~/components/IntlProvider'
 import SnackbarProvider from '~/components/SnackbarProvider'
@@ -35,6 +36,7 @@ import createProvider, { Props as ProviderProps } from '~/createProvider'
 import '~/extensions/Boolean/Boolean.prototype.hashCode'
 import '~/extensions/Number/Number.prototype.hashCode'
 import '~/extensions/String/String.prototype.hashCode'
+import { key as recoilAtomsKey } from '~/recoilEffects/persist'
 import Service, { Action, State, createReducer, invariant } from '~/redux'
 import typed from '~/typed'
 import { asFormats } from '~/validators/intlValidators'
@@ -84,6 +86,17 @@ const history = createBrowserHistory({
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
 
+function restorePersistentAtoms({ set }: MutableSnapshot): void {
+  const store = localStorage.getItem(recoilAtomsKey)
+  const deserialized: SerializableObject = store !== null ? JSON.parse(store) : {}
+
+  set(gtmConsentsState, deserialized[gtmConsentsState.key] as GtmConsents)
+}
+
+function initializeState(mutableSnapshot: MutableSnapshot): void {
+  restorePersistentAtoms(mutableSnapshot)
+}
+
 /**
  * The entry point component.
  */
@@ -127,7 +140,7 @@ const Main: React.FC<Props> = ({ container, baseUrl }) => {
         titleTemplate="%s - Rap"
         defaultTitle="Rap"
       />
-      <RecoilRoot>
+      <RecoilRoot initializeState={ initializeState }>
         <Provider renderError={ renderError }>
           <IntlProvider availableLocales={ ['en', 'he', 'ja'] }>
             <DndProvider backend={ HTML5Backend }>

@@ -1,14 +1,12 @@
 import { atom } from 'recoil'
-import { recoilPersist } from 'recoil-persist'
 
 import gtag from '~/helpers/google/gtag'
+import persist from '~/recoilEffects/persist'
 
-interface GtmConsents {
+export interface GtmConsents extends SerializableObject {
   ad_storage?: 'granted' | 'denied'
   analytics_storage?: 'granted' | 'denied'
 }
-
-const { persistAtom } = recoilPersist()
 
 // TODO: Support region
 const gtmConsentsState = atom<GtmConsents>({
@@ -20,7 +18,7 @@ const gtmConsentsState = atom<GtmConsents>({
         gtag('consent', 'update', newGtmConsents)
       })
     },
-    persistAtom,
+    persist,
   ],
 })
 

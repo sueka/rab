@@ -53,13 +53,16 @@ export default function useGtm() {
   const install = useRecoilCallback(({ snapshot, set }) => async (containerId: `GTM-${string}`) => {
     shouldBePresent(gtmUrl)
 
-    const consents = await snapshot.getPromise(gtmConsentsState)
-
+    // Send default consents
     gtag('consent', 'default', {
       ad_storage: 'denied',
       analytics_storage: 'denied',
     })
+
     globalThis.dataLayer.push({ event: 'default_consent' })
+
+    // Update consents if any
+    const consents = await snapshot.getPromise(gtmConsentsState)
 
     if (Object.keys(consents).length !== 0) {
       gtag('consent', 'update', consents)

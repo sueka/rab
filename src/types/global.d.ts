@@ -5,6 +5,12 @@ type JsonArray = readonly Json[]
 type JsonObject = { [member in string]: Json }
 type Json = JsonPrimitive | JsonArray | JsonObject
 
+// JSON.stringify() may omit undefined, functions and symbols.
+type SerializablePrimitive = JsonPrimitive | undefined | Function | Symbol
+type SerializableArray = readonly Serializable[]
+type SerializableObject = { [member in string]?: Serializable }
+type Serializable = SerializablePrimitive | SerializableArray | SerializableObject
+
 type NumberFrom<T extends `${ number }`> = T extends `${ infer U extends number }` ? U : never
 
 type EmptyRecord<T> = Record<keyof T, never>
