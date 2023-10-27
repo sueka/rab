@@ -27,6 +27,7 @@ import { Saga } from 'redux-saga'
 import 'reflect-metadata'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
+import canGtmInstalledState from '~/atoms/canGtmInstalledState'
 import gtmConsentsState, { GtmConsents } from '~/atoms/gtmConsentsState'
 import App from '~/components/App'
 import IntlProvider from '~/components/IntlProvider'
@@ -95,14 +96,19 @@ function restorePersistentAtoms({ set }: MutableSnapshot): void {
 
   const deserialized: SerializableObject = JSON.parse(store)
 
-  const persistedValue = deserialized[gtmConsentsState.key] as GtmConsents | undefined
+  const persistedGtmConsents = deserialized[gtmConsentsState.key] as GtmConsents | undefined
+  const persistedCanGtmInstalled = deserialized[canGtmInstalledState.key] as boolean | undefined
 
-  if (persistedValue === undefined) {
+  if (
+    persistedGtmConsents === undefined ||
+    persistedCanGtmInstalled === undefined
+  ) {
     return
   }
 
   // NOTE: onSet は発動しない。
-  set(gtmConsentsState, persistedValue)
+  set(gtmConsentsState, persistedGtmConsents)
+  set(canGtmInstalledState, persistedCanGtmInstalled)
 }
 
 function initializeState(mutableSnapshot: MutableSnapshot): void {
