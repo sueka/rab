@@ -101,6 +101,7 @@ function restorePersistentAtoms({ set }: MutableSnapshot): void {
     return
   }
 
+  // NOTE: onSet は発動しない。
   set(gtmConsentsState, persistedValue)
 }
 

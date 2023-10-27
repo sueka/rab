@@ -18,7 +18,7 @@ import { useInjection } from 'inversify-react'
 import React, { useCallback, useContext, useEffect, useMemo } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilCallback, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { v4 } from 'uuid'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
@@ -90,12 +90,8 @@ const SettingsPage: React.FC = () => {
     return currentBanner?.key === cookieDialogKey
   }, [currentBanner])
 
-  const handleAgree = useCallback(() => {
+  const handleAgree = useRecoilCallback(({ snapshot, set }) => async () => {
     shouldBePresent(gtmContainerId)
-
-    setGtmConsents({
-      analytics_storage: 'granted',
-    })
 
     // NOTE: 画面のちらつきを減らすために、裏にある方を先に隠す。
     banner.hide({
@@ -106,6 +102,13 @@ const SettingsPage: React.FC = () => {
     banner.hide({ key: cookieDialogKey })
 
     gtm.install(gtmContainerId)
+
+    // 上の gtm.install() で行われる set(gtmConsentsState) の完了を待つ。Recoil の set は Promise を返さないが、getPromise を待てば、擬似的に set の完了を待つことができる。
+    await snapshot.getPromise(gtmConsentsState)
+
+    set(gtmConsentsState, {
+      analytics_storage: 'granted',
+    })
   }, [banner, gtm, gtmContainerId, setGtmConsents])
 
   const handleCancel = useCallback(() => {
@@ -133,6 +136,9 @@ const SettingsPage: React.FC = () => {
       })
     } else {
       setCookieConsentObtained(false)
+      setGtmConsents({
+        analytics_storage: 'denied',
+      })
 
       banner.show(<Banner
         leading={ <Avatar>
@@ -151,7 +157,7 @@ const SettingsPage: React.FC = () => {
         key: reloadNotToAcceptCookiesBannerKey,
       })
     }
-  }, [banner, handleAgree, handleCancel, handleReload, handleDontReload, setCookieConsentObtained])
+  }, [banner, handleAgree, handleCancel, handleReload, handleDontReload, setCookieConsentObtained, setGtmConsents])
 
   return (
     <>

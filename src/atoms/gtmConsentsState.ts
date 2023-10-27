@@ -15,6 +15,7 @@ const gtmConsentsState = atom<GtmConsents>({
   effects_UNSTABLE: [
     ({ onSet }) => {
       onSet((newGtmConsents) => {
+        // NOTE: gtag('consent', 'update') は、順序を制御するため、ここでしか行わない。
         gtag('consent', 'update', newGtmConsents)
       })
     },

@@ -62,10 +62,16 @@ export default function useGtm() {
     globalThis.dataLayer.push({ event: 'default_consent' })
 
     // Update consents if any
+    /* NOTE:
+    gtmConsentsState は <RecoilRoot initializeState> で初期化（onSet() は発動しない。）されており、永続化された値を持っている。
+    この値を gtag('consent', 'update') するために、一度 {} を set してから、あらためて永続化された値を set する。
+    なお、gtag('consent', 'update', {}) は無視される。
+    */
     const consents = await snapshot.getPromise(gtmConsentsState)
 
     if (Object.keys(consents).length !== 0) {
-      gtag('consent', 'update', consents)
+      set(gtmConsentsState, {})
+      set(gtmConsentsState, consents)
     }
 
     const installedIds = await snapshot.getPromise(installedGtmContainerIdsState)
