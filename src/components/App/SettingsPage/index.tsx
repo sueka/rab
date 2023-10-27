@@ -18,7 +18,7 @@ import { useInjection } from 'inversify-react'
 import React, { useCallback, useContext, useEffect, useMemo } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { useRecoilCallback, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { v4 } from 'uuid'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
@@ -36,7 +36,6 @@ import DefaultDarkContext from '~/contexts/DefaultDarkContext'
 import cookieDialogKey from '~/globalVariables/cookieDialogKey'
 import reloadNotToAcceptCookiesBannerKey from '~/globalVariables/reloadNotToAcceptCookiesBannerKey'
 import useBanner from '~/hooks/useBanner'
-import useGtm from '~/hooks/useGtm'
 import currentBannerState from '~/selectors/currentBannerState'
 import classes from './classes.css'
 import messages from './messages'
@@ -50,7 +49,6 @@ const SettingsPage: React.FC = () => {
   const { formatMessage } = useIntl()
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
-  const gtm = useGtm()
   const banner = useBanner()
 
   const [appearanceTheme, setAppearanceTheme] = useRecoilState(appearanceThemeState)
@@ -90,31 +88,6 @@ const SettingsPage: React.FC = () => {
     return currentBanner?.key === cookieDialogKey
   }, [currentBanner])
 
-  const handleAgree = useRecoilCallback(({ snapshot, set }) => async () => {
-    shouldBePresent(gtmContainerId)
-
-    // NOTE: 画面のちらつきを減らすために、裏にある方を先に隠す。
-    banner.hide({
-      key: reloadNotToAcceptCookiesBannerKey,
-      safe: true,
-    })
-
-    banner.hide({ key: cookieDialogKey })
-
-    gtm.install(gtmContainerId)
-
-    // 上の gtm.install() で行われる set(gtmConsentsState) の完了を待つ。Recoil の set は Promise を返さないが、getPromise を待てば、擬似的に set の完了を待つことができる。
-    await snapshot.getPromise(gtmConsentsState)
-
-    set(gtmConsentsState, {
-      analytics_storage: 'granted',
-    })
-  }, [banner, gtm, gtmContainerId, setGtmConsents])
-
-  const handleCancel = useCallback(() => {
-    banner.hide({ key: cookieDialogKey })
-  }, [banner])
-
   const handleReload = useCallback(() => {
     location.reload()
   }, [])
@@ -127,10 +100,7 @@ const SettingsPage: React.FC = () => {
     if (checked) {
       // NOTE: Switch の切り替えはせず（保留し）、<ObtainCookieConsentBanner> の onAgree で切り替える。
 
-      banner.show(<ObtainCookieConsentBanner
-        onAgree={ handleAgree }
-        onCancel={ handleCancel }
-      />, {
+      banner.show(<ObtainCookieConsentBanner />, {
         key: cookieDialogKey,
         replaceable: true,
       })
@@ -157,7 +127,7 @@ const SettingsPage: React.FC = () => {
         key: reloadNotToAcceptCookiesBannerKey,
       })
     }
-  }, [banner, handleAgree, handleCancel, handleReload, handleDontReload, setCookieConsentObtained, setGtmConsents])
+  }, [banner, handleReload, handleDontReload, setCookieConsentObtained, setGtmConsents])
 
   return (
     <>
