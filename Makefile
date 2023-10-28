@@ -22,10 +22,13 @@ type-deps := $(src) $(messages) $(css-d) src/lusp-client
 
 # FORCE :
 
-build : dist
+build : dist dist/404.html
 dist : webpack.config.ts $(value-deps)
 	-rm -r $@/
 	$(NPX) webpack --config $<
+
+dist/404.html : dist
+	cp dist/index.html dist/404.html
 
 # FIXME: 計測して、必要なら一連の `@echo` を `@echo $(value-deps) | tr " " '\n' | entr -r $(MAKE) messages cssd` に置き換える。
 served : webpack.config.dev.ts $(value-deps)
