@@ -1,6 +1,0 @@
-# webpack
-/dist/
-
-# tsc
-*.js
-*.jsx

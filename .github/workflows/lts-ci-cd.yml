@@ -11,15 +11,14 @@ jobs:
     env:
       CI: true
       NODE_ENV: production
-      BASE_NAME: /rap
+      BASE_NAME: ''
       GITHUB_API_URL: https://api.github.com
       USER_SERVICE_URL: http://localhost:14566 # TODO: Deploy a User Service
-      GTM_URL: https://example.com
-      GTM_CONTAINER_ID: GTM-0000000
-      SHEETS_API_URL: https://example.com # NOTE: Use the real API only on Netlify.
-      GOOGLE_CLOUD_APIS_GOOGLE_SHEETS_API_KEY: 'api-key'
-      GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID: 'sheet-id'
-      GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME: 'Sheet1'
+      GTM_URL: https://www.googletagmanager.com
+      GTM_CONTAINER_ID: GTM-NNPT3D7
+      SHEETS_API_URL: https://sheets.googleapis.com/v4
+      GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID: 1o0SaDmkwl0kNS1EUz01lzWcq9KoOG22bS_qvu0jjPCA
+      GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME: シート1
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -31,12 +30,6 @@ jobs:
           npm ci
           make typed
           make
-      - name: Build GitHub Pages Custom 404 Page
-        run: |
-          # npm ci
-          make gh-pages/dist
-          cp -r gh-pages/dist/* dist/
-        if: github.event_name == 'push'
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v2
         with:
