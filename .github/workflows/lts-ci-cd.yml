@@ -17,6 +17,7 @@ jobs:
       GTM_URL: https://www.googletagmanager.com
       GTM_CONTAINER_ID: GTM-NNPT3D7
       SHEETS_API_URL: https://sheets.googleapis.com/v4
+      GOOGLE_CLOUD_APIS_GOOGLE_SHEETS_API_KEY: ${{ secrets.GOOGLE_CLOUD_APIS_GOOGLE_SHEETS_API_KEY }}
       GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID: 1o0SaDmkwl0kNS1EUz01lzWcq9KoOG22bS_qvu0jjPCA
       GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME: シート1
     runs-on: ubuntu-latest
