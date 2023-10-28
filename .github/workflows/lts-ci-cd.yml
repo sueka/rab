@@ -38,10 +38,9 @@ jobs:
           cp -r gh-pages/dist/* dist/
         if: github.event_name == 'push'
       - name: Upload build artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-pages-artifact@v2
         with:
-          name: dist
-          path: dist
+          path: dist/
         if: github.event_name == 'push'
     strategy:
       matrix:
@@ -79,17 +78,14 @@ jobs:
         node-version:
           - 18
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.install.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: dist
-          path: dist
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./dist
+      - uses: actions/configure-pages@v2
+      - uses: actions/deploy-pages@v1
+        id: install
     needs:
       - build
       - test
