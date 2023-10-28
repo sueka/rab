@@ -20,6 +20,7 @@ jobs:
       GOOGLE_CLOUD_APIS_GOOGLE_SHEETS_API_KEY: ${{ secrets.GOOGLE_CLOUD_APIS_GOOGLE_SHEETS_API_KEY }}
       GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_ID: 1o0SaDmkwl0kNS1EUz01lzWcq9KoOG22bS_qvu0jjPCA
       GOOGLE_SHEETS_FOSS_COMPARISON_TABLE_SHEET_SHEET_NAME: シート1
+    environment: github-pages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
