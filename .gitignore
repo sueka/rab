@@ -21,3 +21,7 @@
 # typedoc
 /doc/
 !/typedoc.js
+
+# openapi-generator
+/src/lusp-client/
+/openapitools.json

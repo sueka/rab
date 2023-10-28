@@ -46,6 +46,9 @@
     "node_modules/babel-plugin-react-intl-auto/**/*.d.ts"
   ],
   "exclude": [
+    /* auto-generated */
+    "src/lusp-client/**/*",
+
     /* test */
     "src/setupTests.ts",
     "src/**/*.spec.ts",

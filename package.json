@@ -38,6 +38,7 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@octokit/rest": "^18.12.0",
+    "@openapitools/openapi-generator-cli": "^2.7.0",
     "@reduxjs/toolkit": "^1.8.5",
     "@types/dom-speech-recognition": "^0.0.1",
     "@types/dotenv-webpack": "^7.0.3",
