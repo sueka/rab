@@ -78,13 +78,16 @@ jobs:
         node-version:
           - 18
   deploy:
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.install.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/configure-pages@v2
-      - uses: actions/deploy-pages@v1
+      - uses: actions/deploy-pages@v2
         id: install
     needs:
       - build
