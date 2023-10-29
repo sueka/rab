@@ -70,6 +70,11 @@ if (process.env.NODE_ENV === 'development') {
   )
 
   config.devServer.hot = 'only'
+
+  config.performance = {
+    ...config.performance,
+    hints: false,
+  }
 }
 
 export default config
