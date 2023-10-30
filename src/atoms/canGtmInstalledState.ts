@@ -1,6 +1,6 @@
 import { atom } from 'recoil'
 
-import persist from '~/recoilEffects/persist'
+import persist from '~/recoilEffects/makePersist'
 
 const canGtmInstalledState = atom({
   key: 'canGtmInstalledState',
