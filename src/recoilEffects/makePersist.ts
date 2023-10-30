@@ -1,16 +1,31 @@
+import assert from 'assert'
 import { AtomEffect } from 'recoil'
+
+interface Options<K extends string, V> {
+  serialize?(value: Partial<Record<K, V>>): string
+  deserialize?(text: string): Partial<Record<K, V>>
+}
 
 export const key = 'recoil-atoms'
 
-export default function persist<T extends Serializable>(...[{ onSet, node }]: Parameters<AtomEffect<T>>): ReturnType<AtomEffect<T>> {
-  onSet((newValue) => {
-    const store = localStorage.getItem(key)
-    const deserialized: SerializableObject = store !== null ? JSON.parse(store) : {}
+export default function makePersist<K extends string, V>(atomKey: K, options?: Options<K, V>): AtomEffect<V> {
+  const {
+    serialize = JSON.stringify,
+    deserialize = JSON.parse,
+  }: Options<K, V> = options ?? {}
 
-    deserialized[node.key] = newValue
+  return function persist({ onSet, node }) {
+    assert.equal(node.key, atomKey)
 
-    const serialized = JSON.stringify(deserialized)
+    onSet((newValue) => {
+      const store = localStorage.getItem(key)
+      const deserialized: Partial<Record<K, V>> = store !== null ? deserialize(store) : {}
 
-    localStorage.setItem(key, serialized)
-  })
+      deserialized[atomKey] = newValue
+
+      const serialized = serialize(deserialized)
+
+      localStorage.setItem(key, serialized)
+    })
+  }
 }
