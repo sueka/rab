@@ -4,7 +4,7 @@ import DotEnvPlugin from 'dotenv-webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import * as path from 'path'
 import TerserPlugin from 'terser-webpack-plugin'
-import { Configuration } from 'webpack'
+import { Configuration, ProvidePlugin } from 'webpack'
 
 dotenv.config()
 
@@ -135,6 +135,9 @@ const config: Configuration = {
           context: path.resolve(__dirname, 'node_modules'),
         },
       ],
+    }),
+    new ProvidePlugin({
+      process: 'process/browser',
     }),
   ],
   devtool: 'source-map',
