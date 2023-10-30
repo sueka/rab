@@ -17,7 +17,7 @@ import { interfaces } from 'inversify'
 import { Provider as ServiceProvider } from 'inversify-react'
 import { create } from 'jss'
 import rtl from 'jss-rtl'
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { StrictMode, useCallback, useEffect, useMemo } from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import ReactDOM from 'react-dom'
@@ -184,10 +184,12 @@ const Main: React.FC<Props> = ({ container, baseUrl }) => {
 
 containerImport.then(({ default: container }) => {
   ReactDOM.render(
-    <Main
-      container={ container }
-      baseUrl={ typed<[string, string]>`${ globalThis.location.origin }${ process.env['BASE_NAME'] !== undefined ? typed<[string]>`${ process.env['BASE_NAME'] }/` : '' }` }
-    />,
+    <StrictMode>
+      <Main
+        container={ container }
+        baseUrl={ typed<[string, string]>`${ globalThis.location.origin }${ process.env['BASE_NAME'] !== undefined ? typed<[string]>`${ process.env['BASE_NAME'] }/` : '' }` }
+      />
+    </StrictMode>,
     document.getElementById('root')
   )
 })
