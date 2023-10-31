@@ -22,13 +22,11 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import ReactDOM from 'react-dom'
 import Helmet from 'react-helmet'
-import { MutableSnapshot, RecoilRoot } from 'recoil'
+import { RecoilRoot } from 'recoil'
 import { Saga } from 'redux-saga'
 import 'reflect-metadata'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
-import canGtmInstalledState from '~/atoms/canGtmInstalledState'
-import gtmConsentsState, { GtmConsents } from '~/atoms/gtmConsentsState'
 import App from '~/components/App'
 import IntlProvider from '~/components/IntlProvider'
 import SnackbarProvider from '~/components/SnackbarProvider'
@@ -37,7 +35,6 @@ import createProvider, { Props as ProviderProps } from '~/createProvider'
 import '~/extensions/Boolean/Boolean.prototype.hashCode'
 import '~/extensions/Number/Number.prototype.hashCode'
 import '~/extensions/String/String.prototype.hashCode'
-import { key as recoilAtomsKey } from '~/recoilEffects/makePersist'
 import Service, { Action, State, createReducer, invariant } from '~/redux'
 import typed from '~/typed'
 import { asFormats } from '~/validators/intlValidators'
@@ -87,34 +84,6 @@ const history = createBrowserHistory({
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
 
-function restorePersistentAtoms({ set }: MutableSnapshot): void {
-  const store = localStorage.getItem(recoilAtomsKey)
-
-  if (store === null) {
-    return
-  }
-
-  const deserialized: SerializableObject = JSON.parse(store)
-
-  const persistedGtmConsents = deserialized[gtmConsentsState.key] as GtmConsents | undefined
-  const persistedCanGtmInstalled = deserialized[canGtmInstalledState.key] as boolean | undefined
-
-  if (
-    persistedGtmConsents === undefined ||
-    persistedCanGtmInstalled === undefined
-  ) {
-    return
-  }
-
-  // NOTE: onSet は発動しない。
-  set(gtmConsentsState, persistedGtmConsents)
-  set(canGtmInstalledState, persistedCanGtmInstalled)
-}
-
-function initializeState(mutableSnapshot: MutableSnapshot): void {
-  restorePersistentAtoms(mutableSnapshot)
-}
-
 /**
  * The entry point component.
  */
@@ -158,7 +127,7 @@ const Main: React.FC<Props> = ({ container, baseUrl }) => {
         titleTemplate="%s - Rap"
         defaultTitle="Rap"
       />
-      <RecoilRoot initializeState={ initializeState }>
+      <RecoilRoot>
         <Provider renderError={ renderError }>
           <IntlProvider availableLocales={ ['en', 'he', 'ja'] }>
             <DndProvider backend={ HTML5Backend }>

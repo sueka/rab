@@ -8,6 +8,8 @@ export interface GtmConsents extends SerializableObject {
   analytics_storage?: 'granted' | 'denied'
 }
 
+const { persist, restore } = makePersist<'gtmConsentsState', GtmConsents>('gtmConsentsState')
+
 // TODO: Support region
 const gtmConsentsState = atom<GtmConsents>({
   key: 'gtmConsentsState',
@@ -19,7 +21,8 @@ const gtmConsentsState = atom<GtmConsents>({
         gtag('consent', 'update', newGtmConsents)
       })
     },
-    makePersist('gtmConsentsState'),
+    persist,
+    restore,
   ],
 })
 

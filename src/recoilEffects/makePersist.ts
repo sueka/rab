@@ -2,30 +2,62 @@ import assert from 'assert'
 import { AtomEffect } from 'recoil'
 
 interface Options<K extends string, V> {
-  serialize?(value: Partial<Record<K, V>>): string
+  serialize?(value: Record<K, V>): string
   deserialize?(text: string): Partial<Record<K, V>>
 }
 
 export const key = 'recoil-atoms'
 
-export default function makePersist<K extends string, V>(atomKey: K, options?: Options<K, V>): AtomEffect<V> {
+export default function makePersist<K extends string, V>(atomKey: K, options?: Options<K, V>): {
+  persist: AtomEffect<V>
+  restore: AtomEffect<V>
+} {
   const {
     serialize = JSON.stringify,
     deserialize = JSON.parse,
   }: Options<K, V> = options ?? {}
 
-  return function persist({ onSet, node }) {
-    assert.equal(node.key, atomKey)
+  return {
+    persist({ onSet, node }) {
+      assert.equal(node.key, atomKey)
 
-    onSet((newValue) => {
-      const store = localStorage.getItem(key)
-      const deserialized: Partial<Record<K, V>> = store !== null ? deserialize(store) : {}
+      onSet((newValue) => {
+        const store = localStorage.getItem(key)
 
-      deserialized[atomKey] = newValue
+        const deserialized: Partial<Record<K, V>> = store !== null ? deserialize(store) : {}
 
-      const serialized = serialize(deserialized)
+        const newEntry = {
+          [atomKey]: newValue,
+        } as Record<K, V>
 
-      localStorage.setItem(key, serialized)
-    })
+        const serialized = serialize({
+          ...deserialized,
+          ...newEntry,
+        })
+
+        localStorage.setItem(key, serialized)
+      })
+    },
+
+    restore({ trigger, setSelf, node }) {
+      assert.equal(node.key, atomKey)
+
+      if (trigger === 'get') {
+        const store = localStorage.getItem(key)
+
+        if (store === null) {
+          return
+        }
+
+        const deserialized = deserialize(store)
+        const persisted = deserialized[atomKey]
+
+        if (persisted === undefined) {
+          return
+        }
+
+        setSelf(persisted)
+      }
+    }
   }
 }
