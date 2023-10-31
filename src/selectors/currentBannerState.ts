@@ -1,4 +1,3 @@
-import assert from 'assert'
 import { DefaultValue, selector } from 'recoil'
 
 import bannersState, { Banner } from '~/atoms/bannersState'
@@ -7,12 +6,7 @@ const currentBannerState = selector<Banner | null>({
   key: 'currentBannerState',
   get({ get }) {
     const banners = get(bannersState)
-
-    if (banners.length >= 1) {
-      return banners[0]!
-    } else {
-      return null
-    }
+    return banners[0] ?? null
   },
   set({ get, set }, newCurrentBanner) {
     if (newCurrentBanner instanceof DefaultValue) {
@@ -25,34 +19,19 @@ const currentBannerState = selector<Banner | null>({
 
         return restBanners
       } else {
-        const oldCurrentBanner = get(currentBannerState)
+        const currentBanner = get(currentBannerState)
+        const bannersWoCurrentReplaceable = currentBanner !== null && currentBanner.replaceable ? banners.slice(1) : banners
 
-        // TODO: Use `do` expression: https://github.com/tc39/proposal-do-expressions
-        const bannersWOCurrentReplaceable = (() => {
-          if (oldCurrentBanner !== null && oldCurrentBanner.replaceable) {
-            const j = banners.findIndex((banner) => banner.key === oldCurrentBanner.key)
-
-            assert(j === 0)
-
-            return [
-              ...banners.slice(0, j),
-              ...banners.slice(j + 1),
-            ]
-          } else {
-            return banners
-          }
-        })()
-
-        const i = bannersWOCurrentReplaceable.findIndex((banner) => banner.key === newCurrentBanner.key)
+        const i = bannersWoCurrentReplaceable.findIndex((banner) => banner.key === newCurrentBanner.key)
 
         if (i !== -1) {
           return [
             newCurrentBanner,
-            ...bannersWOCurrentReplaceable.slice(0, i),
-            ...bannersWOCurrentReplaceable.slice(i + 1),
+            ...bannersWoCurrentReplaceable.slice(0, i),
+            ...bannersWoCurrentReplaceable.slice(i + 1),
           ]
         } else {
-          return [newCurrentBanner, ...bannersWOCurrentReplaceable]
+          return [newCurrentBanner, ...bannersWoCurrentReplaceable]
         }
       }
     })
