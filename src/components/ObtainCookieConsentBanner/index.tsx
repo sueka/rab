@@ -2,6 +2,7 @@ import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import SecurityIcon from '@material-ui/icons/Security'
 import { useInjection } from 'inversify-react'
+import { useSnackbar } from 'notistack'
 import React, { useCallback } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilCallback } from 'recoil'
@@ -27,10 +28,9 @@ const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onCancel }) => {
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
   const gtm = useGtm()
   const banner = useBanner()
+  const { enqueueSnackbar } = useSnackbar()
 
   const handleAgree = useRecoilCallback(({ set }) => async () => {
-    set(canGtmInstalledState, true)
-
     shouldBePresent(gtmContainerId)
 
     // NOTE: 画面のちらつきを減らすために、裏にある方を先に隠す。
@@ -41,7 +41,17 @@ const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onCancel }) => {
 
     banner.hide({ key: cookieDialogKey })
 
-    await gtm.install(gtmContainerId)
+    const installed = await gtm.install(gtmContainerId)
+
+    if (!installed) {
+      enqueueSnackbar(
+        <FormattedMessage { ...messages.tagManagerInstallationFailed } />
+      )
+
+      return
+    }
+
+    set(canGtmInstalledState, true)
 
     // NOTE: 下の set(gtmConsentsState) は上の gtm.install() で実行される set(gtmConsentsState) よりも後で実行されなければならない。Recoil の set は Promise を返さないが、同じ Recoil state の取得を待てば、擬似的に set の完了を待つことができる。
     // await snapshot.getPromise(gtmConsentsState)

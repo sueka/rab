@@ -58,6 +58,7 @@
   "src.components.NotifyMeButton.sendPushNotification": "Send push notification",
   "src.components.ObtainCookieConsentBanner.agree": "Agree",
   "src.components.ObtainCookieConsentBanner.cancel": "Cancel",
+  "src.components.ObtainCookieConsentBanner.tagManagerInstallationFailed": "Tag Manager installation failed.",
   "src.components.ObtainCookieConsentBanner.weUseCookiesToAnalyzeOurTraffic": "We use cookies to analyze our traffic.",
   "src.components.ObtainCookieConsentButton.consentToUseCookies": "Consent to use cookies…",
   "src.components.ObtainCookieConsentButton.youHaveAlreadyConsentedToUseCookies": "You have already consented to use cookies.",

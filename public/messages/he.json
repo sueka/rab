@@ -58,6 +58,7 @@
   "src.components.NotifyMeButton.sendPushNotification": "שלח הודעת דחיפה",
   "src.components.ObtainCookieConsentBanner.agree": "להסכים",
   "src.components.ObtainCookieConsentBanner.cancel": "לבטל",
+  "src.components.ObtainCookieConsentBanner.tagManagerInstallationFailed": "התקנת Tag Manager נכשלה.",
   "src.components.ObtainCookieConsentBanner.weUseCookiesToAnalyzeOurTraffic": "אנחנו משתמשים בעוגיות לניתוח התעבורה שלנו.",
   "src.components.ObtainCookieConsentButton.consentToUseCookies": "להסכים להשתמש בעוגיות…",
   "src.components.ObtainCookieConsentButton.youHaveAlreadyConsentedToUseCookies": "הסכמת כבר להשתמש בעוגיות.",

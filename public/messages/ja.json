@@ -58,6 +58,7 @@
   "src.components.NotifyMeButton.sendPushNotification": "プッシュ通知を送信",
   "src.components.ObtainCookieConsentBanner.agree": "同意",
   "src.components.ObtainCookieConsentBanner.cancel": "キャンセル",
+  "src.components.ObtainCookieConsentBanner.tagManagerInstallationFailed": "タグマネージャーのインストールに失敗しました。",
   "src.components.ObtainCookieConsentBanner.weUseCookiesToAnalyzeOurTraffic": "クッキーを使ってトラフィックを分析します。",
   "src.components.ObtainCookieConsentButton.consentToUseCookies": "クッキーの使用に同意…",
   "src.components.ObtainCookieConsentButton.youHaveAlreadyConsentedToUseCookies": "すでにクッキーの使用に同意されています。",

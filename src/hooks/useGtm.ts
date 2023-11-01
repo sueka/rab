@@ -52,6 +52,7 @@ export default function useGtm() {
 
   const install = useRecoilCallback(({ snapshot, set }) => async (containerId: `GTM-${string}`) => {
     shouldBePresent(gtmUrl)
+    shouldBePresent(globalThis.cookieStore)
 
     // Send default consents
     gtag('consent', 'default', {
@@ -77,7 +78,7 @@ export default function useGtm() {
     const installedIds = await snapshot.getPromise(installedGtmContainerIdsState)
 
     if (installedIds.includes(containerId)) {
-      return // do nothing
+      return true // do nothing
     }
 
     const scriptSnippet = createScriptSnippet(gtmUrl, containerId)
@@ -86,7 +87,15 @@ export default function useGtm() {
     document.head.insertBefore(scriptSnippet, document.head.firstChild)
     document.body.insertBefore(noScriptSnippet, document.body.firstChild)
 
-    set(installedGtmContainerIdsState, ids => [...ids, containerId])
+    // TODO: Await scriptSnippet install explicitly
+    const gaCookies = await globalThis.cookieStore.getAll('_ga')
+    const installed = gaCookies.length > 0
+
+    if (installed) {
+      set(installedGtmContainerIdsState, ids => [...ids, containerId])
+    }
+
+    return installed
   }, [gtmUrl])
 
   return { install }
