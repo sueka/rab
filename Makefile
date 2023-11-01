@@ -12,6 +12,7 @@ css-d-src := $(css-src)
 css-d-src := $(filter-out src/global.css, $(css-d-src))
 css-d-src := $(filter-out src/transition.css, $(css-d-src))
 css-d := $(patsubst %.css, %.css.d.ts, $(css-d-src))
+gh-pages-src := $(wildcard gh-pages/src/*)
 
 value-deps := $(src) $(messages) src/lusp-client
 type-deps := $(src) $(messages) $(css-d) src/lusp-client
@@ -35,6 +36,11 @@ served : webpack.config.dev.ts $(value-deps)
 	@echo $(messages-src) | tr " " '\n' | entr -r $(MAKE) messages &
 	@echo $(css-d-src) | tr " " '\n' | entr -r $(MAKE) cssd &
 	$(NPX) webpack serve --config $<
+
+# TODO: Type-check?
+gh-pages/dist : gh-pages/webpack.config.ts $(gh-pages-src)
+	-rm -r $@/
+	$(NPX) webpack --config $<
 
 messages : $(messages)
 $(messages) : $(messages-src)
@@ -98,6 +104,7 @@ clean :
 		-type f \
 		! -path "./node_modules/*" \
 		-exec rm {} +
+	-rm -r gh-pages/dist/
 
 clobber :
 	$(confirm)
