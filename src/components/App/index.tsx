@@ -42,6 +42,7 @@ const App: React.FC = () => {
     installGtmLegally()
   }, [installGtmLegally])
 
+  // Rewrites /foo using react-router
   if (location.pathname === '/' && location.hash !== '') {
     const pathname = /^#(.*)$/.exec(location.hash)?.[1]
 
