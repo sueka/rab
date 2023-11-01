@@ -3,10 +3,15 @@ import React, { useEffect } from 'react'
 import { hot } from 'react-hot-loader/root'
 import { Redirect, Switch, useLocation } from 'react-router'
 import { useRecoilCallback } from 'recoil'
+import { shouldBePresent } from '~/asserters/commonAsserters'
 
 import canGtmInstalledState from '~/atoms/canGtmInstalledState'
+import gtmConsentsState from '~/atoms/gtmConsentsState'
+import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
 import Route from '~/components/Route'
 import ConfigRegistry from '~/config/ConfigRegistry'
+import cookieDialogKey from '~/globalVariables/cookieDialogKey'
+import useBanner from '~/hooks/useBanner'
 import useGtm from '~/hooks/useGtm'
 
 export const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ './HomePage'))
@@ -23,20 +28,40 @@ export const ReminderPage = React.lazy(() => import(/* webpackChunkName: "remind
 export const SettingsPage = React.lazy(() => import(/* webpackChunkName: "settings" */ './SettingsPage'))
 export const NoMatch = React.lazy(() => import(/* webpackChunkName: "noMatch" */ './NoMatch'))
 
+declare const globalThis: Window
+
 const App: React.FC = () => {
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
   const location = useLocation()
   const gtm = useGtm()
+  const banner = useBanner()
 
-  // TODO: Remove
-  const installGtmLegally = useRecoilCallback(({ snapshot }) => async () => {
+  // TODO: Remove?
+  const installGtmLegally = useRecoilCallback(({ snapshot, set }) => async () => {
+    shouldBePresent(globalThis.cookieStore)
+
     const canGtmInstalled = await snapshot.getPromise(canGtmInstalledState)
+    const gaCookies = await globalThis.cookieStore.getAll('_ga')
+    const gaCookiesDeleted = gaCookies.length === 0
+
+    if (gaCookiesDeleted && canGtmInstalled && gtmContainerId !== undefined) {
+      set(gtmConsentsState, {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+      })
+
+      // TODO: Improve messages.
+      banner.show(<ObtainCookieConsentBanner />, {
+        key: cookieDialogKey,
+        replaceable: true,
+      })
+    }
 
     if (canGtmInstalled && gtmContainerId !== undefined) {
       await gtm.install(gtmContainerId)
     }
-  }, [gtm, gtmContainerId])
+  }, [gtm, gtmContainerId, banner])
 
   useEffect(() => {
     installGtmLegally()
