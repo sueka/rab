@@ -3,6 +3,7 @@ import 'jest-canvas-mock'
 import fetchMock from 'jest-fetch-mock'
 import 'reflect-metadata'
 
+import '~/polyfills/apps/globalThis.cookieStore'
 import '~/extensions/Array/Array.prototype.hashCode'
 import '~/extensions/Boolean/Boolean.prototype.hashCode'
 import '~/extensions/Number/Number.prototype.hashCode'
