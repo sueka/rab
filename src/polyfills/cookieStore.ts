@@ -9,24 +9,24 @@ export abstract class CookieStore {
 }
 
 interface Cookie {
-  domain: string
-  expires: number // Unix time
   name: string
-  partitioned: boolean
-  path: string
-  sameSite: 'strict' | 'lax' | 'none'
-  secure: boolean
   value: string
+  domain?: string
+  path: string
+  expires?: number // Unix time
+  secure: boolean
+  sameSite: 'strict' | 'lax' | 'none'
+  partitioned: boolean
 }
 
 type SmallCookie = Alt.SoftOmit<
   Cookie,
   | 'domain'
-  | 'expires'
-  | 'partitioned'
   | 'path'
-  | 'sameSite'
+  | 'expires'
   | 'secure'
+  | 'sameSite'
+  | 'partitioned'
 >
 
 const cookieStore: CookieStore = {
