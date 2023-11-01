@@ -4,7 +4,7 @@ import notificationsSortState from '~/atoms/notificationsSortState'
 import notificationsState from '~/atoms/notificationsState'
 
 const sortedNotificationsState = selector({
-  key: 'sortedNotificationsState',
+  key: 'sortedNotifications',
   get({ get }) {
     const notifications = get(notificationsState)
     const sort = get(notificationsSortState)

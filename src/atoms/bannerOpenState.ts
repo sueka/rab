@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
 
 const bannerOpenState = atom({
-  key: 'bannerOpenState',
+  key: 'bannerOpen',
   default: false,
 })
 

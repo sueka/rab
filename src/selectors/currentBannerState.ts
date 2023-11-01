@@ -3,7 +3,7 @@ import { DefaultValue, selector } from 'recoil'
 import bannersState, { Banner } from '~/atoms/bannersState'
 
 const currentBannerState = selector<Banner | null>({
-  key: 'currentBannerState',
+  key: 'currentBanner',
   get({ get }) {
     const banners = get(bannersState)
     return banners[0] ?? null

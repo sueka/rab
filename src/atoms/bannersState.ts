@@ -11,7 +11,7 @@ export interface Banner {
 }
 
 const bannersState = atom<Banner[]>({
-  key: 'bannersState',
+  key: 'banners',
   default: [],
 })
 

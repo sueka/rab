@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
 
 const appearanceThemeState = atom<AppearanceTheme>({
-  key: 'appearanceThemeState',
+  key: 'appearanceTheme',
   default: 'device',
 })
 

@@ -2,7 +2,7 @@ import FaviconNotification from 'favicon-notification'
 import { atom } from 'recoil'
 
 const notificationsState = atom<Notification[]>({
-  key: 'notificationsState',
+  key: 'notifications',
   default: [],
   effects_UNSTABLE: [
     ({ onSet }) => {

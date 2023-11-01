@@ -3,7 +3,7 @@ import { atom } from 'recoil'
 type NotificationsSort = Sort<Notification>
 
 const notificationsSortState = atom<NotificationsSort>({
-  key: 'notificationsSortState',
+  key: 'notificationsSort',
   default: {
     by: 'timestamp',
     in: 'desc',

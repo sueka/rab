@@ -3,7 +3,7 @@ import { DefaultValue, selector } from 'recoil'
 import appearanceThemeState from '~/atoms/appearanceThemeState'
 
 const darkState = selector<boolean | null>({
-  key: 'darkState',
+  key: 'dark',
   get({ get }) {
     const appearanceTheme = get(appearanceThemeState)
 

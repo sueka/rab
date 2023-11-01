@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
 
 const fullScreenState = atom({
-  key: 'fullScreenState',
+  key: 'fullScreen',
   // full screen 状態でない場合は null、Fullscreen API をサポートしていない場合は undefined
   default: document.fullscreenElement != null,
   effects_UNSTABLE: [

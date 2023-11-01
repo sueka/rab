@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
 
 const installedGtmContainerIdsState = atom<`GTM-${string}`[]>({
-  key: 'installedGtmContainerIdsState',
+  key: 'installedGtmContainerIds',
   default: [],
 })
 

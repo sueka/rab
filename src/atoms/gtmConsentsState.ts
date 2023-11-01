@@ -8,11 +8,11 @@ export interface GtmConsents extends SerializableObject {
   analytics_storage?: 'granted' | 'denied'
 }
 
-const { persist, restore } = makePersist<'gtmConsentsState', GtmConsents>('gtmConsentsState')
+const { persist, restore } = makePersist<'gtmConsents', GtmConsents>('gtmConsents')
 
 // TODO: Support region
 const gtmConsentsState = atom<GtmConsents>({
-  key: 'gtmConsentsState',
+  key: 'gtmConsents',
   default: {},
   effects_UNSTABLE: [
     ({ onSet }) => {
