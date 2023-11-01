@@ -27,7 +27,7 @@ const config: Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/index.html'),
+      template: path.resolve(__dirname, 'src/404.html'),
       filename: '404.html',
       base: `${ process.env.BASE_NAME }/`,
       inject: 'head',

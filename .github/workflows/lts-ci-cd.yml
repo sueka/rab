@@ -32,11 +32,7 @@ jobs:
           npm ci
           make typed
           make
-      - name: Build GitHub Pages Custom 404 Page
-        run: |
-          # npm ci
-          make gh-pages/dist
-          cp -r gh-pages/dist/* dist/
+          make dist/404.html
         if: github.event_name == 'push'
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v2
