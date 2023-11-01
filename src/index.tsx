@@ -5,6 +5,7 @@ import '~/polyfills/apps/Document.prototype.fullscreenElement'
 import '~/polyfills/apps/Document.prototype.fullscreenEnabled'
 import '~/polyfills/apps/globalThis.Notification'
 import '~/polyfills/apps/globalThis.SpeechRecognition'
+import '~/polyfills/apps/globalThis.cookieStore'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { StylesProvider, jssPreset } from '@material-ui/core/styles'
