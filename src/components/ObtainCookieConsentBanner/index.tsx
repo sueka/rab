@@ -28,7 +28,7 @@ const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onCancel }) => {
   const gtm = useGtm()
   const banner = useBanner()
 
-  const handleAgree = useRecoilCallback(({ set, snapshot }) => async () => {
+  const handleAgree = useRecoilCallback(({ set }) => async () => {
     set(canGtmInstalledState, true)
 
     shouldBePresent(gtmContainerId)
@@ -41,10 +41,13 @@ const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onCancel }) => {
 
     banner.hide({ key: cookieDialogKey })
 
-    gtm.install(gtmContainerId)
+    await gtm.install(gtmContainerId)
 
-    // 上の gtm.install() で行われる set(gtmConsentsState) の完了を待つ。Recoil の set は Promise を返さないが、getPromise を待てば、擬似的に set の完了を待つことができる。
-    await snapshot.getPromise(gtmConsentsState)
+    // NOTE: 下の set(gtmConsentsState) は上の gtm.install() で実行される set(gtmConsentsState) よりも後で実行されなければならない。Recoil の set は Promise を返さないが、同じ Recoil state の取得を待てば、擬似的に set の完了を待つことができる。
+    // await snapshot.getPromise(gtmConsentsState)
+
+    // NOTE: JavaScript はシングルスレッドで実行されるため、空の Promise を待つだけでも、上の gtm.install() で実行される await 式の解決を待つことができる。
+    await Promise.resolve()
 
     set(gtmConsentsState, {
       analytics_storage: 'granted',
