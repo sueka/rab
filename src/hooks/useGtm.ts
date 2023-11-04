@@ -4,9 +4,10 @@ import { useRecoilCallback } from 'recoil'
 import '~/ascertainers/dataLayer'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
-import gtmConsentsState from '~/atoms/gtmConsentsState'
+import gtmConsentsState, { GtmConsents } from '~/atoms/gtmConsentsState'
 import installedGtmContainerIdsState from '~/atoms/installedGtmContainerIdsState'
 import ConfigRegistry from '~/config/ConfigRegistry'
+import delay from '~/delay'
 import stripMargin from '~/extensions/String/stripMargin'
 import gtag from '~/helpers/google/gtag'
 import typed from '~/typed'
@@ -50,7 +51,11 @@ export default function useGtm() {
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
   const gtmUrl = config.get('GTM_URL')
 
-  const install = useRecoilCallback(({ snapshot, set }) => async (containerId: `GTM-${string}`) => {
+  const install = useRecoilCallback(({ snapshot, set }) => async (
+    containerId: `GTM-${string}`,
+    consents: GtmConsents,
+    timeOut: number = 1000
+  ) => {
     shouldBePresent(gtmUrl)
     shouldBePresent(globalThis.cookieStore)
 
@@ -62,18 +67,7 @@ export default function useGtm() {
 
     globalThis.dataLayer.push({ event: 'default_consent' })
 
-    // Update consents if any
-    /* NOTE:
-    gtmConsentsState は <RecoilRoot initializeState> で初期化（onSet() は発動しない。）されており、永続化された値を持っている。
-    この値を gtag('consent', 'update') するために、一度 {} を set してから、あらためて永続化された値を set する。
-    なお、gtag('consent', 'update', {}) は無視される。
-    */
-    const consents = await snapshot.getPromise(gtmConsentsState)
-
-    if (Object.keys(consents).length !== 0) {
-      set(gtmConsentsState, {})
-      set(gtmConsentsState, consents)
-    }
+    set(gtmConsentsState, consents)
 
     const installedIds = await snapshot.getPromise(installedGtmContainerIdsState)
 
@@ -88,6 +82,8 @@ export default function useGtm() {
     document.body.insertBefore(noScriptSnippet, document.body.firstChild)
 
     // TODO: Await scriptSnippet install explicitly
+    await delay(timeOut)
+
     const gaCookies = await globalThis.cookieStore.getAll('_ga')
     const installed = gaCookies.length > 0
 

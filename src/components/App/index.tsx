@@ -39,28 +39,44 @@ const App: React.FC = () => {
 
   // TODO: Remove?
   const installGtmLegally = useRecoilCallback(({ snapshot, set }) => async () => {
+    if (gtmContainerId === undefined) {
+      return
+    }
+
     shouldBePresent(globalThis.cookieStore)
 
-    const canGtmInstalled = await snapshot.getPromise(canGtmInstalledState)
     const gaCookies = await globalThis.cookieStore.getAll('_ga')
-    const gaCookiesDeleted = gaCookies.length === 0
+    const noGaCookies = gaCookies.length === 0
+    const canGtmInstalled = await snapshot.getPromise(canGtmInstalledState)
 
-    if (gaCookiesDeleted && canGtmInstalled && gtmContainerId !== undefined) {
-      set(gtmConsentsState, {
-        ad_storage: 'denied',
-        analytics_storage: 'denied',
-      })
+    // Withdrawal or cookie expired
+    if (noGaCookies && canGtmInstalled) {
+      // Semi-complete withdrawal
+      set(gtmConsentsState, {})
 
       // TODO: Improve messages.
       banner.show(<ObtainCookieConsentBanner />, {
         key: cookieDialogKey,
         replaceable: true,
       })
+
+      return
     }
 
-    if (canGtmInstalled && gtmContainerId !== undefined) {
-      await gtm.install(gtmContainerId)
+    // Consent obtained
+    if (!noGaCookies && canGtmInstalled) {
+      const consents = await snapshot.getPromise(gtmConsentsState)
+
+      await gtm.install(gtmContainerId, consents)
+
+      return
     }
+
+    // Initial state or withdrawal
+    // if (!canGtmInstalled) {
+    // Complete withdrawal
+    // set(canGtmInstalledState, false)
+    set(gtmConsentsState, {})
   }, [gtm, gtmContainerId, banner])
 
   useEffect(() => {
