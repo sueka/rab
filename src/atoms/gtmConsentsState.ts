@@ -3,7 +3,7 @@ import { atom } from 'recoil'
 import gtag from '~/helpers/google/gtag'
 import makePersist from '~/recoilEffects/makePersist'
 
-export interface GtmConsents extends SerializableObject {
+export interface GtmConsents {
   ad_storage?: 'granted' | 'denied'
   analytics_storage?: 'granted' | 'denied'
 }
