@@ -17,6 +17,10 @@ const gtmConsentsState = atom<GtmConsents>({
   effects_UNSTABLE: [
     ({ onSet }) => {
       onSet((newGtmConsents) => {
+        if (Object.keys(newGtmConsents).length === 0) {
+          return // Do not send gtag('consent', 'update', {})
+        }
+
         // NOTE: gtag('consent', 'update') は、順序を制御するため、ここでしか行わない。
         gtag('consent', 'update', newGtmConsents)
       })
