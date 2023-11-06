@@ -2,6 +2,7 @@ import { shouldBePresent } from "~/asserters/commonAsserters"
 
 export abstract class CookieStore {
   abstract getAll(name: string): Promise<SmallCookie[]>
+  abstract delete(name: string): Promise<void>
 
   constructor() {
     throw new TypeError('Illegal constructor')
@@ -50,6 +51,10 @@ const cookieStore: CookieStore = {
       value,
     }))
   },
+
+  async delete(name: string) {
+    document.cookie = `${ name }=; expires=Thu, 01 Jan 1970 00:00:00 GMT`
+  }
 }
 
 Object.setPrototypeOf(cookieStore, CookieStore.prototype)
