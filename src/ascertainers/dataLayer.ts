@@ -2,8 +2,13 @@ export {}
 
 declare global {
   interface Window {
-    dataLayer: any[]
+    dataLayer: (IArguments | DataEvent)[]
   }
+}
+
+interface DataEvent {
+  event: string
+  'gtm.uniqueEventId'?: number
 }
 
 declare const globalThis: Window
