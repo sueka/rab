@@ -9,6 +9,7 @@ import { useRecoilCallback } from 'recoil'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import canGtmInstalledState from '~/atoms/canGtmInstalledState'
+import gtmConsentsState from '~/atoms/gtmConsentsState'
 import Banner from '~/components/Banner'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import cookieDialogKey from '~/globalVariables/cookieDialogKey'
@@ -57,8 +58,14 @@ const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onCancel }) => {
     onAgree?.()
   }, [onAgree, gtm, gtmContainerId, banner])
 
-  const handleCancel = useCallback(() => {
+  const handleCancel = useRecoilCallback(({ set }) => () => {
     banner.hide({ key: cookieDialogKey })
+
+    // Ensure you withdraw consent.
+    set(canGtmInstalledState, false)
+    set(gtmConsentsState, {
+      analytics_storage: 'denied',
+    })
 
     onCancel?.()
   }, [onCancel, banner])
