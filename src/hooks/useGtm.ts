@@ -7,7 +7,7 @@ import { shouldBePresent } from '~/asserters/commonAsserters'
 import gtmConsentsState, { GtmConsents } from '~/atoms/gtmConsentsState'
 import installedGtmContainerIdsState from '~/atoms/installedGtmContainerIdsState'
 import ConfigRegistry from '~/config/ConfigRegistry'
-import delay from '~/delay'
+import delay, { timeOut } from '~/delay'
 import stripMargin from '~/extensions/String/stripMargin'
 import gtag from '~/helpers/google/gtag'
 import typed from '~/typed'
@@ -47,6 +47,32 @@ function createNoScriptSnippet(gtmUrl: string, containerId: `GTM-${string}`) {
   return noScript
 }
 
+interface GtmJsEvent {
+  event: 'gtm.js'
+  'gtm.uniqueEventId': number
+}
+
+function isGtmInstalled() {
+  const gtmJsEvent = globalThis.dataLayer.find(
+    (data): data is GtmJsEvent => 'event' in data && data.event === 'gtm.js'
+  )
+
+  return gtmJsEvent !== undefined
+}
+
+// TODO: Remove
+async function waitForGtmInstalled() {
+  while (true) {
+    const gtmInstalled = isGtmInstalled()
+
+    if (gtmInstalled) {
+      break
+    }
+
+    await delay(200) //
+  }
+}
+
 export default function useGtm() {
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
   const gtmUrl = config.get('GTM_URL')
@@ -54,7 +80,7 @@ export default function useGtm() {
   const install = useRecoilCallback(({ snapshot, set }) => async (
     containerId: `GTM-${string}`,
     consents: GtmConsents,
-    timeOut: number = 1000
+    timeout: number = 1000
   ) => {
     shouldBePresent(gtmUrl)
     shouldBePresent(globalThis.cookieStore)
@@ -81,11 +107,19 @@ export default function useGtm() {
     document.head.insertBefore(scriptSnippet, document.head.firstChild)
     document.body.insertBefore(noScriptSnippet, document.body.firstChild)
 
-    // TODO: Await scriptSnippet install explicitly
-    await delay(timeOut)
+    const installed = await Promise.race([
+      timeOut(timeout),
+      waitForGtmInstalled(),
+    ]).then(
+      () => {
+        return true
+      },
+      reason => {
+        console.warn(reason)
 
-    const gaCookies = await globalThis.cookieStore.getAll('_ga')
-    const installed = gaCookies.length > 0
+        return false // not installed
+      }
+    )
 
     if (installed) {
       set(installedGtmContainerIdsState, ids => [...ids, containerId])
