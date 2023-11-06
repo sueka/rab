@@ -8,6 +8,7 @@ interface Options<K extends string, V> {
 
 export const key = 'recoil-atoms'
 
+// TODO: persist は初期化と reset でも発動すべき
 export default function makePersist<K extends string, V>(atomKey: K, options?: Options<K, V>): {
   persist: AtomEffect<V>
   restore: AtomEffect<V>
@@ -39,25 +40,23 @@ export default function makePersist<K extends string, V>(atomKey: K, options?: O
       })
     },
 
-    restore({ trigger, setSelf, node }) {
+    restore({ setSelf, node }) {
       assert.equal(node.key, atomKey)
 
-      if (trigger === 'get') {
-        const store = localStorage.getItem(key)
+      const store = localStorage.getItem(key)
 
-        if (store === null) {
-          return
-        }
-
-        const deserialized = deserialize(store)
-        const persisted = deserialized[atomKey]
-
-        if (persisted === undefined) {
-          return
-        }
-
-        setSelf(persisted)
+      if (store === null) {
+        return
       }
+
+      const deserialized = deserialize(store)
+      const persisted = deserialized[atomKey]
+
+      if (persisted === undefined) {
+        return
+      }
+
+      setSelf(persisted)
     }
   }
 }
