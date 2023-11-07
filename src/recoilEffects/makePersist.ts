@@ -4,6 +4,7 @@ import { AtomEffect } from 'recoil'
 interface Options<K extends string, V> {
   serialize?(value: Record<K, V>): string
   deserialize?(text: string): Partial<Record<K, V>>
+  storage?: Pick<Storage, 'getItem' | 'setItem'>
 }
 
 export const key = 'recoil-atoms'
@@ -16,6 +17,7 @@ export default function makePersist<K extends string, V>(atomKey: K, options?: O
   const {
     serialize = JSON.stringify,
     deserialize = JSON.parse,
+    storage = localStorage,
   }: Options<K, V> = options ?? {}
 
   return {
@@ -23,7 +25,7 @@ export default function makePersist<K extends string, V>(atomKey: K, options?: O
       assert.equal(node.key, atomKey)
 
       onSet((newValue) => {
-        const store = localStorage.getItem(key)
+        const store = storage.getItem(key)
 
         const deserialized: Partial<Record<K, V>> = store !== null ? deserialize(store) : {}
 
@@ -36,14 +38,14 @@ export default function makePersist<K extends string, V>(atomKey: K, options?: O
           ...newEntry,
         })
 
-        localStorage.setItem(key, serialized)
+        storage.setItem(key, serialized)
       })
     },
 
     restore({ setSelf, node }) {
       assert.equal(node.key, atomKey)
 
-      const store = localStorage.getItem(key)
+      const store = storage.getItem(key)
 
       if (store === null) {
         return
