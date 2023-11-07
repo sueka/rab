@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button'
 import SecurityIcon from '@material-ui/icons/Security'
 import { useInjection } from 'inversify-react'
 import { useSnackbar } from 'notistack'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useRecoilCallback } from 'recoil'
 
