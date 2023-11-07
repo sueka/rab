@@ -33,14 +33,6 @@ const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onCancel }) => {
   const handleAgree = useRecoilCallback(({ set }) => async () => {
     shouldBePresent(gtmContainerId)
 
-    // NOTE: 画面のちらつきを減らすために、裏にある方を先に隠す。
-    banner.hide({
-      key: reloadNotToAcceptCookiesBannerKey,
-      safe: true,
-    })
-
-    banner.hide({ key: cookieDialogKey })
-
     const installed = await gtm.install(gtmContainerId, {
       analytics_storage: 'granted',
     })
@@ -52,6 +44,14 @@ const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onCancel }) => {
 
       return
     }
+
+    // NOTE: 画面のちらつきを減らすために、裏にある方を先に隠す。
+    banner.hide({
+      key: reloadNotToAcceptCookiesBannerKey,
+      safe: true,
+    })
+
+    banner.hide({ key: cookieDialogKey })
 
     set(canGtmInstalledState, true)
 
