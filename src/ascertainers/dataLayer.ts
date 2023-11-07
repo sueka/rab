@@ -2,7 +2,7 @@ export {}
 
 declare global {
   interface Window {
-    dataLayer: (IArguments | DataEvent)[]
+    readonly dataLayer: (IArguments | DataEvent)[]
   }
 }
 
@@ -13,4 +13,5 @@ interface DataEvent {
 
 declare const globalThis: Window
 
+// @ts-expect-error TS2540
 globalThis.dataLayer = globalThis.dataLayer ?? []
