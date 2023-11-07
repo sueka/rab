@@ -11,6 +11,7 @@ import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
 import Route from '~/components/Route'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import cookieDialogKey from '~/globalVariables/cookieDialogKey'
+import gtag from '~/helpers/google/gtag'
 import useBanner from '~/hooks/useBanner'
 import useGtm from '~/hooks/useGtm'
 
@@ -67,7 +68,17 @@ const App: React.FC = () => {
     if (!noGaCookies && canGtmInstalled) {
       const consents = await snapshot.getPromise(gtmConsentsState)
 
-      await gtm.install(gtmContainerId, consents)
+      // Send default consents
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+      })
+
+      globalThis.dataLayer.push({ event: 'default_consent' })
+
+      set(gtmConsentsState, consents)
+
+      await gtm.install(gtmContainerId)
 
       return
     }

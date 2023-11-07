@@ -14,6 +14,7 @@ import Banner from '~/components/Banner'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import cookieDialogKey from '~/globalVariables/cookieDialogKey'
 import reloadNotToAcceptCookiesBannerKey from '~/globalVariables/reloadNotToAcceptCookiesBannerKey'
+import gtag from '~/helpers/google/gtag'
 import useBanner from '~/hooks/useBanner'
 import useGtm from '~/hooks/useGtm'
 import messages from './messages'
@@ -22,6 +23,8 @@ interface Props {
   onAgree?(): void
   onCancel?(): void
 }
+
+declare const globalThis: Window
 
 const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onCancel }) => {
   const config = useInjection<ConfigRegistry>('EnvVarConfig')
@@ -33,9 +36,19 @@ const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onCancel }) => {
   const handleAgree = useRecoilCallback(({ set }) => async () => {
     shouldBePresent(gtmContainerId)
 
-    const installed = await gtm.install(gtmContainerId, {
+    // Send default consents
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+    })
+
+    globalThis.dataLayer.push({ event: 'default_consent' })
+
+    set(gtmConsentsState, {
       analytics_storage: 'granted',
     })
+
+    const installed = await gtm.install(gtmContainerId)
 
     if (!installed) {
       enqueueSnackbar(

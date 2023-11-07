@@ -4,12 +4,10 @@ import { useRecoilCallback } from 'recoil'
 import '~/ascertainers/dataLayer'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
-import gtmConsentsState, { GtmConsents } from '~/atoms/gtmConsentsState'
 import installedGtmContainerIdsState from '~/atoms/installedGtmContainerIdsState'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import delay, { timeOut } from '~/delay'
 import stripMargin from '~/extensions/String/stripMargin'
-import gtag from '~/helpers/google/gtag'
 import typed from '~/typed'
 
 declare const globalThis: Window
@@ -79,21 +77,10 @@ export default function useGtm() {
 
   const install = useRecoilCallback(({ snapshot, set }) => async (
     containerId: `GTM-${string}`,
-    consents: GtmConsents,
     timeout: number = 1000
   ) => {
     shouldBePresent(gtmUrl)
     shouldBePresent(globalThis.cookieStore)
-
-    // Send default consents
-    gtag('consent', 'default', {
-      ad_storage: 'denied',
-      analytics_storage: 'denied',
-    })
-
-    globalThis.dataLayer.push({ event: 'default_consent' })
-
-    set(gtmConsentsState, consents)
 
     const installedIds = await snapshot.getPromise(installedGtmContainerIdsState)
 
