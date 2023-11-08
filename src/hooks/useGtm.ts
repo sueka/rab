@@ -15,6 +15,7 @@ declare const globalThis: Window
 // TODO: remove
 // cf. https://developers.google.com/tag-manager/quickstart
 function createScriptSnippet(gtmUrl: string, containerId: `GTM-${string}`) {
+  const fragment = new DocumentFragment()
   const script = document.createElement('script')
 
   script.textContent = stripMargin(typed<[string, `GTM-${string}`]>`
@@ -22,15 +23,23 @@ function createScriptSnippet(gtmUrl: string, containerId: `GTM-${string}`) {
     |new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     |j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     |'${ gtmUrl }/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    |})(window,document,'script','dataLayer','${ containerId }');`)
+    |})(window,document,'script','dataLayer','${ containerId }');
+  `).trim()
 
-  return script
+  fragment.append(
+    new Comment('Google Tag Manager'),
+    script,
+    new Comment('End Google Tag Manager')
+  )
+
+  return fragment
 }
 
 // TODO: remove
-// NOTE: <nocript> の内容は flow/phrasing/metadata content なので、 `noScriptSnippet.textContent === ''` であり、 textContent を使う方法は不正。また、 innerHTML を使うと、 HTML インジェクション攻撃を受ける危険性が増す。
+// NOTE: <nocript> の内容は flow/phrasing/metadata なので、`noScriptSnippet.textContent === ''` であり、textContent を使う方法は不正。また、innerHTML を使うと、HTML インジェクション攻撃を受ける危険性が増す。
 // cf. https://developers.google.com/tag-manager/quickstart
 function createNoScriptSnippet(gtmUrl: string, containerId: `GTM-${string}`) {
+  const fragment = new DocumentFragment()
   const noScript = document.createElement('noscript')
   const iFrame = document.createElement('iframe')
 
@@ -42,7 +51,13 @@ function createNoScriptSnippet(gtmUrl: string, containerId: `GTM-${string}`) {
   iFrame.style.display = 'none'
   iFrame.style.visibility = 'hidden'
 
-  return noScript
+  fragment.append(
+    new Comment('Google Tag Manager (noscript)'),
+    noScript,
+    new Comment('End Google Tag Manager (noscript)')
+  )
+
+  return fragment
 }
 
 interface GtmJsEvent {
