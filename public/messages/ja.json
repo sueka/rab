@@ -16,6 +16,7 @@
   "src.components.App.SettingsPage.aPageReloadIsRequiredForTheConfigurationChangesToTakeEffect": "設定の変更を有効にするにはページをリロードする必要があります。",
   "src.components.App.SettingsPage.acceptCookies": "クッキーを受け入れる",
   "src.components.App.SettingsPage.appearance": "外観",
+  "src.components.App.SettingsPage.availableOffline": "オフラインで利用可能",
   "src.components.App.SettingsPage.dontReload": "リロードしない",
   "src.components.App.SettingsPage.fullScreen": "全画面表示",
   "src.components.App.SettingsPage.general": "一般",

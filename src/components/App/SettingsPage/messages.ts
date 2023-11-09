@@ -4,6 +4,7 @@ export default defineMessages({
   settings: 'Settings',
   general: 'General',
   language: 'Language',
+  availableOffline: 'Available offline',
   appearance: 'Appearance',
   theme: 'Theme',
   useLightTheme: 'Use light theme',

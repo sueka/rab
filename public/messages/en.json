@@ -16,6 +16,7 @@
   "src.components.App.SettingsPage.aPageReloadIsRequiredForTheConfigurationChangesToTakeEffect": "A page reload is required for the configuration changes to take effect.",
   "src.components.App.SettingsPage.acceptCookies": "Accept cookies",
   "src.components.App.SettingsPage.appearance": "Appearance",
+  "src.components.App.SettingsPage.availableOffline": "Available offline",
   "src.components.App.SettingsPage.dontReload": "Don't reload",
   "src.components.App.SettingsPage.fullScreen": "Full screen",
   "src.components.App.SettingsPage.general": "General",

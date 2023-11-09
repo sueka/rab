@@ -8,7 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ListSubheader from '@material-ui/core/ListSubheader'
 import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
-import Switch from '@material-ui/core/Switch'
+import Switch, { SwitchProps } from '@material-ui/core/Switch'
 import Tooltip from '@material-ui/core/Tooltip'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
 import Brightness7Icon from '@material-ui/icons/Brightness7'
@@ -18,7 +18,7 @@ import { useInjection } from 'inversify-react'
 import React, { useCallback, useContext, useEffect, useMemo } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilCallback, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { v4 } from 'uuid'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
@@ -39,8 +39,12 @@ import useBanner from '~/hooks/useBanner'
 import currentBannerState from '~/selectors/currentBannerState'
 import classes from './classes.css'
 import messages from './messages'
+import availableOfflineState from '~/atoms/availableOfflineState'
+
+type SwitchEventHandler = NonNullable<SwitchProps['onChange']>
 
 const languageSettingId = v4()
+const availableOfflineId = v4()
 const themeSettingId = v4()
 const fullscreenSettingId = v4()
 const acceptCookiesSettingId = v4()
@@ -51,6 +55,7 @@ const SettingsPage: React.FC = () => {
   const gtmContainerId = config.get('GTM_CONTAINER_ID')
   const banner = useBanner()
 
+  const availableOffline = useRecoilValue(availableOfflineState)
   const [appearanceTheme, setAppearanceTheme] = useRecoilState(appearanceThemeState)
   const [fullScreen, setFullScreen] = useRecoilState(fullScreenState)
   const currentBanner = useRecoilValue(currentBannerState)
@@ -59,6 +64,10 @@ const SettingsPage: React.FC = () => {
   const { defaultDark } = useContext(DefaultDarkContext)
 
   shouldBePresent(defaultDark)
+
+  const handleAvailableOfflineChange = useRecoilCallback(({ set }): SwitchEventHandler => (_event, checked) => {
+    set(availableOfflineState, checked)
+  }, [])
 
   const handleFullscreenchange = useCallback(() => {
     setFullScreen(document.fullscreenElement !== null)
@@ -156,6 +165,20 @@ const SettingsPage: React.FC = () => {
                     color: 'secondary',
                     'aria-labelledby': languageSettingId,
                   } }
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+            <ListItem>
+              <ListItemText
+                primary={ <FormattedMessage { ...messages.availableOffline } /> }
+                id={ availableOfflineId }
+              />
+              <ListItemSecondaryAction>
+                <Switch
+                  checked={ availableOffline }
+                  onChange={ handleAvailableOfflineChange }
+                  disabled={ !('serviceWorker' in navigator) }
+                  aria-labelledby={ availableOfflineId }
                 />
               </ListItemSecondaryAction>
             </ListItem>
