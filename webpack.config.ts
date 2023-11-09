@@ -5,6 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import * as path from 'path'
 import TerserPlugin from 'terser-webpack-plugin'
 import { Configuration, ProvidePlugin } from 'webpack'
+import { GenerateSW } from 'workbox-webpack-plugin'
 
 dotenv.config()
 
@@ -138,6 +139,10 @@ const config: Configuration = {
     }),
     new ProvidePlugin({
       process: 'process/browser',
+    }),
+    new GenerateSW({
+      swDest: path.resolve(__dirname, 'dist/sw.js'),
+      navigateFallback: '/index.html',
     }),
   ],
   devtool: 'source-map',
