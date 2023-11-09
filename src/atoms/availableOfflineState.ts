@@ -11,12 +11,16 @@ const availableOfflineState = atom<boolean>({
   effects: [
     persist,
     restore,
-    ({ onSet }) => {
+    ({ onSet, setSelf }) => {
       onSet(async (availableOffline) => {
         assert('serviceWorker' in navigator)
 
         if (availableOffline) {
-          navigator.serviceWorker.register('./sw.js')
+          await navigator.serviceWorker.register('./sw.js').catch(reason => {
+            console.error(reason)
+
+            setSelf(false)
+          })
         } else {
           const registration = await navigator.serviceWorker.ready
 
