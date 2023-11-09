@@ -2,9 +2,9 @@ import { atom } from 'recoil'
 
 import makePersist from '~/recoilEffects/makePersist'
 
-const { persist, restore } = makePersist('availableOffline')
+const { persist, restore } = makePersist<'availableOffline', boolean>('availableOffline')
 
-const availableOfflineState = atom({
+const availableOfflineState = atom<boolean>({
   key: 'availableOffline',
   default: false,
   effects: [
