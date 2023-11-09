@@ -143,6 +143,8 @@ const config: Configuration = {
     new GenerateSW({
       swDest: path.resolve(__dirname, 'dist/sw.js'),
       navigateFallback: '/index.html',
+      skipWaiting: true,
+      clientsClaim: true,
     }),
   ],
   devtool: 'source-map',
