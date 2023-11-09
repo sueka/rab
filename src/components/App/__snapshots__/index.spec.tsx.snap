@@ -3530,6 +3530,59 @@ exports[`App at /settings 1`] = `
             </div>
           </div>
         </li>
+        <li
+          class="MuiListItem-container"
+        >
+          <div
+            class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+          >
+            <div
+              class="MuiListItemText-root"
+              id="00000000-0000-4000-0000-000000000000"
+            >
+              <span
+                class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              >
+                <bdi
+                  dir="auto"
+                >
+                  Available offline
+                </bdi>
+              </span>
+            </div>
+          </div>
+          <div
+            class="MuiListItemSecondaryAction-root"
+          >
+            <span
+              class="MuiSwitch-root"
+            >
+              <span
+                aria-disabled="true"
+                aria-labelledby="00000000-0000-4000-0000-000000000000"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-168 MuiSwitch-switchBase MuiSwitch-colorSecondary PrivateSwitchBase-disabled-170 Mui-disabled Mui-disabled Mui-disabled"
+                tabindex="-1"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <input
+                    class="PrivateSwitchBase-input-171 MuiSwitch-input"
+                    disabled=""
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    class="MuiSwitch-thumb"
+                  />
+                </span>
+              </span>
+              <span
+                class="MuiSwitch-track"
+              />
+            </span>
+          </div>
+        </li>
       </ul>
     </div>
     <div
