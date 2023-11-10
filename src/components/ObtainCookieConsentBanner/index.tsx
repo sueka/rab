@@ -12,8 +12,7 @@ import canGtmInstalledState from '~/atoms/canGtmInstalledState'
 import gtmConsentsState from '~/atoms/gtmConsentsState'
 import Banner from '~/components/Banner'
 import ConfigRegistry from '~/config/ConfigRegistry'
-import cookieDialogKey from '~/globalVariables/cookieDialogKey'
-import reloadNotToAcceptCookiesBannerKey from '~/globalVariables/reloadNotToAcceptCookiesBannerKey'
+import { cookieDialogKey, refreshNotToAcceptCookiesBannerKey } from '~/bannerKeys'
 import gtag from '~/helpers/google/gtag'
 import useBanner from '~/hooks/useBanner'
 import useGtm from '~/hooks/useGtm'
@@ -60,7 +59,7 @@ const ObtainCookieConsentBanner: React.FC<Props> = ({ onAgree, onCancel }) => {
 
     // NOTE: 画面のちらつきを減らすために、裏にある方を先に隠す。
     banner.hide({
-      key: reloadNotToAcceptCookiesBannerKey,
+      key: refreshNotToAcceptCookiesBannerKey,
       safe: true,
     })
 

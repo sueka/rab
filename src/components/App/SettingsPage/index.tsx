@@ -1,5 +1,4 @@
 import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -26,15 +25,14 @@ import appearanceThemeState from '~/atoms/appearanceThemeState'
 import canGtmInstalledState from '~/atoms/canGtmInstalledState'
 import fullScreenState from '~/atoms/fullScreenState'
 import gtmConsentsState from '~/atoms/gtmConsentsState'
-import Banner from '~/components/Banner'
 import LocaleSelect from '~/components/LocaleSelect'
 import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
 import obtainedCookieConsentBannerMessages from '~/components/ObtainCookieConsentBanner/messages' // TODO: Move
 import { createPage } from '~/components/PageTemplate'
+import RefreshBanner from '~/components/RefreshBanner'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
-import cookieDialogKey from '~/globalVariables/cookieDialogKey'
-import reloadNotToAcceptCookiesBannerKey from '~/globalVariables/reloadNotToAcceptCookiesBannerKey'
+import { cookieDialogKey, refreshNotToAcceptCookiesBannerKey } from '~/bannerKeys'
 import useBanner from '~/hooks/useBanner'
 import currentBannerState from '~/selectors/currentBannerState'
 import classes from './classes.css'
@@ -97,14 +95,6 @@ const SettingsPage: React.FC = () => {
     return currentBanner?.key === cookieDialogKey
   }, [currentBanner])
 
-  const handleReload = useCallback(() => {
-    location.reload()
-  }, [])
-
-  const handleDontReload = useCallback(() => {
-    banner.hide({ key: reloadNotToAcceptCookiesBannerKey })
-  }, [banner])
-
   const handleAcceptCookiesChange = useCallback((_event, checked) => {
     if (checked) {
       // NOTE: Switch の切り替えはせず（保留し）、<ObtainCookieConsentBanner> の handleAgree で、canGtmInstalledState 経由で切り替える。
@@ -119,24 +109,19 @@ const SettingsPage: React.FC = () => {
         analytics_storage: 'denied',
       })
 
-      banner.show(<Banner
-        leading={ <Avatar>
-          <SecurityIcon />
-        </Avatar> }
-        text={ <FormattedMessage { ...messages.aPageReloadIsRequiredForTheConfigurationChangesToTakeEffect } /> }
-        actions={ <>
-          <Button variant="text" color="primary" onClick={ handleReload }>
-            <FormattedMessage { ...messages.reload } />
-          </Button>
-          <Button variant="text" color="primary" onClick={ handleDontReload }>
-            <FormattedMessage { ...messages.dontReload } />
-          </Button>
-        </> }
-      />, {
-        key: reloadNotToAcceptCookiesBannerKey,
-      })
+      banner.show(
+        <RefreshBanner
+          leading={ <Avatar>
+            <SecurityIcon />
+          </Avatar> }
+          text={ <FormattedMessage { ...messages.refreshThePageToCompleteTheTagManagerUninstallation } /> }
+        />,
+        {
+          key: refreshNotToAcceptCookiesBannerKey,
+        }
+      )
     }
-  }, [banner, handleReload, handleDontReload, setCanGtmInstalled, setGtmConsents])
+  }, [banner, setCanGtmInstalled, setGtmConsents])
 
   return (
     <>

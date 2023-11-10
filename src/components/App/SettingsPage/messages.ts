@@ -13,7 +13,5 @@ export default defineMessages({
   fullScreen: 'Full screen',
   securityAndPrivacy: 'Security and privacy',
   acceptCookies: 'Accept cookies',
-  aPageReloadIsRequiredForTheConfigurationChangesToTakeEffect: 'A page reload is required for the configuration changes to take effect.',
-  reload: 'Reload',
-  dontReload: 'Don\'t reload',
+  refreshThePageToCompleteTheTagManagerUninstallation: 'Refresh the page to complete the Tag Manager uninstallation.',
 })

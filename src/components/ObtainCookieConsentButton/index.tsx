@@ -6,7 +6,7 @@ import { useRecoilValue } from 'recoil'
 
 import canGtmInstalledState from '~/atoms/canGtmInstalledState'
 import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
-import cookieDialogKey from '~/globalVariables/cookieDialogKey'
+import { cookieDialogKey } from '~/bannerKeys'
 import useBanner from '~/hooks/useBanner'
 import currentBannerState from '~/selectors/currentBannerState'
 import messages from './messages'
