@@ -58,7 +58,6 @@ const App: React.FC = () => {
       // TODO: Improve messages.
       banner.show(<ObtainCookieConsentBanner />, {
         key: cookieDialogKey,
-        replaceable: true,
       })
 
       return

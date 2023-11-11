@@ -114,7 +114,6 @@ const SettingsPage: React.FC = () => {
 
       banner.show(<ObtainCookieConsentBanner />, {
         key: cookieDialogKey,
-        replaceable: true,
       })
     } else {
       setCanGtmInstalled(false)

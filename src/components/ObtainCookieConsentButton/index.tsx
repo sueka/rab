@@ -32,7 +32,6 @@ const ObtainCookieConsentButton: React.FC = () => {
     if (!canGtmInstalled) {
       banner.show(<ObtainCookieConsentBanner />, {
         key: cookieDialogKey,
-        replaceable: true,
       })
     } else {
       enqueueSnackbar(<FormattedMessage { ...messages.youHaveAlreadyConsentedToUseCookies } />)
