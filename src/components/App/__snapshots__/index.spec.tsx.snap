@@ -3982,7 +3982,7 @@ exports[`App at /table 1`] = `
     class="makeStyles-Offset-32 makeStyles-Offset-33"
   />
   <div
-    class="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1 MuiPaper-rounded"
+    class="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1"
   >
     <table
       class="MuiTable-root"
