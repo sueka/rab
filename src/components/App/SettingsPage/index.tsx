@@ -14,7 +14,7 @@ import Brightness7Icon from '@material-ui/icons/Brightness7'
 import BrightnessAutoIcon from '@material-ui/icons/BrightnessAuto'
 import SecurityIcon from '@material-ui/icons/Security'
 import { useInjection } from 'inversify-react'
-import React, { useCallback, useContext, useEffect, useMemo } from 'react'
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { useRecoilCallback, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
@@ -22,9 +22,11 @@ import { v4 } from 'uuid'
 
 import { shouldBePresent } from '~/asserters/commonAsserters'
 import appearanceThemeState from '~/atoms/appearanceThemeState'
+import availableOfflineState from '~/atoms/availableOfflineState'
 import canGtmInstalledState from '~/atoms/canGtmInstalledState'
 import fullScreenState from '~/atoms/fullScreenState'
 import gtmConsentsState from '~/atoms/gtmConsentsState'
+import { cookieDialogKey, refreshNotToAcceptCookiesBannerKey } from '~/bannerKeys'
 import LocaleSelect from '~/components/LocaleSelect'
 import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
 import obtainedCookieConsentBannerMessages from '~/components/ObtainCookieConsentBanner/messages' // TODO: Move
@@ -32,12 +34,10 @@ import { createPage } from '~/components/PageTemplate'
 import RefreshBanner from '~/components/RefreshBanner'
 import ConfigRegistry from '~/config/ConfigRegistry'
 import DefaultDarkContext from '~/contexts/DefaultDarkContext'
-import { cookieDialogKey, refreshNotToAcceptCookiesBannerKey } from '~/bannerKeys'
 import useBanner from '~/hooks/useBanner'
 import currentBannerState from '~/selectors/currentBannerState'
 import classes from './classes.css'
 import messages from './messages'
-import availableOfflineState from '~/atoms/availableOfflineState'
 
 type SwitchEventHandler = NonNullable<SwitchProps['onChange']>
 
@@ -60,12 +60,25 @@ const SettingsPage: React.FC = () => {
   const [canGtmInstalled, setCanGtmInstalled] = useRecoilState(canGtmInstalledState)
   const setGtmConsents = useSetRecoilState(gtmConsentsState)
   const { defaultDark } = useContext(DefaultDarkContext)
+  const [swDeactivationBannerKey, setSwDeactivationBannerKey] = useState<string>()
 
   shouldBePresent(defaultDark)
 
   const handleAvailableOfflineChange = useRecoilCallback(({ set }): SwitchEventHandler => (_event, checked) => {
     set(availableOfflineState, checked)
-  }, [])
+
+    if (checked) {
+      if (swDeactivationBannerKey !== undefined) {
+        banner.hide({ key: swDeactivationBannerKey, safe: true })
+      }
+    } else {
+      const key = banner.show(<RefreshBanner
+        text={ <FormattedMessage { ...messages.refreshThePageToDeactivateTheServiceWorker } /> }
+      />)
+
+      setSwDeactivationBannerKey(key)
+    }
+  }, [banner, swDeactivationBannerKey])
 
   const handleFullscreenchange = useCallback(() => {
     setFullScreen(document.fullscreenElement !== null)

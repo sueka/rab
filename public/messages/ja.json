@@ -20,6 +20,7 @@
   "src.components.App.SettingsPage.general": "一般",
   "src.components.App.SettingsPage.language": "言語",
   "src.components.App.SettingsPage.refreshThePageToCompleteTheTagManagerUninstallation": "ページを更新して Tag Manager のアンインストールを完了します。",
+  "src.components.App.SettingsPage.refreshThePageToDeactivateTheServiceWorker": "ページを更新して Service Worker を無効化します。",
   "src.components.App.SettingsPage.securityAndPrivacy": "セキュリティとプライバシー",
   "src.components.App.SettingsPage.settings": "設定",
   "src.components.App.SettingsPage.theme": "テーマ",

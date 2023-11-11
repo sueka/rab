@@ -20,6 +20,7 @@
   "src.components.App.SettingsPage.general": "General",
   "src.components.App.SettingsPage.language": "Language",
   "src.components.App.SettingsPage.refreshThePageToCompleteTheTagManagerUninstallation": "Refresh the page to complete the Tag Manager uninstallation.",
+  "src.components.App.SettingsPage.refreshThePageToDeactivateTheServiceWorker": "Refresh the page to deactivate the service worker.",
   "src.components.App.SettingsPage.securityAndPrivacy": "Security and privacy",
   "src.components.App.SettingsPage.settings": "Settings",
   "src.components.App.SettingsPage.theme": "Theme",

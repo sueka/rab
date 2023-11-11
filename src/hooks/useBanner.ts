@@ -13,7 +13,7 @@ interface ShowOptions {
 }
 
 interface HideOptions {
-  key?: string
+  key?: string //
   safe?: boolean // no failures if true
 }
 

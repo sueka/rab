@@ -20,6 +20,7 @@
   "src.components.App.SettingsPage.general": "כללי",
   "src.components.App.SettingsPage.language": "שפה",
   "src.components.App.SettingsPage.refreshThePageToCompleteTheTagManagerUninstallation": "רענן/רענני את הדף כדי להשלים את הסרת ההתקנה של Tag Manager.",
+  "src.components.App.SettingsPage.refreshThePageToDeactivateTheServiceWorker": "רענן/רענני את הדף כדי לבטל את הפעלת ה-Service Worker.",
   "src.components.App.SettingsPage.securityAndPrivacy": "אבטחה ופרטיות",
   "src.components.App.SettingsPage.settings": "הגדרות",
   "src.components.App.SettingsPage.theme": "ערכת נושא",

@@ -22,9 +22,12 @@ const availableOfflineState = atom<boolean>({
             setSelf(false)
           })
         } else {
-          const registration = await navigator.serviceWorker.ready
+          const rs = await navigator.serviceWorker.getRegistrations()
 
-          registration.unregister()
+          // TODO: Unregister only ./sw.js
+          for (const r of rs) {
+            r.unregister()
+          }
         }
       })
     }
