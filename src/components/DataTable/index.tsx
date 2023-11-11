@@ -70,6 +70,8 @@ const useStyles = makeStyles({
   flip: false,
 })
 
+const SquarePaper: React.FC = (props) => <Paper { ...props } square />
+
 const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc', locale }) => {
   const [sorts, setSorts] = useState<Sort<Row>[]>([])
 
@@ -129,7 +131,7 @@ const DataTable: React.FC<Props> = ({ columns, rows, defaultSortOrder = 'asc', l
   const numericCellClassName = useMemo(() => classnames(jssClasses.LocalizedCell, classes.NumericCell), [jssClasses.LocalizedCell])
 
   return (
-    <TableContainer component={ Paper }>
+    <TableContainer component={ SquarePaper }>
       <Table size={ isMobile ? 'small' : 'medium' } lang={ locale }>
         <TableHead>
           <TableRow>
