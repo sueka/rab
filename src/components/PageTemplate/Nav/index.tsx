@@ -1,4 +1,4 @@
-import chat from '@iconify/icons-mdi/chat'
+// import chat from '@iconify/icons-mdi/chat'
 import chessPawn from '@iconify/icons-mdi/chess-pawn'
 import clock from '@iconify/icons-mdi/clock'
 import counter from '@iconify/icons-mdi/counter'
