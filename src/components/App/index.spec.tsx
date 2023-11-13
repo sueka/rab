@@ -63,6 +63,7 @@ location
 ${ '/' }
 ${ '/form-controls' }
 ${ '/table' }
+${ '/chat' }
 ${ '/chess' }
 ${ '/clock' }
 ${ '/counter' }

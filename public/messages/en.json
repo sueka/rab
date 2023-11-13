@@ -1,4 +1,5 @@
 {
+  "src.components.App.ChatPage.chat": "Chat",
   "src.components.App.ChessPage.chess": "Chess",
   "src.components.App.ClockPage.clock": "Clock",
   "src.components.App.CounterPage.counter": "Counter",
@@ -63,6 +64,7 @@
   "src.components.ObtainCookieConsentButton.consentToUseCookies": "Consent to use cookies…",
   "src.components.ObtainCookieConsentButton.youHaveAlreadyConsentedToUseCookies": "You have already consented to use cookies.",
   "src.components.PageTemplate.Nav.apps": "Apps",
+  "src.components.PageTemplate.Nav.chat": "Chat",
   "src.components.PageTemplate.Nav.chess": "Chess",
   "src.components.PageTemplate.Nav.clock": "Clock",
   "src.components.PageTemplate.Nav.components": "Components",

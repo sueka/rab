@@ -6,6 +6,7 @@ export default defineMessages({
   formControls: 'Form controls',
   table: 'Table',
   apps: 'Apps',
+  chat: 'Chat',
   chess: 'Chess',
   clock: 'Clock',
   counter: 'Counter',

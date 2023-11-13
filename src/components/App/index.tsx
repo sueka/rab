@@ -18,6 +18,7 @@ import useGtm from '~/hooks/useGtm'
 export const HomePage = React.lazy(() => import(/* webpackChunkName: "home" */ './HomePage'))
 export const FormControlsPage = React.lazy(() => import(/* webpackChunkName: "formControls" */ './FormControlsPage'))
 export const TablePage = React.lazy(() => import(/* webpackChunkName: "table" */ './TablePage'))
+export const ChatPage = React.lazy(() => import(/* webpackChunkName: "chat" */ './ChatPage'))
 export const ChessPage = React.lazy(() => import(/* webpackChunkName: "chess" */ './ChessPage'))
 export const ClockPage = React.lazy(() => import(/* webpackChunkName: "clock" */ './ClockPage'))
 export const CounterPage = React.lazy(() => import(/* webpackChunkName: "counter" */ './CounterPage'))
@@ -107,6 +108,7 @@ const App: React.FC = () => {
       <Route exact strict sensitive path="/" component={ HomePage } />
       <Route exact strict sensitive path="/form-controls" component={ FormControlsPage } />
       <Route exact strict sensitive path="/table" component={ TablePage } />
+      <Route exact strict sensitive path="/chat" component={ ChatPage } />
       <Route exact strict sensitive path="/chess" component={ ChessPage } />
       <Route exact strict sensitive path="/clock" component={ ClockPage } />
       <Route exact strict sensitive path="/counter" component={ CounterPage } />

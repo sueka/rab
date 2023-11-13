@@ -1,4 +1,5 @@
 {
+  "src.components.App.ChatPage.chat": "チャット",
   "src.components.App.ChessPage.chess": "チェス",
   "src.components.App.ClockPage.clock": "時計",
   "src.components.App.CounterPage.counter": "カウンター",
@@ -63,6 +64,7 @@
   "src.components.ObtainCookieConsentButton.consentToUseCookies": "クッキーの使用に同意…",
   "src.components.ObtainCookieConsentButton.youHaveAlreadyConsentedToUseCookies": "すでにクッキーの使用に同意されています。",
   "src.components.PageTemplate.Nav.apps": "アプリ",
+  "src.components.PageTemplate.Nav.chat": "チャット",
   "src.components.PageTemplate.Nav.chess": "チェス",
   "src.components.PageTemplate.Nav.clock": "時計",
   "src.components.PageTemplate.Nav.components": "コンポーネント",

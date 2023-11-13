@@ -1,4 +1,5 @@
 {
+  "src.components.App.ChatPage.chat": "צ׳אט",
   "src.components.App.ChessPage.chess": "שחמט",
   "src.components.App.ClockPage.clock": "שעון",
   "src.components.App.CounterPage.counter": "מונה",
@@ -63,6 +64,7 @@
   "src.components.ObtainCookieConsentButton.consentToUseCookies": "להסכים להשתמש בעוגיות…",
   "src.components.ObtainCookieConsentButton.youHaveAlreadyConsentedToUseCookies": "הסכמת כבר להשתמש בעוגיות.",
   "src.components.PageTemplate.Nav.apps": "יישומים",
+  "src.components.PageTemplate.Nav.chat": "צ׳אט",
   "src.components.PageTemplate.Nav.chess": "שחמט",
   "src.components.PageTemplate.Nav.clock": "שעון",
   "src.components.PageTemplate.Nav.components": "רכיבי",

@@ -1,3 +1,4 @@
+import chat from '@iconify/icons-mdi/chat'
 import chessPawn from '@iconify/icons-mdi/chess-pawn'
 import clock from '@iconify/icons-mdi/clock'
 import counter from '@iconify/icons-mdi/counter'
@@ -123,6 +124,14 @@ const Nav = React.forwardRef<HTMLDivElement, Props>(({ open, onClose, topAppbarH
         <ListSubheader disableSticky>
           <FormattedMessage { ...messages.apps } />
         </ListSubheader>
+        {/* <ListItemLink to="/chat" onClick={ onClose }>
+          <ListItemIcon>
+            <Icon icon={ chat } width="24" height="24" />
+          </ListItemIcon>
+          <ListItemText>
+            <FormattedMessage { ...messages.chat } />
+          </ListItemText>
+        </ListItemLink> */}
         <ListItemLink to="/chess" onClick={ onClose }>
           <ListItemIcon>
             <Icon icon={ chessPawn } width="24" height="24" />
