@@ -14,6 +14,7 @@ jobs:
       BASE_NAME: ''
       GITHUB_API_URL: https://api.github.com
       USER_SERVICE_URL: http://localhost:14566 # TODO: Deploy a User Service
+      CHAT_SERVER_URL: wss://persian.sueka.me
       GTM_URL: https://www.googletagmanager.com
       GTM_CONTAINER_ID: GTM-NNPT3D7
       SHEETS_API_URL: https://sheets.googleapis.com/v4
@@ -50,6 +51,7 @@ jobs:
       BASE_NAME: ''
       GITHUB_API_URL: https://api.github.com
       USER_SERVICE_URL: http://example.com
+      CHAT_SERVER_URL: ws://example.com
       GTM_URL: https://example.com
       GTM_CONTAINER_ID: GTM-0000000
       SHEETS_API_URL: https://example.com

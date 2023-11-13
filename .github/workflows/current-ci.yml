@@ -10,7 +10,8 @@ jobs:
       NODE_ENV: production
       BASE_NAME: ''
       GITHUB_API_URL: https://api.github.com
-      USER_SERVICE_URL: http://localhost:14566 # TODO: Deploy a User Service
+      USER_SERVICE_URL: https://homestead.test
+      CHAT_SERVER_URL: ws://localhost:8000
       GTM_URL: https://example.com
       GTM_CONTAINER_ID: GTM-0000000
       SHEETS_API_URL: https://example.com # NOTE: Use the real API only on Netlify.
@@ -39,6 +40,7 @@ jobs:
       BASE_NAME: ''
       GITHUB_API_URL: https://api.github.com
       USER_SERVICE_URL: http://example.com
+      CHAT_SERVER_URL: ws://example.com
       GTM_URL: https://example.com
       GTM_CONTAINER_ID: GTM-0000000
       SHEETS_API_URL: https://example.com

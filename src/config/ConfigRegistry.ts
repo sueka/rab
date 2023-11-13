@@ -3,6 +3,7 @@ export interface ConfigKeyValueMap {
   BASE_NAME: string
   GITHUB_API_URL: string
   USER_SERVICE_URL: string
+  CHAT_SERVER_URL: string
   GTM_URL: string | undefined
   GTM_CONTAINER_ID: `GTM-${string}` | undefined
   SHEETS_API_URL: string
