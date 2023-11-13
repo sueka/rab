@@ -2,6 +2,7 @@ import * as path from 'path'
 import { HotModuleReplacementPlugin } from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import 'webpack-dev-server'
+import { GenerateSW } from 'workbox-webpack-plugin'
 
 import config from './webpack.config'
 
@@ -68,6 +69,8 @@ if (process.env.NODE_ENV === 'development') {
   config.plugins.push(
     new HotModuleReplacementPlugin()
   )
+
+  config.plugins = config.plugins.filter(plugin => !(plugin instanceof GenerateSW))
 
   config.devServer.hot = 'only'
 
