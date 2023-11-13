@@ -42,7 +42,6 @@ config.devServer = {
   static: {
     directory: path.resolve(__dirname, 'dist'),
   },
-  https: true,
   host,
   allowedHosts: 'all',
   port,
