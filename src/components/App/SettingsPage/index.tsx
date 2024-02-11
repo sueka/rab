@@ -14,7 +14,7 @@ import Brightness7Icon from '@material-ui/icons/Brightness7'
 import BrightnessAutoIcon from '@material-ui/icons/BrightnessAuto'
 import SecurityIcon from '@material-ui/icons/Security'
 import { useInjection } from 'inversify-react'
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useMemo } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { useRecoilCallback, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
@@ -26,6 +26,7 @@ import availableOfflineState from '~/atoms/availableOfflineState'
 import canGtmInstalledState from '~/atoms/canGtmInstalledState'
 import fullScreenState from '~/atoms/fullScreenState'
 import gtmConsentsState from '~/atoms/gtmConsentsState'
+import swDeactivationBannerKeyState from '~/atoms/swDeactivationBannerKeyState'
 import { cookieDialogKey, refreshNotToAcceptCookiesBannerKey } from '~/bannerKeys'
 import LocaleSelect from '~/components/LocaleSelect'
 import ObtainCookieConsentBanner from '~/components/ObtainCookieConsentBanner'
@@ -60,7 +61,7 @@ const SettingsPage: React.FC = () => {
   const [canGtmInstalled, setCanGtmInstalled] = useRecoilState(canGtmInstalledState)
   const setGtmConsents = useSetRecoilState(gtmConsentsState)
   const { defaultDark } = useContext(DefaultDarkContext)
-  const [swDeactivationBannerKey, setSwDeactivationBannerKey] = useState<string>()
+  const [swDeactivationBannerKey, setSwDeactivationBannerKey] = useRecoilState(swDeactivationBannerKeyState)
 
   shouldBePresent(defaultDark)
 
@@ -68,7 +69,7 @@ const SettingsPage: React.FC = () => {
     set(availableOfflineState, checked)
 
     if (checked) {
-      if (swDeactivationBannerKey !== undefined) {
+      if (swDeactivationBannerKey !== null) {
         banner.hide({ key: swDeactivationBannerKey, safe: true })
       }
     } else {
