@@ -8,7 +8,7 @@ export interface GtmConsents {
   analytics_storage?: 'granted' | 'denied'
 }
 
-const { persist, restore } = makePersist<'gtmConsents', GtmConsents>('gtmConsents')
+const { persist, restore } = makePersist<GtmConsents>('gtmConsents')
 
 // TODO: Support region
 const gtmConsentsState = atom<GtmConsents>({

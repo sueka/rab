@@ -2,7 +2,7 @@ import { atom } from 'recoil'
 
 import makePersist from '~/recoilEffects/makePersist'
 
-const { persist, restore } = makePersist<'canGtmInstalled', boolean>('canGtmInstalled')
+const { persist, restore } = makePersist<boolean>('canGtmInstalled')
 
 const canGtmInstalledState = atom({
   key: 'canGtmInstalled',
